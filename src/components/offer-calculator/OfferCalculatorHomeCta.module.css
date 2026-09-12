@@ -2,14 +2,14 @@
   --home-calculator-header-height: 90px;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  height: 100vh;
-  height: 100svh;
-  min-height: 0;
+  overflow: visible;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(14px, 2vh, 28px) clamp(20px, 2.5vw, 40px);
+  padding: clamp(16px, 2.5vh, 28px) clamp(16px, 2vw, 36px) clamp(20px, 3vh, 32px);
   background:
     linear-gradient(180deg, rgba(7, 26, 51, 0.72) 0%, rgba(7, 26, 51, 0.48) 45%, rgba(7, 26, 51, 0.2) 80%, rgba(7, 26, 51, 0.1) 100%),
     url("/assets/calculator-day-bg.webp") center bottom / cover no-repeat,
@@ -20,8 +20,10 @@
 }
 
 .section :global(.offerCalculatorEmbedded) {
-  height: min(100%, calc(100svh - var(--home-calculator-header-height) - 20px));
-  max-height: calc(100svh - var(--home-calculator-header-height) - 20px);
+  height: auto;
+  max-height: none;
+  min-height: min-content;
+  overflow: visible;
 }
 
 .section::before {
@@ -261,29 +263,260 @@
   color: rgba(255, 255, 255, 0.75) !important;
 }
 
-/* Keep sidebar cards readable on their light surfaces */
-.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
-.section :global(.offerCalculatorEmbedded) [class*="securityCard"] {
-  --ink: #10233c !important;
-  --ink-muted: rgba(16, 35, 60, 0.72) !important;
+/* =======================================================================
+   LIGHT THEME GLASSMORPHISM FOR EMBEDDED SIDEBAR BOXES
+   ======================================================================= */
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"],
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 255, 255, 0.30) 100%
+  ) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 20px 45px -12px rgba(10, 24, 46, 0.12),
+    0 4px 16px -2px rgba(10, 24, 46, 0.06),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  --ink: #0b1a30 !important;
+  --ink-muted: rgba(11, 26, 48, 0.75) !important;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease !important;
 }
 
-.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
-.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"] {
-  color: #10233c !important;
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"]:hover,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"]:hover,
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"]:hover,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"]:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.40) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow:
+    0 24px 52px -10px rgba(10, 24, 46, 0.16),
+    0 6px 20px -2px rgba(10, 24, 46, 0.08),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4) !important;
 }
 
-.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
-.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p {
-  color: rgba(16, 35, 60, 0.72) !important;
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeKicker"],
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeKicker"] {
+  color: #b87503 !important;
+  font-weight: 800 !important;
 }
 
-.section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2 {
-  color: #10233c !important;
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"],
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"] {
+  color: #0b1a30 !important;
+  font-weight: 800 !important;
 }
 
-.section :global(.offerCalculatorEmbedded) [class*="securityCard"] p {
-  color: rgba(16, 35, 60, 0.72) !important;
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p {
+  color: rgba(11, 26, 48, 0.82) !important;
 }
+
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2 {
+  color: #0b1a30 !important;
+  font-weight: 800 !important;
+}
+
+:global(html[data-theme="amigos-light"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] p,
+:global(html:not([data-theme="amigos-dark"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] p {
+  color: rgba(11, 26, 48, 0.78) !important;
+}
+
+/* Dark theme: ALL text in sidebar cards is crisp white */
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"],
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] {
+  --ink: #FFFFFF !important;
+  --ink-muted: rgba(255, 255, 255, 0.82) !important;
+  color: #FFFFFF !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"],
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2,
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"],
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2 {
+  color: #FFFFFF !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p,
+:global(html[data-theme="amigos-dark"]) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] p,
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p,
+:global(html:not([data-theme="amigos-light"])) .section :global(.offerCalculatorEmbedded) [class*="securityCard"] p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+/* =======================================================================
+   PROPERTY CARDS & ACTION BAR — PREVENT CUTTING OFF / CLIPPING
+   ======================================================================= */
+.section :global(.offerCalculatorEmbedded) [class*="embeddedWorkspace"] {
+  overflow: visible !important;
+  padding-bottom: 24px !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyGrid"] {
+  gap: clamp(10px, 1.1vw, 16px) !important;
+  margin-top: 14px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 4px !important;
+  overflow: visible !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCard"] {
+  display: block !important;
+  position: relative !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.42), 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  background: rgba(10, 24, 46, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCard"]:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(250, 190, 44, 0.7) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 20px rgba(250, 190, 44, 0.2) !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCardMedia"] {
+  width: 100% !important;
+  height: clamp(88px, 7.5vw, 114px) !important;
+  overflow: hidden !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCardImage"] {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCardInfo"] {
+  position: absolute !important;
+  inset: auto 0 0 0 !important;
+  z-index: 2 !important;
+  padding: 22px 12px 12px !important;
+  background: linear-gradient(
+    to top,
+    rgba(5, 18, 38, 0.95) 0%,
+    rgba(5, 18, 38, 0.72) 60%,
+    rgba(5, 18, 38, 0) 100%
+  ) !important;
+  border-bottom-left-radius: 18px !important;
+  border-bottom-right-radius: 18px !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCardTitle"] {
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  display: block !important;
+  line-height: 1.3 !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="propertyCardSubtitle"] {
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  display: block !important;
+  line-height: 1.3 !important;
+}
+
+/* Header Action Row: Always in Viewport without Scrolling */
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderRow"] {
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  margin-bottom: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderCopy"] {
+  flex: 1 1 320px !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+  margin-bottom: 4px !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] [class*="primaryAction"] {
+  min-height: 44px !important;
+  padding: 0 28px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #f6be10 0%, #f39125 100%) !important;
+  color: #101a2e !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 8px 24px rgba(246, 190, 16, 0.35) !important;
+  cursor: pointer !important;
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] [class*="primaryAction"]:not(:disabled):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 32px rgba(246, 190, 16, 0.48) !important;
+  filter: brightness(1.06) !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] [class*="primaryAction"]:disabled {
+  opacity: 0.45 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] [class*="secondaryAction"] {
+  min-height: 44px !important;
+  padding: 0 20px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .05em !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="stepHeaderNav"] [class*="secondaryAction"]:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Extra bottom nav actions removed (action buttons now live in the step header) */
+.section :global(.offerCalculatorEmbedded) [class*="navActions"] {
+  display: none !important;
+}
+
+
 
 

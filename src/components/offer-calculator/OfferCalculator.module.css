@@ -3086,15 +3086,15 @@
    ======================================================================= */
 
 .page {
-  --surface: rgba(255, 255, 255, .72);
-  --surface-strong: rgba(255, 255, 255, .86);
-  --surface-hover: rgba(255, 255, 255, .94);
-  --ink: #10233c;
-  --ink-muted: rgba(16, 35, 60, .66);
-  --hairline: rgba(16, 35, 60, .14);
-  --ring: rgba(16, 35, 60, .10);
-  --scrim: linear-gradient(180deg, rgba(250, 247, 240, .93) 0%, rgba(250, 247, 240, .86) 45%, rgba(247, 241, 231, .90) 100%);
-  --photo-filter: brightness(1.85) saturate(.52) contrast(.92);
+  --surface: rgba(255, 255, 255, .58);
+  --surface-strong: rgba(255, 255, 255, .72);
+  --surface-hover: rgba(255, 255, 255, .82);
+  --ink: #0b1a30;
+  --ink-muted: rgba(11, 26, 48, .72);
+  --hairline: rgba(255, 255, 255, .80);
+  --ring: rgba(11, 26, 48, .08);
+  --scrim: linear-gradient(180deg, rgba(246, 249, 253, .78) 0%, rgba(240, 246, 252, .58) 45%, rgba(236, 242, 250, .72) 100%);
+  --photo-filter: brightness(1.18) saturate(.78) contrast(.96);
   --accent-ink: #101a2e;
   color: var(--ink);
 }
@@ -3764,13 +3764,143 @@
 }
 
 .page {
-  --card-surface: rgba(255, 255, 255, .93);
-  --card-surface-hover: #ffffff;
+  --card-surface: rgba(255, 255, 255, 0.62);
+  --card-surface-hover: rgba(255, 255, 255, 0.82);
 }
 
 :global(html[data-theme="amigos-dark"]) .page {
   --card-surface: rgba(0, 19, 49, .62);
   --card-surface-hover: rgba(0, 19, 49, .78);
+}
+
+/* =======================================================================
+   LIGHT THEME GLASSMORPHISM FOR DETAILED CALCULATOR BOXES
+   ======================================================================= */
+:global(html[data-theme="amigos-light"]) .page > .hero > .heroCopy,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy,
+:global(html[data-theme="amigos-light"]) .page > .hero > .securityCard,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.62) 0%,
+    rgba(255, 255, 255, 0.30) 100%
+  ) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
+  border-radius: 22px !important;
+  box-shadow:
+    0 20px 48px -12px rgba(10, 24, 46, 0.12),
+    0 4px 16px -2px rgba(10, 24, 46, 0.06),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease !important;
+}
+
+:global(html[data-theme="amigos-light"]) .heroCopy::before,
+:global(html:not([data-theme="amigos-dark"])) .heroCopy::before {
+  opacity: 0.22 !important;
+}
+
+:global(html[data-theme="amigos-light"]) .page > .hero > .heroCopy:hover,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy:hover,
+:global(html[data-theme="amigos-light"]) .page > .hero > .securityCard:hover,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.40) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow:
+    0 24px 54px -10px rgba(10, 24, 46, 0.16),
+    0 6px 20px -2px rgba(10, 24, 46, 0.08),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) > .progressNav,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) > .progressNav {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(255, 255, 255, 0.28) 100%
+  ) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 16px 40px -10px rgba(10, 24, 46, 0.09),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .page .selectionCard,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionCard,
+:global(html[data-theme="amigos-light"]) .page .serviceCard,
+:global(html:not([data-theme="amigos-dark"])) .page .serviceCard,
+:global(html[data-theme="amigos-light"]) .page [class*="scopeCard"],
+:global(html:not([data-theme="amigos-dark"])) .page [class*="scopeCard"],
+:global(html[data-theme="amigos-light"]) .page [class*="conditionCard"],
+:global(html:not([data-theme="amigos-dark"])) .page [class*="conditionCard"] {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.35) 100%
+  ) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.80) !important;
+  border-radius: 18px !important;
+  box-shadow:
+    0 12px 30px -6px rgba(10, 24, 46, 0.08),
+    0 2px 8px -2px rgba(10, 24, 46, 0.04),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .page .selectionCard:hover,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionCard:hover,
+:global(html[data-theme="amigos-light"]) .page .serviceCard:hover,
+:global(html:not([data-theme="amigos-dark"])) .page .serviceCard:hover,
+:global(html[data-theme="amigos-light"]) .page [class*="scopeCard"]:hover,
+:global(html:not([data-theme="amigos-dark"])) .page [class*="scopeCard"]:hover,
+:global(html[data-theme="amigos-light"]) .page [class*="conditionCard"]:hover,
+:global(html:not([data-theme="amigos-dark"])) .page [class*="conditionCard"]:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.80) 0%,
+    rgba(255, 255, 255, 0.48) 100%
+  ) !important;
+  border-color: rgba(246, 190, 16, 0.85) !important;
+  box-shadow:
+    0 18px 40px -8px rgba(246, 190, 16, 0.25),
+    0 4px 14px -2px rgba(10, 24, 46, 0.08),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .page .resultLocked,
+:global(html:not([data-theme="amigos-dark"])) .page .resultLocked,
+:global(html[data-theme="amigos-light"]) .page .verifyPanel,
+:global(html:not([data-theme="amigos-dark"])) .page .verifyPanel,
+:global(html[data-theme="amigos-light"]) .page .pricePanel,
+:global(html:not([data-theme="amigos-dark"])) .page .pricePanel,
+:global(html[data-theme="amigos-light"]) .page .summaryPanel,
+:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.32) 100%
+  ) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
+  box-shadow:
+    0 20px 48px -10px rgba(10, 24, 46, 0.12),
+    0 4px 16px -2px rgba(10, 24, 46, 0.06),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  border-radius: 22px !important;
 }
 
 /* =======================================================================
@@ -4025,12 +4155,31 @@
   letter-spacing: .01em;
 }
 
-/* ---------- 10. SPACING RHYTHM ---------- */
-
 .embedded .stepPanel {
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+
+.stepHeaderRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.stepHeaderCopy {
+  flex: 1 1 320px;
+}
+
+.stepHeaderNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-bottom: 4px;
 }
 
 .embedded .stepPanel .cardGrid,

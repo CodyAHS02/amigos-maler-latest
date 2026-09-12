@@ -963,6 +963,35 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       : "Offer request received. It is now in the AMIGOS CRM.");
   }
 
+  function renderStepHeader(kicker, title, subtitle) {
+    return (
+      <div className={styles.stepHeaderRow}>
+        <div className={styles.stepHeaderCopy}>
+          {kicker && <span className={styles.stepKicker}>{kicker}</span>}
+          <h2>{title}</h2>
+          {subtitle && <p>{subtitle}</p>}
+        </div>
+        {step < inputStepCount && (
+          <div className={styles.stepHeaderNav}>
+            {step > 0 && (
+              <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
+                ← BACK
+              </button>
+            )}
+            <button
+              type="button"
+              className={styles.primaryAction}
+              disabled={!canContinue() || busy}
+              onClick={next}
+            >
+              {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   function renderPropertyCard(option, selected, onClick) {
     return (
       <button
@@ -1315,9 +1344,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* STEP 0: Project Type */}
               {step === 0 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>01 Project Type</span>
-                  <h2>{isSimple ? "What type of property would you like us to paint?" : "What type of property is it?"}</h2>
-                  <p>Please select your property type below.</p>
+                  {renderStepHeader(
+                    "01 Project Type",
+                    isSimple ? "What type of property would you like us to paint?" : "What type of property is it?",
+                    "Please select your property type below."
+                  )}
                   <div className={styles.propertyGrid}>
                     {(isSimple ? quickPropertyTypes : propertyTypes).map((option) =>
                       renderPropertyCard(option, state.propertyType === option.id, () => {
@@ -1345,9 +1376,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 1: Scope & Work */}
               {isSimple && step === 1 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>02 Scope & Work</span>
-                  <h2>What would you like us to paint?</h2>
-                  <p>Select the work scope that best fits your project. No m² calculations needed.</p>
+                  {renderStepHeader(
+                    "02 Scope & Work",
+                    "What would you like us to paint?",
+                    "Select the work scope that best fits your project. No m² calculations needed."
+                  )}
 
                   <div className={styles.scopeCardGrid}>
                     {workScopeOptions.map((option) =>
@@ -1402,9 +1435,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 2: Condition */}
               {isSimple && step === 2 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>03 Condition</span>
-                  <h2>What is the current condition?</h2>
-                  <p>This helps us give you the most accurate estimate possible.</p>
+                  {renderStepHeader(
+                    "03 Condition",
+                    "What is the current condition?",
+                    "This helps us give you the most accurate estimate possible."
+                  )}
 
                   <div className={styles.conditionCardGrid}>
                     {conditionOptions.map((option) =>
@@ -1419,9 +1454,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 3: Location */}
               {isSimple && step === 3 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>04 Location</span>
-                  <h2>Where is the property located?</h2>
-                  <p>Your location helps us calculate any travel costs accurately.</p>
+                  {renderStepHeader(
+                    "04 Location",
+                    "Where is the property located?",
+                    "Your location helps us calculate any travel costs accurately."
+                  )}
                   <LocationFields postalCode={state.postalCode} city={state.locationCity} onChange={updateField} />
                 </div>
               )}
@@ -1429,9 +1466,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* DETAILED MODE — STEP 5: Location */}
               {!isSimple && step === 4 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>05 Location</span>
-                  <h2>Where is the property located?</h2>
-                  <p>Your location helps us calculate any travel costs accurately.</p>
+                  {renderStepHeader(
+                    "05 Location",
+                    "Where is the property located?",
+                    "Your location helps us calculate any travel costs accurately."
+                  )}
                   <LocationFields postalCode={state.postalCode} city={state.locationCity} onChange={updateField} />
                 </div>
               )}
@@ -1587,9 +1626,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 1: Components */}
                   {!isSimple && step === 1 && (
                     <div className={styles.stepPanel}>
-                      <span className={styles.stepKicker}>02 Components</span>
-                      <h2>Which components should be worked on?</h2>
-                      <p>Select all that apply.</p>
+                      {renderStepHeader(
+                        "02 Components",
+                        "Which components should be worked on?",
+                        "Select all that apply."
+                      )}
                       <div className={styles.cardGrid}>
                         {components.map((option) => renderSelectionCard(option, state.components.includes(option.id), () => {
                           setState((current) => ({ ...current, components: toggle(current.components, option.id) }));
@@ -1601,9 +1642,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 2: Work & Services */}
                   {!isSimple && step === 2 && (
                     <div className={styles.stepPanel}>
-                      <span className={styles.stepKicker}>03 Work & Services</span>
-                      <h2>What work should we do?</h2>
-                      <p>Select multiple services. The catalogue is structured so it can grow with AMIGOS.</p>
+                      {renderStepHeader(
+                        "03 Work & Services",
+                        "What work should we do?",
+                        "Select multiple services. The catalogue is structured so it can grow with AMIGOS."
+                      )}
                       <div className={styles.serviceGrid}>
                         {visibleServices.map((option) => renderSelectionCard(option, state.services.includes(option.id), () => {
                           setState((current) => ({ ...current, services: toggle(current.services, option.id) }));
@@ -1615,9 +1658,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 3: Quantities */}
                   {!isSimple && step === 3 && (
                     <div className={styles.stepPanel}>
-                      <span className={styles.stepKicker}>04 Quantities</span>
-                      <h2>Enter the quantities</h2>
-                      <p>Please enter the areas, lengths and quantities.</p>
+                      {renderStepHeader(
+                        "04 Quantities",
+                        "Enter the quantities",
+                        "Please enter the areas, lengths and quantities."
+                      )}
                       <div className={styles.quantityGrid}>
                         {visibleQuantities.map((item) => (
                           <label key={item.id} className={styles.quantityField}>
@@ -1674,24 +1719,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           </div>
                         </dl>
                       </div>
-                    </div>
-                  )}
-
-                  {/* NAV ACTIONS (Back & Continue) */}
-                  {step < inputStepCount && (
-                    <div className={styles.navActions}>
-                      {step > 0 ? (
-                        <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                          ← BACK
-                        </button>
-                      ) : isHomeQuickQuote ? null : (
-                        <a className={styles.secondaryAction} href="/">
-                          ← QUICK QUOTE INSTEAD
-                        </a>
-                      )}
-                      <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
-                        {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
-                      </button>
                     </div>
                   )}
 
