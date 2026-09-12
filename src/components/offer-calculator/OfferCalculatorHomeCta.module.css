@@ -1,0 +1,289 @@
+.section {
+  --home-calculator-header-height: 90px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  height: 100svh;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 2vh, 28px) clamp(20px, 2.5vw, 40px);
+  background:
+    linear-gradient(180deg, rgba(7, 26, 51, 0.72) 0%, rgba(7, 26, 51, 0.48) 45%, rgba(7, 26, 51, 0.2) 80%, rgba(7, 26, 51, 0.1) 100%),
+    url("/assets/calculator-day-bg.webp") center bottom / cover no-repeat,
+    #071A33;
+  color: #FDFBF6;
+  font-family: var(--themeFont, inherit);
+  animation: none;
+}
+
+.section :global(.offerCalculatorEmbedded) {
+  height: min(100%, calc(100svh - var(--home-calculator-header-height) - 20px));
+  max-height: calc(100svh - var(--home-calculator-header-height) - 20px);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes calculatorMovingGradient {
+  0% {
+    background-position: 0% 18%;
+  }
+
+  50% {
+    background-position: 100% 62%;
+  }
+
+  100% {
+    background-position: 20% 100%;
+  }
+}
+
+:global(body[data-page="home"]) .section,
+:global(body[data-page="home"] .home-calculator-cta) {
+  background-color: #071A33 !important;
+  background-image:
+    linear-gradient(180deg, rgba(7, 26, 51, 0.72) 0%, rgba(7, 26, 51, 0.48) 45%, rgba(7, 26, 51, 0.2) 80%, rgba(7, 26, 51, 0.1) 100%),
+    url(/assets/calculator-day-bg.webp) !important;
+  background-size: cover, cover !important;
+  background-position: center, center bottom !important;
+  background-repeat: no-repeat !important;
+  animation: none !important;
+}
+
+:global(html[data-theme="amigos-dark"] body[data-page="home"]) .section,
+:global(html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta) {
+  background-color: #071A33 !important;
+  background-image:
+    linear-gradient(180deg, rgba(5, 18, 38, 0.92) 0%, rgba(5, 18, 38, 0.7) 45%, rgba(5, 18, 38, 0.3) 80%, rgba(5, 18, 38, 0.15) 100%),
+    url("/assets/calculator-glass-bg.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center bottom !important;
+  background-repeat: no-repeat !important;
+  animation: none !important;
+}
+
+.copy span {
+  color: #f6be10;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.copy h2 {
+  max-width: 760px;
+  margin: 18px 0 14px;
+  font-size: clamp(38px, 4.8vw, 68px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.copy p {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(253, 251, 246, .72);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.actions a:first-child {
+  color: #101A2E;
+  background: linear-gradient(135deg, #f6be10, #f39125);
+  box-shadow: 0 16px 38px rgba(246, 190, 16, .24);
+}
+
+.actions a:last-child {
+  color: #FDFBF6;
+  border: 1px solid rgba(253, 251, 246, .22);
+  background: rgba(255, 255, 255, .06);
+}
+
+.actions a:hover {
+  transform: translateY(-2px);
+}
+
+.trust {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.trust span {
+  min-height: 92px;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(253, 251, 246, .13);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .035)),
+    radial-gradient(circle at 75% 18%, rgba(230, 36, 83, .24), transparent 42%);
+  color: rgba(253, 251, 246, .88);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .trust {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    --home-calculator-header-height: 86px;
+    height: auto;
+    min-height: 100svh;
+    padding: 34px 16px;
+  }
+
+  .copy h2 {
+    font-size: clamp(34px, 10vw, 54px);
+  }
+
+  .copy p {
+    font-size: 15px;
+  }
+}
+
+/* =======================================================================
+   DAY / NIGHT
+   The band previously forced a navy backdrop with !important, so in day mode
+   the themed (dark) calculator text landed on a dark ground. Both modes now
+   use the same photograph under a theme-appropriate wash.
+   ======================================================================= */
+
+:global(html[data-theme="amigos-light"] body[data-page="home"]) .section,
+:global(html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta) {
+  background-color: #f7f1e7 !important;
+  background-image:
+    linear-gradient(180deg, rgba(250, 247, 240, .94) 0%, rgba(250, 247, 240, .88) 45%, rgba(247, 241, 231, .93) 100%),
+    url("/assets/calculator-glass-bg.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center bottom !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Day mode needs the night photograph lifted so it reads as a soft texture. */
+:global(html[data-theme="amigos-light"]) .section::before {
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255, 255, 255, .5), transparent 62%);
+}
+
+:global(html[data-theme="amigos-light"]) .section {
+  color: #FFFFFF;
+}
+
+:global(html[data-theme="amigos-light"] body[data-page="home"]) .section,
+:global(html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="home"]) .section,
+:global(html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta),
+:global(html[data-theme="amigos-light"]) .section,
+:global(html:not([data-theme="amigos-dark"])) .section {
+  background-color: #071A33 !important;
+  background-image:
+    linear-gradient(180deg, rgba(7, 26, 51, 0.72) 0%, rgba(7, 26, 51, 0.48) 45%, rgba(7, 26, 51, 0.2) 80%, rgba(7, 26, 51, 0.1) 100%),
+    url(/assets/calculator-day-bg.webp) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .section::before,
+:global(html:not([data-theme="amigos-dark"])) .section::before {
+  background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 60%);
+}
+
+/* =======================================================================
+   WHITE TEXT OVERRIDES FOR DARK BLUE BACKGROUND OVERLAY
+   ======================================================================= */
+.section :global(.offerCalculatorEmbedded) {
+  --ink: #FFFFFF !important;
+  --ink-muted: rgba(255, 255, 255, 0.82) !important;
+  color: #FFFFFF !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="embeddedWorkspace"],
+.section :global(.offerCalculatorEmbedded) [class*="quickQuoteIntro"],
+.section :global(.offerCalculatorEmbedded) [class*="progressNav"],
+.section :global(.offerCalculatorEmbedded) [class*="stepPanel"] {
+  --ink: #FFFFFF !important;
+  --ink-muted: rgba(255, 255, 255, 0.82) !important;
+  color: #FFFFFF !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="quickQuoteIntro"] h2,
+.section :global(.offerCalculatorEmbedded) [class*="stepPanel"] h2,
+.section :global(.offerCalculatorEmbedded) [class*="embeddedWorkspace"] h2,
+.section :global(.offerCalculatorEmbedded) h2 {
+  color: #FFFFFF !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="quickQuoteIntro"] p,
+.section :global(.offerCalculatorEmbedded) [class*="stepPanel"] p,
+.section :global(.offerCalculatorEmbedded) [class*="stepPanel"] > p,
+.section :global(.offerCalculatorEmbedded) [class*="embeddedWorkspace"] p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="progressStep"] b,
+.section :global(.offerCalculatorEmbedded) [class*="currentStep"] b,
+.section :global(.offerCalculatorEmbedded) [class*="doneStep"] b {
+  color: #FFFFFF !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="progressStep"]:not([class*="currentStep"]) span {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Keep sidebar cards readable on their light surfaces */
+.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"],
+.section :global(.offerCalculatorEmbedded) [class*="securityCard"] {
+  --ink: #10233c !important;
+  --ink-muted: rgba(16, 35, 60, 0.72) !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] h3,
+.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] [class*="sidebarModeTitle"] {
+  color: #10233c !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] li,
+.section :global(.offerCalculatorEmbedded) [class*="sidebarModeCard"] p {
+  color: rgba(16, 35, 60, 0.72) !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="securityCard"] h2 {
+  color: #10233c !important;
+}
+
+.section :global(.offerCalculatorEmbedded) [class*="securityCard"] p {
+  color: rgba(16, 35, 60, 0.72) !important;
+}
+
+
