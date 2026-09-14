@@ -37,7 +37,7 @@ export async function GET(request) {
     });
 
     const primaryColor = [20, 20, 20];
-    const accentYellow = [232, 196, 68];
+    const accentYellow = [245, 166, 35]; // Amigos yellow-orange
     const mutedColor = [100, 100, 100];
     const lightBg = [248, 248, 248];
 
@@ -52,11 +52,11 @@ export async function GET(request) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(20);
     doc.setTextColor(255, 255, 255);
-    doc.text("AMIGOS MALER GMBH", 18, 18);
+    doc.text("AMIGOS MALER GmbH", 18, 18);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
-    doc.setTextColor(232, 196, 68);
+    doc.setTextColor(245, 166, 35);
     doc.text("KOMPETENZ VERBINDET • QUALITÄT FÜR GENERATIONEN", 18, 26);
 
     // Header Right
@@ -64,14 +64,14 @@ export async function GET(request) {
     doc.setTextColor(200, 200, 200);
     doc.text("info@amigos-maler.ch", 192, 16, { align: "right" });
     doc.text("www.amigos-maler.ch", 192, 22, { align: "right" });
-    doc.text("Schweiz", 192, 28, { align: "right" });
+    doc.text("Olten • Aarau • Schweiz", 192, 28, { align: "right" });
 
     // Document Title
     let y = 52;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
     doc.setTextColor(...primaryColor);
-    doc.text("UNVERBINDLICHE RICHTOFFERTE", 18, y);
+    doc.text("PERSÖNLICHE RICHTOFFERTE (ESTIMATED QUOTATION)", 18, y);
 
     y += 6;
     doc.setFont("helvetica", "normal");
@@ -105,7 +105,7 @@ export async function GET(request) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(...primaryColor);
-    doc.text("Projekt-Übersicht", 18, y);
+    doc.text("Projekt-Übersicht & Leistungsumfang", 18, y);
 
     y += 4;
     doc.setDrawColor(220, 220, 220);
@@ -114,11 +114,11 @@ export async function GET(request) {
     y += 8;
     const items = [
       ["Objektart:", session.propertyType || "Wohnung / Liegenschaft"],
-      ["Umfang:", (session.components || []).map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(", ") || "Wände & Decken"],
-      ["Leistungen:", (session.services || []).map(s => s.replaceAll("_", " ")).join(", ") || "Malerarbeiten 2-fach deckend"],
+      ["Umfang (Bauteile):", (session.components || []).map(c => c.charAt(0).toUpperCase() + c.slice(1).replace("_", " ")).join(", ") || "Wände & Decken"],
+      ["Leistungen:", (session.services || []).map(s => s.replaceAll("_", " ")).join(", ") || "Malerarbeiten deckend"],
       ["Abdeck- & Schutzarbeiten:", "Inbegriffen (Böden, Möbel, Leisten geschützt)"],
-      ["Material & Werkzeuge:", "Inbegriffen (Hochwertige Schweizer Qualitätsfarben)"],
-      ["Anfahrts- & Transportkosten:", "Inbegriffen / Berücksichtigt"]
+      ["Material & Werkzeuge:", "Inbegriffen (Schweizer Qualitätsfarben & Lacke)"],
+      ["Anfahrts- & Transportkosten:", "Inbegriffen (Region Olten / Mittelland)"]
     ];
 
     doc.setFontSize(9);
@@ -144,9 +144,11 @@ export async function GET(request) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
     doc.setTextColor(...primaryColor);
-    doc.text("Geschätzter Angebotspreis (Richtpreis)", 28, y + 10);
+    doc.text("YOUR PERSONAL ESTIMATED QUOTATION", 28, y + 10);
 
-    const priceText = `${formatChf(session.minCents)} – ${formatChf(session.maxCents)}`;
+    const priceText = session.minCents === session.maxCents
+      ? formatChf(session.minCents)
+      : `${formatChf(session.minCents)} – ${formatChf(session.maxCents)}`;
     doc.setFontSize(18);
     doc.setTextColor(20, 20, 20);
     doc.text(priceText, 28, y + 22);
@@ -154,14 +156,14 @@ export async function GET(request) {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(8.5);
     doc.setTextColor(...mutedColor);
-    doc.text("Inklusive gesetzlicher MWST, aller Vorbereitungsarbeiten, Materialien und Entsorgung.", 28, y + 31);
+    doc.text("Geschätzter Richtpreis inkl. MWST, aller Vorbereitungsarbeiten, Materialien und Entsorgung.", 28, y + 31);
 
-    // Next steps
+    // Next steps & disclaimer
     y += 48;
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
     doc.setTextColor(...primaryColor);
-    doc.text("Nächste Schritte & Kontakt", 18, y);
+    doc.text("Nächste Schritte & Konditionen", 18, y);
 
     y += 6;
     doc.setFont("helvetica", "normal");
@@ -180,7 +182,7 @@ export async function GET(request) {
     // Footer
     doc.setFontSize(7.5);
     doc.setTextColor(150, 150, 150);
-    doc.text("AMIGOS MALER GMBH • Alle Angaben unverbindlich bis zur finalen Besichtigung • Gültigkeit: 30 Tage", 105, 285, { align: "center" });
+    doc.text("AMIGOS MALER GmbH • Alle Angaben unverbindlich bis zur finalen Besichtigung • Gültigkeit: 30 Tage", 105, 285, { align: "center" });
 
     const pdfBuffer = Buffer.from(doc.output("arraybuffer"));
 

@@ -9,7 +9,8 @@ const navItems = [
   { href: "/admin/chat", label: "Live Chat" },
   { href: "/admin/enquiries", label: "Enquiries" },
   { href: "/admin/appointments", label: "Appointments" },
-  { href: "/admin/users", label: "Users" }
+  { href: "/admin/users", label: "Users" },
+  { href: "/admin/pricing", label: "Calculator Pricing" }
 ];
 
 export default function AdminShell({ activePath, admin, children, eyebrow, title }) {

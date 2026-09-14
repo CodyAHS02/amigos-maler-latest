@@ -9,7 +9,13 @@ function runWhenDomReady(init) {
 }
 
 runWhenDomReady(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (typeof gsap === "undefined") {
+        console.warn("GSAP is not available on color-and-material; preserving static display.");
+        return;
+    }
+    if (typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+    }
 
     const qs = (selector, parent = document) => parent.querySelector(selector);
     const qsa = (selector, parent = document) => [...parent.querySelectorAll(selector)];

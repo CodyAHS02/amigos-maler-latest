@@ -361,9 +361,9 @@ body[data-page="home"] .site-header {
     font-size: 11px;
     font-weight: 700;
 
-    color: rgba(255, 255, 255, .4);
+    color: #ffffff !important;
 
-    background: rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, .12);
 
     padding: 3px 6px;
 
@@ -622,22 +622,23 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
             translateY(40px);
     }
 
+    .site-nav {
+        counter-reset: nav-item;
+    }
+
+    .site-nav > a,
+    .site-nav .dropdown-trigger {
+        counter-increment: nav-item;
+    }
+
     .site-nav a::before {
-        content:
-            counter(nav-item) "0"
-            attr(data-index);
-
+        content: counter(nav-item, decimal-leading-zero);
         position: absolute;
-
         top: 16px;
         right: 0;
-
         font-size: 12px;
-
         letter-spacing: 2px;
-
-        color:
-            rgba(255, 255, 255, .4);
+        color: rgba(255, 255, 255, .4);
     }
 
 
@@ -2118,6 +2119,13 @@ svg {
    THEME TOGGLE + AMIGOS NAVY THEME
 ================================================== */
 
+.header-toggle-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
 .theme-toggle {
     position: relative;
     width: 48px;
@@ -2172,9 +2180,124 @@ html[data-theme="amigos-dark"] .theme-toggle-icon {
     color: #fdfbf6;
 }
 
+/* Sound Toggle */
+.sound-toggle {
+    position: relative;
+    width: 48px;
+    height: 32px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background .28s ease, border-color .28s ease, transform .28s ease, box-shadow .28s ease;
+}
+
+.sound-toggle:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, .68);
+    background: rgba(255, 255, 255, .20);
+}
+
+.sound-toggle-icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .18);
+    color: rgba(255, 255, 255, .82);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    transition: transform .32s cubic-bezier(0.34, 1.56, 0.64, 1), background .32s ease, color .32s ease, box-shadow .32s ease;
+}
+
+.sound-icon {
+    width: 13px;
+    height: 13px;
+    display: block;
+}
+
+.sound-toggle.is-playing {
+    border-color: rgba(246, 190, 16, .65);
+    background: rgba(246, 190, 16, .12);
+    box-shadow: 0 0 14px rgba(246, 190, 16, .22);
+}
+
+.sound-toggle.is-playing .sound-toggle-icon {
+    transform: translateX(16px);
+    background: linear-gradient(135deg, #f6be10, #f39125 58%, #fff3bf);
+    color: #071A33;
+    box-shadow: 0 4px 14px rgba(243, 145, 37, .45);
+}
+
+.sound-bars {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2px;
+    height: 12px;
+    width: 12px;
+}
+
+.sound-bar {
+    width: 2px;
+    height: 10px;
+    background: #071A33;
+    border-radius: 1.5px;
+    transform-origin: bottom center;
+    animation: soundWave 0.9s ease-in-out infinite alternate;
+}
+
+.sound-bar.bar-1 {
+    animation-delay: 0s;
+    animation-duration: 0.7s;
+}
+
+.sound-bar.bar-2 {
+    animation-delay: 0.22s;
+    animation-duration: 0.5s;
+}
+
+.sound-bar.bar-3 {
+    animation-delay: 0.12s;
+    animation-duration: 0.8s;
+}
+
+@keyframes soundWave {
+    0% {
+        transform: scaleY(0.25);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(0.4);
+    }
+}
+
+html[data-theme="amigos-dark"] .sound-toggle {
+    border-color: rgba(255, 255, 255, .28);
+    background: rgba(7, 26, 51, .72);
+}
+
+html[data-theme="amigos-dark"] .sound-toggle.is-playing {
+    border-color: rgba(246, 190, 16, .7);
+    background: rgba(246, 190, 16, .14);
+}
+
 @media (max-width: 1120px) {
-    .theme-toggle {
+    .header-toggle-group {
         margin-left: auto;
+    }
+    .theme-toggle {
+        margin-left: 0;
     }
 }
 

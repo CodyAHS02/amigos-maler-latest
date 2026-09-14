@@ -117,7 +117,6 @@ export async function POST(request) {
       sessionId: result.sessionId,
       status: result.status,
       currency: result.currency,
-      lockedPrice: true,
       estimatedSurfaces: {
         wallArea: totalWallArea,
         ceilingArea: totalCeilingArea,

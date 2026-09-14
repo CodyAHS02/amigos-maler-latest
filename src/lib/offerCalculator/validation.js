@@ -1,49 +1,19 @@
 import { cleanText, normalizeEmail } from "@/lib/validation";
-
-export const PROPERTY_TYPES = new Set(["apartment", "house", "commercial", "facade", "room", "other"]);
-export const COMPONENTS = new Set(["ceilings", "walls", "doors", "windows", "radiators", "baseboards", "railings", "stairs", "facade", "other"]);
-export const SERVICES = new Set([
-  "ceiling_paint_2_coats",
-  "wall_paint_2_coats",
-  "remove_wallpaper",
-  "apply_wallpaper",
-  "filling_spackling",
-  "mold_treatment",
-  "nicotine_treatment",
-  "water_damage_repair",
-  "priming_sealing",
-  "covering_protection",
-  "paint_doors",
-  "paint_windows",
-  "paint_radiators",
-  "paint_baseboards",
-  "railing_cleaning",
-  "railing_sanding",
-  "railing_priming",
-  "paint_railings",
-  "paint_stairs",
-  "paint_other"
-]);
+import {
+  PROPERTY_TYPE_IDS as PROPERTY_TYPES,
+  COMPONENT_IDS as COMPONENTS,
+  SERVICE_IDS as SERVICES,
+  QUANTITY_KEYS,
+  COMPONENT_DETAIL_CHOICES
+} from "@/lib/offerCalculator/catalog";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const QUANTITY_KEYS = new Set(["wallArea", "ceilingArea", "doors", "windows", "radiators", "baseboards", "railingLength", "stairSteps", "facadeArea", "otherUnits"]);
+
 
 function pickAllowed(values, allowed) {
   return [...new Set(Array.isArray(values) ? values.filter((value) => allowed.has(value)) : [])];
 }
 
-// Component-specific answers (spec §4/§6). Anything not on these lists is discarded so a
-// crafted payload cannot reach the pricing engine.
-const COMPONENT_DETAIL_CHOICES = {
-  doorType: new Set(["standard", "double", "entrance", "other"]),
-  doorMaterial: new Set(["wood", "metal", "unsure"]),
-  doorSides: new Set(["one_side", "both_sides"]),
-  doorFrame: new Set(["yes", "no"]),
-  doorCondition: new Set(["good", "minor", "renovation"]),
-  railingType: new Set(["balcony", "stair"]),
-  railingMaterial: new Set(["metal", "wood"]),
-  railingCondition: new Set(["good", "minor", "renovation"])
-};
 
 function normalizeComponentDetails(input) {
   const source = input && typeof input === "object" ? input : {};
@@ -94,14 +64,19 @@ export function validateCalculatorProject(input = {}) {
 
 export function validateEmailPayload(input = {}) {
   const email = normalizeEmail(input.email);
+  const firstName = cleanText(input.firstName);
+  const lastName = cleanText(input.lastName);
+  const phone = cleanText(input.phone);
   const errors = {};
 
   if (!EMAIL_PATTERN.test(email)) errors.email = "Enter a valid e-mail address.";
+  if (input.firstName !== undefined && firstName.length < 2) errors.firstName = "First name is required.";
+  if (input.lastName !== undefined && lastName.length < 2) errors.lastName = "Last name is required.";
 
   return {
     valid: Object.keys(errors).length === 0,
     errors,
-    values: { email }
+    values: { email, firstName, lastName, phone }
   };
 }
 
@@ -135,9 +110,9 @@ export function validateCustomerInfo(input = {}) {
 
   if (values.firstName.length < 2) errors.firstName = "First name is required.";
   if (values.lastName.length < 2) errors.lastName = "Last name is required.";
-  if (values.phone.length < 6) errors.phone = "Phone number is required.";
+  if (values.requestedAction === "CONSULTATION" && values.phone.length < 6) errors.phone = "Phone number is required.";
   if (!EMAIL_PATTERN.test(values.email)) errors.email = "Enter a valid e-mail address.";
-  if (values.address.length < 3) errors.address = "Property address is required.";
+  if (values.requestedAction === "CONSULTATION" && values.address.length < 3) errors.address = "Property address is required.";
   if (values.postalCode.length < 3) errors.postalCode = "Postal code is required.";
   if (values.city.length < 2) errors.city = "City is required.";
 

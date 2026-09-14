@@ -25,12 +25,20 @@ body {
     --am-offwhite: #FCF8F0;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
-    --am-ochre: #B7893D;
+    --am-ochre: #f39125;
     --am-olive: #7F8E74;
     --am-mist: #7FA0A3;
     --am-ink: #102238;
     --am-text: #5F5A50;
-    --am-line: #DED2C0;
+    --am-line: #E8DFD3;
+    --am-gold: #f6be10;
+    --am-yellow: #f6be10;
+    --am-orange: #f39125;
+    --am-pink: #c73b8e;
+    --am-magenta: #c73b8e;
+    --am-gradient-cta: linear-gradient(135deg, #f6be10 0%, #f39125 50%, #c73b8e 100%);
+    --am-gradient-subtle: linear-gradient(135deg, rgba(246, 190, 16, 0.12) 0%, rgba(243, 145, 37, 0.12) 50%, rgba(199, 59, 142, 0.12) 100%);
+    --am-gradient-card: linear-gradient(180deg, rgba(7, 26, 51, 0) 30%, rgba(7, 26, 51, 0.88) 100%);
 }
 
 body.modal-open {
@@ -122,8 +130,13 @@ em {
 }
 
 .project-button.dark {
-    background: var(--navy);
+    background: var(--am-gradient-cta);
     color: #fff;
+    box-shadow: 0 4px 18px rgba(243, 145, 37, 0.35);
+}
+
+.project-button.dark:hover {
+    box-shadow: 0 6px 24px rgba(199, 59, 142, 0.45);
 }
 
 .project-button.outline {
@@ -486,11 +499,77 @@ em {
 
 .project-filter:hover,
 .project-filter.active {
-    background: var(--navy);
-    border-color: var(--navy);
+    background: var(--am-gradient-cta);
+    border-color: transparent;
     color: #fff;
-
+    box-shadow: 0 4px 16px rgba(243, 145, 37, 0.35);
     transform: translateY(-2px);
+}
+
+.project-filter[data-filter="mieten"]:hover,
+.project-filter[data-filter="mieten"].active {
+    background: #f6be10;
+    border-color: #f6be10;
+    color: #071a33;
+    box-shadow: 0 4px 16px rgba(246, 190, 16, 0.4);
+}
+
+.project-filter[data-filter="ankaufen"]:hover,
+.project-filter[data-filter="ankaufen"].active {
+    background: #f39125;
+    border-color: #f39125;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(243, 145, 37, 0.4);
+}
+
+.project-filter[data-filter="verkaufen"]:hover,
+.project-filter[data-filter="verkaufen"].active {
+    background: #c73b8e;
+    border-color: #c73b8e;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(199, 59, 142, 0.4);
+}
+
+.project-category-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+.tag-mieten {
+    background: rgba(246, 190, 16, 0.25);
+    color: #f6be10;
+    border: 1px solid rgba(246, 190, 16, 0.6);
+}
+
+.tag-ankaufen {
+    background: rgba(243, 145, 37, 0.25);
+    color: #f39125;
+    border: 1px solid rgba(243, 145, 37, 0.6);
+}
+
+.tag-verkaufen {
+    background: rgba(199, 59, 142, 0.25);
+    color: #f178bd;
+    border: 1px solid rgba(199, 59, 142, 0.6);
+}
+
+.tag-investment {
+    background: rgba(16, 185, 129, 0.22);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.55);
+}
+
+.tag-commercial {
+    background: rgba(59, 130, 246, 0.22);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.55);
 }
 
 .projects-grid {
@@ -2108,5 +2187,210 @@ s .comparison-after,
         flex-direction: column;
 
         align-items: flex-start;
+    }
+}
+
+/* =========================================================
+   ABOUT US (MARIA ARIAS / ADVISORY & IMMOBILIEN SECTION)
+========================================================= */
+
+.about-wife-section {
+    padding: 100px 5vw;
+    background: #071a33;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-wife-section::before {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 145, 37, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.about-wife-section::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(199, 59, 142, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.about-wife-container {
+    width: min(1240px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 65px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-wife-media {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(246, 190, 16, 0.3);
+    background: #0d2542;
+}
+
+.about-wife-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 440px;
+    max-height: 540px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.about-wife-media:hover img {
+    transform: scale(1.04);
+}
+
+.about-wife-media-badge {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+    background: rgba(7, 26, 51, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(246, 190, 16, 0.35);
+    padding: 14px 20px;
+    border-radius: 10px;
+}
+
+.about-wife-media-badge strong {
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.about-wife-media-badge span {
+    font-size: 11px;
+    color: #f6be10;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.about-wife-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.about-wife-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #f6be10;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+}
+
+.about-wife-kicker span {
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, #f6be10, #f39125);
+}
+
+.about-wife-title {
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.25;
+    font-weight: 700;
+    color: #fff;
+}
+
+.about-wife-lead {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #E2E8F0;
+}
+
+.about-wife-quote {
+    padding: 18px 22px;
+    border-left: 3px solid #f39125;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #fff;
+}
+
+.about-wife-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.about-wife-pillar {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 14px 16px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.about-wife-pillar:hover {
+    transform: translateY(-3px);
+    border-color: rgba(246, 190, 16, 0.4);
+}
+
+.about-wife-pillar.gold {
+    border-top: 3px solid #f6be10;
+}
+
+.about-wife-pillar.orange {
+    border-top: 3px solid #f39125;
+}
+
+.about-wife-pillar.magenta {
+    border-top: 3px solid #c73b8e;
+}
+
+.about-wife-pillar strong {
+    display: block;
+    font-size: 13px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.about-wife-pillar span {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #94A3B8;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .about-wife-section {
+        padding: 60px 5vw;
+    }
+
+    .about-wife-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .about-wife-pillars {
+        grid-template-columns: 1fr;
     }
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useAmigosTheme } from "@/lib/useAmigosTheme";
+import { useAmigosAudio } from "@/lib/useAmigosAudio";
 
 const serviceHoverGradients = [
   {
@@ -27,7 +27,8 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
-  const { isDark: isDarkTheme, toggleTheme } = useAmigosTheme();
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const { isPlaying: isAudioPlaying, toggleSound } = useAmigosAudio();
   const lastHoverVariants = useRef(new WeakMap());
 
   useEffect(() => {
@@ -61,6 +62,26 @@ export default function Header() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    const savedTheme = window.localStorage.getItem("amigos-theme");
+    const shouldUseDarkTheme = savedTheme === "amigos-dark";
+
+    document.documentElement.dataset.theme = shouldUseDarkTheme ? "amigos-dark" : "amigos-light";
+    setIsDarkTheme(shouldUseDarkTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkTheme((currentTheme) => {
+      const nextTheme = !currentTheme;
+      const themeName = nextTheme ? "amigos-dark" : "amigos-light";
+
+      document.documentElement.dataset.theme = themeName;
+      window.localStorage.setItem("amigos-theme", themeName);
+
+      return nextTheme;
+    });
+  };
 
   const setRandomServiceHover = (event) => {
     const item = event.currentTarget;
@@ -106,71 +127,85 @@ export default function Header() {
             </svg>
           </a>
           <div className="dropdown-menu">
-            <a href="/interior-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
+            <a href="/property-value-preservation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
               <span className="item-num">01</span>
+              <div className="item-info">
+                <span className="item-title">Property Value Preservation</span>
+                <span className="item-desc">Care concepts, maintenance and long-term value preservation</span>
+              </div>
+            </a>
+            <a href="/interior-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
+              <span className="item-num">02</span>
               <div className="item-info">
                 <span className="item-title">Interior Painting</span>
                 <span className="item-desc">Walls, ceilings, doors and high-quality coatings</span>
               </div>
             </a>
             <a href="/exterior-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">02</span>
+              <span className="item-num">03</span>
               <div className="item-info">
                 <span className="item-title">Exterior Painting</span>
                 <span className="item-desc">Facades, woodwork and weather-resistant coatings</span>
               </div>
             </a>
             <a href="/Plastering" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">03</span>
+              <span className="item-num">04</span>
               <div className="item-info">
                 <span className="item-title">Plastering Work</span>
                 <span className="item-desc">Filling, plastering and surface work</span>
               </div>
             </a>
             <a href="/Drywall" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">04</span>
+              <span className="item-num">05</span>
               <div className="item-info">
                 <span className="item-title">Drywall/Interior construction</span>
                 <span className="item-desc">Walls, ceilings and customized room solutions</span>
               </div>
             </a>
             <a href="/Facade-Renovation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">05</span>
+              <span className="item-num">06</span>
               <div className="item-info">
                 <span className="item-title">Facade Renovation</span>
                 <span className="item-desc">Protection, renovation and redesign of facades</span>
               </div>
             </a>
             <a href="/appartment-renovation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">06</span>
+              <span className="item-num">07</span>
               <div className="item-info">
-                <span className="item-title">Appartment Renovation</span>
+                <span className="item-title">Apartment Renovation</span>
                 <span className="item-desc">Renovations for tenant changes, property sales or personal use</span>
               </div>
             </a>
             <a href="/spray-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">07</span>
+              <span className="item-num">08</span>
               <div className="item-info">
                 <span className="item-title">Spray Painting</span>
                 <span className="item-desc">Doors, frames, shutters and other components</span>
               </div>
             </a>
             <a href="/color-and-material" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">08</span>
+              <span className="item-num">09</span>
               <div className="item-info">
                 <span className="item-title">Color & Material Construction</span>
                 <span className="item-desc">Color concepts and suitable coating systems</span>
               </div>
             </a>
-            <a href="/water-damage" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">09</span>
+            <a href="/mold" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
+              <span className="item-num">10</span>
               <div className="item-info">
-                <span className="item-title">Damage Remediation</span>
-                <span className="item-desc">Surface repair after moisture, staining and damage</span>
+                <span className="item-title">Mold Remediation</span>
+                <span className="item-desc">Professional mold analysis, safe removal and durable prevention</span>
+              </div>
+            </a>
+            <a href="/water-damage" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
+              <span className="item-num">11</span>
+              <div className="item-info">
+                <span className="item-title">Water Damage (Wasserschäden)</span>
+                <span className="item-desc">Fast drying coordination, surface repair and restoration</span>
               </div>
             </a>
             <a href="/services" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">10</span>
+              <span className="item-num">12</span>
               <div className="item-info">
                 <span className="item-title">Discover All Services</span>
                 <span className="item-desc">Explore More Services</span>
@@ -179,7 +214,7 @@ export default function Header() {
           </div>
         </div>
 
-        <a href="https://amigos-immo.vercel.app/" data-page="projects" rel="noopener noreferrer" target="_blank">
+        <a href="/projects" data-page="projects">
           Projects
         </a>
         <a href="/partners" data-page="partners">
@@ -210,39 +245,66 @@ export default function Header() {
           {isCustomerLoggedIn ? "Customer Portal" : "Customer Login"}
         </a>
 
-        <a href="/contact" className="header-btn">
+        <a href="/#quote" className="header-btn">
           Request A Quote
         </a>
       </div>
 
-      <button
-        className="theme-toggle"
-        type="button"
-        aria-label={`Switch to ${isDarkTheme ? "light" : "navy"} theme`}
-        aria-pressed={isDarkTheme}
-        onClick={toggleTheme}
-      >
-        <span className="theme-toggle-icon" aria-hidden="true">
-          {isDarkTheme ? (
-            <svg className="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
-                fill="currentColor"
-              />
-            </svg>
-          ) : (
-            <svg className="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="12" r="4.2" fill="currentColor" />
-              <path
-                d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          )}
-        </span>
-      </button>
+      <div className="header-toggle-group">
+        <button
+          className={`sound-toggle${isAudioPlaying ? " is-playing" : ""}`}
+          type="button"
+          aria-label={isAudioPlaying ? "Musik stummschalten" : "Musik abspielen"}
+          aria-pressed={isAudioPlaying}
+          title={isAudioPlaying ? "Musik an: Smooth Lounge Jazz" : "Musik aus"}
+          onClick={toggleSound}
+        >
+          <span className="sound-toggle-icon" aria-hidden="true">
+            {isAudioPlaying ? (
+              <span className="sound-bars">
+                <span className="sound-bar bar-1"></span>
+                <span className="sound-bar bar-2"></span>
+                <span className="sound-bar bar-3"></span>
+              </span>
+            ) : (
+              <svg className="sound-icon sound-icon-muted" viewBox="0 0 24 24" fill="none">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                <line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                <line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            )}
+          </span>
+        </button>
+
+        <button
+          className="theme-toggle"
+          type="button"
+          aria-label={`Switch to ${isDarkTheme ? "light" : "navy"} theme`}
+          aria-pressed={isDarkTheme}
+          onClick={toggleTheme}
+        >
+          <span className="theme-toggle-icon" aria-hidden="true">
+            {isDarkTheme ? (
+              <svg className="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
+                  fill="currentColor"
+                />
+              </svg>
+            ) : (
+              <svg className="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+                <path
+                  d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            )}
+          </span>
+        </button>
+      </div>
 
       <button className="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span>

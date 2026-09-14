@@ -2809,6 +2809,8 @@ button {
 .reveal-benefit-color,
 .reveal-final-color {
     will-change: transform, opacity;
+    opacity: 1;
+    visibility: visible;
 }
 
 

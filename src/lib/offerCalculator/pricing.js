@@ -12,6 +12,11 @@ const QUANTITY_KEYS = {
   facade: "facadeArea",
   railings: "railingLength",
   stairs: "stairSteps",
+  garage_doors: "garageDoors",
+  shutters: "shutters",
+  plaster_render: "plasterArea",
+  pressure_cleaning: "cleaningArea",
+  spray_painting: "sprayUnits",
   other: "otherUnits"
 };
 
@@ -79,10 +84,21 @@ export function calculateOfferPrice(project, options = {}) {
     componentTotal += Math.max(quantity * unitWeight, settingValue(settings, `component_min_${component}`));
   }
 
-  // Component-specific options (§4/§6). Each answer maps to its own editable multiplier,
+  // Component-specific options (§4/§6 & Phase 2). Each answer maps to its own editable multiplier,
   // and only applies when its component was actually selected.
   const details = project.componentDetails || {};
   let detailMultiplier = 1;
+
+  if (components.includes("walls")) {
+    detailMultiplier *= settingValue(settings, `wall_coats_${details.wallCoats || "2_coats"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `wall_condition_${details.wallCondition || "good"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `wall_issue_${details.wallIssue || "none"}_multiplier`) || 1;
+  }
+
+  if (components.includes("ceilings")) {
+    detailMultiplier *= settingValue(settings, `ceiling_coats_${details.ceilingCoats || "2_coats"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `ceiling_condition_${details.ceilingCondition || "good"}_multiplier`) || 1;
+  }
 
   if (components.includes("doors")) {
     detailMultiplier *= settingValue(settings, `door_type_${details.doorType || "standard"}_multiplier`) || 1;
@@ -92,10 +108,66 @@ export function calculateOfferPrice(project, options = {}) {
     detailMultiplier *= settingValue(settings, `door_condition_${details.doorCondition || "good"}_multiplier`) || 1;
   }
 
+  if (components.includes("windows")) {
+    detailMultiplier *= settingValue(settings, `window_type_${details.windowType || "standard"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `window_material_${details.windowMaterial || "wood"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `window_sides_${details.windowSides || "both"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `window_condition_${details.windowCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("radiators")) {
+    detailMultiplier *= settingValue(settings, `radiator_type_${details.radiatorType || "panel"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `radiator_condition_${details.radiatorCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("baseboards")) {
+    detailMultiplier *= settingValue(settings, `baseboard_material_${details.baseboardMaterial || "wood"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `baseboard_condition_${details.baseboardCondition || "good"}_multiplier`) || 1;
+  }
+
   if (components.includes("railings")) {
     detailMultiplier *= settingValue(settings, `railing_type_${details.railingType || "balcony"}_multiplier`) || 1;
     detailMultiplier *= settingValue(settings, `railing_material_${details.railingMaterial || "metal"}_multiplier`) || 1;
     detailMultiplier *= settingValue(settings, `railing_condition_${details.railingCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("stairs")) {
+    detailMultiplier *= settingValue(settings, `stair_material_${details.stairMaterial || "wood"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `stair_scope_${details.stairScope || "steps_railing"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `stair_condition_${details.stairCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("facade")) {
+    detailMultiplier *= settingValue(settings, `facade_surface_${details.facadeSurface || "render"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `facade_condition_${details.facadeCondition || "good"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `scaffolding_${details.scaffolding || "not_sure"}_multiplier`) || 1;
+  }
+
+  if (components.includes("garage_doors")) {
+    detailMultiplier *= settingValue(settings, `garage_door_material_${details.garageDoorMaterial || "metal"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `garage_door_sides_${details.garageDoorSides || "outside"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `garage_door_condition_${details.garageDoorCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("shutters")) {
+    detailMultiplier *= settingValue(settings, `shutter_material_${details.shutterMaterial || "wood"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `shutter_sides_${details.shutterSides || "both_sides"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `shutter_condition_${details.shutterCondition || "good"}_multiplier`) || 1;
+  }
+
+  if (components.includes("plaster_render")) {
+    detailMultiplier *= settingValue(settings, `plaster_type_${details.plasterType || "interior"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `plaster_condition_${details.plasterCondition || "minor"}_multiplier`) || 1;
+  }
+
+  if (components.includes("pressure_cleaning")) {
+    detailMultiplier *= settingValue(settings, `cleaning_surface_${details.cleaningSurface || "facade"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `cleaning_intensity_${details.cleaningIntensity || "standard"}_multiplier`) || 1;
+  }
+
+  if (components.includes("spray_painting")) {
+    detailMultiplier *= settingValue(settings, `spray_item_type_${details.sprayItemType || "doors"}_multiplier`) || 1;
+    detailMultiplier *= settingValue(settings, `spray_finish_${details.sprayFinish || "satin"}_multiplier`) || 1;
   }
 
   const defaultServiceFactor = settingValue(settings, "service_factor_default");
@@ -110,9 +182,11 @@ export function calculateOfferPrice(project, options = {}) {
     "water_damage_repair",
     "priming_sealing"
   ].includes(service)) ? settingValue(settings, "preparation_surcharge") : 1;
-  const projectSizeFactor = componentTotal > 650000
+  const largeThreshold = settingValue(settings, "large_project_threshold_cents") || 650000;
+  const smallThreshold = settingValue(settings, "small_project_threshold_cents") || 180000;
+  const projectSizeFactor = componentTotal > largeThreshold
     ? settingValue(settings, "large_project_discount")
-    : componentTotal < 180000
+    : componentTotal < smallThreshold
       ? settingValue(settings, "small_project_surcharge")
       : 1;
 
@@ -128,15 +202,22 @@ export function calculateOfferPrice(project, options = {}) {
     : Math.round(Number(settings.base_travel_flat_fee ?? DEFAULT_PRICING_SETTINGS.base_travel_flat_fee));
   const travelCostCents = travelCostChf * 100;
 
-  const subtotal = componentTotal * clamp(0.82 + serviceFactor * 0.18, 0.9, 1.9);
+  const blendBase = settingValue(settings, "service_blend_base") || 0.82;
+  const blendWeight = settingValue(settings, "service_blend_weight") || 0.18;
+  const blendMin = settingValue(settings, "service_blend_min") || 0.9;
+  const blendMax = settingValue(settings, "service_blend_max") || 1.9;
+
+  const subtotal = componentTotal * clamp(blendBase + serviceFactor * blendWeight, blendMin, blendMax);
   const estimate =
     Math.max(
       settingValue(settings, "detailed_minimum_cents"),
       subtotal * propertyMultiplier * preparationFactor * projectSizeFactor * conditionFactor * detailMultiplier
     ) + travelCostCents;
 
-  // Presented as a single figure per §12, rounded to the nearest CHF 10.
-  const total = Math.round(estimate / 1000) * 1000;
+  // Presented as a single figure per §12, rounded to the nearest CHF (default 10).
+  const roundingChf = settingValue(settings, "price_rounding_chf") || 10;
+  const roundingCents = roundingChf * 100;
+  const total = Math.round(estimate / roundingCents) * roundingCents;
 
   return {
     currency: "CHF",

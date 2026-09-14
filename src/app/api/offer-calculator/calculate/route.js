@@ -22,7 +22,6 @@ export async function POST(request) {
   return NextResponse.json({
     sessionId: result.sessionId,
     status: result.status,
-    currency: result.currency,
-    lockedPrice: true
+    currency: result.currency
   });
 }

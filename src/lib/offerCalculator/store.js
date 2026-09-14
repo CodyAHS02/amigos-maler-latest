@@ -55,15 +55,29 @@ export async function createOrUpdateCalculation(project, options = {}) {
   return {
     sessionId: session.id,
     status: session.status,
-    currency: session.currency,
-    lockedPrice: true
+    currency: session.currency
   };
 }
 
-export async function attachVerificationCode({ sessionId, email, code }) {
+export async function attachVerificationCode({ sessionId, email, code, customerInfo }) {
+  const [curr] = await sql`
+    select updated_at as "updatedAt", verification_expires_at as "expiresAt"
+    from offer_calculator_sessions
+    where id = ${sessionId}
+  `;
+
+  if (!curr) return null;
+
+  // Rate limit: 1 code per 60 seconds (spec §3.4)
+  if (curr.expiresAt && new Date(curr.expiresAt).getTime() - Date.now() > 14 * 60 * 1000) {
+    return { rateLimited: true, message: "Please wait 60 seconds before requesting another code." };
+  }
+
+  const info = customerInfo || {};
   const [session] = await sql`
     update offer_calculator_sessions
     set email = ${email},
+      customer_info = coalesce(customer_info, '{}'::jsonb) || ${sql.json(info)},
       verification_code_hash = ${hashCode(code, sessionId)},
       verification_expires_at = now() + interval '15 minutes',
       verification_attempts = 0,
@@ -72,7 +86,8 @@ export async function attachVerificationCode({ sessionId, email, code }) {
     where id = ${sessionId}
     returning id, email, property_type as "propertyType", room_type as "roomType", components, services,
       quantities, project_notes as "projectNotes", estimated_min_cents as "minCents",
-      estimated_max_cents as "maxCents", currency, consultation_id as "consultationId", project_id as "projectId"
+      estimated_max_cents as "maxCents", currency, consultation_id as "consultationId", project_id as "projectId",
+      customer_info as "customerInfo", condition, postal_code as "postalCode", city, source
   `;
 
   if (session && !session.projectId) {
@@ -87,7 +102,7 @@ async function createProvisionalCrmLead(session) {
   const title = projectTitle(session);
   const message = [
     "New Online Request from Offer Calculator.",
-    "Customer reached e-mail verification. Full contact details may still be pending.",
+    "Customer reached e-mail verification.",
     session.projectNotes ? `Notes: ${session.projectNotes}` : "",
     `Property type: ${session.propertyType}`,
     session.roomType ? `Room type: ${session.roomType}` : "",
@@ -97,13 +112,32 @@ async function createProvisionalCrmLead(session) {
   ].filter(Boolean).join("\n");
 
   const leadSource = session.source === "QUICK_QUOTE" ? "QUICK_QUOTE" : "DETAILED_QUOTE";
+  const customerInfo = session.customerInfo || {};
+  const name = [customerInfo.firstName, customerInfo.lastName].filter(Boolean).join(" ") || "Online visitor";
+  const phone = customerInfo.phone || null;
+
+  const leadMetadata = {
+    calculatorSessionId: session.id,
+    source: leadSource,
+    provisional: true,
+    name,
+    phone,
+    condition: session.condition || null,
+    postalCode: session.postalCode || null,
+    city: session.city || null,
+    propertyType: session.propertyType || null,
+    components: session.components || [],
+    services: session.services || [],
+    quantities: session.quantities || {},
+    estimate: { minCents: session.minCents, maxCents: session.maxCents, currency: session.currency }
+  };
 
   const [consultation] = await sql`
-    insert into consultations (id, name, email, project_type, message, source, metadata)
+    insert into consultations (id, name, email, phone, project_type, message, source, metadata)
     values (
-      ${crypto.randomUUID()}, ${"Online visitor"}, ${session.email}, ${"Online Request"},
+      ${crypto.randomUUID()}, ${name}, ${session.email}, ${phone}, ${"Online Request"},
       ${message}, ${leadSource},
-      ${sql.json({ calculatorSessionId: session.id, source: leadSource, provisional: true })}
+      ${sql.json(leadMetadata)}
     )
     returning id
   `;
@@ -118,15 +152,7 @@ async function createProvisionalCrmLead(session) {
       ${crypto.randomUUID()}, ${consultation.id}, ${title}, ${service}, ${"NEW_LEAD"}, ${"NORMAL"},
       ${session.maxCents}, ${session.minCents}, ${session.maxCents}, ${session.currency},
       ${leadSource}, ${"Review"},
-      ${sql.json({
-        calculatorSessionId: session.id,
-        source: leadSource,
-        provisional: true,
-        components: session.components,
-        services: session.services,
-        quantities: session.quantities,
-        estimate: { minCents: session.minCents, maxCents: session.maxCents, currency: session.currency }
-      })}
+      ${sql.json(leadMetadata)}
     )
     returning id
   `;
@@ -147,7 +173,7 @@ export async function verifySessionCode({ sessionId, code }) {
   const [session] = await sql`
     select id, verification_code_hash as "codeHash", verification_expires_at as "expiresAt",
       verification_attempts as "attempts", estimated_min_cents as "minCents",
-      estimated_max_cents as "maxCents", currency, email
+      estimated_max_cents as "maxCents", currency, email, project_id as "projectId"
     from offer_calculator_sessions
     where id = ${sessionId}
   `;
@@ -172,8 +198,24 @@ export async function verifySessionCode({ sessionId, code }) {
     update offer_calculator_sessions
     set email_verified_at = now(), status = 'PRICE_UNLOCKED', updated_at = now()
     where id = ${sessionId}
-    returning id, email, estimated_min_cents as "minCents", estimated_max_cents as "maxCents", currency
+    returning id, email, estimated_min_cents as "minCents", estimated_max_cents as "maxCents", currency, project_id as "projectId"
   `;
+
+  if (verified?.projectId) {
+    try {
+      await sql`
+        update projects
+        set metadata = jsonb_set(coalesce(metadata, '{}'::jsonb), '{provisional}', 'false'::jsonb)
+        where id = ${verified.projectId}
+      `;
+      await sql`
+        insert into crm_notes (id, project_id, author_name, note)
+        values (${crypto.randomUUID()}, ${verified.projectId}, 'System', 'E-mail verified, price shown')
+      `;
+    } catch (err) {
+      console.error("Error updating verified project crm status:", err);
+    }
+  }
 
   return { session: verified };
 }

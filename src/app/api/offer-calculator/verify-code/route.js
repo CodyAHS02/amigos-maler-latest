@@ -4,13 +4,13 @@ import { validateCodePayload } from "@/lib/offerCalculator/validation";
 
 function formatChfRange(session) {
   const formatter = new Intl.NumberFormat("de-CH");
-  const min = Math.round(session.minCents / 100);
-  const max = Math.round(session.maxCents / 100);
+  const min = Math.round((session.minCents || session.estimated_min_cents || 0) / 100);
+  const max = Math.round((session.maxCents || session.estimated_max_cents || 0) / 100);
 
-  // Quick Quote prices are a single figure (§12); the detailed calculator still spans a range.
-  if (min === max) return `CHF ${formatter.format(min)}.–`;
-
-  return `CHF ${formatter.format(min)}.– – ${formatter.format(max)}.–`;
+  // Both Quick Quote and Detailed Quote render a single estimated price figure (spec §12/1.4): CHF X'XXX.–
+  const amount = max || min;
+  const formatted = formatter.format(amount).replace(/’/g, "'");
+  return `CHF ${formatted}.–`;
 }
 
 export async function POST(request) {

@@ -193,7 +193,7 @@
 
 .embeddedRight .photoGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-height: 170px;
+  max-height: none;
 }
 
 .embeddedComplete {
@@ -418,7 +418,7 @@
 }
 
 .embedded .serviceGrid {
-  max-height: min(34vh, 290px);
+  max-height: none;
 }
 
 .embedded .selectionCard {
@@ -475,7 +475,7 @@
 }
 
 .embedded .photoGrid {
-  max-height: 145px;
+  max-height: none;
 }
 
 .embedded .lockedPrice {
@@ -568,8 +568,8 @@
 /* Homepage reference layout: full image scene with glass calculator surfaces. */
 .embedded {
   width: min(1760px, 100%);
-  height: min(860px, calc(100svh - clamp(44px, 6.4vh, 76px)));
-  min-height: 0;
+  height: auto;
+  min-height: auto;
   grid-template-columns: clamp(300px, 21.2vw, 365px) minmax(0, 1fr);
   border: 0;
   border-radius: 0;
@@ -631,9 +631,9 @@
   max-width: 980px;
 }
 
-.unlockPanel {
+.detailSidePanel {
   transform-origin: 50% 46%;
-  animation: priceUnlock .72s cubic-bezier(.16, 1, .3, 1) both;
+  animation: panelFadeIn .72s cubic-bezier(.16, 1, .3, 1) both;
 }
 
 .embedded .heroCopy h1 {
@@ -1264,6 +1264,12 @@
   transition: transform .28s cubic-bezier(.34, 1.56, .64, 1), box-shadow .28s ease, background .3s ease, border-color .3s ease, color .2s ease;
 }
 
+.progressStep i svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
 .progressStep b {
   font-size: 11px;
   font-weight: 600;
@@ -1810,6 +1816,33 @@
   line-height: 1.25;
 }
 
+.uploadedPhotosList {
+  margin-top: 12px;
+}
+
+.uploadedPhotosTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.photoTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--white);
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .summaryPanel {
   width: 100%;
   padding: 14px;
@@ -1852,6 +1885,28 @@
   color: rgba(253, 251, 246, .82);
   font-size: 12px;
   line-height: 1.45;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.editStepLink {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--yellow, #f5a623);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity .2s ease;
+}
+
+.editStepLink:hover {
+  opacity: .75;
 }
 
 .navActions,
@@ -1864,19 +1919,23 @@
 }
 
 .navActions {
-  position: fixed;
-  left: clamp(24px, calc((100vw - 1240px) / 2 + 28px), 60px);
-  right: clamp(24px, calc((100vw - 1240px) / 2 + 28px), 60px);
-  bottom: 18px;
-  z-index: 100;
-  flex: 0 0 auto;
-  margin: 8px 0 0;
-  padding: 10px;
-  border-top: 1px solid rgba(253, 251, 246, .12);
-  border-radius: 999px;
-  background: rgba(0, 19, 49, .94);
-  box-shadow: 0 -10px 24px rgba(0, 19, 49, .42), 0 16px 50px rgba(0, 0, 0, .32);
-  backdrop-filter: blur(14px);
+  position: relative;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 28px 0 16px;
+  padding: 12px 0 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .navActions .primaryAction {
@@ -1963,7 +2022,7 @@
   }
 }
 
-@keyframes priceUnlock {
+@keyframes panelFadeIn {
   0% {
     opacity: 0;
     transform: translateX(26px) scale(.94);
@@ -2335,29 +2394,29 @@
   transform: translateY(-3px);
 }
 
-/* Left primary card (Warm yellow accent, understated dark navy glass) */
+/* Left primary card (Warm yellow/orange gradient glow, dark navy glass) */
 .tabFastEstimate {
   background: rgba(10, 26, 49, 0.72);
-  border: 1px solid rgba(250, 190, 44, 0.35);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 107, 0, 0.55);
+  box-shadow: 0 0 32px rgba(255, 107, 0, 0.22), 0 12px 36px rgba(0, 0, 0, 0.35);
 }
 
 .tabFastEstimate:hover {
   background: rgba(12, 30, 56, 0.82);
-  border-color: rgba(250, 190, 44, 0.7);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 107, 0, 0.85);
+  box-shadow: 0 0 44px rgba(255, 107, 0, 0.35), 0 18px 44px rgba(0, 0, 0, 0.45);
 }
 
 /* Right secondary card (Restrained neutral glass) */
 .tabDetailedSpecs {
   background: rgba(10, 26, 49, 0.58);
-  border: 1px solid rgba(253, 251, 246, 0.16);
+  border: 1px solid rgba(253, 251, 246, 0.18);
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
 }
 
 .tabDetailedSpecs:hover {
   background: rgba(12, 30, 56, 0.75);
-  border-color: rgba(253, 251, 246, 0.38);
+  border-color: rgba(253, 251, 246, 0.45);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
 }
 
@@ -2365,23 +2424,45 @@
 .tabBadgeRow {
   display: flex;
   align-items: center;
-  margin-bottom: 14px;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
 .tabTagFast {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 184, 0, 0.12);
+  border: 1px solid rgba(255, 184, 0, 0.4);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: var(--yellow);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #FFB800;
   text-transform: uppercase;
 }
 
 .tabTagDetailed {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(253, 251, 246, 0.08);
+  border: 1px solid rgba(253, 251, 246, 0.22);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: rgba(253, 251, 246, 0.7);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(253, 251, 246, 0.85);
   text-transform: uppercase;
+}
+
+.tabTagEstimateTime {
+  font-size: 12px;
+  color: rgba(253, 251, 246, 0.55);
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .tabHeadline {
@@ -2422,56 +2503,69 @@
 }
 
 .tabFeatureIcon {
-  color: var(--yellow);
-  font-size: 12px;
-  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  color: #FFB800;
+  font-size: 11px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
 }
 
 .tabDetailedSpecs .tabFeatureIcon {
-  color: rgba(253, 251, 246, 0.6);
+  background: rgba(253, 251, 246, 0.1);
+  border-color: rgba(253, 251, 246, 0.3);
+  color: rgba(253, 251, 246, 0.85);
 }
 
-/* 3. BUTTONS (Clean, proportional, Apple-inspired) */
+/* 3. BUTTONS */
 .tabButtonWrapper {
   margin-top: auto;
 }
 
 .tabActionBtn {
   width: 100%;
-  height: 44px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 0 20px;
-  border-radius: 8px;
-  font-size: 13.5px;
-  font-weight: 600;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
   letter-spacing: 0.01em;
   cursor: pointer;
   border: none;
-  background: var(--yellow);
-  color: #071A33;
-  transition: background 0.2s ease, transform 0.2s ease;
+  background: linear-gradient(90deg, #FFB800 0%, #FF6B00 50%, #FF3366 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tabActionBtn:hover {
-  background: #fcd34d;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(255, 107, 0, 0.55);
 }
 
 .tabActionBtnDetailed {
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(253, 251, 246, 0.24);
+  border: 1px solid rgba(253, 251, 246, 0.28);
   color: #FFFFFF;
+  box-shadow: none;
 }
 
 .tabActionBtnDetailed:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(253, 251, 246, 0.45);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(253, 251, 246, 0.55);
   color: #FFFFFF;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .tabActionArrow {
@@ -2930,7 +3024,18 @@
    ======================================================================= */
 
 .embedded.homeLayout {
-  grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr);
+  grid-template-columns: minmax(0, 7fr) minmax(300px, 3fr);
+}
+
+.protectedPriceNote {
+  margin: 14px 0 0;
+  color: rgba(253, 251, 246, .72);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.protectedPriceNote strong {
+  color: var(--yellow, #f5a623);
 }
 
 .embedded.homeLayout .embeddedWorkspace {
@@ -2947,8 +3052,40 @@
   border-left: 1px solid rgba(253, 251, 246, .20);
 }
 
+.quickQuoteTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.backToSelectionTopBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #FDFBF6;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backToSelectionTopBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateX(-2px);
+}
+
 .quickQuoteIntro h2 {
-  margin: 0 0 6px;
+  margin: 0;
   font-size: clamp(21px, 2.3vw, 32px);
   font-weight: 900;
   line-height: 1.12;
@@ -3086,15 +3223,15 @@
    ======================================================================= */
 
 .page {
-  --surface: rgba(255, 255, 255, .58);
-  --surface-strong: rgba(255, 255, 255, .72);
-  --surface-hover: rgba(255, 255, 255, .82);
-  --ink: #0b1a30;
-  --ink-muted: rgba(11, 26, 48, .72);
-  --hairline: rgba(255, 255, 255, .80);
-  --ring: rgba(11, 26, 48, .08);
-  --scrim: linear-gradient(180deg, rgba(246, 249, 253, .78) 0%, rgba(240, 246, 252, .58) 45%, rgba(236, 242, 250, .72) 100%);
-  --photo-filter: brightness(1.18) saturate(.78) contrast(.96);
+  --surface: rgba(255, 255, 255, .72);
+  --surface-strong: rgba(255, 255, 255, .86);
+  --surface-hover: rgba(255, 255, 255, .94);
+  --ink: #10233c;
+  --ink-muted: rgba(16, 35, 60, .66);
+  --hairline: rgba(16, 35, 60, .14);
+  --ring: rgba(16, 35, 60, .10);
+  --scrim: linear-gradient(180deg, rgba(250, 247, 240, .93) 0%, rgba(250, 247, 240, .86) 45%, rgba(247, 241, 231, .90) 100%);
+  --photo-filter: brightness(1.85) saturate(.52) contrast(.92);
   --accent-ink: #101a2e;
   color: var(--ink);
 }
@@ -3215,9 +3352,9 @@
 }
 
 .navActions {
-  border-color: var(--hairline);
-  background: var(--surface-strong);
-  box-shadow: 0 -10px 24px var(--ring), 0 16px 50px var(--ring);
+  border: none;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .secondaryAction {
@@ -3592,6 +3729,21 @@
 }
 
 /* =======================================================================
+   DAY / LIGHT MODE on the photo background — flip ink tokens to white
+   so headings, labels, field text and step names are visible.
+   ======================================================================= */
+:global(html:not([data-theme="amigos-dark"])) .embedded,
+:global(html[data-theme="amigos-light"]) .embedded {
+  --ink: #ffffff !important;
+  --ink-muted: rgba(255, 255, 255, 0.80) !important;
+  --hairline: rgba(255, 255, 255, 0.25) !important;
+  --surface: rgba(10, 25, 41, 0.45) !important;
+  --surface-strong: rgba(10, 25, 41, 0.60) !important;
+  --surface-hover: rgba(10, 25, 41, 0.72) !important;
+  color: #ffffff !important;
+}
+
+/* =======================================================================
    BACKDROP + PANEL STRUCTURE (revision)
 
    Two corrections:
@@ -3605,8 +3757,8 @@
 
 .page {
   --photo: url("/assets/calculator-day-bg.webp");
-  /* a light veil, not an opaque wash — the photograph should stay legible */
-  --scrim: linear-gradient(180deg, rgba(250, 247, 240, .58) 0%, rgba(250, 247, 240, .40) 42%, rgba(247, 241, 231, .62) 100%);
+  /* 55% dark navy overlay — photo visible, all text readable */
+  --scrim: linear-gradient(180deg, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.55) 100%);
 }
 
 :global(html[data-theme="amigos-dark"]) .page {
@@ -3703,24 +3855,127 @@
   padding-right: 0;
 }
 
-/* content hugs the top instead of being centred in a tall empty column */
 .page .stepPanel,
 .page .resultLocked,
 .page .verifyPanel,
 .page .pricePanel {
-  align-self: start;
+  align-self: stretch;
+  width: 100%;
 }
 
-/* ---- the two header cards ---- */
+/* ---- the two header cards: Glassmorphism Glass Style ---- */
 .page > .hero > .heroCopy,
 .page > .hero > .securityCard {
-  padding: clamp(20px, 2.2vw, 30px) clamp(22px, 2.6vw, 34px);
-  border: 1px solid var(--hairline);
-  border-radius: 22px;
-  background: var(--surface);
-  box-shadow: 0 16px 40px var(--ring);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(10px, 1.4vh, 14px) clamp(16px, 1.8vw, 22px) !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+/* Light / Default Glassmorphism */
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.60) 0%,
+    rgba(255, 255, 255, 0.30) 100%
+  ) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
+  box-shadow:
+    0 16px 36px -8px rgba(10, 24, 46, 0.10),
+    0 4px 14px -2px rgba(10, 24, 46, 0.05),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy:hover,
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.70) 0%,
+    rgba(255, 255, 255, 0.40) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow:
+    0 20px 44px -8px rgba(10, 24, 46, 0.14),
+    0 6px 18px -2px rgba(10, 24, 46, 0.06),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 1) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy .brand {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy strong {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy h1 {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy p {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard h2 {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard p {
+  color: #000000 !important;
+}
+
+/* Dark Mode Glassmorphism */
+:global(html[data-theme="amigos-dark"]) .page > .hero > .heroCopy,
+:global(html[data-theme="amigos-dark"]) .page > .hero > .securityCard {
+  background: linear-gradient(
+    135deg,
+    rgba(7, 26, 51, 0.62) 0%,
+    rgba(7, 26, 51, 0.38) 100%
+  ) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow:
+    0 18px 42px -8px rgba(0, 0, 0, 0.45),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .heroCopy:hover,
+:global(html[data-theme="amigos-dark"]) .page > .hero > .securityCard:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(7, 26, 51, 0.72) 0%,
+    rgba(7, 26, 51, 0.48) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.30) !important;
+  box-shadow:
+    0 22px 48px -8px rgba(0, 0, 0, 0.55),
+    inset 0 2px 2px 0 rgba(255, 255, 255, 0.30) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .heroCopy strong {
+  color: #F6BE10 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .heroCopy h1 {
+  color: #FFFFFF !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .heroCopy p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .securityCard h2 {
+  color: #FFFFFF !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page > .hero > .securityCard p {
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 .page > .hero > .heroCopy h1 {
@@ -3764,143 +4019,13 @@
 }
 
 .page {
-  --card-surface: rgba(255, 255, 255, 0.62);
-  --card-surface-hover: rgba(255, 255, 255, 0.82);
+  --card-surface: rgba(255, 255, 255, .93);
+  --card-surface-hover: #ffffff;
 }
 
 :global(html[data-theme="amigos-dark"]) .page {
   --card-surface: rgba(0, 19, 49, .62);
   --card-surface-hover: rgba(0, 19, 49, .78);
-}
-
-/* =======================================================================
-   LIGHT THEME GLASSMORPHISM FOR DETAILED CALCULATOR BOXES
-   ======================================================================= */
-:global(html[data-theme="amigos-light"]) .page > .hero > .heroCopy,
-:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy,
-:global(html[data-theme="amigos-light"]) .page > .hero > .securityCard,
-:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.62) 0%,
-    rgba(255, 255, 255, 0.30) 100%
-  ) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
-  border-radius: 22px !important;
-  box-shadow:
-    0 20px 48px -12px rgba(10, 24, 46, 0.12),
-    0 4px 16px -2px rgba(10, 24, 46, 0.06),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease !important;
-}
-
-:global(html[data-theme="amigos-light"]) .heroCopy::before,
-:global(html:not([data-theme="amigos-dark"])) .heroCopy::before {
-  opacity: 0.22 !important;
-}
-
-:global(html[data-theme="amigos-light"]) .page > .hero > .heroCopy:hover,
-:global(html:not([data-theme="amigos-dark"])) .page > .hero > .heroCopy:hover,
-:global(html[data-theme="amigos-light"]) .page > .hero > .securityCard:hover,
-:global(html:not([data-theme="amigos-dark"])) .page > .hero > .securityCard:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.72) 0%,
-    rgba(255, 255, 255, 0.40) 100%
-  ) !important;
-  border-color: rgba(255, 255, 255, 0.98) !important;
-  box-shadow:
-    0 24px 54px -10px rgba(10, 24, 46, 0.16),
-    0 6px 20px -2px rgba(10, 24, 46, 0.08),
-    inset 0 2px 2px 0 rgba(255, 255, 255, 1),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4) !important;
-}
-
-:global(html[data-theme="amigos-light"]) .page:not(.embedded) > .progressNav,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) > .progressNav {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.58) 0%,
-    rgba(255, 255, 255, 0.28) 100%
-  ) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
-  border-radius: 20px !important;
-  box-shadow:
-    0 16px 40px -10px rgba(10, 24, 46, 0.09),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
-}
-
-:global(html[data-theme="amigos-light"]) .page .selectionCard,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCard,
-:global(html[data-theme="amigos-light"]) .page .serviceCard,
-:global(html:not([data-theme="amigos-dark"])) .page .serviceCard,
-:global(html[data-theme="amigos-light"]) .page [class*="scopeCard"],
-:global(html:not([data-theme="amigos-dark"])) .page [class*="scopeCard"],
-:global(html[data-theme="amigos-light"]) .page [class*="conditionCard"],
-:global(html:not([data-theme="amigos-dark"])) .page [class*="conditionCard"] {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.65) 0%,
-    rgba(255, 255, 255, 0.35) 100%
-  ) !important;
-  backdrop-filter: blur(20px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.80) !important;
-  border-radius: 18px !important;
-  box-shadow:
-    0 12px 30px -6px rgba(10, 24, 46, 0.08),
-    0 2px 8px -2px rgba(10, 24, 46, 0.04),
-    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95) !important;
-}
-
-:global(html[data-theme="amigos-light"]) .page .selectionCard:hover,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCard:hover,
-:global(html[data-theme="amigos-light"]) .page .serviceCard:hover,
-:global(html:not([data-theme="amigos-dark"])) .page .serviceCard:hover,
-:global(html[data-theme="amigos-light"]) .page [class*="scopeCard"]:hover,
-:global(html:not([data-theme="amigos-dark"])) .page [class*="scopeCard"]:hover,
-:global(html[data-theme="amigos-light"]) .page [class*="conditionCard"]:hover,
-:global(html:not([data-theme="amigos-dark"])) .page [class*="conditionCard"]:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.80) 0%,
-    rgba(255, 255, 255, 0.48) 100%
-  ) !important;
-  border-color: rgba(246, 190, 16, 0.85) !important;
-  box-shadow:
-    0 18px 40px -8px rgba(246, 190, 16, 0.25),
-    0 4px 14px -2px rgba(10, 24, 46, 0.08),
-    inset 0 2px 2px 0 rgba(255, 255, 255, 1) !important;
-}
-
-:global(html[data-theme="amigos-light"]) .page .resultLocked,
-:global(html:not([data-theme="amigos-dark"])) .page .resultLocked,
-:global(html[data-theme="amigos-light"]) .page .verifyPanel,
-:global(html:not([data-theme="amigos-dark"])) .page .verifyPanel,
-:global(html[data-theme="amigos-light"]) .page .pricePanel,
-:global(html:not([data-theme="amigos-dark"])) .page .pricePanel,
-:global(html[data-theme="amigos-light"]) .page .summaryPanel,
-:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.65) 0%,
-    rgba(255, 255, 255, 0.32) 100%
-  ) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.82) !important;
-  box-shadow:
-    0 20px 48px -10px rgba(10, 24, 46, 0.12),
-    0 4px 16px -2px rgba(10, 24, 46, 0.06),
-    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3) !important;
-  border-radius: 22px !important;
 }
 
 /* =======================================================================
@@ -4155,31 +4280,12 @@
   letter-spacing: .01em;
 }
 
+/* ---------- 10. SPACING RHYTHM ---------- */
+
 .embedded .stepPanel {
   display: flex;
   flex-direction: column;
   gap: 0;
-}
-
-.stepHeaderRow {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.stepHeaderCopy {
-  flex: 1 1 320px;
-}
-
-.stepHeaderNav {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-  margin-bottom: 4px;
 }
 
 .embedded .stepPanel .cardGrid,
@@ -4932,3 +5038,922 @@
 .page:not(.embedded) .finalActions {
   margin-top: var(--s3);
 }
+
+/* =======================================================================
+   STANDALONE CALCULATOR PAGE (/offer-calculator) REFINEMENTS
+   ======================================================================= */
+
+/* =======================================================================
+   STANDALONE CALCULATOR PAGE (/offer-calculator) REFINEMENTS
+   Fits 100% within one single viewport height (100dvh) without cutoffs.
+   ======================================================================= */
+
+.page:not(.embedded) {
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: clamp(10px, 1.4vh, 16px) clamp(16px, 2.2vw, 36px) !important;
+  gap: clamp(12px, 1.6vh, 18px) !important;
+  box-sizing: border-box !important;
+}
+
+/* 1. Hero Header Section */
+.page:not(.embedded) > .hero {
+  flex: 0 0 auto !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.35fr) !important;
+  gap: clamp(12px, 1.5vw, 20px) !important;
+  align-items: stretch !important;
+  margin: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy {
+  position: relative !important;
+  padding: clamp(14px, 1.8vh, 20px) clamp(18px, 2vw, 28px) !important;
+  border-radius: 18px !important;
+  min-height: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy .heroTopRow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  margin: 0 0 2px 0 !important;
+  height: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy .themeToggle {
+  position: absolute !important;
+  top: clamp(12px, 1.4vh, 16px) !important;
+  right: clamp(14px, 1.6vw, 20px) !important;
+  z-index: 5 !important;
+  margin: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy .brand {
+  display: block !important;
+  font-size: clamp(11px, 0.85vw, 12px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy .brand {
+  color: var(--accent) !important;
+}
+
+.page:not(.embedded) .heroCopy strong {
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy strong {
+  color: #F6BE10 !important;
+}
+
+.page:not(.embedded) .heroCopy h1 {
+  font-size: clamp(20px, 1.9vw, 25px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.2 !important;
+  margin: 0 0 8px 0 !important;
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy h1 {
+  color: #FFFFFF !important;
+}
+
+.page:not(.embedded) .heroCopy p {
+  font-size: clamp(12px, 0.9vw, 13px) !important;
+  line-height: 1.48 !important;
+  margin: 0 !important;
+  max-width: 90% !important;
+  color: #000000 !important;
+  opacity: 0.88 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy p {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.page:not(.embedded) .securityCard {
+  padding: clamp(14px, 1.8vh, 20px) clamp(18px, 2vw, 24px) !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 8px 14px !important;
+  align-content: center !important;
+  border-radius: 18px !important;
+  min-height: 0 !important;
+}
+
+.page:not(.embedded) .securityCard span {
+  grid-area: 1 / 1 !important;
+  font-size: 20px !important;
+  align-self: center !important;
+  margin: 0 !important;
+}
+
+.page:not(.embedded) .securityCard h2 {
+  grid-area: 1 / 2 !important;
+  font-size: clamp(13px, 1.1vw, 14.5px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  align-self: center !important;
+  margin: 0 !important;
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .securityCard h2 {
+  color: #FFFFFF !important;
+}
+
+.page:not(.embedded) .securityCard p {
+  grid-area: 2 / 1 / 3 / -1 !important;
+  font-size: clamp(11.5px, 0.9vw, 12.5px) !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+  color: #000000 !important;
+  opacity: 0.85 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .securityCard p {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+/* 2. Progress Tracker Navigation (Clean floating timeline with top spacing) */
+.page:not(.embedded) > .progressNav {
+  flex: 0 0 auto !important;
+  display: grid !important;
+  padding: 4px 12px 6px !important;
+  margin-top: clamp(10px, 1.8vh, 20px) !important;
+  margin-bottom: clamp(6px, 1.2vh, 14px) !important;
+  border-radius: 0 !important;
+  min-height: 0 !important;
+  gap: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) > .progressNav {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page:not(.embedded) .progressStep {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 3px 2px 2px !important;
+  gap: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.page:not(.embedded) .progressStep span {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  margin-bottom: 7px !important;
+  letter-spacing: 0.04em !important;
+  opacity: 0.9 !important;
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .progressStep span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.page:not(.embedded) .progressStep i {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  font-size: 12px !important;
+  margin: 0 0 5px 0 !important;
+  border-width: 2px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.page:not(.embedded) .progressStep i svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.page:not(.embedded) .currentStep i {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+}
+
+.page:not(.embedded) .currentStep i svg {
+  width: 17px !important;
+  height: 17px !important;
+}
+
+.page:not(.embedded) .progressStep b {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+}
+
+.page:not(.embedded) .currentStep b {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+.page:not(.embedded) .doneStep b {
+  color: #000000 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .progressStep b {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .currentStep b {
+  color: #FFFFFF !important;
+}
+
+.page:not(.embedded) .progressNav::before {
+  top: 36px !important;
+  height: 2px !important;
+  background: rgba(0, 0, 0, 0.22) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .progressNav::before {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+.page:not(.embedded) .progressFill {
+  top: 36px !important;
+  height: 2px !important;
+}
+
+/* 3. Consultation Shell & Steps */
+.page:not(.embedded) > .consultationShell {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  max-width: var(--measure) !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+  padding: 0 !important;
+}
+
+.page:not(.embedded) .stepPanel,
+.page:not(.embedded) .resultLocked,
+.page:not(.embedded) .verifyPanel,
+.page:not(.embedded) .pricePanel {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-self: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  justify-content: safe center !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-top: 4px !important;
+  padding-bottom: 6px !important;
+  scrollbar-width: thin;
+}
+
+.page:not(.embedded) .stepPanel::-webkit-scrollbar {
+  width: 5px;
+}
+.page:not(.embedded) .stepPanel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+}
+
+.page:not(.embedded) .stepPanel .stepKicker {
+  font-size: clamp(11px, 0.85vw, 12px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  margin: 0 0 4px 0 !important;
+  display: inline-block !important;
+  color: #B45309 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel .stepKicker {
+  color: #FABE2C !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+.page:not(.embedded) .stepPanel h2 {
+  font-size: clamp(24px, 2.3vw, 32px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  margin: 0 0 5px 0 !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel h2 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 15, 35, 0.85) !important;
+}
+
+.page:not(.embedded) .stepPanel > p {
+  font-size: clamp(13px, 0.95vw, 14.5px) !important;
+  line-height: 1.4 !important;
+  margin: 0 0 clamp(10px, 1.5vh, 16px) !important;
+  color: #000000 !important;
+  opacity: 0.85 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel > p {
+  color: rgba(255, 255, 255, 0.92) !important;
+  text-shadow: 0 1px 6px rgba(0, 15, 35, 0.75) !important;
+}
+
+/* 4. Property Grid & Cards (Images increased & fully visible) */
+.page:not(.embedded) .stepPanel .propertyGrid {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: clamp(10px, 1.1vw, 14px) !important;
+  margin-top: 0 !important;
+  margin-bottom: clamp(8px, 1.2vh, 14px) !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1100px) {
+  .page:not(.embedded) .stepPanel .propertyGrid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .page:not(.embedded) .stepPanel .propertyGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.page:not(.embedded) .propertyCard {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease, box-shadow 0.24s ease !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.24) !important;
+  background: rgba(8, 22, 42, 0.65) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  box-shadow: 0 8px 20px rgba(0, 10, 26, 0.3) !important;
+  text-align: center !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
+  mask-image: -webkit-radial-gradient(white, black) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCard {
+  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 8px 22px rgba(10, 24, 46, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+}
+
+.page:not(.embedded) .propertyCard:hover {
+  transform: translateY(-3px) scale(1.01) !important;
+  border-color: #FABE2C !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 14px rgba(250, 190, 44, 0.28) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCard:hover {
+  border-color: #F39125 !important;
+  box-shadow: 0 12px 28px rgba(10, 24, 46, 0.14), 0 0 14px rgba(243, 145, 37, 0.22) !important;
+}
+
+.page:not(.embedded) .propertyCardSelected {
+  border: 2px solid #FABE2C !important;
+  box-shadow: 0 0 20px rgba(250, 190, 44, 0.45), inset 0 0 10px rgba(250, 190, 44, 0.22) !important;
+  background: rgba(14, 32, 60, 0.90) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCardSelected {
+  border: 2px solid #F39125 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(243, 145, 37, 0.35), inset 0 0 10px rgba(243, 145, 37, 0.15) !important;
+}
+
+.page:not(.embedded) .propertyCardMedia {
+  position: relative !important;
+  width: 100% !important;
+  flex: 0 0 clamp(155px, 23.5vh, 220px) !important;
+  height: clamp(155px, 23.5vh, 220px) !important;
+  overflow: hidden !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+.page:not(.embedded) .propertyCardImage {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 30% !important;
+  display: block !important;
+  border-radius: inherit !important;
+  transition: transform 0.35s ease !important;
+}
+
+.page:not(.embedded) .propertyCard:hover .propertyCardImage {
+  transform: scale(1.05) !important;
+}
+
+.page:not(.embedded) .propertyCardInfo {
+  position: relative !important;
+  inset: auto !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-height: 54px !important;
+  max-height: 62px !important;
+  box-sizing: border-box !important;
+  padding: 9px 8px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 3px !important;
+  background: rgba(5, 16, 34, 0.92) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCardInfo {
+  background: #FFFFFF !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+
+.page:not(.embedded) .propertyCardTitle {
+  font-size: clamp(12.5px, 0.95vw, 14px) !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  line-height: 1.25 !important;
+  display: block !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCardTitle {
+  color: #000000 !important;
+}
+
+.page:not(.embedded) .propertyCardSubtitle {
+  font-size: clamp(10.5px, 0.75vw, 11.5px) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  line-height: 1.25 !important;
+  display: block !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .propertyCardSubtitle {
+  color: #000000 !important;
+  opacity: 0.8 !important;
+}
+
+/* 5. Navigation Bar (Always visible at viewport bottom) */
+.navActionsLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.backToQuickNavBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.backToQuickNavBtn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: #FFFFFF !important;
+  transform: translateX(-2px);
+}
+
+.page:not(.embedded) .navActions {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  flex-shrink: 0 !important;
+  margin: clamp(10px, 1.5vh, 18px) 0 2px 0 !important;
+  padding: 4px 0 0 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* =======================================================================
+   ALL STEPS: 3 COLUMNS GRID EXPANSION ACROSS AVAILABLE WIDTH
+   ======================================================================= */
+.page:not(.embedded) .stepPanel .cardGrid,
+.page:not(.embedded) .stepPanel .serviceGrid,
+.page:not(.embedded) .stepPanel .scopeCardGrid,
+.page:not(.embedded) .stepPanel .conditionCardGrid,
+.page:not(.embedded) .stepPanel .quantityGrid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  width: 100% !important;
+  gap: clamp(10px, 1.2vw, 16px) !important;
+  margin-top: clamp(8px, 1.2vh, 14px) !important;
+  box-sizing: border-box !important;
+}
+
+.page:not(.embedded) .stepPanel .serviceGrid {
+  max-height: none !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
+}
+
+.page:not(.embedded) .stepPanel .locationGrid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  width: 100% !important;
+  gap: clamp(12px, 1.4vw, 18px) !important;
+  margin-top: clamp(10px, 1.4vh, 16px) !important;
+}
+
+.page:not(.embedded) .customerGrid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  width: 100% !important;
+  gap: clamp(10px, 1.2vw, 16px) !important;
+  margin-top: clamp(8px, 1.2vh, 14px) !important;
+}
+
+.page:not(.embedded) .notesField {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: clamp(10px, 1.4vh, 16px) !important;
+}
+
+.page:not(.embedded) .notesField textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.page:not(.embedded) .detailGroup {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: clamp(10px, 1.4vh, 16px) !important;
+  padding: 14px !important;
+  border-radius: 16px !important;
+}
+
+@media (max-width: 768px) {
+  .page:not(.embedded) .stepPanel .cardGrid,
+  .page:not(.embedded) .stepPanel .serviceGrid,
+  .page:not(.embedded) .stepPanel .scopeCardGrid,
+  .page:not(.embedded) .stepPanel .conditionCardGrid,
+  .page:not(.embedded) .stepPanel .quantityGrid,
+  .page:not(.embedded) .stepPanel .locationGrid,
+  .page:not(.embedded) .customerGrid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 540px) {
+  .page:not(.embedded) .stepPanel .cardGrid,
+  .page:not(.embedded) .stepPanel .serviceGrid,
+  .page:not(.embedded) .stepPanel .scopeCardGrid,
+  .page:not(.embedded) .stepPanel .conditionCardGrid,
+  .page:not(.embedded) .stepPanel .quantityGrid,
+  .page:not(.embedded) .stepPanel .locationGrid,
+  .page:not(.embedded) .customerGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* =======================================================================
+   LIGHT THEME: STRICTLY NO NAVY BLUE (CRISP WHITE SURFACES & BLACK TEXT)
+   ======================================================================= */
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .resultLocked h2,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .verifyPanel h2,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .pricePanel h2 {
+  color: #000000 !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .resultLocked p,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .verifyPanel p,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .pricePanel p {
+  color: #000000 !important;
+  opacity: 0.85 !important;
+  text-shadow: none !important;
+}
+
+/* Light Theme Selection Cards */
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 14px rgba(10, 24, 46, 0.06) !important;
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard span {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard small {
+  color: rgba(0, 0, 0, 0.62) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard i {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard:hover {
+  border-color: #F39125 !important;
+  box-shadow: 0 6px 18px rgba(10, 24, 46, 0.1) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectedCard {
+  background: #FFFFFF !important;
+  border: 2px solid #F39125 !important;
+  box-shadow: 0 0 16px rgba(243, 145, 37, 0.25) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectedCard i {
+  color: #10B981 !important;
+}
+
+/* Light Theme Scope & Condition Cards */
+:global(html:not([data-theme="amigos-dark"])) .scopeCard,
+:global(html:not([data-theme="amigos-dark"])) .conditionCard {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 16px rgba(10, 24, 46, 0.08) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .scopeCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .conditionCardTitle {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .scopeCardDesc,
+:global(html:not([data-theme="amigos-dark"])) .conditionCardDesc {
+  color: rgba(0, 0, 0, 0.68) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .scopeCard:hover,
+:global(html:not([data-theme="amigos-dark"])) .conditionCard:hover {
+  border-color: #F39125 !important;
+  box-shadow: 0 8px 24px rgba(10, 24, 46, 0.12) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .scopeCardSelected,
+:global(html:not([data-theme="amigos-dark"])) .conditionCardSelected {
+  background: #FFFFFF !important;
+  border: 2px solid #F39125 !important;
+  box-shadow: 0 0 16px rgba(243, 145, 37, 0.25) !important;
+}
+
+/* Light Theme Fields, Inputs, Selects & Groups */
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroup {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 14px rgba(10, 24, 46, 0.05) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField input,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField select,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField textarea,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .emailField input,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid input,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailSelect {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.15) !important;
+  color: #000000 !important;
+  border-radius: 10px !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailSelect option {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField input::placeholder,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField textarea::placeholder,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .emailField input::placeholder,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid input::placeholder {
+  color: rgba(0, 0, 0, 0.45) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField span,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField span,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField b,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroup label,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid label span {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroupTitle {
+  color: #B45309 !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .secondaryAction,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .backToQuickNavBtn {
+  color: #000000 !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .secondaryAction:hover,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .backToQuickNavBtn:hover {
+  background: #F4F4F5 !important;
+  border-color: #000000 !important;
+}
+
+/* Light Theme Summary Panel, Locked Price & Code Inputs */
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 16px rgba(10, 24, 46, 0.06) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel h3,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel dd {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel dt {
+  color: #B45309 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel .editStepLink {
+  color: #D97706 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 16px rgba(10, 24, 46, 0.06) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice strong,
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .priceRange {
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice span {
+  color: rgba(0, 0, 0, 0.65) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .codeInputs input {
+  background: #FFFFFF !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+
+/* =======================================================================
+   DARK THEME: STYLED GLASS & CONTRAST
+   ======================================================================= */
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .resultLocked h2,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .verifyPanel h2,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .pricePanel h2 {
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 10px rgba(0, 19, 49, 0.85) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .resultLocked p,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .verifyPanel p,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .pricePanel p {
+  color: rgba(255, 255, 255, 0.94) !important;
+  text-shadow: 0 1px 6px rgba(0, 19, 49, 0.8) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailGroup {
+  background: rgba(7, 24, 48, 0.78) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField input,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField select,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField textarea,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .emailField input,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .customerGrid input,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailSelect {
+  background: rgba(5, 17, 34, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField input::placeholder,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField textarea::placeholder,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .emailField input::placeholder,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .customerGrid input::placeholder {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField span,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField span,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailGroup label {
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .secondaryAction {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .secondaryAction:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: #FFFFFF !important;
+}
+
+

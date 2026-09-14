@@ -272,6 +272,15 @@ if (document.querySelector(".hero")) {
                 });
             }
 
+            if (hp > 0.05 && !window.__amigosNavEntered) {
+                window.__amigosNavEntered = true;
+                if (typeof window.__amigosPlayMusic === "function") {
+                    window.__amigosPlayMusic(true);
+                } else {
+                    window.dispatchEvent(new CustomEvent("amigos:nav-entered"));
+                }
+            }
+
             //-----------------------------------
             // CONTENT REVEAL
             //-----------------------------------
@@ -404,6 +413,8 @@ function finishLoader() {
             loader.style.display = "none";
             document.documentElement.style.overflow = "";
             revealHero();
+            window.__amigosLoaderFinished = true;
+            window.dispatchEvent(new CustomEvent("amigos:loader-finished"));
         }
 
     })
@@ -519,8 +530,9 @@ const SERVICES_DATA = [
     { num: "04", title: "Apartment Renovation", desc: "Get properties ready for sale or new tenants.", img: "assets/services/pexels-tr-n-chinh-587690133-20666871.jpg", href: "/appartment-renovation" },
     { num: "05", title: "Property Value Preservation", desc: "Protect and increase long-term property value.", img: "assets/services/pexels-amine-kubranur-cakiroglu-689611212-37919681.jpg", href: "/property-value-preservation" },
     { num: "06", title: "Spray Painting", desc: "Smooth spray finishes for doors, frames, shutters and suitable components.", img: "assets/spray/Hero.png", href: "/spray-painting" },
-    { num: "07", title: "Damage Remediation", desc: "Fast repair, drying coordination and clean surface restoration after moisture damage.", img: "assets/services/pexels-mikhail-nilov-8296991.jpg", href: "/water-damage" },
-    { num: "08", title: "Digital Project Planning", desc: "Plan and visualize your project before work begins.", img: "assets/services/engineers-brainstorming-ways-use-ai.jpg", href: "/offer-calculator", tags: ["Price Calculator", "Photo Upload", "Color Visualization"] }
+    { num: "07", title: "Water Damage", desc: "Fast repair, drying coordination and clean surface restoration after water damage.", img: "assets/services/pexels-mikhail-nilov-8296991.jpg", href: "/water-damage" },
+    { num: "08", title: "Mold Remediation", desc: "Professional mold analysis, certified removal and durable prevention for healthy indoor air.", img: "assets/services/molding-service.jpg", href: "/mold" },
+    { num: "09", title: "Digital Project Planning", desc: "Plan and visualize your project before work begins.", img: "assets/services/engineers-brainstorming-ways-use-ai.jpg", href: "/#offer-calculator", tags: ["Price Calculator", "Photo Upload", "Color Visualization"] }
 ];
 
 (() => {

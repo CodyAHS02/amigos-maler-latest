@@ -175,8 +175,13 @@ html[data-theme="light"] {
   /* secondary text */
   --body: #515154;
   /* body copy */
-  --gold-soft: rgba(197, 160, 89, .22);
-  --gold-glow: rgba(197, 160, 89, .22);
+  --gold: #f6be10;
+  --am-yellow: #f6be10;
+  --am-orange: #f39125;
+  --am-magenta: #c73b8e;
+  --gold-soft: rgba(246, 190, 16, .22);
+  --gold-glow: rgba(243, 145, 37, .25);
+  --am-gradient-cta: linear-gradient(135deg, #f6be10 0%, #f39125 50%, #c73b8e 100%);
 }
 
 /* Base surfaces */

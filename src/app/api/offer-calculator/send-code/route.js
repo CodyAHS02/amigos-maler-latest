@@ -17,17 +17,32 @@ export async function POST(request) {
   }
 
   const code = createVerificationCode();
-  const session = await attachVerificationCode({ sessionId, email: validation.values.email, code });
+  const session = await attachVerificationCode({
+    sessionId,
+    email: validation.values.email,
+    code,
+    customerInfo: {
+      firstName: validation.values.firstName,
+      lastName: validation.values.lastName,
+      phone: validation.values.phone,
+      email: validation.values.email
+    }
+  });
 
   if (!session) {
     return NextResponse.json({ error: "Calculation session not found." }, { status: 404 });
   }
 
+  if (session.rateLimited) {
+    return NextResponse.json({ error: session.message }, { status: 429 });
+  }
+
   const delivery = await sendVerificationEmail({ email: validation.values.email, code });
+  const isDev = process.env.NODE_ENV !== "production";
 
   return NextResponse.json({
     ok: true,
     delivered: delivery.delivered,
-    developmentCode: delivery.developmentCode
+    developmentCode: isDev ? delivery.developmentCode : undefined
   });
 }

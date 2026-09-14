@@ -67,17 +67,27 @@ function formatEstimateRange(project) {
 
 export async function authenticateAdmin(email, password) {
   const normalizedEmail = normalizeEmail(email);
-  const [admin] = await sql`
-    select id, name, email, password_hash as "passwordHash", password_salt as "passwordSalt"
-    from admins
-    where email = ${normalizedEmail}
-  `;
+  const bootstrapEmail = normalizeEmail(process.env.ADMIN_EMAIL);
+  const bootstrapPassword = process.env.ADMIN_PASSWORD || "";
 
-  if (admin) {
-    return passwordMatches(password, admin) ? publicAdmin(admin) : null;
+  try {
+    const [admin] = await sql`
+      select id, name, email, password_hash as "passwordHash", password_salt as "passwordSalt"
+      from admins
+      where email = ${normalizedEmail}
+    `;
+
+    if (admin) {
+      return passwordMatches(password, admin) ? publicAdmin(admin) : null;
+    }
+
+    return bootstrapAdmin(normalizedEmail, password);
+  } catch (dbErr) {
+    if (bootstrapEmail && bootstrapPassword && normalizedEmail === bootstrapEmail && password === bootstrapPassword) {
+      return { id: "admin-bootstrap", name: "Amigos Admin", email: bootstrapEmail };
+    }
+    return null;
   }
-
-  return bootstrapAdmin(normalizedEmail, password);
 }
 
 async function bootstrapAdmin(email, password) {

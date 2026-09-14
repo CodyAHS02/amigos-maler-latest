@@ -466,8 +466,8 @@ body[data-page="home"] .site-header {
 .dropdown-item .item-num {
     font-size: 11px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.12);
     padding: 3px 6px;
     border-radius: 6px;
     min-width: 22px;
@@ -557,8 +557,8 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 .hero-content {
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    top: 35vh;
+    transform: translateX(-50%);
     width: min(1240px, 90%);
     text-align: center;
     color: #FDFBF6;
@@ -588,15 +588,17 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 .hero-content h1 {
 
-    font-size: 50px;
+    font-size: clamp(32px, 3.8vw, 50px);
 
-    line-height: 60px;
+    line-height: 1.2;
 
     font-weight: 700;
 
     margin-bottom: 24px;
 
     text-transform: none !important;
+
+    white-space: nowrap;
 
 }
 
@@ -870,9 +872,11 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 @media (max-width: 768px) {
     .paint-screen-banner {
-        top: 22vh;
-        padding: 14px 20px;
-        border-radius: 18px;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        padding: 0 16px;
+        width: min(90vw, 420px);
     }
 
     .paint-finish-panel {
@@ -893,9 +897,11 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 @media (max-width: 480px) {
     .paint-screen-banner {
-        top: 24vh;
-        padding: 12px 16px;
-        width: 92%;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        padding: 0 14px;
+        width: min(90vw, 380px);
     }
 
     .paint-finish-panel {
@@ -992,6 +998,27 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     height: 20px;
 }
 
+.paint-trigger .paint-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paint-trigger .wallpaper-icon {
+    display: none;
+    width: 20px;
+    height: 20px;
+}
+
+.paint-icons.is-textured-mode .paint-trigger .paint-icon {
+    display: none !important;
+}
+
+.paint-icons.is-textured-mode .paint-trigger .wallpaper-icon {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
 
 .paint-trigger::after {
 
@@ -1025,6 +1052,10 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 }
 
+.paint-icons.is-textured-mode .paint-trigger::after {
+    content: "Wallpaper";
+}
+
 .paint-trigger:hover::after {
 
     opacity: 1;
@@ -1052,9 +1083,9 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
     display: flex;
 
-    gap: 10px;
+    gap: 8px;
 
-    padding: 10px;
+    padding: 8px 12px;
 
     border-radius: 999px;
 
@@ -1063,6 +1094,10 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     background: rgba(255, 255, 255, .15);
 
     border: 1px solid rgba(255, 255, 255, .22);
+
+    box-shadow: 0 14px 40px rgba(0, 0, 0, .25);
+
+    max-width: 95vw;
 
 }
 
@@ -1077,7 +1112,30 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 }
 
-.palette span {
+.palette-colors,
+.palette-textures {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.paint-icons.is-textured-mode .palette-colors {
+    display: none !important;
+}
+
+.paint-icons.is-textured-mode .palette-textures {
+    display: flex !important;
+}
+
+.paint-icons:not(.is-textured-mode) .palette-textures {
+    display: none !important;
+}
+
+.paint-icons:not(.is-textured-mode) .palette-colors {
+    display: flex !important;
+}
+
+.palette span:not(.texture-swatch) {
 
     width: 24px;
     height: 24px;
@@ -1094,10 +1152,38 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 }
 
-.palette span:hover {
+.palette span:not(.texture-swatch):hover {
 
     transform: scale(1.2);
 
+}
+
+.texture-swatch {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, .75);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
+    transition: transform .25s cubic-bezier(.22, 1, .36, 1), box-shadow .25s ease, border-color .25s ease;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.texture-swatch:hover {
+    transform: scale(1.24);
+    border-color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .45);
+    z-index: 2;
+}
+
+.texture-swatch.active {
+    border-color: #FDFBF6;
+    box-shadow: 0 0 0 2px #101A2E, 0 4px 12px rgba(0, 0, 0, .35);
+    transform: scale(1.15);
 }
 
 /* CUSTOM COLOR SWATCH — native color picker, styled to match the preset dots */
@@ -1372,8 +1458,17 @@ RESPONSIVE — MOBILE (≤768px)
         transform: translateY(40px);
     }
 
+    .site-nav {
+        counter-reset: nav-item;
+    }
+
+    .site-nav > a,
+    .site-nav .dropdown-trigger {
+        counter-increment: nav-item;
+    }
+
     .site-nav a::before {
-        content: counter(nav-item) "0" attr(data-index);
+        content: counter(nav-item, decimal-leading-zero);
         position: absolute;
         top: 16px;
         right: 0;
@@ -1440,7 +1535,7 @@ RESPONSIVE — MOBILE (≤768px)
     }
 
     .hero-content {
-        top: 50%;
+        top: 30vh;
         width: 92%;
     }
 
@@ -1477,16 +1572,32 @@ RESPONSIVE — MOBILE (≤768px)
     }
 
     .paint-screen-banner {
-        top: 10% !important;
-        padding: 0 16px;
+        position: absolute !important;
+        top: 38% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: min(90vw, 420px) !important;
+        text-align: center !important;
+        padding: 0 16px !important;
+        z-index: 120 !important;
+        pointer-events: none !important;
     }
 
     .paint-screen-banner h2 {
-        font-size: 18px !important;
+        font-size: clamp(20px, 5.5vw, 26px) !important;
+        font-weight: 700 !important;
+        color: #FFFFFF !important;
+        line-height: 1.25 !important;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8), 0 4px 30px rgba(0, 0, 0, 0.6) !important;
+        margin-bottom: 8px !important;
     }
 
     .paint-screen-banner p {
-        font-size: 12px !important;
+        font-size: clamp(13px, 3.8vw, 15px) !important;
+        color: rgba(255, 255, 255, 0.88) !important;
+        line-height: 1.4 !important;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8) !important;
+        margin: 0 !important;
     }
 
     .mobile-color-dock {
@@ -1494,9 +1605,7 @@ RESPONSIVE — MOBILE (≤768px)
         flex-direction: column;
         align-items: center;
         position: absolute;
-        /* Clear the fixed WhatsApp and chat buttons, which sit ~70px up from the bottom
-           on mobile and otherwise intercept taps on the outer swatches. */
-        bottom: 96px;
+        bottom: 24px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 60;
@@ -4622,44 +4731,64 @@ span.section-tag {
 
 .wallpaper-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 2px;
+}
+
+@media (max-width: 680px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .wallpaperAI {
-    border: 2px solid #e6e6e6;
-    border-radius: 18px;
+    border: 1.5px solid #e6e6e6;
+    border-radius: 12px;
     background: #FDFBF6;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
-    text-align: left;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    text-align: center;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .wallpaperAI img {
     width: 100%;
-    height: 90px;
+    height: 48px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .wallpaperAI span {
     display: block;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #343B4D;
-    padding: 0 4px 4px;
+    padding: 0 2px 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .wallpaperAI:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
 }
 
 .wallpaperAI.active {
     border-color: #101A2E;
+    box-shadow: 0 0 0 1px #101A2E;
 }
 
 .wallpaperAI.active span {
@@ -5136,44 +5265,64 @@ span.section-tag {
 
 .wallpaper-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 2px;
+}
+
+@media (max-width: 680px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .wallpaperAI {
-    border: 2px solid #e6e6e6;
-    border-radius: 18px;
+    border: 1.5px solid #e6e6e6;
+    border-radius: 12px;
     background: #FDFBF6;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
-    text-align: left;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    text-align: center;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .wallpaperAI img {
     width: 100%;
-    height: 90px;
+    height: 48px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .wallpaperAI span {
     display: block;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #343B4D;
-    padding: 0 4px 4px;
+    padding: 0 2px 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .wallpaperAI:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
 }
 
 .wallpaperAI.active {
     border-color: #101A2E;
+    box-shadow: 0 0 0 1px #101A2E;
 }
 
 .wallpaperAI.active span {
@@ -5699,40 +5848,59 @@ span.section-tag {
 
 .wallpaper-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 2px;
+}
+
+@media (max-width: 680px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .wallpaper-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .wallpaperAI {
-    border: 2px solid #e6e6e6;
-    border-radius: 18px;
+    border: 1.5px solid #e6e6e6;
+    border-radius: 12px;
     background: #FDFBF6;
-    padding: 8px;
+    padding: 5px;
     cursor: pointer;
-    text-align: left;
-    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    text-align: center;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .wallpaperAI img {
     width: 100%;
-    height: 90px;
+    height: 48px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .wallpaperAI span {
     display: block;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     color: #343B4D;
-    padding: 0 4px 4px;
+    padding: 0 2px 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
 }
 
 .wallpaperAI:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .08);
 }
 
 .wallpaperAI.active {
@@ -8846,40 +9014,59 @@ span.section-tag {
 /* ---------- LEFT: HEADING + SHORT PARA ---------- */
 
 .audience-left {
-    max-width: 480px;
+    max-width: 440px;
+    flex: 1 1 340px;
 }
 
 .audience-left h3 {
-    font-size: clamp(22px, 2.2vw, 30px);
+    font-size: clamp(22px, 2vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
     color: #FDFBF6;
     margin-bottom: 8px;
+    line-height: 1.25;
 }
 
 .audience-left p {
     font-size: 15px;
-    line-height: 1.6;
-    color: rgba(253, 251, 246, .86);
+    line-height: 1.55;
+    color: rgba(253, 251, 246, .90);
+    margin: 0;
 }
 
-/* ---------- RIGHT: THE THREE-WAY LINE ---------- */
+/* ---------- RIGHT: THREE BULLET POINTS ---------- */
 
 .audience-right {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-shrink: 0;
 }
 
-.audience-right span.item {
+.audience-right .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 15px;
     font-weight: 600;
     color: #FDFBF6;
     white-space: nowrap;
+    line-height: 1.35;
 }
 
-.audience-right span.divider {
-    color: rgba(253, 251, 246, .42);
-    font-weight: 300;
+.audience-right .item::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #FDFBF6;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
+    flex-shrink: 0;
 }
 
 @keyframes audienceBarLogoFlow {
@@ -10348,6 +10535,29 @@ body {
     font-weight: 700 !important;
 }
 
+.footer-quick-contact {
+    display: none;
+}
+
+.footer-accordion summary {
+    list-style: none;
+    pointer-events: none;
+}
+
+.footer-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.footer-accordion summary::after {
+    display: none;
+}
+
+.footer-accordion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .footer-column a,
 .footer-column p {
     margin: 0 !important;
@@ -10472,42 +10682,63 @@ body[data-page="home"] .hero {
 }
 
 body[data-page="home"] .intro-title {
-    display: block;
-    width: min(96vw, 1840px);
-    text-align: center;
-    line-height: .9;
-}
-
-body[data-page="home"] .intro-title>span[style] {
-    display: inline-flex !important;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: auto !important;
-    min-width: 0;
-    height: 1.35em;
-    transform: rotate(-90deg) translate(0.38em, -.06em) !important;
-    transform-origin: center center !important;
-    margin: 0 0 0 -.1em !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    color: #fff !important;
-    font-size: clamp(18px, .18em, 34px) !important;
-    font-weight: 700;
-    line-height: 1 !important;
-    letter-spacing: .06em !important;
-    vertical-align: middle !important;
-    white-space: nowrap;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    width: min(96vw, 1840px);
+    text-align: center;
+    line-height: 1;
 }
 
-body[data-page="home"] .intro-title>span:not([style]) {
+body[data-page="home"] .intro-title-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1vw, 16px);
+    vertical-align: middle;
+}
+
+body[data-page="home"] .intro-title-main {
+    display: inline-block;
+    font-size: clamp(48px, 8.5vw, 140px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    color: #fff;
+}
+
+.intro-title-gmbh,
+body[data-page="home"] .intro-title-gmbh {
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: clamp(12px, 1.4vw, 24px);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-indent: 0.22em;
+    text-transform: none !important;
+    font-variant: normal !important;
+    font-variant-caps: normal !important;
+    color: rgba(255, 255, 255, 0.9);
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1;
+    box-shadow: none !important;
+    align-self: center;
+}
+
+body[data-page="home"] .intro-title-sub {
     display: block;
     width: min(980px, 92vw);
     margin: 24px auto 0;
     font-weight: 400;
+    font-size: clamp(15px, 1.35vw, 20px);
+    line-height: 1.55;
+    color: rgba(253, 251, 246, 0.84);
 }
 
 body[data-page="home"] .introBtn {
@@ -10640,35 +10871,52 @@ body[data-page="home"] .introBtn:hover {
     body[data-page="home"] #heroVideo,
     body[data-page="home"] .hero video {
         object-fit: cover !important;
-        object-position: center center !important;
+        object-position: center 30% !important;
     }
 
     body[data-page="home"] #paintCanvas {
         object-fit: cover !important;
-        object-position: center center !important;
+        object-position: center 30% !important;
     }
 
     body[data-page="home"] .intro-title {
         top: 12vh;
         width: min(92vw, 520px);
-        font-size: clamp(62px, 19vw, 104px);
         white-space: normal;
         letter-spacing: 0;
-        line-height: .86;
+        line-height: 1;
     }
 
-    body[data-page="home"] .intro-title>span[style] {
-        height: 1.25em;
-        margin-left: -.06em !important;
-        font-size: clamp(12px, .2em, 19px) !important;
-        transform: rotate(-90deg) translate(0.45em, -.04em) !important;
+    body[data-page="home"] .intro-title-brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
     }
 
-    body[data-page="home"] .intro-title>span:not([style]) {
+    body[data-page="home"] .intro-title-main {
+        font-size: clamp(38px, 11vw, 76px);
+        line-height: 0.95;
+    }
+
+    .intro-title-gmbh,
+    body[data-page="home"] .intro-title-gmbh {
+        font-size: clamp(10px, 2.6vw, 15px);
+        text-transform: none !important;
+        font-variant: normal !important;
+        font-variant-caps: normal !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    body[data-page="home"] .intro-title-sub {
         width: min(520px, 90vw);
         margin-top: 16px;
-        font-size: clamp(14px, 3.4vw, 18px);
-        line-height: 1.35;
+        font-size: clamp(14px, 3.4vw, 17px);
+        line-height: 1.45;
         white-space: normal;
     }
 
@@ -10733,6 +10981,59 @@ body[data-page="home"] .introBtn:hover {
         width: 100%;
     }
 
+    .footer-quick-contact {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px 10px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.75);
+        margin: 14px 0 20px;
+    }
+
+    .footer-quick-contact a {
+        color: #f6be10 !important;
+        text-decoration: none;
+    }
+
+    .footer-sep {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    .footer-accordion summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        user-select: none;
+    }
+
+    .footer-accordion summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .footer-accordion summary::after {
+        content: "+";
+        font-size: 18px;
+        color: #f6be10;
+        font-weight: 700;
+        transition: transform 0.2s ease;
+    }
+
+    .footer-accordion[open] summary::after {
+        content: "−";
+    }
+
+    .footer-accordion-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 0 16px;
+    }
+
     .footer-column h4 {
         width: 100%;
         text-align: left !important;
@@ -10790,6 +11091,13 @@ body[data-page="home"] .introBtn:hover {
    THEME TOGGLE + AMIGOS NAVY THEME
 ================================================== */
 
+.header-toggle-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
 .theme-toggle {
     position: relative;
     width: 48px;
@@ -10844,9 +11152,124 @@ html[data-theme="amigos-dark"] .theme-toggle-icon {
     color: #fdfbf6;
 }
 
+/* Sound Toggle */
+.sound-toggle {
+    position: relative;
+    width: 48px;
+    height: 32px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background .28s ease, border-color .28s ease, transform .28s ease, box-shadow .28s ease;
+}
+
+.sound-toggle:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, .68);
+    background: rgba(255, 255, 255, .20);
+}
+
+.sound-toggle-icon {
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .18);
+    color: rgba(255, 255, 255, .82);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    transition: transform .32s cubic-bezier(0.34, 1.56, 0.64, 1), background .32s ease, color .32s ease, box-shadow .32s ease;
+}
+
+.sound-icon {
+    width: 13px;
+    height: 13px;
+    display: block;
+}
+
+.sound-toggle.is-playing {
+    border-color: rgba(246, 190, 16, .65);
+    background: rgba(246, 190, 16, .12);
+    box-shadow: 0 0 14px rgba(246, 190, 16, .22);
+}
+
+.sound-toggle.is-playing .sound-toggle-icon {
+    transform: translateX(16px);
+    background: linear-gradient(135deg, #f6be10, #f39125 58%, #fff3bf);
+    color: #071A33;
+    box-shadow: 0 4px 14px rgba(243, 145, 37, .45);
+}
+
+.sound-bars {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2px;
+    height: 12px;
+    width: 12px;
+}
+
+.sound-bar {
+    width: 2px;
+    height: 10px;
+    background: #071A33;
+    border-radius: 1.5px;
+    transform-origin: bottom center;
+    animation: soundWave 0.9s ease-in-out infinite alternate;
+}
+
+.sound-bar.bar-1 {
+    animation-delay: 0s;
+    animation-duration: 0.7s;
+}
+
+.sound-bar.bar-2 {
+    animation-delay: 0.22s;
+    animation-duration: 0.5s;
+}
+
+.sound-bar.bar-3 {
+    animation-delay: 0.12s;
+    animation-duration: 0.8s;
+}
+
+@keyframes soundWave {
+    0% {
+        transform: scaleY(0.25);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(0.4);
+    }
+}
+
+html[data-theme="amigos-dark"] .sound-toggle {
+    border-color: rgba(255, 255, 255, .28);
+    background: rgba(7, 26, 51, .72);
+}
+
+html[data-theme="amigos-dark"] .sound-toggle.is-playing {
+    border-color: rgba(246, 190, 16, .7);
+    background: rgba(246, 190, 16, .14);
+}
+
 @media (max-width: 1120px) {
-    .theme-toggle {
+    .header-toggle-group {
         margin-left: auto;
+    }
+    .theme-toggle {
+        margin-left: 0;
     }
 }
 
@@ -11301,10 +11724,22 @@ html[data-theme="amigos-dark"] body[data-page="home"] .quote-section {
 }
 
 body[data-page="home"] .home-calculator-cta,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] section.home-calculator-cta,
+html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-cta {
+    background-color: #0a1929 !important;
+    background-image:
+        linear-gradient(180deg, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.55) 100%),
+        url("/assets/calculator-day-bg.webp") !important;
+    background-size: cover, cover !important;
+    background-position: center, center bottom !important;
+    background-repeat: no-repeat !important;
+    animation: none !important;
+}
+
 html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-cta {
     background-color: #071A33 !important;
     background-image:
-        linear-gradient(180deg, rgba(7, 26, 51, 0.88) 0%, rgba(7, 26, 51, 0.65) 45%, rgba(7, 26, 51, 0.25) 80%, rgba(7, 26, 51, 0.1) 100%),
+        linear-gradient(180deg, rgba(5, 18, 38, 0.92) 0%, rgba(5, 18, 38, 0.7) 45%, rgba(5, 18, 38, 0.3) 80%, rgba(5, 18, 38, 0.15) 100%),
         url("/assets/calculator-glass-bg.png") !important;
     background-size: cover, cover !important;
     background-position: center, center bottom !important;
@@ -11313,10 +11748,84 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-ct
 }
 
 body[data-page="home"] .home-calculator-cta::before,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] section.home-calculator-cta::before,
+html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-cta::before {
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
 html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-cta::before {
     background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 60%) !important;
     opacity: 1 !important;
 }
+
+/* =====================================================================
+   DAY / LIGHT MODE — calculator text & fields forced to white
+   so everything is readable on the dark-tinted photo background.
+   ===================================================================== */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta *,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Step number badges keep their accent colour */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="stepKicker"],
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="brand"],
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="currentStep"] span {
+    color: #f6be10 !important;
+    -webkit-text-fill-color: #f6be10 !important;
+}
+
+/* Input fields — white background, dark text so typed text is readable */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta input,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta textarea,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta select,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta input,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta textarea,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta select {
+    background: rgba(255, 255, 255, 0.92) !important;
+    color: #10233c !important;
+    -webkit-text-fill-color: #10233c !important;
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Placeholder text */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta input::placeholder,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta textarea::placeholder,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta input::placeholder,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta textarea::placeholder {
+    color: rgba(16, 35, 60, 0.55) !important;
+    -webkit-text-fill-color: rgba(16, 35, 60, 0.55) !important;
+}
+
+/* White card on right side — restore dark text since it has a white/light background */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"],
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"] *,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"],
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"] * {
+    color: #10233c !important;
+    -webkit-text-fill-color: #10233c !important;
+}
+
+/* Kicker label inside the white card stays gold */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeKicker"],
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeKicker"] {
+    color: #f6be10 !important;
+    -webkit-text-fill-color: #f6be10 !important;
+}
+
+/* Button inside the white card keeps white text on gold bg */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"],
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"] *,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"],
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"] * {
+    color: #101a2e !important;
+    -webkit-text-fill-color: #101a2e !important;
+}
+
 
 body[data-page="home"] .quote-section::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::before {
@@ -12210,9 +12719,18 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .customer-header-btn 
 }
 
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .theme-toggle,
-html:not([data-theme="amigos-dark"]) .site-header.scrolled .theme-toggle {
+html:not([data-theme="amigos-dark"]) .site-header.scrolled .theme-toggle,
+html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .sound-toggle,
+html:not([data-theme="amigos-dark"]) .site-header.scrolled .sound-toggle {
     background: rgba(7, 26, 51, .06) !important;
     border-color: rgba(7, 26, 51, .24) !important;
+    color: #071A33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .sound-toggle:not(.is-playing) .sound-toggle-icon,
+html:not([data-theme="amigos-dark"]) .site-header.scrolled .sound-toggle:not(.is-playing) .sound-toggle-icon {
+    background: rgba(7, 26, 51, .15) !important;
+    color: #071A33 !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .hamburger span,
@@ -12484,17 +13002,122 @@ html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial
 }
 
 /* Homepage follow-up corrections. Keep these last in the cascade. */
-body[data-page="home"] .audience-wrap,
-html[data-theme="amigos-dark"] body[data-page="home"] .audience-wrap {
+body[data-page="home"] .audience-wrap {
     margin-top: 0 !important;
-    padding: 10px 8% 10px !important;
-    background: transparent !important;
+    padding: 36px 4% 20px !important;
+    background: #FDFBF6 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-wrap {
+    background: #071A33 !important;
 }
 
 body[data-page="home"] .audience-bar,
 html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
-    margin-top: 0 !important;
+    max-width: 990px !important;
+    width: min(92vw, 990px) !important;
+    margin: 40px auto 0 !important;
+    padding: 38px 52px !important;
+    border-radius: 26px !important;
     transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 40px !important;
+}
+
+body[data-page="home"] .audience-left,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-left {
+    max-width: 480px !important;
+    flex: 1 1 380px !important;
+}
+
+body[data-page="home"] .audience-left h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-left h3 {
+    font-size: clamp(24px, 2.2vw, 30px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em !important;
+    color: #FDFBF6 !important;
+    margin: 0 0 10px 0 !important;
+    line-height: 1.25 !important;
+}
+
+body[data-page="home"] .audience-left p,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-left p {
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    color: rgba(253, 251, 246, .92) !important;
+    margin: 0 !important;
+    text-wrap: pretty !important;
+}
+
+body[data-page="home"] .audience-right,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    flex-shrink: 0 !important;
+}
+
+body[data-page="home"] .audience-right .item,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    font-size: 15.5px !important;
+    font-weight: 600 !important;
+    color: #FDFBF6 !important;
+    white-space: nowrap !important;
+    line-height: 1.35 !important;
+}
+
+body[data-page="home"] .audience-right .item::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item::before {
+    content: "" !important;
+    display: inline-block !important;
+    width: 7.5px !important;
+    height: 7.5px !important;
+    border-radius: 50% !important;
+    background: #FDFBF6 !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.85) !important;
+    flex-shrink: 0 !important;
+}
+
+body[data-page="home"] .audience-cards-section {
+    background: #FDFBF6 !important;
+    padding-top: 40px !important;
+}
+
+body[data-page="home"] .audience-cards-section::before {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    body[data-page="home"] .audience-wrap {
+        padding: 24px 16px 12px !important;
+    }
+
+    body[data-page="home"] .audience-bar,
+    html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
+        padding: 30px 24px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 22px !important;
+        border-radius: 20px !important;
+    }
+
+    body[data-page="home"] .audience-left,
+    html[data-theme="amigos-dark"] body[data-page="home"] .audience-left {
+        max-width: 100% !important;
+    }
+
+    body[data-page="home"] .audience-break {
+        display: inline !important;
+    }
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .audience-cards-section {
@@ -12550,7 +13173,6 @@ html[data-theme="amigos-dark"] body[data-page="home"] .billing-toggle button.act
     -webkit-text-fill-color: #fff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="home"] .site-header,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled {
     background: #071A33 !important;
@@ -12677,15 +13299,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card li:
     border-color: rgba(255, 255, 255, .82) !important;
 }
 
-body[data-page="home"] .home-calculator-cta {
+body[data-page="home"] .home-calculator-cta,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta {
     background:
-        linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .03)),
-        linear-gradient(90deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .01) 48%, rgba(255, 255, 255, .04)),
-        url("/assets/calculator-glass-bg.png"),
-        #071A33 !important;
-    background-color: #071A33 !important;
-    background-size: auto, auto, cover, auto !important;
-    background-position: center, center, center bottom, center !important;
+        linear-gradient(180deg, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.55) 100%),
+        url("/assets/calculator-day-bg.webp"),
+        #0a1929 !important;
+    background-color: #0a1929 !important;
+    background-size: cover, cover !important;
+    background-position: center, center bottom !important;
     background-repeat: no-repeat !important;
     animation: none !important;
 }
@@ -12701,4 +13324,159 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
     background-position: center, center, center bottom, center !important;
     background-repeat: no-repeat !important;
     animation: none !important;
+}
+
+
+/* ==================================================
+   GLOBAL RESPONSIVE MATRIX PASS
+================================================== */
+
+/* Single line on all screen sizes as requested */
+@media (max-width: 900px) {
+    .hero-content h1 {
+        white-space: nowrap !important;
+        font-size: clamp(20px, 4.2vw, 36px) !important;
+        line-height: 1.25 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        white-space: nowrap !important;
+        font-size: clamp(16px, 4vw, 22px) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .hero-content p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 24px !important;
+    }
+}
+
+/* Ultrawide & 4K display containment (≥ 2000px) */
+@media (min-width: 2000px) {
+    .hero-content,
+    .plans-section,
+    .process-section,
+    .why-section,
+    .reviews-section,
+    .property-care,
+    .final-cta,
+    .footer-main,
+    .services-section {
+        max-width: 1720px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+
+/* ==================================================
+   MOBILE SOFA ROOM: EXACT CENTER FOR "DISCOVER WHAT COLOR CAN CHANGE"
+================================================== */
+@media (max-width: 768px) {
+    body[data-page="home"] .paint-screen-banner,
+    .hero .paint-screen-banner,
+    .paint-icons .paint-screen-banner,
+    .paint-screen-banner {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: min(90vw, 420px) !important;
+        max-width: 90vw !important;
+        margin: 0 !important;
+        text-align: center !important;
+        padding: 0 16px !important;
+        z-index: 120 !important;
+        pointer-events: none !important;
+        display: block !important;
+    }
+
+    body[data-page="home"] .paint-screen-banner h2,
+    .hero .paint-screen-banner h2,
+    .paint-icons .paint-screen-banner h2,
+    .paint-screen-banner h2 {
+        font-size: clamp(22px, 6vw, 30px) !important;
+        font-weight: 700 !important;
+        color: #FFFFFF !important;
+        line-height: 1.25 !important;
+        text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9), 0 4px 32px rgba(0, 0, 0, 0.7) !important;
+        margin: 0 0 8px 0 !important;
+    }
+
+    body[data-page="home"] .paint-screen-banner p,
+    .hero .paint-screen-banner p,
+    .paint-icons .paint-screen-banner p,
+    .paint-screen-banner p {
+        font-size: clamp(13px, 3.8vw, 16px) !important;
+        color: rgba(255, 255, 255, 0.92) !important;
+        line-height: 1.4 !important;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9) !important;
+        margin: 0 !important;
+    }
+}
+
+
+/* ==================================================
+   HOMEPAGE HEADER: TRANSPARENT NORMAL HEADER UNTIL HERO COMPLETELY PASSES AWAY
+   Applies to mobile & desktop, and both light & dark themes.
+================================================== */
+body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled),
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled),
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid transparent !important;
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* Header elements while over the hero (not scrolled) */
+body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .hamburger span,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .hamburger span,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .hamburger span {
+    background: #FFFFFF !important;
+}
+
+body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a,
+body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* STICKY HEADER: ONLY WHEN HERO COMPLETELY PASSED AWAY (.is-scrolled / .scrolled) */
+/* Dark Theme Sticky Header */
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled {
+    background: #071A33 !important;
+    border-bottom: 1px solid rgba(253, 251, 246, 0.12) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* Light Theme Sticky Header */
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scrolled,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.scrolled {
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-bottom: 1px solid rgba(7, 26, 51, 0.12) !important;
+    box-shadow: 0 18px 48px rgba(7, 26, 51, 0.10) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scrolled .hamburger span,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.scrolled .hamburger span {
+    background: #071A33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scrolled .site-nav a,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scrolled .dropdown-trigger {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
 }

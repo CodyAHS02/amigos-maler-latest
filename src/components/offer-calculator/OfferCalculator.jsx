@@ -1,296 +1,35 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useAmigosTheme } from "@/lib/useAmigosTheme";
 import styles from "./OfferCalculator.module.css";
-
-const propertyTypes = [
-  {
-    id: "apartment",
-    title: "Apartment / Flat",
-    subtitle: "Multi-room residential",
-    iconKey: "apartment",
-    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg"
-  },
-  {
-    id: "house",
-    title: "Single-Family House",
-    subtitle: "Detached or terraced home",
-    iconKey: "house",
-    image: "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg"
-  },
-  {
-    id: "commercial",
-    title: "Commercial / Business",
-    subtitle: "Office, practice, retail",
-    iconKey: "commercial",
-    image: "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.jpg"
-  },
-  {
-    id: "facade",
-    title: "Facade / Exterior",
-    subtitle: "Exterior surfaces & masonry",
-    iconKey: "facade",
-    image: "/assets/services-imags/facade.jpg"
-  },
-  {
-    id: "room",
-    title: "Single Room",
-    subtitle: "Individual room painting",
-    iconKey: "room",
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
-  },
-  {
-    id: "other",
-    title: "Other Property",
-    subtitle: "Special projects on request",
-    iconKey: "other",
-    image: "/assets/drywall/painting.jpg"
-  }
-];
-
-const quickPropertyTypes = [
-  {
-    id: "2_5_apartment",
-    title: "2½-room",
-    subtitle: "Apartment",
-    iconKey: "apartment",
-    roomCount: 3,
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
-  },
-  {
-    id: "3_5_apartment",
-    title: "3½-room",
-    subtitle: "Apartment",
-    iconKey: "apartment",
-    roomCount: 4,
-    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg"
-  },
-  {
-    id: "4_5_apartment",
-    title: "4½-room",
-    subtitle: "Apartment",
-    iconKey: "apartment",
-    roomCount: 5,
-    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.jpg"
-  },
-  {
-    id: "5_5_apartment",
-    title: "5½-room",
-    subtitle: "Apartment",
-    iconKey: "apartment",
-    roomCount: 6,
-    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
-  },
-  {
-    id: "house",
-    title: "House",
-    subtitle: "(Single-family home)",
-    iconKey: "house",
-    roomCount: 6,
-    image: "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg"
-  },
-  {
-    id: "commercial",
-    title: "Commercial",
-    subtitle: "(Office / Practice)",
-    iconKey: "commercial",
-    roomCount: 4,
-    image: "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.jpg"
-  },
-  {
-    id: "other",
-    title: "Other",
-    subtitle: "(on request)",
-    iconKey: "other",
-    roomCount: 3,
-    image: "/assets/drywall/painting.jpg"
-  }
-];
-
-const roomTypes = ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Hallway", "Other"];
-
-const componentOptions = [
-  { id: "ceilings", title: "Ceilings", iconKey: "ceilings", quantityKey: "ceilingArea", label: "Ceiling area", unit: "m²" },
-  { id: "walls", title: "Walls", iconKey: "walls", quantityKey: "wallArea", label: "Wall area", unit: "m²" },
-  { id: "doors", title: "Doors", iconKey: "doors", quantityKey: "doors", label: "Doors", unit: "pcs" },
-  { id: "windows", title: "Windows", iconKey: "windows", quantityKey: "windows", label: "Windows", unit: "pcs" },
-  { id: "radiators", title: "Radiators", iconKey: "radiators", quantityKey: "radiators", label: "Radiators", unit: "pcs" },
-  { id: "baseboards", title: "Baseboards", iconKey: "baseboards", quantityKey: "baseboards", label: "Baseboards", unit: "lm" },
-  { id: "railings", title: "Railings / Balcony", iconKey: "railings", quantityKey: "railingLength", label: "Railing length", unit: "lm" },
-  { id: "stairs", title: "Stairs / Steps", iconKey: "stairs", quantityKey: "stairSteps", label: "Stair steps", unit: "steps" },
-  { id: "other", title: "Other", iconKey: "other", quantityKey: "otherUnits", label: "Other items", unit: "qty" }
-];
-
-const facadeComponent = { id: "facade", title: "Facade / Exterior Surface", iconKey: "facade", quantityKey: "facadeArea", label: "Facade area", unit: "m²" };
-
-/**
- * Component-specific option sets (spec §4 and §6).
- *
- * Selecting a component surfaces only its own options; nothing here is asked of a
- * customer who did not choose that component.
- */
-const componentDetailGroups = {
-  doors: [
-    { id: "doorType", label: "Door type", choices: [
-      { id: "standard", title: "Standard" },
-      { id: "double", title: "Double" },
-      { id: "entrance", title: "Entrance" },
-      { id: "other", title: "Other" }
-    ] },
-    { id: "doorMaterial", label: "Material", choices: [
-      { id: "wood", title: "Wood" },
-      { id: "metal", title: "Metal" },
-      { id: "unsure", title: "Not sure" }
-    ] },
-    { id: "doorSides", label: "Painting", choices: [
-      { id: "one_side", title: "One side" },
-      { id: "both_sides", title: "Both sides" }
-    ] },
-    { id: "doorFrame", label: "Door frame", choices: [
-      { id: "yes", title: "Yes" },
-      { id: "no", title: "No" }
-    ] },
-    { id: "doorCondition", label: "Condition", choices: [
-      { id: "good", title: "Good" },
-      { id: "minor", title: "Minor preparation" },
-      { id: "renovation", title: "Renovation required" }
-    ] }
-  ],
-  railings: [
-    { id: "railingType", label: "Railing type", choices: [
-      { id: "balcony", title: "Balcony railing" },
-      { id: "stair", title: "Stair railing" }
-    ] },
-    { id: "railingMaterial", label: "Material", choices: [
-      { id: "metal", title: "Metal" },
-      { id: "wood", title: "Wood" }
-    ] },
-    { id: "railingCondition", label: "Condition", choices: [
-      { id: "good", title: "Good" },
-      { id: "minor", title: "Minor preparation" },
-      { id: "renovation", title: "Renovation required" }
-    ] }
-  ]
-};
-
-const componentDetailDefaults = {
-  doorType: "standard",
-  doorMaterial: "wood",
-  doorSides: "both_sides",
-  doorFrame: "yes",
-  doorCondition: "good",
-  railingType: "balcony",
-  railingMaterial: "metal",
-  railingCondition: "good"
-};
-
-const serviceOptions = [
-  { id: "ceiling_paint_2_coats", title: "Paint ceilings – 2 coats", components: ["ceilings"] },
-  { id: "wall_paint_2_coats", title: "Paint walls – 2 coats", components: ["walls", "facade"] },
-  { id: "remove_wallpaper", title: "Remove wallpaper", components: ["walls"] },
-  { id: "apply_wallpaper", title: "Apply wallpaper", components: ["walls"] },
-  { id: "filling_spackling", title: "Filling / Spackling", components: ["walls", "ceilings", "facade"] },
-  { id: "mold_treatment", title: "Mold treatment", components: ["walls", "ceilings", "facade"] },
-  { id: "nicotine_treatment", title: "Nicotine treatment", components: ["walls", "ceilings"] },
-  { id: "water_damage_repair", title: "Damage remediation", components: ["walls", "ceilings"] },
-  { id: "priming_sealing", title: "Priming / Sealing", components: ["walls", "ceilings", "facade"] },
-  { id: "paint_doors", title: "Paint doors", components: ["doors"] },
-  { id: "paint_windows", title: "Paint window frames", components: ["windows"] },
-  { id: "paint_radiators", title: "Paint radiators", components: ["radiators"] },
-  { id: "paint_baseboards", title: "Paint baseboards", components: ["baseboards"] },
-  { id: "railing_cleaning", title: "Clean railings", components: ["railings"] },
-  { id: "railing_sanding", title: "Sand railings", components: ["railings"] },
-  { id: "railing_priming", title: "Prime railings", components: ["railings"] },
-  { id: "paint_railings", title: "Paint / coat railings", components: ["railings"] },
-  { id: "paint_stairs", title: "Paint / varnish stairs", components: ["stairs"] },
-  { id: "paint_other", title: "Painting / coating – other items", components: ["other"] },
-  { id: "covering_protection", title: "Covering / Protection", components: ["ceilings", "walls", "doors", "windows", "radiators", "baseboards", "railings", "stairs", "facade", "other"] }
-];
-
-const simpleServiceOptions = [
-  { id: "paint_walls", title: "Paint walls – 2 coats", iconKey: "walls" },
-  { id: "paint_ceilings", title: "Paint ceilings – 2 coats", iconKey: "ceilings" },
-  { id: "apply_wallpaper", title: "Apply wallpaper", iconKey: "walls" },
-  { id: "remove_wallpaper", title: "Remove wallpaper", iconKey: "walls" },
-  { id: "filling_spackling", title: "Filling / Spackling", iconKey: "walls" },
-  { id: "covering_protection", title: "Covering / Protection", iconKey: "other" }
-];
-
-const photoCategories = ["Room overview", "Walls", "Ceiling", "Damage", "Mold", "Water damage", "Facade", "Windows", "Doors", "Other"];
-
-const detailedStepMeta = [
-  { number: "01", key: "type", title: "Project Type", icon: "⌂" },
-  { number: "02", key: "components", title: "Components", icon: "▦" },
-  { number: "03", key: "services", title: "Work & Services", icon: "✦" },
-  { number: "04", key: "quantities", title: "Quantities", icon: "↕" },
-  { number: "05", key: "location", title: "Location", icon: "◎" },
-  { number: "06", key: "result", title: "Summary", icon: "◉" },
-  { number: "07", key: "verify", title: "Verify E-Mail", icon: "@" },
-  { number: "08", key: "price", title: "Price", icon: "✓" }
-];
-
-const simpleStepMeta = [
-  { number: "01", key: "type", title: "Project Type", icon: "⌂" },
-  { number: "02", key: "scope", title: "Scope & Work", icon: "▦" },
-  { number: "03", key: "condition", title: "Condition", icon: "◈" },
-  { number: "04", key: "location", title: "Location", icon: "◎" },
-  { number: "05", key: "contact", title: "Get Price", icon: "✓" }
-];
-
-const conditionOptions = [
-  { id: "good", title: "Good Condition", desc: "No major preparation work needed.", iconKey: "condition_good" },
-  { id: "minor_repairs", title: "Minor Repairs", desc: "Small filling work, hairline cracks.", iconKey: "condition_minor" },
-  { id: "renovation", title: "Renovation Required", desc: "More extensive work: peeling, patching, remediation.", iconKey: "condition_renovation" }
-];
-
-const workScopeOptions = [
-  { id: "walls", title: "Walls Only", desc: "Paint or treat all walls", iconKey: "paint_roller" },
-  { id: "ceilings", title: "Ceilings Only", desc: "Paint or treat all ceilings", iconKey: "ceiling_lamp" },
-  { id: "walls_ceilings", title: "Walls & Ceilings", desc: "Complete interior painting", iconKey: "apartment" }
-];
-
-const customerRequiredFields = ["firstName", "lastName", "phone", "address", "postalCode", "city"];
-
-const initialState = {
-  calculatorType: "SELECT", // "SELECT" | "SIMPLE" | "DETAILED"
-  mode: "CALCULATE",
-  propertyType: "",
-  roomType: "",
-  components: [],
-  services: [],
-  quantities: {},
-  componentDetails: { ...componentDetailDefaults },
-  projectNotes: "",
-  email: "",
-  code: ["", "", "", ""],
-  customerInfo: {
-    firstName: "",
-    lastName: "",
-    phone: "",
-    address: "",
-    postalCode: "",
-    city: "",
-    company: "",
-    propertyManagement: false
-  },
-  // Simple mode specifics (Customer A)
-  roomCount: 3,
-  roomSize: "medium",
-  simpleServices: ["paint_walls", "paint_ceilings", "covering_protection"],
-  workScope: "walls_ceilings",   // "walls" | "ceilings" | "walls_ceilings"
-  condition: "good",              // "good" | "minor_repairs" | "renovation"
-  postalCode: "",
-  locationCity: ""
-};
-
-function toggle(list, value) {
-  return list.includes(value) ? list.filter((item) => item !== value) : [...list, value];
-}
+import {
+  propertyTypes,
+  quickPropertyTypes,
+  roomTypes,
+  componentOptions,
+  facadeComponent,
+  componentDetailGroups,
+  componentDetailDefaults,
+  serviceOptions,
+  simpleServiceOptions,
+  conditionOptions,
+  workScopeOptions,
+  roomSizeOptions,
+  roomCountOptions,
+  photoCategories,
+  detailedStepMeta,
+  simpleStepMeta,
+  customerRequiredFields,
+  initialState,
+  titlesFromIds,
+  toggle
+} from "@/lib/offerCalculator/catalog";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
 
 function ComponentIcon({ iconKey }) {
   const commonProps = {
@@ -407,6 +146,47 @@ function ComponentIcon({ iconKey }) {
           <path d="M18 18h.01M24 18h.01M30 18h.01" />
         </svg>
       );
+    case "garage_doors":
+      return (
+        <svg {...commonProps}>
+          <rect x="10" y="12" width="28" height="24" rx="2" />
+          <path d="M10 18h28M10 24h28M10 30h28" />
+          <path d="M22 33h4" />
+        </svg>
+      );
+    case "shutters":
+      return (
+        <svg {...commonProps}>
+          <rect x="10" y="12" width="10" height="24" rx="1" />
+          <rect x="28" y="12" width="10" height="24" rx="1" />
+          <path d="M12 17h6M12 22h6M12 27h6M12 31h6" />
+          <path d="M30 17h6M30 22h6M30 27h6M30 31h6" />
+        </svg>
+      );
+    case "plaster_render":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 28l14-14 8 8-14 14z" />
+          <path d="M26 14l4-4 4 4-4 4" />
+          <path d="M12 36h24" />
+        </svg>
+      );
+    case "pressure_cleaning":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 26l12-12 6 6-12 12H12v-6z" />
+          <path d="M30 14l4-4" />
+          <path d="M34 18l3-1M31 22l3 2M27 25l2 4" />
+        </svg>
+      );
+    case "spray_painting":
+      return (
+        <svg {...commonProps}>
+          <path d="M14 22v14h8V22z" />
+          <path d="M18 14v8M18 14l-4 4M18 14l4 4" />
+          <path d="M26 12l2-2M29 15l3-1M28 19l3 2" />
+        </svg>
+      );
     case "condition_good":
       return (
         <svg {...commonProps}>
@@ -456,6 +236,74 @@ function ComponentIcon({ iconKey }) {
           <path d="M24 16v16M16 24h16" strokeWidth="3" />
         </svg>
       );
+    case "step_property":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 22 24 12l12 10" />
+          <path d="M15 20v16h18V20" />
+          <path d="M21 36v-8h6v8" />
+        </svg>
+      );
+    case "step_components":
+      return (
+        <svg {...commonProps}>
+          <rect x="12" y="12" width="10" height="10" rx="1.5" />
+          <rect x="26" y="12" width="10" height="10" rx="1.5" />
+          <rect x="12" y="26" width="10" height="10" rx="1.5" />
+          <rect x="26" y="26" width="10" height="10" rx="1.5" />
+        </svg>
+      );
+    case "step_services":
+      return (
+        <svg {...commonProps}>
+          <path d="M14 15h16a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2Z" />
+          <path d="M32 18h4v10H25v6" />
+          <path d="M22 34h6" />
+        </svg>
+      );
+    case "step_quantities":
+      return (
+        <svg {...commonProps}>
+          <path d="M14 14h20v20H14Z" />
+          <path d="M14 20h4M14 28h4M20 34v-4M28 34v-4" />
+        </svg>
+      );
+    case "step_condition":
+      return (
+        <svg {...commonProps}>
+          <path d="M14 34l6-6 9 9-6 6-9-9Z" />
+          <path d="M26 21l6-6a4 4 0 1 1 6 6l-6 6" />
+        </svg>
+      );
+    case "step_location":
+      return (
+        <svg {...commonProps}>
+          <path d="M24 10a8 8 0 0 0-8 8c0 7 8 18 8 18s8-11 8-18a8 8 0 0 0-8-8Z" />
+          <circle cx="24" cy="18" r="3" />
+        </svg>
+      );
+    case "step_summary":
+      return (
+        <svg {...commonProps}>
+          <path d="M16 12h16a2 2 0 0 1 2 2v22a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V14a2 2 0 0 1 2-2Z" />
+          <path d="M20 12V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3" />
+          <path d="M19 20h10M19 26h10M19 32h6" />
+        </svg>
+      );
+    case "step_verify":
+      return (
+        <svg {...commonProps}>
+          <rect x="11" y="14" width="26" height="20" rx="2" />
+          <path d="m11 16 13 10 13-10" />
+        </svg>
+      );
+    case "step_price":
+      return (
+        <svg {...commonProps}>
+          <circle cx="24" cy="24" r="14" />
+          <path d="m17 24 5 5 9-10" strokeWidth="3" />
+        </svg>
+      );
     case "other":
     default:
       return (
@@ -468,11 +316,6 @@ function ComponentIcon({ iconKey }) {
   }
 }
 
-function titlesFromIds(options, ids) {
-  return ids
-    .map((id) => options.find((option) => option.id === id)?.title || id)
-    .filter(Boolean);
-}
 
 /* Renders the option groups belonging to the components the customer actually selected
    (spec §4/§6). A doors-only project sees door options and nothing else. */
@@ -518,8 +361,8 @@ function ComponentDetailFields({ components, details, onChange }) {
    customer's postcode rather than a flat fallback. */
 function LocationFields({ postalCode, city, onChange }) {
   return (
-    <div className={styles.quantityGrid} style={{ marginTop: "16px" }}>
-      <label className={styles.quantityField} style={{ gridColumn: "1 / -1" }}>
+    <div className={cx(styles.quantityGrid, styles.locationGrid)} style={{ marginTop: "16px" }}>
+      <label className={styles.quantityField}>
         <span>Postal Code (PLZ)</span>
         <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
           <span style={{ position: "absolute", left: "12px", color: "var(--yellow)", pointerEvents: "none", display: "flex", alignItems: "center", width: "20px", height: "20px" }}>
@@ -535,7 +378,7 @@ function LocationFields({ postalCode, city, onChange }) {
           />
         </div>
       </label>
-      <label className={styles.quantityField} style={{ gridColumn: "1 / -1" }}>
+      <label className={styles.quantityField}>
         <span>City / Town</span>
         <div>
           <input
@@ -564,7 +407,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   const [busy, setBusy] = useState(false);
   const [codeSent, setCodeSent] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [showSiteVisitForm, setShowSiteVisitForm] = useState(false);
   const codeRefs = useRef([]);
+
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "41790000000";
 
   const isSimple = state.calculatorType === "SIMPLE";
   const isSelect = state.calculatorType === "SELECT";
@@ -578,9 +424,50 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
   const components = useMemo(() => {
     return state.propertyType === "facade"
-      ? [facadeComponent, ...componentOptions.filter((item) => ["windows", "doors", "other"].includes(item.id))]
+      ? [
+          facadeComponent,
+          ...componentOptions.filter((item) =>
+            ["windows", "doors", "shutters", "garage_doors", "pressure_cleaning", "plaster_render", "other"].includes(item.id)
+          )
+        ]
       : componentOptions;
   }, [state.propertyType]);
+
+  const COMPONENT_PRIMARY_SERVICE = {
+    ceilings: "ceiling_paint_2_coats",
+    walls: "wall_paint_2_coats",
+    doors: "paint_doors",
+    windows: "paint_windows",
+    radiators: "paint_radiators",
+    baseboards: "paint_baseboards",
+    railings: "paint_railings",
+    stairs: "paint_stairs",
+    garage_doors: "paint_garage_doors",
+    shutters: "paint_shutters",
+    plaster_render: "plaster_render_work",
+    pressure_cleaning: "pressure_clean",
+    spray_painting: "spray_paint_items",
+    facade: "wall_paint_2_coats"
+  };
+
+  const toggleComponent = useCallback((componentId) => {
+    setState((current) => {
+      const nextComponents = toggle(current.components, componentId);
+      let nextServices = current.services;
+      // Preselect service when only 1 component is selected (§2.3)
+      if (nextComponents.length === 1) {
+        const primaryService = COMPONENT_PRIMARY_SERVICE[nextComponents[0]];
+        if (primaryService && !nextServices.includes(primaryService)) {
+          nextServices = [...nextServices, primaryService];
+        }
+      }
+      return {
+        ...current,
+        components: nextComponents,
+        services: nextServices
+      };
+    });
+  }, []);
 
   const visibleServices = useMemo(() => {
     return serviceOptions.filter((service) => {
@@ -605,6 +492,19 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   const selectedServiceTitles = useMemo(() => {
     return titlesFromIds(serviceOptions, state.services);
   }, [state.services]);
+
+  const projectTitleText = useMemo(() => {
+    const propTitle = propertyTypes.find((o) => o.id === state.propertyType)?.title || "Malerarbeiten";
+    if (isSimple) {
+      const scopeTitle = workScopeOptions.find((o) => o.id === state.workScope)?.title || "";
+      return [propTitle, scopeTitle].filter(Boolean).join(" - ");
+    }
+    return [propTitle, selectedComponentTitles.slice(0, 2).join(", ")].filter(Boolean).join(" - ");
+  }, [state.propertyType, state.workScope, isSimple, selectedComponentTitles]);
+
+  const whatsappUrl = useMemo(() => {
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hallo AMIGOS Maler, ich habe eine Online-Offerte berechnet (${projectTitleText}).`)}`;
+  }, [whatsappNumber, projectTitleText]);
 
   const progress = useMemo(() => {
     if (isSimple) {
@@ -753,53 +653,62 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     if (canContinue()) setStep((current) => Math.min(current + 1, detailedStepMeta.length - 1));
   }
 
-  // For simple flow: collect contact details, then trigger calculate + send code
+  // Shared handler for both Simple and Detailed: send customer contact and dispatch verification code
   async function submitContactAndSendCode() {
     const info = state.customerInfo;
     if (!info.firstName.trim() || !info.lastName.trim() || !state.email.trim()) {
-      setErrors({ general: "Please enter your first name, last name, and email address." });
+      setErrors({ general: "Please enter your first name, last name, and e-mail address." });
       return;
     }
-    // Calculate first, then send code
+
     setBusy(true);
     setErrors({});
     setNotice("");
 
     try {
-      const calcResponse = await fetch("/api/offer-calculator/quick-calculate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          propertyType: state.propertyType,
-          roomType: state.roomType,
-          roomCount: state.roomCount,
-          roomSize: state.roomSize,
-          workScope: state.workScope,
-          condition: state.condition,
-          postalCode: state.postalCode,
-          locationCity: state.locationCity,
-          projectNotes: [
-            `Location: ${state.postalCode} ${state.locationCity}`.trim(),
-            `Condition: ${state.condition}`
-          ].filter(Boolean).join(" | ")
-        })
-      });
-      const calcData = await calcResponse.json();
+      let activeSessionId = sessionId;
 
-      if (!calcResponse.ok) {
-        setBusy(false);
-        setErrors(calcData.errors || { general: calcData.error || "Calculation failed." });
-        return;
+      if (isSimple) {
+        const calcResponse = await fetch("/api/offer-calculator/quick-calculate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            propertyType: state.propertyType,
+            roomType: state.roomType,
+            roomCount: state.roomCount,
+            roomSize: state.roomSize,
+            workScope: state.workScope,
+            condition: state.condition,
+            postalCode: state.postalCode,
+            locationCity: state.locationCity,
+            projectNotes: [
+              `Location: ${state.postalCode} ${state.locationCity}`.trim(),
+              `Condition: ${state.condition}`
+            ].filter(Boolean).join(" | ")
+          })
+        });
+        const calcData = await calcResponse.json();
+
+        if (!calcResponse.ok) {
+          setBusy(false);
+          setErrors(calcData.errors || { general: calcData.error || "Calculation failed." });
+          return;
+        }
+
+        activeSessionId = calcData.sessionId;
+        setSessionId(activeSessionId);
       }
 
-      const sid = calcData.sessionId;
-      setSessionId(sid);
-
-      // Now send verification code
       const codeResponse = await fetch("/api/offer-calculator/send-code", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ sessionId: sid, email: state.email })
+        body: JSON.stringify({
+          sessionId: activeSessionId,
+          email: state.email,
+          firstName: state.customerInfo.firstName,
+          lastName: state.customerInfo.lastName,
+          phone: state.customerInfo.phone
+        })
       });
       const codeData = await codeResponse.json();
 
@@ -811,7 +720,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       }
 
       setCodeSent(true);
-      setStep(10); // Move to code entry screen
+      setStep(isSimple ? 10 : 6); // Move to code entry screen
       setNotice(codeData.developmentCode ? `Development code: ${codeData.developmentCode}` : "Verification code sent. Please check your e-mail.");
     } catch (err) {
       setBusy(false);
@@ -819,116 +728,133 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
   }
 
+  // Alias for backward compatibility if invoked anywhere
+  const sendDetailedCode = submitContactAndSendCode;
 
-  async function sendDetailedCode() {
-    const info = state.customerInfo;
-    if (!info.firstName.trim() || !info.lastName.trim() || !state.email.trim()) {
-      setErrors({ general: "Please enter your first name, last name, and email address." });
-      return;
+  async function resendCode() {
+    if (!sessionId && isSimple) {
+      return submitContactAndSendCode();
     }
 
     setBusy(true);
     setErrors({});
     setNotice("");
 
-    const response = await fetch("/api/offer-calculator/send-code", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sessionId, email: state.email })
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/offer-calculator/send-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          email: state.email,
+          firstName: state.customerInfo.firstName,
+          lastName: state.customerInfo.lastName,
+          phone: state.customerInfo.phone
+        })
+      });
+      const data = await response.json();
 
-    setBusy(false);
+      setBusy(false);
 
-    if (!response.ok) {
-      setErrors(data.errors || { general: data.error || "Could not send verification code." });
-      return;
+      if (!response.ok) {
+        setErrors(data.errors || { general: data.error || "Could not send verification code." });
+        return;
+      }
+
+      setCodeSent(true);
+      setNotice(data.developmentCode ? `Development code: ${data.developmentCode}` : "Verification code resent. Please check your e-mail.");
+    } catch (err) {
+      setBusy(false);
+      setErrors({ general: "An error occurred. Please try again." });
     }
-
-    setCodeSent(true);
-    setStep(6);
-    setNotice(data.developmentCode ? `Development code: ${data.developmentCode}` : "Verification code sent. Please check your e-mail.");
   }
 
-  async function sendCode() {
-    setBusy(true);
-    setErrors({});
-    setNotice("");
-
-    const response = await fetch("/api/offer-calculator/send-code", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sessionId, email: state.email })
-    });
-    const data = await response.json();
-
-    setBusy(false);
-
-    if (!response.ok) {
-      setErrors(data.errors || { general: data.error || "Could not send verification code." });
-      return;
-    }
-
-    setCodeSent(true);
-    setNotice(data.developmentCode ? `Development code: ${data.developmentCode}` : "Verification code sent. Please check your e-mail.");
-  }
+  const sendCode = resendCode;
 
   async function verifyCode() {
     setBusy(true);
     setErrors({});
     setNotice("");
 
-    const response = await fetch("/api/offer-calculator/verify-code", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ sessionId, code: state.code.join("") })
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/offer-calculator/verify-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, code: state.code.join("") })
+      });
+      const data = await response.json();
 
-    setBusy(false);
+      setBusy(false);
 
-    if (!response.ok) {
-      setErrors({ general: data.error || "Verification failed." });
+      if (!response.ok) {
+        setErrors({ general: data.error || "Verification failed." });
+        return;
+      }
+
+      setPriceRange(data.priceRange);
+      // Simple mode → step 11 (simple price); Detailed mode → step 7 (price)
+      setStep(isSimple ? 11 : 7);
+    } catch (err) {
+      setBusy(false);
+      setErrors({ general: "Verification failed. Please try again." });
+    }
+  }
+
+  async function uploadPhotos(fileInput, category) {
+    if (!sessionId || !fileInput) return;
+    const files = fileInput instanceof FileList || Array.isArray(fileInput)
+      ? Array.from(fileInput)
+      : [fileInput];
+
+    if (files.length === 0) return;
+
+    for (const file of files) {
+      const formData = new FormData();
+      formData.set("sessionId", sessionId);
+      formData.set("category", category);
+      formData.set("photo", file);
+
+      try {
+        const response = await fetch("/api/offer-calculator/photos", {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
+
+        if (response.ok) {
+          setPhotos((current) => [...current, data.photo]);
+        } else {
+          setErrors({ general: data.error || `Upload failed for ${file.name}.` });
+        }
+      } catch {
+        setErrors({ general: `Upload failed for ${file.name}. Please try again.` });
+      }
+    }
+  }
+
+  const uploadPhoto = uploadPhotos;
+
+  async function submitRequest(requestedAction) {
+    if (requestedAction === "CONSULTATION" && !showSiteVisitForm) {
+      setShowSiteVisitForm(true);
       return;
     }
 
-    setPriceRange(data.priceRange);
-    // Simple mode → step 11 (simple price reveal); Detailed mode → step 7 (price)
-    setStep(isSimple ? 11 : 7);
-  }
-
-  async function uploadPhoto(file, category) {
-    if (!sessionId || !file) return;
-
-    const formData = new FormData();
-    formData.set("sessionId", sessionId);
-    formData.set("category", category);
-    formData.set("photo", file);
-
-    const response = await fetch("/api/offer-calculator/photos", {
-      method: "POST",
-      body: formData
-    });
-    const data = await response.json();
-
-    if (response.ok) {
-      setPhotos((current) => [...current, data.photo]);
-    } else {
-      setErrors({ general: data.error || "Photo upload failed." });
-    }
-  }
-
-  async function submitRequest(requestedAction) {
     const fieldErrors = {};
+    const requiredFields = requestedAction === "CONSULTATION"
+      ? ["firstName", "lastName", "address"]
+      : ["firstName", "lastName"];
 
-    for (const field of customerRequiredFields) {
+    for (const field of requiredFields) {
       if (!String(state.customerInfo[field] || "").trim()) fieldErrors[field] = "Required";
     }
 
     if (Object.keys(fieldErrors).length) {
       setErrors({
         ...fieldErrors,
-        general: "Please complete your contact and property details before submitting."
+        general: requestedAction === "CONSULTATION"
+          ? "Please enter your street address for the site visit."
+          : "Please check your contact details."
       });
       return;
     }
@@ -944,6 +870,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         sessionId,
         customerInfo: {
           ...state.customerInfo,
+          postalCode: state.customerInfo.postalCode || state.postalCode,
+          city: state.customerInfo.city || state.locationCity,
           email: state.email,
           requestedAction
         }
@@ -959,37 +887,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
 
     setNotice(requestedAction === "CONSULTATION"
-      ? "Consultation request received. It is now in the AMIGOS CRM."
+      ? "Site visit request received. Our team will contact you to confirm the appointment."
       : "Offer request received. It is now in the AMIGOS CRM.");
-  }
-
-  function renderStepHeader(kicker, title, subtitle) {
-    return (
-      <div className={styles.stepHeaderRow}>
-        <div className={styles.stepHeaderCopy}>
-          {kicker && <span className={styles.stepKicker}>{kicker}</span>}
-          <h2>{title}</h2>
-          {subtitle && <p>{subtitle}</p>}
-        </div>
-        {step < inputStepCount && (
-          <div className={styles.stepHeaderNav}>
-            {step > 0 && (
-              <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                ← BACK
-              </button>
-            )}
-            <button
-              type="button"
-              className={styles.primaryAction}
-              disabled={!canContinue() || busy}
-              onClick={next}
-            >
-              {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
-            </button>
-          </div>
-        )}
-      </div>
-    );
   }
 
   function renderPropertyCard(option, selected, onClick) {
@@ -1012,7 +911,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         </div>
         <div className={styles.propertyCardInfo}>
           <strong className={styles.propertyCardTitle}>{option.title}</strong>
-          {option.subtitle && <span className={styles.propertyCardSubtitle}>{option.subtitle}</span>}
+          <span className={styles.propertyCardSubtitle}>{option.subtitle || "\u00A0"}</span>
         </div>
       </button>
     );
@@ -1077,7 +976,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.selectionHeroContainer}>
             {/* 1. Header */}
             <div className={styles.selectionHeader}>
-              <span className={styles.selectionKicker}>AMIGOS MALER GMBH · KOMPETENZ VERBINDET</span>
               <h1 className={styles.selectionTitle}>OFFER CALCULATOR &amp; REQUEST</h1>
               <h2 className={styles.selectionSubTitle}>Choose the right calculation for your project.</h2>
               <p className={styles.selectionLead}>
@@ -1104,7 +1002,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 }}
               >
                 <div className={styles.tabBadgeRow}>
-                  <span className={styles.tabTagFast}>FOR HOMEOWNERS</span>
+                  <span className={styles.tabTagFast}>
+                    <span className={styles.tabTagIcon}>⚡</span> FOR HOMEOWNERS
+                  </span>
+                  <span className={styles.tabTagEstimateTime}>⏱ ~2 min estimate</span>
                 </div>
 
                 <h3 className={styles.tabHeadline}>
@@ -1144,18 +1045,29 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 tabIndex={0}
                 className={cx(styles.selectionTabCard, styles.tabDetailedSpecs)}
                 onClick={() => {
-                  setState((curr) => ({ ...curr, calculatorType: "DETAILED" }));
-                  setStep(0);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
+                  if (detailedQuoteHref) {
+                    window.location.href = detailedQuoteHref;
+                  } else {
                     setState((curr) => ({ ...curr, calculatorType: "DETAILED" }));
                     setStep(0);
                   }
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    if (detailedQuoteHref) {
+                      window.location.href = detailedQuoteHref;
+                    } else {
+                      setState((curr) => ({ ...curr, calculatorType: "DETAILED" }));
+                      setStep(0);
+                    }
+                  }
+                }}
               >
                 <div className={styles.tabBadgeRow}>
-                  <span className={styles.tabTagDetailed}>FOR PROFESSIONALS</span>
+                  <span className={styles.tabTagDetailed}>
+                    <span className={styles.tabTagIcon}>📐</span> FOR PROFESSIONALS
+                  </span>
+                  <span className={styles.tabTagEstimateTime}>📄 Itemized PDF</span>
                 </div>
 
                 <h3 className={styles.tabHeadline}>
@@ -1242,11 +1154,14 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 <span>GO TO DETAILED QUOTE CALCULATOR</span>
                 <i>→</i>
               </a>
+              <p className={styles.protectedPriceNote}>
+                🔒 <strong>Prices are protected</strong> — visible after e-mail verification.
+              </p>
             </div>
           ) : (
             <>
               <div className={styles.heroCopy}>
-                <span className={styles.brand}>AMIGOS MALER GMBH</span>
+                <span className={styles.brand}>AMIGOS MALER <span style={{ textTransform: "none" }}>GmbH</span></span>
                 <strong>Kompetenz verbindet</strong>
                 <h1>OFFER CALCULATOR &amp; REQUEST</h1>
                 <p>Calculate, see your price – and request your offer.</p>
@@ -1288,17 +1203,30 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             </>
           )}
 
-          <div className={styles.securityCard}>
-            <span>🔒</span>
-            <h2>PRICES ARE PROTECTED</h2>
-            <p>The exact price is only visible after e-mail verification.</p>
-          </div>
+          {!isHomeQuickQuote && (
+            <div className={styles.securityCard}>
+              <span>🔒</span>
+              <h2>PRICES ARE PROTECTED</h2>
+              <p>The exact price is only visible after e-mail verification.</p>
+            </div>
+          )}
         </aside>
 
         <div className={styles.embeddedWorkspace}>
           {isHomeQuickQuote && (
             <header className={styles.quickQuoteIntro}>
-              <h2>Your Estimated Quote in Just a Few Steps</h2>
+              <div className={styles.quickQuoteTopBar}>
+                <h2>Your Estimated Quote in Just a Few Steps</h2>
+                {embedded && (
+                  <button
+                    type="button"
+                    className={styles.backToSelectionTopBtn}
+                    onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
+                  >
+                    ← Change Calculator
+                  </button>
+                )}
+              </div>
               <p>Simple. Fast. No obligation. Receive your price after entering your email address.</p>
             </header>
           )}
@@ -1329,7 +1257,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   }}
                 >
                   <span>{item.number}</span>
-                  <i>{item.icon}</i>
+                  <i>{item.icon?.startsWith?.("step_") ? <ComponentIcon iconKey={item.icon} /> : item.icon}</i>
                   <b>{item.title}</b>
                 </button>
               );
@@ -1344,11 +1272,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* STEP 0: Project Type */}
               {step === 0 && (
                 <div className={styles.stepPanel}>
-                  {renderStepHeader(
-                    "01 Project Type",
-                    isSimple ? "What type of property would you like us to paint?" : "What type of property is it?",
-                    "Please select your property type below."
-                  )}
+                  <span className={styles.stepKicker}>01 Project Type</span>
+                  <h2>{isSimple ? "What type of property would you like us to paint?" : "What type of property is it?"}</h2>
+                  <p>Please select your property type below.</p>
                   <div className={styles.propertyGrid}>
                     {(isSimple ? quickPropertyTypes : propertyTypes).map((option) =>
                       renderPropertyCard(option, state.propertyType === option.id, () => {
@@ -1376,11 +1302,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 1: Scope & Work */}
               {isSimple && step === 1 && (
                 <div className={styles.stepPanel}>
-                  {renderStepHeader(
-                    "02 Scope & Work",
-                    "What would you like us to paint?",
-                    "Select the work scope that best fits your project. No m² calculations needed."
-                  )}
+                  <span className={styles.stepKicker}>02 Scope & Work</span>
+                  <h2>What would you like us to paint?</h2>
+                  <p>Select the work scope that best fits your project. No m² calculations needed.</p>
 
                   <div className={styles.scopeCardGrid}>
                     {workScopeOptions.map((option) =>
@@ -1435,11 +1359,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 2: Condition */}
               {isSimple && step === 2 && (
                 <div className={styles.stepPanel}>
-                  {renderStepHeader(
-                    "03 Condition",
-                    "What is the current condition?",
-                    "This helps us give you the most accurate estimate possible."
-                  )}
+                  <span className={styles.stepKicker}>03 Condition</span>
+                  <h2>What is the current condition?</h2>
+                  <p>This helps us give you the most accurate estimate possible.</p>
 
                   <div className={styles.conditionCardGrid}>
                     {conditionOptions.map((option) =>
@@ -1454,11 +1376,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* SIMPLE MODE — STEP 3: Location */}
               {isSimple && step === 3 && (
                 <div className={styles.stepPanel}>
-                  {renderStepHeader(
-                    "04 Location",
-                    "Where is the property located?",
-                    "Your location helps us calculate any travel costs accurately."
-                  )}
+                  <span className={styles.stepKicker}>04 Location</span>
+                  <h2>Where is the property located?</h2>
+                  <p>Your location helps us calculate any travel costs accurately.</p>
                   <LocationFields postalCode={state.postalCode} city={state.locationCity} onChange={updateField} />
                 </div>
               )}
@@ -1466,24 +1386,19 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* DETAILED MODE — STEP 5: Location */}
               {!isSimple && step === 4 && (
                 <div className={styles.stepPanel}>
-                  {renderStepHeader(
-                    "05 Location",
-                    "Where is the property located?",
-                    "Your location helps us calculate any travel costs accurately."
-                  )}
+                  <span className={styles.stepKicker}>05 Location</span>
+                  <h2>Where is the property located?</h2>
+                  <p>Your location helps us calculate any travel costs accurately.</p>
                   <LocationFields postalCode={state.postalCode} city={state.locationCity} onChange={updateField} />
                 </div>
               )}
 
-                  {/* SIMPLE MODE — STEP 4: Contact + Send Code (Price Protection) */}
+                  {/* SIMPLE MODE — STEP 4: Contact + Send Code */}
                   {isSimple && step === 4 && (
                     <div className={styles.stepPanel}>
-                      <span className={styles.stepKicker}>05 Receive Your Price</span>
+                      <span className={styles.stepKicker}>05 Your Quote</span>
                       <h2>Your estimated quote is ready.</h2>
-                      <p>
-                        Enter your contact details to receive your personal AMIGOS estimated quotation.
-                        Your price will be shown after e-mail verification.
-                      </p>
+                      <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
 
                       <div className={styles.customerGrid} style={{ marginTop: "16px" }}>
                         {[
@@ -1525,7 +1440,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           disabled={busy}
                           onClick={submitContactAndSendCode}
                         >
-                          {busy ? "SENDING…" : "SEND VERIFICATION CODE →"}
+                          {busy ? "SENDING…" : "GET MY ESTIMATED QUOTE →"}
                         </button>
                       </div>
                     </div>
@@ -1536,7 +1451,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     <div className={styles.verifyPanel}>
                       <span className={styles.stepKicker}>05 Verify E-Mail</span>
                       <h2>Check your e-mail</h2>
-                      <p>We sent a 4-digit code to <strong>{state.email}</strong>. Enter it below to reveal your price.</p>
+                      <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
 
                       {notice && <p className={styles.notice}>{notice}</p>}
                       {errors.general && <p className={styles.error}>{errors.general}</p>}
@@ -1563,22 +1478,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         ))}
                       </div>
                       <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-                        {busy ? "VERIFYING…" : "REVEAL MY PRICE →"}
+                        {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
                       </button>
-                      <button className={styles.textButton} type="button" onClick={submitContactAndSendCode}>
-                        Didn't receive a code? Resend code
+                      <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
+                        Didn't receive the code? Send again
                       </button>
                     </div>
                   )}
 
-                  {/* SIMPLE MODE — STEP 11: Price Reveal */}
+                  {/* SIMPLE MODE — STEP 11: Price Result */}
                   {isSimple && step === 11 && (
                     <div className={styles.pricePanel}>
                       <div className={styles.successMark}>✓</div>
-                      <span className={styles.stepKicker}>Your Estimated Quotation</span>
-                      <h2>Your Estimated Offer Price (Angebotspreis)</h2>
-                      <strong className={styles.priceRange}>{priceRange}</strong>
-                      <p>This is an approximate price range based on your project details. The final price may vary after review or an on-site inspection.</p>
+                      <span className={styles.stepKicker}>E-mail successfully verified</span>
+                      <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
 
                       <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
                         <h3>Your project summary</h3>
@@ -1588,12 +1501,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           <div><dt>Rooms</dt><dd>{state.roomCount} room(s) · {state.roomSize} size</dd></div>
                           <div><dt>Condition</dt><dd>{conditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
                           <div><dt>Location</dt><dd>{state.postalCode} {state.locationCity}</dd></div>
+                          <div><dt>Travel costs</dt><dd>Included</dd></div>
                         </dl>
                       </div>
 
+                      <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
+                        <strong className={styles.priceRange}>{priceRange}</strong>
+                        <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
+                      </div>
+                      <p>This is an approximate price estimate based on your project details. The final price may vary after review or an on-site inspection.</p>
+
+                      {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
+                      {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
+
                       <div className={styles.finalActions} style={{ marginTop: "20px" }}>
-                        <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>REQUEST A FREE OFFER</button>
-                        <button className={styles.secondaryAction} type="button" onClick={() => submitRequest("CONSULTATION")} disabled={busy}>REQUEST SITE VISIT</button>
                         {sessionId && (
                           <a
                             href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -1605,19 +1526,109 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                             <b>DOWNLOAD PDF QUOTE</b>
                           </a>
                         )}
-                      </div>
-
-                      <div style={{ marginTop: "12px", textAlign: "center" }}>
+                        <button
+                          className={styles.primaryAction}
+                          type="button"
+                          onClick={() => submitRequest("CONSULTATION")}
+                          disabled={busy}
+                        >
+                          REQUEST SITE VISIT
+                        </button>
                         <a
-                          href="https://wa.me/41441234567?text=Hallo%20AMIGOS%20Maler,%20ich%20habe%20eine%20Offerte%20berechnet"
+                          href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={styles.textButton}
-                          style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                          className={styles.secondaryAction}
+                          style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
                         >
                           <span>💬</span>
-                          <span>Contact via WhatsApp</span>
+                          <span>CONTACT VIA WHATSAPP</span>
                         </a>
+                      </div>
+
+                      {showSiteVisitForm && (
+                        <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
+                          <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <label style={{ display: "block", marginBottom: "8px" }}>
+                            <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
+                            <input
+                              value={state.customerInfo.address}
+                              placeholder="Bahnhofstrasse 12"
+                              onChange={(e) => updateCustomerInfo("address", e.target.value)}
+                              aria-invalid={Boolean(errors.address)}
+                            />
+                            {errors.address && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.address}</small>}
+                          </label>
+                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "8px" }}>
+                            <label>
+                              <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Postal Code</span>
+                              <input value={state.customerInfo.postalCode || state.postalCode} readOnly style={{ opacity: 0.8 }} />
+                            </label>
+                            <label>
+                              <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>City</span>
+                              <input value={state.customerInfo.city || state.locationCity} readOnly style={{ opacity: 0.8 }} />
+                            </label>
+                          </div>
+                          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
+                            <label>
+                              <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Company (optional)</span>
+                              <input
+                                value={state.customerInfo.company}
+                                placeholder="Company AG"
+                                onChange={(e) => updateCustomerInfo("company", e.target.value)}
+                              />
+                            </label>
+                            <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer", marginTop: "18px" }}>
+                              <input
+                                type="checkbox"
+                                checked={state.customerInfo.propertyManagement}
+                                onChange={(e) => updateCustomerInfo("propertyManagement", e.target.checked)}
+                              />
+                              <span style={{ fontSize: "0.85rem" }}>Property Management</span>
+                            </label>
+                          </div>
+                          <button
+                            className={styles.primaryAction}
+                            type="button"
+                            onClick={() => submitRequest("CONSULTATION")}
+                            disabled={busy}
+                          >
+                            {busy ? "SUBMITTING…" : "CONFIRM SITE VISIT REQUEST →"}
+                          </button>
+                        </div>
+                      )}
+
+                      <div className={styles.uploadPanel} style={{ marginTop: "24px" }}>
+                        <h3>Upload photos of your project (optional)</h3>
+                        <div className={styles.photoGrid}>
+                          {photoCategories.map((category) => (
+                            <label key={category} className={styles.photoDrop}>
+                              <span>{category}</span>
+                              <small>Take Photo or Choose From Library</small>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                multiple
+                                onChange={(event) => {
+                                  uploadPhotos(event.target.files, category);
+                                  event.target.value = "";
+                                }}
+                              />
+                            </label>
+                          ))}
+                        </div>
+                        {photos.length > 0 && (
+                          <div className={styles.uploadedPhotosList}>
+                            <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>
+                            <div className={styles.uploadedPhotosTags}>
+                              {photos.map((p, idx) => (
+                                <span key={p.id || idx} className={styles.photoTag}>
+                                  📷 {p.category}: {p.fileName}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -1626,14 +1637,12 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 1: Components */}
                   {!isSimple && step === 1 && (
                     <div className={styles.stepPanel}>
-                      {renderStepHeader(
-                        "02 Components",
-                        "Which components should be worked on?",
-                        "Select all that apply."
-                      )}
+                      <span className={styles.stepKicker}>02 Components</span>
+                      <h2>Which components should be worked on?</h2>
+                      <p>Select all that apply.</p>
                       <div className={styles.cardGrid}>
                         {components.map((option) => renderSelectionCard(option, state.components.includes(option.id), () => {
-                          setState((current) => ({ ...current, components: toggle(current.components, option.id) }));
+                          toggleComponent(option.id);
                         }))}
                       </div>
                     </div>
@@ -1642,11 +1651,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 2: Work & Services */}
                   {!isSimple && step === 2 && (
                     <div className={styles.stepPanel}>
-                      {renderStepHeader(
-                        "03 Work & Services",
-                        "What work should we do?",
-                        "Select multiple services. The catalogue is structured so it can grow with AMIGOS."
-                      )}
+                      <span className={styles.stepKicker}>03 Work & Services</span>
+                      <h2>What work should we do?</h2>
+                      <p>Select multiple services. The catalogue is structured so it can grow with AMIGOS.</p>
                       <div className={styles.serviceGrid}>
                         {visibleServices.map((option) => renderSelectionCard(option, state.services.includes(option.id), () => {
                           setState((current) => ({ ...current, services: toggle(current.services, option.id) }));
@@ -1658,11 +1665,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {/* DETAILED MODE — STEP 3: Quantities */}
                   {!isSimple && step === 3 && (
                     <div className={styles.stepPanel}>
-                      {renderStepHeader(
-                        "04 Quantities",
-                        "Enter the quantities",
-                        "Please enter the areas, lengths and quantities."
-                      )}
+                      <span className={styles.stepKicker}>04 Quantities</span>
+                      <h2>Enter the quantities</h2>
+                      <p>Please enter the areas, lengths and quantities.</p>
                       <div className={styles.quantityGrid}>
                         {visibleQuantities.map((item) => (
                           <label key={item.id} className={styles.quantityField}>
@@ -1703,22 +1708,70 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         <dl>
                           <div>
                             <dt>Property</dt>
-                            <dd>{propertyTypes.find((option) => option.id === state.propertyType)?.title || "Not selected"}{state.roomType ? ` · ${state.roomType}` : ""}</dd>
+                            <dd>
+                              <span>{propertyTypes.find((option) => option.id === state.propertyType)?.title || "Not selected"}{state.roomType ? ` · ${state.roomType}` : ""}</span>
+                              {step === 5 && <button type="button" className={styles.editStepLink} onClick={() => setStep(0)}>Edit</button>}
+                            </dd>
                           </div>
                           <div>
                             <dt>Components</dt>
-                            <dd>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</dd>
+                            <dd>
+                              <span>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</span>
+                              {step === 5 && <button type="button" className={styles.editStepLink} onClick={() => setStep(1)}>Edit</button>}
+                            </dd>
                           </div>
                           <div>
                             <dt>Services</dt>
-                            <dd>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</dd>
+                            <dd>
+                              <span>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</span>
+                              {step === 5 && <button type="button" className={styles.editStepLink} onClick={() => setStep(2)}>Edit</button>}
+                            </dd>
                           </div>
                           <div>
                             <dt>Quantities</dt>
-                            <dd>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</dd>
+                            <dd>
+                              <span>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</span>
+                              {step === 5 && <button type="button" className={styles.editStepLink} onClick={() => setStep(3)}>Edit</button>}
+                            </dd>
+                          </div>
+                          <div>
+                            <dt>Location</dt>
+                            <dd>
+                              <span>{state.postalCode ? `${state.postalCode} ${state.locationCity}`.trim() : "Not specified"}</span>
+                              {step === 5 && <button type="button" className={styles.editStepLink} onClick={() => setStep(4)}>Edit</button>}
+                            </dd>
                           </div>
                         </dl>
                       </div>
+                    </div>
+                  )}
+
+                  {/* NAV ACTIONS (Back & Continue) */}
+                  {step < inputStepCount && (
+                    <div className={styles.navActions}>
+                      <div className={styles.navActionsLeft}>
+                        {embedded ? (
+                          <button
+                            type="button"
+                            className={styles.secondaryAction}
+                            onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
+                          >
+                            ← Back to Quick Calculator
+                          </button>
+                        ) : (
+                          <a className={styles.backToQuickNavBtn} href="/#quote">
+                            ← Back to Quick Calculator
+                          </a>
+                        )}
+                        {step > 0 && (
+                          <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
+                            ← BACK
+                          </button>
+                        )}
+                      </div>
+                      <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
+                        {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
+                      </button>
                     </div>
                   )}
 
@@ -1731,29 +1784,33 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   )}
                 </div>
 
-                {/* UNLOCK / VERIFY / PRICE PANEL (Detailed mode only, Step >= 4) */}
+                {/* DETAILED MODE: CONTACT / VERIFY / PRICE PANEL (Step >= 5) */}
                 {!isSimple && step >= 5 && (
-                  <aside className={cx(styles.consultationShell, styles.embeddedRight, styles.unlockPanel)}>
-                    {step === 4 && (
+                  <aside className={cx(styles.consultationShell, styles.embeddedRight, styles.detailSidePanel)}>
+                    {step === 5 && (
                       <div className={styles.resultLocked}>
                         <span className={styles.stepKicker}>06 Summary</span>
                         <h2>Your estimated quote is ready.</h2>
-                        <p>Enter your contact details to receive your personal AMIGOS estimated quotation. Your price will be shown immediately after e-mail verification.</p>
-                        
+                        <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+
                         <div className={styles.customerGrid} style={{ marginTop: "14px" }}>
                           <label>
                             <span>First Name *</span>
                             <input
                               value={state.customerInfo.firstName}
                               onChange={(e) => updateCustomerInfo("firstName", e.target.value)}
+                              aria-invalid={Boolean(errors.firstName)}
                             />
+                            {errors.firstName && <small>{errors.firstName}</small>}
                           </label>
                           <label>
                             <span>Last Name *</span>
                             <input
                               value={state.customerInfo.lastName}
                               onChange={(e) => updateCustomerInfo("lastName", e.target.value)}
+                              aria-invalid={Boolean(errors.lastName)}
                             />
+                            {errors.lastName && <small>{errors.lastName}</small>}
                           </label>
                           <label>
                             <span>Phone (optional)</span>
@@ -1769,144 +1826,104 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                               value={state.email}
                               placeholder="you@example.com"
                               onChange={(e) => setState((curr) => ({ ...curr, email: e.target.value }))}
+                              aria-invalid={Boolean(errors.email)}
                             />
+                            {errors.email && <small>{errors.email}</small>}
                           </label>
                         </div>
                         {errors.general && <p className={styles.error} style={{ marginTop: "10px" }}>{errors.general}</p>}
-                        <button className={styles.primaryAction} style={{ marginTop: "14px" }} type="button" onClick={sendDetailedCode} disabled={busy}>
-                          {busy ? "SENDING…" : "SEND VERIFICATION CODE →"}
+                        {notice && <p className={styles.notice} style={{ marginTop: "10px" }}>{notice}</p>}
+                        <button className={styles.primaryAction} style={{ marginTop: "14px" }} type="button" onClick={submitContactAndSendCode} disabled={busy}>
+                          {busy ? "SENDING…" : "GET MY ESTIMATED QUOTE →"}
                         </button>
                       </div>
                     )}
 
-                    {step === 5 && (
+                    {step === 6 && (
                       <div className={styles.verifyPanel}>
                         <span className={styles.stepKicker}>07 Verify E-Mail</span>
-                        <h2>Verify your e-mail</h2>
-                        {!codeSent ? (
-                          <>
-                            <p>Enter your e-mail address and we will send you a 4-digit verification code.</p>
-                            <label className={styles.emailField}>
-                              <span>E-Mail</span>
-                              <input type="email" value={state.email} placeholder="you@example.com" onChange={(event) => setState((current) => ({ ...current, email: event.target.value }))} />
-                            </label>
-                            <button className={styles.primaryAction} type="button" onClick={sendCode} disabled={busy}>SEND CODE TO MY E-MAIL</button>
-                          </>
-                        ) : (
-                          <>
-                            <p>Enter the 4-digit code we sent to {state.email}.</p>
-                            <div className={styles.codeInputs}>
-                              {state.code.map((digit, index) => (
-                                <input
-                                  key={index}
-                                  ref={(node) => { codeRefs.current[index] = node; }}
-                                  type="text"
-                                  inputMode="numeric"
-                                  maxLength={1}
-                                  value={digit}
-                                  onChange={(event) => {
-                                    const value = event.target.value.replace(/\D/g, "").slice(0, 1);
-                                    setState((current) => {
-                                      const code = [...current.code];
-                                      code[index] = value;
-                                      return { ...current, code };
-                                    });
-                                    if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
-                                  }}
-                                />
-                              ))}
-                            </div>
-                            <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>Verify E-Mail</button>
-                            <button className={styles.textButton} type="button" onClick={sendCode}>Didn't receive a code? Resend code</button>
-                          </>
-                        )}
+                        <h2>Check your e-mail</h2>
+                        <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
+
+                        {notice && <p className={styles.notice}>{notice}</p>}
+                        {errors.general && <p className={styles.error}>{errors.general}</p>}
+
+                        <div className={styles.codeInputs}>
+                          {state.code.map((digit, index) => (
+                            <input
+                              key={index}
+                              ref={(node) => { codeRefs.current[index] = node; }}
+                              type="text"
+                              inputMode="numeric"
+                              maxLength={1}
+                              value={digit}
+                              onChange={(event) => {
+                                const value = event.target.value.replace(/\D/g, "").slice(0, 1);
+                                setState((current) => {
+                                  const code = [...current.code];
+                                  code[index] = value;
+                                  return { ...current, code };
+                                });
+                                if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
+                              }}
+                            />
+                          ))}
+                        </div>
+                        <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
+                          {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+                        </button>
+                        <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
+                          Didn't receive the code? Send again
+                        </button>
                       </div>
                     )}
 
-                    {step === 6 && (
+                    {step === 7 && (
                       <div className={styles.pricePanel}>
                         <div className={styles.successMark}>✓</div>
-                        <span className={styles.stepKicker}>08 Your Estimated Quotation</span>
-                        <h2>Your Estimated Offer Price (Angebotspreis)</h2>
-                        <strong className={styles.priceRange}>{priceRange}</strong>
-                        <p>This is an approximate price range based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
+                        <span className={styles.stepKicker}>E-mail successfully verified</span>
+                        <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
 
-                        <div className={styles.customerGrid}>
-                          {[
-                            ["firstName", "First Name"],
-                            ["lastName", "Last Name"],
-                            ["phone", "Phone"],
-                            ["address", "Street / Property Address"],
-                            ["postalCode", "Postal Code"],
-                            ["city", "City"],
-                            ["company", "Company"]
-                          ].map(([key, label]) => (
-                            <label key={key}>
-                              <span>{label}</span>
-                              <input value={state.customerInfo[key]} onChange={(event) => updateCustomerInfo(key, event.target.value)} aria-invalid={Boolean(errors[key])} />
-                              {errors[key] && <small>{errors[key]}</small>}
-                            </label>
-                          ))}
-                          <label className={styles.checkboxLine}>
-                            <input type="checkbox" checked={state.customerInfo.propertyManagement} onChange={(event) => updateCustomerInfo("propertyManagement", event.target.checked)} />
-                            <span>Property Management</span>
-                          </label>
-                        </div>
-
-                        <div className={styles.summaryPanel}>
+                        <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
                           <h3>Your selected project</h3>
                           <dl>
                             <div>
                               <dt>Property</dt>
                               <dd>{propertyTypes.find((option) => option.id === state.propertyType)?.title || "Not selected"}{state.roomType ? ` · ${state.roomType}` : ""}</dd>
                             </div>
-                            {isSimple ? (
-                              <>
-                                <div>
-                                  <dt>Scope</dt>
-                                  <dd>{state.roomCount} room(s) · {state.roomSize} size</dd>
-                                </div>
-                                <div>
-                                  <dt>Services</dt>
-                                  <dd>{titlesFromIds(simpleServiceOptions, state.simpleServices).join(", ")}</dd>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div>
-                                  <dt>Components</dt>
-                                  <dd>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</dd>
-                                </div>
-                                <div>
-                                  <dt>Services</dt>
-                                  <dd>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</dd>
-                                </div>
-                                <div>
-                                  <dt>Quantities</dt>
-                                  <dd>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</dd>
-                                </div>
-                              </>
-                            )}
+                            <div>
+                              <dt>Components</dt>
+                              <dd>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</dd>
+                            </div>
+                            <div>
+                              <dt>Services</dt>
+                              <dd>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</dd>
+                            </div>
+                            <div>
+                              <dt>Quantities</dt>
+                              <dd>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</dd>
+                            </div>
+                            <div>
+                              <dt>Location</dt>
+                              <dd>{state.postalCode} {state.locationCity}</dd>
+                            </div>
+                            <div>
+                              <dt>Travel costs</dt>
+                              <dd>Included</dd>
+                            </div>
                           </dl>
                         </div>
 
-                        <div className={styles.uploadPanel}>
-                          <h3>Upload photos of your project</h3>
-                          <div className={styles.photoGrid}>
-                            {photoCategories.map((category) => (
-                              <label key={category} className={styles.photoDrop}>
-                                <span>{category}</span>
-                                <small>Take Photo or Choose From Library</small>
-                                <input type="file" accept="image/*" capture="environment" onChange={(event) => uploadPhoto(event.target.files?.[0], category)} />
-                              </label>
-                            ))}
-                          </div>
-                          {photos.length > 0 && <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>}
+                        <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
+                          <strong className={styles.priceRange}>{priceRange}</strong>
+                          <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
                         </div>
+                        <p>This is an approximate price estimate based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
 
-                        <div className={styles.finalActions}>
-                          <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>REQUEST A FREE OFFER</button>
-                          <button className={styles.secondaryAction} type="button" onClick={() => submitRequest("CONSULTATION")} disabled={busy}>REQUEST SITE VISIT</button>
+                        {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
+                        {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
+
+                        <div className={styles.finalActions} style={{ marginTop: "20px" }}>
                           {sessionId && (
                             <a
                               href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -1918,19 +1935,109 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                               <b>DOWNLOAD PDF QUOTE</b>
                             </a>
                           )}
-                        </div>
-
-                        <div style={{ marginTop: "12px", textAlign: "center" }}>
+                          <button
+                            className={styles.primaryAction}
+                            type="button"
+                            onClick={() => submitRequest("CONSULTATION")}
+                            disabled={busy}
+                          >
+                            REQUEST SITE VISIT
+                          </button>
                           <a
-                            href="https://wa.me/41441234567?text=Hallo%20AMIGOS%20Maler,%20ich%20habe%20eine%20Offerte%20berechnet"
+                            href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={styles.textButton}
-                            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                            className={styles.secondaryAction}
+                            style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
                           >
                             <span>💬</span>
-                            <span>Contact via WhatsApp</span>
+                            <span>CONTACT VIA WHATSAPP</span>
                           </a>
+                        </div>
+
+                        {showSiteVisitForm && (
+                          <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
+                            <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                            <label style={{ display: "block", marginBottom: "8px" }}>
+                              <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
+                              <input
+                                value={state.customerInfo.address}
+                                placeholder="Bahnhofstrasse 12"
+                                onChange={(e) => updateCustomerInfo("address", e.target.value)}
+                                aria-invalid={Boolean(errors.address)}
+                              />
+                              {errors.address && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.address}</small>}
+                            </label>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "8px" }}>
+                              <label>
+                                <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Postal Code</span>
+                                <input value={state.customerInfo.postalCode || state.postalCode} readOnly style={{ opacity: 0.8 }} />
+                              </label>
+                              <label>
+                                <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>City</span>
+                                <input value={state.customerInfo.city || state.locationCity} readOnly style={{ opacity: 0.8 }} />
+                              </label>
+                            </div>
+                            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
+                              <label>
+                                <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Company (optional)</span>
+                                <input
+                                  value={state.customerInfo.company}
+                                  placeholder="Company AG"
+                                  onChange={(e) => updateCustomerInfo("company", e.target.value)}
+                                />
+                              </label>
+                              <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer", marginTop: "18px" }}>
+                                <input
+                                  type="checkbox"
+                                  checked={state.customerInfo.propertyManagement}
+                                  onChange={(e) => updateCustomerInfo("propertyManagement", e.target.checked)}
+                                />
+                                <span style={{ fontSize: "0.85rem" }}>Property Management</span>
+                              </label>
+                            </div>
+                            <button
+                              className={styles.primaryAction}
+                              type="button"
+                              onClick={() => submitRequest("CONSULTATION")}
+                              disabled={busy}
+                            >
+                              {busy ? "SUBMITTING…" : "CONFIRM SITE VISIT REQUEST →"}
+                            </button>
+                          </div>
+                        )}
+
+                        <div className={styles.uploadPanel} style={{ marginTop: "24px" }}>
+                          <h3>Upload photos of your project (optional)</h3>
+                          <div className={styles.photoGrid}>
+                            {photoCategories.map((category) => (
+                              <label key={category} className={styles.photoDrop}>
+                                <span>{category}</span>
+                                <small>Take Photo or Choose From Library</small>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  multiple
+                                  onChange={(event) => {
+                                    uploadPhotos(event.target.files, category);
+                                    event.target.value = "";
+                                  }}
+                                />
+                              </label>
+                            ))}
+                          </div>
+                          {photos.length > 0 && (
+                            <div className={styles.uploadedPhotosList}>
+                              <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>
+                              <div className={styles.uploadedPhotosTags}>
+                                {photos.map((p, idx) => (
+                                  <span key={p.id || idx} className={styles.photoTag}>
+                                    📷 {p.category}: {p.fileName}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </div>
                     )}
@@ -1949,7 +2056,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         <div className={styles.selectionHeroContainer}>
           {/* 1. Header */}
           <div className={styles.selectionHeader}>
-            <span className={styles.selectionKicker}>AMIGOS MALER GMBH · KOMPETENZ VERBINDET</span>
+            <span className={styles.selectionKicker}>AMIGOS MALER <span style={{ textTransform: "none" }}>GmbH</span> · KOMPETENZ VERBINDET</span>
             <h1 className={styles.selectionTitle}>OFFER CALCULATOR &amp; REQUEST</h1>
             <h2 className={styles.selectionSubTitle}>Choose the right calculation for your project.</h2>
             <p className={styles.selectionLead}>
@@ -2079,7 +2186,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               </span>
               <div>
                 <strong>Prices Are Protected</strong>
-                <p>Secure calculation revealed after quick e-mail verification.</p>
+                <p>Secure calculation provided after quick e-mail verification.</p>
               </div>
             </div>
             <div className={styles.selectionTrustItem}>
@@ -2101,34 +2208,36 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <button
-            className={styles.themeToggle}
-            type="button"
-            aria-label={`Switch to ${isDark ? "day" : "night"} mode`}
-            aria-pressed={isDark}
-            onClick={toggleTheme}
-          >
-            <span className={styles.themeToggleIcon} aria-hidden="true">
-              {isDark ? (
-                <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
-                    fill="currentColor"
-                  />
-                </svg>
-              ) : (
-                <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="4.2" fill="currentColor" />
-                  <path
-                    d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              )}
-            </span>
-          </button>
+          <div className={styles.heroTopRow}>
+            <button
+              className={styles.themeToggle}
+              type="button"
+              aria-label={`Switch to ${isDark ? "day" : "night"} mode`}
+              aria-pressed={isDark}
+              onClick={toggleTheme}
+            >
+              <span className={styles.themeToggleIcon} aria-hidden="true">
+                {isDark ? (
+                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                ) : (
+                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+                    <path
+                      d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                )}
+              </span>
+            </button>
+          </div>
           <span className={styles.brand}>FOR PROFESSIONALS &amp; PRECISE PLANNING</span>
           <strong>Kompetenz verbindet</strong>
           <h1>Create a Detailed Quote.</h1>
@@ -2167,7 +2276,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               }}
             >
               <span>{item.number}</span>
-              <i>{item.icon}</i>
+              <i>{item.icon?.startsWith?.("step_") ? <ComponentIcon iconKey={item.icon} /> : item.icon}</i>
               <b>{item.title}</b>
             </button>
           );
@@ -2302,15 +2411,12 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           </div>
         )}
 
-        {/* SIMPLE MODE STEP 4: Contact + Send Code (Price Protection) */}
+        {/* SIMPLE MODE STEP 4: Contact + Send Code */}
         {isSimple && step === 4 && (
           <div className={styles.stepPanel}>
-            <span className={styles.stepKicker}>05 Receive Your Price</span>
+            <span className={styles.stepKicker}>05 Your Quote</span>
             <h2>Your estimated quote is ready.</h2>
-            <p>
-              Enter your contact details to receive your personal AMIGOS estimated quotation.
-              Your price will be shown after e-mail verification.
-            </p>
+            <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
 
             <div className={styles.customerGrid}>
               {[
@@ -2352,7 +2458,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 disabled={busy}
                 onClick={submitContactAndSendCode}
               >
-                {busy ? "SENDING…" : "SEND VERIFICATION CODE →"}
+                {busy ? "SENDING…" : "GET MY ESTIMATED QUOTE →"}
               </button>
             </div>
           </div>
@@ -2363,7 +2469,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.verifyPanel}>
             <span className={styles.stepKicker}>05 Verify E-Mail</span>
             <h2>Check your e-mail</h2>
-            <p>We sent a 4-digit code to <strong>{state.email}</strong>. Enter it below to reveal your price.</p>
+            <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
 
             {notice && <p className={styles.notice}>{notice}</p>}
             {errors.general && <p className={styles.error}>{errors.general}</p>}
@@ -2390,22 +2496,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               ))}
             </div>
             <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-              {busy ? "VERIFYING…" : "REVEAL MY PRICE →"}
+              {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
             </button>
-            <button className={styles.textButton} type="button" onClick={submitContactAndSendCode}>
-              Didn't receive a code? Resend code
+            <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
+              Didn't receive the code? Send again
             </button>
           </div>
         )}
 
-        {/* SIMPLE MODE STEP 11: Price Reveal */}
+        {/* SIMPLE MODE STEP 11: Price Result */}
         {isSimple && step === 11 && (
           <div className={styles.pricePanel}>
             <div className={styles.successMark}>✓</div>
-            <span className={styles.stepKicker}>Your Estimated Quotation</span>
-            <h2>Your Estimated Offer Price (Angebotspreis)</h2>
-            <strong className={styles.priceRange}>{priceRange}</strong>
-            <p>This is an approximate price range based on your project details. The final price may vary after review or an on-site inspection.</p>
+            <span className={styles.stepKicker}>E-mail successfully verified</span>
+            <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
 
             <div className={styles.summaryPanel}>
               <h3>Your project summary</h3>
@@ -2415,12 +2519,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 <div><dt>Rooms</dt><dd>{state.roomCount} room(s) · {state.roomSize} size</dd></div>
                 <div><dt>Condition</dt><dd>{conditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
                 <div><dt>Location</dt><dd>{state.postalCode} {state.locationCity}</dd></div>
+                <div><dt>Travel costs</dt><dd>Included</dd></div>
               </dl>
             </div>
 
+            <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
+              <strong className={styles.priceRange}>{priceRange}</strong>
+              <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
+            </div>
+            <p>This is an approximate price estimate based on your project details. The final price may vary after review or an on-site inspection.</p>
+
+            {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
+            {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
+
             <div className={styles.finalActions}>
-              <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>REQUEST A FREE OFFER</button>
-              <button className={styles.secondaryAction} type="button" onClick={() => submitRequest("CONSULTATION")} disabled={busy}>REQUEST SITE VISIT</button>
               {sessionId && (
                 <a
                   href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -2432,19 +2544,109 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   <b>DOWNLOAD PDF QUOTE</b>
                 </a>
               )}
-            </div>
-
-            <div style={{ textAlign: "center" }}>
+              <button
+                className={styles.primaryAction}
+                type="button"
+                onClick={() => submitRequest("CONSULTATION")}
+                disabled={busy}
+              >
+                REQUEST SITE VISIT
+              </button>
               <a
-                href="https://wa.me/41441234567?text=Hallo%20AMIGOS%20Maler,%20ich%20habe%20eine%20Offerte%20berechnet"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.textButton}
-                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                className={styles.secondaryAction}
+                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
               >
                 <span>💬</span>
-                <span>Contact via WhatsApp</span>
+                <span>CONTACT VIA WHATSAPP</span>
               </a>
+            </div>
+
+            {showSiteVisitForm && (
+              <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
+                <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <label style={{ display: "block", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
+                  <input
+                    value={state.customerInfo.address}
+                    placeholder="Bahnhofstrasse 12"
+                    onChange={(e) => updateCustomerInfo("address", e.target.value)}
+                    aria-invalid={Boolean(errors.address)}
+                  />
+                  {errors.address && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.address}</small>}
+                </label>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "8px" }}>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Postal Code</span>
+                    <input value={state.customerInfo.postalCode || state.postalCode} readOnly style={{ opacity: 0.8 }} />
+                  </label>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>City</span>
+                    <input value={state.customerInfo.city || state.locationCity} readOnly style={{ opacity: 0.8 }} />
+                  </label>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Company (optional)</span>
+                    <input
+                      value={state.customerInfo.company}
+                      placeholder="Company AG"
+                      onChange={(e) => updateCustomerInfo("company", e.target.value)}
+                    />
+                  </label>
+                  <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer", marginTop: "18px" }}>
+                    <input
+                      type="checkbox"
+                      checked={state.customerInfo.propertyManagement}
+                      onChange={(e) => updateCustomerInfo("propertyManagement", e.target.checked)}
+                    />
+                    <span style={{ fontSize: "0.85rem" }}>Property Management</span>
+                  </label>
+                </div>
+                <button
+                  className={styles.primaryAction}
+                  type="button"
+                  onClick={() => submitRequest("CONSULTATION")}
+                  disabled={busy}
+                >
+                  {busy ? "SUBMITTING…" : "CONFIRM SITE VISIT REQUEST →"}
+                </button>
+              </div>
+            )}
+
+            <div className={styles.uploadPanel} style={{ marginTop: "24px" }}>
+              <h3>Upload photos of your project (optional)</h3>
+              <div className={styles.photoGrid}>
+                {photoCategories.map((category) => (
+                  <label key={category} className={styles.photoDrop}>
+                    <span>{category}</span>
+                    <small>Take Photo or Choose From Library</small>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(event) => {
+                        uploadPhotos(event.target.files, category);
+                        event.target.value = "";
+                      }}
+                    />
+                  </label>
+                ))}
+              </div>
+              {photos.length > 0 && (
+                <div className={styles.uploadedPhotosList}>
+                  <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>
+                  <div className={styles.uploadedPhotosTags}>
+                    {photos.map((p, idx) => (
+                      <span key={p.id || idx} className={styles.photoTag}>
+                        📷 {p.category}: {p.fileName}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -2457,7 +2659,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <p>Select all that apply.</p>
             <div className={styles.cardGrid}>
               {components.map((option) => renderSelectionCard(option, state.components.includes(option.id), () => {
-                setState((current) => ({ ...current, components: toggle(current.components, option.id) }));
+                toggleComponent(option.id);
               }))}
             </div>
           </div>
@@ -2512,27 +2714,71 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           </div>
         )}
 
-        {/* DETAILED MODE index 5 — "06 Summary": contact & price protection */}
+        {/* DETAILED MODE index 5 — "06 Summary": recap + contact */}
         {!isSimple && step === 5 && (
           <div className={styles.resultLocked}>
+            <div className={styles.summaryPanel} style={{ marginBottom: "20px" }}>
+              <h3>Project Summary</h3>
+              <dl>
+                <div>
+                  <dt>Property</dt>
+                  <dd>
+                    <span>{propertyTypes.find((option) => option.id === state.propertyType)?.title || "Not selected"}{state.roomType ? ` · ${state.roomType}` : ""}</span>
+                    <button type="button" className={styles.editStepLink} onClick={() => setStep(0)}>Edit</button>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Components</dt>
+                  <dd>
+                    <span>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</span>
+                    <button type="button" className={styles.editStepLink} onClick={() => setStep(1)}>Edit</button>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Services</dt>
+                  <dd>
+                    <span>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</span>
+                    <button type="button" className={styles.editStepLink} onClick={() => setStep(2)}>Edit</button>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Quantities</dt>
+                  <dd>
+                    <span>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</span>
+                    <button type="button" className={styles.editStepLink} onClick={() => setStep(3)}>Edit</button>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Location</dt>
+                  <dd>
+                    <span>{state.postalCode ? `${state.postalCode} ${state.locationCity}`.trim() : "Not specified"}</span>
+                    <button type="button" className={styles.editStepLink} onClick={() => setStep(4)}>Edit</button>
+                  </dd>
+                </div>
+              </dl>
+            </div>
             <span className={styles.stepKicker}>06 Summary</span>
             <h2>Your estimated quote is ready.</h2>
-            <p>Enter your contact details to receive your personal AMIGOS estimated quotation. Your price will be shown immediately after e-mail verification.</p>
-            
+            <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+
             <div className={styles.customerGrid}>
               <label>
                 <span>First Name *</span>
                 <input
                   value={state.customerInfo.firstName}
                   onChange={(e) => updateCustomerInfo("firstName", e.target.value)}
+                  aria-invalid={Boolean(errors.firstName)}
                 />
+                {errors.firstName && <small>{errors.firstName}</small>}
               </label>
               <label>
                 <span>Last Name *</span>
                 <input
                   value={state.customerInfo.lastName}
                   onChange={(e) => updateCustomerInfo("lastName", e.target.value)}
+                  aria-invalid={Boolean(errors.lastName)}
                 />
+                {errors.lastName && <small>{errors.lastName}</small>}
               </label>
               <label>
                 <span>Phone (optional)</span>
@@ -2548,13 +2794,26 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   value={state.email}
                   placeholder="you@example.com"
                   onChange={(e) => setState((curr) => ({ ...curr, email: e.target.value }))}
+                  aria-invalid={Boolean(errors.email)}
                 />
+                {errors.email && <small>{errors.email}</small>}
               </label>
             </div>
-            {errors.general && <p className={styles.error}>{errors.general}</p>}
-            <button className={styles.primaryAction} type="button" onClick={sendDetailedCode} disabled={busy}>
-              {busy ? "SENDING…" : "SEND VERIFICATION CODE →"}
-            </button>
+            {errors.general && <p className={styles.error} style={{ marginTop: "10px" }}>{errors.general}</p>}
+            {notice && <p className={styles.notice} style={{ marginTop: "10px" }}>{notice}</p>}
+            <div className={styles.navActions} style={{ marginTop: "18px" }}>
+              <div className={styles.navActionsLeft}>
+                <a className={styles.backToQuickNavBtn} href="/#quote">
+                  ← Back to Quick Calculator
+                </a>
+                <button type="button" className={styles.secondaryAction} onClick={() => setStep(4)}>
+                  ← EDIT SELECTIONS
+                </button>
+              </div>
+              <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>
+                {busy ? "SENDING…" : "GET MY ESTIMATED QUOTE →"}
+              </button>
+            </div>
           </div>
         )}
 
@@ -2562,44 +2821,44 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {step === 6 && (
           <div className={styles.verifyPanel}>
             <span className={styles.stepKicker}>07 Verify E-Mail</span>
-            <h2>Verify your e-mail</h2>
-            {!codeSent ? (
-              <>
-                <p>Enter your e-mail address and we will send you a 4-digit verification code.</p>
-                <label className={styles.emailField}>
-                  <span>E-Mail</span>
-                  <input type="email" value={state.email} placeholder="you@example.com" onChange={(event) => setState((current) => ({ ...current, email: event.target.value }))} />
-                </label>
-                <button className={styles.primaryAction} type="button" onClick={sendCode} disabled={busy}>SEND CODE TO MY E-MAIL</button>
-              </>
-            ) : (
-              <>
-                <p>Enter the 4-digit code we sent to {state.email}.</p>
-                <div className={styles.codeInputs}>
-                  {state.code.map((digit, index) => (
-                    <input
-                      key={index}
-                      ref={(node) => { codeRefs.current[index] = node; }}
-                      type="text"
-                      inputMode="numeric"
-                      maxLength={1}
-                      value={digit}
-                      onChange={(event) => {
-                        const value = event.target.value.replace(/\D/g, "").slice(0, 1);
-                        setState((current) => {
-                          const code = [...current.code];
-                          code[index] = value;
-                          return { ...current, code };
-                        });
-                        if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
-                      }}
-                    />
-                  ))}
-                </div>
-                <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>Verify E-Mail</button>
-                <button className={styles.textButton} type="button" onClick={sendCode}>Didn't receive a code? Resend code</button>
-              </>
-            )}
+            <h2>Check your e-mail</h2>
+            <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
+
+            {notice && <p className={styles.notice}>{notice}</p>}
+            {errors.general && <p className={styles.error}>{errors.general}</p>}
+
+            <div className={styles.codeInputs}>
+              {state.code.map((digit, index) => (
+                <input
+                  key={index}
+                  ref={(node) => { codeRefs.current[index] = node; }}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  value={digit}
+                  onChange={(event) => {
+                    const value = event.target.value.replace(/\D/g, "").slice(0, 1);
+                    setState((current) => {
+                      const code = [...current.code];
+                      code[index] = value;
+                      return { ...current, code };
+                    });
+                    if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
+                  }}
+                />
+              ))}
+            </div>
+            <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
+              {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+            </button>
+            <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
+              Didn't receive the code? Send again
+            </button>
+            <div style={{ marginTop: "16px", display: "flex", justifyContent: "center" }}>
+              <a className={styles.backToQuickNavBtn} href="/#quote">
+                ← Back to Quick Calculator
+              </a>
+            </div>
           </div>
         )}
 
@@ -2607,32 +2866,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {step === 7 && (
           <div className={styles.pricePanel}>
             <div className={styles.successMark}>✓</div>
-            <span className={styles.stepKicker}>08 Your Estimated Quotation</span>
-            <h2>Your Estimated Offer Price (Angebotspreis)</h2>
-            <strong className={styles.priceRange}>{priceRange}</strong>
-            <p>This is an approximate price range based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
-
-            <div className={styles.customerGrid}>
-              {[
-                ["firstName", "First Name"],
-                ["lastName", "Last Name"],
-                ["phone", "Phone"],
-                ["address", "Street / Property Address"],
-                ["postalCode", "Postal Code"],
-                ["city", "City"],
-                ["company", "Company"]
-              ].map(([key, label]) => (
-                <label key={key}>
-                  <span>{label}</span>
-                  <input value={state.customerInfo[key]} onChange={(event) => updateCustomerInfo(key, event.target.value)} aria-invalid={Boolean(errors[key])} />
-                  {errors[key] && <small>{errors[key]}</small>}
-                </label>
-              ))}
-              <label className={styles.checkboxLine}>
-                <input type="checkbox" checked={state.customerInfo.propertyManagement} onChange={(event) => updateCustomerInfo("propertyManagement", event.target.checked)} />
-                <span>Property Management</span>
-              </label>
-            </div>
+            <span className={styles.stepKicker}>E-mail successfully verified</span>
+            <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
 
             <div className={styles.summaryPanel}>
               <h3>Your selected project</h3>
@@ -2641,53 +2876,39 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   <dt>Property</dt>
                   <dd>{propertyTypes.find((option) => option.id === state.propertyType)?.title || "Not selected"}{state.roomType ? ` · ${state.roomType}` : ""}</dd>
                 </div>
-                {isSimple ? (
-                  <>
-                    <div>
-                      <dt>Scope</dt>
-                      <dd>{state.roomCount} room(s) · {state.roomSize} size</dd>
-                    </div>
-                    <div>
-                      <dt>Services</dt>
-                      <dd>{titlesFromIds(simpleServiceOptions, state.simpleServices).join(", ")}</dd>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div>
-                      <dt>Components</dt>
-                      <dd>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</dd>
-                    </div>
-                    <div>
-                      <dt>Services</dt>
-                      <dd>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</dd>
-                    </div>
-                    <div>
-                      <dt>Quantities</dt>
-                      <dd>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</dd>
-                    </div>
-                  </>
-                )}
+                <div>
+                  <dt>Components</dt>
+                  <dd>{selectedComponentTitles.length ? selectedComponentTitles.join(", ") : "Not selected"}</dd>
+                </div>
+                <div>
+                  <dt>Services</dt>
+                  <dd>{selectedServiceTitles.length ? selectedServiceTitles.join(", ") : "Not selected"}</dd>
+                </div>
+                <div>
+                  <dt>Quantities</dt>
+                  <dd>{visibleQuantities.map((item) => `${item.label}: ${state.quantities[item.quantityKey] || 0} ${item.unit}`).join(" · ")}</dd>
+                </div>
+                <div>
+                  <dt>Location</dt>
+                  <dd>{state.postalCode} {state.locationCity}</dd>
+                </div>
+                <div>
+                  <dt>Travel costs</dt>
+                  <dd>Included</dd>
+                </div>
               </dl>
             </div>
 
-            <div className={styles.uploadPanel}>
-              <h3>Upload photos of your project</h3>
-              <div className={styles.photoGrid}>
-                {photoCategories.map((category) => (
-                  <label key={category} className={styles.photoDrop}>
-                    <span>{category}</span>
-                    <small>Take Photo or Choose From Library</small>
-                    <input type="file" accept="image/*" capture="environment" onChange={(event) => uploadPhoto(event.target.files?.[0], category)} />
-                  </label>
-                ))}
-              </div>
-              {photos.length > 0 && <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>}
+            <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
+              <strong className={styles.priceRange}>{priceRange}</strong>
+              <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
             </div>
+            <p>This is an approximate price estimate based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
+
+            {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
+            {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
 
             <div className={styles.finalActions}>
-              <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>REQUEST A FREE OFFER</button>
-              <button className={styles.secondaryAction} type="button" onClick={() => submitRequest("CONSULTATION")} disabled={busy}>REQUEST SITE VISIT</button>
               {sessionId && (
                 <a
                   href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -2699,19 +2920,109 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   <b>DOWNLOAD PDF QUOTE</b>
                 </a>
               )}
-            </div>
-
-            <div style={{ textAlign: "center" }}>
+              <button
+                className={styles.primaryAction}
+                type="button"
+                onClick={() => submitRequest("CONSULTATION")}
+                disabled={busy}
+              >
+                REQUEST SITE VISIT
+              </button>
               <a
-                href="https://wa.me/41441234567?text=Hallo%20AMIGOS%20Maler,%20ich%20habe%20eine%20Offerte%20berechnet"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.textButton}
-                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+                className={styles.secondaryAction}
+                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
               >
                 <span>💬</span>
-                <span>Contact via WhatsApp</span>
+                <span>CONTACT VIA WHATSAPP</span>
               </a>
+            </div>
+
+            {showSiteVisitForm && (
+              <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
+                <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <label style={{ display: "block", marginBottom: "8px" }}>
+                  <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
+                  <input
+                    value={state.customerInfo.address}
+                    placeholder="Bahnhofstrasse 12"
+                    onChange={(e) => updateCustomerInfo("address", e.target.value)}
+                    aria-invalid={Boolean(errors.address)}
+                  />
+                  {errors.address && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.address}</small>}
+                </label>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "8px" }}>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Postal Code</span>
+                    <input value={state.customerInfo.postalCode || state.postalCode} readOnly style={{ opacity: 0.8 }} />
+                  </label>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>City</span>
+                    <input value={state.customerInfo.city || state.locationCity} readOnly style={{ opacity: 0.8 }} />
+                  </label>
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "12px", alignItems: "center", marginBottom: "12px" }}>
+                  <label>
+                    <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Company (optional)</span>
+                    <input
+                      value={state.customerInfo.company}
+                      placeholder="Company AG"
+                      onChange={(e) => updateCustomerInfo("company", e.target.value)}
+                    />
+                  </label>
+                  <label style={{ display: "flex", alignItems: "center", gap: "6px", cursor: "pointer", marginTop: "18px" }}>
+                    <input
+                      type="checkbox"
+                      checked={state.customerInfo.propertyManagement}
+                      onChange={(e) => updateCustomerInfo("propertyManagement", e.target.checked)}
+                    />
+                    <span style={{ fontSize: "0.85rem" }}>Property Management</span>
+                  </label>
+                </div>
+                <button
+                  className={styles.primaryAction}
+                  type="button"
+                  onClick={() => submitRequest("CONSULTATION")}
+                  disabled={busy}
+                >
+                  {busy ? "SUBMITTING…" : "CONFIRM SITE VISIT REQUEST →"}
+                </button>
+              </div>
+            )}
+
+            <div className={styles.uploadPanel} style={{ marginTop: "24px" }}>
+              <h3>Upload photos of your project (optional)</h3>
+              <div className={styles.photoGrid}>
+                {photoCategories.map((category) => (
+                  <label key={category} className={styles.photoDrop}>
+                    <span>{category}</span>
+                    <small>Take Photo or Choose From Library</small>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(event) => {
+                        uploadPhotos(event.target.files, category);
+                        event.target.value = "";
+                      }}
+                    />
+                  </label>
+                ))}
+              </div>
+              {photos.length > 0 && (
+                <div className={styles.uploadedPhotosList}>
+                  <p className={styles.notice}>{photos.length} photo{photos.length === 1 ? "" : "s"} attached to this project.</p>
+                  <div className={styles.uploadedPhotosTags}>
+                    {photos.map((p, idx) => (
+                      <span key={p.id || idx} className={styles.photoTag}>
+                        📷 {p.category}: {p.fileName}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -2719,15 +3030,16 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {/* NON-EMBEDDED NAV ACTIONS */}
         {step < inputStepCount && (
           <div className={styles.navActions}>
-            {step > 0 ? (
-              <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                ← BACK
-              </button>
-            ) : (
-              <a className={styles.secondaryAction} href="/">
-                ← QUICK QUOTE INSTEAD
+            <div className={styles.navActionsLeft}>
+              <a className={styles.backToQuickNavBtn} href="/#quote">
+                ← Back to Quick Calculator
               </a>
-            )}
+              {step > 0 && (
+                <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
+                  ← BACK
+                </button>
+              )}
+            </div>
             <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
               {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
             </button>

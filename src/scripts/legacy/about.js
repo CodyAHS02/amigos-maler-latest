@@ -284,30 +284,68 @@ runWhenDomReady(() => {
 })();
 
 /*==================================================
-    FOUNDER IMAGE — slow zoom on scroll
+    FOUNDER SHOWCASE — 3D Tilt & Specular Lighting
 ==================================================*/
 
 (() => {
-
+    const wrap = document.getElementById("founderCardWrap");
+    const card = document.getElementById("founderCard3d");
+    const glare = document.getElementById("founderGlare");
     const img = document.querySelector(".founder-image img");
-    if (!img) return;
 
-    // gentle settle-in, once, the first time it enters view
-    gsap.fromTo(img,
-        { scale: 1.03 },
-        {
-            scale: 1, duration: 1.6, ease: "power2.out",
-            scrollTrigger: { trigger: ".founder-image", start: "top 85%", once: true }
-        }
-    );
+    if (!card) return;
 
-    // then continues with the very slow Ken Burns as the section scrolls past
-    gsap.to(img, {
-        scale: 1.12,
-        ease: "none",
-        scrollTrigger: { trigger: ".founder-section", start: "top bottom", end: "bottom top", scrub: true }
-    });
+    // Subtle Ken Burns on the image during scroll
+    if (img && window.gsap && window.ScrollTrigger) {
+        gsap.to(img, {
+            scale: 1.08,
+            ease: "none",
+            scrollTrigger: { trigger: ".founder-section", start: "top bottom", end: "bottom top", scrub: true }
+        });
+    }
 
+    // Interactive 3D tilt on mousemove
+    let bounds;
+
+    const updateBounds = () => {
+        if (wrap) bounds = wrap.getBoundingClientRect();
+    };
+
+    if (wrap) {
+        wrap.addEventListener("mouseenter", () => {
+            updateBounds();
+            if (glare) glare.style.opacity = "1";
+        });
+
+        window.addEventListener("scroll", updateBounds, { passive: true });
+        window.addEventListener("resize", updateBounds, { passive: true });
+
+        wrap.addEventListener("mousemove", (e) => {
+            if (!bounds) updateBounds();
+            const mouseX = e.clientX - bounds.left;
+            const mouseY = e.clientY - bounds.top;
+
+            const xPct = (mouseX / bounds.width - 0.5) * 2; // -1 to 1
+            const yPct = (mouseY / bounds.height - 0.5) * 2; // -1 to 1
+
+            const maxTilt = 8;
+            const rotX = -yPct * maxTilt;
+            const rotY = xPct * maxTilt;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            if (glare) {
+                const glareX = (mouseX / bounds.width) * 100;
+                const glareY = (mouseY / bounds.height) * 100;
+                glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.40) 0%, transparent 60%)`;
+            }
+        });
+
+        wrap.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+            if (glare) glare.style.opacity = "0";
+        });
+    }
 })();
 
 /*==================================================

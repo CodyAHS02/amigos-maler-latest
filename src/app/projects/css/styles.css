@@ -2,13 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --black: #0B0C10;
-  --anthracite: #1C1C1E;
-  --gold: #C5A059;
-  --gold-soft: rgba(197, 160, 89, .15);
-  --gold-glow: rgba(197, 160, 89, .4);
-  --grey: #E5E5EA;
-  --body: #B3B3B3;
+  --black: #071a33;
+  --anthracite: #0d2542;
+  --gold: #f6be10;
+  --am-yellow: #f6be10;
+  --am-orange: #f39125;
+  --am-magenta: #c73b8e;
+  --gold-soft: rgba(246, 190, 16, .2);
+  --gold-glow: rgba(243, 145, 37, .45);
+  --am-gradient-cta: linear-gradient(135deg, #f6be10 0%, #f39125 50%, #c73b8e 100%);
+  --grey: #E2E8F0;
+  --body: #CBD5E1;
   --white: #FFFFFF;
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
