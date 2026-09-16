@@ -18,11 +18,15 @@ const pageHtml = `
 
   
 
-  <!-- SECTION 1 · HERO (normal viewport, autoplay loop) -->
-  <section class="hero">
+  <!-- SECTION 1 · HERO (scroll-scrubbed video) -->
+  <section class="hero projects-scrub-hero" data-projects-hero data-hero>
     <div class="hero-media">
-      <img id="hero-video" class="media-dark" src="/amigos/img/hero.jpg" alt="Amigos Immo Luxury Property" fetchpriority="high">
-      <img class="media-light" src="/amigos/img/hero-light.jpg" alt="">
+      <video id="projectsHeroVideoLight" class="projects-hero-video projects-hero-video-light media-light" muted playsinline preload="auto" aria-label="Amigos Maler project hero video, light theme">
+        <source src="/projects%20page/hero-video-light.mp4" type="video/mp4">
+      </video>
+      <video id="projectsHeroVideoDark" class="projects-hero-video projects-hero-video-dark media-dark" muted playsinline preload="auto" aria-label="Amigos Maler project hero video, dark theme">
+        <source src="/projects%20page/hero-video-dark.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-spotlight"></div>
@@ -863,9 +867,9 @@ export default function ProjectsPage() {
     <LegacyPage 
       html={`<div class="amigos-wrapper">${pageHtml}</div>`}
       css={['/style.css', 'amigos/styles.css', 'amigos/premium.css', 'amigos/theme.css', 'amigos/projects-theme.css']}
-      scripts={['amigos/main.js', 'amigos/calc.js', 'amigos/ba.js', 'amigos/premium.js']}
+      scripts={['amigos/main.js', 'amigos/calc.js', 'amigos/ba.js', 'amigos/premium.js', 'amigos/projects-hero.js']}
       shell={true}
-      gsap={false}
+      gsap={true}
     />
   );
 }

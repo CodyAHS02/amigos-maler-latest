@@ -2058,6 +2058,91 @@ body[data-page="projects"] .amigos-wrapper .hero .hero-ctas .btn {
   box-shadow: none !important;
 }
 
+body[data-page="projects"] .site-header {
+  opacity: 0;
+  transform: translateY(-86px);
+  will-change: opacity, transform;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero {
+  min-height: 100vh;
+  background: #071a33;
+  isolation: isolate;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-media {
+  background: #071a33;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .projects-hero-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: none !important;
+  opacity: 0;
+  transform: scale(1.01);
+  transition: opacity .85s cubic-bezier(.2, .78, .22, 1), filter .85s cubic-bezier(.2, .78, .22, 1);
+  will-change: opacity, transform;
+}
+
+html:not([data-theme="amigos-dark"]):not([data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .projects-hero-video-light,
+html[data-theme="amigos-light"] body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .projects-hero-video-light {
+  opacity: 1;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .projects-hero-video-dark,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .projects-hero-video-dark {
+  opacity: 1;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-overlay {
+  background:
+    radial-gradient(circle at 50% 55%, rgba(7, 26, 51, .12) 0%, rgba(7, 26, 51, .30) 42%, rgba(7, 26, 51, .64) 100%),
+    linear-gradient(180deg, rgba(7, 26, 51, .20) 0%, rgba(7, 26, 51, .08) 38%, rgba(7, 26, 51, .76) 100%) !important;
+}
+
+html:not([data-theme="amigos-dark"]):not([data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-overlay,
+html[data-theme="amigos-light"] body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-overlay {
+  background:
+    radial-gradient(circle at 50% 55%, rgba(255, 255, 255, .04) 0%, rgba(7, 26, 51, .12) 46%, rgba(7, 26, 51, .46) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, .08) 0%, rgba(7, 26, 51, .04) 42%, rgba(7, 26, 51, .58) 100%) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-spotlight {
+  opacity: .58;
+  transition: opacity .85s cubic-bezier(.2, .78, .22, 1);
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-inner {
+  opacity: 0;
+  transform: translateY(44px);
+  filter: blur(14px);
+  pointer-events: none;
+  will-change: opacity, transform, filter;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .scroll-indicator {
+  opacity: .82;
+  transition: opacity .45s ease;
+}
+
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero.is-ending .scroll-indicator {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="projects"] .site-header,
+  body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-inner {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    pointer-events: auto !important;
+  }
+}
+
 body[data-page="projects"] .amigos-wrapper .hero .hero-ctas .btn.btn-solid {
   background:
     linear-gradient(90deg, rgba(7, 26, 51, .58), rgba(7, 26, 51, .58)) padding-box,
