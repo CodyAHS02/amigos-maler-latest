@@ -467,6 +467,7 @@ body[data-page="home"] .site-header {
     font-size: 11px;
     font-weight: 700;
     color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     background: rgba(255, 255, 255, 0.12);
     padding: 3px 6px;
     border-radius: 6px;
@@ -476,7 +477,8 @@ body[data-page="home"] .site-header {
 }
 
 .dropdown-item:hover .item-num {
-    color: #FDFBF6;
+    color: #FDFBF6 !important;
+    -webkit-text-fill-color: #FDFBF6 !important;
     background: rgba(7, 26, 51, .24);
 }
 
@@ -1462,7 +1464,7 @@ RESPONSIVE — MOBILE (≤768px)
         counter-reset: nav-item;
     }
 
-    .site-nav > a,
+    .site-nav>a,
     .site-nav .dropdown-trigger {
         counter-increment: nav-item;
     }
@@ -1865,7 +1867,7 @@ WHY AMIGOS
 
     color: #8A8275;
 
-    font-size: 17px;
+    font-size: 28px;
 
     letter-spacing: .02em;
 
@@ -10899,12 +10901,8 @@ body[data-page="home"] .introBtn:hover {
         line-height: 0.95;
     }
 
-    .intro-title-gmbh,
     body[data-page="home"] .intro-title-gmbh {
         font-size: clamp(10px, 2.6vw, 15px);
-        text-transform: none !important;
-        font-variant: normal !important;
-        font-variant-caps: normal !important;
         margin: 0 !important;
         padding: 0 !important;
         background: transparent !important;
@@ -11246,9 +11244,11 @@ html[data-theme="amigos-dark"] .theme-toggle-icon {
     0% {
         transform: scaleY(0.25);
     }
+
     50% {
         transform: scaleY(1);
     }
+
     100% {
         transform: scaleY(0.4);
     }
@@ -11268,6 +11268,7 @@ html[data-theme="amigos-dark"] .sound-toggle.is-playing {
     .header-toggle-group {
         margin-left: auto;
     }
+
     .theme-toggle {
         margin-left: 0;
     }
@@ -12990,6 +12991,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial
 }
 
 @media (max-width: 700px) {
+
     body[data-page="home"] .audience-bar,
     html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
         margin-top: -56px !important;
@@ -13202,6 +13204,7 @@ html:not([data-theme="amigos-dark"]) body[data-page="home"] .ai-stage {
 }
 
 @media (max-width: 700px) {
+
     body[data-page="home"] .audience-bar,
     html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
         margin-top: 0 !important;
@@ -13357,6 +13360,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
 
 /* Ultrawide & 4K display containment (≥ 2000px) */
 @media (min-width: 2000px) {
+
     .hero-content,
     .plans-section,
     .process-section,
@@ -13377,6 +13381,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
    MOBILE SOFA ROOM: EXACT CENTER FOR "DISCOVER WHAT COLOR CAN CHANGE"
 ================================================== */
 @media (max-width: 768px) {
+
     body[data-page="home"] .paint-screen-banner,
     .hero .paint-screen-banner,
     .paint-icons .paint-screen-banner,

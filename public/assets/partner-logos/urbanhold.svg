@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="96" viewBox="0 0 260 96" role="img" aria-label="Urbanhold">
+  <rect width="260" height="96" rx="24" fill="#F8FBFF"/>
+  <path d="M32 68V31h12v37H32Zm18 0V22h12v46H50Zm18 0V39h12v29H68Z" fill="#071A33"/>
+  <path d="M32 68h50" stroke="#FFB800" stroke-width="5" stroke-linecap="round"/>
+  <text x="101" y="53" fill="#071A33" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="850">Urbanhold</text>
+</svg>

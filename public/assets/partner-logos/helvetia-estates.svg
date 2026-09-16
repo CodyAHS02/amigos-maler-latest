@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="96" viewBox="0 0 260 96" role="img" aria-label="Helvetia Estates">
+  <rect width="260" height="96" rx="24" fill="#F8FBFF"/>
+  <circle cx="52" cy="48" r="24" fill="#071A33"/>
+  <path d="M39 58 52 30l13 28M45 48h14" fill="none" stroke="#FFB800" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="92" y="44" fill="#071A33" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800">Helvetia</text>
+  <text x="92" y="66" fill="#6D7C91" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">ESTATES</text>
+</svg>

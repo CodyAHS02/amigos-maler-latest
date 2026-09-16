@@ -463,9 +463,13 @@ export const conditionOptions = [
 ];
 
 export const workScopeOptions = [
-  { id: "walls", title: "Walls Only", desc: "Paint or treat all walls", iconKey: "paint_roller" },
-  { id: "ceilings", title: "Ceilings Only", desc: "Paint or treat all ceilings", iconKey: "ceiling_lamp" },
-  { id: "walls_ceilings", title: "Walls & Ceilings", desc: "Complete interior painting", iconKey: "apartment" }
+  { id: "walls", title: "Walls", desc: "All walls in the selected property", iconKey: "paint_roller" },
+  { id: "ceilings", title: "Ceilings", desc: "One or more ceilings", iconKey: "ceiling_lamp" },
+  { id: "walls_ceilings", title: "Walls & Ceilings", desc: "Complete interior painting", iconKey: "apartment" },
+  { id: "individual_walls", title: "Individual Walls", desc: "A few feature walls or selected surfaces", iconKey: "walls" },
+  { id: "individual_rooms", title: "Individual Rooms / Areas", desc: "Kitchen, bathroom, staircase, basement or similar", iconKey: "room" },
+  { id: "floor", title: "Floor", desc: "Garage, basement, laundry room or balcony floor", iconKey: "baseboards" },
+  { id: "other", title: "Other", desc: "Tell us what else should be checked", iconKey: "other" }
 ];
 
 export const roomSizeOptions = [
@@ -475,6 +479,75 @@ export const roomSizeOptions = [
 ];
 
 export const roomCountOptions = [1, 2, 3, 4, 5, 6, 8, 10];
+
+export const livingAreaOptions = [
+  { id: "up_to_50", title: "up to 50 m²" },
+  { id: "51_70", title: "51–70 m²" },
+  { id: "71_90", title: "71–90 m²" },
+  { id: "91_120", title: "91–120 m²" },
+  { id: "120_plus", title: "120+ m²" }
+];
+
+export const individualWallCountOptions = [
+  { id: "1", title: "1 wall" },
+  { id: "2", title: "2 walls" },
+  { id: "3", title: "3 walls" },
+  { id: "4_plus", title: "4+ walls" }
+];
+
+export const wallSizeOptions = [
+  { id: "small", title: "Small" },
+  { id: "medium", title: "Medium" },
+  { id: "large", title: "Large" },
+  { id: "very_large", title: "Very large" }
+];
+
+export const ceilingCountOptions = [
+  { id: "1", title: "1 ceiling" },
+  { id: "2", title: "2 ceilings" },
+  { id: "3", title: "3 ceilings" },
+  { id: "4_plus", title: "4+ ceilings" }
+];
+
+export const areaTypeOptions = [
+  { id: "kitchen", title: "Kitchen" },
+  { id: "bathroom", title: "Bathroom" },
+  { id: "wc", title: "WC" },
+  { id: "living_room", title: "Living Room" },
+  { id: "bedroom", title: "Bedroom / Individual Room" },
+  { id: "staircase", title: "Staircase" },
+  { id: "basement", title: "Basement" },
+  { id: "garage", title: "Garage" },
+  { id: "laundry_room", title: "Laundry Room" },
+  { id: "balcony", title: "Balcony" },
+  { id: "other_area", title: "Other Area" }
+];
+
+export const areaWorkOptions = [
+  { id: "walls", title: "Walls" },
+  { id: "ceiling", title: "Ceiling" },
+  { id: "walls_ceiling", title: "Walls & Ceiling" },
+  { id: "floor", title: "Floor" },
+  { id: "other", title: "Other" }
+];
+
+export const floorTypeOptions = [
+  { id: "basement_floor", title: "Basement Floor" },
+  { id: "garage_floor", title: "Garage Floor" },
+  { id: "laundry_room_floor", title: "Laundry Room Floor" },
+  { id: "balcony_floor", title: "Balcony Floor" },
+  { id: "other_floor", title: "Other" }
+];
+
+export const specialWorkOptions = [
+  { id: "mould", title: "Mould" },
+  { id: "nicotine", title: "Nicotine contamination" },
+  { id: "water_damage", title: "Water damage" },
+  { id: "cracks", title: "Cracks / filling work" },
+  { id: "wallpaper_removal", title: "Wallpaper removal" },
+  { id: "substrate_preparation", title: "Special substrate preparation" },
+  { id: "other", title: "Other" }
+];
 
 // ───────────────────────────────────────────────────────
 // 6. PHOTO CATEGORIES
@@ -539,8 +612,21 @@ export const initialState = {
   // Simple mode specifics (Customer A)
   roomCount: 3,
   roomSize: "medium",
+  livingArea: "",
+  individualWallCount: "",
+  individualWallSize: "",
+  ceilingCount: "",
+  areaType: "",
+  areaWork: "",
+  floorType: "",
+  floorArea: "",
+  roomLength: "",
+  roomWidth: "",
+  roomHeight: "2.8",
+  specialWork: [],
+  additionalWork: "",
   simpleServices: ["paint_walls", "paint_ceilings", "covering_protection"],
-  workScope: "walls_ceilings",   // "walls" | "ceilings" | "walls_ceilings"
+  workScope: "walls_ceilings",
   condition: "good",              // "good" | "minor_repairs" | "renovation"
   postalCode: "",
   locationCity: ""

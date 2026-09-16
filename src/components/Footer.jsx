@@ -24,6 +24,23 @@ export default function Footer() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const button = document.getElementById("scrollTopBtn");
+    if (!button) return undefined;
+
+    const update = () => button.classList.toggle("visible", window.scrollY > 80);
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    button.addEventListener("click", scrollToTop);
+
+    return () => {
+      window.removeEventListener("scroll", update);
+      button.removeEventListener("click", scrollToTop);
+    };
+  }, []);
+
   return (
     <>
       <footer className="site-footer">

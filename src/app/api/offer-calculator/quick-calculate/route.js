@@ -12,6 +12,21 @@ const ROOM_SIZE_SURFACES = {
   large: { wallArea: 50, ceilingArea: 26 }
 };
 
+const WALL_SIZE_AREAS = {
+  small: 10,
+  medium: 15,
+  large: 25,
+  very_large: 45
+};
+
+const LIVING_AREA_ROOM_FACTORS = {
+  up_to_50: 3,
+  "51_70": 4,
+  "71_90": 5,
+  "91_120": 6,
+  "120_plus": 8
+};
+
 export async function POST(request) {
   try {
     const payload = await request.json().catch(() => ({}));
@@ -23,7 +38,9 @@ export async function POST(request) {
     } else if (!["apartment", "house", "commercial", "facade", "room", "other"].includes(rawPropertyType)) {
       propertyType = "apartment";
     }
-    const roomCount = Math.max(1, Math.min(20, Number(payload.roomCount) || 1));
+    const livingArea = String(payload.livingArea || "");
+    const roomCountFromArea = LIVING_AREA_ROOM_FACTORS[livingArea];
+    const roomCount = Math.max(1, Math.min(20, roomCountFromArea || Number(payload.roomCount) || 1));
     const roomSize = ["small", "medium", "large"].includes(payload.roomSize) ? payload.roomSize : "medium";
     const selectedServices = Array.isArray(payload.services) ? payload.services : ["paint_walls"];
     const projectNotes = String(payload.projectNotes || "").trim();
@@ -38,6 +55,7 @@ export async function POST(request) {
 
     const workScope = payload.workScope || "walls_ceilings";
     const condition = payload.condition || "good";
+    const specialWork = Array.isArray(payload.specialWork) ? payload.specialWork : [];
     const postalCode = payload.postalCode || "";
     const locationCity = payload.locationCity || "";
 
@@ -46,12 +64,17 @@ export async function POST(request) {
       quantities.facadeArea = Math.max(50, roomCount * 45);
       services.push("wall_paint_2_coats");
     } else {
-      const wantsCeiling = workScope === "ceilings" || workScope === "walls_ceilings" || selectedServices.includes("paint_ceilings");
-      const wantsWalls = workScope === "walls" || workScope === "walls_ceilings" || selectedServices.includes("paint_walls");
+      const wantsCeiling = workScope === "ceilings" || workScope === "walls_ceilings" || workScope === "individual_rooms" || selectedServices.includes("paint_ceilings");
+      const wantsWalls = workScope === "walls" || workScope === "walls_ceilings" || workScope === "individual_walls" || workScope === "individual_rooms" || selectedServices.includes("paint_walls");
 
       if (wantsWalls) {
         components.push("walls");
-        quantities.wallArea = totalWallArea;
+        if (workScope === "individual_walls") {
+          const wallCount = payload.individualWallCount === "4_plus" ? 4 : Number(payload.individualWallCount) || 1;
+          quantities.wallArea = wallCount * (WALL_SIZE_AREAS[payload.individualWallSize] || WALL_SIZE_AREAS.medium);
+        } else {
+          quantities.wallArea = totalWallArea;
+        }
         services.push("wall_paint_2_coats");
       }
 
@@ -59,6 +82,18 @@ export async function POST(request) {
         components.push("ceilings");
         quantities.ceilingArea = totalCeilingArea;
         services.push("ceiling_paint_2_coats");
+      }
+
+      if (workScope === "floor") {
+        components.push("other");
+        quantities.otherUnits = Math.max(1, Number(payload.floorArea) || 1);
+        services.push("paint_other");
+      }
+
+      if (workScope === "other") {
+        components.push("other");
+        quantities.otherUnits = 1;
+        services.push("paint_other");
       }
 
       if (condition === "minor_repairs" || selectedServices.includes("filling_spackling")) {
@@ -110,7 +145,7 @@ export async function POST(request) {
       postalCode,
       locationCity,
       source: "QUICK_QUOTE",
-      quickQuote: { propertyType: rawPropertyType, workScope, condition, postalCode }
+      quickQuote: { propertyType: rawPropertyType, workScope, condition, postalCode, livingArea, specialWork }
     });
 
     return NextResponse.json({

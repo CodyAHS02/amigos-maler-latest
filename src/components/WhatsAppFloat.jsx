@@ -5,7 +5,9 @@ import styles from "@/components/WhatsAppFloat.module.css";
 
 export default function WhatsAppFloat() {
   const pathname = usePathname();
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "41790000000";
+  const whatsappNumber = pathname === "/projects"
+    ? (process.env.NEXT_PUBLIC_PROJECTS_WHATSAPP_NUMBER || process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "41790000000")
+    : (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "41790000000");
   const isHiddenPage =
     pathname?.startsWith("/admin") ||
     pathname?.startsWith("/customer") ||

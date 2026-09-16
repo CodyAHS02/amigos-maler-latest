@@ -1476,13 +1476,16 @@
   padding: 12px 40px 12px 12px;
   border: 1px solid rgba(253, 251, 246, .13);
   border-radius: 18px;
-  background: rgba(0, 32, 91, .76);
+  background: transparent;
   color: var(--white);
   font-family: inherit;
   text-align: left;
   cursor: pointer;
   overflow: hidden;
   transition: transform .22s ease, border-color .22s ease, background .3s ease, box-shadow .3s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .selectionCard:hover {
@@ -1504,18 +1507,18 @@
   z-index: 1;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  margin-bottom: 8px;
+  width: 44px;
+  height: 44px;
   border-radius: 12px;
   background: rgba(253, 251, 246, .10);
   color: rgba(253, 251, 246, .92);
   font-size: 14px;
+  flex-shrink: 0;
 }
 
 .cardIcon svg {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .18));
 }
 
@@ -5239,10 +5242,10 @@
 }
 
 .page:not(.embedded) .progressStep i {
-  width: 28px !important;
-  height: 28px !important;
-  min-width: 28px !important;
-  min-height: 28px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
   font-size: 12px !important;
   margin: 0 0 5px 0 !important;
   border-width: 2px !important;
@@ -5253,21 +5256,27 @@
   transition: all 0.2s ease !important;
 }
 
+.page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) i {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
+  color: #FFFFFF !important;
+}
+
 .page:not(.embedded) .progressStep i svg {
-  width: 16px !important;
-  height: 16px !important;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 .page:not(.embedded) .currentStep i {
-  width: 30px !important;
-  height: 30px !important;
-  min-width: 30px !important;
-  min-height: 30px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
 }
 
 .page:not(.embedded) .currentStep i svg {
-  width: 17px !important;
-  height: 17px !important;
+  width: 24px !important;
+  height: 24px !important;
 }
 
 .page:not(.embedded) .progressStep b {
@@ -5341,8 +5350,7 @@
   justify-content: safe center !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-  padding-top: 4px !important;
-  padding-bottom: 6px !important;
+  padding: 4px 12px 6px 12px !important;
   scrollbar-width: thin;
 }
 
@@ -5359,15 +5367,15 @@
   font-weight: 800 !important;
   letter-spacing: 0.14em !important;
   text-transform: uppercase !important;
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 4px 2px !important;
   display: inline-block !important;
-  color: #B45309 !important;
-  text-shadow: none !important;
+  color: #FABE2C !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel .stepKicker {
   color: #FABE2C !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .page:not(.embedded) .stepPanel h2 {
@@ -5375,9 +5383,9 @@
   font-weight: 800 !important;
   letter-spacing: -0.02em !important;
   line-height: 1.2 !important;
-  margin: 0 0 5px 0 !important;
-  color: #000000 !important;
-  text-shadow: none !important;
+  margin: 0 0 5px 2px !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 15, 35, 0.85) !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel h2 {
@@ -5389,13 +5397,13 @@
   font-size: clamp(13px, 0.95vw, 14.5px) !important;
   line-height: 1.4 !important;
   margin: 0 0 clamp(10px, 1.5vh, 16px) !important;
-  color: #000000 !important;
-  opacity: 0.85 !important;
-  text-shadow: none !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  opacity: 0.95 !important;
+  text-shadow: 0 1px 6px rgba(0, 15, 35, 0.75) !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepPanel > p {
-  color: rgba(255, 255, 255, 0.92) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
   text-shadow: 0 1px 6px rgba(0, 15, 35, 0.75) !important;
 }
 
@@ -5702,48 +5710,52 @@
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .resultLocked h2,
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .verifyPanel h2,
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .pricePanel h2 {
-  color: #000000 !important;
+  color: #FFFFFF !important;
   font-weight: 800 !important;
-  text-shadow: none !important;
+  text-shadow: 0 2px 10px rgba(0, 15, 35, 0.85) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .resultLocked p,
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .verifyPanel p,
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .pricePanel p {
-  color: #000000 !important;
-  opacity: 0.85 !important;
-  text-shadow: none !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  opacity: 0.95 !important;
+  text-shadow: 0 1px 6px rgba(0, 15, 35, 0.75) !important;
 }
 
 /* Light Theme Selection Cards */
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 4px 14px rgba(10, 24, 46, 0.06) !important;
-  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.2) !important;
+  color: #FFFFFF !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard span {
-  color: #000000 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard small {
-  color: rgba(0, 0, 0, 0.62) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard i {
-  color: rgba(0, 0, 0, 0.45) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectionCard:hover {
   border-color: #F39125 !important;
-  box-shadow: 0 6px 18px rgba(10, 24, 46, 0.1) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectedCard {
-  background: #FFFFFF !important;
+  background: rgba(243, 145, 37, 0.15) !important;
   border: 2px solid #F39125 !important;
-  box-shadow: 0 0 16px rgba(243, 145, 37, 0.25) !important;
+  box-shadow: none !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .selectedCard i {
@@ -5782,178 +5794,2691 @@
   box-shadow: 0 0 16px rgba(243, 145, 37, 0.25) !important;
 }
 
-/* Light Theme Fields, Inputs, Selects & Groups */
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroup {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
-  color: #000000 !important;
-  box-shadow: 0 4px 14px rgba(10, 24, 46, 0.05) !important;
+/* =======================================================================
+   STEPS 4 & 5 (AND SUMMARY): GLASSMORPHISM GLASS STYLE & WHITE TEXT
+   ======================================================================= */
+
+/* Glassmorphism Cards: Quantities, Location, Notes & Details */
+.page:not(.embedded) .quantityField,
+.page:not(.embedded) .notesField,
+.page:not(.embedded) .detailGroup {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.2) !important;
+  border-radius: 18px !important;
+  padding: 14px 18px !important;
+}
+
+/* Detail Group (Options container) specific spacing & nested fields */
+.page:not(.embedded) .detailGroup {
+  padding: 18px 22px !important;
+  margin-top: 14px !important;
+}
+
+.page:not(.embedded) .detailGroup .quantityGrid {
+  gap: 14px !important;
+  margin-top: 10px !important;
+}
+
+.page:not(.embedded) .detailGroup .quantityField {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField input,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField select,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField textarea,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .emailField input,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid input,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailSelect {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.15) !important;
-  color: #000000 !important;
-  border-radius: 10px !important;
+/* Glass Inputs, Selects & Textareas */
+.page:not(.embedded) .quantityField div,
+.page:not(.embedded) .quantityField select,
+.page:not(.embedded) .notesField textarea,
+.page:not(.embedded) .emailField input,
+.page:not(.embedded) .customerGrid input,
+.page:not(.embedded) .detailSelect {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  color: #FFFFFF !important;
+  border-radius: 12px !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailSelect option {
-  background: #FFFFFF !important;
-  color: #000000 !important;
+.page:not(.embedded) .quantityField div input {
+  background: transparent !important;
+  border: none !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  box-shadow: none !important;
+  padding: 10px 14px !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField input::placeholder,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField textarea::placeholder,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .emailField input::placeholder,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid input::placeholder {
-  color: rgba(0, 0, 0, 0.45) !important;
+.page:not(.embedded) .detailSelect {
+  width: 100% !important;
+  min-height: 44px !important;
+  padding: 10px 14px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 14px center !important;
+  background-size: 16px !important;
+  padding-right: 38px !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .notesField span,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField span,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .quantityField b,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroup label,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .customerGrid label span {
-  color: #000000 !important;
+.page:not(.embedded) .quantityField:focus-within > div,
+.page:not(.embedded) .detailSelect:focus,
+.page:not(.embedded) .notesField textarea:focus,
+.page:not(.embedded) .customerGrid input:focus,
+.page:not(.embedded) .emailField input:focus {
+  border-color: #FABE2C !important;
+  background: rgba(255, 255, 255, 0.26) !important;
+  box-shadow: 0 0 0 3px rgba(250, 190, 44, 0.35), inset 0 1.5px 3px rgba(0, 0, 0, 0.20) !important;
+  outline: none !important;
+}
+
+.page:not(.embedded) .detailSelect option {
+  background: #0f172a !important;
+  color: #FFFFFF !important;
+  padding: 8px !important;
+}
+
+.page:not(.embedded) .quantityField input::placeholder,
+.page:not(.embedded) .notesField textarea::placeholder,
+.page:not(.embedded) .emailField input::placeholder,
+.page:not(.embedded) .customerGrid input::placeholder {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* White Labels, Headings & Content Text */
+.page:not(.embedded) .notesField span,
+.page:not(.embedded) .quantityField span,
+.page:not(.embedded) .quantityField b,
+.page:not(.embedded) .detailGroup label,
+.page:not(.embedded) .customerGrid label span,
+.page:not(.embedded) .emailField span {
+  color: #FFFFFF !important;
   font-weight: 700 !important;
-  text-shadow: none !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .detailGroupTitle {
-  color: #B45309 !important;
+.page:not(.embedded) .quantityField b {
+  color: #FFFFFF !important;
+  opacity: 0.9 !important;
+}
+
+.page:not(.embedded) .detailGroupTitle {
+  color: #FABE2C !important;
   font-weight: 800 !important;
-  text-shadow: none !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+  font-size: clamp(12px, 0.95vw, 13.5px) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-bottom: 8px !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .secondaryAction,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .backToQuickNavBtn {
-  color: #000000 !important;
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.18) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+.page:not(.embedded) .secondaryAction,
+.page:not(.embedded) .backToQuickNavBtn {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.40) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .secondaryAction:hover,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .backToQuickNavBtn:hover {
-  background: #F4F4F5 !important;
-  border-color: #000000 !important;
+.page:not(.embedded) .secondaryAction:hover,
+.page:not(.embedded) .backToQuickNavBtn:hover {
+  background: rgba(255, 255, 255, 0.30) !important;
+  border-color: #FFFFFF !important;
 }
 
-/* Light Theme Summary Panel, Locked Price & Code Inputs */
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
-  box-shadow: 0 4px 16px rgba(10, 24, 46, 0.06) !important;
+/* Glass Summary Panel & Locked Price */
+.page:not(.embedded) .summaryPanel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  ) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.40) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 10, 26, 0.25), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: 18px !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel h3,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel dd {
-  color: #000000 !important;
+.page:not(.embedded) .summaryPanel h3,
+.page:not(.embedded) .summaryPanel dd {
+  color: #FFFFFF !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel dt {
-  color: #B45309 !important;
+.page:not(.embedded) .summaryPanel dt {
+  color: #FABE2C !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .summaryPanel .editStepLink {
-  color: #D97706 !important;
+.page:not(.embedded) .summaryPanel .editStepLink {
+  color: #FABE2C !important;
+  text-decoration: underline !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
-  color: #000000 !important;
-  box-shadow: 0 4px 16px rgba(10, 24, 46, 0.06) !important;
+.page:not(.embedded) .lockedPrice {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  ) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.40) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 10, 26, 0.25), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-radius: 18px !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice strong,
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .priceRange {
-  color: #000000 !important;
+.page:not(.embedded) .lockedPrice strong,
+.page:not(.embedded) .priceRange {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 10px rgba(0, 15, 35, 0.85) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .lockedPrice span {
-  color: rgba(0, 0, 0, 0.65) !important;
+.page:not(.embedded) .lockedPrice span {
+  color: rgba(255, 255, 255, 0.90) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page:not(.embedded) .codeInputs input {
-  background: #FFFFFF !important;
-  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
-  color: #000000 !important;
-  font-weight: 800 !important;
-}
-
-/* =======================================================================
-   DARK THEME: STYLED GLASS & CONTRAST
-   ======================================================================= */
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .resultLocked h2,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .verifyPanel h2,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .pricePanel h2 {
+.page:not(.embedded) .codeInputs input {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.42) !important;
   color: #FFFFFF !important;
   font-weight: 800 !important;
-  text-shadow: 0 2px 10px rgba(0, 19, 49, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .resultLocked p,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .verifyPanel p,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .pricePanel p {
-  color: rgba(255, 255, 255, 0.94) !important;
-  text-shadow: 0 1px 6px rgba(0, 19, 49, 0.8) !important;
-}
-
+/* Dark Theme Adjustments */
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailGroup {
-  background: rgba(7, 24, 48, 0.78) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  ) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
   color: #FFFFFF !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField input,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField div,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField select,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField textarea,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .emailField input,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .customerGrid input,
 :global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailSelect {
-  background: rgba(5, 17, 34, 0.85) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  color: #FFFFFF !important;
-}
-
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField input::placeholder,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField textarea::placeholder,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .emailField input::placeholder,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .customerGrid input::placeholder {
-  color: rgba(255, 255, 255, 0.55) !important;
-}
-
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .notesField span,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .quantityField span,
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .detailGroup label {
-  color: #FFFFFF !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
-}
-
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .secondaryAction {
-  color: #FFFFFF !important;
   background: rgba(255, 255, 255, 0.14) !important;
-  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.35) !important;
+  color: #FFFFFF !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .secondaryAction:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
-  border-color: #FFFFFF !important;
+/* =======================================================================
+   Clean iOS-style calculator pass
+   Keeps the current flow, but brings the visual language closer to the
+   supplied reference: airy, structured, light, and precise.
+   ======================================================================= */
+
+:global(body[data-page="offer-calculator"]) {
+  overflow: auto !important;
+  background: #f4f8fc !important;
+}
+
+.page:not(.embedded) {
+  --navy: #0b2345;
+  --navy-deep: #071a33;
+  --yellow: #ffbe3d;
+  --orange: #ff9e31;
+  --pink: #ff3b83;
+  --magenta: #ff2f92;
+  --green: #22c77a;
+  --white: #ffffff;
+  --muted: #6d7e95;
+  --line: rgba(11, 35, 69, .14);
+  --ink: #0b2345;
+  --ink-muted: #6d7e95;
+  --hairline: rgba(11, 35, 69, .14);
+  width: 100%;
+  min-height: 100dvh;
+  height: auto !important;
+  overflow: visible !important;
+  display: grid !important;
+  grid-template-rows: auto auto 1fr;
+  gap: clamp(22px, 3vh, 38px) !important;
+  padding: clamp(22px, 4vh, 54px) clamp(24px, 5vw, 112px) clamp(28px, 5vh, 68px) !important;
+  color: var(--ink) !important;
+  background: #f4f8fc !important;
+}
+
+.page:not(.embedded)::before {
+  background:
+    linear-gradient(90deg, rgba(244, 248, 252, .98) 0%, rgba(244, 248, 252, .92) 49%, rgba(244, 248, 252, .34) 100%) !important;
+}
+
+.page:not(.embedded)::after {
+  background-image: url("/assets/calculator-glass-bg.png") !important;
+  background-position: right bottom !important;
+  background-size: min(60vw, 980px) auto !important;
+  background-repeat: no-repeat !important;
+  filter: brightness(1.22) saturate(.9) contrast(.94) !important;
+  opacity: .88 !important;
+}
+
+.page:not(.embedded) .hero {
+  max-width: 1480px !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 28px !important;
+  margin: 0 auto !important;
+}
+
+.page:not(.embedded) .heroCopy,
+.page:not(.embedded) .securityCard,
+.page:not(.embedded) .consultationShell,
+.page:not(.embedded) .summaryPanel,
+.page:not(.embedded) .resultLocked,
+.page:not(.embedded) .verifyPanel,
+.page:not(.embedded) .pricePanel {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: var(--ink) !important;
+}
+
+.page:not(.embedded) .heroCopy {
+  min-height: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy::before {
+  display: none !important;
+}
+
+.page:not(.embedded) .heroTopRow {
+  justify-content: space-between !important;
+  margin-bottom: 34px !important;
+}
+
+.page:not(.embedded) .brand,
+.page:not(.embedded) .stepKicker,
+.page:not(.embedded) .detailGroupTitle,
+.page:not(.embedded) .quantityField span,
+.page:not(.embedded) .emailField span,
+.page:not(.embedded) .notesField span,
+.page:not(.embedded) .customerGrid label span,
+.page:not(.embedded) .summaryPanel dt {
+  color: #315378 !important;
+  letter-spacing: .22em !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .heroCopy strong {
+  display: block !important;
+  color: #7a8ca4 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .heroCopy h1,
+.page:not(.embedded) .stepPanel h2,
+.page:not(.embedded) .resultLocked h2,
+.page:not(.embedded) .verifyPanel h2,
+.page:not(.embedded) .pricePanel h2 {
+  max-width: 780px !important;
+  color: var(--ink) !important;
+  font-size: clamp(42px, 4.4vw, 74px) !important;
+  font-weight: 800 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.02em !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .heroCopy p,
+.page:not(.embedded) .stepPanel p,
+.page:not(.embedded) .resultLocked p,
+.page:not(.embedded) .verifyPanel p,
+.page:not(.embedded) .pricePanel p,
+.page:not(.embedded) .securityCard p {
+  max-width: 680px !important;
+  color: var(--muted) !important;
+  font-size: clamp(15px, 1.15vw, 18px) !important;
+  line-height: 1.55 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .securityCard {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  align-items: center !important;
+  gap: 12px 16px !important;
+  min-width: 300px !important;
+  padding-top: 4px !important;
+}
+
+.page:not(.embedded) .securityCard span {
+  width: 42px !important;
+  height: 42px !important;
+  margin: 0 !important;
+  color: var(--navy) !important;
+  background: rgba(255, 255, 255, .62) !important;
+  border: 1px solid rgba(11, 35, 69, .14) !important;
+  box-shadow: 0 12px 30px rgba(11, 35, 69, .10) !important;
+}
+
+.page:not(.embedded) .securityCard h2 {
+  margin: 0 !important;
+  color: var(--ink) !important;
+  font-size: 17px !important;
+  letter-spacing: 0 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .securityCard p {
+  grid-column: 2 !important;
+  margin-top: -10px !important;
+  font-size: 13px !important;
+}
+
+.page:not(.embedded) .progressNav {
+  max-width: 1480px !important;
+  min-height: 104px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page:not(.embedded) .progressNav::before {
+  top: 42px !important;
+  height: 1px !important;
+  background: rgba(49, 83, 120, .28) !important;
+}
+
+.page:not(.embedded) .progressFill {
+  top: 42px !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow)) !important;
+}
+
+.page:not(.embedded) .progressStep {
+  color: #7a8ca4 !important;
+}
+
+.page:not(.embedded) .progressStep span {
+  color: #8193aa !important;
+  font-size: 12px !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .progressStep i {
+  width: 40px !important;
+  height: 40px !important;
+  border: 1px solid rgba(49, 83, 120, .22) !important;
+  background: rgba(255, 255, 255, .64) !important;
+  color: #315378 !important;
+  box-shadow: 0 10px 24px rgba(11, 35, 69, .10) !important;
+}
+
+.page:not(.embedded) .progressStep b {
+  color: #6d7e95 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .currentStep i {
+  border-color: transparent !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--pink), var(--orange), var(--yellow)) !important;
+  box-shadow: 0 14px 30px rgba(255, 59, 131, .26) !important;
+  animation: none !important;
+}
+
+.page:not(.embedded) .currentStep b,
+.page:not(.embedded) .currentStep span {
+  color: var(--ink) !important;
+}
+
+.page:not(.embedded) .doneStep i {
+  border-color: rgba(34, 199, 122, .26) !important;
+  color: #0c8751 !important;
+  background: rgba(255, 255, 255, .78) !important;
+  box-shadow: 0 10px 24px rgba(11, 35, 69, .10) !important;
+}
+
+.page:not(.embedded) .consultationShell {
+  max-width: 1480px !important;
+  display: block !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.page:not(.embedded) .stepPanel {
+  max-width: 1260px !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 0 0 96px !important;
+}
+
+.page:not(.embedded) .cardGrid,
+.page:not(.embedded) .serviceGrid,
+.page:not(.embedded) .quantityGrid,
+.page:not(.embedded) .customerGrid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  margin-top: 28px !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
+.page:not(.embedded) .serviceGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.page:not(.embedded) .selectionCard,
+.page:not(.embedded) .propertyCard,
+.page:not(.embedded) .scopeCard,
+.page:not(.embedded) .conditionCard,
+.page:not(.embedded) .quantityField,
+.page:not(.embedded) .notesField,
+.page:not(.embedded) .customerGrid label,
+.page:not(.embedded) .photoDrop {
+  border: 1px solid rgba(49, 83, 120, .16) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  box-shadow: 0 18px 42px rgba(11, 35, 69, .08), inset 0 1px 0 rgba(255, 255, 255, .80) !important;
+  color: var(--ink) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+}
+
+.page:not(.embedded) .selectionCard {
+  min-height: 144px !important;
+  align-items: end !important;
+  padding: 24px 56px 22px 24px !important;
+}
+
+.page:not(.embedded) .selectionCard:hover,
+.page:not(.embedded) .propertyCard:hover,
+.page:not(.embedded) .scopeCard:hover,
+.page:not(.embedded) .conditionCard:hover {
+  transform: translateY(-2px) !important;
+  background: rgba(255, 255, 255, .90) !important;
+  border-color: rgba(255, 59, 131, .32) !important;
+}
+
+.page:not(.embedded) .selectedCard,
+.page:not(.embedded) .propertyCardSelected,
+.page:not(.embedded) .scopeCardSelected,
+.page:not(.embedded) .conditionCardSelected {
+  background: rgba(255, 255, 255, .88) !important;
+  border-color: #ff3b83 !important;
+  box-shadow: 0 20px 48px rgba(255, 59, 131, .12), inset 0 0 0 1px rgba(255, 158, 49, .44) !important;
+}
+
+.page:not(.embedded) .cardIcon,
+.page:not(.embedded) .scopeCardIcon,
+.page:not(.embedded) .conditionCardIcon {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 13px !important;
+  color: #315378 !important;
+  background: rgba(230, 237, 246, .95) !important;
+  box-shadow: none !important;
+}
+
+.page:not(.embedded) .selectedCard .cardIcon,
+.page:not(.embedded) .scopeCardSelected .scopeCardIcon,
+.page:not(.embedded) .conditionCardSelected .conditionCardIcon {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--pink), var(--orange)) !important;
+}
+
+.page:not(.embedded) .selectionCard span:not(.cardIcon),
+.page:not(.embedded) .propertyCardTitle,
+.page:not(.embedded) .scopeCardTitle,
+.page:not(.embedded) .conditionCardTitle {
+  color: var(--ink) !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .scopeCardDesc,
+.page:not(.embedded) .conditionCardDesc,
+.page:not(.embedded) .propertyCardSubtitle,
+.page:not(.embedded) .selectionCard small {
+  color: var(--muted) !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .selectionCard i {
+  right: 24px !important;
+  top: auto !important;
+  bottom: 24px !important;
+  color: #315378 !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .selectedCard i {
+  color: #ff3b83 !important;
+}
+
+.page:not(.embedded) .quantityField,
+.page:not(.embedded) .customerGrid label,
+.page:not(.embedded) .notesField {
+  padding: 18px !important;
+}
+
+.page:not(.embedded) .quantityField div,
+.page:not(.embedded) .quantityField input,
+.page:not(.embedded) .emailField input,
+.page:not(.embedded) .customerGrid input,
+.page:not(.embedded) .notesField textarea,
+.page:not(.embedded) .detailSelect {
+  border: 1px solid rgba(49, 83, 120, .16) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, .58) !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .quantityField input::placeholder,
+.page:not(.embedded) .customerGrid input::placeholder,
+.page:not(.embedded) .notesField textarea::placeholder {
+  color: #97a7bb !important;
+}
+
+.page:not(.embedded) .roomChips button,
+.page:not(.embedded) .textButton {
+  border-color: rgba(49, 83, 120, .18) !important;
+  background: rgba(255, 255, 255, .68) !important;
+  color: #315378 !important;
+  box-shadow: 0 10px 24px rgba(11, 35, 69, .06) !important;
+}
+
+.page:not(.embedded) .activeChip {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--pink), var(--orange)) !important;
+}
+
+.page:not(.embedded) .navActions {
+  position: sticky !important;
+  bottom: 18px !important;
+  z-index: 20 !important;
+  max-width: 1480px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page:not(.embedded) .primaryAction,
+.page:not(.embedded) .secondaryAction,
+.page:not(.embedded) .backToQuickNavBtn {
+  min-height: 52px !important;
+  border-radius: 999px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-decoration: none !important;
+}
+
+.page:not(.embedded) .primaryAction {
+  min-width: 210px !important;
+  color: #fff !important;
+  border: 0 !important;
+  background: linear-gradient(135deg, var(--yellow), var(--orange) 42%, var(--magenta)) !important;
+  box-shadow: 0 18px 38px rgba(255, 59, 131, .24) !important;
+}
+
+.page:not(.embedded) .primaryAction:disabled {
+  cursor: not-allowed !important;
+  color: #8a9aaf !important;
+  background: rgba(255, 255, 255, .70) !important;
+  border: 1px solid rgba(49, 83, 120, .16) !important;
+  box-shadow: none !important;
+}
+
+.page:not(.embedded) .secondaryAction,
+.page:not(.embedded) .backToQuickNavBtn {
+  color: #315378 !important;
+  border: 1px solid rgba(49, 83, 120, .28) !important;
+  background: rgba(255, 255, 255, .66) !important;
+  box-shadow: 0 12px 26px rgba(11, 35, 69, .08) !important;
+}
+
+.page:not(.embedded) .error {
+  color: #b31942 !important;
+  background: rgba(255, 255, 255, .84) !important;
+  border: 1px solid rgba(255, 59, 131, .24) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+}
+
+.page:not(.embedded) .notice {
+  color: #315378 !important;
+  background: rgba(255, 255, 255, .80) !important;
+  border: 1px solid rgba(49, 83, 120, .14) !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+}
+
+@media (max-width: 980px) {
+  .page:not(.embedded) {
+    padding: 20px 16px 32px !important;
+  }
+
+  .page:not(.embedded) .hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page:not(.embedded) .progressNav {
+    overflow-x: auto !important;
+    grid-template-columns: repeat(8, minmax(104px, 1fr)) !important;
+    padding-bottom: 8px !important;
+  }
+
+  .page:not(.embedded) .cardGrid,
+  .page:not(.embedded) .serviceGrid,
+  .page:not(.embedded) .quantityGrid,
+  .page:not(.embedded) .customerGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page:not(.embedded) .heroCopy h1,
+  .page:not(.embedded) .stepPanel h2,
+  .page:not(.embedded) .resultLocked h2,
+  .page:not(.embedded) .verifyPanel h2,
+  .page:not(.embedded) .pricePanel h2 {
+    font-size: clamp(34px, 10vw, 48px) !important;
+  }
+
+  .page:not(.embedded) .navActions,
+  .page:not(.embedded) .navActionsLeft {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+/* Standalone calculator must keep the supplied light reference look even when the
+   global site toggle is in night mode. */
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded),
+:global(html[data-theme="amigos-light"]) .page:not(.embedded),
+.page:not(.embedded) {
+  --ink: #0b2345 !important;
+  --ink-muted: #6d7e95 !important;
+  --muted: #6d7e95 !important;
+  --line: rgba(49, 83, 120, .16) !important;
+  --hairline: rgba(49, 83, 120, .16) !important;
+  min-height: 100dvh !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: #f5f9fd !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded)::before,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded)::before,
+.page:not(.embedded)::before {
+  background:
+    linear-gradient(90deg, rgba(247, 251, 255, .88) 0%, rgba(247, 251, 255, .68) 42%, rgba(247, 251, 255, .16) 74%, rgba(247, 251, 255, .02) 100%),
+    linear-gradient(180deg, rgba(247, 251, 255, .70) 0%, rgba(247, 251, 255, .18) 58%, rgba(247, 251, 255, .06) 100%) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded)::after,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded)::after,
+.page:not(.embedded)::after {
+  background-image: url("/assets/calculator-day-reference.png") !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  background-repeat: no-repeat !important;
+  opacity: 1 !important;
+  filter: saturate(1.05) contrast(.98) brightness(1.08) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) > .hero .heroCopy,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) > .hero .heroCopy,
+.page:not(.embedded) > .hero .heroCopy {
+  display: block !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) > .hero .heroCopy::before,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) > .hero .heroCopy::before,
+.page:not(.embedded) > .hero .heroCopy::before {
+  content: none !important;
+  display: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy h1,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .heroCopy h1,
+.page:not(.embedded) .heroCopy h1 {
+  color: #0b2345 !important;
+  font-size: clamp(48px, 5vw, 82px) !important;
+  line-height: 1.02 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy p,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .heroCopy p,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .heroCopy strong,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .heroCopy strong,
+.page:not(.embedded) .heroCopy p,
+.page:not(.embedded) .heroCopy strong {
+  color: #5f7189 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .brand,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .brand,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .stepKicker,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .stepKicker,
+.page:not(.embedded) .brand,
+.page:not(.embedded) .stepKicker {
+  color: #315378 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .selectionCard,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .selectionCard,
+.page:not(.embedded) .selectionCard {
+  background: rgba(255, 255, 255, .78) !important;
+  border: 1px solid rgba(49, 83, 120, .16) !important;
+  box-shadow: 0 18px 42px rgba(11, 35, 69, .08), inset 0 1px 0 rgba(255, 255, 255, .85) !important;
+  color: #0b2345 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .selectionCard span,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .selectionCard span,
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .selectionCard small,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .selectionCard small,
+.page:not(.embedded) .selectionCard span,
+.page:not(.embedded) .selectionCard small {
+  color: #0b2345 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .selectionCard small,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .selectionCard small,
+.page:not(.embedded) .selectionCard small {
+  color: #6d7e95 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .selectedCard,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .selectedCard,
+.page:not(.embedded) .selectedCard {
+  border-color: #ff3b83 !important;
+  background: rgba(255, 255, 255, .90) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .securityCard,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .securityCard,
+.page:not(.embedded) .securityCard {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #0b2345 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page:not(.embedded) .securityCard h2,
+:global(html[data-theme="amigos-light"]) .page:not(.embedded) .securityCard h2,
+.page:not(.embedded) .securityCard h2 {
+  color: #0b2345 !important;
+  text-shadow: none !important;
+}
+
+/* Final reference alignment: visible villa/lake image, no hero rectangle, one back control. */
+.page:not(.embedded) {
+  gap: clamp(18px, 2.6vh, 30px) !important;
+  padding-top: clamp(26px, 4vh, 48px) !important;
+  background: #f3f8fc !important;
+}
+
+.page:not(.embedded)::before {
+  background:
+    linear-gradient(90deg, rgba(246, 250, 254, .92) 0%, rgba(246, 250, 254, .70) 42%, rgba(246, 250, 254, .18) 76%, rgba(246, 250, 254, .04) 100%),
+    linear-gradient(180deg, rgba(246, 250, 254, .76) 0%, rgba(246, 250, 254, .22) 48%, rgba(246, 250, 254, .08) 100%) !important;
+}
+
+.page:not(.embedded)::after {
+  background-image: url("/assets/calculator-day-reference.png") !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  opacity: 1 !important;
+  filter: saturate(.98) contrast(.96) brightness(1.08) !important;
+}
+
+.page:not(.embedded) .hero {
+  min-height: auto !important;
+  margin-bottom: 0 !important;
+}
+
+.page:not(.embedded) .heroCopy,
+.page:not(.embedded) .heroCopy *,
+.page:not(.embedded) .heroTopRow {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.page:not(.embedded) .heroCopy {
+  width: auto !important;
+  max-width: 820px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page:not(.embedded) .heroTopRow {
+  display: flex !important;
+  justify-content: flex-start !important;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.page:not(.embedded) .themeToggle {
+  position: fixed !important;
+  top: 128px !important;
+  right: clamp(24px, 5vw, 112px) !important;
+  z-index: 30 !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(49, 83, 120, .18) !important;
+  background: rgba(255, 255, 255, .58) !important;
+  box-shadow: 0 14px 32px rgba(11, 35, 69, .10) !important;
+}
+
+.page:not(.embedded) .heroCopy h1 {
+  max-width: 760px !important;
+  margin-top: 12px !important;
+  font-size: clamp(44px, 4.6vw, 76px) !important;
+}
+
+.page:not(.embedded) .securityCard {
+  min-width: 290px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.page:not(.embedded) .progressNav {
+  margin-top: clamp(8px, 1.8vh, 22px) !important;
+}
+
+.page:not(.embedded) .navActionsLeft {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.page:not(.embedded) .navActionsLeft .secondaryAction {
+  display: none !important;
+}
+
+.page:not(.embedded) .backToQuickNavBtn {
+  width: fit-content !important;
+  min-width: 260px !important;
+  justify-content: center !important;
+}
+
+.page:not(.embedded) .stepPanel {
+  max-width: 1240px !important;
+}
+
+.page:not(.embedded) .stepPanel h2 {
+  font-size: clamp(40px, 4.2vw, 68px) !important;
+}
+
+.page:not(.embedded) .propertyGrid {
+  gap: 18px !important;
+}
+
+@media (max-width: 980px) {
+  .page:not(.embedded)::before {
+    background: linear-gradient(180deg, rgba(246, 250, 254, .92), rgba(246, 250, 254, .62) 46%, rgba(246, 250, 254, .32)) !important;
+  }
+
+  .page:not(.embedded) .themeToggle {
+    top: 102px !important;
+    right: 16px !important;
+  }
+
+  .page:not(.embedded) .securityCard {
+    display: none !important;
+  }
+
+  .page:not(.embedded) .backToQuickNavBtn {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Calculator reference lock
+   The standalone calculator accumulated several older visual systems above.
+   Keep this final block intentionally specific so the reference-style light,
+   architectural/iOS layout wins regardless of the global site theme. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) {
+  isolation: isolate !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  gap: clamp(22px, 3vh, 38px) !important;
+  padding: clamp(34px, 5vh, 64px) clamp(44px, 5.2vw, 112px) clamp(110px, 11vh, 150px) !important;
+  background: #f5f9fd !important;
+  color: #0b2345 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded)::after {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -2 !important;
+  display: block !important;
+  content: "" !important;
+  background-image: url("/assets/calculator-day-reference.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center bottom !important;
+  opacity: 1 !important;
+  filter: saturate(1.02) contrast(.96) brightness(1.08) !important;
+  transform: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded)::before {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  display: block !important;
+  content: "" !important;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, .28), transparent 30%),
+    linear-gradient(90deg, rgba(246, 250, 254, .88) 0%, rgba(246, 250, 254, .62) 36%, rgba(246, 250, 254, .16) 66%, rgba(246, 250, 254, .02) 100%),
+    linear-gradient(180deg, rgba(246, 250, 254, .50) 0%, rgba(246, 250, 254, .08) 48%, rgba(246, 250, 254, 0) 100%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: clamp(28px, 5vw, 90px) !important;
+  width: 100% !important;
+  max-width: 1530px !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero .heroCopy,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero .heroCopy:hover {
+  width: auto !important;
+  max-width: 740px !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  transform: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero .heroCopy::before,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero .heroCopy::after {
+  display: none !important;
+  content: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroTopRow {
+  position: static !important;
+  display: block !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle {
+  position: fixed !important;
+  top: clamp(106px, 10vh, 140px) !important;
+  right: clamp(26px, 5vw, 92px) !important;
+  z-index: 40 !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  border: 1px solid rgba(11, 35, 69, .12) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  color: #0b2345 !important;
+  box-shadow: 0 18px 40px rgba(11, 35, 69, .12), inset 0 1px 0 rgba(255, 255, 255, .9) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy .brand {
+  margin: 0 0 8px !important;
+  color: #315378 !important;
+  letter-spacing: .38em !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy strong,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy p {
+  color: #6d7e95 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy h1 {
+  max-width: 740px !important;
+  margin: 12px 0 18px !important;
+  color: #0b2345 !important;
+  font-size: clamp(44px, 4.5vw, 76px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.06em !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard {
+  align-self: start !important;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  min-width: 300px !important;
+  max-width: 360px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #0b2345 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard span {
+  grid-row: span 2 !important;
+  display: grid !important;
+  width: 42px !important;
+  height: 42px !important;
+  place-items: center !important;
+  border: 1px solid rgba(11, 35, 69, .12) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, .74) !important;
+  box-shadow: 0 12px 30px rgba(11, 35, 69, .10) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard h2,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard p {
+  margin: 0 !important;
+  color: #0b2345 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard p {
+  margin-top: 4px !important;
+  color: #6d7e95 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressNav {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: clamp(4px, 1.4vh, 18px) auto 0 !important;
+  padding: 0 clamp(10px, 1vw, 18px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel h2 {
+  max-width: 760px !important;
+  color: #0b2345 !important;
+  font-size: clamp(42px, 5vw, 76px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.06em !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel p,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepEyebrow {
+  color: #6d7e95 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .cardGrid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+  min-height: 128px !important;
+  padding: 22px 56px 20px 24px !important;
+  align-items: center !important;
+  border: 1px solid rgba(124, 145, 170, .24) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .72) !important;
+  color: #0b2345 !important;
+  box-shadow: 0 18px 44px rgba(11, 35, 69, .08), inset 0 1px 0 rgba(255, 255, 255, .86) !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(16px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard:hover {
+  border-color: rgba(255, 59, 131, .46) !important;
+  background: rgba(255, 255, 255, .86) !important;
+  transform: translateY(-2px) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectedCard {
+  border-color: #ff3b83 !important;
+  background: rgba(255, 255, 255, .90) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard span:not(.cardIcon),
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard small,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard i {
+  color: #0b2345 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard small {
+  color: #6d7e95 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .cardIcon {
+  color: #315378 !important;
+  background: rgba(229, 236, 245, .92) !important;
+  box-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectedCard .cardIcon {
+  color: #fff !important;
+  background: linear-gradient(135deg, #ff3b83, #ffad32) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions {
+  position: fixed !important;
+  right: clamp(42px, 5vw, 110px) !important;
+  bottom: clamp(32px, 5vh, 58px) !important;
+  left: clamp(42px, 5vw, 110px) !important;
+  z-index: 32 !important;
+  pointer-events: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions > * {
+  pointer-events: auto !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActionsLeft {
+  display: flex !important;
+  gap: 0 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActionsLeft .secondaryAction {
+  display: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .backToQuickNavBtn {
+  width: fit-content !important;
+  min-width: 0 !important;
+  padding: 0 28px !important;
+  border: 1px solid rgba(11, 35, 69, .34) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .54) !important;
+  color: #315378 !important;
+  box-shadow: 0 16px 34px rgba(11, 35, 69, .10) !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .primaryAction {
+  border: 0 !important;
+  background: linear-gradient(135deg, #ffbf3f 0%, #ff8d52 46%, #ff2f93 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 18px 42px rgba(255, 91, 128, .24) !important;
+}
+
+@media (max-width: 1200px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 820px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) {
+    padding: 28px 18px 128px !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) > .hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard {
+    display: none !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .cardGrid {
+    grid-template-columns: 1fr !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions {
+    left: 18px !important;
+    right: 18px !important;
+    bottom: 18px !important;
+    gap: 12px !important;
+  }
+}
+
+/* Calculator polish pass: header switch, progress contrast, and non-overlapping actions. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle {
+  position: absolute !important;
+  top: clamp(32px, 4.4vh, 54px) !important;
+  right: clamp(42px, 5vw, 112px) !important;
+  z-index: 45 !important;
+  width: 48px !important;
+  height: 32px !important;
+  min-width: 48px !important;
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 3px !important;
+  border: 1px solid rgba(11, 35, 69, .18) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .34) !important;
+  color: #fff !important;
+  box-shadow: 0 14px 34px rgba(11, 35, 69, .10), inset 0 1px 0 rgba(255, 255, 255, .82) !important;
+  backdrop-filter: blur(12px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(135%) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggleIcon {
+  width: 24px !important;
+  height: 24px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #f6be10, #f39125 58%, #fff3bf) !important;
+  box-shadow: 0 6px 18px rgba(11, 35, 69, .18) !important;
+  transform: translateX(0) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle {
+  border-color: rgba(246, 190, 16, .42) !important;
+  background: rgba(7, 26, 51, .62) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggleIcon {
+  transform: translateX(16px) !important;
+  background: linear-gradient(135deg, #071a33, #12345f 58%, #c73b8e) !important;
+  color: #fdfbf6 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard {
+  margin-right: 76px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) span,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) b {
+  color: rgba(49, 83, 120, .72) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) i {
+  background: rgba(255, 255, 255, .54) !important;
+  border-color: rgba(49, 83, 120, .18) !important;
+  color: rgba(49, 83, 120, .58) !important;
+  box-shadow: 0 10px 28px rgba(49, 83, 120, .08), inset 0 1px 0 rgba(255, 255, 255, .86) !important;
+  backdrop-filter: blur(10px) saturate(125%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(125%) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) i svg {
+  opacity: 1 !important;
+  color: rgba(49, 83, 120, .58) !important;
+  stroke: currentColor !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressNav {
+  margin-top: clamp(16px, 2.4vh, 32px) !important;
+  margin-bottom: clamp(8px, 1vh, 18px) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions {
+  position: static !important;
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: clamp(24px, 3.5vh, 46px) auto 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+  pointer-events: auto !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActionsLeft,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions > * {
+  pointer-events: auto !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .backToQuickNavBtn,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .primaryAction {
+  min-height: 58px !important;
+}
+
+@media (max-width: 980px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle {
+    top: 24px !important;
+    right: 18px !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard {
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-width: 720px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActions {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .backToQuickNavBtn,
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .primaryAction {
+    width: 100% !important;
+  }
+}
+
+/* Component card sizing: cleaner, shorter bars with stronger readable details. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .cardGrid {
+  gap: 18px 22px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+  min-height: 112px !important;
+  height: 112px !important;
+  padding: 20px 54px 20px 24px !important;
+  display: grid !important;
+  grid-template-columns: 54px minmax(0, 1fr) 28px !important;
+  grid-template-rows: auto auto !important;
+  column-gap: 18px !important;
+  row-gap: 4px !important;
+  align-items: center !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .cardIcon {
+  grid-row: 1 / 3 !important;
+  grid-column: 1 !important;
+  width: 54px !important;
+  height: 54px !important;
+  border-radius: 14px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .cardIcon svg {
+  width: 27px !important;
+  height: 27px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard span:not(.cardIcon) {
+  grid-column: 2 !important;
+  align-self: end !important;
+  font-size: clamp(20px, 1.35vw, 26px) !important;
+  line-height: 1.05 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.04em !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard small {
+  grid-column: 2 !important;
+  align-self: start !important;
+  margin-top: 0 !important;
+  font-size: clamp(14px, .95vw, 17px) !important;
+  line-height: 1.25 !important;
+  font-weight: 650 !important;
+  letter-spacing: -.015em !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard i {
+  position: static !important;
+  grid-column: 3 !important;
+  grid-row: 1 / 3 !important;
+  justify-self: end !important;
+  align-self: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 13px !important;
+  color: #06351f !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectedCard i {
+  width: 32px !important;
+  height: 32px !important;
+  font-size: 15px !important;
+}
+
+@media (min-width: 1440px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+    min-height: 124px !important;
+    height: 124px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+    height: auto !important;
+    min-height: 104px !important;
+  }
+}
+
+/* Progress readability pass: larger, clearer but still light. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep {
+  min-height: 106px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep span {
+  margin-bottom: 8px !important;
+  font-size: clamp(14px, .92vw, 17px) !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  letter-spacing: .025em !important;
+  color: rgba(11, 35, 69, .78) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep i {
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  margin: 0 0 10px !important;
+  border-width: 2px !important;
+  font-size: 18px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep i svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke-width: 2.15px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep i {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  min-height: 60px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep i svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep b {
+  font-size: clamp(16px, 1.05vw, 20px) !important;
+  line-height: 1.12 !important;
+  font-weight: 650 !important;
+  color: rgba(49, 83, 120, .82) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep span,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep b {
+  color: #0b2345 !important;
+}
+
+/* Top-right controls: sound + theme live above the protected price panel. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 14px !important;
+  min-width: 360px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro {
+  display: grid !important;
+  justify-items: end !important;
+  gap: 8px !important;
+  max-width: 430px !important;
+  text-align: right !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro .brand {
+  margin: 0 !important;
+  color: #315378 !important;
+  font-size: clamp(12px, .82vw, 15px) !important;
+  line-height: 1.1 !important;
+  font-weight: 760 !important;
+  letter-spacing: .34em !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro strong {
+  color: rgba(49, 83, 120, .72) !important;
+  font-size: clamp(13px, .88vw, 16px) !important;
+  line-height: 1.2 !important;
+  font-weight: 650 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .calculatorControls {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+  margin-right: 2px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .soundToggle {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  z-index: 1 !important;
+  width: 48px !important;
+  height: 32px !important;
+  min-width: 48px !important;
+  min-height: 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 3px !important;
+  border: 1px solid rgba(11, 35, 69, .18) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .34) !important;
+  color: #fff !important;
+  box-shadow: 0 14px 34px rgba(11, 35, 69, .10), inset 0 1px 0 rgba(255, 255, 255, .82) !important;
+  backdrop-filter: blur(12px) saturate(135%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(135%) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggleIcon,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .soundToggleIcon {
+  width: 24px !important;
+  height: 24px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 50% !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #f6be10, #f39125 58%, #fff3bf) !important;
+  box-shadow: 0 6px 18px rgba(11, 35, 69, .18) !important;
+  transform: translateX(0) !important;
+  transition: transform .32s ease, background .32s ease, color .32s ease !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .soundIcon,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeIcon {
+  width: 15px !important;
+  height: 15px !important;
+  display: block !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .soundToggleActive .soundToggleIcon,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggleIcon {
+  transform: translateX(16px) !important;
+  background: linear-gradient(135deg, #071a33, #12345f 58%, #c73b8e) !important;
+  color: #fdfbf6 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .themeToggle,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .soundToggleActive {
+  border-color: rgba(246, 190, 16, .42) !important;
+  background: rgba(7, 26, 51, .62) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside .securityCard {
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy .brand,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy > strong {
+  display: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActionsLeft {
+  gap: 12px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .navActionsLeft .secondaryAction {
+  display: inline-flex !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .secondaryAction {
+  min-height: 58px !important;
+  padding: 0 26px !important;
+  border: 1px solid rgba(11, 35, 69, .24) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .42) !important;
+  color: #315378 !important;
+  box-shadow: 0 16px 34px rgba(11, 35, 69, .08) !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+@media (max-width: 980px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside {
+    align-items: stretch !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro {
+    justify-items: start !important;
+    text-align: left !important;
+  }
+
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .calculatorControls {
+    align-self: flex-end !important;
+  }
+}
+
+/* Card normalization: balanced height and type scale after readability pass. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+  min-height: 104px !important;
+  height: 104px !important;
+  padding: 18px 46px 18px 22px !important;
+  grid-template-columns: 50px minmax(0, 1fr) 24px !important;
+  column-gap: 16px !important;
+  row-gap: 2px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .cardIcon {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 14px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .cardIcon svg {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard span:not(.cardIcon) {
+  font-size: clamp(18px, 1.12vw, 22px) !important;
+  line-height: 1.08 !important;
+  font-weight: 720 !important;
+  letter-spacing: -.035em !important;
+  white-space: normal !important;
+  text-wrap: balance !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard small {
+  font-size: clamp(13px, .78vw, 15px) !important;
+  line-height: 1.18 !important;
+  font-weight: 600 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard i {
+  width: 22px !important;
+  height: 22px !important;
+  font-size: 12px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectedCard i {
+  width: 26px !important;
+  height: 26px !important;
+  font-size: 13px !important;
+}
+
+/* Progress active mask fix: keep highlight perfectly circular and centered. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep i {
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background-clip: padding-box !important;
+  line-height: 1 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep i,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .doneStep i {
+  border-color: rgba(255, 255, 255, .72) !important;
+  background: linear-gradient(135deg, #ff3b83 0%, #ff8a38 48%, #ffc742 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 30px rgba(255, 111, 64, .28), inset 0 1px 0 rgba(255, 255, 255, .42) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep i svg,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .doneStep i svg {
+  color: #fff !important;
+  stroke: currentColor !important;
+}
+
+@media (min-width: 1440px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard {
+    min-height: 112px !important;
+    height: 112px !important;
+  }
+}
+
+/* Heading refinement: normal tracking, less compressed display type. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy h1,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel h2 {
+  letter-spacing: -.025em !important;
+  text-wrap: balance !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard span {
+  display: none !important;
+}
+
+/* Right panel final alignment: toggles first, then left-aligned heading, then price note. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside {
+  align-items: flex-start !important;
+  gap: 12px !important;
+  min-width: 420px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .calculatorControls {
+  align-self: flex-start !important;
+  justify-content: flex-start !important;
+  margin: 0 0 4px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro {
+  justify-items: start !important;
+  text-align: left !important;
+  max-width: 520px !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro .brand {
+  letter-spacing: .18em !important;
+  font-size: clamp(13px, .9vw, 16px) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro strong {
+  font-size: clamp(15px, .98vw, 18px) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside .securityCard {
+  align-self: stretch !important;
+  text-align: left !important;
+  padding-top: 8px !important;
+}
+
+@media (max-width: 980px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside {
+    min-width: 0 !important;
+  }
+}
+
+/* Standalone step heading: remove the small "01 Project Type" line and keep the title on one desktop line. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel .stepKicker {
+  display: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel h2 {
+  max-width: none !important;
+  font-size: clamp(54px, 4.7vw, 82px) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 1180px) {
+  :global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel h2 {
+    white-space: normal !important;
+    font-size: clamp(42px, 7vw, 64px) !important;
+  }
+}
+
+/* Progress line/circle alignment: line is centered and masked behind each icon. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressNav {
+  --progress-line-y: 56px;
+  position: relative !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressNav::before,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressFill {
+  top: var(--progress-line-y) !important;
+  z-index: 0 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep {
+  position: relative !important;
+  z-index: 2 !important;
+  isolation: isolate !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: var(--progress-line-y) !important;
+  z-index: -1 !important;
+  width: 84px !important;
+  height: 84px !important;
+  border-radius: 999px !important;
+  background: rgba(239, 248, 253, .92) !important;
+  transform: translate(-50%, -50%) !important;
+  pointer-events: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep i {
+  position: relative !important;
+  z-index: 2 !important;
+  overflow: hidden !important;
+  background: rgba(248, 252, 255, .96) !important;
+  border-color: rgba(49, 83, 120, .22) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep:not(.currentStep):not(.doneStep) i {
+  background: rgba(248, 252, 255, .96) !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .currentStep i,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .doneStep i {
+  background: linear-gradient(135deg, #ff3b83 0%, #ff8a38 48%, #ffc742 100%) !important;
+}
+
+/* Light calculator readability on pale photo/glass surfaces. */
+:global(html:not([data-theme="amigos-dark"])) .page .stepPanel h2,
+:global(html:not([data-theme="amigos-dark"])) .page .stepPanel > p,
+:global(html:not([data-theme="amigos-dark"])) .page .resultLocked h2,
+:global(html:not([data-theme="amigos-dark"])) .page .resultLocked > p,
+:global(html:not([data-theme="amigos-dark"])) .page .verifyPanel h2,
+:global(html:not([data-theme="amigos-dark"])) .page .verifyPanel > p,
+:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel h3,
+:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel dd,
+:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel dt,
+:global(html:not([data-theme="amigos-dark"])) .page .summaryPanel .editStepLink,
+:global(html:not([data-theme="amigos-dark"])) .page .notesField span,
+:global(html:not([data-theme="amigos-dark"])) .page .quantityField span,
+:global(html:not([data-theme="amigos-dark"])) .page .quantityField b,
+:global(html:not([data-theme="amigos-dark"])) .page .detailGroup label,
+:global(html:not([data-theme="amigos-dark"])) .page .detailGroupTitle,
+:global(html:not([data-theme="amigos-dark"])) .page .customerGrid label span,
+:global(html:not([data-theme="amigos-dark"])) .page .emailField span {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page input,
+:global(html:not([data-theme="amigos-dark"])) .page textarea,
+:global(html:not([data-theme="amigos-dark"])) .page select,
+:global(html:not([data-theme="amigos-dark"])) .page .quantityField div input,
+:global(html:not([data-theme="amigos-dark"])) .page .detailSelect,
+:global(html:not([data-theme="amigos-dark"])) .page .codeInputs input {
+  color: #000000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+/* Final targeted fixes: verify-step contrast, hero-card alignment, and wheel scrolling. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel h2,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel > p,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel .error {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside .securityCard {
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-items: start !important;
+  padding-left: 0 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside .securityCard h2,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroAside .securityCard p {
+  grid-column: 1 !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .consultationShell,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel {
+  max-height: none !important;
+  overflow: visible !important;
+  overscroll-behavior: auto !important;
+}
+
+/* Location field: keep the pin in its own reserved area. */
+.locationInputIcon {
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+  display: grid !important;
+  width: 18px !important;
+  height: 18px !important;
+  place-items: center !important;
+  color: #315378 !important;
+  pointer-events: none !important;
+  transform: translateY(-50%) !important;
+}
+
+.locationInputIcon svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.page .quantityField .locationInput {
+  padding-left: 44px !important;
+}
+
+/* Summary typography: clearer hierarchy without oversized output. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel h3 {
+  font-size: clamp(20px, 1.35vw, 24px) !important;
+  line-height: 1.2 !important;
+  font-weight: 750 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel dt {
+  font-size: clamp(12px, .82vw, 14px) !important;
+  line-height: 1.25 !important;
+  font-weight: 750 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel dd {
+  font-size: clamp(16px, 1.05vw, 19px) !important;
+  line-height: 1.4 !important;
+  font-weight: 560 !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel .editStepLink {
+  font-size: clamp(13px, .85vw, 15px) !important;
+  font-weight: 650 !important;
+}
+
+/* Verification code fields need a visible boundary over the photo. */
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .codeInputs input {
+  background: rgba(255, 255, 255, .88) !important;
+  border: 2px solid rgba(49, 83, 120, .48) !important;
+  box-shadow: 0 8px 22px rgba(11, 35, 69, .12), inset 0 1px 0 #ffffff !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .codeInputs input:focus {
+  border-color: #f39125 !important;
+  box-shadow: 0 0 0 3px rgba(243, 145, 37, .22), 0 8px 22px rgba(11, 35, 69, .12) !important;
+  outline: none !important;
+}
+
+/* Final calculator resilience layer. Kept last so legacy art-direction rules
+   cannot reintroduce fixed widths or clipped mobile panels. */
+.autoMeasurementPanel {
+  margin-top: 18px;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid rgba(49, 83, 120, .18);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .68);
+  color: var(--ink);
+}
+
+.autoMeasurementPanel > p {
+  margin: 6px 0 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.autoMeasurementGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+@media (max-width: 1100px) {
+  .page,
+  .embedded,
+  .embedded.homeLayout {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100dvh !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .embedded.homeLayout {
+    display: block !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .embedded.homeLayout .embeddedRail {
+    display: none !important;
+  }
+
+  .embeddedWorkspace,
+  .embedded.homeLayout .embeddedWorkspace {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 22px 18px 40px !important;
+    overflow: visible !important;
+  }
+
+  .embeddedLayout,
+  .embeddedLayoutExpanded,
+  .consultationShell,
+  .embeddedLeft,
+  .embeddedRight {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .embedded .stepPanel,
+  .embedded .resultLocked,
+  .embedded .verifyPanel,
+  .embedded .pricePanel,
+  .page:not(.embedded) .stepPanel,
+  .page:not(.embedded) .resultLocked,
+  .page:not(.embedded) .verifyPanel,
+  .page:not(.embedded) .pricePanel {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .embedded .progressNav,
+  .page:not(.embedded) > .progressNav {
+    display: grid !important;
+    grid-auto-flow: column !important;
+    grid-auto-columns: minmax(86px, 1fr) !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 4px 0 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .progressStep {
+    min-width: 86px !important;
+    scroll-snap-align: start;
+  }
+
+  .embedded .cardGrid,
+  .embedded .serviceGrid,
+  .embedded .quantityGrid,
+  .embedded .customerGrid,
+  .page:not(.embedded) .cardGrid,
+  .page:not(.embedded) .serviceGrid,
+  .page:not(.embedded) .quantityGrid,
+  .page:not(.embedded) .customerGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .navActions,
+  .embedded .navActions,
+  .page:not(.embedded) .navActions {
+    position: static !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    gap: 10px !important;
+    margin: 24px 0 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .navActionsLeft,
+  .navActions > *,
+  .navActionsLeft > *,
+  .navActions .primaryAction,
+  .navActions .secondaryAction,
+  .navActions .backToQuickNavBtn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  .selectionPage,
+  .selectionHeroContainer {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .selectionTabsGrid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .embeddedWorkspace,
+  .embedded.homeLayout .embeddedWorkspace,
+  .page:not(.embedded) {
+    padding-inline: 14px !important;
+  }
+
+  .page:not(.embedded) .hero,
+  .selectionHeader {
+    grid-template-columns: minmax(0, 1fr) !important;
+    text-align: left !important;
+  }
+
+  .embedded .stepPanel h2,
+  .page:not(.embedded) .stepPanel h2,
+  .resultLocked h2,
+  .verifyPanel h2,
+  .pricePanel h2,
+  .selectionSubTitle {
+    max-width: 100% !important;
+    font-size: clamp(30px, 10vw, 43px) !important;
+    line-height: 1.05 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+  }
+
+  .embedded .cardGrid,
+  .embedded .serviceGrid,
+  .embedded .quantityGrid,
+  .embedded .customerGrid,
+  .page:not(.embedded) .cardGrid,
+  .page:not(.embedded) .serviceGrid,
+  .page:not(.embedded) .quantityGrid,
+  .page:not(.embedded) .customerGrid,
+  .autoMeasurementGrid,
+  .photoGrid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .selectionCard,
+  .propertyCard,
+  .scopeCard,
+  .conditionCard,
+  .quantityField,
+  .customerGrid label,
+  .notesField,
+  .photoDrop {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .codeInputs {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    width: min(100%, 360px) !important;
+    gap: 10px !important;
+  }
+
+  .codeInputs input {
+    width: 100% !important;
+    min-width: 0 !important;
+    height: clamp(62px, 18vw, 78px) !important;
+    padding: 0 !important;
+  }
+
+  .finalActions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .finalActions > * {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .lockedPrice {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 18px !important;
+  }
+
+  .lockedPrice strong {
+    font-size: clamp(32px, 11vw, 48px) !important;
+  }
+
+  .summaryPanel,
+  .summaryPanel dl,
+  .summaryPanel dd {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  .selectionPage {
+    padding: 28px 14px 44px !important;
+  }
+
+  .selectionTabCard {
+    min-width: 0 !important;
+    padding: 22px 18px !important;
+  }
+
+  .selectionTrustRow {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Regression guard: the standalone calculator follows the actual theme again. */
+:global(html[data-theme="amigos-light"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) {
+  --ink: #0b2345 !important;
+  --ink-muted: #6d7e95 !important;
+  --muted: #6d7e95 !important;
+  color: #0b2345 !important;
+  background: #f5f9fd !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) {
+  --ink: #f7fbff !important;
+  --ink-muted: #becce0 !important;
+  --muted: #becce0 !important;
+  --line: rgba(255, 255, 255, .18) !important;
+  --hairline: rgba(255, 255, 255, .18) !important;
+  color: #f7fbff !important;
+  background: #001331 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded)::after {
+  background-image: url("/assets/calculator-day-reference.png") !important;
+  filter: saturate(.82) contrast(1.08) brightness(.34) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded)::before {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(255, 155, 48, .10), transparent 32%),
+    linear-gradient(90deg, rgba(0, 19, 49, .94), rgba(0, 25, 62, .80) 48%, rgba(0, 19, 49, .58)) !important;
+}
+
+/* Typed values must remain readable independently of inherited theme rules. */
+:global(html[data-theme="amigos-light"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) input,
+:global(html[data-theme="amigos-light"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) textarea,
+:global(html[data-theme="amigos-light"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) select {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  caret-color: #000 !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) input,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) textarea,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) select {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff !important;
+  text-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy h1,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .heroCopy strong,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel h2,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel > p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .resultLocked h2,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel h2,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .pricePanel h2 {
+  color: #f7fbff !important;
+  text-shadow: none !important;
+}
+
+/* There is one page scroller. Form, summary, upload and verification panels
+   must pass wheel/touch movement through instead of becoming dead scroll zones. */
+:global(html),
+:global(body[data-page="offer-calculator"]) {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: auto !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded),
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .consultationShell,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .stepPanel,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .resultLocked,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .pricePanel,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .photoGrid,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .customerGrid,
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .quantityGrid {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  overscroll-behavior: auto !important;
+  touch-action: pan-y !important;
+}
+
+/* Advanced calculator — dark-theme contrast corrections. */
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro .brand,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .asideIntro strong,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard h2,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .securityCard p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel h3,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel dt,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel dd {
+  color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .quantityField > span,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .quantityField label,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .customerGrid label > span,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .emailField > span,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .notesField > span,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .detailGroupTitle,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .detailGroup label {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove the pale halo disc; only the actual bordered icon circle remains. */
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep::before {
+  content: none !important;
+  display: none !important;
+  box-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep span,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep b {
+  color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .progressStep i {
+  box-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .primaryAction,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .secondaryAction,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .backToQuickNavBtn,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .sidebarModeSwitchBtn {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+}
+
+/* Steps 06–07 use the same dark glass field treatment as earlier inputs. */
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .customerGrid label,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .emailField {
+  border: 1.5px solid rgba(255, 255, 255, .42) !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .14), rgba(255, 255, 255, .07)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .customerGrid input,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .emailField input {
+  border: 1.5px solid rgba(255, 255, 255, .38) !important;
+  background: rgba(255, 255, 255, .14) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .14) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .customerGrid input::placeholder,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .emailField input::placeholder {
+  color: rgba(255, 255, 255, .68) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .68) !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .resultLocked > p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel > p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .pricePanel > p,
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .summaryPanel p {
+  color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .verifyPanel .notice {
+  border-color: rgba(255, 255, 255, .34) !important;
+  background: rgba(255, 255, 255, .12) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* OTP fields stay light, so their digits must be black—not inherited white. */
+:global(html[data-theme="amigos-dark"]) :global(body[data-page="offer-calculator"]) .page:not(.embedded) .codeInputs input {
+  border: 2px solid rgba(255, 255, 255, .72) !important;
+  background: rgba(255, 255, 255, .88) !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  caret-color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Detailed quote calculator: keep one selected indicator and left-align card copy. */
+.selectionCardText {
+  position: relative;
+  z-index: 1;
+  display: flex !important;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  text-align: left;
+  align-self: center !important;
+}
+
+.selectionCardTitle {
+  display: block;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.selectionCardUnit {
+  display: block;
+  color: var(--ink-muted);
+  font-size: 11px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .selectionCardText {
+  grid-column: 2 !important;
+  grid-row: 1 / 3 !important;
+  align-self: center !important;
+  justify-self: stretch !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .selectionCardTitle {
+  align-self: flex-start !important;
+  width: 100% !important;
+  color: var(--ink) !important;
+  font-size: clamp(18px, 1.12vw, 22px) !important;
+  font-weight: 720 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  text-align: left !important;
+  text-wrap: balance !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectionCard .selectionCardUnit {
+  align-self: flex-start !important;
+  width: 100% !important;
+  margin-top: 4px !important;
+  color: var(--muted) !important;
+  font-size: clamp(13px, .78vw, 15px) !important;
+  font-weight: 600 !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.015em !important;
+  text-align: left !important;
+}
+
+:global(body[data-page="offer-calculator"]) .page:not(.embedded) .selectedCard > i {
+  display: none !important;
+}
+
+/* Homepage quick calculator: keep white Step 2 boxes readable. */
+.embedded.homeLayout .scopeCard {
+  background: rgba(255, 255, 255, .96) !important;
+  border-color: rgba(6, 32, 68, .16) !important;
+  color: #061f3d !important;
+}
+
+.embedded.homeLayout .scopeCardIcon {
+  color: #061f3d !important;
+  background: rgba(6, 32, 68, .08) !important;
+}
+
+.embedded.homeLayout .scopeCardIcon svg {
+  color: #061f3d !important;
+  stroke: currentColor !important;
+}
+
+.embedded.homeLayout .scopeCardTitle {
+  color: #061f3d !important;
+  -webkit-text-fill-color: #061f3d !important;
+  text-shadow: none !important;
+}
+
+.embedded.homeLayout .scopeCardDesc {
+  color: rgba(6, 32, 68, .72) !important;
+  -webkit-text-fill-color: rgba(6, 32, 68, .72) !important;
+  text-shadow: none !important;
+}
+
+.embedded.homeLayout .scopeCardSelected {
+  background: rgba(255, 255, 255, .98) !important;
+  border-color: #f39125 !important;
+}
+
+/* Final quick-calculator scope contrast override: visible black copy + gradient accents. */
+.embedded .scopeCard {
+  background: rgba(255, 255, 255, .97) !important;
+  border-color: rgba(6, 32, 68, .16) !important;
+}
+
+.embedded .scopeCardIcon {
+  background: linear-gradient(135deg, #ff3b83 0%, #f39125 58%, #f6be10 100%) !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  box-shadow: 0 12px 28px rgba(243, 145, 37, .22) !important;
+}
+
+.embedded .scopeCardIcon svg,
+.embedded .scopeCardIcon svg * {
+  color: #fff !important;
+  stroke: currentColor !important;
+  opacity: 1 !important;
+}
+
+.embedded .scopeCardTitle {
+  background: linear-gradient(135deg, #ff3b83 0%, #f39125 54%, #f6be10 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.embedded .scopeCardDesc {
+  color: #061f3d !important;
+  -webkit-text-fill-color: #061f3d !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.embedded .scopeCardSelected {
+  background: rgba(255, 255, 255, .99) !important;
+  border-color: #f39125 !important;
 }
 
 

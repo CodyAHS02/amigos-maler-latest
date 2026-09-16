@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 export default async function AdminChatPage() {
   const admin = await getCurrentAdmin();
-  const conversations = await getAdminChatConversations();
+  const conversations = await getAdminChatConversations("MAIN");
 
   return (
     <AdminShell activePath="/admin/chat" admin={admin} eyebrow="Live Support" title="Chat">

@@ -11,5 +11,6 @@ export async function GET(request) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  return NextResponse.json({ conversations: await getAdminChatConversations() });
+  const channel = request.nextUrl.searchParams.get("channel") || "ALL";
+  return NextResponse.json({ conversations: await getAdminChatConversations(channel) });
 }

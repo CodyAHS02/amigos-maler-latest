@@ -33,13 +33,27 @@ const QUICK_BASE_PRICE_KEYS = {
 const SCOPE_MODIFIER_KEYS = {
   walls: "walls_modifier",
   ceilings: "ceilings_modifier",
-  walls_ceilings: "walls_and_ceilings_modifier"
+  walls_ceilings: "walls_and_ceilings_modifier",
+  individual_walls: "individual_walls_modifier",
+  individual_rooms: "individual_rooms_modifier",
+  floor: "floor_modifier",
+  other: "other_modifier"
 };
 
 const CONDITION_MODIFIER_KEYS = {
   good: "good_condition_modifier",
   minor_repairs: "minor_repairs_modifier",
   renovation: "renovation_modifier"
+};
+
+const SPECIAL_WORK_MODIFIER_KEYS = {
+  mould: "special_work_mould_modifier",
+  nicotine: "special_work_nicotine_modifier",
+  water_damage: "special_work_water_damage_modifier",
+  cracks: "special_work_cracks_modifier",
+  wallpaper_removal: "special_work_wallpaper_removal_modifier",
+  substrate_preparation: "special_work_substrate_preparation_modifier",
+  other: "special_work_other_modifier"
 };
 
 function settingValue(settings, key) {
@@ -243,11 +257,15 @@ export function calculateQuickQuotePrice(input = {}, settings = DEFAULT_PRICING_
   const basePriceChf = settingValue(settings, baseKey);
   const scopeModifier = settingValue(settings, scopeKey);
   const conditionModifier = settingValue(settings, conditionKey);
+  const specialWorkModifier = unique(input.specialWork).reduce((factor, item) => {
+    const key = SPECIAL_WORK_MODIFIER_KEYS[item];
+    return key ? factor * (settingValue(settings, key) || 1) : factor;
+  }, 1);
   const travelCostChf = input.postalCode
     ? calculateTravelCost(input.postalCode, settings)
     : Math.round(settingValue(settings, "base_travel_flat_fee"));
 
-  const totalChf = Math.max(0, Math.round(basePriceChf * scopeModifier * conditionModifier + travelCostChf));
+  const totalChf = Math.max(0, Math.round(basePriceChf * scopeModifier * conditionModifier * specialWorkModifier + travelCostChf));
   const cents = totalChf * 100;
 
   return {
@@ -258,6 +276,7 @@ export function calculateQuickQuotePrice(input = {}, settings = DEFAULT_PRICING_
     travelCostChf,
     basePriceChf,
     scopeModifier,
-    conditionModifier
+    conditionModifier,
+    specialWorkModifier
   };
 }

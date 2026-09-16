@@ -1,16 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const POLL_INTERVAL_MS = 2500;
 const LIVE_CHAT_ENABLED = process.env.NEXT_PUBLIC_LIVE_CHAT_ENABLED === "true";
-const CHATBOT_AVATAR = "/chatbot-main-face.jpeg";
-const GREETING = {
-  id: "local-greeting",
-  senderType: "SYSTEM",
-  body: "Hello, welcome to Amigos Maler. Send us a message and our team will reply here live.",
-  createdAt: new Date().toISOString()
-};
+const MAIN_AVATAR = "/chatbot-main-face.jpeg";
+const PROJECTS_AVATAR = "/Projects-Page-Woman.jpeg";
 
 function messageClassName(message) {
   if (message.senderType === "VISITOR") return "chatbot-message user";
@@ -19,8 +15,22 @@ function messageClassName(message) {
 }
 
 export default function LiveChatWidget() {
+  const pathname = usePathname();
+  const isProjectsChat = pathname === "/projects";
+  const channel = isProjectsChat ? "PROJECTS" : "MAIN";
+  const chatEndpoint = `/api/chat/messages?channel=${channel}`;
+  const chatbotAvatar = isProjectsChat ? PROJECTS_AVATAR : MAIN_AVATAR;
+  const assistantName = isProjectsChat ? "Patricia · Amigos Immo" : "Amigos Maler";
+  const greeting = {
+    id: `local-greeting-${channel}`,
+    senderType: "SYSTEM",
+    body: isProjectsChat
+      ? "Hello, I’m Patricia. Tell me about your property or planned project and our Projects team will reply here live."
+      : "Hello, welcome to Amigos Maler. Send us a message and our team will reply here live.",
+    createdAt: new Date().toISOString()
+  };
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState([GREETING]);
+  const [messages, setMessages] = useState([greeting]);
   const [draft, setDraft] = useState("");
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
@@ -30,11 +40,11 @@ export default function LiveChatWidget() {
     if (!LIVE_CHAT_ENABLED) return;
 
     try {
-      const response = await fetch("/api/chat/messages", { cache: "no-store" });
+      const response = await fetch(chatEndpoint, { cache: "no-store" });
       const result = await response.json();
 
       if (response.ok) {
-        setMessages([GREETING, ...result.messages]);
+        setMessages([greeting, ...result.messages]);
         setError("");
       }
     } catch {
@@ -87,7 +97,7 @@ export default function LiveChatWidget() {
     setDraft("");
 
     try {
-      const response = await fetch("/api/chat/messages", {
+      const response = await fetch(chatEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
@@ -115,9 +125,9 @@ export default function LiveChatWidget() {
       <div className="chatbot-panel" id="chatbotPanel">
         <div className="chatbot-header">
           <div className="chatbot-header-info">
-            <img src={CHATBOT_AVATAR} alt="Assistant" className="chatbot-header-avatar" />
+            <img src={chatbotAvatar} alt={assistantName} className="chatbot-header-avatar" />
             <div>
-              <h4>Amigos Maler</h4>
+              <h4>{assistantName}</h4>
               <span className="chatbot-status">
                 <i className="chatbot-dot"></i> Live support
               </span>
@@ -134,14 +144,14 @@ export default function LiveChatWidget() {
           {messages.map((message) => (
             <div className={messageClassName(message)} key={message.id}>
               {message.senderType !== "VISITOR" && (
-                <img src={CHATBOT_AVATAR} alt="" className="chatbot-msg-avatar" />
+                <img src={chatbotAvatar} alt="" className="chatbot-msg-avatar" />
               )}
               <div className="chatbot-bubble">{message.body}</div>
             </div>
           ))}
           {error && (
             <div className="chatbot-message bot">
-              <img src={CHATBOT_AVATAR} alt="" className="chatbot-msg-avatar" />
+              <img src={chatbotAvatar} alt="" className="chatbot-msg-avatar" />
               <div className="chatbot-bubble">{error}</div>
             </div>
           )}
@@ -181,7 +191,7 @@ export default function LiveChatWidget() {
         aria-expanded={open}
         onClick={() => setOpen((currentOpen) => !currentOpen)}
       >
-        <img src={CHATBOT_AVATAR} alt="Chat with us" className="chatbot-toggle-img" />
+        <img src={chatbotAvatar} alt={`Chat with ${assistantName}`} className="chatbot-toggle-img" />
         <span className="chatbot-badge" title="Chat with us">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="currentColor" />

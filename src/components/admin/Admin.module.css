@@ -1340,3 +1340,29 @@
     grid-template-columns: 52px minmax(0, 1fr);
   }
 }
+.chatChannelTabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(15, 42, 73, .10);
+}
+
+.chatChannelTabs button {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid rgba(15, 42, 73, .13);
+  border-radius: 9px;
+  background: #f4f7fb;
+  color: #52657b;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.chatChannelTabs .chatChannelTabActive {
+  border-color: transparent;
+  background: linear-gradient(135deg, #ffc52f, #ff922e 48%, #f04488);
+  color: #fff;
+}

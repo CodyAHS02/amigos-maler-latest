@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="96" viewBox="0 0 260 96" role="img" aria-label="Nova Raum">
+  <rect width="260" height="96" rx="24" fill="#F8FBFF"/>
+  <rect x="30" y="26" width="44" height="44" rx="12" fill="#071A33"/>
+  <path d="M41 58V38h22v20H41Z" fill="none" stroke="#FFB800" stroke-width="4"/>
+  <path d="M52 38v20M41 48h22" stroke="#E74D7E" stroke-width="4"/>
+  <text x="96" y="45" fill="#071A33" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800">Nova</text>
+  <text x="96" y="67" fill="#6D7C91" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">RAUM</text>
+</svg>

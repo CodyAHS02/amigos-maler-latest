@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Customer Portal — AMIGOS IMMO</title>
+<meta name="description" content="Your properties, projects and documents at a glance.">
+<link rel="stylesheet" href="/amigos/css/styles.css">
+<link rel="stylesheet" href="/amigos/css/theme.css">
+<script src="/amigos/js/theme.js"></script>
+</head>
+<body>
+
+<div class="amb"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<div class="grain"></div>
+<header class="site-header">
+  <a class="brand" href="/amigos/index.html">AMIGOS<span>·</span>IMMO</a>
+  <nav class="nav">
+    <a href="/amigos/services.html">Services</a>
+    <a href="/amigos/index.html#preservation">Value Preservation</a>
+    <a href="/amigos/b2b.html">B2B</a>
+    <a href="/amigos/references.html">References</a>
+    <a href="/amigos/careers.html">Careers</a>
+  </nav>
+  <a class="btn btn-sm" href="/amigos/dashboard.html">Customer Portal</a>
+</header>
+
+<section style="padding-top:160px;padding-bottom:80px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Customer Portal</div>
+      <h2>Good morning, Herr Müller.</h2>
+      <p>Two properties under active preservation. All systems normal.</p>
+    </div>
+
+    <div class="glass dash reveal">
+      <aside class="dash-side">
+        <div class="side-item on" data-v="overview"><span class="dot"></span> Overview</div>
+        <div class="side-item" data-v="projects"><span class="dot"></span> Projects</div>
+        <div class="side-item" data-v="documents"><span class="dot"></span> Documents</div>
+        <div class="side-item" data-v="calendar"><span class="dot"></span> Calendar</div>
+      </aside>
+      <main class="dash-main">
+        <div class="dash-view on" data-view="overview">
+          <h3 style="text-transform:none;font-weight:300;font-size:22px;letter-spacing:-.01em;color:var(--white)">Portfolio overview</h3>
+          <p>Live status of your active engagements.</p>
+          <div class="progress">
+            <div class="progress-row"><div class="name">Utoquai 43 · Repaint</div><div class="bar"><div class="fill" data-fill="82"></div></div><div class="pct">82%</div></div>
+            <div class="progress-row"><div class="name">Zollikerstr. 88 · Facade</div><div class="bar"><div class="fill" data-fill="45"></div></div><div class="pct">45%</div></div>
+            <div class="progress-row"><div class="name">Höschgasse 10 · Inspection</div><div class="bar"><div class="fill" data-fill="100"></div></div><div class="pct">100%</div></div>
+            <div class="progress-row"><div class="name">Kirchgasse 7 · Touch-up</div><div class="bar"><div class="fill" data-fill="24"></div></div><div class="pct">24%</div></div>
+          </div>
+        </div>
+
+        <div class="dash-view" data-view="projects">
+          <h3 style="text-transform:none;font-weight:300;font-size:22px;letter-spacing:-.01em;color:var(--white)">Active projects</h3>
+          <p>Four ongoing engagements across your portfolio.</p>
+          <div class="progress">
+            <div class="progress-row"><div class="name">Utoquai 43</div><div class="bar"><div class="fill" data-fill="82"></div></div><div class="pct">82%</div></div>
+            <div class="progress-row"><div class="name">Zollikerstr. 88</div><div class="bar"><div class="fill" data-fill="45"></div></div><div class="pct">45%</div></div>
+          </div>
+        </div>
+
+        <div class="dash-view" data-view="documents">
+          <h3 style="text-transform:none;font-weight:300;font-size:22px;letter-spacing:-.01em;color:var(--white)">Documents</h3>
+          <div class="docs">
+            <div class="doc-row"><div class="name">Inspection report — Utoquai 43.pdf</div><div class="meta">14 Mar 2026</div><div class="meta">1.2 MB</div><div class="dl">↓</div></div>
+            <div class="doc-row"><div class="name">Invoice #2026-0187.pdf</div><div class="meta">08 Mar 2026</div><div class="meta">88 KB</div><div class="dl">↓</div></div>
+            <div class="doc-row"><div class="name">Preservation contract 2026.pdf</div><div class="meta">02 Jan 2026</div><div class="meta">340 KB</div><div class="dl">↓</div></div>
+            <div class="doc-row"><div class="name">Facade specification — Zollikerstr..pdf</div><div class="meta">18 Feb 2026</div><div class="meta">2.1 MB</div><div class="dl">↓</div></div>
+          </div>
+        </div>
+
+        <div class="dash-view" data-view="calendar">
+          <h3 style="text-transform:none;font-weight:300;font-size:22px;letter-spacing:-.01em;color:var(--white)">July 2026</h3>
+          <div class="cal" id="cal"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container"><span class="brand">AMIGOS<span>·</span>IMMO</span><p>© 2026 AMIGOS IMMO</p></div></footer>
+
+<script src="/amigos/js/main.js"></script>
+<script>
+  // sidebar switcher
+  document.querySelectorAll('.side-item').forEach(s => s.addEventListener('click', () => {
+    document.querySelectorAll('.side-item').forEach(x => x.classList.remove('on'));
+    s.classList.add('on');
+    document.querySelectorAll('.dash-view').forEach(v => v.classList.remove('on'));
+    const target = document.querySelector(`.dash-view[data-view="${s.dataset.v}"]`);
+    if (target) {
+      target.classList.add('on');
+      // Re-trigger progress bars on projects view
+      target.querySelectorAll('[data-fill]').forEach(f => { f.style.width = '0'; setTimeout(() => f.style.width = f.dataset.fill + '%', 50); });
+    }
+  }));
+
+  // calendar
+  const cal = document.getElementById('cal');
+  const days = ['MON','TUE','WED','THU','FRI','SAT','SUN'];
+  const events = [3, 11, 18, 22, 29];
+  let html = days.map(d => `<div class="cd hdr">${d}</div>`).join('');
+  // July 2026 starts Wednesday (offset 2)
+  for (let i = 0; i < 2; i++) html += '<div class="cd" style="visibility:hidden"></div>';
+  for (let d = 1; d <= 31; d++) {
+    const cls = ['cd'];
+    if (events.includes(d)) cls.push('event');
+    if (d === 20) cls.push('on');
+    html += `<div class="${cls.join(' ')}">${d}</div>`;
+  }
+  cal.innerHTML = html;
+  cal.querySelectorAll('.cd:not(.hdr)').forEach(c => c.addEventListener('click', () => {
+    cal.querySelectorAll('.cd.on').forEach(x => x.classList.remove('on'));
+    c.classList.add('on');
+  }));
+</script>
+</body>
+</html>

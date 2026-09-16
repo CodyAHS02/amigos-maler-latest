@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="96" viewBox="0 0 260 96" role="img" aria-label="Alpine Habitat">
+  <rect width="260" height="96" rx="24" fill="#F8FBFF"/>
+  <path d="M29 65 55 29l26 36H29Z" fill="#0B2746"/>
+  <path d="m55 29 10 36H45l10-36Z" fill="#FF8F18"/>
+  <text x="99" y="45" fill="#071A33" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="800">Alpine</text>
+  <text x="99" y="67" fill="#6D7C91" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="2">HABITAT</text>
+</svg>

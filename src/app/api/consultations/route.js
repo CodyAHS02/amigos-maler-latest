@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { createConsultationRequest } from "@/lib/customerStore";
+import { sendProjectEnquiryEmail } from "@/lib/offerCalculator/email";
 import { SESSION_COOKIE, verifyCustomerSession } from "@/lib/session";
-import { validateConsultationInput } from "@/lib/validation";
+import { cleanText, validateConsultationInput } from "@/lib/validation";
 
 export const runtime = "nodejs";
 
@@ -19,13 +20,21 @@ export async function POST(request) {
   }
 
   const session = await verifyCustomerSession(request.cookies.get(SESSION_COOKIE)?.value);
+  const phone = cleanText(formData.get("phone") || formData.get("Phone"));
   let result;
 
   try {
     result = await createConsultationRequest({
       customerEmail: session?.email,
-      ...validation.values
+      ...validation.values,
+      phone
     });
+
+    try {
+      await sendProjectEnquiryEmail({ ...validation.values, phone });
+    } catch (emailError) {
+      console.error("Consultation notification e-mail failed:", emailError);
+    }
   } catch (error) {
     console.error("Consultation request failed:", error);
     return NextResponse.json({ error: "Unable to save your enquiry right now." }, { status: 500 });

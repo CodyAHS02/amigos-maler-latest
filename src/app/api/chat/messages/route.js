@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   CHAT_VISITOR_COOKIE,
+  PROJECTS_CHAT_VISITOR_COOKIE,
   addVisitorMessage,
   createChatVisitorToken,
   getVisitorMessages
@@ -10,9 +11,17 @@ export const runtime = "nodejs";
 
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 90;
 
-function setVisitorCookie(response, visitorToken) {
+function getChannel(request) {
+  return request.nextUrl.searchParams.get("channel") === "PROJECTS" ? "PROJECTS" : "MAIN";
+}
+
+function getCookieName(channel) {
+  return channel === "PROJECTS" ? PROJECTS_CHAT_VISITOR_COOKIE : CHAT_VISITOR_COOKIE;
+}
+
+function setVisitorCookie(response, visitorToken, cookieName) {
   response.cookies.set({
-    name: CHAT_VISITOR_COOKIE,
+    name: cookieName,
     value: visitorToken,
     httpOnly: true,
     sameSite: "lax",
@@ -23,28 +32,32 @@ function setVisitorCookie(response, visitorToken) {
 }
 
 export async function GET(request) {
-  let visitorToken = request.cookies.get(CHAT_VISITOR_COOKIE)?.value;
+  const channel = getChannel(request);
+  const cookieName = getCookieName(channel);
+  let visitorToken = request.cookies.get(cookieName)?.value;
 
   if (!visitorToken) {
     visitorToken = createChatVisitorToken();
     const response = NextResponse.json({ messages: [] });
 
-    setVisitorCookie(response, visitorToken);
+    setVisitorCookie(response, visitorToken, cookieName);
 
     return response;
   }
 
-  const { messages } = await getVisitorMessages(visitorToken);
+  const { messages } = await getVisitorMessages(visitorToken, channel);
   const response = NextResponse.json({ messages });
 
-  setVisitorCookie(response, visitorToken);
+  setVisitorCookie(response, visitorToken, cookieName);
 
   return response;
 }
 
 export async function POST(request) {
+  const channel = getChannel(request);
+  const cookieName = getCookieName(channel);
   const body = await request.json();
-  const result = await addVisitorMessage(request.cookies.get(CHAT_VISITOR_COOKIE)?.value, body.message);
+  const result = await addVisitorMessage(request.cookies.get(cookieName)?.value, body.message, channel);
 
   if (result.error) {
     return NextResponse.json({ error: result.error }, { status: 400 });
@@ -52,7 +65,7 @@ export async function POST(request) {
 
   const response = NextResponse.json({ ok: true, message: result.message });
 
-  setVisitorCookie(response, result.visitorToken);
+  setVisitorCookie(response, result.visitorToken, cookieName);
 
   return response;
 }

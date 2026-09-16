@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Services — AMIGOS IMMO</title>
+<meta name="description" content="Painting, property value preservation and renovations by AMIGOS IMMO.">
+<link rel="stylesheet" href="/amigos/css/styles.css">
+<link rel="stylesheet" href="/amigos/css/theme.css">
+<script src="/amigos/js/theme.js"></script>
+</head>
+<body>
+
+<div class="amb"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<div class="grain"></div>
+<header class="site-header">
+  <a class="brand" href="/amigos/index.html">AMIGOS<span>·</span>IMMO</a>
+  <nav class="nav">
+    <a href="/amigos/services.html">Services</a>
+    <a href="/amigos/index.html#preservation">Value Preservation</a>
+    <a href="/amigos/b2b.html">B2B</a>
+    <a href="/amigos/references.html">References</a>
+    <a href="/amigos/careers.html">Careers</a>
+  </nav>
+  <a class="btn btn-sm" href="/amigos/dashboard.html">Customer Portal</a>
+</header>
+
+<section style="padding-top:180px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Services</div>
+      <h2>Three disciplines, one standard.</h2>
+      <p>Every service is executed by our own Swiss craftsmen, held to the same discreet, exacting standard.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="glass svc-card reveal" id="painting">
+        <div>
+          <div class="num">01</div>
+          <h3>Painting Service</h3>
+          <p>Interior and facade painting with luxury-grade materials, meticulous surface prep and a lifetime finish guarantee.</p>
+        </div>
+        <div class="arrow">Learn more →</div>
+      </div>
+      <div class="glass svc-card reveal">
+        <div>
+          <div class="num">02</div>
+          <h3>Property Value Preservation</h3>
+          <p>A continuous care contract that catches wear before it becomes damage — quiet, scheduled, invisible.</p>
+        </div>
+        <div class="arrow">Learn more →</div>
+      </div>
+      <div class="glass svc-card reveal" id="renovations">
+        <div>
+          <div class="num">03</div>
+          <h3>Renovations</h3>
+          <p>Full-scope renovations coordinated in-house — plastering, flooring, joinery and finishing under one signature.</p>
+        </div>
+        <div class="arrow">Learn more →</div>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:80px">
+      <div class="eyebrow">Materials</div>
+      <h2>Standard vs Premium.</h2>
+      <p>Compare finish classes side by side.</p>
+    </div>
+
+    <div class="glass mat-comp reveal">
+      <div class="mat-toggle" data-mattoggle>
+        <button class="on" data-m="standard">Standard</button>
+        <button data-m="premium">Premium</button>
+      </div>
+      <div class="mat-body" id="mat-body"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <span class="brand">AMIGOS<span>·</span>IMMO</span>
+    <p>© 2026 AMIGOS IMMO — Zürich, Switzerland</p>
+  </div>
+</footer>
+
+<script src="/amigos/js/main.js"></script>
+<script>
+  const matData = {
+    standard: [
+      { k:'Paint system', v:'Silicate matte, class 2' },
+      { k:'Coverage', v:'2 coats + primer' },
+      { k:'Durability', v:'8–12 years' },
+      { k:'Finish', v:'Uniform matte' },
+    ],
+    premium: [
+      { k:'Paint system', v:'Mineral silicate, class 1' },
+      { k:'Coverage', v:'3 coats + specialist primer' },
+      { k:'Durability', v:'15–25 years' },
+      { k:'Finish', v:'Deep matte, signature Swiss' },
+    ]
+  };
+  const body = document.getElementById('mat-body');
+  const render = (k) => {
+    body.style.opacity = 0;
+    setTimeout(() => {
+      body.innerHTML = matData[k].map(i => `<div class="mat-item"><div class="k">${i.k}</div><div class="v">${i.v}</div></div>`).join('');
+      body.style.opacity = 1;
+    }, 200);
+  };
+  body.style.transition = 'opacity .3s';
+  render('standard');
+  document.querySelectorAll('[data-mattoggle] button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-mattoggle] button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    render(b.dataset.m);
+  }));
+</script>
+</body>
+</html>

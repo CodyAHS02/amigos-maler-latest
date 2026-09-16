@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useAmigosTheme } from "@/lib/useAmigosTheme";
 import styles from "./OfferCalculator.module.css";
 import {
@@ -17,6 +19,14 @@ import {
   workScopeOptions,
   roomSizeOptions,
   roomCountOptions,
+  livingAreaOptions,
+  individualWallCountOptions,
+  wallSizeOptions,
+  ceilingCountOptions,
+  areaTypeOptions,
+  areaWorkOptions,
+  floorTypeOptions,
+  specialWorkOptions,
   photoCategories,
   detailedStepMeta,
   simpleStepMeta,
@@ -28,6 +38,10 @@ import {
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
+}
+
+function isValidSwissPostalCode(value) {
+  return /^\d{4}$/.test(String(value || "").trim());
 }
 
 
@@ -365,16 +379,17 @@ function LocationFields({ postalCode, city, onChange }) {
       <label className={styles.quantityField}>
         <span>Postal Code (PLZ)</span>
         <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
-          <span style={{ position: "absolute", left: "12px", color: "var(--yellow)", pointerEvents: "none", display: "flex", alignItems: "center", width: "20px", height: "20px" }}>
+          <span className={styles.locationInputIcon}>
             <ComponentIcon iconKey="pin" />
           </span>
           <input
+            className={styles.locationInput}
             type="text"
             inputMode="numeric"
+            maxLength={4}
             value={postalCode}
             placeholder="e.g. 4600 (Olten & surroundings)"
-            style={{ paddingLeft: "38px" }}
-            onChange={(event) => onChange("postalCode", event.target.value)}
+            onChange={(event) => onChange("postalCode", event.target.value.replace(/\D/g, "").slice(0, 4))}
           />
         </div>
       </label>
@@ -393,7 +408,55 @@ function LocationFields({ postalCode, city, onChange }) {
   );
 }
 
+function LockedPricePlaceholder() {
+  return (
+    <div className={styles.lockedPrice} aria-label="Estimated price locked until e-mail verification">
+      <span>Estimated price locked</span>
+      <strong>CHF ***</strong>
+      <small>Verify your e-mail to reveal the estimate.</small>
+    </div>
+  );
+}
+
+function DetailedMeasurementFields({ state, setState }) {
+  const canCalculate = state.components.includes("walls") || state.components.includes("ceilings");
+  if (!canCalculate) return null;
+
+  const updateDimension = (key, value) => {
+    setState((current) => {
+      const next = { ...current, [key]: value };
+      const length = Number(next.roomLength);
+      const width = Number(next.roomWidth);
+      const height = Number(next.roomHeight);
+      const quantities = { ...current.quantities };
+
+      if (length > 0 && width > 0) {
+        if (current.components.includes("ceilings")) quantities.ceilingArea = String(Math.round(length * width * 10) / 10);
+        if (current.components.includes("walls") && height > 0) quantities.wallArea = String(Math.round(2 * (length + width) * height * 10) / 10);
+      }
+
+      return { ...next, quantities };
+    });
+  };
+
+  return (
+    <div className={styles.autoMeasurementPanel}>
+      <span className={styles.detailGroupTitle}>Optional automatic room calculation</span>
+      <p>Enter room dimensions to calculate selected wall and ceiling areas automatically. You can still adjust the results below.</p>
+      <div className={styles.autoMeasurementGrid}>
+        {[["roomLength", "Length", "m"], ["roomWidth", "Width", "m"], ["roomHeight", "Height", "m"]].map(([key, label, unit]) => (
+          <label className={styles.quantityField} key={key}>
+            <span>{label}</span>
+            <div><input type="number" min="0" step="0.1" inputMode="decimal" value={state[key]} onChange={(event) => updateDimension(key, event.target.value)} /><b>{unit}</b></div>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function OfferCalculator({ embedded = false, defaultFlow = "SELECT", detailedQuoteHref = "" }) {
+  const router = useRouter();
   const { isDark, toggleTheme } = useAmigosTheme();
   const [step, setStep] = useState(0);
   const [state, setState] = useState(() => ({
@@ -407,7 +470,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   const [busy, setBusy] = useState(false);
   const [codeSent, setCodeSent] = useState(false);
   const [photos, setPhotos] = useState([]);
+  const [pendingPhotos, setPendingPhotos] = useState([]);
   const [showSiteVisitForm, setShowSiteVisitForm] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(false);
   const codeRefs = useRef([]);
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "41790000000";
@@ -536,12 +601,31 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }));
   }
 
+  function selectSimpleOption(key, value) {
+    setState((current) => ({ ...current, [key]: value }));
+  }
+
+  function toggleSpecialWork(itemId) {
+    setState((current) => ({ ...current, specialWork: toggle(current.specialWork, itemId) }));
+  }
+
+  function attachPendingPhotos(fileInput, category) {
+    const files = fileInput instanceof FileList || Array.isArray(fileInput)
+      ? Array.from(fileInput)
+      : [fileInput];
+
+    setPendingPhotos((current) => [
+      ...current,
+      ...files.filter(Boolean).map((file) => ({ file, category }))
+    ]);
+  }
+
   function canContinue() {
     if (isSimple) {
       if (step === 0) return Boolean(state.propertyType);
       if (step === 1) return Boolean(state.workScope);
       if (step === 2) return Boolean(state.condition);
-      if (step === 3) return Boolean(state.postalCode && state.postalCode.trim().length >= 4);
+      if (step === 3) return isValidSwissPostalCode(state.postalCode);
       // step 4 = contact form — handled separately (pre-calc submit)
       return true;
     }
@@ -549,7 +633,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     if (step === 1) return state.components.length > 0;
     if (step === 2) return state.services.length > 0;
     if (step === 3) return visibleQuantities.every((item) => Number(state.quantities[item.quantityKey]) > 0);
-    if (step === 4) return Boolean(state.postalCode && state.postalCode.trim().length >= 4);
+    if (step === 4) return isValidSwissPostalCode(state.postalCode);
     return true;
   }
 
@@ -559,34 +643,39 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     setErrors({});
     setNotice("");
 
-    const response = await fetch("/api/offer-calculator/calculate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        mode: state.mode,
-        propertyType: state.propertyType,
-        roomType: state.roomType,
-        components: state.components,
-        services: state.services,
-        quantities: state.quantities,
-        componentDetails: state.componentDetails,
-        condition: state.condition,
-        postalCode: state.postalCode,
-        locationCity: state.locationCity,
-        projectNotes: state.projectNotes
-      })
-    });
-    const data = await response.json();
+    try {
+      const response = await fetch("/api/offer-calculator/calculate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          mode: state.mode,
+          propertyType: state.propertyType,
+          roomType: state.roomType,
+          components: state.components,
+          services: state.services,
+          quantities: state.quantities,
+          componentDetails: state.componentDetails,
+          condition: state.condition,
+          postalCode: state.postalCode,
+          locationCity: state.locationCity,
+          projectNotes: state.projectNotes
+        })
+      });
+      const data = await response.json().catch(() => ({}));
 
-    setBusy(false);
+      setBusy(false);
 
-    if (!response.ok) {
-      setErrors(data.errors || { general: data.error || "Please check your project details." });
-      return;
+      if (!response.ok) {
+        setErrors(data.errors || { general: data.error || "Could not calculate the quote. Please check the details and try again." });
+        return;
+      }
+
+      setSessionId(data.sessionId);
+      setStep(5);
+    } catch {
+      setBusy(false);
+      setErrors({ general: "Could not calculate the quote. Please try again." });
     }
-
-    setSessionId(data.sessionId);
-    setStep(5);
   }
 
   async function calculateQuick() {
@@ -603,6 +692,15 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           roomType: state.roomType,
           roomCount: state.roomCount,
           roomSize: state.roomSize,
+          livingArea: state.livingArea,
+          individualWallCount: state.individualWallCount,
+          individualWallSize: state.individualWallSize,
+          ceilingCount: state.ceilingCount,
+          areaType: state.areaType,
+          areaWork: state.areaWork,
+          floorType: state.floorType,
+          floorArea: state.floorArea,
+          specialWork: state.specialWork,
           workScope: state.workScope,
           condition: state.condition,
           postalCode: state.postalCode,
@@ -646,7 +744,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     // Detailed inputs now run 0–4 (Location added as step 05, spec §7B); 4 is the last
     // input step, so continuing from there triggers the calculation.
     if (step === 4) {
-      calculateDetailed();
+      if (canContinue()) calculateDetailed();
+      else setErrors({ general: "Please enter a valid 4-digit Swiss postal code." });
       return;
     }
 
@@ -675,15 +774,35 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           body: JSON.stringify({
             propertyType: state.propertyType,
             roomType: state.roomType,
-            roomCount: state.roomCount,
-            roomSize: state.roomSize,
-            workScope: state.workScope,
+          roomCount: state.roomCount,
+          roomSize: state.roomSize,
+          livingArea: state.livingArea,
+          individualWallCount: state.individualWallCount,
+          individualWallSize: state.individualWallSize,
+          ceilingCount: state.ceilingCount,
+          areaType: state.areaType,
+          areaWork: state.areaWork,
+          floorType: state.floorType,
+          floorArea: state.floorArea,
+          specialWork: state.specialWork,
+          workScope: state.workScope,
             condition: state.condition,
             postalCode: state.postalCode,
             locationCity: state.locationCity,
             projectNotes: [
               `Location: ${state.postalCode} ${state.locationCity}`.trim(),
-              `Condition: ${state.condition}`
+              `Condition: ${state.condition}`,
+              state.livingArea ? `Living area: ${state.livingArea}` : "",
+              state.individualWallCount ? `Individual walls: ${state.individualWallCount}` : "",
+              state.individualWallSize ? `Wall size: ${state.individualWallSize}` : "",
+              state.ceilingCount ? `Ceilings: ${state.ceilingCount}` : "",
+              state.areaType ? `Area: ${state.areaType}` : "",
+              state.areaWork ? `Area work: ${state.areaWork}` : "",
+              state.floorType ? `Floor type: ${state.floorType}` : "",
+              state.floorArea ? `Floor area: ${state.floorArea}` : "",
+              state.specialWork.length ? `Special work: ${state.specialWork.join(", ")}` : "",
+              state.additionalWork ? `Additional work: ${state.additionalWork}` : "",
+              state.projectNotes
             ].filter(Boolean).join(" | ")
           })
         });
@@ -697,6 +816,13 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
         activeSessionId = calcData.sessionId;
         setSessionId(activeSessionId);
+
+        if (pendingPhotos.length > 0) {
+          for (const pending of pendingPhotos) {
+            await uploadPhotos(pending.file, pending.category, activeSessionId);
+          }
+          setPendingPhotos([]);
+        }
       }
 
       const codeResponse = await fetch("/api/offer-calculator/send-code", {
@@ -800,8 +926,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
   }
 
-  async function uploadPhotos(fileInput, category) {
-    if (!sessionId || !fileInput) return;
+  async function uploadPhotos(fileInput, category, overrideSessionId = "") {
+    const targetSessionId = overrideSessionId || sessionId;
+    if (!targetSessionId || !fileInput) return;
     const files = fileInput instanceof FileList || Array.isArray(fileInput)
       ? Array.from(fileInput)
       : [fileInput];
@@ -810,7 +937,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
     for (const file of files) {
       const formData = new FormData();
-      formData.set("sessionId", sessionId);
+      formData.set("sessionId", targetSessionId);
       formData.set("category", category);
       formData.set("photo", file);
 
@@ -842,7 +969,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
     const fieldErrors = {};
     const requiredFields = requestedAction === "CONSULTATION"
-      ? ["firstName", "lastName", "address"]
+      ? ["firstName", "lastName", "phone", "address"]
       : ["firstName", "lastName"];
 
     for (const field of requiredFields) {
@@ -959,11 +1086,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     return (
       <button key={option.id} type="button" className={cx(styles.selectionCard, selected && styles.selectedCard)} onClick={onClick}>
         <span className={styles.cardIcon}>{option.iconKey ? <ComponentIcon iconKey={option.iconKey} /> : option.icon || "✦"}</span>
-        <span style={{ display: "flex", flexDirection: "column", gap: "2px", textAlign: "left", flex: 1 }}>
-          <span style={{ fontWeight: "600", fontSize: "13px", color: "var(--ink)" }}>{option.title}</span>
-          {option.unit && <small style={{ color: "var(--ink-muted)", fontSize: "11px" }}>Unit: {option.unit}</small>}
-        </span>
-        <i>{selected ? "✓" : "›"}</i>
+        <div className={styles.selectionCardText}>
+          <strong className={styles.selectionCardTitle}>{option.title}</strong>
+          {option.unit && <small className={styles.selectionCardUnit}>Unit: {option.unit}</small>}
+        </div>
+        {!selected && <i aria-hidden="true">›</i>}
       </button>
     );
   }
@@ -1046,7 +1173,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 className={cx(styles.selectionTabCard, styles.tabDetailedSpecs)}
                 onClick={() => {
                   if (detailedQuoteHref) {
-                    window.location.href = detailedQuoteHref;
+                    router.push(detailedQuoteHref);
                   } else {
                     setState((curr) => ({ ...curr, calculatorType: "DETAILED" }));
                     setStep(0);
@@ -1055,7 +1182,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     if (detailedQuoteHref) {
-                      window.location.href = detailedQuoteHref;
+                      router.push(detailedQuoteHref);
                     } else {
                       setState((curr) => ({ ...curr, calculatorType: "DETAILED" }));
                       setStep(0);
@@ -1138,7 +1265,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
 
     return (
-      <main className={cx(styles.page, styles.embedded, isHomeQuickQuote && styles.homeLayout, "offerCalculatorEmbedded")}>
+      <main className={cx(styles.page, styles.embedded, isHomeQuickQuote && styles.homeLayout, isHomeQuickQuote && step === 0 && styles.homeQuickPropertyStep, "offerCalculatorEmbedded")}>
         <aside className={styles.embeddedRail}>
           {isHomeQuickQuote ? (
             /* Homepage rail is the Detailed Quote CTA for Customer B — it links to the
@@ -1150,10 +1277,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 <li>Selectable components and services</li>
                 <li>Ideal for architects, property managers &amp; professionals</li>
               </ul>
-              <a className={styles.sidebarModeSwitchBtn} href={detailedQuoteHref}>
+              <Link className={styles.sidebarModeSwitchBtn} href={detailedQuoteHref}>
                 <span>GO TO DETAILED QUOTE CALCULATOR</span>
                 <i>→</i>
-              </a>
+              </Link>
               <p className={styles.protectedPriceNote}>
                 🔒 <strong>Prices are protected</strong> — visible after e-mail verification.
               </p>
@@ -1314,6 +1441,126 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     )}
                   </div>
 
+                  {["walls", "walls_ceilings"].includes(state.workScope) && (
+                    <div style={{ marginTop: "16px" }}>
+                      <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                        Approximate living / floor area
+                      </div>
+                      <div className={styles.roomChips}>
+                        {livingAreaOptions.map((option) => (
+                          <button
+                            key={option.id}
+                            type="button"
+                            className={state.livingArea === option.id ? styles.activeChip : ""}
+                            onClick={() => selectSimpleOption("livingArea", option.id)}
+                          >
+                            {option.title}
+                          </button>
+                        ))}
+                      </div>
+                      <p style={{ marginTop: "8px", color: "var(--ink-muted)", fontSize: "13px" }}>
+                        Estimate applies to standard room heights up to 2.80 m. Higher rooms may require a surcharge after review.
+                      </p>
+                    </div>
+                  )}
+
+                  {state.workScope === "individual_walls" && (
+                    <>
+                      <div style={{ marginTop: "16px" }}>
+                        <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                          Number of walls
+                        </div>
+                        <div className={styles.roomChips}>
+                          {individualWallCountOptions.map((option) => (
+                            <button key={option.id} type="button" className={state.individualWallCount === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("individualWallCount", option.id)}>
+                              {option.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={{ marginTop: "14px" }}>
+                        <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                          Approximate wall size
+                        </div>
+                        <div className={styles.roomChips}>
+                          {wallSizeOptions.map((option) => (
+                            <button key={option.id} type="button" className={state.individualWallSize === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("individualWallSize", option.id)}>
+                              {option.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {state.workScope === "ceilings" && (
+                    <div style={{ marginTop: "16px" }}>
+                      <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                        Number of rooms / ceilings
+                      </div>
+                      <div className={styles.roomChips}>
+                        {ceilingCountOptions.map((option) => (
+                          <button key={option.id} type="button" className={state.ceilingCount === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("ceilingCount", option.id)}>
+                            {option.title}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {state.workScope === "individual_rooms" && (
+                    <>
+                      <div style={{ marginTop: "16px" }}>
+                        <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                          Area / room
+                        </div>
+                        <div className={styles.roomChips}>
+                          {areaTypeOptions.map((option) => (
+                            <button key={option.id} type="button" className={state.areaType === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("areaType", option.id)}>
+                              {option.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div style={{ marginTop: "14px" }}>
+                        <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                          What should be painted there?
+                        </div>
+                        <div className={styles.roomChips}>
+                          {areaWorkOptions.map((option) => (
+                            <button key={option.id} type="button" className={state.areaWork === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("areaWork", option.id)}>
+                              {option.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+
+                  {state.workScope === "floor" && (
+                    <>
+                      <div style={{ marginTop: "16px" }}>
+                        <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                          Floor type
+                        </div>
+                        <div className={styles.roomChips}>
+                          {floorTypeOptions.map((option) => (
+                            <button key={option.id} type="button" className={state.floorType === option.id ? styles.activeChip : ""} onClick={() => selectSimpleOption("floorType", option.id)}>
+                              {option.title}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <label className={styles.quantityField} style={{ marginTop: "14px" }}>
+                        <span>Approximate floor area</span>
+                        <div>
+                          <input type="number" min="0" inputMode="decimal" value={state.floorArea} placeholder="25" onChange={(event) => selectSimpleOption("floorArea", event.target.value)} />
+                          <b>m²</b>
+                        </div>
+                      </label>
+                    </>
+                  )}
+
                   <div style={{ marginTop: "16px" }}>
                     <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
                       Number of Rooms: <b style={{ color: "var(--yellow)" }}>{state.roomCount} {state.roomCount === 1 ? "Room" : "Rooms"}</b>
@@ -1370,6 +1617,27 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       })
                     )}
                   </div>
+
+                  <div style={{ marginTop: "18px" }}>
+                    <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
+                      Special work or damage
+                    </div>
+                    <p style={{ margin: "0 0 10px", color: "var(--ink-muted)", fontSize: "13px" }}>
+                      Select anything that should be reviewed. These items can be priced manually or with later surcharge rules.
+                    </p>
+                    <div className={styles.roomChips}>
+                      {specialWorkOptions.map((option) => (
+                        <button
+                          key={option.id}
+                          type="button"
+                          className={state.specialWork.includes(option.id) ? styles.activeChip : ""}
+                          onClick={() => toggleSpecialWork(option.id)}
+                        >
+                          {option.title}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               )}
 
@@ -1399,6 +1667,54 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       <span className={styles.stepKicker}>05 Your Quote</span>
                       <h2>Your estimated quote is ready.</h2>
                       <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+                      <LockedPricePlaceholder />
+
+                      <label className={styles.notesField} style={{ marginTop: "16px" }}>
+                        <span>Project description</span>
+                        <textarea
+                          value={state.projectNotes}
+                          placeholder="Describe the rooms, surfaces, damage, timing or access. You can also mention anything that is not listed above."
+                          onChange={(event) => setState((current) => ({ ...current, projectNotes: event.target.value }))}
+                        />
+                      </label>
+
+                      <label className={styles.notesField} style={{ marginTop: "12px" }}>
+                        <span>Other / Additional work</span>
+                        <textarea
+                          value={state.additionalWork}
+                          placeholder="Example: one door, one radiator, a window frame or another small item should also be painted."
+                          onChange={(event) => setState((current) => ({ ...current, additionalWork: event.target.value }))}
+                        />
+                      </label>
+
+                      <div className={styles.uploadPanel} style={{ marginTop: "16px" }}>
+                        <h3>Photos before e-mail verification</h3>
+                        <p style={{ margin: "0 0 12px", color: "var(--ink-muted)", fontSize: "13px" }}>
+                          Upload photos of surfaces, damage or areas you want us to review.
+                        </p>
+                        <div className={styles.photoGrid}>
+                          {["Room overview", "Damage", "Other"].map((category) => (
+                            <label key={category} className={styles.photoDrop}>
+                              <span>{category}</span>
+                              <small>JPG, PNG, WEBP, HEIC or PDF</small>
+                              <input
+                                type="file"
+                                accept="image/*,.pdf,application/pdf"
+                                multiple
+                                onChange={(event) => {
+                                  attachPendingPhotos(event.target.files, category);
+                                  event.target.value = "";
+                                }}
+                              />
+                            </label>
+                          ))}
+                        </div>
+                        {pendingPhotos.length > 0 && (
+                          <p className={styles.notice} style={{ marginTop: "10px" }}>
+                            {pendingPhotos.length} photo{pendingPhotos.length === 1 ? "" : "s"} ready to attach after calculation.
+                          </p>
+                        )}
+                      </div>
 
                       <div className={styles.customerGrid} style={{ marginTop: "16px" }}>
                         {[
@@ -1496,7 +1812,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
                         <h3>Your project summary</h3>
                         <dl>
-                          <div><dt>Property</dt><dd>{propertyTypes.find((o) => o.id === state.propertyType)?.title || "Not selected"}</dd></div>
+                          <div><dt>Property</dt><dd>{quickPropertyTypes.find((o) => o.id === state.propertyType)?.title || "Not selected"}</dd></div>
                           <div><dt>Scope</dt><dd>{workScopeOptions.find((o) => o.id === state.workScope)?.title || state.workScope}</dd></div>
                           <div><dt>Rooms</dt><dd>{state.roomCount} room(s) · {state.roomSize} size</dd></div>
                           <div><dt>Condition</dt><dd>{conditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
@@ -1509,12 +1825,15 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         <strong className={styles.priceRange}>{priceRange}</strong>
                         <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
                       </div>
-                      <p>This is an approximate price estimate based on your project details. The final price may vary after review or an on-site inspection.</p>
+                      <p>This estimate is non-binding and based on your project details. The final price may vary after review or an on-site inspection.</p>
 
                       {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
                       {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
 
                       <div className={styles.finalActions} style={{ marginTop: "20px" }}>
+                        <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
+                          {busy ? "SUBMITTING…" : "REQUEST OFFER"}
+                        </button>
                         {sessionId && (
                           <a
                             href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -1527,7 +1846,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           </a>
                         )}
                         <button
-                          className={styles.primaryAction}
+                          className={styles.secondaryAction}
                           type="button"
                           onClick={() => submitRequest("CONSULTATION")}
                           disabled={busy}
@@ -1549,6 +1868,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       {showSiteVisitForm && (
                         <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
                           <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                           <label style={{ display: "block", marginBottom: "8px" }}>
                             <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
                             <input
@@ -1604,10 +1924,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           {photoCategories.map((category) => (
                             <label key={category} className={styles.photoDrop}>
                               <span>{category}</span>
-                              <small>Take Photo or Choose From Library</small>
+                              <small>Choose photos or a PDF document</small>
                               <input
                                 type="file"
-                                accept="image/*"
+                                accept="image/*,.pdf,application/pdf"
                                 multiple
                                 onChange={(event) => {
                                   uploadPhotos(event.target.files, category);
@@ -1668,6 +1988,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       <span className={styles.stepKicker}>04 Quantities</span>
                       <h2>Enter the quantities</h2>
                       <p>Please enter the areas, lengths and quantities.</p>
+                      <DetailedMeasurementFields state={state} setState={setState} />
                       <div className={styles.quantityGrid}>
                         {visibleQuantities.map((item) => (
                           <label key={item.id} className={styles.quantityField}>
@@ -1756,11 +2077,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                             className={styles.secondaryAction}
                             onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
                           >
-                            ← Back to Quick Calculator
+                            ← Back to Calculator Selection
                           </button>
                         ) : (
                           <a className={styles.backToQuickNavBtn} href="/#quote">
-                            ← Back to Quick Calculator
+                            ← Back to Calculator Selection
                           </a>
                         )}
                         {step > 0 && (
@@ -1792,6 +2113,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         <span className={styles.stepKicker}>06 Summary</span>
                         <h2>Your estimated quote is ready.</h2>
                         <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+                        <LockedPricePlaceholder />
 
                         <div className={styles.customerGrid} style={{ marginTop: "14px" }}>
                           <label>
@@ -1918,13 +2240,16 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           <strong className={styles.priceRange}>{priceRange}</strong>
                           <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
                         </div>
-                        <p>This is an approximate price estimate based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
+                        <p>This estimate is non-binding and based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
 
                         {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
                         {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
 
-                        <div className={styles.finalActions} style={{ marginTop: "20px" }}>
-                          {sessionId && (
+                      <div className={styles.finalActions} style={{ marginTop: "20px" }}>
+                        <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
+                          {busy ? "SUBMITTING…" : "REQUEST OFFER"}
+                        </button>
+                        {sessionId && (
                             <a
                               href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
                               download
@@ -1935,8 +2260,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                               <b>DOWNLOAD PDF QUOTE</b>
                             </a>
                           )}
-                          <button
-                            className={styles.primaryAction}
+                        <button
+                          className={styles.secondaryAction}
                             type="button"
                             onClick={() => submitRequest("CONSULTATION")}
                             disabled={busy}
@@ -1957,7 +2282,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
                         {showSiteVisitForm && (
                           <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
-                            <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                             <label style={{ display: "block", marginBottom: "8px" }}>
                               <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
                               <input
@@ -2013,10 +2339,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                             {photoCategories.map((category) => (
                               <label key={category} className={styles.photoDrop}>
                                 <span>{category}</span>
-                                <small>Take Photo or Choose From Library</small>
+                                <small>Choose photos or a PDF document</small>
                                 <input
                                   type="file"
-                                  accept="image/*"
+                                  accept="image/*,.pdf,application/pdf"
                                   multiple
                                   onChange={(event) => {
                                     uploadPhotos(event.target.files, category);
@@ -2208,7 +2534,33 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     <main className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <div className={styles.heroTopRow}>
+          <div className={styles.heroTopRow} aria-hidden="true" />
+          <h1>Create a Detailed Quote.</h1>
+          <p>Select your components and services, enter only the measurements they require, and see your result after e-mail verification.</p>
+        </div>
+        <div className={styles.heroAside}>
+          <div className={styles.calculatorControls} aria-label="Calculator controls">
+            <button
+              className={cx(styles.soundToggle, isSoundOn && styles.soundToggleActive)}
+              type="button"
+              aria-label={isSoundOn ? "Turn sound off" : "Turn sound on"}
+              aria-pressed={isSoundOn}
+              onClick={() => setIsSoundOn((current) => !current)}
+            >
+              <span className={styles.soundToggleIcon} aria-hidden="true">
+                {isSoundOn ? (
+                  <svg className={styles.soundIcon} viewBox="0 0 24 24" fill="none">
+                    <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor" />
+                    <path d="M16 9.5c.9 1.4.9 3.6 0 5M18.4 7.2c1.9 2.8 1.9 6.8 0 9.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                ) : (
+                  <svg className={styles.soundIcon} viewBox="0 0 24 24" fill="none">
+                    <path d="M4 10v4h4l5 4V6L8 10H4Z" fill="currentColor" />
+                    <path d="m17 10 4 4m0-4-4 4" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
+                  </svg>
+                )}
+              </span>
+            </button>
             <button
               className={styles.themeToggle}
               type="button"
@@ -2219,13 +2571,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <span className={styles.themeToggleIcon} aria-hidden="true">
                 {isDark ? (
                   <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                ) : (
-                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="4.2" fill="currentColor" />
                     <path
                       d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
@@ -2234,20 +2579,26 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       strokeLinecap="round"
                     />
                   </svg>
+                ) : (
+                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
+                      fill="currentColor"
+                    />
+                  </svg>
                 )}
               </span>
             </button>
           </div>
-          <span className={styles.brand}>FOR PROFESSIONALS &amp; PRECISE PLANNING</span>
-          <strong>Kompetenz verbindet</strong>
-          <h1>Create a Detailed Quote.</h1>
-          <p>Select your components and services, enter only the measurements they require, and see your result after e-mail verification.</p>
+          <div className={styles.asideIntro}>
+            <span className={styles.brand}>FOR PROFESSIONALS &amp; PRECISE PLANNING</span>
+            <strong>Kompetenz verbindet</strong>
+          </div>
+          <aside className={styles.securityCard}>
+            <h2>PRICES ARE PROTECTED</h2>
+            <p>The exact price is only visible after e-mail verification.</p>
+          </aside>
         </div>
-        <aside className={styles.securityCard}>
-          <span>🔒</span>
-          <h2>PRICES ARE PROTECTED</h2>
-          <p>The exact price is only visible after e-mail verification.</p>
-        </aside>
       </section>
 
       <nav className={cx(styles.progressNav, isSimple && styles.progressNavSimple)} aria-label="Calculator progress">
@@ -2417,6 +2768,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <span className={styles.stepKicker}>05 Your Quote</span>
             <h2>Your estimated quote is ready.</h2>
             <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+            <LockedPricePlaceholder />
 
             <div className={styles.customerGrid}>
               {[
@@ -2514,7 +2866,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <div className={styles.summaryPanel}>
               <h3>Your project summary</h3>
               <dl>
-                <div><dt>Property</dt><dd>{propertyTypes.find((o) => o.id === state.propertyType)?.title || "Not selected"}</dd></div>
+                <div><dt>Property</dt><dd>{(isSimple ? quickPropertyTypes : propertyTypes).find((o) => o.id === state.propertyType)?.title || "Not selected"}</dd></div>
                 <div><dt>Scope</dt><dd>{workScopeOptions.find((o) => o.id === state.workScope)?.title || state.workScope}</dd></div>
                 <div><dt>Rooms</dt><dd>{state.roomCount} room(s) · {state.roomSize} size</dd></div>
                 <div><dt>Condition</dt><dd>{conditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
@@ -2527,12 +2879,15 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <strong className={styles.priceRange}>{priceRange}</strong>
               <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
             </div>
-            <p>This is an approximate price estimate based on your project details. The final price may vary after review or an on-site inspection.</p>
+            <p>This estimate is non-binding and based on your project details. The final price may vary after review or an on-site inspection.</p>
 
             {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
             {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
 
             <div className={styles.finalActions}>
+              <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
+                {busy ? "SUBMITTING…" : "REQUEST OFFER"}
+              </button>
               {sessionId && (
                 <a
                   href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -2545,7 +2900,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </a>
               )}
               <button
-                className={styles.primaryAction}
+                className={styles.secondaryAction}
                 type="button"
                 onClick={() => submitRequest("CONSULTATION")}
                 disabled={busy}
@@ -2567,6 +2922,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             {showSiteVisitForm && (
               <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
                 <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                 <label style={{ display: "block", marginBottom: "8px" }}>
                   <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
                   <input
@@ -2622,10 +2978,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 {photoCategories.map((category) => (
                   <label key={category} className={styles.photoDrop}>
                     <span>{category}</span>
-                    <small>Take Photo or Choose From Library</small>
+                    <small>Choose photos or a PDF document</small>
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/*,.pdf,application/pdf"
                       multiple
                       onChange={(event) => {
                         uploadPhotos(event.target.files, category);
@@ -2685,6 +3041,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <span className={styles.stepKicker}>04 Quantities</span>
             <h2>Enter the quantities</h2>
             <p>Please enter the areas, lengths and quantities.</p>
+            <DetailedMeasurementFields state={state} setState={setState} />
             <div className={styles.quantityGrid}>
               {visibleQuantities.map((item) => (
                 <label key={item.id} className={styles.quantityField}>
@@ -2714,7 +3071,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           </div>
         )}
 
-        {/* DETAILED MODE index 5 — "06 Summary": recap + contact */}
+        {/* DETAILED MODE index 5 — "06 Summary": selections recap only */}
         {!isSimple && step === 5 && (
           <div className={styles.resultLocked}>
             <div className={styles.summaryPanel} style={{ marginBottom: "20px" }}>
@@ -2757,61 +3114,18 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </div>
               </dl>
             </div>
-            <span className={styles.stepKicker}>06 Summary</span>
-            <h2>Your estimated quote is ready.</h2>
-            <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
-
-            <div className={styles.customerGrid}>
-              <label>
-                <span>First Name *</span>
-                <input
-                  value={state.customerInfo.firstName}
-                  onChange={(e) => updateCustomerInfo("firstName", e.target.value)}
-                  aria-invalid={Boolean(errors.firstName)}
-                />
-                {errors.firstName && <small>{errors.firstName}</small>}
-              </label>
-              <label>
-                <span>Last Name *</span>
-                <input
-                  value={state.customerInfo.lastName}
-                  onChange={(e) => updateCustomerInfo("lastName", e.target.value)}
-                  aria-invalid={Boolean(errors.lastName)}
-                />
-                {errors.lastName && <small>{errors.lastName}</small>}
-              </label>
-              <label>
-                <span>Phone (optional)</span>
-                <input
-                  value={state.customerInfo.phone}
-                  onChange={(e) => updateCustomerInfo("phone", e.target.value)}
-                />
-              </label>
-              <label style={{ gridColumn: "1 / -1" }}>
-                <span>E-Mail Address *</span>
-                <input
-                  type="email"
-                  value={state.email}
-                  placeholder="you@example.com"
-                  onChange={(e) => setState((curr) => ({ ...curr, email: e.target.value }))}
-                  aria-invalid={Boolean(errors.email)}
-                />
-                {errors.email && <small>{errors.email}</small>}
-              </label>
-            </div>
-            {errors.general && <p className={styles.error} style={{ marginTop: "10px" }}>{errors.general}</p>}
-            {notice && <p className={styles.notice} style={{ marginTop: "10px" }}>{notice}</p>}
+            <LockedPricePlaceholder />
             <div className={styles.navActions} style={{ marginTop: "18px" }}>
               <div className={styles.navActionsLeft}>
                 <a className={styles.backToQuickNavBtn} href="/#quote">
-                  ← Back to Quick Calculator
+                  ← Back to Calculator Selection
                 </a>
                 <button type="button" className={styles.secondaryAction} onClick={() => setStep(4)}>
                   ← EDIT SELECTIONS
                 </button>
               </div>
-              <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>
-                {busy ? "SENDING…" : "GET MY ESTIMATED QUOTE →"}
+              <button className={styles.primaryAction} type="button" onClick={() => setStep(6)}>
+                CONTINUE →
               </button>
             </div>
           </div>
@@ -2821,8 +3135,26 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {step === 6 && (
           <div className={styles.verifyPanel}>
             <span className={styles.stepKicker}>07 Verify E-Mail</span>
-            <h2>Check your e-mail</h2>
-            <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
+            {!codeSent ? (
+              <>
+                <h2>Where should we send your quote?</h2>
+                <p>Enter your contact details to receive your personal AMIGOS estimated quotation.</p>
+                <div className={styles.customerGrid}>
+                  <label><span>First Name *</span><input value={state.customerInfo.firstName} onChange={(e) => updateCustomerInfo("firstName", e.target.value)} aria-invalid={Boolean(errors.firstName)} /></label>
+                  <label><span>Last Name *</span><input value={state.customerInfo.lastName} onChange={(e) => updateCustomerInfo("lastName", e.target.value)} aria-invalid={Boolean(errors.lastName)} /></label>
+                  <label><span>Phone (optional)</span><input value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} /></label>
+                  <label style={{ gridColumn: "1 / -1" }}><span>E-Mail Address *</span><input type="email" value={state.email} placeholder="you@example.com" onChange={(e) => setState((curr) => ({ ...curr, email: e.target.value }))} aria-invalid={Boolean(errors.email)} /></label>
+                </div>
+                {errors.general && <p className={styles.error}>{errors.general}</p>}
+                <div className={styles.navActions} style={{ marginTop: "18px" }}>
+                  <button type="button" className={styles.secondaryAction} onClick={() => setStep(5)}>← BACK</button>
+                  <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>{busy ? "SENDING…" : "SEND VERIFICATION CODE →"}</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <h2>Check your e-mail</h2>
+                <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
 
             {notice && <p className={styles.notice}>{notice}</p>}
             {errors.general && <p className={styles.error}>{errors.general}</p>}
@@ -2848,15 +3180,13 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 />
               ))}
             </div>
-            <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-              {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
-            </button>
-            <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
-              Didn't receive the code? Send again
-            </button>
+                <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>{busy ? "VERIFYING…" : "VERIFY E-MAIL →"}</button>
+                <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>Didn't receive the code? Send again</button>
+              </>
+            )}
             <div style={{ marginTop: "16px", display: "flex", justifyContent: "center" }}>
               <a className={styles.backToQuickNavBtn} href="/#quote">
-                ← Back to Quick Calculator
+                ← Back to Calculator Selection
               </a>
             </div>
           </div>
@@ -2903,12 +3233,15 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <strong className={styles.priceRange}>{priceRange}</strong>
               <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
             </div>
-            <p>This is an approximate price estimate based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
+            <p>This estimate is non-binding and based on the information provided. The final price may vary after review and/or an on-site inspection.</p>
 
             {notice && <p className={styles.notice} style={{ marginTop: "12px" }}>{notice}</p>}
             {errors.general && <p className={styles.error} style={{ marginTop: "12px" }}>{errors.general}</p>}
 
             <div className={styles.finalActions}>
+              <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
+                {busy ? "SUBMITTING…" : "REQUEST OFFER"}
+              </button>
               {sessionId && (
                 <a
                   href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
@@ -2921,7 +3254,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </a>
               )}
               <button
-                className={styles.primaryAction}
+                className={styles.secondaryAction}
                 type="button"
                 onClick={() => submitRequest("CONSULTATION")}
                 disabled={busy}
@@ -2943,6 +3276,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             {showSiteVisitForm && (
               <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
                 <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                 <label style={{ display: "block", marginBottom: "8px" }}>
                   <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
                   <input
@@ -2998,10 +3332,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 {photoCategories.map((category) => (
                   <label key={category} className={styles.photoDrop}>
                     <span>{category}</span>
-                    <small>Take Photo or Choose From Library</small>
+                    <small>Choose photos or a PDF document</small>
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/*,.pdf,application/pdf"
                       multiple
                       onChange={(event) => {
                         uploadPhotos(event.target.files, category);
@@ -3032,7 +3366,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.navActions}>
             <div className={styles.navActionsLeft}>
               <a className={styles.backToQuickNavBtn} href="/#quote">
-                ← Back to Quick Calculator
+                ← Back to Calculator Selection
               </a>
               {step > 0 && (
                 <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>

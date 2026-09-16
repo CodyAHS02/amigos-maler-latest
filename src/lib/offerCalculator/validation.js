@@ -114,7 +114,7 @@ export function validateCustomerInfo(input = {}) {
   if (!EMAIL_PATTERN.test(values.email)) errors.email = "Enter a valid e-mail address.";
   if (values.requestedAction === "CONSULTATION" && values.address.length < 3) errors.address = "Property address is required.";
   if (values.postalCode.length < 3) errors.postalCode = "Postal code is required.";
-  if (values.city.length < 2) errors.city = "City is required.";
+  if (values.requestedAction === "CONSULTATION" && values.city.length < 2) errors.city = "City is required.";
 
   return {
     valid: Object.keys(errors).length === 0,

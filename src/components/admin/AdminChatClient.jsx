@@ -17,8 +17,9 @@ function formatTime(value) {
   }).format(new Date(value));
 }
 
-export default function AdminChatClient({ initialConversations }) {
+export default function AdminChatClient({ initialConversations, initialChannel = "MAIN" }) {
   const [conversations, setConversations] = useState(initialConversations);
+  const [channel, setChannel] = useState(initialChannel);
   const [activeId, setActiveId] = useState(initialConversations[0]?.id || "");
   const [messages, setMessages] = useState([]);
   const [draft, setDraft] = useState("");
@@ -32,13 +33,13 @@ export default function AdminChatClient({ initialConversations }) {
   );
 
   async function loadConversations() {
-    const response = await fetch("/api/admin/chat/conversations", { cache: "no-store" });
+    const response = await fetch(`/api/admin/chat/conversations?channel=${channel}`, { cache: "no-store" });
     const result = await response.json();
 
     if (response.ok) {
       setConversations(result.conversations);
-      if (!activeId && result.conversations[0]) {
-        setActiveId(result.conversations[0].id);
+      if (!result.conversations.some((conversation) => conversation.id === activeId)) {
+        setActiveId(result.conversations[0]?.id || "");
       }
     }
   }
@@ -63,7 +64,13 @@ export default function AdminChatClient({ initialConversations }) {
     }, POLL_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, [activeId]);
+  }, [activeId, channel]);
+
+  useEffect(() => {
+    setActiveId("");
+    setMessages([]);
+    loadConversations();
+  }, [channel]);
 
   useEffect(() => {
     loadMessages(activeId);
@@ -111,8 +118,13 @@ export default function AdminChatClient({ initialConversations }) {
     <section className={styles.chatDesk}>
       <aside className={styles.chatList}>
         <div className={styles.chatListHeader}>
-          <span>Live Inbox</span>
+          <span>{channel === "PROJECTS" ? "Projects Inbox" : "Main Inbox"}</span>
           <strong>{conversations.length}</strong>
+        </div>
+
+        <div className={styles.chatChannelTabs} aria-label="Chat inbox">
+          <button type="button" className={channel === "MAIN" ? styles.chatChannelTabActive : ""} onClick={() => setChannel("MAIN")}>Main website</button>
+          <button type="button" className={channel === "PROJECTS" ? styles.chatChannelTabActive : ""} onClick={() => setChannel("PROJECTS")}>Projects · Patricia</button>
         </div>
 
         {conversations.length === 0 ? (
@@ -148,7 +160,7 @@ export default function AdminChatClient({ initialConversations }) {
               <div className={styles.chatPanelTitle}>
                 <InitialAvatar className={styles.avatar} name={activeConversation.visitorName} />
                 <div>
-                  <span>Conversation</span>
+                  <span>{activeConversation.channel === "PROJECTS" ? "Projects conversation" : "Main website conversation"}</span>
                   <h2>{activeConversation.visitorName}</h2>
                 </div>
               </div>

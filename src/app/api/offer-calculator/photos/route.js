@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { addProjectPhoto } from "@/lib/offerCalculator/store";
 
-const MAX_FILE_SIZE = 3 * 1024 * 1024;
-const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"]);
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif", "application/pdf"]);
 
 export async function POST(request) {
   const formData = await request.formData();
@@ -19,11 +19,11 @@ export async function POST(request) {
   }
 
   if (!ALLOWED_TYPES.has(file.type)) {
-    return NextResponse.json({ error: "Please upload JPG, PNG, WEBP, HEIC or HEIF images." }, { status: 400 });
+    return NextResponse.json({ error: "Please upload a JPG, PNG, WEBP, HEIC, HEIF or PDF file." }, { status: 400 });
   }
 
   if (file.size > MAX_FILE_SIZE) {
-    return NextResponse.json({ error: "Please keep each photo under 3 MB." }, { status: 400 });
+    return NextResponse.json({ error: "Please keep each file under 10 MB." }, { status: 400 });
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());

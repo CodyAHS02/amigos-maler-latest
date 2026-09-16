@@ -28,17 +28,28 @@ function LocalStyle({ href }) {
   return <style dangerouslySetInnerHTML={{ __html: readSourceAsset(href, "style") }} data-legacy-style={href} />;
 }
 
-function LocalScript({ src }) {
+function LocalScript({ src, waitForGsap = false }) {
+  const source = readSourceAsset(src, "script");
+  const scriptBody = waitForGsap
+    ? `
+(function runLegacyScriptWhenReady() {
+  if (!window.gsap || !window.ScrollTrigger) {
+    window.setTimeout(runLegacyScriptWhenReady, 50);
+    return;
+  }
+${source}
+})();
+`
+    : source;
+
   return (
-    <Script
-      id={assetId("legacy-script", src)}
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{ __html: readSourceAsset(src, "script") }}
-    />
+    <Script id={assetId("legacy-script", src)} strategy="afterInteractive">
+      {scriptBody}
+    </Script>
   );
 }
 
-export default function LegacyPage({ children, css = [], html, scripts = [], shell = true }) {
+export default function LegacyPage({ children, css = [], html, scripts = [], shell = true, gsap = true }) {
   return (
     <>
       {css.map((href) =>
@@ -50,11 +61,15 @@ export default function LegacyPage({ children, css = [], html, scripts = [], she
       {children}
       {shell && <Footer />}
 
-      <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="beforeInteractive" />
-      <Script
-        src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
-        strategy="beforeInteractive"
-      />
+      {gsap && (
+        <>
+          <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="beforeInteractive" />
+          <Script
+            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+            strategy="beforeInteractive"
+          />
+        </>
+      )}
       <Script
         id="partials-ready-bridge"
         strategy="beforeInteractive"
@@ -63,8 +78,9 @@ export default function LegacyPage({ children, css = [], html, scripts = [], she
         }}
       />
       {scripts.map((src) =>
-        isExternalAsset(src) ? <Script key={src} src={src} strategy="afterInteractive" /> : <LocalScript key={src} src={src} />
+        isExternalAsset(src) ? <Script key={src} src={src} strategy="afterInteractive" /> : <LocalScript key={src} src={src} waitForGsap={gsap} />
       )}
     </>
   );
 }
+

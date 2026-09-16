@@ -19,6 +19,10 @@ export default function BodyAttributes() {
   useEffect(() => {
     const state = routeBodyState[pathname] || {};
 
+    // Client-side navigation can otherwise preserve the previous page's
+    // scroll position and make the top/hero of the new route appear missing.
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
     document.body.className = state.className || "";
 
     if (state.dataPage) {

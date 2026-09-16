@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Portal — AMIGOS IMMO</title>
+<meta name="description" content="Institutional property care for managers, investors, architects and general contractors.">
+<link rel="stylesheet" href="/amigos/css/styles.css">
+<link rel="stylesheet" href="/amigos/css/theme.css">
+<script src="/amigos/js/theme.js"></script>
+</head>
+<body>
+
+<div class="amb"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+<div class="grain"></div>
+<header class="site-header">
+  <a class="brand" href="/amigos/index.html">AMIGOS<span>·</span>IMMO</a>
+  <nav class="nav">
+    <a href="/amigos/services.html">Services</a>
+    <a href="/amigos/index.html#preservation">Value Preservation</a>
+    <a href="/amigos/b2b.html">B2B</a>
+    <a href="/amigos/references.html">References</a>
+    <a href="/amigos/careers.html">Careers</a>
+  </nav>
+  <a class="btn btn-sm" href="/amigos/dashboard.html">Customer Portal</a>
+</header>
+
+<section style="padding-top:180px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">B2B Portal</div>
+      <h2>Institutional care, on your terms.</h2>
+      <p>Tailored programs for the professionals who steward Switzerland's most valuable real estate.</p>
+    </div>
+
+    <div class="reveal" data-tabs>
+      <div class="tabs">
+        <button class="tab on" data-tab="pm">Property Managers</button>
+        <button class="tab" data-tab="inv">Investors</button>
+        <button class="tab" data-tab="arch">Architects &amp; GCs</button>
+      </div>
+
+      <div class="tab-panel on" data-panel="pm">
+        <div class="glass" style="padding:40px">
+          <h3 style="color:var(--white);text-transform:none;letter-spacing:-.01em;font-size:20px;font-weight:300;margin-bottom:12px">A single vendor across your portfolio.</h3>
+          <p>Consolidated invoicing, unified reporting and a dedicated ops manager per portfolio — with tenant-friendly scheduling.</p>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="inv">
+        <div class="glass" style="padding:40px">
+          <h3 style="color:var(--white);text-transform:none;letter-spacing:-.01em;font-size:20px;font-weight:300;margin-bottom:12px">Preservation as an asset class strategy.</h3>
+          <p>Quarterly condition scoring, capex forecasting and value-at-risk modelling for each holding.</p>
+        </div>
+      </div>
+      <div class="tab-panel" data-panel="arch">
+        <div class="glass" style="padding:40px">
+          <h3 style="color:var(--white);text-transform:none;letter-spacing:-.01em;font-size:20px;font-weight:300;margin-bottom:12px">Trade partner for signature projects.</h3>
+          <p>BIM-native execution, tight scheduling, and a track record on landmark Swiss residences.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass reveal" style="padding:36px;margin-top:60px">
+      <h3 style="color:var(--white);text-transform:none;letter-spacing:-.01em;font-size:18px;font-weight:400;margin-bottom:8px">Portfolio overview · live</h3>
+      <p style="font-size:12px">Hover any tile for details. Amber pulses flag scheduled works; red pulses flag critical items.</p>
+      <div class="tiles" id="tiles"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer"><div class="container"><span class="brand">AMIGOS<span>·</span>IMMO</span><p>© 2026 AMIGOS IMMO</p></div></footer>
+
+<script src="/amigos/js/main.js"></script>
+<script>
+  const props = [
+    ['ZRH-041','Bahnhofstr. 12','ok','92%'],['ZRH-088','Seefeldstr. 4','warn','78%'],
+    ['ZRH-104','Kirchgasse 7','ok','95%'],['GVA-012','Rue du Rhône 21','crit','54%'],
+    ['ZRH-160','Zollikerstr. 88','ok','89%'],['BSL-007','Rittergasse 3','warn','72%'],
+    ['ZRH-201','Utoquai 43','ok','97%'],['LUG-018','Via Nassa 9','ok','91%'],
+    ['ZRH-232','Mühlebachstr. 15','warn','69%'],['GVA-045','Cours de Rive 8','ok','93%'],
+    ['ZRH-256','Kreuzstr. 22','crit','48%'],['ZRH-301','Höschgasse 10','ok','96%'],
+  ];
+  document.getElementById('tiles').innerHTML = props.map(([id,addr,st,pct]) => `
+    <div class="tile ${st}">
+      <div><div class="id">${id}</div><div class="val">${pct}</div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:10px;color:var(--grey)">${st === 'crit' ? 'Critical' : st === 'warn' ? 'Scheduled' : 'Healthy'}</div>
+        <div class="status"></div>
+      </div>
+      <div class="tooltip">${addr} — ${pct} condition</div>
+    </div>
+  `).join('');
+</script>
+</body>
+</html>

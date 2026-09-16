@@ -123,7 +123,7 @@ export async function authenticateCustomer(email, password) {
   return publicCustomer(customer);
 }
 
-export async function createConsultationRequest({ customerEmail, name, email, projectType, message }) {
+export async function createConsultationRequest({ customerEmail, name, email, phone, projectType, message }) {
   const submittedEmail = normalizeEmail(email);
   const sessionEmail = normalizeEmail(customerEmail);
   const [customer] = await sql`
@@ -137,8 +137,8 @@ export async function createConsultationRequest({ customerEmail, name, email, pr
 
   const [consultation] = await sql.begin(async (transaction) => {
     const [createdConsultation] = await transaction`
-      insert into consultations (id, customer_id, name, email, project_type, message)
-      values (${consultationId}, ${customer?.id || null}, ${name.trim()}, ${submittedEmail}, ${projectType}, ${message.trim()})
+      insert into consultations (id, customer_id, name, email, phone, project_type, message)
+      values (${consultationId}, ${customer?.id || null}, ${name.trim()}, ${submittedEmail}, ${phone || null}, ${projectType}, ${message.trim()})
       returning id, status
     `;
 

@@ -3,6 +3,15 @@ import { sql } from "@/lib/db";
 import { calculateOfferPrice, calculateQuickQuotePrice } from "@/lib/offerCalculator/pricing";
 import { getPricingSettings } from "@/lib/offerCalculator/pricingSettings";
 
+const globalForOfferCalculator = globalThis;
+const memorySessions = globalForOfferCalculator.__offerCalculatorMemorySessions || new Map();
+const memoryPhotos = globalForOfferCalculator.__offerCalculatorMemoryPhotos || new Map();
+
+if (process.env.NODE_ENV !== "production") {
+  globalForOfferCalculator.__offerCalculatorMemorySessions = memorySessions;
+  globalForOfferCalculator.__offerCalculatorMemoryPhotos = memoryPhotos;
+}
+
 function hashCode(code, sessionId) {
   return crypto.createHash("sha256").update(`${sessionId}:${code}:${process.env.SESSION_SECRET || "amigos"}`).digest("hex");
 }
@@ -36,21 +45,48 @@ export async function createOrUpdateCalculation(project, options = {}) {
   const id = crypto.randomUUID();
 
   const leadSource = options.source === "QUICK_QUOTE" ? "QUICK_QUOTE" : "DETAILED_QUOTE";
+  const memorySession = {
+    id,
+    mode: project.mode,
+    status: "CALCULATED",
+    propertyType: project.propertyType,
+    roomType: project.roomType || null,
+    components: project.components,
+    services: project.services,
+    quantities: project.quantities,
+    projectNotes: project.projectNotes || null,
+    minCents: price.minCents,
+    maxCents: price.maxCents,
+    currency: price.currency,
+    condition: options.condition || null,
+    postalCode: options.postalCode || null,
+    city: options.locationCity || null,
+    source: leadSource,
+    verificationAttempts: 0
+  };
 
-  const [session] = await sql`
-    insert into offer_calculator_sessions (
-      id, mode, status, property_type, room_type, components, services, quantities,
-      project_notes, estimated_min_cents, estimated_max_cents, currency,
-      condition, postal_code, city, source
-    )
-    values (
-      ${id}, ${project.mode}, ${"CALCULATED"}, ${project.propertyType}, ${project.roomType || null},
-      ${sql.json(project.components)}, ${sql.json(project.services)}, ${sql.json(project.quantities)},
-      ${project.projectNotes || null}, ${price.minCents}, ${price.maxCents}, ${price.currency},
-      ${options.condition || null}, ${options.postalCode || null}, ${options.locationCity || null}, ${leadSource}
-    )
-    returning id, status, currency
-  `;
+  let session;
+  try {
+    [session] = await sql`
+      insert into offer_calculator_sessions (
+        id, mode, status, property_type, room_type, components, services, quantities,
+        project_notes, estimated_min_cents, estimated_max_cents, currency,
+        condition, postal_code, city, source
+      )
+      values (
+        ${id}, ${project.mode}, ${"CALCULATED"}, ${project.propertyType}, ${project.roomType || null},
+        ${sql.json(project.components)}, ${sql.json(project.services)}, ${sql.json(project.quantities)},
+        ${project.projectNotes || null}, ${price.minCents}, ${price.maxCents}, ${price.currency},
+        ${options.condition || null}, ${options.postalCode || null}, ${options.locationCity || null}, ${leadSource}
+      )
+      returning id, status, currency
+    `;
+  } catch (error) {
+    if (process.env.NODE_ENV === "production") throw error;
+    console.warn("[offer calculator] Database unavailable; using in-memory session.", error?.code || error?.message);
+    memorySessions.set(id, memorySession);
+    session = { id, status: memorySession.status, currency: memorySession.currency };
+  }
 
   return {
     sessionId: session.id,
@@ -60,6 +96,18 @@ export async function createOrUpdateCalculation(project, options = {}) {
 }
 
 export async function attachVerificationCode({ sessionId, email, code, customerInfo }) {
+  const memorySession = memorySessions.get(sessionId);
+  if (memorySession) {
+    memorySession.email = email;
+    memorySession.customerInfo = { ...(memorySession.customerInfo || {}), ...(customerInfo || {}) };
+    memorySession.codeHash = hashCode(code, sessionId);
+    memorySession.expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString();
+    memorySession.verificationAttempts = 0;
+    memorySession.status = "VERIFYING";
+    memorySessions.set(sessionId, memorySession);
+    return memorySession;
+  }
+
   const [curr] = await sql`
     select updated_at as "updatedAt", verification_expires_at as "expiresAt"
     from offer_calculator_sessions
@@ -170,6 +218,23 @@ async function createProvisionalCrmLead(session) {
 }
 
 export async function verifySessionCode({ sessionId, code }) {
+  const memorySession = memorySessions.get(sessionId);
+  if (memorySession) {
+    if (memorySession.verificationAttempts >= 5) return { error: "Too many attempts. Please resend a new code." };
+    if (!memorySession.expiresAt || new Date(memorySession.expiresAt).getTime() < Date.now()) return { error: "This code expired. Please resend it." };
+
+    if (memorySession.codeHash !== hashCode(code, sessionId)) {
+      memorySession.verificationAttempts += 1;
+      memorySessions.set(sessionId, memorySession);
+      return { error: "The verification code is not correct." };
+    }
+
+    memorySession.emailVerifiedAt = new Date().toISOString();
+    memorySession.status = "PRICE_UNLOCKED";
+    memorySessions.set(sessionId, memorySession);
+    return { session: memorySession };
+  }
+
   const [session] = await sql`
     select id, verification_code_hash as "codeHash", verification_expires_at as "expiresAt",
       verification_attempts as "attempts", estimated_min_cents as "minCents",
@@ -221,6 +286,9 @@ export async function verifySessionCode({ sessionId, code }) {
 }
 
 export async function getVerifiedSession(sessionId) {
+  const memorySession = memorySessions.get(sessionId);
+  if (memorySession) return memorySession.emailVerifiedAt ? memorySession : null;
+
   const [session] = await sql`
     select id, mode, status, email, email_verified_at as "emailVerifiedAt",
       property_type as "propertyType", room_type as "roomType", components, services, quantities,
@@ -237,6 +305,13 @@ export async function getVerifiedSession(sessionId) {
 }
 
 export async function addProjectPhoto({ sessionId, category, file }) {
+  if (memorySessions.has(sessionId)) {
+    const photo = { id: crypto.randomUUID(), category, fileName: file.name };
+    const current = memoryPhotos.get(sessionId) || [];
+    memoryPhotos.set(sessionId, [...current, photo]);
+    return { photo };
+  }
+
   const [session] = await sql`select id from offer_calculator_sessions where id = ${sessionId}`;
   if (!session) return { error: "Calculation session not found." };
 
@@ -253,6 +328,20 @@ export async function submitOfferRequest({ sessionId, customerInfo }) {
   const session = await getVerifiedSession(sessionId);
 
   if (!session) return { error: "Please verify your e-mail before requesting an offer." };
+
+  if (memorySessions.has(sessionId)) {
+    const projectId = crypto.randomUUID();
+    const consultationId = crypto.randomUUID();
+    memorySessions.set(sessionId, {
+      ...session,
+      customerInfo,
+      requestedAction: customerInfo.requestedAction,
+      status: "REQUEST_SUBMITTED",
+      projectId,
+      consultationId
+    });
+    return { projectId, consultationId };
+  }
 
   const name = customerFullName(customerInfo);
   const service = serviceSummary(session);

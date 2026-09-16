@@ -2,6 +2,8 @@ import crypto from "node:crypto";
 import { sql } from "@/lib/db";
 
 export const CHAT_VISITOR_COOKIE = "amigos_chat_visitor";
+export const PROJECTS_CHAT_VISITOR_COOKIE = "amigos_projects_chat_visitor";
+export const CHAT_CHANNELS = new Set(["MAIN", "PROJECTS"]);
 
 const MAX_MESSAGE_LENGTH = 1200;
 const VISITOR_RATE_LIMIT = 18;
@@ -36,36 +38,43 @@ function serializeConversation(conversation) {
     status: conversation.status,
     lastMessageAt: conversation.lastMessageAt,
     preview: conversation.preview || "No messages yet",
-    unreadCount: Number(conversation.unreadCount || 0)
+    unreadCount: Number(conversation.unreadCount || 0),
+    channel: conversation.channel || "MAIN"
   };
+}
+
+function normalizeChannel(channel) {
+  return CHAT_CHANNELS.has(channel) ? channel : "MAIN";
 }
 
 export function createChatVisitorToken() {
   return createVisitorToken();
 }
 
-export async function getOrCreateVisitorConversation(visitorToken) {
+export async function getOrCreateVisitorConversation(visitorToken, channel = "MAIN") {
   const token = visitorToken || createVisitorToken();
   const visitorTokenHash = hashVisitorToken(token);
+  const activeChannel = normalizeChannel(channel);
 
   const [conversation] = await sql`
-    insert into chat_conversations (id, visitor_token_hash)
-    values (${crypto.randomUUID()}, ${visitorTokenHash})
-    on conflict (visitor_token_hash) do update set updated_at = now()
+    insert into chat_conversations (id, visitor_token_hash, channel)
+    values (${crypto.randomUUID()}, ${visitorTokenHash}, ${activeChannel})
+    on conflict (channel, visitor_token_hash) do update set updated_at = now()
     returning id, status, created_at as "createdAt"
   `;
 
   return { conversation, visitorToken: token };
 }
 
-export async function getVisitorMessages(visitorToken) {
+export async function getVisitorMessages(visitorToken, channel = "MAIN") {
   if (!visitorToken) return { conversation: null, messages: [] };
 
   const visitorTokenHash = hashVisitorToken(visitorToken);
+  const activeChannel = normalizeChannel(channel);
   const [conversation] = await sql`
     select id, status
     from chat_conversations
-    where visitor_token_hash = ${visitorTokenHash}
+    where visitor_token_hash = ${visitorTokenHash} and channel = ${activeChannel}
   `;
 
   if (!conversation) return { conversation: null, messages: [] };
@@ -89,13 +98,13 @@ export async function getVisitorMessages(visitorToken) {
   return { conversation, messages: rows.map(serializeMessage) };
 }
 
-export async function addVisitorMessage(visitorToken, body) {
+export async function addVisitorMessage(visitorToken, body, channel = "MAIN") {
   const messageBody = normalizeMessage(body);
 
   if (!messageBody) return { error: "Please type a message." };
   if (messageBody.length > MAX_MESSAGE_LENGTH) return { error: `Message must be under ${MAX_MESSAGE_LENGTH} characters.` };
 
-  const { conversation, visitorToken: activeVisitorToken } = await getOrCreateVisitorConversation(visitorToken);
+  const { conversation, visitorToken: activeVisitorToken } = await getOrCreateVisitorConversation(visitorToken, channel);
   const [{ recentCount }] = await sql`
     select count(*)::int as "recentCount"
     from chat_messages
@@ -131,12 +140,14 @@ export async function addVisitorMessage(visitorToken, body) {
   };
 }
 
-export async function getAdminChatConversations() {
+export async function getAdminChatConversations(channel = "ALL") {
+  const activeChannel = channel === "ALL" ? "ALL" : normalizeChannel(channel);
   const conversations = await sql`
     select chat_conversations.id,
       chat_conversations.visitor_name as "visitorName",
       chat_conversations.visitor_email as "visitorEmail",
       chat_conversations.status,
+      chat_conversations.channel,
       chat_conversations.last_message_at as "lastMessageAt",
       coalesce(latest_message.body, '') as preview,
       count(unread.id)::int as "unreadCount"
@@ -151,6 +162,7 @@ export async function getAdminChatConversations() {
     left join chat_messages unread on unread.conversation_id = chat_conversations.id
       and unread.sender_type = 'VISITOR'
       and unread.read_by_admin_at is null
+    where (${activeChannel} = 'ALL' or chat_conversations.channel = ${activeChannel})
     group by chat_conversations.id, latest_message.body
     order by chat_conversations.last_message_at desc
   `;
