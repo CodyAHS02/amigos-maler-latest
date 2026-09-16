@@ -11489,10 +11489,6 @@ html[data-theme="amigos-dark"] .legacy-page {
     color: #FDFBF6 !important;
 }
 
-html[data-theme="amigos-dark"] main.offerCalculatorEmbedded {
-    background: transparent !important;
-}
-
 html[data-theme="amigos-dark"] body:not([data-page="home"]) section:not(.site-footer):not(.footer):not(.footer-section),
 html[data-theme="amigos-dark"] body:not([data-page="home"]) main>section:not(.site-footer):not(.footer):not(.footer-section),
 html[data-theme="amigos-dark"] body:not([data-page="home"]) [class*="-section"]:not(.footer-section),

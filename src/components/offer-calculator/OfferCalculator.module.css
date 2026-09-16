@@ -1,29 +1,593 @@
-@font-face{font-family:CalculatorSans;src:url("/fonts/n.woff2") format("woff2");font-display:swap}
-:global(html:has(body[data-page="offer-calculator"])),
-:global(body[data-page="offer-calculator"]){margin:0;padding:0;width:100%;min-height:100%;background:#f4faff}
-:global(body[data-page="offer-calculator"] *){box-sizing:border-box}
-:global(body[data-page="offer-calculator"] .site-header),:global(body[data-page="offer-calculator"] .site-footer),:global(body[data-page="offer-calculator"] .whatsapp-float),:global(body[data-page="offer-calculator"] .chatbot-widget),:global(body[data-page="offer-calculator"] .chat-widget),:global(body[data-page="offer-calculator"] .scroll-top-btn),:global(body[data-page="offer-calculator"] .back-to-top){display:none!important}
+@font-face {
+  font-family: CalculatorSans;
+  src: url("/fonts/n.woff2") format("woff2");
+  font-display: swap
+}
 
-.page{--ink:#050505;--copy:#1d2835;--muted:#607b9a;--line:#bacde1;--panel:rgba(255,255,255,.94);--soft:rgba(255,255,255,.72);--field:rgba(255,255,255,.82);--a:#ffbd35;--b:#ff8048;--c:#ff3984;--shadow:0 18px 48px rgba(32,65,96,.13);box-sizing:border-box;isolation:isolate;position:relative;width:100%;min-height:100dvh;padding:clamp(34px,4.8vw,76px) clamp(28px,5.5vw,110px) 120px;overflow-x:hidden;border:0;border-radius:0;color:var(--ink);font-family:CalculatorSans,Arial,sans-serif;background:linear-gradient(180deg,rgba(244,250,255,.8),rgba(248,251,253,.42) 60%,rgba(255,249,239,.28)),url("/assets/calculator-day-bg.webp") center bottom/cover fixed no-repeat}
-:global(html[data-theme="amigos-dark"]) .page{--ink:#fff;--copy:#edf5ff;--muted:#b8c9dd;--line:rgba(190,211,234,.4);--panel:rgba(5,25,55,.92);--soft:rgba(5,27,60,.72);--field:rgba(9,36,72,.86);--shadow:0 20px 52px rgba(0,7,20,.38);background:linear-gradient(180deg,rgba(1,16,38,.58),rgba(1,18,42,.72)),url("/assets/calculator-glass-bg.png") center bottom/cover fixed no-repeat}
-:global(html[data-theme="amigos-dark"]) .selectionPage{
+:global(html:has(body[data-page="offer-calculator"])),
+:global(body[data-page="offer-calculator"]) {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #f4faff
+}
+
+:global(body[data-page="offer-calculator"] *) {
+  box-sizing: border-box
+}
+
+:global(body[data-page="offer-calculator"] .site-header),
+:global(body[data-page="offer-calculator"] .site-footer),
+:global(body[data-page="offer-calculator"] .whatsapp-float),
+:global(body[data-page="offer-calculator"] .chatbot-widget),
+:global(body[data-page="offer-calculator"] .chat-widget),
+:global(body[data-page="offer-calculator"] .scroll-top-btn),
+:global(body[data-page="offer-calculator"] .back-to-top) {
+  display: none !important
+}
+
+.page {
+  --ink: #050505;
+  --copy: #1d2835;
+  --muted: #607b9a;
+  --line: #bacde1;
+  --panel: rgba(255, 255, 255, .94);
+  --soft: rgba(255, 255, 255, .72);
+  --field: rgba(255, 255, 255, .82);
+  --a: #ffbd35;
+  --b: #ff8048;
+  --c: #ff3984;
+  --shadow: 0 18px 48px rgba(32, 65, 96, .13);
+  box-sizing: border-box;
+  isolation: isolate;
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  padding: clamp(34px, 4.8vw, 76px) clamp(28px, 5.5vw, 110px) 120px;
+  overflow-x: hidden;
+  border: 0;
+  border-radius: 0;
+  color: var(--ink);
+  font-family: CalculatorSans, Arial, sans-serif;
+  background: linear-gradient(180deg, rgba(244, 250, 255, .8), rgba(248, 251, 253, .42) 60%, rgba(255, 249, 239, .28)), url("/assets/calculator-day-bg.webp") center bottom/cover fixed no-repeat
+}
+
+:global(html[data-theme="amigos-dark"]) .page {
+  --ink: #fff;
+  --copy: #edf5ff;
+  --muted: #b8c9dd;
+  --line: rgba(190, 211, 234, .4);
+  --panel: rgba(5, 25, 55, .92);
+  --soft: rgba(5, 27, 60, .72);
+  --field: rgba(9, 36, 72, .86);
+  --shadow: 0 20px 52px rgba(0, 7, 20, .38);
+  background: linear-gradient(180deg, rgba(1, 16, 38, .58), rgba(1, 18, 42, .72)), url("/assets/calculator-night-bg.png") center bottom/cover fixed no-repeat !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .selectionPage {
   background:
     linear-gradient(180deg, rgba(1, 16, 38, .16), rgba(1, 18, 42, .34)),
     url("/assets/calculator-night-bg.png") center center / cover scroll no-repeat !important;
 }
-.page *{box-sizing:border-box}.page button,.page input,.page textarea,.page select{font:inherit}.page button:focus-visible,.page a:focus-visible,.page input:focus-visible,.page textarea:focus-visible,.page select:focus-visible{outline:2px solid var(--c);outline-offset:3px}
 
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,470px);gap:clamp(44px,7vw,130px);align-items:start;width:min(1530px,100%);margin:0 auto 36px}.heroCopy,.securityCard,.consultationShell,.stepPanel{border:0;background:transparent;box-shadow:none}.heroTopRow{display:none}.heroCopy h1,.quickQuoteIntro h2,.selectionTitle{margin:0;color:var(--ink);font-size:clamp(38px,4vw,64px);font-weight:800;line-height:1.05;letter-spacing:normal}.heroCopy p,.quickQuoteIntro p,.selectionLead{max-width:760px;margin:24px 0 0;color:var(--copy);font-size:clamp(15px,1.15vw,19px);line-height:1.5}
-.heroAside{display:grid;grid-template-columns:auto 1fr;gap:18px 22px;align-items:start}.calculatorControls{grid-column:1/-1;display:flex;gap:12px}.themeToggle,.soundToggle{display:inline-flex;align-items:center;justify-content:flex-start;width:64px;height:40px;padding:4px;border:1px solid rgba(72,100,130,.26);border-radius:999px;background:rgba(255,255,255,.68);color:#fff;cursor:pointer;box-shadow:0 8px 22px rgba(28,59,88,.1)}:global(html[data-theme="amigos-dark"]) .themeToggle,:global(html[data-theme="amigos-dark"]) .soundToggle{background:rgba(7,31,63,.82)}.themeToggleIcon,.soundToggleIcon{display:grid;width:30px;height:30px;place-items:center;border-radius:50%;background:linear-gradient(145deg,var(--a),var(--b))}.themeIcon,.soundIcon{width:17px;height:17px}.soundToggleActive .soundToggleIcon{background:linear-gradient(145deg,var(--c),var(--b))}
-.asideIntro{grid-column:1/-1;display:grid;gap:8px}.brand,.sidebarModeKicker,.selectionKicker,.stepKicker,.detailGroupTitle{color:#31577f;font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}:global(html[data-theme="amigos-dark"]) .brand,:global(html[data-theme="amigos-dark"]) .sidebarModeKicker,:global(html[data-theme="amigos-dark"]) .selectionKicker,:global(html[data-theme="amigos-dark"]) .stepKicker,:global(html[data-theme="amigos-dark"]) .detailGroupTitle{color:#b9d0e8}.asideIntro strong{color:var(--muted);font-size:15px;font-weight:500}.securityCard{grid-column:1/-1;padding-top:8px}.securityCard h2,.securityCard p{margin:0}.securityCard h2{color:var(--ink);font-size:18px}.securityCard p{margin-top:8px;color:var(--muted);line-height:1.45}
+.page * {
+  box-sizing: border-box
+}
 
-.progressNav{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));width:min(1450px,100%);margin:0 auto 38px;padding:0}.progressNavSimple{grid-template-columns:repeat(5,minmax(0,1fr))}.progressNav:before,.progressFill{position:absolute;top:62px;left:4%;height:1px;content:""}.progressNav:before{right:4%;background:var(--line)}.progressFill{z-index:1;max-width:92%;background:linear-gradient(90deg,var(--c),var(--a));transition:width .3s ease}.progressStep{position:relative;z-index:2;display:grid;justify-items:center;gap:8px;min-width:0;padding:0 5px;border:0;background:transparent;color:var(--muted)}.progressStep span{height:18px;color:var(--muted);font-size:13px;font-weight:700}.progressStep i{display:grid;width:62px;height:62px;place-items:center;border:2px solid var(--line);border-radius:50%;background:rgba(247,251,255,.86);color:var(--muted);font-style:normal;box-shadow:0 0 0 12px rgba(231,241,250,.58)}:global(html[data-theme="amigos-dark"]) .progressStep i{background:rgba(7,31,65,.9);box-shadow:0 0 0 12px rgba(30,60,94,.44)}.progressStep i svg{width:23px;height:23px}.progressStep b{color:var(--muted);font-size:clamp(12px,1vw,17px);font-weight:500;white-space:nowrap}.currentStep i,.doneStep i{border-color:rgba(255,111,83,.76);background:linear-gradient(145deg,var(--c),var(--a));color:#fff}.currentStep span,.currentStep b,.doneStep span,.doneStep b{color:var(--ink)}
+.page button,
+.page input,
+.page textarea,
+.page select {
+  font: inherit
+}
 
-.consultationShell{width:min(1450px,100%);margin:0 auto}.stepPanel{width:100%}.stepPanel h2,.resultLocked h2,.verifyPanel h2,.pricePanel h2{max-width:1040px;margin:10px 0 8px;color:var(--ink);font-size:clamp(36px,3.8vw,62px);font-weight:800;line-height:1.08;letter-spacing:normal}.stepPanel>p,.resultLocked>p,.verifyPanel>p,.pricePanel>p{margin:0;color:var(--copy);font-size:16px;line-height:1.5}
+.page button:focus-visible,
+.page a:focus-visible,
+.page input:focus-visible,
+.page textarea:focus-visible,
+.page select:focus-visible {
+  outline: 2px solid var(--c);
+  outline-offset: 3px
+}
 
-.propertyGrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-top:24px}.propertyCard{position:relative;min-width:0;padding:0;overflow:hidden;border:2px solid rgba(255,255,255,.92);border-radius:18px;background:var(--panel);cursor:pointer;box-shadow:var(--shadow);transition:transform .2s,border-color .2s}:global(html[data-theme="amigos-dark"]) .propertyCard{border-color:rgba(215,232,249,.24)}.propertyCard:hover,.propertyCardSelected{transform:translateY(-3px);border-color:var(--b)}.propertyCardMedia{height:clamp(165px,15vw,235px);overflow:hidden;background:#dce7ef}.propertyCardImage{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s}.propertyCard:hover .propertyCardImage{transform:scale(1.035)}.propertyCardFallbackGraphic{display:grid;width:100%;height:100%;place-items:center;color:var(--muted)}.propertyCardFallbackGraphic svg{width:46px;height:46px}.propertyCardInfo{display:grid;gap:3px;min-height:74px;padding:13px 10px 15px;align-content:center;background:var(--panel);text-align:center}.propertyCardTitle{overflow:hidden;color:var(--ink);font-size:clamp(14px,1.1vw,19px);font-weight:700;text-overflow:ellipsis;white-space:nowrap}.propertyCardSubtitle{overflow:hidden;color:var(--copy);font-size:11px;text-overflow:ellipsis;white-space:nowrap}.propertyCardBadge{position:absolute;top:10px;right:10px;z-index:2;display:grid;width:27px;height:27px;place-items:center;border-radius:50%;background:linear-gradient(145deg,var(--a),var(--c));color:#fff;font-size:13px;font-weight:900;box-shadow:0 6px 16px rgba(20,35,55,.24)}
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 470px);
+  gap: clamp(44px, 7vw, 130px);
+  align-items: start;
+  width: min(1530px, 100%);
+  margin: 0 auto 36px
+}
 
-.cardGrid,.serviceGrid,.scopeCardGrid,.conditionCardGrid,.quantityGrid,.customerGrid,.photoGrid,.autoMeasurementGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:24px}.selectionCard,.scopeCard,.conditionCard{position:relative;display:flex;min-width:0;min-height:126px;align-items:center;gap:16px;padding:20px;border:1px solid rgba(79,107,136,.2);border-radius:16px;background:var(--panel);color:var(--ink);text-align:left;cursor:pointer;box-shadow:0 10px 28px rgba(32,65,96,.09);transition:transform .2s,border-color .2s}.selectionCard:hover,.scopeCard:hover,.conditionCard:hover,.selectedCard,.scopeCardSelected,.conditionCardSelected{transform:translateY(-2px);border-color:var(--b)}.cardIcon,.scopeCardIcon,.conditionCardIcon{display:grid;width:54px;height:54px;flex:0 0 54px;place-items:center;border-radius:14px;background:#e7eef6;color:#466889}:global(html[data-theme="amigos-dark"]) .cardIcon,:global(html[data-theme="amigos-dark"]) .scopeCardIcon,:global(html[data-theme="amigos-dark"]) .conditionCardIcon{background:#143b68;color:#d8e8f8}.selectedCard .cardIcon,.scopeCardSelected .scopeCardIcon,.conditionCardSelected .conditionCardIcon{background:linear-gradient(145deg,var(--c),var(--a));color:#fff}.cardIcon svg,.scopeCardIcon svg,.conditionCardIcon svg{width:30px;height:30px}.selectionCardText,.conditionCardContent{display:grid;min-width:0;gap:5px}.selectionCardTitle,.scopeCardTitle,.conditionCardTitle{color:var(--ink);font-size:17px;font-weight:700;line-height:1.2}.selectionCardUnit,.scopeCardDesc,.conditionCardDesc{color:var(--copy);font-size:12px;line-height:1.4}.selectionCard>i{margin-left:auto;color:var(--muted);font-size:22px;font-style:normal}.selectedCard>i{display:none}
+.heroCopy,
+.securityCard,
+.consultationShell,
+.stepPanel {
+  border: 0;
+  background: transparent;
+  box-shadow: none
+}
+
+.heroTopRow {
+  display: none
+}
+
+.heroCopy h1,
+.quickQuoteIntro h2,
+.selectionTitle {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(38px, 4vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: normal
+}
+
+.heroCopy p,
+.quickQuoteIntro p,
+.selectionLead {
+  max-width: 760px;
+  margin: 24px 0 0;
+  color: var(--copy);
+  font-size: clamp(15px, 1.15vw, 19px);
+  line-height: 1.5
+}
+
+.heroAside {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px 22px;
+  align-items: start
+}
+
+.calculatorControls {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 12px
+}
+
+.themeToggle,
+.soundToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 64px;
+  height: 40px;
+  padding: 4px;
+  border: 1px solid rgba(72, 100, 130, .26);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .68);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(28, 59, 88, .1)
+}
+
+:global(html[data-theme="amigos-dark"]) .themeToggle,
+:global(html[data-theme="amigos-dark"]) .soundToggle {
+  background: rgba(7, 31, 63, .82)
+}
+
+.themeToggleIcon,
+.soundToggleIcon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--a), var(--b))
+}
+
+.themeIcon,
+.soundIcon {
+  width: 17px;
+  height: 17px
+}
+
+.soundToggleActive .soundToggleIcon {
+  background: linear-gradient(145deg, var(--c), var(--b))
+}
+
+.asideIntro {
+  grid-column: 1/-1;
+  display: grid;
+  gap: 8px
+}
+
+.brand,
+.sidebarModeKicker,
+.selectionKicker,
+.stepKicker,
+.detailGroupTitle {
+  color: #31577f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase
+}
+
+:global(html[data-theme="amigos-dark"]) .brand,
+:global(html[data-theme="amigos-dark"]) .sidebarModeKicker,
+:global(html[data-theme="amigos-dark"]) .selectionKicker,
+:global(html[data-theme="amigos-dark"]) .stepKicker,
+:global(html[data-theme="amigos-dark"]) .detailGroupTitle {
+  color: #b9d0e8
+}
+
+.asideIntro strong {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500
+}
+
+.securityCard {
+  grid-column: 1/-1;
+  padding-top: 8px
+}
+
+.securityCard h2,
+.securityCard p {
+  margin: 0
+}
+
+.securityCard h2 {
+  color: var(--ink);
+  font-size: 18px
+}
+
+.securityCard p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.45
+}
+
+.progressNav {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  width: min(1450px, 100%);
+  margin: 0 auto 38px;
+  padding: 0
+}
+
+.progressNavSimple {
+  grid-template-columns: repeat(5, minmax(0, 1fr))
+}
+
+.progressNav:before,
+.progressFill {
+  position: absolute;
+  top: 62px;
+  left: 4%;
+  height: 1px;
+  content: ""
+}
+
+.progressNav:before {
+  right: 4%;
+  background: var(--line)
+}
+
+.progressFill {
+  z-index: 1;
+  max-width: 92%;
+  background: linear-gradient(90deg, var(--c), var(--a));
+  transition: width .3s ease
+}
+
+.progressStep {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 0 5px;
+  border: 0;
+  background: transparent;
+  color: var(--muted)
+}
+
+.progressStep span {
+  height: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700
+}
+
+.progressStep i {
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background: rgba(247, 251, 255, .86);
+  color: var(--muted);
+  font-style: normal;
+  box-shadow: 0 0 0 12px rgba(231, 241, 250, .58)
+}
+
+:global(html[data-theme="amigos-dark"]) .progressStep i {
+  background: rgba(7, 31, 65, .9);
+  box-shadow: 0 0 0 12px rgba(30, 60, 94, .44)
+}
+
+.progressStep i svg {
+  width: 23px;
+  height: 23px
+}
+
+.progressStep b {
+  color: var(--muted);
+  font-size: clamp(12px, 1vw, 17px);
+  font-weight: 500;
+  white-space: nowrap
+}
+
+.currentStep i,
+.doneStep i {
+  border-color: rgba(255, 111, 83, .76);
+  background: linear-gradient(145deg, var(--c), var(--a));
+  color: #fff
+}
+
+.currentStep span,
+.currentStep b,
+.doneStep span,
+.doneStep b {
+  color: var(--ink)
+}
+
+.consultationShell {
+  width: min(1450px, 100%);
+  margin: 0 auto
+}
+
+.stepPanel {
+  width: 100%
+}
+
+.stepPanel h2,
+.resultLocked h2,
+.verifyPanel h2,
+.pricePanel h2 {
+  max-width: 1040px;
+  margin: 10px 0 8px;
+  color: var(--ink);
+  font-size: clamp(36px, 3.8vw, 62px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: normal
+}
+
+.stepPanel>p,
+.resultLocked>p,
+.verifyPanel>p,
+.pricePanel>p {
+  margin: 0;
+  color: var(--copy);
+  font-size: 16px;
+  line-height: 1.5
+}
+
+.propertyGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px
+}
+
+.propertyCard {
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .92);
+  border-radius: 18px;
+  background: var(--panel);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .2s, border-color .2s
+}
+
+:global(html[data-theme="amigos-dark"]) .propertyCard {
+  border-color: rgba(215, 232, 249, .24)
+}
+
+.propertyCard:hover,
+.propertyCardSelected {
+  transform: translateY(-3px);
+  border-color: var(--b)
+}
+
+.propertyCardMedia {
+  height: clamp(165px, 15vw, 235px);
+  overflow: hidden;
+  background: #dce7ef
+}
+
+.propertyCardImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s
+}
+
+.propertyCard:hover .propertyCardImage {
+  transform: scale(1.035)
+}
+
+.propertyCardFallbackGraphic {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: var(--muted)
+}
+
+.propertyCardFallbackGraphic svg {
+  width: 46px;
+  height: 46px
+}
+
+.propertyCardInfo {
+  display: grid;
+  gap: 3px;
+  min-height: 74px;
+  padding: 13px 10px 15px;
+  align-content: center;
+  background: var(--panel);
+  text-align: center
+}
+
+.propertyCardTitle {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: clamp(14px, 1.1vw, 19px);
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.propertyCardSubtitle {
+  overflow: hidden;
+  color: var(--copy);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.propertyCardBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--a), var(--c));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 6px 16px rgba(20, 35, 55, .24)
+}
+
+.cardGrid,
+.serviceGrid,
+.scopeCardGrid,
+.conditionCardGrid,
+.quantityGrid,
+.customerGrid,
+.photoGrid,
+.autoMeasurementGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px
+}
+
+.selectionCard,
+.scopeCard,
+.conditionCard {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 126px;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid rgba(79, 107, 136, .2);
+  border-radius: 16px;
+  background: var(--panel);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(32, 65, 96, .09);
+  transition: transform .2s, border-color .2s
+}
+
+.selectionCard:hover,
+.scopeCard:hover,
+.conditionCard:hover,
+.selectedCard,
+.scopeCardSelected,
+.conditionCardSelected {
+  transform: translateY(-2px);
+  border-color: var(--b)
+}
+
+.cardIcon,
+.scopeCardIcon,
+.conditionCardIcon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  place-items: center;
+  border-radius: 14px;
+  background: #e7eef6;
+  color: #466889
+}
+
+:global(html[data-theme="amigos-dark"]) .cardIcon,
+:global(html[data-theme="amigos-dark"]) .scopeCardIcon,
+:global(html[data-theme="amigos-dark"]) .conditionCardIcon {
+  background: #143b68;
+  color: #d8e8f8
+}
+
+.selectedCard .cardIcon,
+.scopeCardSelected .scopeCardIcon,
+.conditionCardSelected .conditionCardIcon {
+  background: linear-gradient(145deg, var(--c), var(--a));
+  color: #fff
+}
+
+.cardIcon svg,
+.scopeCardIcon svg,
+.conditionCardIcon svg {
+  width: 30px;
+  height: 30px
+}
+
+.selectionCardText,
+.conditionCardContent {
+  display: grid;
+  min-width: 0;
+  gap: 5px
+}
+
+.selectionCardTitle,
+.scopeCardTitle,
+.conditionCardTitle {
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2
+}
+
+.selectionCardUnit,
+.scopeCardDesc,
+.conditionCardDesc {
+  color: var(--copy);
+  font-size: 12px;
+  line-height: 1.4
+}
+
+.selectionCard>i {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 22px;
+  font-style: normal
+}
+
+.selectedCard>i {
+  display: none
+}
 
 /* Components step: compact, evenly weighted rows. */
 .cardGrid {
@@ -57,13 +621,173 @@
   font-size: 16px;
 }
 
-.selectionCard > i {
+.selectionCard>i {
   font-size: 19px;
 }
 
-.quantityField,.notesField,.detailGroup,.customerGrid label,.emailField,.autoMeasurementPanel,.photoDrop,.summaryPanel,.resultLocked,.verifyPanel,.pricePanel,.uploadPanel{border:1px solid rgba(79,107,136,.2);border-radius:16px;background:var(--soft);color:var(--ink);box-shadow:0 10px 28px rgba(32,65,96,.08)}.quantityField,.customerGrid label,.notesField,.detailGroup,.autoMeasurementPanel{display:grid;gap:9px;padding:16px}.quantityField>span,.customerGrid label>span,.notesField>span,.emailField>span{color:var(--ink);font-size:13px;font-weight:700}.quantityField div,.locationInput{display:flex;align-items:center;gap:8px}.quantityField input,.quantityField select,.customerGrid input,.emailField input,.notesField textarea,.detailSelect,.locationInput input{width:100%;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--field);color:var(--ink);-webkit-text-fill-color:var(--ink)}.notesField textarea{min-height:112px;resize:vertical}.quantityField input::placeholder,.customerGrid input::placeholder,.emailField input::placeholder,.notesField textarea::placeholder{color:var(--muted);-webkit-text-fill-color:var(--muted);opacity:.78}.detailGroup{margin-top:18px}.detailSelect{appearance:auto}.locationGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}.locationInputIcon{display:grid;width:34px;height:34px;flex:0 0 34px;place-items:center;color:var(--muted)}
+.quantityField,
+.notesField,
+.detailGroup,
+.customerGrid label,
+.emailField,
+.autoMeasurementPanel,
+.photoDrop,
+.summaryPanel,
+.resultLocked,
+.verifyPanel,
+.pricePanel,
+.uploadPanel {
+  border: 1px solid rgba(79, 107, 136, .2);
+  border-radius: 16px;
+  background: var(--soft);
+  color: var(--ink);
+  box-shadow: 0 10px 28px rgba(32, 65, 96, .08)
+}
 
-.roomChips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.roomChips button,.textButton,.secondaryAction,.backToQuickNavBtn,.backToSelectionTopBtn{min-height:42px;padding:0 20px;border:1px solid var(--line);border-radius:999px;background:var(--soft);color:var(--ink);cursor:pointer}.activeChip{border-color:var(--b)!important;background:var(--panel)!important}.navActions{display:flex;justify-content:space-between;gap:14px;width:min(1450px,100%);margin:30px auto 0}.navActionsLeft,.finalActions{display:flex;gap:12px}.primaryAction,.sidebarModeSwitchBtn,.tabActionBtn{display:inline-flex;min-height:50px;align-items:center;justify-content:center;gap:10px;padding:0 28px;border:0;border-radius:999px;background:linear-gradient(105deg,var(--a),var(--b) 52%,var(--c));color:#fff;font-weight:800;text-decoration:none;cursor:pointer;box-shadow:0 14px 32px rgba(255,79,126,.24)}.primaryAction:disabled{opacity:.48;cursor:not-allowed}
+.quantityField,
+.customerGrid label,
+.notesField,
+.detailGroup,
+.autoMeasurementPanel {
+  display: grid;
+  gap: 9px;
+  padding: 16px
+}
+
+.quantityField>span,
+.customerGrid label>span,
+.notesField>span,
+.emailField>span {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700
+}
+
+.quantityField div,
+.locationInput {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.quantityField input,
+.quantityField select,
+.customerGrid input,
+.emailField input,
+.notesField textarea,
+.detailSelect,
+.locationInput input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--field);
+  color: var(--ink);
+  -webkit-text-fill-color: var(--ink)
+}
+
+.notesField textarea {
+  min-height: 112px;
+  resize: vertical
+}
+
+.quantityField input::placeholder,
+.customerGrid input::placeholder,
+.emailField input::placeholder,
+.notesField textarea::placeholder {
+  color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+  opacity: .78
+}
+
+.detailGroup {
+  margin-top: 18px
+}
+
+.detailSelect {
+  appearance: auto
+}
+
+.locationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px
+}
+
+.locationInputIcon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  color: var(--muted)
+}
+
+.roomChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px
+}
+
+.roomChips button,
+.textButton,
+.secondaryAction,
+.backToQuickNavBtn,
+.backToSelectionTopBtn {
+  min-height: 42px;
+  padding: 0 20px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--soft);
+  color: var(--ink);
+  cursor: pointer
+}
+
+.activeChip {
+  border-color: var(--b) !important;
+  background: var(--panel) !important
+}
+
+.navActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  width: min(1450px, 100%);
+  margin: 30px auto 0
+}
+
+.navActionsLeft,
+.finalActions {
+  display: flex;
+  gap: 12px
+}
+
+.primaryAction,
+.sidebarModeSwitchBtn,
+.tabActionBtn {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(105deg, var(--a), var(--b) 52%, var(--c));
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 14px 32px rgba(255, 79, 126, .24)
+}
+
+.primaryAction:disabled {
+  opacity: .48;
+  cursor: not-allowed
+}
 
 /* White companion to the gradient Continue action. */
 .backToQuickNavBtn,
@@ -95,23 +819,515 @@
   box-shadow: 0 18px 38px rgba(20, 35, 55, .22), inset 0 1px 0 #fff;
 }
 
-.resultLocked,.verifyPanel,.pricePanel,.summaryPanel,.uploadPanel{padding:clamp(22px,3vw,40px)}.lockedPrice{display:grid;gap:7px;margin:24px 0;padding:24px;border-left:4px solid var(--b);border-radius:14px;background:var(--panel)}.lockedPrice span,.summaryPanel dt{color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase}.lockedPrice strong,.priceRange{color:var(--ink);font-size:clamp(34px,5vw,64px);font-weight:800}.summaryPanel dl{display:grid;grid-template-columns:minmax(130px,.45fr) 1fr;gap:12px 20px}.summaryPanel dd{margin:0;color:var(--ink)}.editStepLink{color:#ce4c69;font-weight:700}.codeInputs{display:flex;gap:12px;margin:24px 0}.codeInputs input{width:66px;height:72px;border:1px solid var(--line);border-radius:12px;background:var(--field);color:var(--ink);font-size:28px;font-weight:800;text-align:center}.photoDrop{display:grid;min-height:150px;padding:24px;place-items:center;border-style:dashed;text-align:center}.photoTag,.uploadedPhotosTags{display:inline-flex;gap:8px;padding:6px 10px;border-radius:999px;background:var(--panel);color:var(--copy);font-size:12px}.uploadedPhotosList{display:grid;gap:10px;margin-top:14px}.successMark{display:grid;width:64px;height:64px;place-items:center;border-radius:50%;background:linear-gradient(145deg,var(--a),var(--c));color:#fff;font-size:28px}.error,.notice{margin:0 0 16px;padding:12px 14px;border-radius:10px}.error{border:1px solid rgba(196,47,72,.3);background:rgba(196,47,72,.1);color:#a3233d}.notice{border:1px solid rgba(42,145,95,.3);background:rgba(42,145,95,.1);color:#177449}
+.resultLocked,
+.verifyPanel,
+.pricePanel,
+.summaryPanel,
+.uploadPanel {
+  padding: clamp(22px, 3vw, 40px)
+}
 
-.embedded{min-height:min(980px,calc(100dvh - 80px));padding-top:clamp(36px,4vw,70px)}.embedded.homeLayout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(38px,4.2vw,74px)}.embeddedWorkspace{order:1;display:grid;align-content:start;gap:30px;min-width:0}.embeddedRail{order:2;align-self:start;padding-top:72px}.embeddedLayout,.embeddedLayoutExpanded{width:100%}.embeddedRight{margin-top:22px}.detailSidePanel:empty{display:none}.quickQuoteTopBar{display:flex;align-items:start;justify-content:space-between;gap:20px}.quickQuoteIntro h2{max-width:880px}.sidebarModeCard{display:grid;gap:18px}.sidebarModeTitle{margin:0;color:var(--ink);font-size:27px;letter-spacing:normal}.sidebarModeDesc,.detailedCtaList,.protectedPriceNote{color:var(--copy);line-height:1.5}.detailedCtaList{display:grid;gap:11px;margin:0;padding:0;list-style:none}.detailedCtaList li{position:relative;padding-left:22px}.detailedCtaList li:before{position:absolute;top:.55em;left:0;width:7px;height:7px;border-radius:50%;background:linear-gradient(145deg,var(--a),var(--c));content:""}.protectedPriceNote{margin:2px 0 0}.embedded .propertyGrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lockedPrice {
+  display: grid;
+  gap: 7px;
+  margin: 24px 0;
+  padding: 24px;
+  border-left: 4px solid var(--b);
+  border-radius: 14px;
+  background: var(--panel)
+}
 
-.selectionPage{display:grid;place-items:center}.selectionHeroContainer{width:min(1180px,100%)}.selectionHeader{margin-bottom:32px}.selectionSubTitle{margin:14px 0 0;color:var(--ink);font-size:clamp(26px,2.35vw,38px);line-height:1.12;letter-spacing:normal}.selectionLead{margin-top:12px}.selectionTabsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.selectionTabCard{display:flex;min-height:360px;flex-direction:column;padding:30px;border:1px solid rgba(79,107,136,.2);border-radius:18px;background:var(--panel);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}.selectionTabCard:hover{border-color:var(--b);transform:translateY(-3px)}.tabBadgeRow{display:flex;justify-content:space-between;gap:12px}.tabTagFast,.tabTagDetailed,.tabTagEstimateTime{color:#bf6c12;font-size:11px;font-weight:800}:global(html[data-theme="amigos-dark"]) .tabTagFast,:global(html[data-theme="amigos-dark"]) .tabTagDetailed,:global(html[data-theme="amigos-dark"]) .tabTagEstimateTime{color:#ffd078}.tabHeadline{margin:28px 0 12px;color:var(--ink);font-size:28px;line-height:1.16;letter-spacing:normal}.tabDescription,.tabFeatureItem{color:var(--copy);line-height:1.5}.tabFeatureList{display:grid;gap:12px;margin:24px 0;padding:0;list-style:none}.tabFeatureItem{display:flex;gap:10px}.tabFeatureIcon{color:#d6741a}.tabButtonWrapper{margin-top:auto}.tabActionBtn{width:100%}.selectionTrustRow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}.selectionTrustItem{display:flex;gap:12px}.selectionTrustIcon{width:24px;flex:0 0 24px;color:var(--muted)}.selectionTrustIcon svg{width:24px;height:24px}.selectionTrustItem strong{color:var(--ink);font-size:14px}.selectionTrustItem p{margin:4px 0 0;color:var(--copy);font-size:12px;line-height:1.4}
+.lockedPrice span,
+.summaryPanel dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase
+}
 
-@media(max-width:1250px){.propertyGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.cardGrid,.serviceGrid,.scopeCardGrid,.conditionCardGrid,.quantityGrid,.customerGrid,.photoGrid,.autoMeasurementGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:1000px){.page{padding:30px 20px 70px;background-attachment:scroll}.hero,.embedded.homeLayout{grid-template-columns:1fr}.heroAside,.embeddedRail{padding-top:0}.embeddedRail{margin-top:28px}.progressNav{grid-auto-columns:105px;grid-auto-flow:column;grid-template-columns:none;padding:12px 10px;overflow-x:auto}.progressNav:before,.progressFill{display:none}.cardGrid,.serviceGrid,.scopeCardGrid,.conditionCardGrid,.quantityGrid,.customerGrid,.photoGrid,.autoMeasurementGrid,.embedded .propertyGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:640px){.heroCopy h1,.quickQuoteIntro h2,.selectionTitle,.stepPanel h2,.resultLocked h2,.verifyPanel h2,.pricePanel h2{font-size:clamp(36px,11vw,54px)}.propertyGrid,.embedded .propertyGrid,.cardGrid,.serviceGrid,.scopeCardGrid,.conditionCardGrid,.quantityGrid,.customerGrid,.photoGrid,.autoMeasurementGrid,.locationGrid,.selectionTabsGrid,.selectionTrustRow{grid-template-columns:1fr}.propertyCardMedia{height:220px}.navActions,.navActionsLeft,.finalActions{display:grid;grid-template-columns:1fr}.navActions>*,.navActionsLeft>*,.finalActions>*,.primaryAction,.secondaryAction,.backToQuickNavBtn{width:100%}.quickQuoteTopBar{display:grid}.codeInputs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}.codeInputs input{width:100%}}
-@media(prefers-reduced-motion:reduce){.page *,.page *:before,.page *:after{scroll-behavior:auto!important;transition:none!important}}
+.lockedPrice strong,
+.priceRange {
+  color: var(--ink);
+  font-size: clamp(34px, 5vw, 64px);
+  font-weight: 800
+}
+
+.summaryPanel dl {
+  display: grid;
+  grid-template-columns: minmax(130px, .45fr) 1fr;
+  gap: 12px 20px
+}
+
+.summaryPanel dd {
+  margin: 0;
+  color: var(--ink)
+}
+
+.editStepLink {
+  color: #ce4c69;
+  font-weight: 700
+}
+
+.codeInputs {
+  display: flex;
+  gap: 12px;
+  margin: 24px 0
+}
+
+.codeInputs input {
+  width: 66px;
+  height: 72px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--field);
+  color: var(--ink);
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center
+}
+
+.photoDrop {
+  display: grid;
+  min-height: 150px;
+  padding: 24px;
+  place-items: center;
+  border-style: dashed;
+  text-align: center
+}
+
+.photoTag,
+.uploadedPhotosTags {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--copy);
+  font-size: 12px
+}
+
+.uploadedPhotosList {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px
+}
+
+.successMark {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--a), var(--c));
+  color: #fff;
+  font-size: 28px
+}
+
+.error,
+.notice {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border-radius: 10px
+}
+
+.error {
+  border: 1px solid rgba(196, 47, 72, .3);
+  background: rgba(196, 47, 72, .1);
+  color: #a3233d
+}
+
+.notice {
+  border: 1px solid rgba(42, 145, 95, .3);
+  background: rgba(42, 145, 95, .1);
+  color: #177449
+}
+
+.embedded {
+  min-height: min(980px, calc(100dvh - 80px));
+  padding-top: clamp(36px, 4vw, 70px)
+}
+
+.embedded.homeLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: clamp(38px, 4.2vw, 74px)
+}
+
+.embeddedWorkspace {
+  order: 1;
+  display: grid;
+  align-content: start;
+  gap: 30px;
+  min-width: 0
+}
+
+.embeddedRail {
+  order: 2;
+  align-self: start;
+  padding-top: 72px
+}
+
+.embeddedLayout,
+.embeddedLayoutExpanded {
+  width: 100%
+}
+
+.embeddedRight {
+  margin-top: 22px
+}
+
+.detailSidePanel:empty {
+  display: none
+}
+
+.quickQuoteTopBar {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px
+}
+
+.quickQuoteIntro h2 {
+  max-width: 880px
+}
+
+.sidebarModeCard {
+  display: grid;
+  gap: 18px
+}
+
+.sidebarModeTitle {
+  margin: 0;
+  color: var(--ink);
+  font-size: 27px;
+  letter-spacing: normal
+}
+
+.sidebarModeDesc,
+.detailedCtaList,
+.protectedPriceNote {
+  color: var(--copy);
+  line-height: 1.5
+}
+
+.detailedCtaList {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.detailedCtaList li {
+  position: relative;
+  padding-left: 22px
+}
+
+.detailedCtaList li:before {
+  position: absolute;
+  top: .55em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--a), var(--c));
+  content: ""
+}
+
+.protectedPriceNote {
+  margin: 2px 0 0
+}
+
+.embedded .propertyGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.selectionPage {
+  display: grid;
+  place-items: center
+}
+
+.selectionHeroContainer {
+  width: min(1180px, 100%)
+}
+
+.selectionHeader {
+  margin-bottom: 32px
+}
+
+.selectionSubTitle {
+  margin: 14px 0 0;
+  color: var(--ink);
+  font-size: clamp(26px, 2.35vw, 38px);
+  line-height: 1.12;
+  letter-spacing: normal
+}
+
+.selectionLead {
+  margin-top: 12px
+}
+
+.selectionTabsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px
+}
+
+.selectionTabCard {
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid rgba(79, 107, 136, .2);
+  border-radius: 18px;
+  background: var(--panel);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--shadow)
+}
+
+.selectionTabCard:hover {
+  border-color: var(--b);
+  transform: translateY(-3px)
+}
+
+.tabBadgeRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px
+}
+
+.tabTagFast,
+.tabTagDetailed,
+.tabTagEstimateTime {
+  color: #bf6c12;
+  font-size: 11px;
+  font-weight: 800
+}
+
+:global(html[data-theme="amigos-dark"]) .tabTagFast,
+:global(html[data-theme="amigos-dark"]) .tabTagDetailed,
+:global(html[data-theme="amigos-dark"]) .tabTagEstimateTime {
+  color: #ffd078
+}
+
+.tabHeadline {
+  margin: 28px 0 12px;
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1.16;
+  letter-spacing: normal
+}
+
+.tabDescription,
+.tabFeatureItem {
+  color: var(--copy);
+  line-height: 1.5
+}
+
+.tabFeatureList {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  padding: 0;
+  list-style: none
+}
+
+.tabFeatureItem {
+  display: flex;
+  gap: 10px
+}
+
+.tabFeatureIcon {
+  color: #d6741a
+}
+
+.tabButtonWrapper {
+  margin-top: auto
+}
+
+.tabActionBtn {
+  width: 100%
+}
+
+.selectionTrustRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 34px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line)
+}
+
+.selectionTrustItem {
+  display: flex;
+  gap: 12px
+}
+
+.selectionTrustIcon {
+  width: 24px;
+  flex: 0 0 24px;
+  color: var(--muted)
+}
+
+.selectionTrustIcon svg {
+  width: 24px;
+  height: 24px
+}
+
+.selectionTrustItem strong {
+  color: var(--ink);
+  font-size: 14px
+}
+
+.selectionTrustItem p {
+  margin: 4px 0 0;
+  color: var(--copy);
+  font-size: 12px;
+  line-height: 1.4
+}
+
+@media(max-width:1250px) {
+  .propertyGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+
+  .cardGrid,
+  .serviceGrid,
+  .scopeCardGrid,
+  .conditionCardGrid,
+  .quantityGrid,
+  .customerGrid,
+  .photoGrid,
+  .autoMeasurementGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+  }
+}
+
+@media(max-width:1000px) {
+  .page {
+    padding: 30px 20px 70px;
+    background-attachment: scroll
+  }
+
+  .hero,
+  .embedded.homeLayout {
+    grid-template-columns: 1fr
+  }
+
+  .heroAside,
+  .embeddedRail {
+    padding-top: 0
+  }
+
+  .embeddedRail {
+    margin-top: 28px
+  }
+
+  .progressNav {
+    grid-auto-columns: 105px;
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    padding: 12px 10px;
+    overflow-x: auto
+  }
+
+  .progressNav:before,
+  .progressFill {
+    display: none
+  }
+
+  .cardGrid,
+  .serviceGrid,
+  .scopeCardGrid,
+  .conditionCardGrid,
+  .quantityGrid,
+  .customerGrid,
+  .photoGrid,
+  .autoMeasurementGrid,
+  .embedded .propertyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+}
+
+@media(max-width:640px) {
+
+  .heroCopy h1,
+  .quickQuoteIntro h2,
+  .selectionTitle,
+  .stepPanel h2,
+  .resultLocked h2,
+  .verifyPanel h2,
+  .pricePanel h2 {
+    font-size: clamp(36px, 11vw, 54px)
+  }
+
+  .propertyGrid,
+  .embedded .propertyGrid,
+  .cardGrid,
+  .serviceGrid,
+  .scopeCardGrid,
+  .conditionCardGrid,
+  .quantityGrid,
+  .customerGrid,
+  .photoGrid,
+  .autoMeasurementGrid,
+  .locationGrid,
+  .selectionTabsGrid,
+  .selectionTrustRow {
+    grid-template-columns: 1fr
+  }
+
+  .propertyCardMedia {
+    height: 220px
+  }
+
+  .navActions,
+  .navActionsLeft,
+  .finalActions {
+    display: grid;
+    grid-template-columns: 1fr
+  }
+
+  .navActions>*,
+  .navActionsLeft>*,
+  .finalActions>*,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn {
+    width: 100%
+  }
+
+  .quickQuoteTopBar {
+    display: grid
+  }
+
+  .codeInputs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr))
+  }
+
+  .codeInputs input {
+    width: 100%
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+  .page *,
+  .page *:before,
+  .page *:after {
+    scroll-behavior: auto !important;
+    transition: none !important
+  }
+}
 
 /* Contrast lock: public-page legacy styles use !important text fills. Keep every
    calculator label readable regardless of where the component is mounted. */
 :global(html:not([data-theme="amigos-dark"])) .page,
 :global(html[data-theme="amigos-light"]) .page {
-  color:#050505!important;
-  -webkit-text-fill-color:#050505!important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page h1,
@@ -130,9 +1346,9 @@
 :global(html:not([data-theme="amigos-dark"])) .page .conditionCardTitle,
 :global(html:not([data-theme="amigos-dark"])) .page .tabHeadline,
 :global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem strong {
-  color:#050505!important;
-  -webkit-text-fill-color:#050505!important;
-  opacity:1!important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+  opacity: 1 !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page p,
@@ -146,9 +1362,9 @@
 :global(html:not([data-theme="amigos-dark"])) .page .tabFeatureItem,
 :global(html:not([data-theme="amigos-dark"])) .page .tabTagEstimateTime,
 :global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem p {
-  color:#26394e!important;
-  -webkit-text-fill-color:#26394e!important;
-  opacity:1!important;
+  color: #26394e !important;
+  -webkit-text-fill-color: #26394e !important;
+  opacity: 1 !important;
 }
 
 :global(html:not([data-theme="amigos-dark"])) .page .brand,
@@ -158,9 +1374,9 @@
 :global(html:not([data-theme="amigos-dark"])) .page .detailGroupTitle,
 :global(html:not([data-theme="amigos-dark"])) .page .tabTagFast,
 :global(html:not([data-theme="amigos-dark"])) .page .tabTagDetailed {
-  color:#31577f!important;
-  -webkit-text-fill-color:#31577f!important;
-  opacity:1!important;
+  color: #31577f !important;
+  -webkit-text-fill-color: #31577f !important;
+  opacity: 1 !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .page,
@@ -180,9 +1396,9 @@
 :global(html[data-theme="amigos-dark"]) .page .conditionCardTitle,
 :global(html[data-theme="amigos-dark"]) .page .tabHeadline,
 :global(html[data-theme="amigos-dark"]) .page .selectionTrustItem strong {
-  color:#fff!important;
-  -webkit-text-fill-color:#fff!important;
-  opacity:1!important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .page p,
@@ -196,9 +1412,9 @@
 :global(html[data-theme="amigos-dark"]) .page .tabFeatureItem,
 :global(html[data-theme="amigos-dark"]) .page .tabTagEstimateTime,
 :global(html[data-theme="amigos-dark"]) .page .selectionTrustItem p {
-  color:#d7e4f2!important;
-  -webkit-text-fill-color:#d7e4f2!important;
-  opacity:1!important;
+  color: #d7e4f2 !important;
+  -webkit-text-fill-color: #d7e4f2 !important;
+  opacity: 1 !important;
 }
 
 /* Button text stays white over the orange/pink gradient in both modes. */
@@ -208,34 +1424,58 @@
 .page .sidebarModeSwitchBtn *,
 .page .tabActionBtn,
 .page .tabActionBtn * {
-  color:#fff!important;
-  -webkit-text-fill-color:#fff!important;
-  opacity:1!important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
 }
 
 /* Form values follow their surface instead of inherited homepage text fills. */
 :global(html:not([data-theme="amigos-dark"])) .page input,
 :global(html:not([data-theme="amigos-dark"])) .page textarea,
 :global(html:not([data-theme="amigos-dark"])) .page select {
-  color:#071a33!important;
-  -webkit-text-fill-color:#071a33!important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
 }
+
 :global(html[data-theme="amigos-dark"]) .page input,
 :global(html[data-theme="amigos-dark"]) .page textarea,
 :global(html[data-theme="amigos-dark"]) .page select {
-  color:#fff!important;
-  -webkit-text-fill-color:#fff!important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* Component state hooks retained by the JSX after the visual rewrite. */
-.embeddedLeft { min-width: 0; }
-.embeddedComplete { padding-bottom: 10px; }
-.tabFastEstimate { border-top: 4px solid var(--a); }
-.tabDetailedSpecs { border-top: 4px solid var(--c); }
-.tabTagIcon { margin-right: 5px; }
-.tabActionBtnDetailed { background: linear-gradient(105deg, var(--c), var(--b) 55%, var(--a)); }
-.tabActionArrow { transition: transform .2s ease; }
-.selectionTabCard:hover .tabActionArrow { transform: translateX(4px); }
+.embeddedLeft {
+  min-width: 0;
+}
+
+.embeddedComplete {
+  padding-bottom: 10px;
+}
+
+.tabFastEstimate {
+  border-top: 4px solid var(--a);
+}
+
+.tabDetailedSpecs {
+  border-top: 4px solid var(--c);
+}
+
+.tabTagIcon {
+  margin-right: 5px;
+}
+
+.tabActionBtnDetailed {
+  background: linear-gradient(105deg, var(--c), var(--b) 55%, var(--a));
+}
+
+.tabActionArrow {
+  transition: transform .2s ease;
+}
+
+.selectionTabCard:hover .tabActionArrow {
+  transform: translateX(4px);
+}
 
 /* Keep the reassurance copy independent from the detailed background photo. */
 .selectionTrustRow {
@@ -260,7 +1500,7 @@
   box-shadow: none;
 }
 
-.selectionTrustItem + .selectionTrustItem::before {
+.selectionTrustItem+.selectionTrustItem::before {
   content: "";
   position: absolute;
   top: 4px;
@@ -705,7 +1945,7 @@
   box-shadow: 0 18px 42px rgba(0, 7, 20, .32);
 }
 
-:global(html[data-theme="amigos-dark"]) .selectionTrustItem + .selectionTrustItem::before {
+:global(html[data-theme="amigos-dark"]) .selectionTrustItem+.selectionTrustItem::before {
   background: linear-gradient(180deg, transparent, rgba(207, 225, 245, .25), transparent);
 }
 
@@ -718,7 +1958,7 @@
     padding: 18px 4px;
   }
 
-  .selectionTrustItem + .selectionTrustItem::before {
+  .selectionTrustItem+.selectionTrustItem::before {
     top: 0;
     right: 0;
     bottom: auto;
@@ -868,8 +2108,8 @@
     line-height: 1.04;
   }
 
-  .stepPanel > p,
-  .homeLayout .stepPanel > p {
+  .stepPanel>p,
+  .homeLayout .stepPanel>p {
     font-size: 15px;
   }
 
