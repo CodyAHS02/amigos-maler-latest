@@ -11727,10 +11727,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .quote-section {
 body[data-page="home"] .home-calculator-cta,
 html:not([data-theme="amigos-dark"]) body[data-page="home"] section.home-calculator-cta,
 html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-cta {
-    background-color: #0a1929 !important;
-    background-image:
-        linear-gradient(180deg, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.55) 100%),
-        url("/assets/calculator-day-bg.webp") !important;
+    background-color: transparent !important;
+    background-image: none !important;
     background-size: cover, cover !important;
     background-position: center, center bottom !important;
     background-repeat: no-repeat !important;
@@ -11738,10 +11736,8 @@ html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-c
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-cta {
-    background-color: #071A33 !important;
-    background-image:
-        linear-gradient(180deg, rgba(5, 18, 38, 0.92) 0%, rgba(5, 18, 38, 0.7) 45%, rgba(5, 18, 38, 0.3) 80%, rgba(5, 18, 38, 0.15) 100%),
-        url("/assets/calculator-glass-bg.png") !important;
+    background-color: transparent !important;
+    background-image: none !important;
     background-size: cover, cover !important;
     background-position: center, center bottom !important;
     background-repeat: no-repeat !important;
@@ -11761,72 +11757,6 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-ct
     background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 60%) !important;
     opacity: 1 !important;
 }
-
-/* =====================================================================
-   DAY / LIGHT MODE — calculator text & fields forced to white
-   so everything is readable on the dark-tinted photo background.
-   ===================================================================== */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta *,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta * {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-}
-
-/* Step number badges keep their accent colour */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="stepKicker"],
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="brand"],
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="currentStep"] span {
-    color: #f6be10 !important;
-    -webkit-text-fill-color: #f6be10 !important;
-}
-
-/* Input fields — white background, dark text so typed text is readable */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta input,
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta textarea,
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta select,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta input,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta textarea,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta select {
-    background: rgba(255, 255, 255, 0.92) !important;
-    color: #10233c !important;
-    -webkit-text-fill-color: #10233c !important;
-    border-color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Placeholder text */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta input::placeholder,
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta textarea::placeholder,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta input::placeholder,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta textarea::placeholder {
-    color: rgba(16, 35, 60, 0.55) !important;
-    -webkit-text-fill-color: rgba(16, 35, 60, 0.55) !important;
-}
-
-/* White card on right side — restore dark text since it has a white/light background */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"],
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"] *,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"],
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeCard"] * {
-    color: #10233c !important;
-    -webkit-text-fill-color: #10233c !important;
-}
-
-/* Kicker label inside the white card stays gold */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeKicker"],
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeKicker"] {
-    color: #f6be10 !important;
-    -webkit-text-fill-color: #f6be10 !important;
-}
-
-/* Button inside the white card keeps white text on gold bg */
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"],
-html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"] *,
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"],
-html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta [class*="sidebarModeSwitchBtn"] * {
-    color: #101a2e !important;
-    -webkit-text-fill-color: #101a2e !important;
-}
-
 
 body[data-page="home"] .quote-section::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::before {
@@ -13305,11 +13235,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card li:
 body[data-page="home"] .home-calculator-cta,
 html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta,
 html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta {
-    background:
-        linear-gradient(180deg, rgba(10, 25, 41, 0.55) 0%, rgba(10, 25, 41, 0.55) 100%),
-        url("/assets/calculator-day-bg.webp"),
-        #0a1929 !important;
-    background-color: #0a1929 !important;
+    background: transparent !important;
+    background-color: transparent !important;
     background-size: cover, cover !important;
     background-position: center, center bottom !important;
     background-repeat: no-repeat !important;
@@ -13317,12 +13244,8 @@ html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta {
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
-    background:
-        linear-gradient(180deg, rgba(0, 19, 49, .20), rgba(0, 19, 49, .32)),
-        linear-gradient(90deg, rgba(0, 19, 49, .24), rgba(0, 19, 49, .08) 48%, rgba(0, 19, 49, .22)),
-        url("/assets/calculator-glass-bg.png"),
-        #071A33 !important;
-    background-color: #071A33 !important;
+    background: transparent !important;
+    background-color: transparent !important;
     background-size: auto, auto, cover, auto !important;
     background-position: center, center, center bottom, center !important;
     background-repeat: no-repeat !important;

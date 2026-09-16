@@ -25,6 +25,7 @@ const QUICK_BASE_PRICE_KEYS = {
   "3_5_apartment": "3_5_room_apartment_base_price",
   "4_5_apartment": "4_5_room_apartment_base_price",
   "5_5_apartment": "5_5_room_apartment_base_price",
+  "6_5_plus_apartment": "5_5_room_apartment_base_price",
   house: "house_base_price",
   commercial: "commercial_base_price",
   other: "other_base_price"

@@ -1103,7 +1103,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.selectionHeroContainer}>
             {/* 1. Header */}
             <div className={styles.selectionHeader}>
-              <h1 className={styles.selectionTitle}>OFFER CALCULATOR &amp; REQUEST</h1>
+              <h1 className={styles.selectionTitle}>Offer calculator &amp; request</h1>
               <h2 className={styles.selectionSubTitle}>Choose the right calculation for your project.</h2>
               <p className={styles.selectionLead}>
                 Select the calculation model that best matches your project requirements.
@@ -1265,20 +1265,42 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
 
     return (
-      <main className={cx(styles.page, styles.embedded, isHomeQuickQuote && styles.homeLayout, isHomeQuickQuote && step === 0 && styles.homeQuickPropertyStep, "offerCalculatorEmbedded")}>
+      <main className={cx(styles.page, styles.embedded, isHomeQuickQuote && styles.homeLayout, "offerCalculatorEmbedded")}>
         <aside className={styles.embeddedRail}>
           {isHomeQuickQuote ? (
             /* Homepage rail is the Detailed Quote CTA for Customer B — it links to the
                separate calculator page rather than swapping this one in place. */
             <div className={styles.sidebarModeCard}>
-              <span className={styles.sidebarModeKicker}>FOR PROFESSIONALS &amp; PRECISE PLANNING</span>
-              <h3 className={styles.sidebarModeTitle}>Create a Detailed Quote.</h3>
+              <div className={styles.calculatorControls} aria-label="Calculator controls">
+                <button
+                  className={cx(styles.soundToggle, isSoundOn && styles.soundToggleActive)}
+                  type="button"
+                  aria-label={isSoundOn ? "Turn sound off" : "Turn sound on"}
+                  aria-pressed={isSoundOn}
+                  onClick={() => setIsSoundOn((current) => !current)}
+                >
+                  <span className={styles.soundToggleIcon} aria-hidden="true">
+                    {isSoundOn ? "♪" : "×"}
+                  </span>
+                </button>
+                <button
+                  className={styles.themeToggle}
+                  type="button"
+                  aria-label={`Switch to ${isDark ? "day" : "night"} mode`}
+                  aria-pressed={isDark}
+                  onClick={toggleTheme}
+                >
+                  <span className={styles.themeToggleIcon} aria-hidden="true">{isDark ? "☀" : "☾"}</span>
+                </button>
+              </div>
+              <span className={styles.sidebarModeKicker}>For professionals &amp; precise planning</span>
+              <h3 className={styles.sidebarModeTitle}>Create a detailed quote.</h3>
               <ul className={styles.detailedCtaList}>
                 <li>Selectable components and services</li>
                 <li>Ideal for architects, property managers &amp; professionals</li>
               </ul>
               <Link className={styles.sidebarModeSwitchBtn} href={detailedQuoteHref}>
-                <span>GO TO DETAILED QUOTE CALCULATOR</span>
+                <span>Open detailed calculator</span>
                 <i>→</i>
               </Link>
               <p className={styles.protectedPriceNote}>
@@ -1290,7 +1312,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <div className={styles.heroCopy}>
                 <span className={styles.brand}>AMIGOS MALER <span style={{ textTransform: "none" }}>GmbH</span></span>
                 <strong>Kompetenz verbindet</strong>
-                <h1>OFFER CALCULATOR &amp; REQUEST</h1>
+                <h1>Offer calculator &amp; request</h1>
                 <p>Calculate, see your price – and request your offer.</p>
                 <ul>
                   <li>Calculate your estimated price in a few steps</li>
@@ -1305,7 +1327,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {isSimple ? "FOR HOMEOWNERS" : "FOR PROFESSIONALS"}
                 </span>
                 <h3 className={styles.sidebarModeTitle}>
-                  {isSimple ? "Fast Estimate Mode" : "Detailed Quote Mode"}
+                    {isSimple ? "Fast estimate mode" : "Detailed quote mode"}
                 </h3>
                 <p className={styles.sidebarModeDesc}>
                   {isSimple
@@ -1333,7 +1355,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           {!isHomeQuickQuote && (
             <div className={styles.securityCard}>
               <span>🔒</span>
-              <h2>PRICES ARE PROTECTED</h2>
+              <h2>Prices are protected</h2>
               <p>The exact price is only visible after e-mail verification.</p>
             </div>
           )}
@@ -1343,16 +1365,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           {isHomeQuickQuote && (
             <header className={styles.quickQuoteIntro}>
               <div className={styles.quickQuoteTopBar}>
-                <h2>Your Estimated Quote in Just a Few Steps</h2>
-                {embedded && (
-                  <button
-                    type="button"
-                    className={styles.backToSelectionTopBtn}
-                    onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
-                  >
-                    ← Change Calculator
-                  </button>
-                )}
+                <h2>Your estimated quote in just a few steps</h2>
               </div>
               <p>Simple. Fast. No obligation. Receive your price after entering your email address.</p>
             </header>
@@ -1807,7 +1820,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     <div className={styles.pricePanel}>
                       <div className={styles.successMark}>✓</div>
                       <span className={styles.stepKicker}>E-mail successfully verified</span>
-                      <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
+                      <h2>Your personal estimated quotation</h2>
 
                       <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
                         <h3>Your project summary</h3>
@@ -1867,7 +1880,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
                       {showSiteVisitForm && (
                         <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
-                          <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <h4 style={{ margin: "0 0 10px 0" }}>Property address for site visit</h4>
                           <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                           <label style={{ display: "block", marginBottom: "8px" }}>
                             <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
@@ -2204,7 +2217,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       <div className={styles.pricePanel}>
                         <div className={styles.successMark}>✓</div>
                         <span className={styles.stepKicker}>E-mail successfully verified</span>
-                        <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
+                        <h2>Your personal estimated quotation</h2>
 
                         <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
                           <h3>Your selected project</h3>
@@ -2282,7 +2295,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
                         {showSiteVisitForm && (
                           <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
-                          <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                          <h4 style={{ margin: "0 0 10px 0" }}>Property address for site visit</h4>
                           <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                             <label style={{ display: "block", marginBottom: "8px" }}>
                               <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
@@ -2383,7 +2396,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           {/* 1. Header */}
           <div className={styles.selectionHeader}>
             <span className={styles.selectionKicker}>AMIGOS MALER <span style={{ textTransform: "none" }}>GmbH</span> · KOMPETENZ VERBINDET</span>
-            <h1 className={styles.selectionTitle}>OFFER CALCULATOR &amp; REQUEST</h1>
+            <h1 className={styles.selectionTitle}>Offer calculator &amp; request</h1>
             <h2 className={styles.selectionSubTitle}>Choose the right calculation for your project.</h2>
             <p className={styles.selectionLead}>
               Select the calculation model that best matches your project requirements.
@@ -2535,7 +2548,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <div className={styles.heroTopRow} aria-hidden="true" />
-          <h1>Create a Detailed Quote.</h1>
+          <h1>Create a detailed quote.</h1>
           <p>Select your components and services, enter only the measurements they require, and see your result after e-mail verification.</p>
         </div>
         <div className={styles.heroAside}>
@@ -2595,7 +2608,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <strong>Kompetenz verbindet</strong>
           </div>
           <aside className={styles.securityCard}>
-            <h2>PRICES ARE PROTECTED</h2>
+            <h2>Prices are protected</h2>
             <p>The exact price is only visible after e-mail verification.</p>
           </aside>
         </div>
@@ -2861,7 +2874,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.pricePanel}>
             <div className={styles.successMark}>✓</div>
             <span className={styles.stepKicker}>E-mail successfully verified</span>
-            <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
+            <h2>Your personal estimated quotation</h2>
 
             <div className={styles.summaryPanel}>
               <h3>Your project summary</h3>
@@ -2921,7 +2934,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
             {showSiteVisitForm && (
               <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
-                <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <h4 style={{ margin: "0 0 10px 0" }}>Property address for site visit</h4>
                 <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                 <label style={{ display: "block", marginBottom: "8px" }}>
                   <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>
@@ -3075,7 +3088,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {!isSimple && step === 5 && (
           <div className={styles.resultLocked}>
             <div className={styles.summaryPanel} style={{ marginBottom: "20px" }}>
-              <h3>Project Summary</h3>
+              <h3>Project summary</h3>
               <dl>
                 <div>
                   <dt>Property</dt>
@@ -3197,7 +3210,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.pricePanel}>
             <div className={styles.successMark}>✓</div>
             <span className={styles.stepKicker}>E-mail successfully verified</span>
-            <h2>YOUR PERSONAL ESTIMATED QUOTATION</h2>
+            <h2>Your personal estimated quotation</h2>
 
             <div className={styles.summaryPanel}>
               <h3>Your selected project</h3>
@@ -3275,7 +3288,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
             {showSiteVisitForm && (
               <div style={{ marginTop: "16px", padding: "16px", background: "rgba(255,255,255,0.05)", borderRadius: "8px", textAlign: "left" }}>
-                <h4 style={{ margin: "0 0 10px 0" }}>Property Address for Site Visit</h4>
+                <h4 style={{ margin: "0 0 10px 0" }}>Property address for site visit</h4>
                 <label style={{ display: "block", marginBottom: "8px" }}><span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Phone *</span><input type="tel" value={state.customerInfo.phone} onChange={(e) => updateCustomerInfo("phone", e.target.value)} aria-invalid={Boolean(errors.phone)} />{errors.phone && <small style={{ color: "#ff4d4f", display: "block" }}>{errors.phone}</small>}</label>
                 <label style={{ display: "block", marginBottom: "8px" }}>
                   <span style={{ fontSize: "0.85rem", display: "block", marginBottom: "4px" }}>Street / Property Address *</span>

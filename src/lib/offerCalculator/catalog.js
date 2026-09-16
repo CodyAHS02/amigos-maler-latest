@@ -89,6 +89,14 @@ export const quickPropertyTypes = [
     image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
   },
   {
+    id: "6_5_plus_apartment",
+    title: "6½+ room",
+    subtitle: "Large apartment",
+    iconKey: "apartment",
+    roomCount: 7,
+    image: "/assets/projects/project-04.jpg"
+  },
+  {
     id: "house",
     title: "House",
     subtitle: "(Single-family home)",

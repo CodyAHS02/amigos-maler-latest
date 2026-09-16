@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useAmigosAudio } from "@/lib/useAmigosAudio";
+import styles from "./Header.module.css";
 
 const serviceHoverGradients = [
   {
@@ -101,8 +102,14 @@ export default function Header() {
 
   return (
     <header className={`site-header${isHome ? " home-initial" : ""}`} id="siteHeader">
-      <a className="logo" href="/">
-        <img src="/New-Logo.png" alt="Amigos Maler" />
+      <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
+        <span className={styles.logoSymbol} aria-hidden="true">
+          <img src="/assets/logo.png" alt="" />
+        </span>
+        <span className={styles.logoWordmark}>
+          <strong>AMIGOS MALER</strong>
+          <small>KOMPETENZ VERBINDET</small>
+        </span>
       </a>
 
       <nav className="site-nav">

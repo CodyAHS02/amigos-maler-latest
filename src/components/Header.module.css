@@ -1,0 +1,75 @@
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #071a33;
+  text-decoration: none;
+}
+
+.logoSymbol {
+  display: block;
+  width: 45px;
+  height: 46px;
+  flex: 0 0 45px;
+  overflow: hidden;
+}
+
+.logoSymbol img {
+  display: block;
+  width: auto !important;
+  max-width: none !important;
+  height: 46px !important;
+}
+
+.logoWordmark {
+  display: grid;
+  gap: 1px;
+  color: inherit;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.logoWordmark strong {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: .015em;
+}
+
+.logoWordmark small {
+  color: inherit;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  opacity: .72;
+}
+
+:global(html[data-theme="amigos-dark"]) .logoLink,
+:global(.site-header.home-initial) .logoLink,
+:global(.site-header.is-scrolled) .logoLink {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .logoLink {
+    gap: 8px;
+  }
+
+  .logoSymbol {
+    width: 38px;
+    height: 39px;
+    flex-basis: 38px;
+  }
+
+  .logoSymbol img {
+    height: 39px !important;
+  }
+
+  .logoWordmark strong {
+    font-size: 13px;
+  }
+
+  .logoWordmark small {
+    font-size: 6px;
+  }
+}
