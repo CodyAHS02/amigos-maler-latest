@@ -3008,3 +3008,458 @@ body[data-page="projects"] .amigos-wrapper #real-estate-hub:not(.has-real-estate
     linear-gradient(120deg, #f39125, #e62453 52%, #c73b8e) border-box !important;
   box-shadow: 0 10px 24px rgba(230, 36, 83, .14) !important;
 }
+
+/* ======================================================================
+   FINAL PROJECTS COLOR THEME LOCK
+   Match the homepage AMIGOS palette and button treatment exactly.
+   ====================================================================== */
+body[data-page="projects"] {
+  --am-yellow-clean: #FFD21F;
+  --am-yellow-deep: #F39125;
+  --am-orange-clean: #FF7A1A;
+  --am-orange-deep: #D94D12;
+  --am-pink-clean: #E62453;
+  --am-pink-deep: #A91452;
+  --am-magenta-clean: #C73B8E;
+  --am-black: #050505;
+  --am-grey: #626262;
+  --am-soft-white: #FDFBF6;
+  --am-clean-light: #FAF6EE;
+  --am-navy-home: #071A33;
+  --am-yellow-grad: linear-gradient(135deg, #FFD21F 0%, #F39125 100%);
+  --am-orange-grad: linear-gradient(135deg, #FF8A1F 0%, #D94D12 100%);
+  --am-pink-grad: linear-gradient(135deg, #FF2F6D 0%, #A91452 100%);
+  --am-mixed-grad: linear-gradient(120deg, #FFD21F 0%, #FF7A1A 44%, #E62453 100%);
+}
+
+body[data-page="projects"] .amigos-wrapper {
+  --am-navy: var(--am-navy-home);
+  --am-navy-soft: #0D2542;
+  --am-yellow: var(--am-yellow-clean);
+  --am-orange: var(--am-orange-clean);
+  --am-pink: var(--am-pink-clean);
+  --am-red: var(--am-pink-clean);
+  --am-gradient: var(--am-mixed-grad);
+  --gold: var(--am-orange-clean);
+  --gold-soft: rgba(230, 36, 83, .18);
+  --gold-glow: rgba(230, 36, 83, .24);
+  --projects-cream: var(--am-soft-white);
+  --projects-navy: var(--am-navy-home);
+  --projects-copy: var(--am-grey);
+  --projects-line: rgba(7, 26, 51, .12);
+  --re-orange: var(--am-orange-clean);
+  --re-red: var(--am-pink-clean);
+  --re-pink: var(--am-magenta-clean);
+}
+
+body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) {
+  background:
+    radial-gradient(circle at 18% 4%, rgba(255, 210, 31, .10), transparent 32%),
+    linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final),
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(230, 36, 83, .12), transparent 28%),
+    radial-gradient(circle at 6% 90%, rgba(246, 190, 16, .08), transparent 30%),
+    #071A33 !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .hero-ctas .btn,
+body[data-page="projects"] .amigos-wrapper .btn,
+body[data-page="projects"] .amigos-wrapper .mag,
+body[data-page="projects"] .amigos-wrapper .founder-link,
+body[data-page="projects"] .amigos-wrapper .projects-enquiry-form button[type="submit"],
+body[data-page="projects"] .amigos-wrapper .real-estate-action,
+body[data-page="projects"] .amigos-wrapper .real-estate-primary-link {
+  border-radius: 999px !important;
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .btn-solid,
+body[data-page="projects"] .amigos-wrapper .hero-ctas .btn-solid,
+body[data-page="projects"] .amigos-wrapper .founder-link,
+body[data-page="projects"] .amigos-wrapper .projects-enquiry-form button[type="submit"],
+body[data-page="projects"] .amigos-wrapper .real-estate-action,
+body[data-page="projects"] .amigos-wrapper .real-estate-primary-link {
+  background: var(--am-mixed-grad) !important;
+  border: 1px solid rgba(246, 190, 16, .44) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 18px 44px rgba(230, 36, 83, .22), 0 12px 28px rgba(246, 190, 16, .16) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .btn:not(.btn-solid),
+body[data-page="projects"] .amigos-wrapper .hero-ctas .btn:not(.btn-solid) {
+  background: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .62) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10) !important;
+}
+
+html:is([data-theme="light"], [data-theme="amigos-light"]) body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) .btn:not(.btn-solid) {
+  background: rgba(255, 255, 255, .78) !important;
+  border: 1px solid rgba(7, 26, 51, .18) !important;
+  color: #071A33 !important;
+  -webkit-text-fill-color: #071A33 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .btn-solid:hover,
+body[data-page="projects"] .amigos-wrapper .hero-ctas .btn-solid:hover,
+body[data-page="projects"] .amigos-wrapper .founder-link:hover,
+body[data-page="projects"] .amigos-wrapper .projects-enquiry-form button[type="submit"]:hover,
+body[data-page="projects"] .amigos-wrapper .real-estate-action:hover,
+body[data-page="projects"] .amigos-wrapper .real-estate-action.is-active,
+body[data-page="projects"] .amigos-wrapper .real-estate-primary-link:hover {
+  transform: translateY(-4px) scale(1.015) !important;
+  filter: saturate(1.14) brightness(1.04) !important;
+  background: var(--am-mixed-grad) !important;
+  border-color: rgba(246, 190, 16, .44) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 24px 58px rgba(230, 36, 83, .30), 0 16px 36px rgba(246, 190, 16, .22) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .btn:not(.btn-solid):hover,
+body[data-page="projects"] .amigos-wrapper .hero-ctas .btn:not(.btn-solid):hover {
+  background: rgba(255, 255, 255, .16) !important;
+  border-color: rgba(255, 255, 255, .92) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-4px) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .eyebrow,
+body[data-page="projects"] .amigos-wrapper .founder-kicker,
+body[data-page="projects"] .amigos-wrapper .real-estate-kicker,
+body[data-page="projects"] .amigos-wrapper .section-head .eyebrow,
+body[data-page="projects"] .amigos-wrapper .project-stat-suffix,
+body[data-page="projects"] .amigos-wrapper .stats .stat .num .suffix,
+body[data-page="projects"] .amigos-wrapper .num,
+body[data-page="projects"] .amigos-wrapper .flow-num,
+body[data-page="projects"] .amigos-wrapper .arrow,
+body[data-page="projects"] .amigos-wrapper .gold {
+  color: #E62453 !important;
+  -webkit-text-fill-color: #E62453 !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .brush path {
+  stroke: #E62453 !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .project-accentline::after,
+body[data-page="projects"] .amigos-wrapper .goldline::after,
+body[data-page="projects"] .amigos-wrapper .hero h1 .goldline::after,
+body[data-page="projects"] .amigos-wrapper .showcase-instruction i,
+body[data-page="projects"] .amigos-wrapper .tl-fill,
+body[data-page="projects"] .amigos-wrapper .progress-row .bar span {
+  background: var(--am-mixed-grad) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .glass,
+body[data-page="projects"] .amigos-wrapper .svc-card-h,
+body[data-page="projects"] .amigos-wrapper .flow-step,
+body[data-page="projects"] .amigos-wrapper .tl-card,
+body[data-page="projects"] .amigos-wrapper .case,
+body[data-page="projects"] .amigos-wrapper .tile,
+body[data-page="projects"] .amigos-wrapper .plan,
+body[data-page="projects"] .amigos-wrapper .real-estate-card,
+body[data-page="projects"] .amigos-wrapper .real-estate-detail-panel {
+  border-color: transparent !important;
+  background:
+    linear-gradient(180deg, rgba(253, 251, 246, .94), rgba(250, 246, 238, .90)) padding-box,
+    var(--am-mixed-grad) border-box !important;
+  box-shadow: 0 18px 46px rgba(7, 26, 51, .08) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .glass,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .svc-card-h,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .flow-step,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .tl-card,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .case,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .tile,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .plan,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .real-estate-card,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .real-estate-detail-panel,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .glass,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .svc-card-h,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .flow-step,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .tl-card,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .case,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .tile,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .plan,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .real-estate-card,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .real-estate-detail-panel {
+  background:
+    linear-gradient(180deg, rgba(13, 37, 66, .92), rgba(7, 26, 51, .94)) padding-box,
+    var(--am-mixed-grad) border-box !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .22) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .project-stats-grid .project-stat-card,
+body[data-page="projects"] .amigos-wrapper .stats .stat,
+body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(2),
+body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(3),
+body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(4) {
+  background:
+    linear-gradient(#FDFBF6, #FDFBF6) padding-box,
+    var(--am-mixed-grad) border-box !important;
+  border: 1px solid transparent !important;
+  box-shadow: 0 18px 46px rgba(7, 26, 51, .08) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .project-stats-grid .project-stat-card,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .stats .stat,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .project-stats-grid .project-stat-card,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .stats .stat {
+  background:
+    linear-gradient(#0D2542, #0D2542) padding-box,
+    var(--am-mixed-grad) border-box !important;
+}
+
+body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button {
+  border: 1px solid rgba(7, 26, 51, .18) !important;
+  background: rgba(255, 255, 255, .78) !important;
+  color: #071A33 !important;
+  -webkit-text-fill-color: #071A33 !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button {
+  border-color: rgba(255, 255, 255, .24) !important;
+  background: rgba(255, 255, 255, .08) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button:hover,
+body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button.is-active {
+  background: var(--am-mixed-grad) !important;
+  border-color: rgba(246, 190, 16, .44) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 18px 44px rgba(230, 36, 83, .22), 0 12px 28px rgba(246, 190, 16, .16) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-status,
+body[data-page="projects"] .amigos-wrapper .tl-dot,
+body[data-page="projects"] .amigos-wrapper .cur-dot,
+body[data-page="projects"] .amigos-wrapper .ba-dot.on,
+body[data-page="projects"] .amigos-wrapper .chip.on,
+body[data-page="projects"] .amigos-wrapper .tab.on,
+body[data-page="projects"] .amigos-wrapper .sw.on {
+  background: #E62453 !important;
+  border-color: #E62453 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 0 0 6px rgba(230, 36, 83, .16), 0 10px 24px rgba(230, 36, 83, .18) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper a:hover,
+body[data-page="projects"] .amigos-wrapper .tab.on,
+body[data-page="projects"] .amigos-wrapper .dash-side .side-item.on {
+  color: #E62453 !important;
+  -webkit-text-fill-color: #E62453 !important;
+}
+
+/* Exact homepage primary CTA styling for the final Projects button. */
+body[data-page="projects"] .amigos-wrapper #final a.btn.btn-solid.mag {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  max-width: max-content !important;
+  min-height: 0 !important;
+  margin: 20px auto 0 !important;
+  padding: 18px 45px !important;
+  border: 1px solid rgba(246, 190, 16, .44) !important;
+  border-radius: 999px !important;
+  background: var(--am-mixed-grad) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-shadow: 0 18px 44px rgba(230, 36, 83, .22), 0 12px 28px rgba(246, 190, 16, .16) !important;
+  filter: none !important;
+  transform: none !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+body[data-page="projects"] .amigos-wrapper #final a.btn.btn-solid.mag:hover {
+  background: var(--am-mixed-grad) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-4px) scale(1.015) !important;
+  filter: saturate(1.14) brightness(1.04) !important;
+  box-shadow: 0 24px 58px rgba(230, 36, 83, .30), 0 16px 36px rgba(246, 190, 16, .22) !important;
+}
+
+/* Projects enquiry form: calculator-style glass fields + branded select segment. */
+body[data-page="projects"] .amigos-wrapper .projects-enquiry-form {
+  border: 1px solid rgba(7, 26, 51, .12) !important;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, .70) 0%, rgba(255, 255, 255, .44) 55%, rgba(255, 255, 255, .62) 100%) !important;
+  backdrop-filter: saturate(180%) blur(26px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(26px) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    0 24px 70px rgba(7, 26, 51, .10) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field input,
+body[data-page="projects"] .amigos-wrapper .enquiry-field select,
+body[data-page="projects"] .amigos-wrapper .enquiry-field textarea {
+  border: 1px solid rgba(7, 26, 51, .13) !important;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, .78), rgba(255, 255, 255, .54)) !important;
+  color: #071A33 !important;
+  -webkit-text-fill-color: #071A33 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .92),
+    0 12px 30px rgba(7, 26, 51, .07) !important;
+  backdrop-filter: saturate(180%) blur(18px) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(18px) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field input::placeholder,
+body[data-page="projects"] .amigos-wrapper .enquiry-field textarea::placeholder {
+  color: rgba(7, 26, 51, .48) !important;
+  -webkit-text-fill-color: rgba(7, 26, 51, .48) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  padding-right: 86px !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%),
+    var(--am-mixed-grad),
+    linear-gradient(140deg, rgba(255, 255, 255, .78), rgba(255, 255, 255, .54)) !important;
+  background-position:
+    calc(100% - 31px) 50%,
+    calc(100% - 24px) 50%,
+    100% 0,
+    0 0 !important;
+  background-size:
+    8px 8px,
+    8px 8px,
+    76px 100%,
+    100% 100% !important;
+  background-repeat: no-repeat !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field select option {
+  background: #071A33 !important;
+  color: #fff !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field input:focus,
+body[data-page="projects"] .amigos-wrapper .enquiry-field select:focus,
+body[data-page="projects"] .amigos-wrapper .enquiry-field textarea:focus {
+  border-color: rgba(230, 36, 83, .52) !important;
+  background-color: rgba(255, 255, 255, .86) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .95),
+    0 0 0 4px rgba(230, 36, 83, .10),
+    0 18px 38px rgba(7, 26, 51, .10) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background:
+    linear-gradient(140deg, rgba(13, 37, 66, .72), rgba(7, 26, 51, .58)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    0 24px 70px rgba(0, 0, 0, .22) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field input,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field select,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field textarea,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field input,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field select,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field textarea {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .06)) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .13),
+    0 12px 30px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field select,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .enquiry-field select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%),
+    var(--am-mixed-grad),
+    linear-gradient(140deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .06)) !important;
+}
+
+/* Dark enquiry form hard lock: keep selects dark glass and arrow compact. */
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field input,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field textarea,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field input,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field textarea {
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  background: linear-gradient(140deg, rgba(255, 255, 255, .105), rgba(255, 255, 255, .055)) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .13),
+    0 14px 32px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field input::placeholder,
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field textarea::placeholder,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field input::placeholder,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field textarea::placeholder {
+  color: rgba(255, 255, 255, .56) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .56) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field select,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enquiry-form .enquiry-field select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  border: 1px solid rgba(255, 255, 255, .18) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  padding-right: 86px !important;
+  background-color: transparent !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%),
+    var(--am-mixed-grad),
+    linear-gradient(140deg, rgba(255, 255, 255, .105), rgba(255, 255, 255, .055)) !important;
+  background-position:
+    calc(100% - 31px) 50%,
+    calc(100% - 24px) 50%,
+    100% 0,
+    0 0 !important;
+  background-size:
+    8px 8px,
+    8px 8px,
+    76px 100%,
+    100% 100% !important;
+  background-repeat: no-repeat !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .13),
+    0 14px 32px rgba(0, 0, 0, .18) !important;
+}
