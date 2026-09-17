@@ -44,6 +44,18 @@
   opacity: .72;
 }
 
+.fullLogoLink {
+  gap: 0;
+}
+
+.fullLogoImage {
+  display: block;
+  width: auto !important;
+  height: 54px !important;
+  max-width: min(260px, 34vw) !important;
+  object-fit: contain;
+}
+
 :global(html[data-theme="amigos-dark"]) .logoLink,
 :global(.site-header.home-initial) .logoLink,
 :global(.site-header.is-scrolled) .logoLink {
@@ -71,5 +83,10 @@
 
   .logoWordmark small {
     font-size: 6px;
+  }
+
+  .fullLogoImage {
+    height: 42px !important;
+    max-width: 190px !important;
   }
 }

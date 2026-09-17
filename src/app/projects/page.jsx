@@ -33,7 +33,7 @@ const pageHtml = `
     <div class="hero-particles"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow">AI Powered Real Estate | Painting | Renovation Services</div>
-      <h1>YOUR PARTNER FOR<br><span class="goldline">PROPERTY VALUE PRESERVATION</span></h1>
+      <h1>YOUR PARTNER FOR<br><span class="project-accentline">PROPERTY VALUE PRESERVATION</span></h1>
       <p class="hero-sub">For Homeowners | For Property Managers | For Investors</p>
       <div class="hero-ctas">
         <a class="btn btn-solid mag" href="#calc">Free Consultation</a>
@@ -283,9 +283,9 @@ const pageHtml = `
               <img class="vs-room" src="/amigos/img/after.jpg" alt="Room preview" loading="lazy">
               <div class="vs-wall" id="vs-wall"></div>
               <svg class="vs-outline" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M4 6 L54 4 L54 54 L4 58 Z" fill="none" stroke="#C5A059" stroke-width=".25"
+                <path d="M4 6 L54 4 L54 54 L4 58 Z" fill="none" stroke="#f39125" stroke-width=".25"
                   stroke-dasharray="1.2 1.2" />
-                <path d="M60 4 L96 8 L96 56 L60 54 Z" fill="none" stroke="#C5A059" stroke-width=".25"
+                <path d="M60 4 L96 8 L96 56 L60 54 Z" fill="none" stroke="#f39125" stroke-width=".25"
                   stroke-dasharray="1.2 1.2" opacity=".75" />
               </svg>
               <div class="vs-badge">Walls detected</div>
@@ -303,7 +303,7 @@ const pageHtml = `
               <button class="sw" data-tint="rgba(74,93,74,.5)" data-name="Alpine Sage"
                 style="background:#4A5D4A"></button>
               <button class="sw" data-tint="rgba(180,150,110,.35)" data-name="Silk Wallpaper"
-                style="background:repeating-linear-gradient(45deg,#c9b48a 0 4px,#8f7a4f 4px 8px)"></button>
+                style="background:repeating-linear-gradient(45deg,#f39125 0 4px,#c73b8e 4px 8px)"></button>
               <button class="sw" data-tint="rgba(200,190,175,.4)" data-name="Marble Texture"
                 style="background:radial-gradient(circle at 30% 30%,#e6dfd1,#a09889)"></button>
             </div>
@@ -450,6 +450,249 @@ const pageHtml = `
           <img src="/assets/partner-logos/urbanhold.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
           <img src="/assets/partner-logos/canton-works.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 · REAL ESTATE HUB (separate add-on; existing sections untouched) -->
+  <section id="real-estate-hub" class="real-estate-hub-section" aria-labelledby="real-estate-hub-title" onclick="(function(e){var t=e.target.closest('[data-re-filter],[data-detail-target]');if(!t||!e.currentTarget.contains(t))return;if(t.dataset.reFilter){var s=e.currentTarget,f=t.dataset.reFilter;s.classList.remove('has-real-estate-detail');s.querySelectorAll('[data-re-filter]').forEach(function(b){var on=b.dataset.reFilter===f;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false')});s.querySelectorAll('[data-re-category]').forEach(function(c,i){var show=f==='all'?i<3:c.dataset.reCategory===f;c.hidden=!show;c.style.display=show?'':'none'});s.querySelectorAll('[data-detail-panel]').forEach(function(p){p.classList.remove('is-active');p.setAttribute('aria-hidden','true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-expanded','false')})}else if(t.dataset.detailTarget){var id=t.dataset.detailTarget,s=e.currentTarget;s.classList.add('has-real-estate-detail');s.querySelectorAll('[data-detail-panel]').forEach(function(p){var on=p.dataset.detailPanel===id;p.classList.toggle('is-active',on);p.setAttribute('aria-hidden',on?'false':'true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){var on=b.dataset.detailTarget===id;b.classList.toggle('is-active',on);b.setAttribute('aria-expanded',on?'true':'false')})}})(event)">
+    <div class="container">
+      <div class="real-estate-hub-head reveal">
+        <div>
+          <span class="real-estate-kicker">Real estate</span>
+          <h2 id="real-estate-hub-title">Rent, buy, sell and investment access in one place.</h2>
+        </div>
+        <p>Browse available property pathways, open listing details, compare categories and send the right request directly to the Amigos team.</p>
+      </div>
+
+      <div class="real-estate-filter-bar reveal" aria-label="Real estate categories">
+        <button type="button" class="is-active" data-re-filter="all">All</button>
+        <button type="button" data-re-filter="rent">For rent</button>
+        <button type="button" data-re-filter="sale">For sale</button>
+        <button type="button" data-re-filter="purchase">We buy properties</button>
+        <button type="button" data-re-filter="investment">Investments</button>
+        <button type="button" data-re-filter="new">New construction</button>
+      </div>
+
+      <div class="real-estate-hub-grid">
+        <div class="real-estate-card-grid reveal" aria-label="Property cards">
+          <article class="real-estate-card" data-re-category="rent">
+            <img src="/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg" alt="Bright apartment interior in Olten" loading="lazy" decoding="async">
+            <div class="real-estate-card-body">
+              <div class="real-estate-card-top">
+                <span class="real-estate-status">For rent</span>
+                <span>Olten</span>
+              </div>
+              <h3>Apartment – Olten</h3>
+              <dl>
+                <div><dt>Rooms</dt><dd>4.5</dd></div>
+                <div><dt>Living area</dt><dd>110 m²</dd></div>
+                <div><dt>Rent</dt><dd>CHF 1,200 / month</dd></div>
+              </dl>
+              <button type="button" class="real-estate-action" data-detail-target="olten-rent">View rental details</button>
+            </div>
+          </article>
+
+          <article class="real-estate-card" data-re-category="sale">
+            <img src="/assets/external/projects/photo-1600210491892-03d54c0aaf87-w1500-q90.jpg" alt="Premium condominium living room in Aarau" loading="lazy" decoding="async">
+            <div class="real-estate-card-body">
+              <div class="real-estate-card-top">
+                <span class="real-estate-status">For sale</span>
+                <span>Aarau</span>
+              </div>
+              <h3>Condominium – Aarau</h3>
+              <dl>
+                <div><dt>Rooms</dt><dd>4.5</dd></div>
+                <div><dt>Living area</dt><dd>120 m²</dd></div>
+                <div><dt>Price</dt><dd>CHF 850,000</dd></div>
+              </dl>
+              <button type="button" class="real-estate-action" data-detail-target="aarau-sale">View purchase details</button>
+            </div>
+          </article>
+
+          <article class="real-estate-card" data-re-category="investment">
+            <img src="/assets/external/projects/photo-1600607688969-a5bfcd646154-w1800-q90.jpg" alt="Large residential investment property" loading="lazy" decoding="async">
+            <div class="real-estate-card-body">
+              <div class="real-estate-card-top">
+                <span class="real-estate-status">Investment</span>
+                <span>Solothurn</span>
+              </div>
+              <h3>Investment Property</h3>
+              <dl>
+                <div><dt>Units</dt><dd>8</dd></div>
+                <div><dt>Area</dt><dd>520 m²</dd></div>
+                <div><dt>Offer</dt><dd>On request</dd></div>
+              </dl>
+              <button type="button" class="real-estate-action" data-detail-target="solothurn-invest">View investment details</button>
+            </div>
+          </article>
+
+          <article class="real-estate-card" data-re-category="purchase" hidden>
+            <img src="/assets/external/projects/photo-1600210492486-724fe5c67fb0-w1800-q90.jpg" alt="Property prepared for valuation and purchase" loading="lazy" decoding="async">
+            <div class="real-estate-card-body">
+              <div class="real-estate-card-top">
+                <span class="real-estate-status">We buy</span>
+                <span>Basel region</span>
+              </div>
+              <h3>Property Purchase</h3>
+              <dl>
+                <div><dt>Type</dt><dd>House / flat</dd></div>
+                <div><dt>Review</dt><dd>48h</dd></div>
+                <div><dt>CTA</dt><dd>Request valuation</dd></div>
+              </dl>
+              <button type="button" class="real-estate-action" data-detail-target="basel-purchase">Start seller review</button>
+            </div>
+          </article>
+
+          <article class="real-estate-card" data-re-category="new" hidden>
+            <img src="/assets/external/projects/photo-1618220179428-22790b461013-w1800-q90.jpg" alt="Modern new construction interior concept" loading="lazy" decoding="async">
+            <div class="real-estate-card-body">
+              <div class="real-estate-card-top">
+                <span class="real-estate-status">New construction</span>
+                <span>Zug</span>
+              </div>
+              <h3>New Residence – Zug</h3>
+              <dl>
+                <div><dt>Rooms</dt><dd>3.5–5.5</dd></div>
+                <div><dt>Area</dt><dd>from 96 m²</dd></div>
+                <div><dt>Status</dt><dd>Register interest</dd></div>
+              </dl>
+              <button type="button" class="real-estate-action" data-detail-target="zug-new">View project details</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="real-estate-detail-shell reveal" aria-live="polite">
+        <article class="real-estate-detail-panel" data-detail-panel="olten-rent">
+          <div class="real-estate-gallery">
+            <img src="/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg" alt="Olten apartment main room" loading="lazy" decoding="async">
+            <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg" alt="Olten apartment kitchen detail" loading="lazy" decoding="async">
+            <img src="/assets/external/appartment-renovation/photo-1616486338812-3dadae4b4ace.jpg" alt="Olten apartment bedroom" loading="lazy" decoding="async">
+          </div>
+          <div class="real-estate-detail-copy">
+            <span class="real-estate-status">For rent</span>
+            <h3>Apartment – Olten</h3>
+            <p>Rental listing with gallery, location, price, living area, room count, status and direct enquiry access.</p>
+            <dl>
+              <div><dt>Location</dt><dd>Olten</dd></div>
+              <div><dt>Monthly rent</dt><dd>CHF 1,200</dd></div>
+              <div><dt>Rooms</dt><dd>4.5</dd></div>
+              <div><dt>Living area</dt><dd>110 m²</dd></div>
+              <div><dt>Property type</dt><dd>Apartment</dd></div>
+              <div><dt>Status</dt><dd>Available</dd></div>
+            </dl>
+            <ul>
+              <li>Additional information block for handover date, floor, parking or documents.</li>
+              <li>Property-specific images are tied to this listing.</li>
+            </ul>
+            <a class="real-estate-primary-link" href="#calc">Request rental consultation</a>
+          </div>
+        </article>
+
+        <article class="real-estate-detail-panel" data-detail-panel="aarau-sale">
+          <div class="real-estate-gallery">
+            <img src="/assets/external/projects/photo-1600210491892-03d54c0aaf87-w1500-q90.jpg" alt="Aarau condominium living room" loading="lazy" decoding="async">
+            <img src="/assets/external/color-and-material/photo-1600210491892-03d54c0aaf87-w2200-q90.jpg" alt="Aarau condominium interior angle" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.jpg" alt="Aarau condominium exterior" loading="lazy" decoding="async">
+          </div>
+          <div class="real-estate-detail-copy">
+            <span class="real-estate-status">For sale</span>
+            <h3>Condominium – Aarau</h3>
+            <p>Purchase-oriented property detail with clear sales data, gallery placement and direct request CTA.</p>
+            <dl>
+              <div><dt>Location</dt><dd>Aarau</dd></div>
+              <div><dt>Purchase price</dt><dd>CHF 850,000</dd></div>
+              <div><dt>Rooms</dt><dd>4.5</dd></div>
+              <div><dt>Living area</dt><dd>120 m²</dd></div>
+              <div><dt>Property type</dt><dd>Condominium</dd></div>
+              <div><dt>Status</dt><dd>For sale</dd></div>
+            </dl>
+            <ul>
+              <li>Space for documents, renovation notes and viewing availability.</li>
+              <li>Designed to accept final client property data later.</li>
+            </ul>
+            <a class="real-estate-primary-link" href="#calc">Request purchase consultation</a>
+          </div>
+        </article>
+
+        <article class="real-estate-detail-panel" data-detail-panel="solothurn-invest">
+          <div class="real-estate-gallery">
+            <img src="/assets/external/projects/photo-1600607688969-a5bfcd646154-w1800-q90.jpg" alt="Solothurn investment property exterior" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.jpg" alt="Investment property building detail" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1560518883-ce09059eeffa-w1400-q85.jpg" alt="Investment property street view" loading="lazy" decoding="async">
+          </div>
+          <div class="real-estate-detail-copy">
+            <span class="real-estate-status">Investment</span>
+            <h3>Investment Property</h3>
+            <p>Investor structure for yield documents, unit mix, condition notes and renovation scope.</p>
+            <dl>
+              <div><dt>Location</dt><dd>Solothurn</dd></div>
+              <div><dt>Offer</dt><dd>On request</dd></div>
+              <div><dt>Units</dt><dd>8</dd></div>
+              <div><dt>Area</dt><dd>520 m²</dd></div>
+              <div><dt>Property type</dt><dd>Multi-unit property</dd></div>
+              <div><dt>Status</dt><dd>Investment</dd></div>
+            </dl>
+            <ul>
+              <li>Additional information area for rent roll, renovation budget and documents.</li>
+              <li>Supports different images for each investment project.</li>
+            </ul>
+            <a class="real-estate-primary-link" href="#calc">Request investment file</a>
+          </div>
+        </article>
+
+        <article class="real-estate-detail-panel" data-detail-panel="basel-purchase">
+          <div class="real-estate-gallery">
+            <img src="/assets/external/projects/photo-1600210492486-724fe5c67fb0-w1800-q90.jpg" alt="Basel property purchase interior" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg" alt="Property valuation exterior" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1600566753190-17f0baa2a6c3-w1800-q85.jpg" alt="Property purchase room detail" loading="lazy" decoding="async">
+          </div>
+          <div class="real-estate-detail-copy">
+            <span class="real-estate-status">We buy properties</span>
+            <h3>Property Purchase</h3>
+            <p>Seller pathway for owners who want a discreet property review, valuation and purchase conversation.</p>
+            <dl>
+              <div><dt>Region</dt><dd>Basel region</dd></div>
+              <div><dt>Review</dt><dd>Initial feedback in 48h</dd></div>
+              <div><dt>Rooms</dt><dd>Flexible</dd></div>
+              <div><dt>Area</dt><dd>Client supplied</dd></div>
+              <div><dt>Property type</dt><dd>House / apartment</dd></div>
+              <div><dt>Status</dt><dd>Purchase request</dd></div>
+            </dl>
+            <ul>
+              <li>Additional information area for ownership status, documents and renovation condition.</li>
+              <li>Clear sell/access route separated from rental and purchase listings.</li>
+            </ul>
+            <a class="real-estate-primary-link" href="#calc">Request seller review</a>
+          </div>
+        </article>
+
+        <article class="real-estate-detail-panel" data-detail-panel="zug-new">
+          <div class="real-estate-gallery">
+            <img src="/assets/external/projects/photo-1618220179428-22790b461013-w1800-q90.jpg" alt="Zug new construction interior" loading="lazy" decoding="async">
+            <img src="/assets/external/color-and-material/photo-1618220179428-22790b461013-w2200-q90.jpg" alt="New residence material concept" loading="lazy" decoding="async">
+            <img src="/assets/external/property-value-preservation/photo-1558655146-d09347e92766-w1200-q85.jpg" alt="New construction project planning view" loading="lazy" decoding="async">
+          </div>
+          <div class="real-estate-detail-copy">
+            <span class="real-estate-status">New construction</span>
+            <h3>New Residence – Zug</h3>
+            <p>Project-development detail for new construction launches, staged availability and interest registration.</p>
+            <dl>
+              <div><dt>Location</dt><dd>Zug</dd></div>
+              <div><dt>Price</dt><dd>To be confirmed</dd></div>
+              <div><dt>Rooms</dt><dd>3.5–5.5</dd></div>
+              <div><dt>Living area</dt><dd>from 96 m²</dd></div>
+              <div><dt>Property type</dt><dd>New construction</dd></div>
+              <div><dt>Status</dt><dd>Register interest</dd></div>
+            </dl>
+            <ul>
+              <li>Additional information area for completion date, floorplans and availability.</li>
+              <li>Designed for future client-provided launch content.</li>
+            </ul>
+            <a class="real-estate-primary-link" href="#calc">Register interest</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -627,7 +870,7 @@ const pageHtml = `
     </div>
   </section>
 
-  <!-- SECTION 11 · TESTIMONIALS (blueprint bg + circular avatars) -->
+  <!-- SECTION 11 · TESTIMONIALS (project-grid bg + circular avatars) -->
   <section id="testi">
     <div class="testi-bg" aria-hidden="true"></div>
     <div class="container">
@@ -867,7 +1110,7 @@ export default function ProjectsPage() {
     <LegacyPage 
       html={`<div class="amigos-wrapper">${pageHtml}</div>`}
       css={['/style.css', 'amigos/styles.css', 'amigos/premium.css', 'amigos/theme.css', 'amigos/projects-theme.css']}
-      scripts={['amigos/main.js', 'amigos/calc.js', 'amigos/ba.js', 'amigos/premium.js', 'amigos/projects-hero.js']}
+      scripts={['amigos/projects-hero.js']}
       shell={true}
       gsap={true}
     />

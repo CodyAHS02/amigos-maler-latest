@@ -27,6 +27,7 @@ const serviceHoverGradients = [
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isProjects = pathname === "/projects";
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const { isPlaying: isAudioPlaying, toggleSound } = useAmigosAudio();
@@ -102,14 +103,20 @@ export default function Header() {
 
   return (
     <header className={`site-header${isHome ? " home-initial" : ""}`} id="siteHeader">
-      <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
-        <span className={styles.logoSymbol} aria-hidden="true">
-          <img src="/assets/logo.png" alt="" />
-        </span>
-        <span className={styles.logoWordmark}>
-          <strong>AMIGOS MALER</strong>
-          <small>KOMPETENZ VERBINDET</small>
-        </span>
+      <a className={`logo ${styles.logoLink}${isProjects ? ` ${styles.fullLogoLink}` : ""}`} href="/" aria-label="Amigos Maler home">
+        {isProjects ? (
+          <img className={styles.fullLogoImage} src="/assets/logo.png" alt="Amigos Maler" />
+        ) : (
+          <>
+            <span className={styles.logoSymbol} aria-hidden="true">
+              <img src="/assets/logo.png" alt="" />
+            </span>
+            <span className={styles.logoWordmark}>
+              <strong>AMIGOS MALER</strong>
+              <small>KOMPETENZ VERBINDET</small>
+            </span>
+          </>
+        )}
       </a>
 
       <nav className="site-nav">
