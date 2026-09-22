@@ -82,9 +82,9 @@ html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .test
 export default function Page() {
   return (
     <LegacyPage
-      css={["/style.css","/about.css"]}
+      css={["/style.css", "/about.css"]}
       html={pageHtml}
-      scripts={["/about.js","/script.js"]}
+      scripts={["/about.js", "/script.js"]}
       shell={true}
     >
       <style dangerouslySetInnerHTML={{ __html: forcedAboutDarkThemeCss }} data-about-dark-theme-force />

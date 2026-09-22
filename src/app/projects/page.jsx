@@ -697,6 +697,181 @@ const pageHtml = `
     </div>
   </section>
 
+  <!-- NEW SECTIONS ADDED FROM REFERENCE -->
+  <style>
+    /* New Sections Custom Styles */
+    .new-sections-wrapper { font-family: inherit; }
+    
+    .new-intl-showcase { position: relative; padding: 120px 0; color: #fff !important; overflow: hidden; display: flex; align-items: center; min-height: 70vh; }
+    .new-intl-showcase .bg-wrap { position: absolute; inset: 0; z-index: 1; }
+    .new-intl-showcase img.bg-img { width: 100%; height: 100%; object-fit: cover; }
+    .new-intl-showcase .overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,32,0.85) 0%, rgba(15,23,32,0.4) 50%, transparent 100%); }
+    .new-intl-showcase .content { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 40px; }
+    .new-intl-showcase .text-col { max-width: 600px; }
+    .new-intl-showcase .eyebrow-text { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #F39125; margin-bottom: 20px; font-weight: 600; }
+    .new-intl-showcase h2 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; margin-bottom: 24px; font-weight: 300; letter-spacing: -0.02em; color: #fff !important; }
+    .new-intl-showcase p { font-size: 1.25rem; line-height: 1.6; margin-bottom: 40px; color: #fff !important; font-weight: 300; }
+    .new-intl-showcase .badge { text-align: center; border: 1px solid rgba(255,255,255,0.2); padding: 40px 30px; border-radius: 8px; backdrop-filter: blur(10px); background: rgba(0,0,0,0.2); min-width: 180px; }
+    
+    #new-services-section { color: #fff; padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    /* Indestructible Gradient Rule */
+    html body[data-page] .amigos-wrapper section#new-services-section,
+    html[data-theme] body[data-page] .amigos-wrapper section#new-services-section {
+        background: linear-gradient(135deg, #f6be10 0%, #f39125 40%, #c73b8e 100%) !important;
+        background-color: transparent !important;
+    }
+
+    .new-services .container { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; width: 100%; }
+    .new-services .text-col { max-width: 100%; width: 100%; }
+    .new-services .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.8) !important; margin-bottom: 16px; }
+    .new-services h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; font-weight: 300; margin: 0; color: #fff !important; }
+    .new-services .icons-row { display: flex; gap: 20px; flex-wrap: nowrap; width: 100%; overflow-x: auto; scrollbar-width: none; }
+    .new-services .icon-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; cursor: pointer; color: rgba(255,255,255,0.75); padding: 32px 24px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex: 1; min-width: 160px; padding: 40px 24px; }
+    .new-services .icon-item svg { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .new-services .icon-item:hover { color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.4); transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .new-services .icon-item:hover svg { color: #fff; filter: drop-shadow(0 4px 8px rgba(255,255,255,0.5)); transform: scale(1.15) translateY(-2px); }
+    
+    .new-ba-section { background: #0F1720; color: #fff; overflow: hidden; }
+    .new-ba-grid { display: grid; grid-template-columns: minmax(350px, 450px) 1fr; align-items: stretch; min-height: 60vh; }
+    .new-ba-text { padding: 80px 5vw; display: flex; flex-direction: column; justify-content: center; z-index: 2; position: relative; text-align: left; }
+    .new-ba-text-inner { max-width: 500px; margin-left: auto; }
+    .new-ba-text .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+    .new-ba-text h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 24px; font-weight: 300; }
+    .new-ba-text p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
+    
+    .new-ba-interactive { position: relative; display: flex; width: 100%; min-height: 500px; height: 100%; overflow: hidden; user-select: none; }
+    .new-ba-before, .new-ba-after { position: relative; height: 100%; overflow: hidden; flex-shrink: 0; }
+    .new-ba-before { width: 50%; }
+    .new-ba-after { width: 50%; }
+    .new-ba-before img, .new-ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; }
+    .new-ba-tag { position: absolute; top: 30px; z-index: 3; padding: 8px 18px; border-radius: 999px; background: rgba(0,0,0,0.55); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; backdrop-filter: blur(8px); pointer-events: none; white-space: nowrap; text-transform: uppercase; }
+    .new-ba-tag.before { left: 30px; }
+    .new-ba-tag.after { right: 30px; }
+    .new-ba-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; transform: translateX(-50%); cursor: ew-resize; z-index: 4; }
+    .new-ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .new-ba-handle svg { width: 18px; height: 18px; stroke: #000; margin: 0 -2px; }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    .new-final-cta { background: #0B1117; color: #fff; padding: 100px 0; position: relative; overflow: hidden; }
+    .new-final-cta .bg-letter { position: absolute; right: -5%; bottom: -20%; font-size: 600px; font-weight: 800; line-height: 0.8; color: rgba(255,255,255,0.02); pointer-events: none; z-index: 1; }
+    .new-final-cta .container { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px; }
+    .new-final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
+    .new-final-cta p { font-size: 1.2rem; color: rgba(255,255,255,0.7); font-weight: 300; margin: 0; }
+    .new-final-cta .btn-cta { background: #F39125; color: #0F1720; border: none; font-weight: 500; padding: 16px 32px; font-size: 1.1rem; flex-shrink: 0; border-radius: 40px; text-decoration: none; display: inline-block; transition: background 0.3s; }
+    .new-final-cta .btn-cta:hover { background: #fff; }
+
+    @media (max-width: 900px) {
+      .new-ba-grid { grid-template-columns: 1fr; }
+      .new-intl-showcase .content { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+
+  <div class="new-sections-wrapper">
+    <!-- NEW SECTION 1: INTERNATIONAL SHOWCASE -->
+    <section class="new-intl-showcase" style="background: #0F1720 !important; background-color: #0F1720 !important;">
+      <div class="bg-wrap">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2500&auto=format&fit=crop" alt="Luxury Villa Punta Cana" class="bg-img" loading="lazy" decoding="async">
+        <div class="overlay"></div>
+      </div>
+      <div class="container content">
+        <div class="text-col">
+          <div class="eyebrow-text">Discover International</div>
+          <h2>Punta Cana</h2>
+          <p>Exclusive residences & investment opportunities in the Dominican Republic.</p>
+          <a href="#calc" class="btn btn-solid mag" style="background: #F39125; color: #0F1720; border: none;">Discover projects →</a>
+        </div>
+        <div class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F39125" stroke-width="1.5" style="width: 40px; height: 40px; margin-bottom: 20px; display: block; margin-inline: auto;">
+            <path d="M12 2v20M17 5S12 8 12 8s-5-3-5-3M17 12s-5 3-5 3-5-3-5-3M7 19s5-3 5-3 5 3 5 3"/>
+          </svg>
+          <div style="font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; line-height: 1.6; color: #fff !important;">Sun<br>Quality of Life<br>Investment<br>Future</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 2: SERVICES / PROPERTY VALUE -->
+    <section id="new-services-section" class="new-services" style="background: linear-gradient(135deg, #f6be10 0%, #f39125 40%, #c73b8e 100%) !important; background-color: transparent !important; color: #fff !important;">
+      <div class="container">
+        <div class="text-col">
+          <div class="eyebrow-text" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; opacity: 0.9 !important;">Property + Value Retention</div>
+          <h2>We don't just broker properties. We preserve their value.</h2>
+        </div>
+        <div class="icons-row">
+          <div class="icon-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width: 52px; height: 52px;"><path d="M19 14h-4v7h-6v-7h-4v-7h14v7z"/><path d="M12 7v-4"/></svg>
+            <span style="font-size: 13px; font-weight: 500;">Renovation</span>
+          </div>
+          <div class="icon-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width: 52px; height: 52px;"><path d="M20 4L4 20M20 4l-4 4M20 4l-8 8"/></svg>
+            <span style="font-size: 13px; font-weight: 500;">Painting</span>
+          </div>
+          <div class="icon-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width: 52px; height: 52px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span style="font-size: 13px; font-weight: 500;">Facades</span>
+          </div>
+          <div class="icon-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width: 52px; height: 52px;"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+            <span style="font-size: 13px; font-weight: 500;">Interior Fit-out</span>
+          </div>
+          <div class="icon-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width: 52px; height: 52px;"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <span style="font-size: 13px; font-weight: 500;">Value Retention</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 3: BEFORE / AFTER -->
+    <section class="new-ba-section">
+      <div class="new-ba-grid">
+        <div class="new-ba-text">
+          <div class="new-ba-text-inner">
+            <div class="eyebrow-text">Before / After</div>
+          <h2>Real Results.<br>Sustainable Value.</h2>
+          <p>Drag the handle and see for yourself how we make properties shine in new splendor.</p>
+          <a href="#showcase" class="btn mag" style="border: 1px solid rgba(255,255,255,0.3); color: #fff; width: fit-content; padding: 12px 30px;">View all references →</a>
+          </div>
+        </div>
+        <div class="new-ba-interactive" id="new-ba-slider">
+            <div class="new-ba-before" id="new-ba-before">
+                <img src="/amigos/img/before.jpg" alt="Before renovation">
+                <span class="new-ba-tag before" id="new-ba-tag-before">BEFORE</span>
+            </div>
+            <div class="new-ba-after" id="new-ba-after">
+                <img src="/amigos/img/after.jpg" alt="After renovation">
+                <span class="new-ba-tag after" id="new-ba-tag-after">AFTER</span>
+            </div>
+            <div class="new-ba-divider" id="new-ba-divider">
+                <div class="new-ba-handle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW SECTION 5: FINAL CTA -->
+    <section class="new-final-cta">
+      <div class="bg-letter">A</div>
+      <div class="container">
+        <div>
+          <h2>Let's talk about your project.</h2>
+          <p>Whether real estate, renovation, or value retention – we are here for you.</p>
+        </div>
+        <a href="#calc" class="btn-cta">Request a free quote →</a>
+      </div>
+    </section>
+  </div>
+
   <!-- WHY AMIGOS and plans sections removed per client request. -->
 
   <!-- SECTION 9 · CREATIVE PROJECTS SHOWCASE -->
@@ -756,116 +931,6 @@ const pageHtml = `
             <strong>Lake property</strong>
           </div>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 10 · BEFORE/AFTER SHOWCASE (carousel of projects) -->
-  <section id="showcase">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">Selected work</div>
-        <svg class="brush" viewBox="0 0 180 22">
-          <path d="M2 12 C 40 22, 80 2, 120 14 S 170 6, 178 12" />
-        </svg>
-        <h2>Drag the handle. Watch the transformation.</h2>
-        <p>Interactive before &amp; after from recent Swiss portfolio projects.</p>
-      </div>
-
-      <div class="ba-carousel reveal">
-        <div class="ba-viewport">
-          <div class="ba-track" id="ba-track">
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/before.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/after.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Residential · 2025</span>
-                <h3>Lakeside villa · Zürichberg</h3>
-                <p>Full interior refurbishment · 340 m² · 11 weeks · zero-dust protocol.</p>
-              </div>
-            </div>
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/before2.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/after2.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Renovation · 2025</span>
-                <h3>Townhouse restoration · Geneva</h3>
-                <p>Damaged interior fully restored · low-VOC finish · 12-year warranty.</p>
-              </div>
-            </div>
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/ref2.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/ref1.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Heritage · 2024</span>
-                <h3>Belle Époque facade · Bern</h3>
-                <p>Cantonal-approved mineral silicate system · 220 m² heritage-listed.</p>
-              </div>
-            </div>
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/before.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/after.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Refresh · 2024</span>
-                <h3>City apartment · Zürich</h3>
-                <p>Premium wall and ceiling refresh · protected floors · clean handover.</p>
-              </div>
-            </div>
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/ref2.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/ref3.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Exterior · 2024</span>
-                <h3>Private home · Zug</h3>
-                <p>Weather-resistant coating system · repaired substrate · careful masking.</p>
-              </div>
-            </div>
-            <div class="ba-slide">
-              <div class="ba">
-                <img src="/amigos/img/before2.jpg" alt="Before" loading="lazy" decoding="async">
-                <div class="ba-after-wrap"><img src="/amigos/img/after2.jpg" alt="After" loading="lazy" decoding="async"></div>
-                <div class="ba-handle"></div>
-                <div class="ba-label before">Before</div>
-                <div class="ba-label after">After</div>
-              </div>
-              <div class="ba-meta">
-                <span class="tag">Repair · 2025</span>
-                <h3>Rental handover · Basel</h3>
-                <p>Fast turnaround repairs · filling, sanding and final coat in one sequence.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="ba-nav">
-          <button class="ba-btn" id="ba-prev" aria-label="Previous">←</button>
-          <div class="ba-dots" id="ba-dots"></div>
-          <button class="ba-btn" id="ba-next" aria-label="Next">→</button>
-        </div>
       </div>
     </div>
   </section>
@@ -1050,27 +1115,6 @@ const pageHtml = `
       });
     })();
 
-    // Before/After carousel
-    (function () {
-      const track = document.getElementById('ba-track');
-      const dotsC = document.getElementById('ba-dots');
-      if (!track) return;
-      const slides = track.querySelectorAll('.ba-slide');
-      let i = 0;
-      slides.forEach((_, idx) => {
-        const d = document.createElement('button');
-        d.className = 'ba-dot' + (idx === 0 ? ' on' : '');
-        d.addEventListener('click', () => go(idx));
-        dotsC.appendChild(d);
-      });
-      function go(n) {
-        i = (n + slides.length) % slides.length;
-        track.style.transform = \`translateX(-\${i * 100}%)\`;
-        dotsC.querySelectorAll('.ba-dot').forEach((x, k) => x.classList.toggle('on', k === i));
-      }
-      document.getElementById('ba-prev').addEventListener('click', () => go(i - 1));
-      document.getElementById('ba-next').addEventListener('click', () => go(i + 1));
-    })();
 
     // Vision Studio — upload demo + swatch tinting
     (function () {
@@ -1102,7 +1146,9 @@ const pageHtml = `
       const first = swatches ? swatches.querySelector('.sw.on') : null;
       if (first && tint) tint.style.background = first.dataset.tint;
     })();
-  </script>
+    
+
+</script>
 `;
 
 export default function ProjectsPage() {
@@ -1110,7 +1156,7 @@ export default function ProjectsPage() {
     <LegacyPage 
       html={`<div class="amigos-wrapper">${pageHtml}</div>`}
       css={['/style.css', 'amigos/styles.css', 'amigos/premium.css', 'amigos/theme.css', 'amigos/projects-theme.css']}
-      scripts={['amigos/projects-hero.js']}
+      scripts={['amigos/main.js', 'amigos/calc.js', 'amigos/ba.js', 'amigos/premium.js', 'amigos/projects-hero.js']}
       shell={true}
       gsap={true}
     />

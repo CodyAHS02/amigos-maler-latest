@@ -310,3 +310,45 @@
     initRealEstateHub();
   }
 })();
+
+
+// NEW SECTIONS: Proper Before/After Slider Logic (matching interior painting)
+(function initSlider() {
+    const slider = document.getElementById('new-ba-slider');
+    const beforePane = document.getElementById('new-ba-before');
+    const afterPane = document.getElementById('new-ba-after');
+    const divider = document.getElementById('new-ba-divider');
+    const tagBefore = document.getElementById('new-ba-tag-before');
+    const tagAfter = document.getElementById('new-ba-tag-after');
+    
+    if (!slider || !beforePane || !afterPane || !divider) {
+        setTimeout(initSlider, 100);
+        return;
+    }
+    
+    let active = false;
+    const EDGE_FADE_ZONE = 10;
+    
+    function clamp01(n) { return Math.max(0, Math.min(1, n)); }
+    
+    function updateSlider(x) {
+        const box = slider.getBoundingClientRect();
+        let value = ((x - box.left) / box.width) * 100;
+        value = Math.max(0, Math.min(100, value));
+        
+        beforePane.style.width = value + '%';
+        afterPane.style.width = (100 - value) + '%';
+        divider.style.left = value + '%';
+        
+        if(tagBefore) tagBefore.style.opacity = value < EDGE_FADE_ZONE ? clamp01(value / EDGE_FADE_ZONE) : 1;
+        if(tagAfter) tagAfter.style.opacity = (100 - value) < EDGE_FADE_ZONE ? clamp01((100 - value) / EDGE_FADE_ZONE) : 1;
+    }
+    
+    divider.addEventListener('mousedown', (e) => { active = true; e.preventDefault(); });
+    window.addEventListener('mouseup', () => { active = false; });
+    window.addEventListener('mousemove', (e) => { if (active) updateSlider(e.clientX); });
+    
+    divider.addEventListener('touchstart', (e) => { active = true; }, {passive: true});
+    window.addEventListener('touchend', () => { active = false; });
+    window.addEventListener('touchmove', (e) => { if (active) updateSlider(e.touches[0].clientX); }, {passive: true});
+})();

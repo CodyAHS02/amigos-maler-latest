@@ -1822,7 +1822,7 @@ WHY AMIGOS
 
 .stat {
 
-    padding: 20px 0;
+    padding: 30px 0;
 
     border-bottom: 1px solid #E7DFD2;
 
@@ -1865,11 +1865,17 @@ WHY AMIGOS
 
 .stat span {
 
+    display: block;
+
     color: #8A8275;
 
     font-size: 28px;
+    
+    line-height: 1.3;
 
     letter-spacing: .02em;
+    
+    padding-bottom: 10px;
 
 }
 
@@ -11479,7 +11485,7 @@ html[data-theme="amigos-dark"] {
     --am-dark-navy-2: #0B223D;
     --am-dark-surface: rgba(13, 37, 66, .84);
     --am-dark-line: rgba(255, 255, 255, .16);
-    --am-brand-gradient: linear-gradient(135deg, #F6BE10 0%, #F39125 45%, #E62453 100%);
+    --am-brand-gradient: linear-gradient(135deg, #F6BE10 0%, #F39125 50%, #FF7878 100%);
 }
 
 html[data-theme="amigos-dark"] body,
@@ -11568,7 +11574,22 @@ html[data-theme="amigos-dark"] .billing-toggle,
 html[data-theme="amigos-dark"] .about-card,
 html[data-theme="amigos-dark"] .value-card,
 html[data-theme="amigos-dark"] .process-step,
-html[data-theme="amigos-dark"] article {
+html[data-theme="amigos-dark"] .svc-intro-point,
+html[data-theme="amigos-dark"] .service-card,
+html[data-theme="amigos-dark"] .process-card,
+html[data-theme="amigos-dark"] .material-card,
+html[data-theme="amigos-dark"] .benefit-card,
+html[data-theme="amigos-dark"] .intro-points div,
+html[data-theme="amigos-dark"] .value-points div,
+html[data-theme="amigos-dark"] .creation-card,
+html[data-theme="amigos-dark"] .transform-card,
+html[data-theme="amigos-dark"] .flow-item,
+html[data-theme="amigos-dark"] .problem-item,
+html[data-theme="amigos-dark"] .spray-intro-points div,
+html[data-theme="amigos-dark"] .step-number,
+html[data-theme="amigos-dark"] .connection-number,
+html[data-theme="amigos-dark"] .flow-icon,
+html[data-theme="amigos-dark"] article:not(.process-item):not(.value-row) {
     background: var(--am-dark-surface) !important;
     border-color: var(--am-dark-line) !important;
     color: #FDFBF6 !important;
@@ -12713,18 +12734,15 @@ html[data-theme="amigos-dark"] body[data-page="about"] main .values-section {
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials {
-    background:
-        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, .22), transparent 34%),
-        linear-gradient(135deg, #FFD21F 0%, #F6BE10 54%, #FF9B1A 100%) !important;
-    color: #050505 !important;
+    color: #FDFBF6 !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials h2,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials p,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .review-link,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-control {
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+    color: #FDFBF6 !important;
+    -webkit-text-fill-color: #FDFBF6 !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .section-kicker,

@@ -602,9 +602,9 @@ body {
     display: grid;
     grid-template-columns: minmax(190px, .45fr) 1fr;
     gap: 34px;
-    padding: 32px 0;
+    padding: 34px 28px;
     border-bottom: 1px solid var(--partner-line);
-    transition: padding-left .35s ease, color .35s ease;
+    transition: padding-left .35s ease, color .35s ease, background .35s ease, transform .35s ease, box-shadow .35s ease;
 }
 
 .standard-row span {
@@ -621,7 +621,7 @@ body {
 }
 
 .standard-row:hover {
-    padding-left: 22px;
+    transform: translateX(10px);
 }
 
 .standard-row:hover span {

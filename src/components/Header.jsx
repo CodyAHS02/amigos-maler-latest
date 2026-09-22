@@ -105,11 +105,11 @@ export default function Header() {
     <header className={`site-header${isHome ? " home-initial" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}${isProjects ? ` ${styles.fullLogoLink}` : ""}`} href="/" aria-label="Amigos Maler home">
         {isProjects ? (
-          <img className={styles.fullLogoImage} src="/assets/logo.png" alt="Amigos Maler" />
+          <img className={styles.fullLogoImage} src="/logo.webp" alt="Amigos Maler" />
         ) : (
           <>
             <span className={styles.logoSymbol} aria-hidden="true">
-              <img src="/assets/logo.png" alt="" />
+              <img src="/logo.webp" alt="" />
             </span>
             <span className={styles.logoWordmark}>
               <strong>AMIGOS MALER</strong>

@@ -875,6 +875,25 @@ html:not([data-theme="amigos-dark"]) .partners-page .partners-hero .partners-her
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
 }
+
+/* Fix footer on Partners Page */
+html[data-theme="amigos-dark"] body[data-page="partners"] .site-footer {
+  background: var(--partners-navy) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+html[data-theme="amigos-dark"] body[data-page="partners"] .site-footer * {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-footer {
+  background: #fff !important;
+  border-top: 1px solid rgba(5, 5, 5, 0.16) !important;
+}
+html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-footer * {
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
 `;
 
 export default function PartnersPage() {
