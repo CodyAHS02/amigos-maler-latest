@@ -823,6 +823,7 @@ a {
 }
 
 .property-overlay {
+    display: none !important;
     position: absolute;
     inset: 0;
     background: rgba(11, 35, 63, .72);

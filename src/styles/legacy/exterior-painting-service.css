@@ -1315,3 +1315,50 @@ a {
         animation: none !important;
     }
 }
+
+
+/* =========================================
+   LIGHT MODE OVERRIDES FOR HERO
+========================================= */
+
+html:not([data-theme="amigos-dark"]) .svc-hero-overlay {
+    background:
+        radial-gradient(circle at 18% 28%, rgba(230, 36, 83, .18), transparent 32%),
+        radial-gradient(circle at 78% 30%, rgba(255, 122, 26, .14), transparent 34%),
+        linear-gradient(90deg, rgba(255, 255, 255, .82) 0%, rgba(255, 255, 255, .58) 48%, rgba(255, 255, 255, .34) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, .20), rgba(255, 255, 255, .72)) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .svc-hero-eyebrow {
+    color: #e62453 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .svc-hero-content h1,
+html:not([data-theme="amigos-dark"]) .svc-hero-content p,
+html:not([data-theme="amigos-dark"]) .svc-hero-quick-stats h4 {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .svc-hero-quick-stats span {
+    color: #4a4a4a !important;
+    -webkit-text-fill-color: #4a4a4a !important;
+}
+
+html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, .42), rgba(255, 255, 255, .42)),
+        var(--logo-gradient-moving) !important;
+    background-origin: padding-box, border-box !important;
+    background-clip: padding-box, border-box !important;
+    background-size: 100% 100%, 260% 260% !important;
+    border: 1px solid transparent !important;
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+    font-weight: 700 !important;
+    animation: svcLogoGradientShift 8s ease-in-out infinite !important;
+}
+
+html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary:hover {
+    box-shadow: 0 12px 24px rgba(243, 145, 37, .12) !important;
+}

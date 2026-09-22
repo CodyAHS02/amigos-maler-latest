@@ -8,9 +8,9 @@
 
 .logoSymbol {
   display: block;
-  width: 45px;
+  width: 60px;
   height: 46px;
-  flex: 0 0 45px;
+  flex: 0 0 60px;
   overflow: hidden;
 }
 
@@ -68,9 +68,9 @@
   }
 
   .logoSymbol {
-    width: 38px;
+    width: 42px;
     height: 39px;
-    flex-basis: 38px;
+    flex-basis: 42px;
   }
 
   .logoSymbol img {
@@ -89,4 +89,73 @@
     height: 42px !important;
     max-width: 190px !important;
   }
+}
+
+
+/* =========================================
+   GLOBAL LIGHT MODE HEADER OVERRIDES
+   Ensures ALL pages (except homepage initial state) have the dark text / bright buttons header in light mode
+========================================= */
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .dropdown-trigger),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .nav-link) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a:hover),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .dropdown-trigger:hover),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .nav-link:hover) {
+    color: #FFD21F !important;
+    -webkit-text-fill-color: #FFD21F !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn) {
+    background: #FFD21F !important;
+    border-color: #FFD21F !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn) {
+    background: #E62453 !important;
+    border-color: #E62453 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn:hover),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn:hover) {
+    opacity: .72;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .theme-toggle),
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .sound-toggle) {
+    background: rgba(7, 26, 51, .10) !important;
+    border-color: rgba(7, 26, 51, .22) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .sound-toggle:not(.is-playing) .sound-toggle-icon) {
+    background: rgba(7, 26, 51, .15) !important;
+    color: #071A33 !important;
+}
+
+/* Make sure the logo text is dark */
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial)) .logoWordmark {
+    color: #050505 !important;
+}
+
+
+/* Fix dropdown numbers inheriting dark color in light mode */
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a .item-num) {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+
+/* Make logo text black in sticky header on light theme */
+:global(html:not([data-theme="amigos-dark"]) .site-header.is-scrolled) .logoWordmark {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
 }
