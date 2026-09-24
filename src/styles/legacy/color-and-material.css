@@ -19,7 +19,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-offwhite: #CFC3B1;
     --am-ochre: #B7893D;
@@ -256,7 +256,7 @@ button {
 
 .color-hero-content h1 {
     font-size: clamp(60px, 6vw, 120px);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1;
     letter-spacing: 0px;
 }
@@ -265,7 +265,7 @@ button {
     display: block;
 
     font-family: themeFont;
-    font-weight: 400;
+    font-weight: 600;
     font-style: italic;
 
     color: #E4D0A8;
@@ -390,7 +390,7 @@ button {
 
 .color-intro-copy h2 {
     font-size: clamp(35px, 4vw, 58px);
-    font-weight: 400;
+    font-weight: 700;
 
     line-height: .91;
 
@@ -407,7 +407,7 @@ button {
 }
 
 .color-intro-copy>p {
-    font-size: 15px;
+    font-size: 9px;
     line-height: 1.85;
 
     color: var(--am-text);
@@ -555,7 +555,7 @@ button {
 
 .choices-heading h2 {
     font-size: clamp(35px, 4vw, 58px);
-    font-weight: 400;
+    font-weight: 700;
 
     line-height: .9;
 
@@ -624,7 +624,7 @@ button {
 }
 
 .choice-content>span {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 3px;
 
     color: var(--am-ochre);
@@ -638,7 +638,7 @@ button {
 }
 
 .choice-content p {
-    font-size: 12px;
+    font-size: 8px;
     line-height: 1.7;
 
     color: rgba(255, 255, 255, .56);
@@ -663,7 +663,7 @@ button {
     align-items: center;
     justify-content: center;
 
-    font-size: 15px;
+    font-size: 12px;
 
     color: var(--am-ochre);
 
@@ -704,7 +704,7 @@ button {
 
 .color-experience-intro h2 {
     font-size: clamp(35px, 4vw, 58px);
-    font-weight: 400;
+    font-weight: 500;
 
     line-height: .9;
 
@@ -849,7 +849,7 @@ button {
 }
 
 .room-selected-description {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.6;
 
     color: rgba(255, 255, 255, .64);
@@ -979,7 +979,7 @@ button {
 
     gap: 25px;
 
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 3px;
 
     color: rgba(255, 255, 255, .6);
@@ -1025,7 +1025,7 @@ button {
 
     font-size: clamp(35px, 4vw, 58px);
 
-    font-weight: 400;
+    font-weight: 500;
 
     line-height: .92;
 
@@ -1040,7 +1040,7 @@ button {
 
     font-style: italic;
 
-    font-weight: 400;
+    font-weight: 500;
 
     color: var(--am-ochre);
 }
@@ -1050,7 +1050,7 @@ button {
 
     margin-top: 24px;
 
-    font-size: 15px;
+    font-size: 9px;
 
     line-height: 1.75;
 
@@ -1215,7 +1215,7 @@ button {
 
     color: white;
 
-    font-size: 11px;
+    font-size: 13px;
 
     font-weight: 600;
 
@@ -1303,9 +1303,9 @@ button {
 
     font: inherit;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     letter-spacing: .06em;
 
@@ -1415,7 +1415,7 @@ button {
 
 .material-gallery-header h2 {
     font-size: clamp(35px, 4vw, 58px);
-    font-weight: 400;
+    font-weight: 500;
 
     line-height: .91;
 
@@ -1588,7 +1588,7 @@ button {
 .consultation-heading h2 {
     font-size: clamp(35px, 4vw, 58px);
 
-    font-weight: 400;
+    font-weight: 600;
 
     line-height: .9;
 
@@ -1683,9 +1683,9 @@ button {
 
     border: 1px solid var(--am-line);
 
-    font-size: 10px;
+    font-size: 8px;
 
-    font-weight: 700;
+    font-weight: 400;
 
     letter-spacing: 1px;
 
@@ -1709,9 +1709,9 @@ button {
 }
 
 .consultation-content>span {
-    font-size: 9px;
+    font-size: 8px;
 
-    font-weight: 700;
+    font-weight: 400;
 
     letter-spacing: 3px;
 
@@ -1721,7 +1721,7 @@ button {
 .consultation-content h3 {
     font-size: 29px;
 
-    font-weight: 500;
+    font-weight: 400;
 
     color: var(--am-navy);
 
@@ -1729,7 +1729,7 @@ button {
 }
 
 .consultation-content p {
-    font-size: 13px;
+    font-size: 10px;
 
     line-height: 1.7;
 
@@ -2105,7 +2105,7 @@ button {
 .palette-option>div:nth-child(2)>span {
     display: block;
 
-    font-size: 8px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
@@ -2119,13 +2119,13 @@ button {
 
     font-size: 17px;
 
-    font-weight: 500;
+    font-weight: 400;
 
     margin-bottom: 5px;
 }
 
 .palette-option small {
-    font-size: 10px;
+    font-size: 12px;
 
     color: rgba(255, 255, 255, .48);
 }
@@ -2167,7 +2167,7 @@ button {
 }
 
 .palette-current>span {
-    font-size: 8px;
+    font-size: 10px;
 
     letter-spacing: 3px;
 
@@ -2286,7 +2286,7 @@ button {
 }
 
 .benefit-card-number {
-    font-size: 9px;
+    font-size: 11px;
 
     letter-spacing: 3px;
 
@@ -2332,7 +2332,7 @@ button {
 .color-benefit-card h3 {
     font-size: 24px;
 
-    font-weight: 500;
+    font-weight: 400;
 
     line-height: 1.15;
 
@@ -2344,7 +2344,7 @@ button {
 }
 
 .color-benefit-card p {
-    font-size: 12px;
+    font-size: 9px;
 
     line-height: 1.7;
 
@@ -2468,7 +2468,7 @@ button {
 
     font-size: 100px;
 
-    font-weight: 600;
+    font-weight: 400;
 
     color:
         rgba(255, 255, 255, .035);
@@ -2498,7 +2498,7 @@ button {
 .digital-planning-content>p {
     max-width: 530px;
 
-    font-size: 15px;
+    font-size: 12px;
 
     line-height: 1.85;
 
@@ -2543,7 +2543,7 @@ button {
 
     font-size: 10px;
 
-    font-weight: 700;
+    font-weight: 400;
 
     letter-spacing: 1px;
 
@@ -2553,9 +2553,9 @@ button {
 .digital-feature strong {
     display: block;
 
-    font-size: 15px;
+    font-size: 8px;
 
-    font-weight: 500;
+    font-weight: 400;
 
     margin-bottom: 5px;
 
@@ -2565,7 +2565,7 @@ button {
 .digital-feature span {
     display: block;
 
-    font-size: 11px;
+    font-size: 12px;
 
     line-height: 1.55;
 
@@ -2573,7 +2573,7 @@ button {
 }
 
 .digital-disclaimer {
-    font-size: 9px;
+    font-size: 8px;
 
     letter-spacing: .5px;
 
@@ -2670,7 +2670,7 @@ button {
 
     margin: auto;
 
-    font-size: 15px;
+    font-size: 7px;
 
     line-height: 1.8;
 
@@ -2717,7 +2717,7 @@ button {
 
     letter-spacing: 3px;
 
-    font-weight: 600;
+    font-weight: 400;
 
     margin-bottom: 18px;
 }
@@ -2725,7 +2725,7 @@ button {
 .color-footer-brand p {
     max-width: 390px;
 
-    font-size: 12px;
+    font-size: 9px;
 
     line-height: 1.75;
 
@@ -2752,7 +2752,7 @@ button {
 }
 
 .color-footer-column>span {
-    font-size: 8px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
@@ -2762,7 +2762,7 @@ button {
 }
 
 .color-footer-column a {
-    font-size: 12px;
+    font-size: 13px;
 
     color:
         rgba(255, 255, 255, .52);
@@ -2825,8 +2825,7 @@ button {
        ----------------------------------------------------- */
 
     .color-hero-content h1 {
-        font-size:
-            clamp(65px, 11vw, 120px);
+        font-size: 80px;
     }
 
     .color-hero-swatch {
@@ -2985,8 +2984,7 @@ button {
     }
 
     .color-hero-content h1 {
-        font-size:
-            clamp(52px, 15vw, 82px);
+        font-size: 75px;
 
         letter-spacing: -4px;
     }
@@ -3020,7 +3018,7 @@ button {
 
         gap: 10px;
 
-        font-size: 7px;
+        font-size: 11px;
     }
 
 
@@ -3033,7 +3031,7 @@ button {
     }
 
     .color-intro-number {
-        font-size: 80px;
+        font-size: clamp(32px, 4vw, 44px);
 
         top: 35px;
         right: 6%;
@@ -3194,7 +3192,7 @@ button {
 
         padding: 11px 10px;
 
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .light-scene-label {
@@ -3311,11 +3309,11 @@ button {
     }
 
     .palette-option strong {
-        font-size: 15px;
+        font-size: 8px;
     }
 
     .palette-option small {
-        font-size: 9px;
+        font-size: 15px;
     }
 
     .palette-current {
@@ -3380,7 +3378,7 @@ button {
         top: 35px;
         right: 6%;
 
-        font-size: 75px;
+        font-size: clamp(32px, 4vw, 44px);
     }
 
     .digital-planning-content h2 {
@@ -3458,7 +3456,7 @@ button {
     }
 
     .color-hero-content>p {
-        font-size: 13px;
+        font-size: 15px;
 
         line-height: 1.7;
     }
@@ -3555,7 +3553,7 @@ button {
     }
 
     .color-swatch small {
-        font-size: 8px;
+        font-size: 15px;
     }
 
     .color-room-info {
@@ -3567,7 +3565,7 @@ button {
     }
 
     .room-selected-description {
-        font-size: 11px;
+        font-size: 15px;
     }
 
 
@@ -3617,7 +3615,7 @@ button {
     .light-option {
         padding: 10px 7px;
 
-        font-size: 9px;
+        font-size: 15px;
 
         letter-spacing: .02em;
     }
@@ -3631,7 +3629,7 @@ button {
 
         bottom: 76px;
 
-        font-size: 9px;
+        font-size: 15px;
     }
 
 
@@ -3703,7 +3701,7 @@ button {
     }
 
     .palette-option small {
-        font-size: 8px;
+        font-size: 15px;
     }
 
 
@@ -4256,16 +4254,16 @@ button {
     color: var(--am-navy) !important;
 }
 
-.palette-builder {
+html[data-theme="amigos-dark"] .palette-builder {
     background: var(--am-navy) !important;
     color: #fff !important;
 }
 
-.palette-builder .color-kicker,
-.palette-builder-heading .color-kicker,
-.palette-builder-heading h2,
-.palette-builder-heading h2 em,
-.palette-builder-heading>p {
+html[data-theme="amigos-dark"] .palette-builder .color-kicker,
+html[data-theme="amigos-dark"] .palette-builder-heading .color-kicker,
+html[data-theme="amigos-dark"] .palette-builder-heading h2,
+html[data-theme="amigos-dark"] .palette-builder-heading h2 em,
+html[data-theme="amigos-dark"] .palette-builder-heading>p {
     color: #fff !important;
 }
 
@@ -4273,5 +4271,887 @@ button {
     .color-room-stage {
         height: 560px !important;
         min-height: 560px;
+    }
+}
+
+/* Light hero contrast: keep labels and the secondary CTA legible on the pale image. */
+html:not([data-theme="amigos-dark"]) .color-hero-kicker {
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-hero-actions .color-btn-light {
+    background: rgba(255, 255, 255, .78) !important;
+    border-color: rgba(0, 0, 0, .34) !important;
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-hero-actions .color-btn-light span {
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-hero-actions .color-btn-light:hover,
+html:not([data-theme="amigos-dark"]) .color-hero-actions .color-btn-light:hover span {
+    color: #fff !important;
+}
+
+/* Light mode never uses navy section or card backgrounds. */
+html:not([data-theme="amigos-dark"]) .palette-builder {
+    background:
+        radial-gradient(circle at 86% 12%, rgba(230, 36, 83, .08), transparent 32%),
+        radial-gradient(circle at 16% 78%, rgba(246, 190, 16, .1), transparent 34%),
+        var(--am-cream) !important;
+    color: var(--am-navy) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-builder .color-kicker,
+html:not([data-theme="amigos-dark"]) .palette-builder-heading h2,
+html:not([data-theme="amigos-dark"]) .palette-builder-heading>p {
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-builder-heading h2 em {
+    color: var(--logo-pink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-option {
+    background: rgba(255, 255, 255, .9) !important;
+    border-color: rgba(0, 0, 0, .14) !important;
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-option small {
+    color: rgba(0, 0, 0, .62) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-option.active {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    border-color: transparent !important;
+    color: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-option.active * {
+    color: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-current {
+    border-color: rgba(0, 0, 0, .14) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-current>span {
+    color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .palette-current-swatches i {
+    border-color: rgba(0, 0, 0, .18) !important;
+}
+
+/* Schadensservice-aligned visual system: generous type, rounded cards and strict theme contrast. */
+.color-btn {
+    min-height: 56px;
+    padding-inline: 26px;
+    border-radius: 999px;
+    font-size: clamp(17px, 2vw, 22px);
+    font-weight: 500;
+}
+
+.color-kicker,
+.color-hero-kicker,
+.room-selection-label,
+.palette-current>span,
+.palette-preview-label span,
+.choice-content>span,
+.material-info>span,
+.consultation-content>span,
+.benefit-card-number {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .12em;
+}
+
+.color-intro-copy>p,
+.choices-heading>p,
+.color-experience-intro>p,
+.material-gallery-header>p,
+.consultation-heading>p,
+.palette-builder-heading>p,
+.benefits-top>p,
+.color-final-content>p {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.7;
+}
+
+.choice-card,
+.color-room-stage,
+.material-item,
+.consultation-content,
+.consultation-image,
+.palette-preview,
+.palette-preview-label,
+.palette-option,
+.color-benefit-card {
+    border-radius: 24px;
+}
+
+.choice-card,
+.material-item,
+.color-benefit-card,
+.palette-option,
+.consultation-content {
+    border: 1px solid rgba(7, 26, 51, .12);
+    box-shadow: 0 18px 50px rgba(16, 34, 56, .08);
+}
+
+.choice-content,
+.material-info,
+.consultation-content,
+.color-benefit-card {
+    padding: 30px;
+}
+
+.choice-content h3,
+.material-info h3,
+.color-benefit-card h3 {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.18;
+}
+
+.consultation-content h3 {
+    font-size: clamp(20px, 2.5vw, 28px);
+    line-height: 1.18;
+}
+
+.choice-content p,
+.material-info p,
+.consultation-content p,
+.color-benefit-card p,
+.palette-option small {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.65;
+}
+
+.palette-option {
+    min-height: 128px;
+    padding: 20px 52px 20px 20px;
+}
+
+.palette-option strong {
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.25;
+}
+
+.palette-preview-label {
+    padding: 22px 24px;
+}
+
+.palette-preview-name {
+    font-size: clamp(17px, 2vw, 22px);
+}
+
+html:not([data-theme="amigos-dark"]) .color-intro,
+html:not([data-theme="amigos-dark"]) .color-choices,
+html:not([data-theme="amigos-dark"]) .color-experience,
+html:not([data-theme="amigos-dark"]) .color-light,
+html:not([data-theme="amigos-dark"]) .material-gallery,
+html:not([data-theme="amigos-dark"]) .color-consultation,
+html:not([data-theme="amigos-dark"]) .palette-builder,
+html:not([data-theme="amigos-dark"]) .color-benefits,
+html:not([data-theme="amigos-dark"]) .digital-planning,
+html:not([data-theme="amigos-dark"]) .color-final-cta,
+html:not([data-theme="amigos-dark"]) .color-footer {
+    background: #f6f3ed !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-choices,
+html:not([data-theme="amigos-dark"]) .material-gallery,
+html:not([data-theme="amigos-dark"]) .color-benefits,
+html:not([data-theme="amigos-dark"]) .color-footer {
+    background: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .choice-card,
+html:not([data-theme="amigos-dark"]) .material-item,
+html:not([data-theme="amigos-dark"]) .consultation-content,
+html:not([data-theme="amigos-dark"]) .color-benefit-card,
+html:not([data-theme="amigos-dark"]) .palette-option {
+    background: #fff !important;
+    border-color: #e3e6e9 !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .choices-heading h2,
+html:not([data-theme="amigos-dark"]) .material-gallery-header h2,
+html:not([data-theme="amigos-dark"]) .consultation-heading h2,
+html:not([data-theme="amigos-dark"]) .palette-builder-heading h2,
+html:not([data-theme="amigos-dark"]) .benefits-top h2,
+html:not([data-theme="amigos-dark"]) .color-final-content h2,
+html:not([data-theme="amigos-dark"]) .color-benefit-card h3 {
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .choices-heading>p,
+html:not([data-theme="amigos-dark"]) .material-gallery-header>p,
+html:not([data-theme="amigos-dark"]) .consultation-heading>p,
+html:not([data-theme="amigos-dark"]) .palette-builder-heading>p,
+html:not([data-theme="amigos-dark"]) .benefits-top>p,
+html:not([data-theme="amigos-dark"]) .color-final-content>p,
+html:not([data-theme="amigos-dark"]) .choice-content p,
+html:not([data-theme="amigos-dark"]) .material-info p,
+html:not([data-theme="amigos-dark"]) .consultation-content p,
+html:not([data-theme="amigos-dark"]) .color-benefit-card p {
+    color: #59636f !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-benefit-card:hover h3,
+html:not([data-theme="amigos-dark"]) .color-benefit-card:hover p,
+html:not([data-theme="amigos-dark"]) .color-benefit-card:hover .benefit-card-number {
+    color: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-final-actions .color-btn-outline-dark {
+    background: #fff !important;
+    border-color: rgba(7, 26, 51, .24) !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-final-actions .color-btn-outline-dark * {
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .color-final-actions .color-btn-outline-dark:hover,
+html:not([data-theme="amigos-dark"]) .color-final-actions .color-btn-outline-dark:hover * {
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .color-intro,
+html[data-theme="amigos-dark"] .color-choices,
+html[data-theme="amigos-dark"] .color-experience,
+html[data-theme="amigos-dark"] .color-light,
+html[data-theme="amigos-dark"] .material-gallery,
+html[data-theme="amigos-dark"] .color-consultation,
+html[data-theme="amigos-dark"] .palette-builder,
+html[data-theme="amigos-dark"] .color-benefits,
+html[data-theme="amigos-dark"] .digital-planning,
+html[data-theme="amigos-dark"] .color-final-cta,
+html[data-theme="amigos-dark"] .color-footer {
+    background: #071a33 !important;
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .choice-card,
+html[data-theme="amigos-dark"] .material-item,
+html[data-theme="amigos-dark"] .consultation-content,
+html[data-theme="amigos-dark"] .color-benefit-card,
+html[data-theme="amigos-dark"] .palette-option {
+    background: #0d2542 !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .choice-content p,
+html[data-theme="amigos-dark"] .material-info p,
+html[data-theme="amigos-dark"] .consultation-content p,
+html[data-theme="amigos-dark"] .color-benefit-card p,
+html[data-theme="amigos-dark"] .palette-option small {
+    color: rgba(255, 255, 255, .7) !important;
+}
+
+@media (max-width: 768px) {
+    .color-btn { width: 100%; font-size: clamp(17px, 2vw, 22px); }
+    .choice-content,
+    .material-info,
+    .consultation-content,
+    .color-benefit-card { padding: 24px; }
+    .choice-content p,
+    .material-info p,
+    .consultation-content p,
+    .color-benefit-card p { font-size: clamp(17px, 2vw, 22px); }
+    .palette-option { min-height: 112px; border-radius: 20px; }
+}
+
+/* Readability and layout correction pass. */
+.color-hero-content h1,
+.color-intro-copy h2,
+.choices-heading h2,
+.color-experience-intro h2,
+.color-light-header h2,
+.material-gallery-header h2,
+.consultation-heading h2,
+.palette-builder-heading h2,
+.benefits-top h2,
+.digital-planning-content h2,
+.color-final-content h2 {
+    line-height: 1.06;
+    letter-spacing: -.04em;
+}
+
+.color-hero-content h1 em,
+.color-intro-copy h2 em,
+.choices-heading h2 em,
+.color-experience-intro h2 em,
+.color-light-header h2 em,
+.material-gallery-header h2 em,
+.consultation-heading h2 em,
+.palette-builder-heading h2 em,
+.benefits-top h2 em,
+.digital-planning-content h2 em,
+.color-final-content h2 em {
+    display: inline;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: inherit;
+    color: inherit !important;
+}
+
+.color-hero-content h1 {
+    max-width: 1120px;
+    font-size: clamp(32px, 4vw, 44px);
+}
+
+.color-hero-content h1 em {
+    display: block;
+}
+
+.color-hero-content>p {
+    max-width: 680px;
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, .9);
+}
+
+.color-hero-kicker {
+    color: #fff !important;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+}
+
+html:not([data-theme="amigos-dark"]) .color-hero-kicker {
+    color: #000 !important;
+    text-shadow: none;
+}
+
+.color-hero-note {
+    padding: 12px 18px;
+    border-radius: 999px;
+    background: rgba(7, 26, 51, .78);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.color-hero-note span,
+.color-hero-note span:first-child {
+    color: #fff !important;
+}
+
+.color-intro {
+    grid-template-columns: minmax(0, 1fr) minmax(420px, .9fr);
+    gap: clamp(48px, 6vw, 90px);
+}
+
+.color-intro-copy,
+.color-intro-visual {
+    min-width: 0;
+}
+
+.color-intro-copy h2 {
+    max-width: 680px;
+}
+
+.color-intro-copy>p {
+    max-width: 650px;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.75;
+}
+
+.color-intro-details>div {
+    grid-template-columns: minmax(110px, .28fr) minmax(0, 1fr);
+    gap: 24px;
+    padding: 20px 0;
+}
+
+.color-intro-details span {
+    font-size: 15px;
+}
+
+.color-intro-details strong {
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.55;
+}
+
+.intro-color-frame,
+.choice-image,
+.material-image {
+    border-radius: 24px;
+}
+
+.intro-caption {
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.color-room-info {
+    border-radius: 20px;
+}
+
+.room-selected-description {
+    font-size: clamp(17px, 2vw, 22px);
+    color: rgba(255, 255, 255, .82);
+}
+
+.color-swatch {
+    width: 230px;
+    min-height: 62px;
+    height: auto;
+    padding: 10px 14px;
+    border-radius: 18px;
+    background: rgba(7, 26, 51, .78);
+}
+
+.color-swatch small {
+    font-size: clamp(17px, 2vw, 22px);
+    color: #fff;
+}
+
+.color-swatch.active,
+.color-swatch.active small {
+    color: #071a33 !important;
+}
+
+.color-experience-meta {
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(7, 26, 51, .72);
+    color: #fff;
+    font-size: 15px;
+}
+
+.material-gallery-controls button {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+}
+
+.consultation-timeline {
+    width: 100%;
+    max-width: 1120px;
+}
+
+.consultation-step {
+    grid-template-columns: 64px minmax(0, 1fr) minmax(260px, 320px);
+    gap: 28px;
+}
+
+.consultation-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    font-size: clamp(17px, 2vw, 22px);
+}
+
+.consultation-content,
+.consultation-image {
+    min-width: 0;
+}
+
+.consultation-image {
+    height: 190px;
+    opacity: .78;
+    transform: none;
+}
+
+html[data-theme="amigos-dark"] .color-intro-copy h2,
+html[data-theme="amigos-dark"] .choices-heading h2,
+html[data-theme="amigos-dark"] .color-experience-intro h2,
+html[data-theme="amigos-dark"] .material-gallery-header h2,
+html[data-theme="amigos-dark"] .consultation-heading h2,
+html[data-theme="amigos-dark"] .palette-builder-heading h2,
+html[data-theme="amigos-dark"] .benefits-top h2,
+html[data-theme="amigos-dark"] .color-final-content h2,
+html[data-theme="amigos-dark"] .color-intro-details strong,
+html[data-theme="amigos-dark"] .choice-content h3,
+html[data-theme="amigos-dark"] .material-info h3,
+html[data-theme="amigos-dark"] .consultation-content h3,
+html[data-theme="amigos-dark"] .palette-option strong,
+html[data-theme="amigos-dark"] .color-benefit-card h3 {
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .color-intro-copy>p,
+html[data-theme="amigos-dark"] .color-intro-details strong,
+html[data-theme="amigos-dark"] .choices-heading>p,
+html[data-theme="amigos-dark"] .color-experience-intro>p,
+html[data-theme="amigos-dark"] .material-gallery-header>p,
+html[data-theme="amigos-dark"] .consultation-heading>p,
+html[data-theme="amigos-dark"] .palette-builder-heading>p,
+html[data-theme="amigos-dark"] .benefits-top>p,
+html[data-theme="amigos-dark"] .color-final-content>p {
+    color: rgba(255, 255, 255, .74) !important;
+}
+
+html[data-theme="amigos-dark"] .color-intro-details {
+    border-color: rgba(255, 255, 255, .22);
+}
+
+html[data-theme="amigos-dark"] .color-intro-details>div {
+    border-color: rgba(255, 255, 255, .22);
+}
+
+html[data-theme="amigos-dark"] .material-gallery-controls button {
+    border-color: rgba(255, 255, 255, .6);
+    color: #fff;
+}
+
+html[data-theme="amigos-dark"] .consultation-number {
+    background: #f6f3ed;
+    border-color: #d7d1c7;
+    color: #a36b12;
+}
+
+@media (max-width: 980px) {
+    .color-intro {
+        grid-template-columns: 1fr;
+    }
+
+    .color-intro-visual {
+        width: 100%;
+        height: min(72vw, 620px);
+    }
+
+    .color-experience-intro,
+    .material-gallery-header,
+    .consultation-heading,
+    .palette-builder-heading,
+    .benefits-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .consultation-step {
+        grid-template-columns: 56px minmax(0, 1fr);
+    }
+
+    .consultation-image {
+        grid-column: 2;
+        width: 100%;
+        height: 230px;
+    }
+}
+
+@media (max-width: 760px) {
+    .color-hero-content h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        letter-spacing: -.045em;
+    }
+
+    .color-hero-content>p,
+    .color-intro-copy>p,
+    .choices-heading>p,
+    .color-experience-intro>p,
+    .material-gallery-header>p,
+    .consultation-heading>p,
+    .palette-builder-heading>p,
+    .benefits-top>p,
+    .color-final-content>p {
+        font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .color-intro-copy h2,
+    .choices-heading h2,
+    .color-experience-intro h2,
+    .material-gallery-header h2,
+    .consultation-heading h2,
+    .palette-builder-heading h2,
+    .benefits-top h2,
+    .color-final-content h2 {
+        font-size: clamp(26px, 3.5vw, 36px);
+    }
+
+    .color-intro-details>div {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .color-swatches {
+        left: 18px;
+        right: 18px;
+        top: 18px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .color-swatch {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .color-room-info {
+        bottom: 18px;
+    }
+
+    .consultation-image {
+        display: block;
+        height: 190px;
+    }
+}
+
+/* Intro must remain inside the viewport: copy first, full-width image second. */
+.color-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+    min-height: 0;
+}
+
+.color-intro-copy {
+    width: 100%;
+    max-width: 980px;
+}
+
+.color-intro-visual {
+    width: 100%;
+    height: clamp(460px, 52vw, 700px);
+    min-width: 0;
+}
+
+.intro-color-frame {
+    width: 100%;
+    border-radius: 24px;
+}
+
+.intro-color-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+html[data-theme="amigos-dark"] .color-intro-details span {
+    color: #f6be10 !important;
+}
+
+html[data-theme="amigos-dark"] .color-intro-details strong {
+    color: rgba(255, 255, 255, .86) !important;
+}
+
+@media (max-width: 760px) {
+    .color-intro { gap: 38px; }
+    .color-intro-visual { height: min(110vw, 520px); }
+    .intro-caption {
+        padding: 52px 18px 18px;
+        font-size: 15px;
+        letter-spacing: .14em;
+    }
+}
+
+/* Final live-state fixes: contained intro media and guaranteed active-state contrast. */
+@media (min-width: 981px) {
+    .color-intro {
+        grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr);
+        align-items: center;
+        gap: clamp(44px, 5vw, 76px);
+    }
+
+    .color-intro-copy {
+        max-width: 680px;
+    }
+
+    .color-intro-visual {
+        height: clamp(480px, 42vw, 620px);
+    }
+}
+
+@media (max-width: 980px) {
+    .color-intro-visual {
+        height: clamp(320px, 58vw, 440px);
+    }
+}
+
+.color-hero-note {
+    background: rgba(7, 26, 51, .9) !important;
+}
+
+.color-hero-note,
+.color-hero-note span,
+.color-hero-note span:first-child {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .45);
+}
+
+.choice-card:hover .choice-content,
+.choice-card:hover .choice-content *,
+.material-item:hover .material-info,
+.material-item:hover .material-info *,
+.consultation-step:hover .consultation-content,
+.consultation-step:hover .consultation-content *,
+.palette-option:hover,
+.palette-option:hover *,
+.palette-option.active,
+.palette-option.active *,
+.color-benefit-card:hover,
+.color-benefit-card:hover * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.palette-option:hover small,
+.palette-option.active small,
+.choice-card:hover p,
+.material-item:hover p,
+.consultation-step:hover p,
+.color-benefit-card:hover p {
+    color: rgba(255, 255, 255, .9) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .9) !important;
+}
+
+/* =========================================================
+   FINAL COMPONENT CONTRAST + LAYOUT SAFETY
+   These selectors intentionally come last. Shared hero/theme rules are
+   broader and previously overrode text inside dark glass and hover states.
+========================================================= */
+
+.color-hero .color-hero-note,
+.color-hero .color-hero-note span,
+.color-room-info,
+.color-room-info :is(span, h3, p),
+.palette-preview-label,
+.palette-preview-label :is(span, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.color-hero-note {
+    gap: clamp(16px, 2vw, 30px);
+    max-width: calc(100vw - 32px);
+}
+
+.color-hero-note span {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: .14em !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .5) !important;
+}
+
+.color-room-info {
+    background: rgba(7, 26, 51, .90) !important;
+}
+
+.room-selection-label,
+.room-selected-name {
+    color: #fff !important;
+}
+
+.room-selected-description {
+    color: rgba(255, 255, 255, .84) !important;
+}
+
+/* The material cards do not receive a colored hover background, therefore
+   their copy must retain normal theme contrast when the image is hovered. */
+.material-item:hover .material-info>span {
+    color: #d98200 !important;
+    -webkit-text-fill-color: #d98200 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .material-item:hover .material-info h3,
+html:not([data-theme="amigos-dark"]) .consultation-step:hover .consultation-content h3,
+html:not([data-theme="amigos-dark"]) .consultation-step:hover .consultation-content>span {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) .material-item:hover .material-info p,
+html:not([data-theme="amigos-dark"]) .consultation-step:hover .consultation-content p {
+    color: #59636f !important;
+    -webkit-text-fill-color: #59636f !important;
+}
+
+html[data-theme="amigos-dark"] .material-item:hover .material-info h3,
+html[data-theme="amigos-dark"] .consultation-step:hover .consultation-content h3,
+html[data-theme="amigos-dark"] .consultation-step:hover .consultation-content>span {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .material-item:hover .material-info p,
+html[data-theme="amigos-dark"] .consultation-step:hover .consultation-content p {
+    color: rgba(255, 255, 255, .76) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .76) !important;
+}
+
+.material-item {
+    height: auto !important;
+    align-self: flex-start;
+    overflow: hidden;
+}
+
+.material-image {
+    height: clamp(330px, 34vw, 470px) !important;
+}
+
+.material-info {
+    min-height: 190px;
+    padding: 28px 28px 32px !important;
+}
+
+.material-info>span,
+.consultation-content>span,
+.palette-current>span,
+.palette-preview-label span {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+}
+
+.material-info p,
+.consultation-content p,
+.color-benefit-card p,
+.palette-option small {
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+}
+
+.consultation-content {
+    min-height: 190px;
+    padding: 28px 30px !important;
+}
+
+.consultation-step:hover .consultation-content {
+    background: inherit !important;
+}
+
+.palette-current-swatches i:nth-child(1) { background: #e9e1d3; }
+.palette-current-swatches i:nth-child(2) { background: #c9b89d; }
+.palette-current-swatches i:nth-child(3) { background: #9c9184; }
+
+.color-benefit-card:hover,
+.color-benefit-card:hover * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+@media (max-width: 760px) {
+    .color-hero-note {
+        width: calc(100% - 32px);
+        justify-content: center;
+        gap: 12px;
+        padding-inline: 14px;
+    }
+
+    .color-hero-note span {
+        font-size: 15px !important;
+        letter-spacing: .1em !important;
+    }
+
+    .material-image {
+        height: 320px !important;
+    }
+
+    .material-info,
+    .consultation-content {
+        min-height: 0;
     }
 }

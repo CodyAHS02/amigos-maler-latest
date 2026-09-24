@@ -103,20 +103,14 @@ export default function Header() {
 
   return (
     <header className={`site-header${isHome ? " home-initial" : ""}`} id="siteHeader">
-      <a className={`logo ${styles.logoLink}${isProjects ? ` ${styles.fullLogoLink}` : ""}`} href="/" aria-label="Amigos Maler home">
-        {isProjects ? (
-          <img className={styles.fullLogoImage} src="/logo.webp" alt="Amigos Maler" />
-        ) : (
-          <>
-            <span className={styles.logoSymbol} aria-hidden="true">
-              <img src="/logo.webp" alt="" />
-            </span>
-            <span className={styles.logoWordmark}>
-              <strong>AMIGOS MALER</strong>
-              <small>KOMPETENZ VERBINDET</small>
-            </span>
-          </>
-        )}
+      <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
+        <span className={styles.logoSymbol} aria-hidden="true">
+          <img src="/logo.webp" alt="" />
+        </span>
+        <span className={styles.logoWordmark}>
+          <strong>AMIGOS MALER</strong>
+          <small>KOMPETENZ VERBINDET</small>
+        </span>
       </a>
 
       <nav className="site-nav">
@@ -228,14 +222,15 @@ export default function Header() {
           </div>
         </div>
 
+        <a href="/schadensservice" data-page="schadensservice">
+          Schadensservice
+        </a>
+
         <a href="/projects" data-page="projects">
           Projects
         </a>
         <a href="/partners" data-page="partners">
           Partners
-        </a>
-        <a href="/property-value-preservation" data-page="werterhalt">
-          Property Value Preservation
         </a>
         <a href="/contact" data-page="contact">
           Contact

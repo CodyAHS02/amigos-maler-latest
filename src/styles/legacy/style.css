@@ -53,7 +53,7 @@ body {
     width: 50%;
     height: 100%;
 
-    background: #FDFBF6;
+    background: #ffffff;
 
     z-index: 2;
 
@@ -84,7 +84,7 @@ body {
     align-items: baseline;
 
     font-size: clamp(56px, 9vw, 130px);
-    font-weight: 700;
+    font-weight: 300;
     letter-spacing: -3px;
     color: #101A2E;
 
@@ -175,7 +175,7 @@ body {
 
     font-size: clamp(120px, 9vw, 200px);
 
-    font-weight: 800;
+    font-weight: 600;
 
     white-space: nowrap;
 
@@ -207,11 +207,11 @@ body {
 
 .introBtn {
     background: rgba(0, 0, 0, 0.591);
-    color: #FDFBF6;
+    color: #ffffff;
     text-decoration: none;
     padding: 18px 45px;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 500;
     transition: .35s;
     border: 1px solid rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(10px);
@@ -327,7 +327,7 @@ body[data-page="home"] .site-header {
 
     font-size: 14px;
 
-    font-weight: 500;
+    font-weight: 800;
 
     transition: .35s;
 
@@ -335,7 +335,7 @@ body[data-page="home"] .site-header {
 
 .site-nav a:hover {
 
-    color: #FDFBF6;
+    color: #ffffff;
 
 }
 
@@ -428,8 +428,8 @@ body[data-page="home"] .site-header {
     min-width: 0 !important;
     max-width: 100% !important;
     overflow: hidden !important;
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     white-space: normal !important;
     opacity: 1 !important;
     transform: none !important;
@@ -465,7 +465,7 @@ body[data-page="home"] .site-header {
 
 .dropdown-item .item-num {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     background: rgba(255, 255, 255, 0.12);
@@ -477,8 +477,8 @@ body[data-page="home"] .site-header {
 }
 
 .dropdown-item:hover .item-num {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     background: rgba(7, 26, 51, .24);
 }
 
@@ -491,8 +491,8 @@ body[data-page="home"] .site-header {
 
 .dropdown-item .item-title {
     font-size: 13px;
-    font-weight: 600;
-    color: #FDFBF6 !important;
+    font-weight: 500;
+    color: #ffffff !important;
     line-height: 1.2;
     overflow-wrap: anywhere;
 }
@@ -512,15 +512,15 @@ body[data-page="home"] .site-header {
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .dropdown-item,
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .dropdown-menu .dropdown-item,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .dropdown-item {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .item-title,
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .dropdown-menu .item-title,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-title {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .item-desc,
@@ -534,11 +534,11 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 .header-btn {
     background: rgba(255, 255, 255, 0.25);
-    color: #FDFBF6;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 21px;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     transition: .35s;
     border: 1px solid rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(10px);
@@ -563,7 +563,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     transform: translateX(-50%);
     width: min(1240px, 90%);
     text-align: center;
-    color: #FDFBF6;
+    color: #ffffff;
     opacity: 0;
     z-index: 24;
 }
@@ -594,7 +594,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
     line-height: 1.2;
 
-    font-weight: 700;
+    font-weight: 400;
 
     margin-bottom: 24px;
 
@@ -642,7 +642,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
     border-radius: 999px;
 
-    font-weight: 600;
+    font-weight: 400;
 
     opacity: 1 !important;
     cursor: pointer;
@@ -654,11 +654,11 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 .btn-primary {
     background: linear-gradient(120deg, #f6be10 0%, #f39125 34%, #c73b8e 68%, #e62453 100%) !important;
-    color: #FDFBF6;
+    color: #ffffff;
     text-decoration: none;
     padding: 10px 21px;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     transition: .35s;
     border: 1px solid rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(10px);
@@ -682,7 +682,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     text-decoration: none;
     padding: 10px 21px;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     transition: .35s;
     border: 1px solid transparent;
     backdrop-filter: blur(10px);
@@ -783,7 +783,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 .paint-screen-banner h2 {
     font-size: clamp(20px, 3vw, 35px);
     font-weight: 700;
-    color: #FDFBF6;
+    color: #ffffff;
     line-height: 1.25;
     letter-spacing: -0.02em;
     margin: 0;
@@ -792,7 +792,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 .paint-screen-banner p {
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 400;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-top: 8px;
     margin-bottom: 0;
     letter-spacing: 0.01em;
@@ -837,7 +837,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     font-weight: 700;
     letter-spacing: .18em;
     text-transform: uppercase;
-    color: rgba(253, 251, 246, .72);
+    color: rgba(255, 255, 255, .72);
 }
 
 .paint-finish-options {
@@ -850,7 +850,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     border: 1px solid rgba(255, 255, 255, .28);
     border-radius: 999px;
     background: rgba(255, 255, 255, .16);
-    color: #FDFBF6;
+    color: #ffffff;
     min-width: 94px;
     min-height: 42px;
     padding: 0 18px;
@@ -867,8 +867,8 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 }
 
 .paint-finish-btn.active {
-    background: #FDFBF6;
-    border-color: #FDFBF6;
+    background: #ffffff;
+    border-color: #ffffff;
     color: #101A2E;
 }
 
@@ -1183,7 +1183,7 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 }
 
 .texture-swatch.active {
-    border-color: #FDFBF6;
+    border-color: #ffffff;
     box-shadow: 0 0 0 2px #101A2E, 0 4px 12px rgba(0, 0, 0, .35);
     transform: scale(1.15);
 }
@@ -1363,7 +1363,7 @@ HAMBURGER (hidden on desktop)
     width: 18px;
     height: 2px;
     margin: 0 auto;
-    background: #FDFBF6;
+    background: #ffffff;
     transition: .3s;
 }
 
@@ -1453,8 +1453,8 @@ RESPONSIVE — MOBILE (≤768px)
         width: 100%;
         padding: 14px 0;
         font-size: 16px;
-        font-weight: 500;
-        color: #FDFBF6;
+        font-weight: 300;
+        color: #ffffff;
         border-bottom: 1px solid rgba(255, 255, 255, .12);
         opacity: 0;
         transform: translateY(40px);
@@ -1496,8 +1496,8 @@ RESPONSIVE — MOBILE (≤768px)
         justify-content: space-between;
         padding: 14px 0;
         font-size: 16px;
-        font-weight: 500;
-        color: #FDFBF6;
+        font-weight: 600;
+        color: #ffffff;
         border-bottom: 1px solid rgba(255, 255, 255, .12);
         text-decoration: none;
     }
@@ -1548,7 +1548,7 @@ RESPONSIVE — MOBILE (≤768px)
     }
 
     .hero-content p {
-        font-size: 15px;
+        font-size: 12px;
         line-height: 1.6;
     }
 
@@ -1722,7 +1722,7 @@ WHY AMIGOS
 .why-amigos {
 
     padding: 140px 0;
-    background: #FDFBF6;
+    background: #ffffff;
 
 }
 
@@ -1746,7 +1746,7 @@ WHY AMIGOS
     margin-bottom: 24px;
 
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     color: #8A8275;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -1794,7 +1794,7 @@ WHY AMIGOS
     padding: 15px 30px;
 
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
 
     border-radius: 999px;
 
@@ -1946,7 +1946,7 @@ WHY AMIGOS
 
 .services-section {
     padding: 30px 0;
-    background: #FDFBF6;
+    background: #ffffff;
     overflow: hidden;
     height: 100vh;
     min-height: 640px;
@@ -2005,7 +2005,7 @@ WHY AMIGOS
 
 .services-heading h2 span {
     color: #8b8b8b;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .services-side {
@@ -2030,7 +2030,7 @@ WHY AMIGOS
     padding: 10px 22px;
     border-radius: 999px;
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
     font-size: 13px;
     font-weight: 500;
     text-decoration: none;
@@ -2135,17 +2135,17 @@ WHY AMIGOS
 
 .service-number {
     display: block;
-    color: #FDFBF6;
+    color: #ffffff;
     opacity: 0.7;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: .15em;
     margin-bottom: 6px;
 }
 
 .panel-content h3 {
-    color: #FDFBF6;
-    font-size: 15px;
+    color: #ffffff;
+    font-size: 13px;
     font-weight: 600;
     line-height: 1.25;
     margin: 0;
@@ -2181,7 +2181,7 @@ WHY AMIGOS
 
 .panel-body p {
     color: rgba(255, 255, 255, 0.85);
-    font-size: 13px;
+    font-size: 13.5px;
     line-height: 1.5;
     margin: 0 0 14px 0;
     max-width: 320px;
@@ -2191,9 +2191,9 @@ WHY AMIGOS
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #FDFBF6;
-    font-size: 13px;
-    font-weight: 600;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -2363,7 +2363,7 @@ WHY AMIGOS
 
     .panel-content p {
 
-        font-size: 15px;
+        font-size: 13px;
 
         margin-bottom: 18px;
 
@@ -2416,7 +2416,7 @@ WHY AMIGOS
 
 .service-panel:focus-visible {
 
-    outline: 2px solid #FDFBF6;
+    outline: 2px solid #ffffff;
     outline-offset: -6px;
 
 }
@@ -2641,7 +2641,7 @@ WHY AMIGOS
 
 .services-nav-heading h2 span {
     color: #B7893D !important;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 /*----- EXPANDING PANEL GRID -----*/
@@ -2738,7 +2738,7 @@ WHY AMIGOS
 .sp-vert-title {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 600;
     letter-spacing: .04em;
     color: #F7F1E7;
@@ -2780,8 +2780,8 @@ WHY AMIGOS
 
 .sp-expanded .sp-num {
     display: block;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: .12em;
     color: #B7893D;
     margin-bottom: 12px;
@@ -2790,13 +2790,13 @@ WHY AMIGOS
 .sp-expanded h3 {
     font-size: 24px;
     font-weight: 700;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-bottom: 10px;
     white-space: nowrap;
 }
 
 .sp-expanded p {
-    font-size: 13.5px;
+    font-size: 15.5px;
     line-height: 1.6;
     color: rgba(247, 241, 231, .78);
     max-width: 320px;
@@ -2901,7 +2901,7 @@ WHY AMIGOS
     justify-content: center;
     padding: 15px 32px;
     border-radius: 999px;
-    background: #FDFBF6;
+    background: #ffffff;
     color: #101A2E;
     text-decoration: none;
     font-weight: 600;
@@ -3047,7 +3047,7 @@ WHY AMIGOS
 }
 
 .audience-card:hover {
-    border-color: rgba(253, 251, 246, .70);
+    border-color: rgba(255, 255, 255, .70);
     box-shadow: 0 34px 82px rgba(230, 36, 83, .26);
 }
 
@@ -3058,20 +3058,20 @@ WHY AMIGOS
     font-size: 13px;
     font-weight: 700;
     letter-spacing: .08em;
-    color: rgba(253, 251, 246, .42);
+    color: rgba(255, 255, 255, .42);
     transition: color .4s ease;
 }
 
 .audience-card:hover .audience-card-num {
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .audience-card-icon {
     width: 58px;
     height: 58px;
     border-radius: 18px;
-    background: rgba(253, 251, 246, .20);
-    color: #FDFBF6;
+    background: rgba(255, 255, 255, .20);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3080,8 +3080,8 @@ WHY AMIGOS
 }
 
 .audience-card:hover .audience-card-icon {
-    background: rgba(253, 251, 246, .30);
-    color: #FDFBF6;
+    background: rgba(255, 255, 255, .30);
+    color: #ffffff;
     transform: rotate(-8deg) scale(1.08);
 }
 
@@ -3100,14 +3100,14 @@ WHY AMIGOS
 .audience-card h3 {
     font-size: 21px;
     font-weight: 700;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-bottom: 14px;
 }
 
 .audience-card p {
-    font-size: 14.5px;
+    font-size: 11px;
     line-height: 1.75;
-    color: rgba(253, 251, 246, .84);
+    color: rgba(255, 255, 255, .84);
 }
 
 @keyframes audienceLogoGradient {
@@ -3211,13 +3211,13 @@ span.section-tag {
     font-size: clamp(36px, 4.4vw, 54px);
     line-height: 1.2;
     font-weight: 700;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-top: 20px;
 }
 
 .dtools-heading h2 span {
     color: var(--am-ochre) !important;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 /*----- GRID -----*/
@@ -3300,7 +3300,7 @@ span.section-tag {
 
 .dtools-eyebrow {
     display: inline-block;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 700;
     letter-spacing: .18em;
     text-transform: uppercase;
@@ -3335,7 +3335,7 @@ span.section-tag {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #FDFBF6, transparent);
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
     box-shadow: 0 0 12px 2px rgba(255, 255, 255, .6);
     animation: dtoolsScan 2.4s ease-in-out infinite;
 }
@@ -3416,13 +3416,13 @@ span.section-tag {
 .dtools-card-body h3 {
     font-size: 30px;
     font-weight: 700;
-    color: #FDFBF6;
+    color: #ffffff;
     line-height: 1.25;
     margin-bottom: 16px;
 }
 
 .dtools-card-body p {
-    font-size: 15.5px;
+    font-size: 11.5px;
     line-height: 1.75;
     color: rgba(255, 255, 255, .55);
     max-width: 420px;
@@ -3435,7 +3435,7 @@ span.section-tag {
     gap: 10px;
     padding: 15px 28px;
     border-radius: 999px;
-    background: #FDFBF6;
+    background: #ffffff;
     color: #101A2E;
     font-size: 14px;
     font-weight: 700;
@@ -3579,7 +3579,7 @@ span.section-tag {
 
     color: #8c8c8c;
 
-    font-weight: 400;
+    font-weight: 600;
 
 }
 
@@ -3618,7 +3618,7 @@ span.section-tag {
 .upload-panel,
 .preview-panel {
 
-    background: #FDFBF6;
+    background: #ffffff;
 
     border: 1px solid #E7DFD2;
 
@@ -3684,7 +3684,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     display: flex;
 
@@ -3727,7 +3727,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     padding: 16px 34px;
 
@@ -3735,7 +3735,7 @@ span.section-tag {
 
     cursor: pointer;
 
-    font-size: 15px;
+    font-size: 12px;
 
     font-weight: 600;
 
@@ -3811,7 +3811,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
 }
 
@@ -3859,7 +3859,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     display: flex;
 
@@ -4016,7 +4016,7 @@ span.section-tag {
 
     border-radius: 999px;
 
-    background: #FDFBF6;
+    background: #ffffff;
 
     cursor: pointer;
 
@@ -4041,7 +4041,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     border-color: #101A2E;
 
@@ -4081,7 +4081,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     border-color: #101A2E;
 
@@ -4105,7 +4105,7 @@ span.section-tag {
 
     background: #101A2E;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     padding: 18px 26px;
 
@@ -4113,7 +4113,7 @@ span.section-tag {
 
     cursor: pointer;
 
-    font-size: 15px;
+    font-size: 13px;
 
     font-weight: 600;
 
@@ -4146,7 +4146,7 @@ span.section-tag {
 
     border-color: #101A2E;
 
-    background: #FAF6EE;
+    background: #ffffff;
 
     transform: translateY(-6px);
 
@@ -4650,7 +4650,7 @@ span.section-tag {
 
 .option-tab.active {
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .option-panel {
@@ -4689,7 +4689,7 @@ span.section-tag {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #FDFBF6;
+    background: #ffffff;
     border: 2px solid #101A2E;
     display: none;
     align-items: center;
@@ -4761,7 +4761,7 @@ span.section-tag {
 .wallpaperAI {
     border: 1.5px solid #e6e6e6;
     border-radius: 12px;
-    background: #FDFBF6;
+    background: #ffffff;
     padding: 5px;
     cursor: pointer;
     text-align: center;
@@ -4857,7 +4857,7 @@ span.section-tag {
 
 .upload-area {
     position: relative;
-    background: linear-gradient(135deg, #FAF6EE, #F3EEE5);
+    background: linear-gradient(135deg, #ffffff, #F3EEE5);
     border: 2px dashed transparent;
     border-radius: 22px;
 }
@@ -4968,7 +4968,7 @@ span.section-tag {
     height: 55px;
     border-radius: 50%;
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4979,7 +4979,7 @@ span.section-tag {
 .upload-hint {
     display: block;
     margin-top: 16px;
-    font-size: 11.5px;
+    font-size: 12px;
     letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--am-ochre);
@@ -5033,7 +5033,7 @@ span.section-tag {
 
 .preview-empty-icon,
 .preview-empty h3 {
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .preview-empty p {
@@ -5050,7 +5050,7 @@ span.section-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
     color: #555;
     background: #F3EEE5;
@@ -5143,10 +5143,10 @@ span.section-tag {
 .scan-status {
     position: relative;
     z-index: 2;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: .04em;
-    color: #FDFBF6;
+    color: #ffffff;
     background: rgba(0, 0, 0, .45);
     padding: 10px 20px;
     border-radius: 999px;
@@ -5158,7 +5158,7 @@ span.section-tag {
 ==================================================*/
 
 .palette-wrapper {
-    background: #FDFBF6;
+    background: #ffffff;
     border: 1px solid #E7DFD2;
     border-radius: 22px;
     padding: 22px;
@@ -5179,7 +5179,7 @@ span.section-tag {
     background: transparent;
     padding: 10px 22px;
     border-radius: 999px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #7A7468;
     cursor: pointer;
@@ -5188,7 +5188,7 @@ span.section-tag {
 
 .option-tab.active {
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .option-panel {
@@ -5225,7 +5225,7 @@ span.section-tag {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #FDFBF6;
+    background: #ffffff;
     border: 2px solid #101A2E;
     display: none;
     align-items: center;
@@ -5265,7 +5265,7 @@ span.section-tag {
 
 .color-selected-label b {
     color: #101A2E;
-    font-weight: 700;
+    font-weight: 600;
     margin-left: 4px;
 }
 
@@ -5295,7 +5295,7 @@ span.section-tag {
 .wallpaperAI {
     border: 1.5px solid #e6e6e6;
     border-radius: 12px;
-    background: #FDFBF6;
+    background: #ffffff;
     padding: 5px;
     cursor: pointer;
     text-align: center;
@@ -5313,7 +5313,7 @@ span.section-tag {
 
 .wallpaperAI span {
     display: block;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     color: #343B4D;
     padding: 0 2px 2px;
@@ -5462,7 +5462,7 @@ span.section-tag {
 }
 
 .toggle-btn.active {
-    background: #FDFBF6;
+    background: #ffffff;
     color: #101A2E;
 }
 
@@ -5470,9 +5470,9 @@ span.section-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 600;
-    color: #FDFBF6;
+    color: #ffffff;
     background: rgba(255, 255, 255, .1);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, .14);
@@ -5571,7 +5571,7 @@ span.section-tag {
     width: 62px;
     height: 62px;
     border-radius: 50%;
-    background: #FDFBF6;
+    background: #ffffff;
     color: #101A2E;
     display: flex;
     align-items: center;
@@ -5582,7 +5582,7 @@ span.section-tag {
 
 .stage-empty h3 {
     font-size: 28px;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 
@@ -5593,12 +5593,12 @@ span.section-tag {
 
 .upload-btn {
     border: none;
-    background: #FDFBF6;
+    background: #ffffff;
     color: #101A2E;
     padding: 16px 36px;
     border-radius: 999px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 600;
     transition: transform .4s cubic-bezier(.22, 1, .36, 1);
 }
@@ -5610,7 +5610,7 @@ span.section-tag {
 .upload-hint {
     display: block;
     margin-top: 18px;
-    font-size: 11.5px;
+    font-size: 10.5px;
     letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--am-offwhite);
@@ -5704,7 +5704,7 @@ span.section-tag {
     z-index: 2;
     font-size: 13px;
     font-weight: 600;
-    color: #FDFBF6;
+    color: #ffffff;
     background: rgba(0, 0, 0, .5);
     padding: 12px 24px;
     border-radius: 999px;
@@ -5718,7 +5718,7 @@ span.section-tag {
 .ai-controls-dock {
     display: flex;
     gap: 24px;
-    background: #FDFBF6;
+    background: #ffffff;
     border: 1px solid #E7DFD2;
     border-radius: 26px;
     padding: 30px;
@@ -5775,7 +5775,7 @@ span.section-tag {
 
 .option-tab.active {
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .option-panel {
@@ -5810,7 +5810,7 @@ span.section-tag {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #FDFBF6;
+    background: #ffffff;
     border: 2px solid #101A2E;
     display: none;
     align-items: center;
@@ -5850,7 +5850,7 @@ span.section-tag {
 
 .color-selected-label b {
     color: #101A2E;
-    font-weight: 700;
+    font-weight: 600;
     margin-left: 4px;
 }
 
@@ -5878,7 +5878,7 @@ span.section-tag {
 .wallpaperAI {
     border: 1.5px solid #e6e6e6;
     border-radius: 12px;
-    background: #FDFBF6;
+    background: #ffffff;
     padding: 5px;
     cursor: pointer;
     text-align: center;
@@ -5896,7 +5896,7 @@ span.section-tag {
 
 .wallpaperAI span {
     display: block;
-    font-size: 11px;
+    font-size: 12.5px;
     font-weight: 600;
     color: #343B4D;
     padding: 0 2px 2px;
@@ -5923,11 +5923,11 @@ span.section-tag {
     width: 100%;
     border: none;
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
     padding: 18px 26px;
     border-radius: 999px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 11px;
     font-weight: 600;
     transition: transform .4s cubic-bezier(.22, 1, .36, 1), opacity .3s ease;
 }
@@ -5942,7 +5942,7 @@ span.section-tag {
 }
 
 .ai-note p {
-    font-size: 12px;
+    font-size: 14.5px;
     line-height: 1.6;
     color: #9B9386;
     margin-bottom: 6px;
@@ -6025,7 +6025,7 @@ span.section-tag {
 
 .quote-heading .section-tag {
     display: inline-flex;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 600;
     letter-spacing: .18em;
     text-transform: uppercase;
@@ -6036,14 +6036,14 @@ span.section-tag {
 .quote-heading h2 {
     font-size: clamp(38px, 5vw, 56px);
     line-height: 1.12;
-    font-weight: 700;
+    font-weight: 600;
     color: #fff;
 }
 
 .quote-heading h2 span {
     display: block;
     color: rgba(255, 255, 255, .55);
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .quote-side {
@@ -6084,7 +6084,7 @@ span.section-tag {
     justify-content: center;
     gap: 22px;
     flex-wrap: wrap;
-    font-size: 12.5px;
+    font-size: 12px;
     letter-spacing: .04em;
     color: rgba(255, 255, 255, .5);
 }
@@ -6364,7 +6364,7 @@ span.section-tag {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
+    font-size: 14.5px;
     letter-spacing: .14em;
     text-transform: uppercase;
     color: #e3c583;
@@ -6426,7 +6426,7 @@ span.section-tag {
 
 .wizard-selection-label {
     display: block;
-    font-size: 10.5px;
+    font-size: 13.5px;
     letter-spacing: .1em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, .5);
@@ -6476,7 +6476,7 @@ span.section-tag {
 
 .wizard-reassure b {
     color: rgba(255, 255, 255, .85);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /*----- MAIN PANEL -----*/
@@ -6488,7 +6488,7 @@ span.section-tag {
 
 .wizard-step-eyebrow {
     display: inline-block;
-    font-size: 11px;
+    font-size: 11.5px;
     letter-spacing: .18em;
     text-transform: uppercase;
     color: #C19B53;
@@ -6528,7 +6528,7 @@ span.section-tag {
 }
 
 .wizard-tip p {
-    font-size: 13.5px;
+    font-size: 13px;
     line-height: 1.65;
     color: rgba(255, 255, 255, .8);
 }
@@ -6636,7 +6636,7 @@ span.section-tag {
 }
 
 .wizard-stepper-label {
-    font-size: 12.5px;
+    font-size: 13.5px;
     letter-spacing: .06em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, .55);
@@ -6680,7 +6680,7 @@ span.section-tag {
 }
 
 .wizard-stepper-value span {
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 400;
     color: rgba(255, 255, 255, .55);
     margin-left: 2px;
@@ -6698,7 +6698,7 @@ span.section-tag {
     border: 1px solid rgba(255, 255, 255, .18);
     background: rgba(255, 255, 255, .04);
     color: #fff;
-    font-size: 14.5px;
+    font-size: 13px;
     line-height: 1.7;
     resize: vertical;
     outline: none;
@@ -6746,18 +6746,18 @@ span.section-tag {
 }
 
 .wizard-upload-text {
-    font-size: 13.5px;
+    font-size: 13px;
     color: rgba(255, 255, 255, .75);
 }
 
 .wizard-upload-text b {
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .wizard-upload-count {
     margin-left: auto;
-    font-size: 12.5px;
+    font-size: 9px;
     color: #C19B53;
     font-weight: 600;
     white-space: nowrap;
@@ -6779,7 +6779,7 @@ span.section-tag {
 
 .wizard-field label {
     display: block;
-    font-size: 11.5px;
+    font-size: 11px;
     letter-spacing: .08em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, .5);
@@ -6794,7 +6794,7 @@ span.section-tag {
     border: 1px solid rgba(255, 255, 255, .18);
     background: rgba(255, 255, 255, .04);
     color: #fff;
-    font-size: 14.5px;
+    font-size: 10px;
     outline: none;
     transition: border-color .3s ease;
 }
@@ -6825,7 +6825,7 @@ span.section-tag {
 }
 
 .wizard-consent span {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.6;
     color: rgba(255, 255, 255, .65);
 }
@@ -6835,7 +6835,7 @@ span.section-tag {
     align-items: center;
     gap: 8px;
     margin-top: 16px;
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(255, 255, 255, .45);
 }
 
@@ -6861,7 +6861,7 @@ span.section-tag {
 .wizard-skip-btn {
     background: none;
     border: none;
-    font-size: 13.5px;
+    font-size: 13px;
     color: rgba(255, 255, 255, .55);
     cursor: pointer;
     transition: color .3s ease;
@@ -7209,7 +7209,7 @@ span.section-tag {
 }
 
 .success-text {
-    font-size: 14.5px;
+    font-size: 13px;
     line-height: 1.65;
     color: rgba(255, 255, 255, .68);
     margin-bottom: 30px;
@@ -7264,14 +7264,12 @@ span.section-tag {
 
 .testimonials {
     position: relative;
-    min-height: 900px;
-    overflow: hidden;
-    background: #FAF6EE;
+    padding: 100px 20px 80px;
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 140px 20px 100px;
+    justify-content: center;
 }
 
 /* ---------- CENTER HEADING (unchanged from before) ---------- */
@@ -7295,7 +7293,7 @@ span.section-tag {
 .testimonial-center h2 {
     font-size: 50px;
     line-height: 1.02;
-    font-weight: 300;
+    font-weight: 500;
     color: #101A2E;
 }
 
@@ -7401,7 +7399,7 @@ span.section-tag {
 
 .carousel-arrow:hover {
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
     transform: scale(1.08);
 }
 
@@ -7454,7 +7452,7 @@ span.section-tag {
 .testimonial-card h4 {
     font-size: 17px;
     color: #101A2E;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .testimonial-card span.city {
@@ -7554,7 +7552,7 @@ span.section-tag {
     position: relative;
     width: 100%;
     padding: 90px 0 120px;
-    background: #FAF6EE;
+    background: #ffffff;
     overflow: hidden;
 }
 
@@ -7586,7 +7584,7 @@ span.section-tag {
 
     font-size: clamp(30px, 3.2vw, 46px);
     line-height: 1.08;
-    font-weight: 400;
+    font-weight: 600;
     letter-spacing: -0.035em;
 
     color: #101A2E;
@@ -7761,7 +7759,7 @@ span.section-tag {
 
     padding: 22px 24px 20px;
 
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .proj-card-count {
@@ -7796,10 +7794,10 @@ span.section-tag {
     font-size: clamp(17px, 1.45vw, 21px);
     line-height: 1.15;
 
-    font-weight: 400;
+    font-weight: 700;
     letter-spacing: -0.02em;
 
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 
@@ -7848,7 +7846,7 @@ span.section-tag {
 
 .proj-arrow:hover {
     background: #101A2E;
-    color: #FDFBF6;
+    color: #ffffff;
 
     transform:
         translateY(-50%) scale(1.08);
@@ -7981,7 +7979,7 @@ span.section-tag {
 }
 
 .dock-tab.active {
-    color: #FDFBF6;
+    color: #ffffff;
 }
 
 .dock-indicator {
@@ -8054,14 +8052,13 @@ span.section-tag {
     }
 
     .projects-heading h2 {
-        font-size:
-            clamp(28px, 9vw, 38px);
+        font-size: clamp(42px, 5vw, 68px);
     }
 
     .projects-heading p {
         max-width: 360px;
 
-        font-size: 13px;
+        font-size: 12px;
     }
 
 
@@ -8083,7 +8080,7 @@ span.section-tag {
     }
 
     .proj-card-loc {
-        font-size: 9px;
+        font-size: 13px;
 
         letter-spacing: 1.2px;
     }
@@ -8115,7 +8112,7 @@ span.section-tag {
         padding:
             12px 9px;
 
-        font-size: 11px;
+        font-size: clamp(10px, 2.6vw, 15px);
 
         text-align: center;
     }
@@ -8145,7 +8142,7 @@ span.section-tag {
     }
 
     .dock-tab {
-        font-size: 10px;
+        font-size: 13px;
 
         padding:
             11px 5px;
@@ -8180,7 +8177,7 @@ span.section-tag {
 
     padding: 160px 0;
 
-    background: #FAF6EE;
+    background: #ffffff;
 
 }
 
@@ -8204,7 +8201,7 @@ span.section-tag {
 
     color: #B58A3A;
 
-    font-size: 12px;
+    font-size: 15px;
 
     letter-spacing: 5px;
 
@@ -8217,7 +8214,7 @@ span.section-tag {
 .plans-header h2 {
 
 
-    font-size: clamp(42px, 5vw, 68px);
+    font-size: 60px;
 
     font-weight: 400;
 
@@ -8452,7 +8449,7 @@ span.section-tag {
     border-radius: 999px;
 
 
-    font-size: 11px;
+    font-size: 15px;
 
 
     letter-spacing: 2px;
@@ -8470,7 +8467,7 @@ span.section-tag {
 .plan-name {
 
 
-    font-size: 13px;
+    font-size: 15px;
 
 
     letter-spacing: 4px;
@@ -8522,10 +8519,10 @@ span.section-tag {
 .price strong {
 
 
-    font-size: 60px;
+    font-size: 48px;
 
 
-    font-weight: 300;
+    font-weight: 400;
 
 
     color: #101A2E;
@@ -8769,7 +8766,7 @@ span.section-tag {
         padding: 12px 18px;
 
 
-        font-size: 13px;
+        font-size: 15px;
 
 
     }
@@ -8778,7 +8775,7 @@ span.section-tag {
     .price strong {
 
 
-        font-size: 48px;
+        font-size: clamp(26px, 3.5vw, 36px);
 
 
     }
@@ -8806,7 +8803,7 @@ span.section-tag {
 
     background: #07172f;
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     display: grid;
 
@@ -8829,7 +8826,7 @@ span.section-tag {
 
     font-size: 18px;
 
-    font-weight: 600;
+    font-weight: 400;
 
     letter-spacing: .08em;
 
@@ -8844,7 +8841,7 @@ span.section-tag {
 
     letter-spacing: .12em;
 
-    font-weight: 500;
+    font-weight: 400;
 
 }
 
@@ -8873,7 +8870,7 @@ span.section-tag {
 
     font-size: 16px;
 
-    font-weight: 500;
+    font-weight: 400;
 
 }
 
@@ -8896,11 +8893,11 @@ span.section-tag {
 
 .footer-right a {
 
-    color: #FDFBF6;
+    color: #ffffff;
 
     text-decoration: none;
 
-    font-size: 13px;
+    font-size: 15px;
 
     opacity: .85;
 
@@ -8967,7 +8964,7 @@ span.section-tag {
 .audience-wrap {
     position: relative;
     padding: 70px 8%;
-    background: #FDFBF6;
+    background: #ffffff;
 }
 
 /* ---------- THE GLASS BAR ITSELF ----------
@@ -8993,7 +8990,7 @@ span.section-tag {
     animation: audienceBarLogoFlow 3.8s ease-in-out infinite alternate;
     backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(253, 251, 246, .40);
+    border: 1px solid rgba(255, 255, 255, .40);
     box-shadow: 0 24px 62px rgba(230, 36, 83, .22);
     margin-top: -160px;
 }
@@ -9030,7 +9027,7 @@ span.section-tag {
     font-size: clamp(22px, 2vw, 28px);
     font-weight: 700;
     letter-spacing: -0.01em;
-    color: #FDFBF6;
+    color: #ffffff;
     margin-bottom: 8px;
     line-height: 1.25;
 }
@@ -9038,7 +9035,7 @@ span.section-tag {
 .audience-left p {
     font-size: 15px;
     line-height: 1.55;
-    color: rgba(253, 251, 246, .90);
+    color: rgba(255, 255, 255, .90);
     margin: 0;
 }
 
@@ -9061,7 +9058,7 @@ span.section-tag {
     gap: 12px;
     font-size: 15px;
     font-weight: 600;
-    color: #FDFBF6;
+    color: #ffffff;
     white-space: nowrap;
     line-height: 1.35;
 }
@@ -9072,7 +9069,7 @@ span.section-tag {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #FDFBF6;
+    background: #ffffff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.85);
     flex-shrink: 0;
 }
@@ -9220,7 +9217,7 @@ span.section-tag {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FDFBF6;
+    color: #ffffff;
     opacity: 0;
     transform: scale(.6) rotate(-45deg);
     transition: opacity .3s ease, transform .35s cubic-bezier(.22, 1, .36, 1);
@@ -9338,7 +9335,7 @@ span.section-tag {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 12px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.6);
 }
 
@@ -9537,7 +9534,7 @@ span.section-tag {
     background: rgba(17, 17, 17, .85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    color: #FDFBF6;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9604,7 +9601,7 @@ span.section-tag {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -9650,7 +9647,7 @@ body {
 .btn-primary {
     background: linear-gradient(120deg, #f6be10 0%, #f39125 34%, #c73b8e 68%, #e62453 100%) !important;
     border-color: rgba(247, 241, 231, .38);
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 .btn-secondary {
@@ -9714,7 +9711,7 @@ body {
 .audience-bar,
 .testimonial-card,
 .projects-dock {
-    background: rgba(252, 248, 240, .72);
+    background: rgba(255, 255, 255, .72);
     border-color: rgba(222, 210, 192, .95);
 }
 
@@ -9722,17 +9719,17 @@ body {
     background: linear-gradient(105deg, #f6be10 0%, #f39125 32%, #c73b8e 66%, #e62453 100%) !important;
     background-size: 180% 180% !important;
     animation: audienceBarLogoFlow 3.8s ease-in-out infinite alternate !important;
-    border-color: rgba(253, 251, 246, .40) !important;
+    border-color: rgba(255, 255, 255, .40) !important;
 }
 
 .audience-bar .audience-left h3,
 .audience-bar .audience-left p,
 .audience-bar .audience-right span.item {
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 .audience-bar .audience-right span.divider {
-    color: rgba(253, 251, 246, .42) !important;
+    color: rgba(255, 255, 255, .42) !important;
 }
 
 .audience-left h3,
@@ -9840,7 +9837,7 @@ body {
 .billing-toggle,
 .carousel-arrow,
 .proj-arrow {
-    background: rgba(252, 248, 240, .86);
+    background: rgba(255, 255, 255, .86);
     border-color: rgba(222, 210, 192, .95);
     color: var(--am-navy);
 }
@@ -9896,14 +9893,14 @@ body {
 }
 
 .audience-card-icon {
-    background: rgba(253, 251, 246, .20) !important;
-    color: #FDFBF6 !important;
+    background: rgba(255, 255, 255, .20) !important;
+    color: #ffffff !important;
 }
 
 .audience-card-num,
 .audience-card h3,
 .audience-card p {
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 .audience-card:hover,
@@ -9913,8 +9910,8 @@ body {
 }
 
 .audience-card:hover .audience-card-icon {
-    background: rgba(253, 251, 246, .30) !important;
-    color: #FDFBF6 !important;
+    background: rgba(255, 255, 255, .30) !important;
+    color: #ffffff !important;
 }
 
 .dtools-section {
@@ -9942,7 +9939,7 @@ body {
 }
 
 .dtools-card {
-    background: rgba(252, 248, 240, .055);
+    background: rgba(255, 255, 255, .055);
     border-color: rgba(233, 221, 201, .14);
 }
 
@@ -9952,7 +9949,7 @@ body {
 }
 
 .dtools-demo-frame {
-    background: rgba(252, 248, 240, .08);
+    background: rgba(255, 255, 255, .08);
     border-color: rgba(233, 221, 201, .18);
 }
 
@@ -10129,11 +10126,11 @@ body {
 }
 
 .plans-grid .plan-card li {
-    border-bottom-color: rgba(252, 248, 240, .20);
+    border-bottom-color: rgba(255, 255, 255, .20);
 }
 
 .plans-grid .plan-card li::before {
-    border-color: rgba(252, 248, 240, .82);
+    border-color: rgba(255, 255, 255, .82);
 }
 
 .plans-grid .plan-card:nth-child(1) li {
@@ -10181,13 +10178,13 @@ body {
         radial-gradient(ellipse at 12% 18%, rgba(246, 190, 16, 1) 0 18%, rgba(246, 190, 16, .74) 30%, transparent 58%),
         radial-gradient(ellipse at 94% 16%, rgba(243, 145, 37, .96) 0 18%, rgba(243, 145, 37, .50) 34%, transparent 62%),
         radial-gradient(ellipse at 18% 94%, rgba(255, 225, 116, .86) 0 22%, transparent 58%),
-        radial-gradient(ellipse at 78% 76%, rgba(252, 248, 240, .72) 0 23%, transparent 50%),
-        linear-gradient(135deg, rgba(246, 190, 16, .92), rgba(243, 145, 37, .72) 45%, rgba(252, 248, 240, .48));
+        radial-gradient(ellipse at 78% 76%, rgba(255, 255, 255, .72) 0 23%, transparent 50%),
+        linear-gradient(135deg, rgba(246, 190, 16, .92), rgba(243, 145, 37, .72) 45%, rgba(255, 255, 255, .48));
 }
 
 .plans-grid .plan-card:nth-child(1)::after {
     background:
-        radial-gradient(ellipse at 26% 22%, rgba(252, 248, 240, .84) 0 18%, transparent 44%),
+        radial-gradient(ellipse at 26% 22%, rgba(255, 255, 255, .84) 0 18%, transparent 44%),
         radial-gradient(ellipse at 74% 82%, rgba(243, 145, 37, .82) 0 20%, transparent 48%),
         radial-gradient(ellipse at 48% 52%, rgba(246, 190, 16, .72) 0 21%, transparent 52%);
 }
@@ -10202,15 +10199,15 @@ body {
         radial-gradient(ellipse at 18% 10%, rgba(243, 145, 37, 1) 0 21%, rgba(243, 145, 37, .72) 38%, transparent 66%),
         radial-gradient(ellipse at 88% 88%, rgba(246, 190, 16, .92) 0 18%, rgba(246, 190, 16, .46) 36%, transparent 64%),
         radial-gradient(ellipse at 94% 22%, rgba(255, 142, 0, .88) 0 19%, transparent 54%),
-        radial-gradient(ellipse at 28% 80%, rgba(252, 248, 240, .66) 0 24%, transparent 56%),
-        linear-gradient(145deg, rgba(243, 145, 37, .92), rgba(246, 190, 16, .62) 58%, rgba(252, 248, 240, .42));
+        radial-gradient(ellipse at 28% 80%, rgba(255, 255, 255, .66) 0 24%, transparent 56%),
+        linear-gradient(145deg, rgba(243, 145, 37, .92), rgba(246, 190, 16, .62) 58%, rgba(255, 255, 255, .42));
     animation-duration: 7s;
     animation-delay: -3s;
 }
 
 .plans-grid .plan-card:nth-child(2)::after {
     background:
-        radial-gradient(ellipse at 68% 20%, rgba(252, 248, 240, .82) 0 18%, transparent 46%),
+        radial-gradient(ellipse at 68% 20%, rgba(255, 255, 255, .82) 0 18%, transparent 46%),
         radial-gradient(ellipse at 32% 84%, rgba(246, 190, 16, .82) 0 20%, transparent 48%),
         radial-gradient(ellipse at 54% 54%, rgba(243, 145, 37, .76) 0 23%, transparent 54%);
     animation-delay: -2s;
@@ -10231,15 +10228,15 @@ body {
         radial-gradient(ellipse at 84% 12%, rgba(230, 36, 83, 1) 0 22%, rgba(230, 36, 83, .68) 39%, transparent 68%),
         radial-gradient(ellipse at 14% 30%, rgba(199, 59, 142, .98) 0 23%, rgba(199, 59, 142, .62) 41%, transparent 70%),
         radial-gradient(ellipse at 62% 96%, rgba(230, 36, 83, .86) 0 20%, transparent 58%),
-        radial-gradient(ellipse at 34% 76%, rgba(252, 248, 240, .54) 0 24%, transparent 58%),
-        linear-gradient(140deg, rgba(199, 59, 142, .90), rgba(230, 36, 83, .76) 54%, rgba(252, 248, 240, .34));
+        radial-gradient(ellipse at 34% 76%, rgba(255, 255, 255, .54) 0 24%, transparent 58%),
+        linear-gradient(140deg, rgba(199, 59, 142, .90), rgba(230, 36, 83, .76) 54%, rgba(255, 255, 255, .34));
     animation-duration: 8s;
     animation-delay: -6s;
 }
 
 .plans-grid .plan-card:nth-child(3)::after {
     background:
-        radial-gradient(ellipse at 78% 24%, rgba(252, 248, 240, .62) 0 18%, transparent 44%),
+        radial-gradient(ellipse at 78% 24%, rgba(255, 255, 255, .62) 0 18%, transparent 44%),
         radial-gradient(ellipse at 24% 84%, rgba(199, 59, 142, .78) 0 20%, transparent 50%),
         radial-gradient(ellipse at 54% 48%, rgba(230, 36, 83, .70) 0 24%, transparent 56%);
     animation-delay: -4s;
@@ -10247,11 +10244,11 @@ body {
 
 .plans-grid .plan-card button,
 .plans-grid .plan-card.featured button {
-    background: rgba(252, 248, 240, .28);
+    background: rgba(255, 255, 255, .28);
     color: var(--am-navy);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: inset 0 0 0 1px rgba(252, 248, 240, .22);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22);
 }
 
 .plans-grid .plan-card:nth-child(1) button {
@@ -10335,7 +10332,7 @@ body {
 }
 
 .chatbot-panel {
-    background: rgba(252, 248, 240, .88);
+    background: rgba(255, 255, 255, .88);
     border-color: rgba(222, 210, 192, .95);
 }
 
@@ -10372,12 +10369,12 @@ body {
 
 .site-header {
     background: transparent !important;
-    border-bottom: 1px solid rgba(253, 251, 246, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .site-header.is-scrolled {
     background: rgba(7, 20, 38, .94) !important;
-    border-bottom: 1px solid rgba(253, 251, 246, 0.12) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
 }
 
@@ -10399,7 +10396,7 @@ body {
     font-size: 13.5px !important;
     font-weight: 500 !important;
     letter-spacing: 0.01em !important;
-    color: rgba(253, 251, 246, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     transition: color 0.2s ease !important;
 }
 
@@ -10539,7 +10536,7 @@ body {
 .footer-column h4 {
     margin: 0 0 8px !important;
     color: #fff !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
 }
 
@@ -10569,7 +10566,7 @@ body {
 .footer-column a,
 .footer-column p {
     margin: 0 !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     line-height: 1.45 !important;
     text-decoration: none !important;
 }
@@ -10600,7 +10597,7 @@ body {
     justify-content: space-between;
     gap: 24px;
     padding: 20px 4%;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 .footer-bottom p {
@@ -10746,7 +10743,7 @@ body[data-page="home"] .intro-title-sub {
     font-weight: 400;
     font-size: clamp(15px, 1.35vw, 20px);
     line-height: 1.55;
-    color: rgba(253, 251, 246, 0.84);
+    color: rgba(255, 255, 255, 0.84);
 }
 
 body[data-page="home"] .introBtn {
@@ -10787,7 +10784,7 @@ body[data-page="home"] .introBtn:hover {
 
     .site-nav a,
     .dropdown-trigger {
-        font-size: 13px !important;
+        font-size: 16px !important;
     }
 
     .header-btn,
@@ -10831,7 +10828,7 @@ body[data-page="home"] .introBtn:hover {
     .dropdown-trigger {
         width: 100%;
         padding: 13px 0 !important;
-        font-size: 16px !important;
+        font-size: 12px !important;
         white-space: normal;
     }
 
@@ -10908,7 +10905,7 @@ body[data-page="home"] .introBtn:hover {
     }
 
     body[data-page="home"] .intro-title-gmbh {
-        font-size: clamp(10px, 2.6vw, 15px);
+        font-size: 15px;
         margin: 0 !important;
         padding: 0 !important;
         background: transparent !important;
@@ -10961,7 +10958,7 @@ body[data-page="home"] .introBtn:hover {
         margin: 22px 0 0 !important;
         max-width: 100%;
         color: rgba(255, 255, 255, .62) !important;
-        font-size: 12px !important;
+        font-size: 14px !important;
         line-height: 1.45 !important;
         text-align: left !important;
     }
@@ -10990,7 +10987,7 @@ body[data-page="home"] .introBtn:hover {
         flex-wrap: wrap;
         align-items: center;
         gap: 6px 10px;
-        font-size: 13px;
+        font-size: 15px;
         color: rgba(255, 255, 255, 0.75);
         margin: 14px 0 20px;
     }
@@ -11023,7 +11020,7 @@ body[data-page="home"] .introBtn:hover {
         content: "+";
         font-size: 18px;
         color: #f6be10;
-        font-weight: 700;
+        font-weight: 400;
         transition: transform 0.2s ease;
     }
 
@@ -11082,12 +11079,12 @@ body[data-page="home"] .introBtn:hover {
     }
 
     .footer-column h4 {
-        font-size: 14px !important;
+        font-size: 13px !important;
     }
 
     .footer-column a,
     .footer-column p {
-        font-size: 13px !important;
+        font-size: 15.5px !important;
     }
 }
 
@@ -11153,7 +11150,7 @@ html[data-theme="amigos-dark"] .theme-toggle {
 html[data-theme="amigos-dark"] .theme-toggle-icon {
     transform: translateX(16px);
     background: linear-gradient(135deg, #071A33, #12345f 58%, #c73b8e);
-    color: #fdfbf6;
+    color: #ffffff;
 }
 
 /* Sound Toggle */
@@ -11283,7 +11280,7 @@ html[data-theme="amigos-dark"] .sound-toggle.is-playing {
 html[data-theme="amigos-dark"],
 html[data-theme="amigos-dark"] body {
     background: #071A33 !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] .site-header.is-scrolled,
@@ -11363,7 +11360,7 @@ html[data-theme="amigos-dark"] .audience-cards-heading h2,
 html[data-theme="amigos-dark"] .why-content h2,
 html[data-theme="amigos-dark"] .ai-heading h2,
 html[data-theme="amigos-dark"] .scc-content h3 {
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] p,
@@ -11377,7 +11374,7 @@ html[data-theme="amigos-dark"] .why-content p,
 html[data-theme="amigos-dark"] .scc-content p,
 html[data-theme="amigos-dark"] .ai-side p,
 html[data-theme="amigos-dark"] .plan-card p {
-    color: rgba(253, 251, 246, .76) !important;
+    color: rgba(255, 255, 255, .76) !important;
 }
 
 html[data-theme="amigos-dark"] .service-cf-card,
@@ -11389,7 +11386,7 @@ html[data-theme="amigos-dark"] .projects-dock,
 html[data-theme="amigos-dark"] .billing-toggle {
     background: rgba(13, 37, 66, .78) !important;
     border-color: rgba(247, 241, 231, .16) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] .service-cf-card[data-offset="0"] {
@@ -11492,7 +11489,7 @@ html[data-theme="amigos-dark"] body,
 html[data-theme="amigos-dark"] main,
 html[data-theme="amigos-dark"] .legacy-page {
     background: var(--am-dark-navy) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] body:not([data-page="home"]) section:not(.site-footer):not(.footer):not(.footer-section),
@@ -11507,7 +11504,7 @@ html[data-theme="amigos-dark"] .about-testimonials {
         radial-gradient(circle at 88% 8%, rgba(230, 36, 83, .12), transparent 28%),
         radial-gradient(circle at 6% 90%, rgba(246, 190, 16, .08), transparent 30%),
         var(--am-dark-navy) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] .why-amigos,
@@ -11535,7 +11532,7 @@ html[data-theme="amigos-dark"] .projects-heading h2,
 html[data-theme="amigos-dark"] .plans-header h2,
 html[data-theme="amigos-dark"] .testimonial-center h2,
 html[data-theme="amigos-dark"] .why-content h2 {
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
     -webkit-text-fill-color: currentColor !important;
 }
 
@@ -11547,7 +11544,7 @@ html[data-theme="amigos-dark"] .plans-header p,
 html[data-theme="amigos-dark"] .testimonial-card p,
 html[data-theme="amigos-dark"] .why-content p,
 html[data-theme="amigos-dark"] .plan-card p {
-    color: rgba(253, 251, 246, .78) !important;
+    color: rgba(255, 255, 255, .78) !important;
 }
 
 html[data-theme="amigos-dark"] .section-tag,
@@ -11592,7 +11589,7 @@ html[data-theme="amigos-dark"] .flow-icon,
 html[data-theme="amigos-dark"] article:not(.process-item):not(.value-row) {
     background: var(--am-dark-surface) !important;
     border-color: var(--am-dark-line) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
     box-shadow: 0 24px 70px rgba(0, 0, 0, .28) !important;
 }
 
@@ -11695,7 +11692,7 @@ body[data-page="home"] .btn-secondary:hover {
 body[data-page="home"] .audience-card {
     background: rgba(13, 37, 66, .82) !important;
     border-color: rgba(255, 255, 255, .16) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
     box-shadow: 0 24px 70px rgba(0, 0, 0, .22) !important;
 }
 
@@ -11719,7 +11716,7 @@ body[data-page="home"] .audience-card:nth-child(3):hover {
 
 body[data-page="home"] .audience-card-icon {
     background: rgba(255, 255, 255, .14) !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 body[data-page="home"] .audience-card:hover .audience-card-icon {
@@ -11729,8 +11726,8 @@ body[data-page="home"] .audience-card:hover .audience-card-icon {
 body[data-page="home"] .audience-card-num,
 body[data-page="home"] .audience-card h3,
 body[data-page="home"] .audience-card p {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 body[data-page="home"] .quote-section,
@@ -11885,8 +11882,8 @@ body[data-page="home"] .testimonial-card .stars {
     -webkit-text-fill-color: #F6BE10 !important;
 }
 
-body[data-page="home"] .testimonials,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials {
     background:
         radial-gradient(circle at 18% 14%, rgba(230, 36, 83, .12), transparent 28%),
         radial-gradient(circle at 82% 78%, rgba(246, 190, 16, .08), transparent 30%),
@@ -11894,16 +11891,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] .testimonials {
     color: #fff !important;
 }
 
-body[data-page="home"] .testimonials h2,
-body[data-page="home"] .testimonials p,
-body[data-page="home"] .testimonials .testimonial-kicker,
-body[data-page="home"] .testimonials .rating,
-body[data-page="home"] .testimonials .rating span,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials h2,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials p,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials h2,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials p,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials h2,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
@@ -12003,8 +12000,8 @@ body[data-page="home"] {
     --am-pink-deep: #A91452;
     --am-black: #050505;
     --am-grey: #626262;
-    --am-soft-white: #FDFBF6;
-    --am-clean-light: #FAF6EE;
+    --am-soft-white: #ffffff;
+    --am-clean-light: #ffffff;
     --am-yellow-grad: linear-gradient(135deg, #FFD21F 0%, #F39125 100%);
     --am-orange-grad: linear-gradient(135deg, #FF8A1F 0%, #D94D12 100%);
     --am-pink-grad: linear-gradient(135deg, #FF2F6D 0%, #A91452 100%);
@@ -12014,7 +12011,7 @@ body[data-page="home"] {
 body[data-page="home"] .audience-cards-section {
     background:
         radial-gradient(circle at 18% 4%, rgba(255, 210, 31, .10), transparent 32%),
-        linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
 }
 
 body[data-page="home"] .audience-cards-heading .section-tag,
@@ -12022,14 +12019,18 @@ body[data-page="home"] .plans-eyebrow,
 body[data-page="home"] .services-nav-heading .section-tag,
 body[data-page="home"] .ai-heading .section-tag,
 body[data-page="home"] .dtools-heading .section-tag,
-body[data-page="home"] .sp-collapsed .sp-num,
-body[data-page="home"] .sp-expanded .sp-num,
 body[data-page="home"] .sp-link,
 body[data-page="home"] .price small,
 body[data-page="home"] .plan-name,
 body[data-page="home"] .testimonial-card span.city {
     color: var(--am-orange-clean) !important;
     -webkit-text-fill-color: var(--am-orange-clean) !important;
+}
+
+body[data-page="home"] .sp-collapsed .sp-num,
+body[data-page="home"] .sp-expanded .sp-num {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 body[data-page="home"] .audience-cards-heading h2,
@@ -12124,7 +12125,7 @@ body[data-page="home"] .audience-card:hover .audience-card-icon {
 body[data-page="home"] .services-nav-section {
     background:
         radial-gradient(circle at 82% 8%, rgba(230, 36, 83, .08), transparent 28%),
-        linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
 }
 
 body[data-page="home"] .services-bg-vignette,
@@ -12170,7 +12171,7 @@ body[data-page="home"] .ai-section {
     background:
         linear-gradient(rgba(7, 26, 51, .035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(7, 26, 51, .035) 1px, transparent 1px),
-        #FDFBF6 !important;
+        #ffffff !important;
 }
 
 body[data-page="home"] .ai-heading h2 span,
@@ -12211,7 +12212,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock:has(.dock-t
 body[data-page="home"] .plans-section {
     background:
         radial-gradient(circle at 82% 12%, rgba(230, 36, 83, .08), transparent 30%),
-        linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
 }
 
 body[data-page="home"] .billing-toggle button.active {
@@ -12225,14 +12226,14 @@ body[data-page="home"] .plans-header h2 {
     -webkit-text-fill-color: #071A33 !important;
 }
 
-body[data-page="home"] .testimonials {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials {
     min-height: 100vh !important;
     height: 100vh !important;
     padding: clamp(54px, 7vh, 84px) 20px clamp(44px, 6vh, 66px) !important;
     overflow: hidden !important;
     background:
         radial-gradient(circle at 50% 48%, rgba(7, 26, 51, .08), transparent 36%),
-        linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
     color: #071A33 !important;
 }
 
@@ -12335,11 +12336,15 @@ body[data-page="home"] .wizard-side-eyebrow,
 body[data-page="home"] .wizard-step-eyebrow,
 body[data-page="home"] .quote-heading .section-tag,
 body[data-page="home"] .plans-eyebrow,
-body[data-page="home"] .plan-name,
-body[data-page="home"] .price small,
 body[data-page="home"] .testimonial-card span.city {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
+}
+
+body[data-page="home"] .plan-name,
+body[data-page="home"] .price small {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 body[data-page="home"] .dtools-bar,
@@ -12377,54 +12382,54 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
 }
 
 /* Final homepage polish: testimonials readability + single-line audience hover border. */
-body[data-page="home"] .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-kicker {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-body[data-page="home"] .testimonials .rating,
-body[data-page="home"] .testimonials .rating span,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card {
     background: rgba(255, 255, 255, .86) !important;
     color: #050505 !important;
     -webkit-text-fill-color: currentColor !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card p,
-body[data-page="home"] .testimonials .testimonial-card h4,
-body[data-page="home"] .testimonials .testimonial-card span:not(.stars):not(.city),
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card p,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card h4,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card span:not(.stars):not(.city) {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card p,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card h4,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span:not(.stars):not(.city),
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card h4,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span:not(.stars):not(.city) {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card span.city,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card span.city {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span.city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span.city {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-body[data-page="home"] .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
     margin-bottom: 24px !important;
 }
 
-body[data-page="home"] .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
     margin-top: 24px !important;
 }
 
@@ -12489,50 +12494,50 @@ body[data-page="home"] .audience-card:hover::after {
 }
 
 /* Final client polish override: testimonial contrast + cleaner one-stroke audience border. */
-body[data-page="home"] .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-kicker {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-body[data-page="home"] .testimonials .rating,
-body[data-page="home"] .testimonials .rating span,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card {
     background: rgba(255, 255, 255, .94) !important;
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card *,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card * {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card * {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-body[data-page="home"] .testimonials .testimonial-card .city,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card .city {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .city {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-body[data-page="home"] .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
     margin-bottom: 22px !important;
 }
 
-body[data-page="home"] .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
     margin-top: 0 !important;
 }
 
@@ -12631,22 +12636,22 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .nav-link {
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .dropdown-item,
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .dropdown-menu .dropdown-item,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .dropdown-item {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .dropdown-item:hover,
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .dropdown-menu .dropdown-item:hover,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .dropdown-item:hover {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .item-title,
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .dropdown-menu .item-title,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-title {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header .dropdown-menu .item-desc,
@@ -12734,15 +12739,15 @@ html[data-theme="amigos-dark"] body[data-page="about"] main .values-section {
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials {
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials h2,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials p,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .review-link,
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-control {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .section-kicker,
@@ -12856,7 +12861,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-btn.active {
 
 body[data-page="home"] .ai-stage,
 html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage {
-    background: #FDFBF6 !important;
+    background: #ffffff !important;
     animation: none !important;
 }
 
@@ -12912,21 +12917,21 @@ html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock {
     z-index: 20 !important;
 }
 
-body[data-page="home"] .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
     margin-bottom: 54px !important;
 }
 
-body[data-page="home"] .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-body[data-page="home"] .testimonials .rating,
-body[data-page="home"] .testimonials .rating span,
-body[data-page="home"] .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .rating span,
-html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
+:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
     background: var(--am-mixed-grad) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -12951,7 +12956,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial
 body[data-page="home"] .audience-wrap {
     margin-top: 0 !important;
     padding: 36px 4% 20px !important;
-    background: #FDFBF6 !important;
+    background: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .audience-wrap {
@@ -12983,7 +12988,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-left h3 {
     font-size: clamp(24px, 2.2vw, 30px) !important;
     font-weight: 700 !important;
     letter-spacing: -0.01em !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
     margin: 0 0 10px 0 !important;
     line-height: 1.25 !important;
 }
@@ -12992,7 +12997,7 @@ body[data-page="home"] .audience-left p,
 html[data-theme="amigos-dark"] body[data-page="home"] .audience-left p {
     font-size: 15.5px !important;
     line-height: 1.55 !important;
-    color: rgba(253, 251, 246, .92) !important;
+    color: rgba(255, 255, 255, .92) !important;
     margin: 0 !important;
     text-wrap: pretty !important;
 }
@@ -13014,9 +13019,9 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    font-size: 15.5px !important;
+    font-size: 14px !important;
     font-weight: 600 !important;
-    color: #FDFBF6 !important;
+    color: #ffffff !important;
     white-space: nowrap !important;
     line-height: 1.35 !important;
 }
@@ -13028,13 +13033,13 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item::bef
     width: 7.5px !important;
     height: 7.5px !important;
     border-radius: 50% !important;
-    background: #FDFBF6 !important;
+    background: #ffffff !important;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.85) !important;
     flex-shrink: 0 !important;
 }
 
 body[data-page="home"] .audience-cards-section {
-    background: #FDFBF6 !important;
+    background: #ffffff !important;
     padding-top: 40px !important;
 }
 
@@ -13103,8 +13108,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-header p {
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .billing-toggle {
-    background: #FDFBF6 !important;
-    border-color: rgba(253, 251, 246, .92) !important;
+    background: #ffffff !important;
+    border-color: rgba(255, 255, 255, .92) !important;
     box-shadow: 0 18px 48px rgba(0, 0, 0, .24) !important;
 }
 
@@ -13122,13 +13127,13 @@ html[data-theme="amigos-dark"] body[data-page="home"] .billing-toggle button.act
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled {
     background: #071A33 !important;
-    border-bottom-color: rgba(253, 251, 246, .12) !important;
+    border-bottom-color: rgba(255, 255, 255, .12) !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .site-footer {
     background: #071A33 !important;
-    color: #FDFBF6 !important;
-    border-top-color: rgba(253, 251, 246, .12) !important;
+    color: #ffffff !important;
+    border-top-color: rgba(255, 255, 255, .12) !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .site-footer h3,
@@ -13138,12 +13143,12 @@ html[data-theme="amigos-dark"] body[data-page="home"] .site-footer a,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-footer span,
 html[data-theme="amigos-dark"] body[data-page="home"] .footer-bottom,
 html[data-theme="amigos-dark"] body[data-page="home"] .footer-bottom a {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="home"] .ai-stage {
-    background: #FDFBF6 !important;
+    background: #ffffff !important;
     box-shadow: 0 24px 70px rgba(7, 26, 51, .12) !important;
 }
 
@@ -13170,8 +13175,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled .dropdown-trigger,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .nav-link,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled .nav-link {
-    color: #FDFBF6 !important;
-    -webkit-text-fill-color: #FDFBF6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .header-btn,
@@ -13289,7 +13294,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
     }
 
     .hero-content p {
-        font-size: 14px !important;
+        font-size: clamp(13px, 3.8vw, 16px) !important;
         line-height: 1.5 !important;
         margin-bottom: 24px !important;
     }
@@ -13353,7 +13358,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
     .hero .paint-screen-banner p,
     .paint-icons .paint-screen-banner p,
     .paint-screen-banner p {
-        font-size: clamp(13px, 3.8vw, 16px) !important;
+        font-size: 15px !important;
         color: rgba(255, 255, 255, 0.92) !important;
         line-height: 1.4 !important;
         text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9) !important;
@@ -13396,7 +13401,7 @@ body[data-page="home"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-t
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled,
 html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled {
     background: #071A33 !important;
-    border-bottom: 1px solid rgba(253, 251, 246, 0.12) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
@@ -13421,4 +13426,14 @@ html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scro
 html:not([data-theme="amigos-dark"]) body[data-page="home"] .site-header.is-scrolled .dropdown-trigger {
     color: #071A33 !important;
     -webkit-text-fill-color: #071A33 !important;
+}
+
+/* Header CTA geometry is theme-independent. Only colors change by theme. */
+html body .site-header .header-actions .customer-header-btn,
+html body .site-header .header-actions .header-btn {
+    min-height: 48px !important;
+    padding: 10px 22px !important;
+    border-radius: 999px !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
 }

@@ -1,0 +1,343 @@
+/* =========================================================
+   AMIGOS SITE-WIDE READABILITY & CONTRAST AUDIT
+   Loaded last on every public legacy page.
+
+   Rules:
+   - light theme uses light/white section surfaces, never navy sections
+   - dark surfaces and image overlays always carry light copy
+   - branded gradient hover/active states always carry white copy
+   - small descriptive text has a practical reading-size floor
+   - all action controls keep the site's fully rounded language
+========================================================= */
+
+:root {
+    --audit-ink: #071a33;
+    --audit-muted: #4f5b69;
+    --audit-light: #ffffff;
+    --audit-light-muted: rgba(255, 255, 255, .82);
+    --audit-surface: #ffffff;
+    --audit-dark-surface: #102844;
+    --audit-yellow: #f6be10;
+    --audit-orange: #f39125;
+    --audit-pink: #e62453;
+    --audit-magenta: #c73b8e;
+    --audit-gradient: linear-gradient(120deg, #f6be10 0%, #f39125 30%, #e62453 64%, #c73b8e 100%);
+}
+
+/* Readable global scale. Decorative rules remain small; actual information does not. */
+body :where(article, [class*="-card"], [class*="-panel"], [class*="-box"], [class*="-item"]) p,
+body :where(.detail-item, .floating-card, .process-step, .timeline-card, .flow-step) p {
+    font-size: clamp(15px, 1.8vw, 17px) !important;
+    line-height: 1.62 !important;
+}
+
+body small,
+body :where(
+    .section-label,
+    .section-tag,
+    [class*="-kicker"],
+    [class*="-eyebrow"],
+    [class*="-meta"],
+    [class*="-label"]
+) {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+}
+
+body :where(
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) :where(h3, h4) {
+    line-height: 1.2 !important;
+}
+
+body :where(
+    a[class*="btn"],
+    a[class*="button"],
+    button[class*="btn"],
+    button[class*="button"],
+    button[class*="option"]
+) {
+    min-height: 48px;
+    border-radius: 999px !important;
+    font-size: max(14px, .9rem) !important;
+}
+
+/* Light theme: quiet neutral surfaces and dark readable copy. */
+html:not([data-theme="amigos-dark"]) body {
+    --audit-copy: var(--audit-ink);
+    --audit-secondary-copy: var(--audit-muted);
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero-content :where(.color-hero-kicker, h1, p),
+html:not([data-theme="amigos-dark"]) body .color-hero-actions {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero-content > p {
+    color: #2f3a46 !important;
+    -webkit-text-fill-color: #2f3a46 !important;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, .8);
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero .color-hero-note,
+html:not([data-theme="amigos-dark"]) body .color-room-info,
+html:not([data-theme="amigos-dark"]) body .palette-preview-label {
+    background: var(--audit-gradient) !important;
+    background-size: 180% 180% !important;
+    border-color: rgba(255, 255, 255, .56) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero .color-hero-note span,
+html:not([data-theme="amigos-dark"]) body .color-room-info :where(span, h3, p),
+html:not([data-theme="amigos-dark"]) body .palette-preview-label :where(span, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    opacity: 1 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .service-content,
+    .process-card,
+    .why-card,
+    .review-card,
+    .step-content,
+    .professional-card,
+    .detail-item,
+    .property-points > div,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .flow-item,
+    .svc-intro-point,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .standard-row,
+    .damage-category-content,
+    .trust-item
+) :where(h2, h3, h4, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .service-content,
+    .process-card,
+    .why-card,
+    .review-card,
+    .step-content,
+    .professional-card,
+    .detail-item,
+    .property-points > div,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .flow-item,
+    .svc-intro-point,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .standard-row,
+    .damage-category-content,
+    .trust-item
+) p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+/* Image cards need a dependable dark scrim and light copy in both themes. */
+body :where(
+    .audience-card,
+    .damage-visual-panel,
+    .property-visual-section,
+    .project-card,
+    .showcase-card
+) :where(h2, h3, h4, p, strong, small) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .42);
+}
+
+/* Components whose CSS changes to a dark/branded surface on interaction. */
+body :where(
+    .service-card,
+    .process-card,
+    .why-card,
+    .review-card,
+    .intro-points > div,
+    .professional-card,
+    .step-content,
+    .hero-details .detail-item,
+    .property-points > div,
+    .facade-work-card,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .why-card,
+    .partner-flow-section .flow-item,
+    .svc-intro-point,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .finish-option,
+    .interface-card,
+    .meaning-node,
+    .palette-option,
+    .color-benefit-card
+):hover :where(h2, h3, h4, p, span, small, strong, a, b),
+body :where(
+    .finish-option,
+    .interface-card,
+    .meaning-node,
+    .palette-option
+).active :where(h2, h3, h4, p, span, small, strong, a, b) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Known light-hover exceptions: preserve dark text because their surface stays light. */
+html:not([data-theme="amigos-dark"]) body :where(
+    .material-item,
+    .consultation-content,
+    .trust-item
+):hover :where(h2, h3, h4, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .material-item,
+    .consultation-content,
+    .trust-item
+):hover p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .material-item:hover .material-info :where(h3, strong),
+html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content :where(h3, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .material-item:hover .material-info p,
+html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+/* The interior timeline previously used a pale hover with forced white copy. */
+body .svc-timeline-step:hover .svc-timeline-card {
+    background: var(--audit-gradient) !important;
+    background-size: 180% 180% !important;
+    border-color: transparent !important;
+}
+
+body .svc-timeline-step:hover .svc-timeline-card :where(h3, p, span, small, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Buttons/selected controls: explicit foreground paired with their surface. */
+body :where(
+    .primary-btn,
+    .btn-primary,
+    .svc-btn-primary,
+    .damage-btn-primary,
+    .property-button-primary,
+    .color-btn-primary
+),
+body :where(
+    .secondary-btn,
+    .btn-outline,
+    .outline-btn,
+    .svc-btn-secondary,
+    .facade-btn-outline,
+    .contact-btn-outline,
+    .color-btn-outline-dark
+):hover {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body :where(
+    .primary-btn,
+    .btn-primary,
+    .svc-btn-primary,
+    .damage-btn-primary,
+    .property-button-primary,
+    .color-btn-primary,
+    .secondary-btn:hover,
+    .btn-outline:hover,
+    .outline-btn:hover,
+    .svc-btn-secondary:hover,
+    .facade-btn-outline:hover,
+    .contact-btn-outline:hover,
+    .color-btn-outline-dark:hover
+) * {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+/* Dark theme cards: headings and body copy cannot inherit near-black. */
+html[data-theme="amigos-dark"] body :where(
+    article,
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) :where(h2, h3, h4, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body :where(
+    article,
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) p {
+    color: var(--audit-light-muted) !important;
+    -webkit-text-fill-color: var(--audit-light-muted) !important;
+}
+
+/* Some controls deliberately remain white in dark mode. */
+html[data-theme="amigos-dark"] body :where(
+    .paint-finish-btn.active,
+    .testimonial-card:hover,
+    .testimonial-card.active:hover
+) :where(h2, h3, h4, p, span, small, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+/* Focus has the same clarity as hover and remains keyboard-visible. */
+body :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--audit-yellow) !important;
+    outline-offset: 4px !important;
+}
+
+@media (max-width: 760px) {
+    body :where(article, [class*="-card"], [class*="-panel"], [class*="-box"], [class*="-item"]) p {
+        font-size: 15px !important;
+    }
+
+    body small,
+    body :where(.section-label, .section-tag, [class*="-kicker"], [class*="-eyebrow"], [class*="-meta"], [class*="-label"]) {
+        font-size: 15px !important;
+    }
+}

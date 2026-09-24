@@ -19,7 +19,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -93,7 +93,7 @@ a {
 }
 
 .site-header nav a {
-    font-size: 15px;
+    font-size: 12px;
     transition: .3s ease;
 }
 
@@ -423,7 +423,7 @@ a {
     border-radius: 50px;
     background: var(--am-navy);
     color: white;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 3px;
 }
 
@@ -793,7 +793,7 @@ a {
 }
 
 .flow-content span {
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 3px;
     color: var(--am-ochre);
 }
@@ -920,6 +920,25 @@ a {
 .property-points p {
     font-weight: 600;
     color: var(--am-navy);
+}
+
+html:not([data-theme="amigos-dark"]) .property-points div {
+    background: #fff;
+}
+
+html:not([data-theme="amigos-dark"]) .property-points p {
+    color: var(--am-navy) !important;
+    -webkit-text-fill-color: var(--am-navy) !important;
+}
+
+html[data-theme="amigos-dark"] .property-points div {
+    border: 1px solid rgba(255, 255, 255, .13);
+    background: #0d2542;
+}
+
+html[data-theme="amigos-dark"] .property-points p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .final-cta {

@@ -167,6 +167,8 @@ body[data-page="home"] .site-header {
 }
 
 .site-nav a {
+    position: relative;
+    padding-bottom: 3px;
     color: rgba(255, 255, 255, .78);
 
     text-decoration: none;
@@ -180,6 +182,23 @@ body[data-page="home"] .site-header {
 .site-nav a:hover {
     color: var(--am-offwhite);
 }
+
+.site-nav a.active {
+    color: #FFD21F;
+}
+
+.site-nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--logo-gradient);
+    transition: width .3s ease;
+}
+
+/* force reload 13 */
 
 
 /* ==================================================
@@ -2477,9 +2496,13 @@ html[data-theme="amigos-dark"] .section-title,
 html[data-theme="amigos-dark"] .section-heading h2,
 html[data-theme="amigos-dark"] .service-content h3,
 html[data-theme="amigos-dark"] .service-content h4,
-html[data-theme="amigos-dark"] .partners-section-heading h2 {
+html[data-theme="amigos-dark"] .partners-section-heading h2,
+html[data-theme="amigos-dark"] .partners-section-heading {
     color: #FDFBF6 !important;
     -webkit-text-fill-color: currentColor !important;
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
 }
 
 html[data-theme="amigos-dark"] p,
@@ -2507,6 +2530,7 @@ html[data-theme="amigos-dark"] [class*="eyebrow"] {
     -webkit-background-clip: text !important;
     color: transparent !important;
     -webkit-text-fill-color: transparent !important;
+    display: inline-block !important;
 }
 
 html[data-theme="amigos-dark"] .service-card,
@@ -2619,8 +2643,8 @@ html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header .site
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .site-nav a.active,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled .site-nav a.active,
 html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header .site-nav a.active {
-    color: #FFD21F !important;
-    -webkit-text-fill-color: #FFD21F !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
 }
 
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled .site-nav a.active::after,

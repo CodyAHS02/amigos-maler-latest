@@ -24,7 +24,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -176,9 +176,9 @@ body {
 }
 
 .svc-btn-secondary {
-    background: rgba(252, 248, 240, .08);
+    background: rgba(255, 255, 255, .08);
     color: #fff;
-    border: 1px solid rgba(252, 248, 240, .28);
+    border: 1px solid rgba(255, 255, 255, .28);
 }
 
 .svc-btn-secondary:hover {
@@ -735,7 +735,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-timeline-card p {
-    font-size: 15px;
+    font-size: 11px;
     line-height: 1.7;
     color: var(--am-text);
 }
@@ -748,7 +748,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
     .svc-timeline-dot {
         width: 44px;
         height: 44px;
-        font-size: 11px;
+        font-size: 13px;
     }
 }
 
@@ -770,7 +770,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-benefit-card p {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.6;
     color: var(--am-text);
 }
@@ -915,7 +915,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-cta-wrapper h2 {
-    font-size: clamp(32px, 4vw, 44px);
+    font-size: 80px;
     font-weight: 700;
     color: var(--am-navy);
     margin-bottom: 18px;
@@ -1122,7 +1122,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 
 .svc-project-visual-content span {
     display: block;
-    font-size: 13px;
+    font-size: 15.5px;
     font-weight: 600;
     letter-spacing: .16em;
     text-transform: uppercase;
@@ -1169,8 +1169,8 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-werterhalt p {
-    color: rgba(252, 248, 240, .72);
-    font-size: 15.5px;
+    color: rgba(255, 255, 255, .72);
+    font-size: 16.5px;
     line-height: 1.75;
     max-width: 540px;
 }
@@ -1226,7 +1226,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 
 .svc-eyebrow-tag {
     display: inline-block;
-    font-size: 13px;
+    font-size: 15.5px;
     font-weight: 600;
     letter-spacing: .14em;
     text-transform: uppercase;
@@ -1242,7 +1242,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-intro-content p {
-    font-size: 16.5px;
+    font-size: 12px;
     line-height: 1.75;
     color: var(--am-text);
     max-width: 480px;
@@ -1261,7 +1261,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
     gap: 18px;
     padding: 18px 4px;
     border-top: 1px solid var(--am-line);
-    font-size: 15.5px;
+    font-size: 12px;
     font-weight: 600;
     color: var(--am-navy);
     transition: padding-left .3s ease;
@@ -1276,7 +1276,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-intro-point span {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--am-ochre);
     width: 24px;
@@ -1348,7 +1348,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 
 .svc-feature-num {
     display: block;
-    font-size: 80px;
+    font-size: clamp(32px, 4vw, 44px);
     font-weight: 800;
     line-height: 1;
     color: var(--am-line);
@@ -1453,7 +1453,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-color-group-title {
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: .14em;
     text-transform: uppercase;
@@ -1493,7 +1493,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-texture-swatch {
-    padding: 12px 26px;
+    padding: 16px 36px;
     border-radius: 999px;
     border: 1px solid rgba(16, 34, 56, .18);
     background: rgba(255, 255, 255, .5);

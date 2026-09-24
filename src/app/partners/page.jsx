@@ -225,10 +225,10 @@ body[data-page="partners"] {
   -webkit-text-fill-color: #E62453 !important;
 }
 
-.partners-section-heading h2,
-.standards-copy h2,
-.partners-hero-copy h1,
-.partner-cta h2 {
+html:not([data-theme="amigos-dark"]) .partners-section-heading h2,
+html:not([data-theme="amigos-dark"]) .standards-copy h2,
+html:not([data-theme="amigos-dark"]) .partners-hero-copy h1,
+html:not([data-theme="amigos-dark"]) .partner-cta h2 {
   background: var(--partners-logo-mix) !important;
   background-size: 320% 320% !important;
   color: transparent !important;
@@ -459,8 +459,8 @@ html:not([data-theme="amigos-dark"]) .flow-step:hover * {
 
 html:not([data-theme="amigos-dark"]) .partners-kicker,
 html:not([data-theme="amigos-dark"]) .imagery-card figcaption span {
-  color: #E62453 !important;
-  -webkit-text-fill-color: #E62453 !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
 }
 
 html:not([data-theme="amigos-dark"]) .partners-btn-primary {
@@ -527,7 +527,7 @@ html:not([data-theme="amigos-dark"]) .imagery-card-large {
 }
 
 html:not([data-theme="amigos-dark"]) .imagery-card::after {
-  background: linear-gradient(0deg, rgba(252, 248, 240, .92), rgba(252, 248, 240, .18) 62%) !important;
+  background: linear-gradient(0deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .18) 62%) !important;
 }
 
 html:not([data-theme="amigos-dark"]) .imagery-card figcaption,
@@ -894,6 +894,28 @@ html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-footer * {
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
 }
+
+html[data-theme="amigos-dark"] .partners-section-heading,
+html[data-theme="amigos-dark"] .partners-section-heading h2,
+html[data-theme="amigos-dark"] .partners-reveal {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-theme="amigos-dark"] .partners-kicker {
+  background: var(--am-brand-gradient) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  padding: 6px 18px !important;
+  border-radius: 24px !important;
+  display: inline-block !important;
+  margin-bottom: 24px !important;
+}
 `;
 
 export default function PartnersPage() {
@@ -908,3 +930,13 @@ export default function PartnersPage() {
     </LegacyPage>
   );
 }
+
+// force reload 6
+
+// force reload 7
+
+// force reload 8
+
+// force reload 9
+// force reload 10
+// force reload 11

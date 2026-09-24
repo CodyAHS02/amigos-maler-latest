@@ -72,10 +72,10 @@ export default function Footer() {
                 </svg>
               </a>
               <a href="#" aria-label="Instagram">
-                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
-                  <rect width="16" height="16" x="4" y="4" rx="4" stroke="currentColor" strokeWidth="2" />
-                  <path d="M15.5 11.4a3.5 3.5 0 1 1-6.9 1.2 3.5 3.5 0 0 1 6.9-1.2Z" stroke="currentColor" strokeWidth="2" />
-                  <path d="M17.5 6.8h.01" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" style={{ fill: 'none' }}>
+                  <rect width="16" height="16" x="4" y="4" rx="4" stroke="currentColor" strokeWidth="2" style={{ fill: 'none' }} />
+                  <path d="M15.5 11.4a3.5 3.5 0 1 1-6.9 1.2 3.5 3.5 0 0 1 6.9-1.2Z" stroke="currentColor" strokeWidth="2" style={{ fill: 'none' }} />
+                  <path d="M17.5 6.8h.01" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" style={{ fill: 'none' }} />
                 </svg>
               </a>
             </div>
@@ -88,6 +88,7 @@ export default function Footer() {
               <a href="/">Home</a>
               <a href="/about">About Us</a>
               <a href="/services">Services</a>
+              <a href="/schadensservice">Schadensservice</a>
               <a href="/property-value-preservation">Werterhalt</a>
               <a href="https://amigos-immo.vercel.app/" rel="noopener noreferrer" target="_blank">Projects</a>
               <a href="/partners">Partners</a>
@@ -104,6 +105,7 @@ export default function Footer() {
               <a href="/spray-painting">Spray Painting</a>
               <a href="/mold">Mold Remediation</a>
               <a href="/water-damage">Water Damage (Wasserschäden)</a>
+              <a href="/schadensservice">Schaden melden</a>
               <a href="/property-value-preservation">Werterhalt</a>
             </div>
           </details>

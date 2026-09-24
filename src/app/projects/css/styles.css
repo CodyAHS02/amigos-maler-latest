@@ -72,21 +72,21 @@ h4 {
 }
 
 h1 {
-  font-size: clamp(38px, 5vw, 54px);
-  font-weight: 600;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
   line-height: 1.1
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 500;
   margin-top: 40px;
   margin-bottom: 20px
 }
 
 h3 {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--white);
   text-transform: uppercase;
   letter-spacing: .08em
@@ -141,8 +141,8 @@ section {
 }
 
 .brand {
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   color: var(--white);
   letter-spacing: .24em
 }
@@ -159,7 +159,7 @@ section {
 .nav {
   display: flex;
   gap: 36px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: var(--grey)
 }
@@ -196,8 +196,8 @@ section {
   gap: 8px;
   padding: 12px 26px;
   border-radius: 30px;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: .04em;
   border: 1px solid var(--gold);
   color: var(--white);
@@ -329,7 +329,7 @@ section {
 
 .hero-eyebrow {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .32em;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -343,7 +343,7 @@ section {
 
 .hero-sub {
   color: #F0E6D0;
-  font-size: 17px;
+  font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 400;
   margin-bottom: 40px;
   letter-spacing: .01em;
@@ -367,7 +367,7 @@ section {
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--grey);
@@ -405,7 +405,7 @@ section {
 
 .section-head .eyebrow {
   color: var(--gold);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .32em;
   text-transform: uppercase;
   margin-bottom: 14px;
@@ -413,15 +413,15 @@ section {
 }
 
 .section-head h2 {
-  font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 600;
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 500;
   letter-spacing: -.025em;
   margin: 0 0 16px;
   color: #fff
 }
 
 .section-head p {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--grey);
   max-width: 600px;
   font-weight: 400
@@ -452,7 +452,7 @@ section {
 }
 
 .stat .num {
-  font-size: 44px;
+  font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 200;
   color: var(--white);
   letter-spacing: -.03em;
@@ -462,12 +462,12 @@ section {
 
 .stat .num .suffix {
   color: var(--gold);
-  font-size: 28px;
+  font-size: clamp(20px, 2.5vw, 28px);
   margin-left: 2px
 }
 
 .stat .label {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--grey)
@@ -490,7 +490,7 @@ section {
 
 .field label {
   display: block;
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--grey);
@@ -505,7 +505,7 @@ section {
   background: rgba(11, 12, 16, .6);
   border: 1px solid rgba(255, 255, 255, .08);
   color: var(--white);
-  font-size: 14px;
+  font-size: 15px;
   font-family: inherit;
   transition: border-color .3s var(--ease);
 }
@@ -558,7 +558,7 @@ section {
 
 .range-val {
   color: var(--gold);
-  font-weight: 500;
+  font-weight: 400;
   min-width: 80px;
   text-align: right;
   font-variant-numeric: tabular-nums
@@ -570,7 +570,7 @@ section {
   padding: 28px;
   text-align: center;
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14px;
   transition: all .3s var(--ease);
   cursor: pointer;
 }
@@ -595,7 +595,7 @@ section {
 }
 
 .calc-out .label {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--grey);
@@ -603,7 +603,7 @@ section {
 }
 
 .calc-out .price {
-  font-size: 56px;
+  font-size: clamp(32px, 4vw, 44px);
   font-weight: 200;
   color: var(--white);
   letter-spacing: -.03em;
@@ -612,7 +612,7 @@ section {
 
 .calc-out .price .currency {
   color: var(--gold);
-  font-size: 26px;
+  font-size: clamp(17px, 2vw, 22px);
   vertical-align: top;
   margin-right: 6px
 }
@@ -625,14 +625,14 @@ section {
 }
 
 .calc-out .duration {
-  font-size: 22px;
+  font-size: clamp(17px, 2vw, 22px);
   color: var(--white);
-  font-weight: 300;
+  font-weight: 400;
   font-variant-numeric: tabular-nums
 }
 
 .calc-out .duration-label {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: var(--grey);
@@ -670,7 +670,7 @@ section {
   transform: translateX(-50%);
   background: var(--gold);
   color: var(--black);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .2em;
   padding: 5px 14px;
   border-radius: 20px;
@@ -678,7 +678,7 @@ section {
 }
 
 .plan .plan-name {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--gold);
   letter-spacing: .18em;
   text-transform: uppercase;
@@ -686,7 +686,7 @@ section {
 }
 
 .plan .plan-price {
-  font-size: 44px;
+  font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 200;
   color: var(--white);
   margin: 14px 0 4px;
@@ -695,20 +695,20 @@ section {
 
 .plan .plan-price .cur {
   color: var(--gold);
-  font-size: 22px;
+  font-size: clamp(17px, 2vw, 22px);
   vertical-align: top;
   margin-right: 4px
 }
 
 .plan .plan-price .per {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey);
   font-weight: 400;
   margin-left: 6px
 }
 
 .plan .plan-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey);
   margin-bottom: 24px;
   min-height: 38px
@@ -721,7 +721,7 @@ section {
 }
 
 .plan li {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--body);
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, .04);
@@ -757,7 +757,7 @@ section {
 .toggle button {
   padding: 8px 20px;
   border-radius: 24px;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .1em;
   color: var(--grey);
   transition: all .3s var(--ease)
@@ -786,14 +786,14 @@ section {
 
 .svc-card .num {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .24em;
   font-weight: 500
 }
 
 .svc-card h3 {
-  font-size: 22px;
-  font-weight: 300;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
   color: var(--white);
   text-transform: none;
   letter-spacing: -.01em;
@@ -801,14 +801,14 @@ section {
 }
 
 .svc-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey)
 }
 
 .svc-card .arrow {
   margin-top: 20px;
   color: var(--gold);
-  font-size: 14px;
+  font-size: 15px;
   transition: transform .3s var(--ease)
 }
 
@@ -829,7 +829,7 @@ section {
 
 .mat-toggle button {
   color: var(--grey);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .2em;
   text-transform: uppercase;
   padding-bottom: 10px;
@@ -855,7 +855,7 @@ section {
 }
 
 .mat-item .k {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--grey);
@@ -864,7 +864,7 @@ section {
 
 .mat-item .v {
   color: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300
 }
 
@@ -878,7 +878,7 @@ section {
 
 .tab {
   padding: 16px 24px;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: .1em;
   color: var(--grey);
   border-bottom: 2px solid transparent;
@@ -940,7 +940,7 @@ section {
 }
 
 .tile .id {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--grey);
   letter-spacing: .1em
 }
@@ -993,7 +993,7 @@ section {
 }
 
 .tile .val {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--white);
   font-weight: 300
 }
@@ -1007,7 +1007,7 @@ section {
   border: 1px solid var(--gold-soft);
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: 11px;
+  font-size: 14px;
   color: var(--grey);
   white-space: nowrap;
   opacity: 0;
@@ -1078,8 +1078,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   box-shadow: 0 0 30px var(--gold-glow)
 }
 
@@ -1091,7 +1091,7 @@ section {
   background: rgba(11, 12, 16, .75);
   backdrop-filter: blur(10px);
   color: var(--white);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .16em;
   text-transform: uppercase
 }
@@ -1139,7 +1139,7 @@ section {
 }
 
 .case .body h3 {
-  font-size: 18px;
+  font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 400;
   color: var(--white);
   text-transform: none;
@@ -1148,7 +1148,7 @@ section {
 }
 
 .case .body p {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey);
   margin-bottom: 12px
 }
@@ -1184,7 +1184,7 @@ section {
   gap: 12px;
   padding: 12px 14px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey);
   cursor: pointer;
   transition: all .3s var(--ease);
@@ -1236,7 +1236,7 @@ section {
 }
 
 .progress-row .name {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--white)
 }
 
@@ -1257,7 +1257,7 @@ section {
 
 .progress-row .pct {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   text-align: right;
   font-variant-numeric: tabular-nums
 }
@@ -1311,7 +1311,7 @@ section {
 .cal .cd {
   padding: 12px 8px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey);
   border-radius: 8px;
   cursor: pointer;
@@ -1321,7 +1321,7 @@ section {
 
 .cal .cd.hdr {
   color: var(--gold);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .14em;
   cursor: default
 }
@@ -1371,7 +1371,7 @@ section {
 
 .job .info h3 {
   color: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   text-transform: none;
   letter-spacing: -.01em;
@@ -1379,7 +1379,7 @@ section {
 }
 
 .job .info p {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey)
 }
 
@@ -1406,7 +1406,7 @@ section {
 
 .faq-item .plus {
   color: var(--gold);
-  font-size: 22px;
+  font-size: clamp(17px, 2vw, 22px);
   transition: transform .4s var(--ease);
   font-weight: 200
 }
@@ -1435,7 +1435,7 @@ section {
   margin-top: 60px;
   text-align: center;
   color: var(--grey);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .1em
 }
 
@@ -1446,7 +1446,7 @@ section {
 
 .site-footer p {
   color: var(--grey);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .14em;
   margin-top: 12px
 }
@@ -1730,27 +1730,27 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--gold);
-  font-size: 20px;
+  font-size: clamp(15px, 1.8vw, 17px);
   margin-bottom: 20px
 }
 
 .aud h4 {
   color: var(--white);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: -.01em;
   margin-bottom: 8px
 }
 
 .aud .need {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey);
   margin-bottom: 16px;
   letter-spacing: .04em
 }
 
 .aud .sol {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--body);
   max-height: 0;
   overflow: hidden;
@@ -1770,7 +1770,7 @@ body {
 .aud .flip-hint {
   margin-top: auto;
   color: var(--gold);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .2em;
   text-transform: uppercase
 }
@@ -1792,7 +1792,7 @@ body {
 
 .eco-card .badge {
   display: inline-block;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .24em;
   color: var(--gold);
   border: 1px solid var(--gold-soft);
@@ -1803,14 +1803,14 @@ body {
 
 .eco-card h4 {
   color: var(--white);
-  font-size: 18px;
+  font-size: clamp(15px, 1.8vw, 17px);
   font-weight: 400;
   letter-spacing: -.01em;
   margin-bottom: 10px
 }
 
 .eco-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey)
 }
 
@@ -1831,14 +1831,14 @@ body {
 .compare td {
   padding: 16px 14px;
   text-align: left;
-  font-size: 13px;
+  font-size: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, .05);
   color: var(--grey)
 }
 
 .compare th {
   color: var(--gold);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-size: 11px
@@ -1867,10 +1867,10 @@ body {
 }
 
 .trust .logo {
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: .24em;
   color: var(--grey);
-  font-weight: 500;
+  font-weight: 400;
   opacity: .55;
   transition: all .3s var(--ease);
   cursor: default
@@ -1892,7 +1892,7 @@ body {
 }
 
 .cta-banner h2 {
-  font-size: clamp(28px, 3.4vw, 42px);
+  font-size: clamp(26px, 3.5vw, 36px);
   font-weight: 200;
   margin: 0 0 16px
 }
@@ -1915,7 +1915,7 @@ body {
   padding: 8px 14px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, .1);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey);
   cursor: pointer;
   transition: all .25s var(--ease);
@@ -1952,13 +1952,13 @@ body {
   background: rgba(197, 160, 89, .1);
   border: 1px solid var(--gold-soft);
   color: var(--gold);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .16em;
   text-transform: uppercase
 }
 
 .priceRange {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--grey);
   margin-top: 8px;
   letter-spacing: .06em
@@ -1968,7 +1968,7 @@ body {
 .ai-load {
   margin-top: 12px;
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   display: none;
   align-items: center;
   gap: 10px

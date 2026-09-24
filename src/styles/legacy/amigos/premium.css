@@ -104,9 +104,9 @@
 }
 
 .amigos-wrapper .hero h1 {
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -.03em;
-  font-size: clamp(44px, 6.6vw, 70px);
+  font-size: clamp(32px, 4vw, 44px);
   line-height: 1.12;
   padding-bottom: 14px;
   overflow: visible
@@ -321,13 +321,13 @@
   }
 
   .amigos-wrapper .svc-card-h h3 {
-    font-size: 20px !important;
+    font-size: clamp(15px, 1.8vw, 17px) !important;
     margin-bottom: 6px !important
   }
 
   .amigos-wrapper .svc-card-h>p {
     margin-bottom: 8px !important;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5
   }
 
@@ -350,7 +350,7 @@
   }
 
   .amigos-wrapper .svc-head-wrap h2 {
-    font-size: 24px !important;
+    font-size: clamp(17px, 2vw, 22px) !important;
     margin-bottom: 6px !important
   }
 
@@ -377,15 +377,15 @@
 
 .amigos-wrapper .svc-card-h .num {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .24em;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 6px
 }
 
 .amigos-wrapper .svc-card-h h3 {
-  font-size: 21px;
-  font-weight: 600;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 500;
   color: var(--white);
   text-transform: none;
   letter-spacing: -.015em;
@@ -393,7 +393,7 @@
 }
 
 .amigos-wrapper .svc-card-h>p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--grey);
   line-height: 1.55;
   margin-bottom: 12px;
@@ -404,8 +404,8 @@
   margin-top: auto;
   padding-top: 6px;
   color: var(--gold);
-  font-size: 13.5px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   transition: transform .3s var(--ease)
 }
 
@@ -513,9 +513,9 @@
 
 .amigos-wrapper .flow-num {
   color: var(--gold);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .24em;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 12px
 }
 
@@ -540,14 +540,14 @@
 .amigos-wrapper .flow-step h4 {
   color: #fff;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 6px;
   letter-spacing: -.005em
 }
 
 .amigos-wrapper .flow-step p {
   color: var(--grey);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5
 }
 
@@ -599,10 +599,10 @@
 
 .amigos-wrapper .vs-left .eyebrow {
   color: var(--gold);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 16px;
   display: block
 }
@@ -619,8 +619,8 @@
 }
 
 .amigos-wrapper .vs-left h2 {
-  font-size: clamp(32px, 3.4vw, 44px);
-  font-weight: 600;
+  font-size: clamp(26px, 3.5vw, 36px);
+  font-weight: 500;
   color: #fff;
   letter-spacing: -.025em;
   line-height: 1.1;
@@ -629,7 +629,7 @@
 
 .amigos-wrapper .vs-lede {
   color: var(--grey);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.7;
   margin: 0 0 32px;
   max-width: 480px
@@ -649,8 +649,8 @@
   align-items: center;
   gap: 16px;
   color: var(--body);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   padding: 12px 0;
   border-top: 1px solid rgba(197, 160, 89, .12)
 }
@@ -661,9 +661,9 @@
 
 .amigos-wrapper .vs-steps li span {
   color: var(--gold);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: .24em;
-  font-weight: 600;
+  font-weight: 500;
   min-width: 24px
 }
 
@@ -739,8 +739,8 @@
 
 .amigos-wrapper .vs-up-title {
   color: #fff;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: clamp(15px, 1.8vw, 17px);
+  font-weight: 500;
   letter-spacing: -.01em;
   position: relative;
   z-index: 1
@@ -748,7 +748,7 @@
 
 .amigos-wrapper .vs-up-sub {
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: .02em;
   position: relative;
   z-index: 1
@@ -826,7 +826,7 @@
   border: 1px solid var(--gold-soft);
   border-radius: 999px;
   padding: 8px 14px;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--gold);
@@ -851,10 +851,10 @@
 
 .amigos-wrapper .vs-sw-label {
   color: var(--gold);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .24em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 12px
 }
 
@@ -888,8 +888,8 @@
 
 .amigos-wrapper .sw-name {
   color: #fff;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
   letter-spacing: .02em
 }
 
@@ -974,16 +974,16 @@
 }
 
 .amigos-wrapper .tl-badge {
-  font-size: 11px;
+  font-size: 14px;
   color: var(--gold);
   letter-spacing: .24em;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 10px
 }
 
 .amigos-wrapper .tl-card h3 {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 500;
   color: #fff;
   text-transform: none;
   letter-spacing: -.015em;
@@ -992,7 +992,7 @@
 
 .amigos-wrapper .tl-card p {
   color: var(--grey);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.65
 }
 
@@ -1142,17 +1142,17 @@
 .amigos-wrapper .ba-meta .tag {
   display: inline-block;
   color: var(--gold);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .24em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px
 }
 
 .amigos-wrapper .ba-meta h3 {
-  font-size: 22px;
+  font-size: clamp(17px, 2vw, 22px);
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: none;
   letter-spacing: -.015em;
   margin-bottom: 6px
@@ -1179,7 +1179,7 @@
   background: rgba(28, 28, 30, .6);
   backdrop-filter: blur(20px);
   color: var(--gold);
-  font-size: 18px;
+  font-size: clamp(15px, 1.8vw, 17px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1321,7 +1321,7 @@
 
 .amigos-wrapper .ring-pop p {
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.65;
   font-style: italic;
   margin-bottom: 12px
@@ -1337,13 +1337,13 @@
 
 .amigos-wrapper .ring-pop .who b {
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600
 }
 
 .amigos-wrapper .ring-pop .who span {
   color: var(--gold);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: .18em;
   text-transform: uppercase
 }
@@ -1448,7 +1448,7 @@
 
 .amigos-wrapper #final .eyebrow {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: .32em;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -1456,8 +1456,8 @@
 }
 
 .amigos-wrapper #final h2 {
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 600;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
   color: var(--white);
   letter-spacing: -.03em;
   line-height: 1.05;
@@ -1466,7 +1466,7 @@
 
 .amigos-wrapper #final p {
   color: var(--grey);
-  font-size: 17px;
+  font-size: clamp(15px, 1.8vw, 17px);
   max-width: 560px;
   margin: 0 auto 40px;
   font-weight: 400

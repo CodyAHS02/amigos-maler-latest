@@ -154,8 +154,8 @@ ${mobileColorDockHtml}
                 <h1>Preserving Your Property’s Value</h1>
                 <p>More than paint — a new sense of space.</p>
                 <div class="hero-buttons">
-                    <a class="btn-primary" href="/contact">Free Consultation</a>
-                    <a class="btn-secondary" href="#projectsSection">DISCOVER PROJECTS</a>
+                    <a class="btn-primary" href="/contact">Free consultation</a>
+                    <a class="btn-secondary" href="#projectsSection">Discover projects</a>
                 </div>
             </div>
         </div>

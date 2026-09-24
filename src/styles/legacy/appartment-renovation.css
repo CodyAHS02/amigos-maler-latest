@@ -19,7 +19,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -265,7 +265,7 @@ a {
 }
 
 .intro-points p {
-    font-size: 15px;
+    font-size: 12px;
     color: var(--am-navy);
     font-weight: 600;
 }
@@ -315,7 +315,7 @@ a {
 }
 
 .visual-tag span {
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 3px;
     color: var(--am-ochre);
 }
@@ -404,6 +404,29 @@ a {
     line-height: 1.7;
 }
 
+/* White renovation cards retain dark, readable copy in both themes. */
+.ren-situations-section .ren-card .card-content h3 {
+    color: var(--am-navy) !important;
+    -webkit-text-fill-color: var(--am-navy) !important;
+}
+
+.ren-situations-section .ren-card .card-content p {
+    color: var(--am-text) !important;
+    -webkit-text-fill-color: var(--am-text) !important;
+}
+
+.ren-situations-section .ren-card .card-content span {
+    color: var(--logo-orange) !important;
+    -webkit-text-fill-color: var(--logo-orange) !important;
+}
+
+.ren-situations-section .ren-card:hover .card-content h3,
+.ren-situations-section .ren-card:hover .card-content p,
+.ren-situations-section .ren-card:hover .card-content span {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
 .renovation-scope {
     padding: 140px 0;
     background: white;
@@ -487,7 +510,7 @@ a {
 
 .scope-overlay span {
     color: var(--am-ochre);
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 3px;
 }
 
@@ -573,7 +596,7 @@ a {
     background: var(--am-navy);
     color: white;
     border-radius: 50px;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 3px;
 }
 
@@ -918,7 +941,7 @@ a {
 }
 
 .why-card span {
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 3px;
     color: var(--am-ochre);
 }
@@ -1445,6 +1468,122 @@ a {
     border-color: transparent !important;
     box-shadow: 0 20px 50px rgba(230, 36, 83, .2);
     animation: apartmentLogoGradientShift 8s ease-in-out infinite;
+}
+
+/* Connected-services timeline: one clean, theme-aware card system. */
+.partner-flow-section .flow-wrapper {
+    width: min(1440px, 92%);
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+
+.partner-flow-section .flow-line {
+    display: none;
+}
+
+.partner-flow-section .flow-item {
+    width: auto;
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 22px 28px;
+    border: 1px solid rgba(7, 26, 51, .1);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 16px 42px rgba(7, 26, 51, .08);
+    transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease, background .32s ease;
+}
+
+.partner-flow-section .flow-icon {
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
+    margin: 0 0 24px;
+    background: #f8f1e7;
+    color: var(--logo-orange);
+    font-size: clamp(17px, 2vw, 22px);
+}
+
+.partner-flow-section .flow-item h3 {
+    margin: 0 0 14px;
+    color: var(--am-navy) !important;
+    -webkit-text-fill-color: var(--am-navy) !important;
+    font-size: clamp(15px, 1.8vw, 17px);
+    line-height: 1.25;
+}
+
+.partner-flow-section .flow-item p {
+    margin: 0;
+    color: var(--am-text) !important;
+    -webkit-text-fill-color: var(--am-text) !important;
+    font-size: clamp(17px, 2vw, 22px);
+    line-height: 1.65;
+}
+
+.partner-flow-section .flow-item:hover {
+    transform: translateY(-8px);
+    border-color: transparent !important;
+    background: linear-gradient(135deg, var(--logo-orange), var(--logo-pink) 58%, var(--logo-magenta));
+    box-shadow: 0 26px 58px rgba(230, 36, 83, .22) !important;
+}
+
+.partner-flow-section .flow-item:hover .flow-icon {
+    background: rgba(255, 255, 255, .2) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: none;
+    transform: none;
+}
+
+.partner-flow-section .flow-item:hover h3,
+.partner-flow-section .flow-item:hover p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .partner-flow-section {
+    background: #f7f3ec !important;
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item {
+    border-color: rgba(255, 255, 255, .13);
+    background: #0d2542;
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item h3 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item p {
+    color: rgba(255, 255, 255, .72) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .72) !important;
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-icon {
+    background: rgba(255, 255, 255, .08);
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item:hover {
+    background: linear-gradient(135deg, var(--logo-orange), var(--logo-pink) 58%, var(--logo-magenta));
+}
+
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item:hover h3,
+html[data-theme="amigos-dark"] .partner-flow-section .flow-item:hover p {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+@media (max-width: 1180px) {
+    .partner-flow-section .flow-wrapper { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px) {
+    .partner-flow-section .flow-wrapper { grid-template-columns: 1fr; }
+    .partner-flow-section .flow-item { min-height: 0; }
 }
 
 .scope-item:after,

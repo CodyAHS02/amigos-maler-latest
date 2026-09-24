@@ -20,7 +20,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -110,7 +110,7 @@ HEADER
 
     color: white;
 
-    font-size: 15px;
+    font-size: 13px;
 
     transition: .3s;
 
@@ -708,8 +708,8 @@ SERVICES
 
 
 .number {
-    color: var(--am-ochre);
-    font-size: 14px;
+    color: #ffffff;
+    font-size: 28px;
 }
 
 
@@ -718,7 +718,7 @@ SERVICES
 
     color: var(--am-ink);
 
-    font-size: 28px;
+    font-size: 32px;
 
     margin: 15px 0;
 
@@ -1360,7 +1360,7 @@ PROPERTY CARE
 
     letter-spacing: 3px;
 
-    font-size: 13px;
+    font-size: 15px;
 
 }
 
@@ -1370,9 +1370,7 @@ PROPERTY CARE
 
     color: var(--navy);
 
-    font-size:
-
-        clamp(38px, 4vw, 60px);
+    font-size: 42px;
 
     line-height: 1.1;
 
@@ -1442,9 +1440,7 @@ FINAL CTA
 
 .final-cta h2 {
 
-    font-size:
-
-        clamp(40px, 5vw, 70px);
+    font-size: clamp(26px, 3.5vw, 36px);
 
     margin-bottom: 25px;
 
@@ -1531,7 +1527,7 @@ FOOTER
 
 .footer-brand h2 {
 
-    font-size: 32px;
+    font-size: clamp(20px, 2.5vw, 28px);
 
     letter-spacing: 3px;
 
@@ -1729,7 +1725,7 @@ RESPONSIVE
 
     .hero-content h1 {
 
-        font-size: 42px;
+        font-size: clamp(26px, 3.5vw, 36px);
 
     }
 
@@ -1962,7 +1958,8 @@ RESPONSIVE
 }
 
 .service-card .number {
-    color: var(--logo-pink) !important;
+    color: #ffffff !important;
+    font-size: clamp(20px, 2.5vw, 28px) !important;
 }
 
 .service-card:not(:hover) .service-content h3,
@@ -2104,4 +2101,103 @@ body:has(.services-hero) .site-header.is-scrolled,
     border-color: rgba(255, 255, 255, .86) !important;
     color: #fff !important;
     background: rgba(255, 255, 255, .08) !important;
+}
+
+/* Theme correction: no beige/brown section surfaces and no hidden card labels. */
+html:not([data-theme="amigos-dark"]) .before-after-section,
+html:not([data-theme="amigos-dark"]) .colour-section,
+html:not([data-theme="amigos-dark"]) .reviews-section {
+    background: #fff !important;
+    color: var(--am-navy) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .process-section,
+html:not([data-theme="amigos-dark"]) .why-section,
+html:not([data-theme="amigos-dark"]) .services-overview {
+    background: #f5f6f7 !important;
+    color: var(--am-navy) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .why-section .section-heading h2,
+html:not([data-theme="amigos-dark"]) .why-section .section-heading p,
+html:not([data-theme="amigos-dark"]) .services-overview .section-heading h2,
+html:not([data-theme="amigos-dark"]) .services-overview .section-heading p,
+html:not([data-theme="amigos-dark"]) .reviews-section .section-heading h2,
+html:not([data-theme="amigos-dark"]) .reviews-section .section-heading p {
+    color: var(--am-navy) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .why-section .section-heading span,
+html:not([data-theme="amigos-dark"]) .services-overview .section-heading span,
+html:not([data-theme="amigos-dark"]) .reviews-section .section-heading span {
+    color: var(--logo-pink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .process-card,
+html:not([data-theme="amigos-dark"]) .why-card,
+html:not([data-theme="amigos-dark"]) .service-card,
+html:not([data-theme="amigos-dark"]) .review-card {
+    background: #fff !important;
+    border-color: #dfe3e8 !important;
+    color: var(--am-navy) !important;
+}
+
+html:not([data-theme="amigos-dark"]) .why-card h3,
+html:not([data-theme="amigos-dark"]) .why-card p,
+html:not([data-theme="amigos-dark"]) .why-card .icon,
+html:not([data-theme="amigos-dark"]) .process-card h3,
+html:not([data-theme="amigos-dark"]) .process-card p {
+    color: var(--am-navy) !important;
+}
+
+.colour-sample span {
+    z-index: 2;
+    opacity: 1 !important;
+    transform: none !important;
+    background: #fff !important;
+    color: var(--am-navy) !important;
+    font-size: clamp(17px, 2vw, 22px);
+    font-weight: 500;
+    box-shadow: 0 10px 24px rgba(7, 26, 51, .16);
+}
+
+.service-card:hover *,
+.process-card:hover *,
+.why-card:hover *,
+.review-card:hover * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.service-card:hover p,
+.process-card:hover p,
+.why-card:hover p,
+.review-card:hover p {
+    color: rgba(255, 255, 255, .9) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .9) !important;
+}
+
+html[data-theme="amigos-dark"] .before-after-section,
+html[data-theme="amigos-dark"] .services-overview,
+html[data-theme="amigos-dark"] .colour-section,
+html[data-theme="amigos-dark"] .process-section,
+html[data-theme="amigos-dark"] .why-section,
+html[data-theme="amigos-dark"] .reviews-section {
+    background: var(--am-navy) !important;
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .process-card,
+html[data-theme="amigos-dark"] .why-card,
+html[data-theme="amigos-dark"] .service-card,
+html[data-theme="amigos-dark"] .review-card {
+    background: #0d2542 !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+}
+
+html[data-theme="amigos-dark"] .process-card h3,
+html[data-theme="amigos-dark"] .process-card p,
+html[data-theme="amigos-dark"] .why-card h3,
+html[data-theme="amigos-dark"] .why-card p {
+    color: #fff !important;
 }

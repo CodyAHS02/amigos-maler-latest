@@ -116,10 +116,6 @@ runWhenDomReady(() => {
     });
 
 
-    if (q(".quality-parallax")) {
-        gsap.to(".quality-parallax", { yPercent: 10, ease: "none", scrollTrigger: { trigger: ".facade-quality", start: "top bottom", end: "bottom top", scrub: 1.5 } });
-    }
-
     if (qa(".reveal-point").length) {
         gsap.fromTo(".reveal-point", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: .7, stagger: .16, ease: "power3.out", scrollTrigger: { trigger: ".quality-points", start: "top 78%", once: true } });
     }

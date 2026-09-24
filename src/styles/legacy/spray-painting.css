@@ -67,6 +67,145 @@
     animation: sprayLogoGradientShift 9s ease-in-out infinite;
 }
 
+/* Baton rental block: reserved product-image area until the client supplies photography. */
+.baton-rental {
+    padding: 120px 0;
+    background: var(--am-offwhite);
+}
+
+.baton-rental-shell {
+    width: min(1240px, 90%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    overflow: hidden;
+    border: 1px solid rgba(7, 26, 51, .12);
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(7, 26, 51, .12);
+}
+
+.baton-rental-media {
+    min-height: 480px;
+    display: grid;
+    place-content: center;
+    gap: 18px;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+    background: #071A33;
+    color: rgba(255, 255, 255, .55);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.baton-placeholder-mark {
+    position: relative;
+    width: 220px;
+    height: 120px;
+    margin: 0 auto;
+    border: 1px dashed rgba(255, 255, 255, .28);
+    border-radius: 60px;
+}
+
+.baton-placeholder-mark span {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    top: 50%;
+    height: 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #f6be10, #f39125, #e62453);
+    transform: translateY(-50%);
+}
+
+.baton-placeholder-mark i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 46px;
+    height: 46px;
+    border: 7px solid #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.baton-rental-content {
+    padding: clamp(45px, 6vw, 80px);
+    align-self: center;
+}
+
+.baton-rental-content .section-label {
+    color: var(--logo-pink) !important;
+}
+
+.baton-rental-content h2 {
+    margin: 16px 0 22px;
+    color: var(--am-navy);
+    font-size: clamp(35px, 4vw, 58px);
+    line-height: 1.03;
+    letter-spacing: -.04em;
+}
+
+.baton-rental-content>p:not(.section-label) {
+    max-width: 640px;
+    color: var(--am-text);
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.baton-rental-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 28px 0 32px;
+}
+
+.baton-rental-details span {
+    padding: 9px 12px;
+    border: 1px solid rgba(7, 26, 51, .12);
+    border-radius: 999px;
+    color: var(--am-navy);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+html[data-theme="amigos-dark"] .baton-rental {
+    background: #071A33 !important;
+}
+
+html[data-theme="amigos-dark"] .baton-rental-shell {
+    background: #0D2542 !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+}
+
+html[data-theme="amigos-dark"] .baton-rental-content h2 {
+    color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .baton-rental-content>p:not(.section-label) {
+    color: rgba(255, 255, 255, .7) !important;
+}
+
+html[data-theme="amigos-dark"] .baton-rental-details span {
+    border-color: rgba(255, 255, 255, .16);
+    color: #fff;
+}
+
+@media (max-width: 820px) {
+    .baton-rental-shell { grid-template-columns: 1fr; }
+    .baton-rental-media { min-height: 300px; border-right: 0; }
+}
+
+@media (max-width: 560px) {
+    .baton-rental { padding: 82px 0; }
+    .baton-rental-shell { width: calc(100% - 36px); border-radius: 20px; }
+    .baton-rental-content { padding: 38px 24px 42px; }
+    .baton-rental-content .primary-btn { width: 100%; text-align: center; }
+    .baton-placeholder-mark { width: 180px; }
+}
+
 /* Logo color theme overrides */
 .spray-hero-overlay {
     background:
@@ -218,10 +357,11 @@
 .spray-panel.active:after,
 .spray-panel:hover:after {
     background:
-        linear-gradient(0deg, rgba(7, 26, 51, .85), rgba(7, 26, 51, .12)),
-        var(--logo-gradient-moving) !important;
-    background-size: auto, 260% 260% !important;
-    animation: sprayLogoGradientShift 9s ease-in-out infinite;
+        radial-gradient(circle at 82% 18%, rgba(230, 36, 83, .3), transparent 38%),
+        radial-gradient(circle at 18% 82%, rgba(246, 190, 16, .18), transparent 42%),
+        linear-gradient(0deg, rgba(7, 26, 51, .9), rgba(7, 26, 51, .08) 72%) !important;
+    background-size: 100% 100% !important;
+    animation: none !important;
 }
 
 .spray-panel:hover .spray-panel-content span,
@@ -305,7 +445,7 @@ body {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #B7893D;
@@ -395,7 +535,7 @@ a {
 
 .spray-eyebrow,
 .section-label {
-    font-size: 12px;
+    font-size: 15px;
     letter-spacing: 4px;
     font-weight: 600;
     color: var(--am-ochre) !important;
@@ -623,6 +763,9 @@ a {
 }
 
 .spray-panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: .7s ease;
 }
 
@@ -648,7 +791,7 @@ a {
 
 .spray-panel-content span {
     color: var(--am-ochre);
-    font-size: 14px;
+    font-size: 17px;
     letter-spacing: 3px;
 }
 
@@ -674,7 +817,7 @@ a {
 .section-heading span {
     color: var(--am-ochre);
     letter-spacing: 4px;
-    font-size: 13px;
+    font-size: 15px;
 }
 
 
@@ -860,14 +1003,14 @@ a {
 }
 
 .finish-content h2 {
-    font-size: clamp(35px, 4vw, 58px);
+    font-size: clamp(45px, 5vw, 70px);
     line-height: 1;
     color: var(--am-navy);
     margin: 15px 0;
 }
 
 .finish-intro {
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1.7;
     color: var(--am-ochre);
     margin-bottom: 35px;
@@ -890,19 +1033,19 @@ a {
 }
 
 .finish-option span {
-    font-size: 14px;
+    font-size: 24px;
     color: #B48A45;
     font-weight: 600;
 }
 
 .finish-option h3 {
-    font-size: 24px;
+    font-size: 15px;
     color: var(--am-ink);
     margin-bottom: 5px;
 }
 
 .finish-option p {
-    font-size: 15px;
+    font-size: 22px;
     line-height: 1.5;
     color: var(--am-text);
 }
@@ -1002,12 +1145,12 @@ a {
 }
 
 .step-content h3 {
-    font-size: 22px;
+    font-size: 15px;
     margin-bottom: 15px;
 }
 
 .step-content p {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.7;
     color: rgba(255, 255, 255, .7);
 }
@@ -1128,7 +1271,7 @@ a {
 }
 
 .benefits-header h2 {
-    font-size: clamp(45px, 5vw, 70px);
+    font-size: clamp(35px, 4vw, 58px);
     line-height: 1.1;
     margin-top: 25px;
 }
@@ -1154,7 +1297,7 @@ a {
 
 .benefit-card span {
     color: var(--am-ochre);
-    font-size: 14px;
+    font-size: clamp(17px, 2vw, 22px);
     letter-spacing: 3px;
 }
 
@@ -1266,7 +1409,7 @@ a {
 }
 
 .spray-value-content h2 {
-    font-size: clamp(35px, 4vw, 58px);
+    font-size: 48px;
     line-height: 1.1;
     color: var(--am-navy);
     margin: 15px 0;
@@ -1401,7 +1544,7 @@ a {
     }
 
     .spray-hero-content h1 {
-        font-size: 48px;
+        font-size: clamp(26px, 3.5vw, 36px);
     }
 
     .spray-hero-buttons,

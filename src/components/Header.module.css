@@ -8,10 +8,16 @@
 
 .logoSymbol {
   display: block;
-  width: 60px;
+  width: 56px;
   height: 46px;
-  flex: 0 0 60px;
+  flex: 0 0 56px;
   overflow: hidden;
+}
+
+.site-header.is-scrolled .logoSymbol {
+  width: 50px !important;
+  height: 46px !important;
+  flex: 0 0 50px !important;
 }
 
 .logoSymbol img {
@@ -22,26 +28,39 @@
 }
 
 .logoWordmark {
-  display: grid;
-  gap: 1px;
+  display: block;
+  position: relative;
+  height: 24px;
+  /* Accounts for strong + absolute small */
   color: inherit;
   line-height: 1;
   white-space: nowrap;
 }
 
 .logoWordmark strong {
+  display: block;
   color: inherit;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: .015em;
 }
 
 .logoWordmark small {
+  display: block;
+  position: absolute;
+  top: 16px;
+  /* Place directly below strong */
+  left: 0;
   color: inherit;
-  font-size: 7px;
+  font-size: 14px;
+  /* 14px bypasses all browser min-font-size limits */
   font-weight: 700;
-  letter-spacing: .16em;
+  letter-spacing: .05em;
   opacity: .72;
+  transform: scale(0.62);
+  /* Scales the 14px text down to ~8.6px visually */
+  transform-origin: left top;
+  pointer-events: none;
 }
 
 .fullLogoLink {
@@ -82,7 +101,9 @@
   }
 
   .logoWordmark small {
-    font-size: 6px;
+    font-size: 13px;
+    transform: scale(0.55);
+    top: 15px;
   }
 
   .fullLogoImage {
@@ -100,62 +121,77 @@
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .dropdown-trigger),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .nav-link) {
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a:hover),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .dropdown-trigger:hover),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .nav-link:hover) {
-    color: #FFD21F !important;
-    -webkit-text-fill-color: #FFD21F !important;
+  color: #FFD21F !important;
+  -webkit-text-fill-color: #FFD21F !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn) {
-    background: #FFD21F !important;
-    border-color: #FFD21F !important;
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+  background: #FFD21F !important;
+  border-color: #FFD21F !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn) {
-    background: #E62453 !important;
-    border-color: #E62453 !important;
-    color: #fff !important;
-    -webkit-text-fill-color: #fff !important;
+  background: #E62453 !important;
+  border-color: #E62453 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn:hover),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn:hover) {
-    opacity: .72;
+  opacity: .72;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .theme-toggle),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .sound-toggle) {
-    background: rgba(7, 26, 51, .10) !important;
-    border-color: rgba(7, 26, 51, .22) !important;
+  background: rgba(7, 26, 51, .10) !important;
+  border-color: rgba(7, 26, 51, .22) !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .sound-toggle:not(.is-playing) .sound-toggle-icon) {
-    background: rgba(7, 26, 51, .15) !important;
-    color: #071A33 !important;
+  background: rgba(7, 26, 51, .15) !important;
+  color: #071A33 !important;
 }
 
 /* Make sure the logo text is dark */
-:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial)) .logoWordmark {
-    color: #050505 !important;
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial)) .logoWordmark,
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial)) .logoWordmark strong,
+:global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial)) .logoWordmark small {
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
 }
 
 
 /* Fix dropdown numbers inheriting dark color in light mode */
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a .item-num) {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 
 /* Make logo text black in sticky header on light theme */
-:global(html:not([data-theme="amigos-dark"]) .site-header.is-scrolled) .logoWordmark {
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+:global(html:not([data-theme="amigos-dark"]) .site-header.is-scrolled) .logoWordmark,
+:global(html:not([data-theme="amigos-dark"]) .site-header.is-scrolled) .logoWordmark strong,
+:global(html:not([data-theme="amigos-dark"]) .site-header.is-scrolled) .logoWordmark small {
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+/* Keep action geometry identical across light/dark and scrolled/hero states. */
+:global(html body .site-header .header-actions .customer-header-btn),
+:global(html body .site-header .header-actions .header-btn) {
+  min-height: 48px !important;
+  padding: 10px 22px !important;
+  border-radius: 999px !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
 }

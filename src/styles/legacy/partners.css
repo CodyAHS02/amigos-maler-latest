@@ -6,7 +6,7 @@
     --partner-navy: #071A33;
     --partner-navy-soft: #0D2542;
     --partner-cream: #F7F1E7;
-    --partner-offwhite: #FCF8F0;
+    --partner-offwhite: #ffffff;
     --partner-text: #615b51;
     --partner-line: rgba(7, 26, 51, .13);
     --logo-yellow: #f6be10;
@@ -92,8 +92,8 @@ body {
     max-width: 680px;
     margin: 0;
     color: #fff;
-    font-size: clamp(44px, 5vw, 78px);
-    line-height: .98;
+    font-size: clamp(45px, 5vw, 78px);
+    line-height: 1.05;
     letter-spacing: 0;
     font-weight: 700;
 }
@@ -125,7 +125,7 @@ body {
     border-radius: 999px;
     color: #fff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
     overflow: hidden;
     transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .35s ease, color .35s ease;
@@ -307,18 +307,21 @@ body {
     display: flex;
     width: max-content;
     gap: 44px;
-    padding: 24px 0;
+    padding: 16px 0;
     animation: partnersMarquee 28s linear infinite;
 }
 
 .partner-marquee span {
     white-space: nowrap;
-    font-size: clamp(18px, 2.2vw, 32px);
+    font-size: clamp(16px, 1.8vw, 26px);
     font-weight: 700;
 }
 
 .partner-imagery {
-    padding: 120px 0 30px;
+    min-height: 100vh;
+    padding: clamp(70px, 8vh, 120px) 0 clamp(30px, 4vh, 60px);
+    display: flex;
+    align-items: center;
     background:
         radial-gradient(circle at 14% 20%, rgba(246, 190, 16, .13), transparent 28%),
         var(--partner-cream);
@@ -327,13 +330,14 @@ body {
 .imagery-grid {
     display: grid;
     grid-template-columns: 1.25fr .85fr;
-    grid-template-rows: repeat(2, minmax(260px, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 24px;
+    height: min(680px, calc(100vh - 160px));
 }
 
 .imagery-card {
     position: relative;
-    min-height: 260px;
+    min-height: 0;
     margin: 0;
     overflow: hidden;
     border-radius: 28px;
@@ -344,7 +348,7 @@ body {
 
 .imagery-card-large {
     grid-row: span 2;
-    min-height: 548px;
+    min-height: 0;
 }
 
 .imagery-card img {
@@ -378,7 +382,7 @@ body {
     display: block;
     margin-bottom: 10px;
     color: var(--logo-yellow);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 800;
     letter-spacing: .28em;
     text-transform: uppercase;
@@ -412,9 +416,8 @@ body {
 .standards-copy h2 {
     margin: 0;
     color: var(--partner-navy);
-    font-size: clamp(38px, 4.2vw, 68px);
-    line-height: 1;
-    letter-spacing: 0;
+    font-size: clamp(38px, 4vw, 60px);
+    line-height: 1.1;
 }
 
 .partners-section-heading.centered {
@@ -449,7 +452,7 @@ body {
     padding: 34px;
     overflow: hidden;
     border-right: 1px solid var(--partner-line);
-    background: rgba(252, 248, 240, .42);
+    background: rgba(255, 255, 255, .42);
     transition: transform .45s cubic-bezier(.22, 1, .36, 1), color .35s ease;
 }
 
@@ -559,7 +562,7 @@ body {
 .flow-step span {
     display: block;
     color: var(--logo-yellow);
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 800;
     letter-spacing: .34em;
 }
@@ -658,9 +661,8 @@ body {
 .partner-cta h2 {
     margin: 0;
     color: #fff;
-    font-size: clamp(42px, 4.8vw, 78px);
-    line-height: 1;
-    letter-spacing: 0;
+    font-size: clamp(38px, 4vw, 60px);
+    line-height: 1.1;
 }
 
 .partner-cta-inner>p {
@@ -721,6 +723,7 @@ body {
 }
 
 @media (max-width: 1180px) {
+
     .partners-hero-grid,
     .partners-split,
     .standards-layout {
@@ -765,10 +768,8 @@ body {
         gap: 48px;
     }
 
-    .partners-hero-copy h1,
-    .partners-section-heading h2,
-    .partner-cta h2 {
-        font-size: clamp(44px, 14vw, 66px);
+    .partners-hero-copy h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
     }
 
     .partners-hero-copy>p,
@@ -881,6 +882,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .partners-btn-primary,
     .network-rings,
     .partner-marquee,
@@ -897,3 +899,15 @@ body {
         transition: none;
     }
 }
+
+
+.partners-section-heading.centered.partners-reveal.is-visible {
+    background: none !important;
+}
+
+.partners-shell.partners-split .partners-section-heading.partners-reveal.is-visible {
+    background: transparent !important;
+}/* force reload */
+/* force reload 12 */
+/* force reload 14 */
+/* force reload 15 */

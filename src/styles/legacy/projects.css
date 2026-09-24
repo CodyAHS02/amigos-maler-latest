@@ -22,7 +22,7 @@ body {
     --am-navy: #071a33;
     --am-navy-soft: #0D2542;
     --am-cream: #F7F1E7;
-    --am-offwhite: #FCF8F0;
+    --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
     --am-ochre: #f39125;
@@ -72,7 +72,7 @@ p {
 
 em {
     font-family: Georgia, "Times New Roman", serif;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 
@@ -107,7 +107,7 @@ em {
     gap: 30px;
     text-decoration: none;
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1.7px;
     text-transform: uppercase;
     transition:
@@ -203,7 +203,7 @@ em {
     font-size: clamp(35px, 4vw, 58px);
     line-height: .88;
 
-    font-weight: 600;
+    font-weight: 500;
     color: white;
 }
 
@@ -408,7 +408,7 @@ em {
 
     line-height: .91;
 
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .intro-title h2 {
@@ -534,7 +534,7 @@ em {
     display: inline-block;
     padding: 4px 10px;
     font-size: 8px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     border-radius: 3px;
@@ -694,7 +694,7 @@ em {
 
     line-height: .95;
 
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .project-info p {
@@ -996,7 +996,7 @@ s .comparison-after,
     max-width: 850px;
 
     font-size: clamp(58px, 7.5vw, 112px);
-    font-weight: 400;
+    font-weight: 700;
 
     line-height: .9;
     letter-spacing: -6px;
@@ -1010,7 +1010,7 @@ s .comparison-after,
 
     margin-top: 38px;
 
-    font-size: 15px;
+    font-size: 10px;
     line-height: 1.8;
 
     color: var(--am-text);
@@ -1085,7 +1085,7 @@ s .comparison-after,
 
     padding-top: 6px;
 
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
 
     letter-spacing: 3px;
@@ -1118,8 +1118,8 @@ s .comparison-after,
 
     margin-bottom: 12px;
 
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 500;
 
     letter-spacing: 3px;
 
@@ -1140,7 +1140,7 @@ s .comparison-after,
 
     font-size: clamp(30px, 3.3vw, 50px);
 
-    font-weight: 400;
+    font-weight: 700;
 
     line-height: 1;
 
@@ -1163,7 +1163,7 @@ s .comparison-after,
 
     margin-top: 15px;
 
-    font-size: 13px;
+    font-size: 9px;
 
     line-height: 1.7;
 
@@ -1196,7 +1196,7 @@ s .comparison-after,
 
     border-radius: 50%;
 
-    font-size: 15px;
+    font-size: 8px;
 
     color: var(--am-text);
 
@@ -1347,8 +1347,8 @@ s .comparison-after,
 
     color: #fff;
 
-    font-size: 9px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
 
     letter-spacing: 2px;
 
@@ -1524,7 +1524,7 @@ s .comparison-after,
     .quality-intro p {
         margin-top: 25px;
 
-        font-size: 13px;
+        font-size: 8px;
     }
 
 
@@ -1553,13 +1553,13 @@ s .comparison-after,
 
 
     .quality-number {
-        font-size: 8px;
+        font-size: 12px;
         letter-spacing: 2px;
     }
 
 
     .quality-label {
-        font-size: 8px;
+        font-size: 7px;
 
         margin-bottom: 9px;
     }
@@ -1573,7 +1573,7 @@ s .comparison-after,
 
 
     .quality-item p {
-        font-size: 12px;
+        font-size: 10px;
 
         margin-top: 11px;
 
@@ -1754,7 +1754,7 @@ s .comparison-after,
 
     letter-spacing: -.05em;
 
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .modal-details {
@@ -1777,12 +1777,12 @@ s .comparison-after,
 
     color: var(--am-ochre);
 
-    font-size: 7px;
+    font-size: 13px;
     letter-spacing: 1.8px;
 }
 
 .modal-details strong {
-    font-size: 10px;
+    font-size: 7px;
 
     line-height: 1.4;
 }
@@ -1792,7 +1792,7 @@ s .comparison-after,
 
     color: var(--am-line);
 
-    font-size: 13px;
+    font-size: 10px;
 
     line-height: 1.85;
 }
@@ -1804,7 +1804,7 @@ s .comparison-after,
 }
 
 .modal-notice strong {
-    font-size: 7px;
+    font-size: 9px;
 
     letter-spacing: 2px;
 }
@@ -1814,7 +1814,7 @@ s .comparison-after,
 
     color: var(--am-line);
 
-    font-size: 10px;
+    font-size: 11px;
 
     line-height: 1.7;
 }
@@ -1934,7 +1934,7 @@ s .comparison-after,
 
     color: rgba(255, 255, 255, .7);
 
-    font-size: 9px;
+    font-size: 10px;
 
     letter-spacing: 1.5px;
 }
@@ -2274,17 +2274,17 @@ s .comparison-after,
 
 .about-wife-media-badge strong {
     display: block;
-    font-size: 15px;
+    font-size: 14.5px;
     color: #fff;
     font-weight: 700;
 }
 
 .about-wife-media-badge span {
-    font-size: 11px;
+    font-size: 13px;
     color: #f6be10;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .about-wife-content {
@@ -2298,8 +2298,8 @@ s .comparison-after,
     align-items: center;
     gap: 12px;
     color: #f6be10;
-    font-size: 10px;
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 400;
     letter-spacing: 2.8px;
     text-transform: uppercase;
 }
@@ -2313,7 +2313,7 @@ s .comparison-after,
 .about-wife-title {
     font-size: clamp(26px, 3.2vw, 40px);
     line-height: 1.25;
-    font-weight: 700;
+    font-weight: 400;
     color: #fff;
 }
 
@@ -2329,7 +2329,7 @@ s .comparison-after,
     background: rgba(255, 255, 255, 0.05);
     border-radius: 0 10px 10px 0;
     font-style: italic;
-    font-size: 14.5px;
+    font-size: 15px;
     line-height: 1.65;
     color: #fff;
 }
@@ -2368,13 +2368,13 @@ s .comparison-after,
 
 .about-wife-pillar strong {
     display: block;
-    font-size: 13px;
+    font-size: 15px;
     color: #fff;
     margin-bottom: 4px;
 }
 
 .about-wife-pillar span {
-    font-size: 11px;
+    font-size: 15px;
     line-height: 1.4;
     color: #94A3B8;
     display: block;

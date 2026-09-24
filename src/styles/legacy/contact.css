@@ -88,9 +88,9 @@ body.contact-page {
 
     color: var(--logo-yellow);
 
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 3.5px;
+    letter-spacing: 3px;
 }
 
 .contact-kicker span {
@@ -103,10 +103,10 @@ body.contact-page {
 .form-heading h2 {
     margin: 0;
 
-    font-size: clamp(58px, 7vw, 108px);
-    line-height: .91;
-    letter-spacing: -5px;
-    font-weight: 400;
+    font-size: clamp(48px, 6.5vw, 92px);
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    font-weight: 700;
 }
 
 .contact-copy h1 em,
@@ -128,8 +128,8 @@ body.contact-page {
 
     color: var(--am-text);
 
-    font-size: 15px;
-    line-height: 1.85;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.6;
 }
 
 
@@ -154,9 +154,9 @@ body.contact-page {
 
     text-decoration: none;
 
-    font-size: 9px;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 1.8px;
+    letter-spacing: 1px;
     text-transform: uppercase;
 
     border-radius: 999px;
@@ -169,7 +169,7 @@ body.contact-page {
 }
 
 .contact-btn span {
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .contact-btn:hover {
@@ -207,8 +207,6 @@ body.contact-page {
 
     margin-top: 65px;
     padding-top: 25px;
-
-    border-top: 1px solid var(--am-line);
 }
 
 .contact-detail {
@@ -220,16 +218,16 @@ body.contact-page {
 .contact-detail span {
     color: var(--logo-orange);
 
-    font-size: 8px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
 .contact-detail a,
 .contact-detail strong {
-    color: var(--am-ink);
-    font-size: 14px;
-    font-weight: 500;
+    color: var(--am-offwhite);
+    font-size: 18px;
+    font-weight: 600;
     text-decoration: none;
 }
 
@@ -303,7 +301,7 @@ body.contact-page {
     margin-bottom: 12px;
 
     font-size: 8px;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 3px;
     color: var(--logo-yellow);
 }
@@ -314,7 +312,7 @@ body.contact-page {
     font-size: 29px;
     line-height: .92;
     letter-spacing: -1px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 
@@ -334,7 +332,7 @@ body.contact-page {
     background: var(--logo-gradient-moving);
     background-size: 240% 240%;
 
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 700;
     letter-spacing: 2px;
 
@@ -354,7 +352,7 @@ body.contact-page {
 
     color: var(--am-text);
 
-    font-size: 8px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -390,7 +388,8 @@ body.contact-page {
 
 .form-heading h2 {
     font-size: clamp(48px, 5.5vw, 80px);
-    letter-spacing: -4px;
+    line-height: 1.05;
+    letter-spacing: -2px;
 }
 
 .form-heading p {
@@ -400,8 +399,8 @@ body.contact-page {
 
     color: var(--am-text);
 
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.6;
 }
 
 
@@ -428,7 +427,7 @@ body.contact-page {
 .contact-form label>span {
     color: var(--logo-orange);
 
-    font-size: 8px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -483,7 +482,7 @@ body.contact-page {
 .contact-field-error,
 .contact-form-status {
     margin: 0;
-    font-size: 12px;
+    font-size: 8px;
     line-height: 1.5;
 }
 
@@ -525,7 +524,7 @@ body.contact-page {
 
     cursor: pointer;
 
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -578,7 +577,7 @@ body.contact-page {
 .contact-strip-inner>div>span {
     color: var(--logo-yellow);
 
-    font-size: 8px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 3px;
 }
@@ -601,8 +600,8 @@ body.contact-page {
 
     color: white;
 
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 400;
     letter-spacing: 1.5px;
 
     text-decoration: none;
@@ -707,3 +706,7 @@ body.contact-page {
     }
 
 }
+/* force reload 16 */
+/* force reload 17 */
+/* force reload 18 */
+/* force reload 19 */

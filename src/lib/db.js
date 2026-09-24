@@ -15,8 +15,24 @@ function createSqlClient() {
   });
 }
 
-export const sql = globalForDatabase.sql || createSqlClient();
+function getSqlClient() {
+  if (!globalForDatabase.sql) {
+    globalForDatabase.sql = createSqlClient();
+  }
 
-if (process.env.NODE_ENV !== "production") {
-  globalForDatabase.sql = sql;
+  return globalForDatabase.sql;
 }
+
+// Keep database initialization lazy so static/public pages can build without a
+// database. Database-backed routes still fail clearly when invoked without
+// DATABASE_URL, rather than breaking the entire deployment during module load.
+export const sql = new Proxy(function lazySql() {}, {
+  apply(_target, _thisArg, args) {
+    return getSqlClient()(...args);
+  },
+  get(_target, property) {
+    const client = getSqlClient();
+    const value = client[property];
+    return typeof value === "function" ? value.bind(client) : value;
+  }
+});

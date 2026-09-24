@@ -55,6 +55,7 @@ export default function LegacyPage({ children, css = [], html, scripts = [], she
       {css.map((href) =>
         isExternalAsset(href) ? <link key={href} rel="stylesheet" href={href} /> : <LocalStyle href={href} key={href} />
       )}
+      <LocalStyle href="/site-audit.css" />
 
       {shell && <Header />}
       <LegacyMarkup html={html} />

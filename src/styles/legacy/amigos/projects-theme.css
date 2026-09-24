@@ -205,7 +205,7 @@ body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .project-accentl
 .amigos-wrapper .founder-story h2 {
   max-width: 12ch;
   margin-bottom: 24px;
-  font-size: clamp(38px, 4.15vw, 64px);
+  font-size: clamp(32px, 4vw, 44px);
   line-height: 1.06;
   letter-spacing: -.035em;
 }
@@ -252,8 +252,8 @@ body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .project-accentl
 
 .amigos-wrapper .stats .stat .num {
   color: #fff !important;
-  font-size: clamp(44px, 4vw, 72px) !important;
-  font-weight: 800 !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
+  font-weight: 600 !important;
   line-height: 1 !important;
   letter-spacing: -.045em;
   text-shadow: none !important;
@@ -261,13 +261,13 @@ body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .project-accentl
 
 .amigos-wrapper .stats .stat .num .suffix {
   color: var(--am-yellow) !important;
-  font-size: .54em !important;
+  font-size: 14px !important;
 }
 
 .amigos-wrapper .stats .stat .label {
   color: rgba(255, 255, 255, .88) !important;
-  font-size: clamp(11px, .88vw, 14px) !important;
-  font-weight: 700;
+  font-size: 15px !important;
+  font-weight: 500;
 }
 
 html:is([data-theme="light"], [data-theme="amigos-light"]) .amigos-wrapper .stats .stat {
@@ -313,8 +313,8 @@ html:is([data-theme="light"], [data-theme="amigos-light"]) .amigos-wrapper .stat
   right: -1vw;
   bottom: -6vh;
   color: rgba(255, 255, 255, .025);
-  font-size: clamp(130px, 21vw, 360px);
-  font-weight: 900;
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 600;
   line-height: .8;
   letter-spacing: -.08em;
   pointer-events: none;
@@ -336,7 +336,7 @@ html:is([data-theme="light"], [data-theme="amigos-light"]) .amigos-wrapper .stat
 
 .amigos-wrapper #showcase .section-head h2 {
   color: #fff;
-  font-size: clamp(36px, 4vw, 64px);
+  font-size: clamp(32px, 4vw, 44px);
   line-height: 1.03;
 }
 
@@ -350,7 +350,7 @@ html:is([data-theme="light"], [data-theme="amigos-light"]) .amigos-wrapper .stat
   align-items: center;
   gap: 12px;
   color: #aebdce;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .amigos-wrapper .showcase-instruction i {
@@ -481,11 +481,11 @@ body[data-page="projects"] .amigos-wrapper h4 {
 }
 
 body[data-page="projects"] .amigos-wrapper {
-  --projects-cream: #fdfbf6;
+  --projects-cream: #ffffff;
   --projects-navy: #071a33;
   --projects-copy: #626262;
   --projects-line: rgba(7, 26, 51, .12);
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.58;
 }
 
@@ -508,8 +508,8 @@ body[data-page="projects"] .amigos-wrapper .section-head {
 body[data-page="projects"] .amigos-wrapper .section-head .eyebrow,
 body[data-page="projects"] .amigos-wrapper .founder-kicker {
   color: #f39125 !important;
-  font-size: 12px !important;
-  font-weight: 700 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   letter-spacing: .16em !important;
   text-transform: uppercase;
 }
@@ -518,8 +518,8 @@ body[data-page="projects"] .amigos-wrapper .section-head h2,
 body[data-page="projects"] .amigos-wrapper .founder-story h2 {
   max-width: 15ch;
   color: var(--projects-navy) !important;
-  font-size: clamp(34px, 4.4vw, 58px) !important;
-  font-weight: 700 !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
+  font-weight: 500 !important;
   line-height: 1.08 !important;
   letter-spacing: -.025em !important;
 }
@@ -534,7 +534,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .founder-stor
 body[data-page="projects"] .amigos-wrapper .section-head p,
 body[data-page="projects"] .amigos-wrapper .founder-story>p:not(.founder-kicker) {
   color: var(--projects-copy) !important;
-  font-size: 15.5px !important;
+  font-size: 15px !important;
   line-height: 1.62 !important;
 }
 
@@ -542,7 +542,7 @@ html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .secti
 html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .founder-story>p:not(.founder-kicker),
 html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .section-head p,
 html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .founder-story>p:not(.founder-kicker) {
-  color: rgba(253, 251, 246, .78) !important;
+  color: rgba(255, 255, 255, .78) !important;
 }
 
 /* One coherent stat surface with an Amigos gradient edge—not four unrelated fills. */
@@ -576,8 +576,8 @@ body[data-page="projects"] .amigos-wrapper .stats .stat::after {
 
 body[data-page="projects"] .amigos-wrapper .stats .stat .num {
   color: var(--projects-navy) !important;
-  font-size: clamp(46px, 4.3vw, 68px) !important;
-  font-weight: 700 !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
+  font-weight: 500 !important;
   letter-spacing: -.035em !important;
 }
 
@@ -588,19 +588,19 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .stats .stat 
 
 body[data-page="projects"] .amigos-wrapper .stats .stat .num .suffix {
   color: #f39125 !important;
-  font-size: .52em !important;
+  font-size: 14px !important;
 }
 
 body[data-page="projects"] .amigos-wrapper .stats .stat .label {
   color: var(--projects-copy) !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   letter-spacing: .16em !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .stats .stat .label,
 html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .stats .stat .label {
-  color: rgba(253, 251, 246, .78) !important;
+  color: rgba(255, 255, 255, .78) !important;
 }
 
 body[data-page="projects"] .amigos-wrapper .founder-section {
@@ -618,7 +618,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .founder-sect
 
 body[data-page="projects"] .amigos-wrapper .founder-story blockquote {
   color: var(--projects-navy);
-  font-size: clamp(19px, 1.7vw, 25px);
+  font-size: clamp(17px, 2vw, 22px);
 }
 
 html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .founder-story blockquote,
@@ -662,7 +662,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
 
 html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper #showcase .section-head p,
 html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .section-head p {
-  color: rgba(253, 251, 246, .78) !important;
+  color: rgba(255, 255, 255, .78) !important;
 }
 
 @media (max-width: 760px) {
@@ -831,12 +831,12 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
 }
 
 .amigos-wrapper .founder-portrait figcaption strong {
-  font-size: 20px;
+  font-size: clamp(15px, 1.8vw, 17px);
 }
 
 .amigos-wrapper .founder-portrait figcaption span {
   color: #bdcada;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .amigos-wrapper .founder-orbit {
@@ -884,15 +884,15 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
 .amigos-wrapper .founder-kicker {
   margin: 0 0 24px;
   color: var(--am-yellow);
-  font-size: 13px;
-  font-weight: 750;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .14em;
 }
 
 .amigos-wrapper .founder-story h2 {
   margin: 0 0 30px;
   color: #fff;
-  font-size: clamp(42px, 5vw, 76px);
+  font-size: clamp(40px, 5vw, 56px);
   line-height: 1.02;
   letter-spacing: -.045em;
 }
@@ -900,13 +900,13 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
 .amigos-wrapper .founder-story>p:not(.founder-kicker) {
   max-width: 64ch;
   color: #b8c6d7;
-  font-size: clamp(16px, 1.25vw, 20px);
+  font-size: clamp(15px, 1.8vw, 17px);
   line-height: 1.75;
 }
 
 .amigos-wrapper .founder-story .founder-lede {
   color: #eef4fa;
-  font-size: clamp(19px, 1.55vw, 24px);
+  font-size: clamp(17px, 2vw, 22px);
 }
 
 .amigos-wrapper .founder-story blockquote {
@@ -914,7 +914,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
   padding: 4px 0 4px 24px;
   border-left: 3px solid var(--am-orange);
   color: #fff;
-  font-size: clamp(20px, 1.8vw, 28px);
+  font-size: clamp(20px, 2.5vw, 28px);
   line-height: 1.45;
 }
 
@@ -926,7 +926,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
   border-radius: 999px;
   background: var(--am-gradient);
   color: #fff !important;
-  font-weight: 750;
+  font-weight: 600;
   text-decoration: none;
   transition: gap .25s ease, transform .25s ease;
 }
@@ -1052,8 +1052,8 @@ body[data-page="projects"] .amigos-wrapper #project-showcase-lab::before {
   right: -1vw;
   bottom: -4vh;
   color: rgba(255, 255, 255, .035);
-  font-size: clamp(120px, 20vw, 340px);
-  font-weight: 900;
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 600;
   line-height: .8;
   letter-spacing: -.08em;
   pointer-events: none;
@@ -1078,15 +1078,15 @@ body[data-page="projects"] .amigos-wrapper .project-lab-copy h2 {
   max-width: 12ch;
   margin: 0 0 18px;
   color: #fff;
-  font-size: clamp(38px, 4.4vw, 66px);
+  font-size: clamp(32px, 4vw, 44px);
   line-height: 1.04;
   letter-spacing: -.035em;
 }
 
 body[data-page="projects"] .amigos-wrapper .project-lab-copy p {
   max-width: 48ch;
-  color: rgba(253, 251, 246, .76);
-  font-size: 16px;
+  color: rgba(255, 255, 255, .76);
+  font-size: 15px;
   line-height: 1.65;
 }
 
@@ -1157,8 +1157,8 @@ body[data-page="projects"] .amigos-wrapper .project-lab-card span {
   display: block;
   margin-bottom: 4px;
   color: var(--am-yellow);
-  font-size: 11px;
-  font-weight: 750;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -1166,7 +1166,7 @@ body[data-page="projects"] .amigos-wrapper .project-lab-card span {
 body[data-page="projects"] .amigos-wrapper .project-lab-card strong {
   display: block;
   color: #fff;
-  font-size: clamp(18px, 1.4vw, 24px);
+  font-size: clamp(17px, 2vw, 22px);
   line-height: 1.15;
 }
 
@@ -1189,14 +1189,14 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat {
 }
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
-  font-size: clamp(78px, 8vw, 148px) !important;
-  font-weight: 850 !important;
+  font-size: clamp(40px, 5vw, 56px) !important;
+  font-weight: 600 !important;
   letter-spacing: -.06em !important;
   line-height: .9 !important;
 }
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num .suffix {
-  font-size: .5em !important;
+  font-size: 14px !important;
   margin-left: 4px !important;
 }
 
@@ -1214,6 +1214,10 @@ body[data-page="projects"] .amigos-wrapper #testi .section-head h2 {
 
 body[data-page="projects"] .amigos-wrapper #testi .section-head .brush {
   margin-inline: auto !important;
+}
+
+body[data-page="projects"] .amigos-wrapper #testi .ring {
+  margin-bottom: 120px;
 }
 
 @media (max-width: 980px) {
@@ -1250,7 +1254,7 @@ body[data-page="projects"] .amigos-wrapper #testi .section-head .brush {
   }
 
   body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
-    font-size: clamp(70px, 18vw, 110px) !important;
+    font-size: clamp(40px, 5vw, 56px) !important;
   }
 }
 
@@ -1283,15 +1287,15 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
   justify-content: center !important;
   width: 100% !important;
   color: #ff9818 !important;
-  font-size: clamp(112px, 10.6vw, 218px) !important;
-  font-weight: 900 !important;
+  font-size: clamp(40px, 5vw, 56px) !important;
+  font-weight: 600 !important;
   letter-spacing: -.08em !important;
   line-height: .78 !important;
 }
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num .suffix {
   color: #f39125 !important;
-  font-size: .26em !important;
+  font-size: 14px !important;
   line-height: 1 !important;
 }
 
@@ -1337,7 +1341,7 @@ body[data-page="projects"] .amigos-wrapper .enquiry-field span {
   display: block;
   margin: 0 0 12px;
   color: rgba(255, 255, 255, .72);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 760;
   letter-spacing: .16em;
   text-transform: uppercase;
@@ -1386,7 +1390,7 @@ body[data-page="projects"] .amigos-wrapper .enquiry-field textarea {
   background: rgba(5, 18, 34, .72);
   color: #fff;
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
   outline: none;
   padding: 16px 18px;
 }
@@ -1435,6 +1439,14 @@ html[data-theme="amigos-light"] body[data-page="projects"] .amigos-wrapper #part
   background: linear-gradient(180deg, #fff, #eef7ff);
 }
 
+body[data-page="projects"] .site-footer {
+  margin-top: 0 !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  border-top: 0 !important;
+  background: #081321; /* Matches the dark blue footer tone */
+}
+
 body[data-page="projects"] .amigos-wrapper .partners-head {
   display: flex;
   justify-content: space-between;
@@ -1445,9 +1457,13 @@ body[data-page="projects"] .amigos-wrapper .partners-head {
 
 body[data-page="projects"] .amigos-wrapper .partners-head span {
   color: var(--am-yellow);
-  font-size: clamp(22px, 2.2vw, 34px);
+  font-size: clamp(20px, 2.5vw, 28px);
   font-weight: 820;
   letter-spacing: -.02em;
+}
+
+html:is([data-theme="light"], [data-theme="amigos-light"]) body[data-page="projects"] .amigos-wrapper .partners-head span {
+  color: #050505;
 }
 
 body[data-page="projects"] .amigos-wrapper .partners-head p {
@@ -1488,7 +1504,7 @@ html[data-theme="amigos-light"] body[data-page="projects"] .amigos-wrapper .part
 
 body[data-page="projects"] .amigos-wrapper .project-lab-copy h2 {
   max-width: 10ch !important;
-  font-size: clamp(34px, 3.6vw, 52px) !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
   line-height: 1.03 !important;
 }
 
@@ -1552,7 +1568,7 @@ body[data-page="projects"] .amigos-wrapper .project-lab-card:hover .project-card
 
 @media (max-width: 640px) {
   body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
-    font-size: clamp(94px, 27vw, 138px) !important;
+    font-size: clamp(40px, 5vw, 56px) !important;
   }
 
   body[data-page="projects"] .amigos-wrapper .enquiry-grid,
@@ -1612,8 +1628,8 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat::after {
   right: clamp(20px, 2vw, 34px);
   bottom: clamp(16px, 1.8vw, 28px);
   color: rgba(255, 255, 255, .08);
-  font-size: clamp(76px, 7vw, 132px);
-  font-weight: 900;
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 600;
   letter-spacing: -.08em;
   line-height: .75;
   z-index: 0;
@@ -1643,8 +1659,8 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
   justify-content: flex-start !important;
   width: auto !important;
   color: #fff !important;
-  font-size: clamp(72px, 7.4vw, 148px) !important;
-  font-weight: 900 !important;
+  font-size: clamp(40px, 5vw, 56px) !important;
+  font-weight: 600 !important;
   letter-spacing: -.075em !important;
   line-height: .78 !important;
   text-shadow: 0 14px 36px rgba(0, 0, 0, .22);
@@ -1652,7 +1668,7 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num .suffix {
   color: #f39125 !important;
-  font-size: .26em !important;
+  font-size: 14px !important;
   letter-spacing: -.06em !important;
   margin-left: .06em !important;
   transform: translateY(-.04em);
@@ -1787,7 +1803,7 @@ body[data-page="projects"] .amigos-wrapper .project-lab-card::after {
 
 @media (max-width: 640px) {
   body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
-    font-size: clamp(76px, 24vw, 124px) !important;
+    font-size: clamp(40px, 5vw, 56px) !important;
   }
 }
 
@@ -1835,14 +1851,14 @@ body[data-page="projects"] .amigos-wrapper #calc .section-head {
 
 body[data-page="projects"] .amigos-wrapper #calc .section-head h2 {
   max-width: 12ch !important;
-  font-size: clamp(46px, 4.6vw, 76px) !important;
+  font-size: clamp(40px, 5vw, 56px) !important;
   line-height: .98 !important;
   margin-bottom: 18px !important;
 }
 
 body[data-page="projects"] .amigos-wrapper #calc .section-head p {
   max-width: 40ch !important;
-  font-size: clamp(15px, 1.15vw, 18px) !important;
+  font-size: clamp(15px, 1.8vw, 17px) !important;
   line-height: 1.55 !important;
 }
 
@@ -1857,7 +1873,7 @@ body[data-page="projects"] .amigos-wrapper .enquiry-grid {
 
 body[data-page="projects"] .amigos-wrapper .enquiry-field span {
   margin-bottom: 8px !important;
-  font-size: 11px !important;
+  font-size: 14px !important;
   letter-spacing: .14em !important;
 }
 
@@ -1910,7 +1926,7 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
   justify-content: center !important;
   width: 100% !important;
   color: #fff !important;
-  font-size: clamp(94px, 9.2vw, 178px) !important;
+  font-size: clamp(40px, 5vw, 56px) !important;
   line-height: .78 !important;
   letter-spacing: -.075em !important;
   text-align: center !important;
@@ -1918,7 +1934,7 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num {
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .stats .stat .num .suffix {
   color: #f39125 !important;
-  font-size: .26em !important;
+  font-size: 14px !important;
   margin-left: .08em !important;
   transform: translateY(-.22em) !important;
 }
@@ -1957,7 +1973,7 @@ html[data-theme="amigos-light"] body[data-page="projects"] .amigos-wrapper #trus
 
 @media (max-height: 820px) and (min-width: 981px) {
   body[data-page="projects"] .amigos-wrapper #calc .section-head h2 {
-    font-size: clamp(42px, 4vw, 62px) !important;
+    font-size: clamp(32px, 4vw, 44px) !important;
   }
 
   body[data-page="projects"] .amigos-wrapper #calc {
@@ -2014,8 +2030,8 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .project-stat-number {
   align-items: baseline !important;
   justify-content: center !important;
   color: #fff !important;
-  font-size: clamp(60px, 2.4vw, 50px) !important;
-  font-weight: 900 !important;
+  font-size: clamp(32px, 4vw, 44px) !important;
+  font-weight: 600 !important;
   letter-spacing: .01em !important;
   line-height: .8 !important;
   text-align: center !important;
@@ -2023,7 +2039,7 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .project-stat-number {
 
 body[data-page="projects"] .amigos-wrapper #trust-stats .project-stat-suffix {
   color: #f39125 !important;
-  font-size: .34em !important;
+  font-size: 14px !important;
   letter-spacing: -.06em !important;
   margin-left: .08em !important;
   transform: translateY(-.23em) !important;
@@ -2041,7 +2057,7 @@ body[data-page="projects"] .amigos-wrapper #trust-stats .project-stat-label {
   border-radius: 999px !important;
   color: rgba(255, 255, 255, .78) !important;
   background: transparent !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   font-weight: 780 !important;
   letter-spacing: .16em !important;
   line-height: 1.2 !important;
@@ -2107,7 +2123,9 @@ html[data-theme="amigos-dark"] body[data-page="projects"] .site-header.projects-
 
 body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .site-nav a,
 body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .dropdown-trigger,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .nav-link {
+body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .nav-link,
+body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .logo strong,
+body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .logo small {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
@@ -2320,7 +2338,7 @@ body[data-page="projects"] .amigos-wrapper #final .btn.btn-solid:hover {
   }
 
   body[data-page="projects"] .amigos-wrapper #trust-stats .project-stat-number {
-    font-size: clamp(86px, 24vw, 132px) !important;
+    font-size: clamp(40px, 5vw, 56px) !important;
   }
 }
 
@@ -2423,8 +2441,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-kicker {
   border: 1px solid var(--re-line);
   border-radius: 999px;
   color: var(--re-muted);
-  font-size: 12px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .16em;
   text-transform: uppercase;
   background: rgba(255, 255, 255, .62);
@@ -2439,7 +2457,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-hub-head h2 {
   margin: 0;
   max-width: 980px;
   color: var(--re-ink);
-  font-size: clamp(34px, 3.7vw, 58px);
+  font-size: clamp(32px, 4vw, 44px);
   line-height: .98;
   letter-spacing: 0 !important;
 }
@@ -2447,7 +2465,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-hub-head h2 {
 body[data-page="projects"] .amigos-wrapper .real-estate-hub-head p {
   margin: 0;
   color: var(--re-muted);
-  font-size: clamp(14px, 1.05vw, 16px);
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -2474,8 +2492,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-filter-bar button {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .92)) padding-box,
     linear-gradient(120deg, rgba(7, 26, 51, .12), rgba(7, 26, 51, .12)) border-box !important;
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease;
 }
@@ -2555,8 +2573,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card-top {
   justify-content: space-between;
   gap: 12px;
   color: var(--re-muted);
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 body[data-page="projects"] .amigos-wrapper .real-estate-status {
@@ -2568,8 +2586,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-status {
   padding: 0 11px;
   color: #fff;
   background: linear-gradient(120deg, rgba(7, 26, 51, .96), rgba(50, 28, 61, .94));
-  font-size: 10px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -2577,7 +2595,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-status {
 body[data-page="projects"] .amigos-wrapper .real-estate-card h3 {
   margin: 12px 0;
   color: var(--re-ink);
-  font-size: clamp(21px, 1.55vw, 26px);
+  font-size: clamp(17px, 2vw, 22px);
   line-height: 1.04;
   letter-spacing: -.04em;
 }
@@ -2609,8 +2627,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card dt,
 body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy dt {
   margin: 0 0 5px;
   color: var(--re-muted);
-  font-size: 10px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
 }
@@ -2619,8 +2637,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card dd,
 body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy dd {
   margin: 0;
   color: var(--re-ink);
-  font-size: 13px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 body[data-page="projects"] .amigos-wrapper .real-estate-action,
@@ -2638,8 +2656,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-primary-link {
     linear-gradient(120deg, var(--re-orange), var(--re-red) 52%, var(--re-pink)) border-box !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  font-size: 14px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 14px 30px rgba(230, 36, 83, .14);
@@ -2713,8 +2731,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-pin {
   padding: 8px 10px;
   color: #fff;
   background: rgba(7, 26, 51, .92);
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 14px;
+  font-weight: 600;
   box-shadow: 0 10px 28px rgba(7, 26, 51, .24);
 }
 
@@ -2736,7 +2754,7 @@ body[data-page="projects"] .amigos-wrapper .pin-zug { left: 62%; top: 20%; }
 body[data-page="projects"] .amigos-wrapper .real-estate-map-card h3 {
   margin: 0 0 8px;
   color: var(--re-ink);
-  font-size: clamp(23px, 1.9vw, 30px);
+  font-size: clamp(20px, 2.5vw, 28px);
   letter-spacing: -.04em;
 }
 
@@ -2845,7 +2863,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy {
 body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy h3 {
   margin: 10px 0 8px;
   color: var(--re-ink);
-  font-size: clamp(28px, 3vw, 48px);
+  font-size: clamp(26px, 3.5vw, 36px);
   line-height: .98;
   letter-spacing: -.052em;
 }
@@ -2854,7 +2872,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy p {
   margin: 0 0 12px;
   max-width: 720px;
   color: var(--re-muted);
-  font-size: clamp(13px, 1vw, 15px);
+  font-size: 15px;
   line-height: 1.5;
 }
 
@@ -2949,8 +2967,8 @@ body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-
   background:
     linear-gradient(90deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .92)) padding-box,
     linear-gradient(120deg, rgba(7, 26, 51, .14), rgba(7, 26, 51, .14)) border-box !important;
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: none !important;
 }
@@ -2991,8 +3009,8 @@ body[data-page="projects"] .amigos-wrapper #real-estate-hub:not(.has-real-estate
   -webkit-text-fill-color: #071a33 !important;
   background: rgba(255, 255, 255, .92) !important;
   font: inherit !important;
-  font-size: 14px !important;
-  font-weight: 800 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   line-height: 1 !important;
   cursor: pointer !important;
   user-select: none !important;
@@ -3023,8 +3041,8 @@ body[data-page="projects"] {
   --am-magenta-clean: #C73B8E;
   --am-black: #050505;
   --am-grey: #626262;
-  --am-soft-white: #FDFBF6;
-  --am-clean-light: #FAF6EE;
+  --am-soft-white: #ffffff;
+  --am-clean-light: #ffffff;
   --am-navy-home: #071A33;
   --am-yellow-grad: linear-gradient(135deg, #FFD21F 0%, #F39125 100%);
   --am-orange-grad: linear-gradient(135deg, #FF8A1F 0%, #D94D12 100%);
@@ -3055,7 +3073,7 @@ body[data-page="projects"] .amigos-wrapper {
 body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) {
   background:
     radial-gradient(circle at 18% 4%, rgba(255, 210, 31, .10), transparent 32%),
-    linear-gradient(180deg, #FDFBF6 0%, #FAF6EE 100%) !important;
+    linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper,
@@ -3094,11 +3112,11 @@ body[data-page="projects"] .amigos-wrapper .real-estate-primary-link {
 
 body[data-page="projects"] .amigos-wrapper .btn:not(.btn-solid),
 body[data-page="projects"] .amigos-wrapper .hero-ctas .btn:not(.btn-solid) {
-  background: rgba(255, 255, 255, .08) !important;
-  border: 1px solid rgba(255, 255, 255, .62) !important;
+  background: rgba(7, 26, 51, .85) !important;
+  border: 1px solid rgba(255, 255, 255, .25) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10) !important;
+  box-shadow: 0 12px 28px rgba(7, 26, 51, .2) !important;
 }
 
 html:is([data-theme="light"], [data-theme="amigos-light"]) body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) .btn:not(.btn-solid) {
@@ -3127,8 +3145,8 @@ body[data-page="projects"] .amigos-wrapper .real-estate-primary-link:hover {
 
 body[data-page="projects"] .amigos-wrapper .btn:not(.btn-solid):hover,
 body[data-page="projects"] .amigos-wrapper .hero-ctas .btn:not(.btn-solid):hover {
-  background: rgba(255, 255, 255, .16) !important;
-  border-color: rgba(255, 255, 255, .92) !important;
+  background: #071A33 !important;
+  border-color: rgba(255, 255, 255, .45) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   transform: translateY(-4px) !important;
@@ -3172,7 +3190,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card,
 body[data-page="projects"] .amigos-wrapper .real-estate-detail-panel {
   border-color: transparent !important;
   background:
-    linear-gradient(180deg, rgba(253, 251, 246, .94), rgba(250, 246, 238, .90)) padding-box,
+    linear-gradient(180deg, rgba(255, 255, 255, .94), rgba(250, 246, 238, .90)) padding-box,
     var(--am-mixed-grad) border-box !important;
   box-shadow: 0 18px 46px rgba(7, 26, 51, .08) !important;
 }
@@ -3207,7 +3225,7 @@ body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(2),
 body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(3),
 body[data-page="projects"] .amigos-wrapper .stats .stat:nth-child(4) {
   background:
-    linear-gradient(#FDFBF6, #FDFBF6) padding-box,
+    linear-gradient(#ffffff, #ffffff) padding-box,
     var(--am-mixed-grad) border-box !important;
   border: 1px solid transparent !important;
   box-shadow: 0 18px 46px rgba(7, 26, 51, .08) !important;
@@ -3284,8 +3302,8 @@ body[data-page="projects"] .amigos-wrapper #final a.btn.btn-solid.mag {
   background: var(--am-mixed-grad) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
   line-height: 1.2 !important;
   letter-spacing: 0 !important;
   text-align: center !important;
