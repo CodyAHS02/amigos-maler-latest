@@ -231,6 +231,11 @@ body.contact-page {
     text-decoration: none;
 }
 
+html:not([data-theme="amigos-dark"]) .contact-detail a,
+html:not([data-theme="amigos-dark"]) .contact-detail strong {
+    color: var(--am-ink) !important;
+}
+
 
 /* =========================================================
    HERO IMAGE
@@ -710,3 +715,4 @@ body.contact-page {
 /* force reload 17 */
 /* force reload 18 */
 /* force reload 19 */
+/* force reload 20 */
