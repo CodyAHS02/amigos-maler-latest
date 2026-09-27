@@ -18,7 +18,7 @@ body {
 :root {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
-    --am-cream: #F7F1E7;
+    --am-cream: #ffffff;
     --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
@@ -582,7 +582,7 @@ a {
 }
 
 .step-content {
-    background: rgba(255, 255, 255, .08);
+    background: transparent;
     border: 1px solid rgba(255, 255, 255, .15);
     padding: 35px;
     border-radius: 25px;
@@ -595,13 +595,25 @@ a {
     background: rgba(255, 255, 255, .12);
 }
 
-.step-content h3 {
-    font-size: 28px;
-    margin-bottom: 15px;
+.step-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    display: block;
 }
 
-.step-content p {
-    color: rgba(255, 255, 255, .75);
+.process-step .step-content h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.process-step .step-content p {
+    color: rgba(255, 255, 255, .75) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .75) !important;
     line-height: 1.7;
 }
 
@@ -619,7 +631,8 @@ a {
 }
 
 .material-item {
-    background: white;
+    background: transparent;
+    border: 1px solid var(--am-line);
     border-radius: 25px;
     overflow: hidden;
     transition: .4s ease;
@@ -1340,24 +1353,11 @@ a {
 
 /* Preserve readable contrast where dark mode's global text colors meet
    light material cards, and keep service-card actions visible on navy. */
-html[data-theme="amigos-dark"] .material-item .material-content h3 {
-    color: #102238 !important;
-    -webkit-text-fill-color: #102238 !important;
-}
 
-html[data-theme="amigos-dark"] .material-item .material-content p {
-    color: #5F5A50 !important;
-    -webkit-text-fill-color: #5F5A50 !important;
-}
 
 html[data-theme="amigos-dark"] .service-card .service-body a {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
-}
-
-/* Remove the boxed blue panel behind the Plastering property-care heading. */
-.property-preservation-section .property-overlay {
-    background: transparent !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1384,3 +1384,24 @@ html[data-theme="amigos-dark"] .service-card .service-body a {
         animation: none !important;
     }
 }
+
+/* GLOBAL LIGHT/DARK THEME FIXES FOR PLASTERING PAGE */
+html:not([data-theme="amigos-dark"]) .professional-section {
+    background: #ffffff !important;
+}
+
+html:not([data-theme="amigos-dark"]) .professional-section .professional-heading h2,
+html:not([data-theme="amigos-dark"]) .professional-section .professional-heading p,
+html:not([data-theme="amigos-dark"]) .professional-section .section-tag {
+    color: var(--am-navy) !important;
+    -webkit-text-fill-color: var(--am-navy) !important;
+}
+
+html body .material-item:hover *,
+html body .professional-card *,
+html body .problem-item * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+

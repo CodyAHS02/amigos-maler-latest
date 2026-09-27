@@ -1460,3 +1460,133 @@ html[data-theme="amigos-dark"] .property-points p {
         animation: none !important;
     }
 }
+
+
+/* =========================================================================
+   Fixed Process Step Layout 
+   ========================================================================= */
+
+.process-step {
+    width: 100% !important;
+    padding: 30px 0 !important;
+}
+
+.process-step.left { 
+    padding-right: 0 !important; 
+    text-align: left !important; 
+}
+
+.process-step.right { 
+    margin-left: 0 !important; 
+    padding-left: 0 !important; 
+    text-align: left !important; 
+}
+
+.step-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 40px !important;
+}
+
+.process-step.right .step-content {
+    flex-direction: row-reverse;
+}
+
+.step-text {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+}
+
+.step-text span {
+    display: block;
+    font-size: 80px;
+    font-weight: 700;
+    color: var(--am-ochre);
+    opacity: 0.35;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.step-text h3 {
+    display: block;
+    font-size: 36px;
+    margin: 0 0 15px 0;
+    color: var(--am-navy);
+}
+
+.step-text p {
+    display: block;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.process-image {
+    width: 400px;
+    height: 280px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.process-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.floating-process-image { 
+    display: none !important; 
+}
+
+
+/* Hide the central timeline line */
+.timeline-line { display: none !important; }
+
+
+/* Fixing the layout for full width cards */
+.process-step {
+    width: 100% !important;
+    padding: 30px 0 !important;
+    opacity: 1 !important;
+}
+.process-step.left, .process-step.right {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+}
+.step-content {
+    display: flex !important;
+    align-items: center !important;
+    gap: 50px !important;
+    padding: 40px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+}
+.process-step.right .step-content {
+    flex-direction: row-reverse !important;
+}
+.process-image {
+    width: 400px !important;
+    height: 280px !important;
+    flex-shrink: 0 !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+.step-text {
+    flex: 1 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    text-align: left !important;
+}
+
+.step-content { border: 1px solid rgba(255, 255, 255, 0.15) !important; background: transparent !important; }

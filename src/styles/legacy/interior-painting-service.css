@@ -23,7 +23,7 @@ body {
 :root {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
-    --am-cream: #F7F1E7;
+    --am-cream: #ffffff;
     --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-greige: #CFC3B1;
@@ -1235,17 +1235,18 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-intro-content h2 {
-    font-size: clamp(30px, 3.6vw, 44px);
+    font-size: clamp(40px, 5.5vw, 68px);
+    letter-spacing: -2px;
     color: var(--am-navy);
     margin-bottom: 20px;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .svc-intro-content p {
-    font-size: 12px;
-    line-height: 1.75;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.6;
     color: var(--am-text);
-    max-width: 480px;
+    max-width: 580px;
     margin-bottom: 40px;
 }
 
@@ -1261,8 +1262,8 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
     gap: 18px;
     padding: 18px 4px;
     border-top: 1px solid var(--am-line);
-    font-size: 12px;
-    font-weight: 600;
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 500;
     color: var(--am-navy);
     transition: padding-left .3s ease;
 }
@@ -1276,7 +1277,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 }
 
 .svc-intro-point span {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--am-ochre);
     width: 24px;
@@ -1373,6 +1374,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
     .svc-feature-row,
     .svc-feature-row-reverse {
         grid-template-columns: 1fr;
+        height: auto !important; /* Allow rows to expand on mobile */
     }
 
     .svc-feature-row-reverse .svc-feature-media {
@@ -1743,6 +1745,15 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
     background-size: 260% 260%;
     box-shadow: 0 24px 65px rgba(230, 36, 83, .14);
     animation: svcLogoGradientShift 9s ease-in-out infinite;
+    height: 380px; /* Consistent height so 2 fit in one viewport */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.svc-feature-row.svc-row-in-view:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 35px 75px rgba(230, 36, 83, .25);
+    background-size: 200% 200%; /* subtle gradient shift on hover */
+    filter: brightness(1.15); /* brightness for solid colors */
 }
 
 .svc-feature-row.svc-row-in-view:nth-child(3n + 1) {
@@ -1759,7 +1770,6 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
 
 .svc-feature-row.svc-row-in-view .svc-feature-media {
     height: 100%;
-    min-height: 390px;
     border-radius: 0;
     box-shadow: none;
     aspect-ratio: auto;
@@ -1780,6 +1790,18 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
 }
 
 .svc-benefits-grid .svc-benefit-card {
+    transition: all 0.4s ease;
+    background: transparent;
+    border: 1px solid var(--am-line);
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+html[data-theme="amigos-dark"] .svc-benefits-grid .svc-benefit-card {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.svc-benefits-grid .svc-benefit-card:hover {
     background: var(--logo-gradient-moving);
     background-size: 260% 260%;
     border-color: transparent;
@@ -1788,31 +1810,33 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
     animation: svcLogoGradientShift 9s ease-in-out infinite;
 }
 
-.svc-benefits-grid .svc-benefit-card:nth-child(3n + 1) {
+.svc-benefits-grid .svc-benefit-card:nth-child(3n + 1):hover {
     background-image: linear-gradient(135deg, var(--logo-yellow), var(--logo-orange), var(--logo-pink));
 }
 
-.svc-benefits-grid .svc-benefit-card:nth-child(3n + 2) {
+.svc-benefits-grid .svc-benefit-card:nth-child(3n + 2):hover {
     background-image: linear-gradient(135deg, var(--logo-orange), var(--logo-pink), var(--logo-magenta));
 }
 
-.svc-benefits-grid .svc-benefit-card:nth-child(3n) {
+.svc-benefits-grid .svc-benefit-card:nth-child(3n):hover {
     background-image: linear-gradient(135deg, var(--logo-magenta), var(--logo-pink), var(--logo-yellow));
 }
 
-.svc-benefits-grid .svc-benefit-card h3,
-.svc-benefits-grid .svc-benefit-card p {
+.svc-benefits-grid .svc-benefit-card:hover h3,
+.svc-benefits-grid .svc-benefit-card:hover p {
     color: #fff !important;
 }
 
 .svc-timeline-card {
     position: relative;
     overflow: hidden;
-    background: rgba(255, 255, 255, .72);
+    background: transparent;
+    border: 1px solid var(--am-line);
     transition:
         transform .42s cubic-bezier(.22, 1, .36, 1),
         box-shadow .42s ease,
-        border-color .42s ease;
+        border-color .42s ease,
+        background .42s ease;
 }
 
 .svc-timeline-card::before {
@@ -1835,8 +1859,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
 }
 
 .svc-timeline-step:hover .svc-timeline-card {
-    background: rgba(255, 255, 255, .72);
-    animation: none;
+    border-color: transparent;
     transform: translateY(-3px);
     box-shadow: 0 24px 65px rgba(230, 36, 83, .16);
 }
@@ -1851,6 +1874,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
 }
 
 @media (max-width: 900px) {
+
     .svc-feature-row.svc-row-in-view,
     .svc-feature-row.svc-row-in-view:nth-child(1),
     .svc-feature-row.svc-row-in-view:nth-child(2),
@@ -1870,6 +1894,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(3n),
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .svc-btn-primary,
     .svc-btn-secondary:hover,
     .svc-marquee-wrap,
@@ -1936,4 +1961,21 @@ html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary {
 
 html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary:hover {
     box-shadow: 0 12px 24px rgba(243, 145, 37, .12) !important;
+}
+
+/* Force white text on gradient benefit cards */
+html:not([data-theme="amigos-dark"]) .svc-benefits-grid .svc-benefit-card h3,
+html:not([data-theme="amigos-dark"]) .svc-benefits-grid .svc-benefit-card p,
+.svc-benefits-grid .svc-benefit-card h3,
+.svc-benefits-grid .svc-benefit-card p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* force reload 23 */
+/* force reload 24 */
+
+
+div#why-amigos-IP .svc-section-heading {
+    background: none !IMPORTANT;
 }

@@ -18,7 +18,7 @@ body {
 :root {
     --am-navy: #071A33;
     --am-navy-soft: #0D2542;
-    --am-cream: #F7F1E7;
+    --am-cream: #ffffff;
     --am-offwhite: #ffffff;
     --am-sand: #E9DDC9;
     --am-offwhite: #CFC3B1;
@@ -2291,4 +2291,195 @@ html[data-theme="amigos-dark"] .facade-products-note {
     .facade-product-grid { grid-template-columns: 1fr; }
     .facade-products-note { align-items: stretch; flex-direction: column; }
     .facade-products-note .facade-btn { width: 100%; justify-content: center; }
+}
+
+
+
+/* Fix visibility of intro points text in dark mode */
+html[data-theme=amigos-dark] .facade-intro-points strong {
+    color: #fff !important;
+}
+html[data-theme=amigos-dark] .facade-intro-points small {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+html[data-theme=amigos-dark] .facade-intro-points > div:hover small {
+    color: #fff !important;
+}
+
+/* Blanket fix for all var(--am-ink) elements in dark mode */
+html[data-theme=amigos-dark] .facade-intro-points strong, 
+html[data-theme=amigos-dark] h2, 
+html[data-theme=amigos-dark] h3, 
+html[data-theme=amigos-dark] .facade-intro-content h2, 
+html[data-theme=amigos-dark] .facade-work-card h3, 
+html[data-theme=amigos-dark] .benefit-card h3, 
+html[data-theme=amigos-dark] .timeline-content h3 {
+    color: #fff !important;
+}
+html[data-theme=amigos-dark] .facade-intro-content p, 
+html[data-theme=amigos-dark] .facade-work-card p, 
+html[data-theme=amigos-dark] .benefit-card p, 
+html[data-theme=amigos-dark] .timeline-content p {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+
+
+/* Typography Standardization Override */
+.facade-page .section-kicker {
+    font-size: 14px !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 15px !important;
+}
+
+.facade-page h2 {
+    font-size: clamp(36px, 5vw, 60px) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+    margin-bottom: 30px !important;
+}
+
+.facade-page h3 {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: 15px !important;
+    letter-spacing: -0.01em !important;
+}
+
+.facade-page p {
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+    font-weight: 400 !important;
+}
+
+.facade-page .facade-hero-copy {
+    font-size: 20px !important;
+    line-height: 1.6 !important;
+}
+
+.facade-page small {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+.facade-page .facade-intro-points strong {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+}
+
+/* Fix product cards font sizes */
+.facade-products .facade-card-info span {
+    font-size: 12px !important;
+    letter-spacing: 2px !important;
+}
+.facade-products .facade-card-info h3 {
+    font-size: 24px !important;
+}
+.facade-products .facade-card-info p {
+    font-size: 16px !important;
+}
+
+
+
+/* Remove colored light background glows */
+html[data-theme=amigos-dark] .facade-page section,
+html[data-theme=amigos-dark] .facade-page .facade-intro,
+html[data-theme=amigos-dark] .facade-page .facade-work,
+html[data-theme=amigos-dark] .facade-page .facade-process,
+html[data-theme=amigos-dark] .facade-page .facade-benefits,
+html[data-theme=amigos-dark] .facade-page .before-after-section {
+    background: var(--am-dark-navy) !important;
+}
+
+
+
+/* Specifically for products section which has a unique dark color */
+html[data-theme=amigos-dark] .facade-page .facade-products {
+    background: #071A33 !important; 
+}
+
+
+
+/* Remove colored light glows from hero shade */
+html[data-theme=amigos-dark] .facade-page .facade-hero-shade {
+    background: linear-gradient(90deg, rgba(7, 26, 51, .94) 0%, rgba(7, 26, 51, .7) 48%, rgba(7, 26, 51, .24) 100%) !important;
+}
+
+html:not([data-theme=amigos-dark]) .facade-page .facade-hero-shade {
+    background: 
+        linear-gradient(90deg, rgba(255, 255, 255, .82) 0%, rgba(255, 255, 255, .58) 48%, rgba(255, 255, 255, .34) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, .20), rgba(255, 255, 255, .72)) !important;
+}
+
+
+
+/* Fix alignment and typography for before-after kicker */
+.facade-page .before-after-section .section-heading span:first-child {
+    width: 100% !important;
+    text-align: center !important;
+    display: block !important;
+    font-size: 14px !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 15px !important;
+}
+
+
+
+/* Fix visibility of benefits heading span in dark mode */
+html[data-theme=amigos-dark] .benefits-heading h2 span {
+    color: var(--facade-gold-light, #f6be10) !important;
+}
+
+
+
+/* STRICT LIGHT MODE RULE: NO NAVY, CREAM BACKGROUNDS, DARK TEXT */
+
+/* Force all sections and panels to be light in Light Mode */
+html:not([data-theme=amigos-dark]) .facade-page section,
+html:not([data-theme=amigos-dark]) .facade-page .facade-intro,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work,
+html:not([data-theme=amigos-dark]) .facade-page .facade-process,
+html:not([data-theme=amigos-dark]) .facade-page .facade-benefits,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products,
+html:not([data-theme=amigos-dark]) .facade-page .before-after-section,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel {
+    background: var(--am-cream) !important;
+}
+
+/* Force gradients to use light colors instead of Navy */
+html:not([data-theme=amigos-dark]) .facade-page .pd-overlay {
+    background: linear-gradient(0deg, rgba(253, 251, 246, 1) 0%, rgba(253, 251, 246, 0) 100%) !important;
+}
+html:not([data-theme=amigos-dark]) .facade-page .value-overlay {
+    background: linear-gradient(90deg, var(--am-cream) 0%, rgba(253, 251, 246, .9) 50%, rgba(253, 251, 246, 0) 100%) !important;
+}
+
+/* Force text to be dark (ink) in all these newly light sections */
+html:not([data-theme=amigos-dark]) .facade-page .section-dark,
+html:not([data-theme=amigos-dark]) .facade-page .section-dark h2,
+html:not([data-theme=amigos-dark]) .facade-page .section-dark h3,
+html:not([data-theme=amigos-dark]) .facade-page .section-dark p,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products h2,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products h3,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products p,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel h2,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel p,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel span,
+html:not([data-theme=amigos-dark]) .facade-page .value-content h2,
+html:not([data-theme=amigos-dark]) .facade-page .value-content p,
+html:not([data-theme=amigos-dark]) .facade-page .value-stat strong,
+html:not([data-theme=amigos-dark]) .facade-page .value-stat span {
+    color: var(--am-ink) !important;
+}
+
+/* Fix product cards in light mode to not be dark */
+html:not([data-theme=amigos-dark]) .facade-page .facade-products .facade-work-card {
+    background: #fff !important;
+    border-color: rgba(0,0,0,0.05) !important;
 }

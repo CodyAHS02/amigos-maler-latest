@@ -2395,9 +2395,11 @@ html[data-theme="amigos-dark"] .btn-secondary,
 html[data-theme="amigos-dark"] .secondary-btn,
 html[data-theme="amigos-dark"] .outline-btn,
 html[data-theme="amigos-dark"] .customer-header-btn {
-    background: rgba(255, 255, 255, .08) !important;
-    border-color: rgba(255, 255, 255, .28) !important;
+    background: linear-gradient(var(--am-navy, #071A33), var(--am-navy, #071A33)) padding-box,
+                linear-gradient(135deg, #f6be10, #e62453) border-box !important;
+    border: 1px solid transparent !important;
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 html[data-theme="amigos-dark"] .card,
@@ -2576,8 +2578,6 @@ html[data-theme="amigos-dark"] .cta-section * {
     -webkit-text-fill-color: currentColor !important;
 }
 
-html[data-theme="amigos-dark"] a[class*="btn"],
-html[data-theme="amigos-dark"] button[class*="btn"],
 html[data-theme="amigos-dark"] .primary-btn,
 html[data-theme="amigos-dark"] .partners-btn-primary,
 html[data-theme="amigos-dark"] .text-link,
@@ -2594,8 +2594,9 @@ html[data-theme="amigos-dark"] .secondary-btn,
 html[data-theme="amigos-dark"] .partners-btn-outline,
 html[data-theme="amigos-dark"] .hero-buttons a:nth-child(2),
 html[data-theme="amigos-dark"] .cta-buttons a:nth-child(2) {
-    background: rgba(255, 255, 255, .07) !important;
-    border-color: rgba(255, 255, 255, .32) !important;
+    background: linear-gradient(var(--am-navy, #071A33), var(--am-navy, #071A33)) padding-box,
+                linear-gradient(135deg, #f6be10, #e62453) border-box !important;
+    border: 1px solid transparent !important;
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }

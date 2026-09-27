@@ -105,7 +105,6 @@ html:not([data-theme="amigos-dark"]) body :where(
     .why-card,
     .review-card,
     .step-content,
-    .professional-card,
     .detail-item,
     .property-points > div,
     .pd-panel,
@@ -133,7 +132,6 @@ html:not([data-theme="amigos-dark"]) body :where(
     .why-card,
     .review-card,
     .step-content,
-    .professional-card,
     .detail-item,
     .property-points > div,
     .pd-panel,
@@ -185,8 +183,9 @@ body :where(
     .situation-item,
     .value-points > div,
     .why-card,
-    .partner-flow-section .flow-item,
+    .flow-item,
     .svc-intro-point,
+    .material-item,
     .material-card,
     .svc-benefit-card,
     .svc-timeline-card,
@@ -210,7 +209,6 @@ body :where(
 
 /* Known light-hover exceptions: preserve dark text because their surface stays light. */
 html:not([data-theme="amigos-dark"]) body :where(
-    .material-item,
     .consultation-content,
     .trust-item
 ):hover :where(h2, h3, h4, strong) {
@@ -219,7 +217,6 @@ html:not([data-theme="amigos-dark"]) body :where(
 }
 
 html:not([data-theme="amigos-dark"]) body :where(
-    .material-item,
     .consultation-content,
     .trust-item
 ):hover p {
@@ -227,13 +224,11 @@ html:not([data-theme="amigos-dark"]) body :where(
     -webkit-text-fill-color: var(--audit-muted) !important;
 }
 
-html:not([data-theme="amigos-dark"]) body .material-item:hover .material-info :where(h3, strong),
 html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content :where(h3, strong) {
     color: var(--audit-ink) !important;
     -webkit-text-fill-color: var(--audit-ink) !important;
 }
 
-html:not([data-theme="amigos-dark"]) body .material-item:hover .material-info p,
 html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content p {
     color: var(--audit-muted) !important;
     -webkit-text-fill-color: var(--audit-muted) !important;
