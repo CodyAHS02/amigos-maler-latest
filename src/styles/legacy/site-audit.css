@@ -358,3 +358,69 @@ body .facade-benefits .benefit-card:hover .benefit-icon {
     background: rgba(7, 26, 51, .06) !important;
     border-color: rgba(7, 26, 51, .24) !important;
 }
+
+/* About reuses the homepage testimonial carousel, but not its homepage-only
+   gradient variables. Give the section a complete, theme-safe color contract. */
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials {
+    background:
+        radial-gradient(circle at 50% 48%, rgba(7, 26, 51, .08), transparent 36%),
+        #fff !important;
+    color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .testimonial-center h2 {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .testimonial-kicker {
+    color: #b81949 !important;
+    -webkit-text-fill-color: #b81949 !important;
+}
+
+body[data-page="about"] .testimonials :where(.rating, .rating span, .testimonial-card .stars) {
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #9a6100 !important;
+    -webkit-text-fill-color: #9a6100 !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card {
+    background: rgba(255, 255, 255, .96) !important;
+    border-color: rgba(7, 26, 51, .14) !important;
+    color: var(--audit-ink) !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card :where(p, h4),
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card :where(p, h4) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card .city,
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card .city {
+    color: #a91452 !important;
+    -webkit-text-fill-color: #a91452 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials :where(.carousel-arrow, .review-btn) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+    border-color: rgba(7, 26, 51, .18) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .carousel-dot {
+    background: rgba(7, 26, 51, .32) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .carousel-dot.active {
+    background: var(--audit-ink) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-center h2 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
