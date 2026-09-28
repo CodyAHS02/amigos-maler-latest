@@ -336,3 +336,25 @@ body :where(a, button, [tabindex]):focus-visible {
         font-size: 15px !important;
     }
 }
+
+/* Facade benefits use a white hover surface. Keep every foreground element dark
+   instead of allowing the global gradient-hover rule to make the copy white. */
+body .facade-benefits .benefit-card:hover {
+    background: #fff !important;
+    border-color: rgba(7, 26, 51, .14) !important;
+    color: var(--audit-ink) !important;
+}
+
+body .facade-benefits .benefit-card:hover::before {
+    opacity: 0 !important;
+}
+
+body .facade-benefits .benefit-card:hover :where(h3, p, span, small, strong, .benefit-icon) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+body .facade-benefits .benefit-card:hover .benefit-icon {
+    background: rgba(7, 26, 51, .06) !important;
+    border-color: rgba(7, 26, 51, .24) !important;
+}

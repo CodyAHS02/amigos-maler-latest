@@ -2483,3 +2483,190 @@ html:not([data-theme=amigos-dark]) .facade-page .facade-products .facade-work-ca
     background: #fff !important;
     border-color: rgba(0,0,0,0.05) !important;
 }
+
+
+
+/* Fix text color inside facade-work cards in light mode to be white */
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-grid .facade-work-card h3,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-grid .facade-work-card p,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-grid .facade-work-card a {
+    color: #ffffff !important;
+}
+
+/* Except for products section which we already made white cards */
+html:not([data-theme=amigos-dark]) .facade-page .facade-products .facade-work-card h3,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products .facade-work-card p,
+html:not([data-theme=amigos-dark]) .facade-page .facade-products .facade-work-card a {
+    color: var(--am-ink) !important;
+}
+
+
+
+/* Fix image coverage for Protection/Design panels */
+.facade-page .pd-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Ensure text is nicely aligned at the bottom */
+.facade-page .pd-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+
+
+/* Hide the orbit circles in the final CTA */
+.facade-page .cta-orbit {
+    display: none !important;
+}
+
+/* Fix visibility of outline button in light mode */
+html:not([data-theme=amigos-dark]) .facade-page .facade-btn-outline {
+    color: var(--am-ink) !important;
+    border-color: rgba(7, 26, 51, 0.2) !important;
+}
+html:not([data-theme=amigos-dark]) .facade-page .facade-btn-outline:hover {
+    background: var(--am-ink) !important;
+    color: #fff !important;
+}
+
+
+
+/* Fix value-stat vertical alignment layout */
+.facade-page .value-stat:nth-last-child(3) { top: 25% !important; }
+.facade-page .value-stat:nth-last-child(2) { top: 50% !important; }
+.facade-page .value-stat:nth-last-child(1) { top: 75% !important; transform: translateY(-100%); }
+.facade-page .value-stat:nth-last-child(2) { transform: translateY(-50%); }
+
+/* Make value-stats highly visible (highlight them as badges) */
+.facade-page .value-stat {
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+html[data-theme=amigos-dark] .facade-page .value-stat {
+    background: rgba(7, 26, 51, 0.75) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+html:not([data-theme=amigos-dark]) .facade-page .value-stat {
+    background: rgba(255, 255, 255, 0.85) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+
+
+/* Fix text color on hover when vibrant gradients appear in Light Mode */
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel:hover h2,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel:hover p,
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel:hover span,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-card:hover h3,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-card:hover p,
+html:not([data-theme=amigos-dark]) .facade-page .facade-work-card:hover a,
+html:not([data-theme=amigos-dark]) .facade-page .benefit-card:hover h3,
+html:not([data-theme=amigos-dark]) .facade-page .benefit-card:hover p,
+html:not([data-theme=amigos-dark]) .facade-page .benefit-card:hover span,
+html:not([data-theme=amigos-dark]) .facade-page .benefit-card:hover .benefit-icon,
+html:not([data-theme=amigos-dark]) .facade-page .quality-point:hover h3,
+html:not([data-theme=amigos-dark]) .facade-page .quality-point:hover p,
+html:not([data-theme=amigos-dark]) .facade-page .quality-point:hover span,
+html:not([data-theme=amigos-dark]) .facade-page .value-stat:hover strong,
+html:not([data-theme=amigos-dark]) .facade-page .value-stat:hover span {
+    color: #ffffff !important;
+}
+
+/* Also ensure the arrow stays visible */
+html:not([data-theme=amigos-dark]) .facade-page .pd-panel:hover .pd-arrow {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+
+
+/* MAX SPECIFICITY HOVER TEXT FIX */
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover h2,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover .pd-content h2,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover .pd-content p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover span,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .pd-panel:hover .pd-content span {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .facade-work-card:hover h3,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .facade-work-card:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .facade-work-card:hover a,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover h3,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover span,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover .benefit-icon,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .quality-point:hover h3,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .quality-point:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .quality-point:hover span,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .value-stat:hover strong,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .value-stat:hover span {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+
+
+/* User requested to remove the value-stat badges completely */
+.facade-page .value-stat {
+    display: none !important;
+}
+
+
+
+/* Fix benefit-card hover in Light Mode - the card turns white so text must be dark! */
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover h3,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover span,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover .benefit-icon,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover * {
+    color: var(--am-ink) !important;
+    text-shadow: none !important;
+}
+
+
+
+/* Gradient headings for Protection and Design */
+body .main-content .facade-page .pd-panel .pd-content h2 {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: facadeLogoGradientShift 9s ease-in-out infinite !important;
+}
+
+/* White text on hover */
+body .main-content .facade-page .pd-panel:hover .pd-content h2 {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.3) !important;
+}
+
+
+
+/* DEFINITIVE FIX: Benefit Card text MUST be dark on hover because the card background is white! */
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover h3,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover p,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover span,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover .benefit-icon,
+html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card:hover * {
+    color: var(--am-ink) !important;
+    -webkit-text-fill-color: var(--am-ink) !important;
+    text-shadow: none !important;
+}
