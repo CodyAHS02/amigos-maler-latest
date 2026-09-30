@@ -2,7 +2,7 @@ import LegacyPage from "@/components/LegacyPage";
 
 export const metadata = {
   title: "Real Estate & Projects | Amigos Immo · Amigos Maler GmbH",
-  description: "Amigo Immo AI-powered property intelligence platform. Predictive maintenance, computer-vision damage detection, and instant AI quotes for luxury real estate."
+  description: "Amigo Immo property planning, renovation, maintenance, and consultation services for luxury real estate."
 };
 
 const pageHtml = `
@@ -31,7 +31,7 @@ const pageHtml = `
     <div class="hero-overlay"></div>
     <div class="hero-spotlight"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow">AI Powered Real Estate | Painting | Renovation Services</div>
+      <div class="hero-eyebrow">Real Estate | Painting | Renovation Services</div>
       <h1>YOUR PARTNER FOR<br><span class="project-accentline">PROPERTY VALUE PRESERVATION</span></h1>
       <p class="hero-sub">For Homeowners | For Property Managers | For Investors</p>
       <div class="hero-ctas">
@@ -50,8 +50,8 @@ const pageHtml = `
         <svg class="brush" viewBox="0 0 180 22">
           <path d="M2 14 C 30 4, 70 20, 110 10 S 170 14, 178 8" />
         </svg>
-        <h2>Two decades of quiet excellence, reimagined with AI.</h2>
-        <p>12'400 properties analyzed. 380 active AI-monitored portfolios. Zero missed maintenance windows.</p>
+        <h2>Two decades of quiet excellence, built on careful planning.</h2>
+        <p>12'400 properties reviewed. 380 active maintenance portfolios. Zero missed maintenance windows.</p>
       </div>
       <div class="project-stats-grid reveal">
         <div class="project-stat-card"><span class="project-stat-number"><span data-count="500">0</span><span class="project-stat-suffix">+</span></span>
@@ -79,8 +79,8 @@ const pageHtml = `
           <svg class="brush" viewBox="0 0 180 22">
             <path d="M2 12 C 40 22, 80 2, 120 14 S 170 6, 178 12" />
           </svg>
-          <h2>Eight disciplines. One AI-powered standard.</h2>
-          <p>Scroll to explore — every service, engineered around Amigos Immo precision and AI intelligence.</p>
+          <h2>Eight disciplines. One carefully managed standard.</h2>
+          <p>Scroll to explore — every service, shaped around Amigos Immo precision and clear project planning.</p>
         </div>
       </div>
       <div class="svc-track-wrap">
@@ -188,16 +188,16 @@ const pageHtml = `
     </div>
   </template>
 
-  <!-- SECTION 4 · AI WORKFLOW -->
-  <template id="removed-ai-workflow">
+  <!-- SECTION 4 · PROJECT WORKFLOW -->
+  <template id="removed-project-workflow">
     <div class="container">
       <div class="section-head reveal sec-alt">
-        <div class="eyebrow">The AI Workflow</div>
+        <div class="eyebrow">The Project Workflow</div>
         <svg class="brush" viewBox="0 0 180 22">
           <path d="M2 10 C 50 20, 90 4, 130 12 S 172 10, 178 14" />
         </svg>
         <h2>From room photo to painting quote.</h2>
-        <p>Four steps. This is how AMIGOS Vision Studio turns a single image of a room into a signed painting quotation.
+        <p>Four steps. This is how AMIGOS turns a room request into a clear painting quotation.
         </p>
       </div>
       <div class="flow reveal">
@@ -218,8 +218,8 @@ const pageHtml = `
               <rect x="6" y="6" width="28" height="28" />
               <path d="M6 14 L34 14 M14 6 L14 34 M22 14 L22 34" />
             </svg></div>
-          <h4>AI detects walls</h4>
-          <p>Vision model isolates every wall plane automatically.</p>
+          <h4>Review wall surfaces</h4>
+          <p>Our team checks the room surfaces and project requirements carefully.</p>
         </div>
         <div class="flow-arrow"></div>
         <div class="flow-step">
@@ -230,7 +230,7 @@ const pageHtml = `
               <circle cx="20" cy="26" r="6" />
             </svg></div>
           <h4>Apply paint · wallpaper · texture</h4>
-          <p>Preview any finish live on the detected walls.</p>
+          <p>Preview finishes clearly before work begins.</p>
         </div>
         <div class="flow-arrow"></div>
         <div class="flow-step">
@@ -241,29 +241,28 @@ const pageHtml = `
               <path d="M22 32 L26 36 L34 26" stroke-width="1.6" />
             </svg></div>
           <h4>Generate painting quote</h4>
-          <p>Instant quotation, ready to sign.</p>
+          <p>Clear quotation, ready to review.</p>
         </div>
       </div>
     </div>
   </template>
 
-  <!-- SECTION 5 · AI VISION STUDIO (two-column: copy + interactive preview) -->
-  <template id="removed-ai-vision-studio">
+  <!-- SECTION 5 · VISUAL PLANNING STUDIO (two-column: copy + interactive preview) -->
+  <template id="removed-visual-planning-studio">
     <div class="container">
       <div class="vs-grid reveal">
         <div class="vs-left">
-          <div class="eyebrow">AI Vision Studio</div>
+          <div class="eyebrow">Visual Planning Studio</div>
           <svg class="brush" viewBox="0 0 180 22">
             <path d="M2 10 C 50 20, 90 4, 130 12 S 172 10, 178 14" />
           </svg>
           <h2>See your walls, before you paint them.</h2>
-          <p class="vs-lede">Upload a photo of any room. AMIGOS AI detects every wall automatically, then previews the
-            paint colours, wallpapers, and textures you're considering — instantly.</p>
+          <p class="vs-lede">Upload a photo of any room. AMIGOS helps you preview the paint colours, wallpapers, and textures you're considering.</p>
           <ol class="vs-steps">
             <li><span>01</span>Upload a room photo</li>
-            <li><span>02</span>AI detects the walls</li>
+            <li><span>02</span>Review the wall surfaces</li>
             <li><span>03</span>Preview paint, wallpaper &amp; textures</li>
-            <li><span>04</span>Generate a painting quotation</li>
+            <li><span>04</span>Prepare a painting quotation</li>
           </ol>
         </div>
         <div class="vs-right">
@@ -976,15 +975,15 @@ const pageHtml = `
         <div class="ring-avatar" data-idx="1" style="--i:1;--x:32%;--y:70%;--size:100px">
           <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="S. Lehmann">
           <div class="ring-pop">
-            <p>"The predictive AI scheduling has cut our reactive maintenance budget by 34%. Their B2B dashboard is the
-              quietest, most useful software we run."</p>
+            <p>"Their maintenance planning has cut our reactive maintenance budget by 34%. Their dashboard is the
+              quietest, most useful planning tool we run."</p>
             <div class="who"><b>S. Lehmann</b><span>Property Manager · Basel</span></div>
           </div>
         </div>
         <div class="ring-avatar" data-idx="2" style="--i:2;--x:48%;--y:16%;--size:110px">
           <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="E. Kobler">
           <div class="ring-pop">
-            <p>"Their AI quote came within 2% of our architect's final tender. Precise, punctual, and completely
+            <p>"Their project quote came within 2% of our architect's final tender. Precise, punctual, and completely
               discreet. I have not accepted a rival bid since."</p>
             <div class="who"><b>E. Kobler</b><span>Institutional owner · Geneva</span></div>
           </div>
@@ -1000,8 +999,8 @@ const pageHtml = `
         <div class="ring-avatar" data-idx="4" style="--i:4;--x:80%;--y:26%;--size:100px">
           <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="J. Brunner">
           <div class="ring-pop">
-            <p>"We run a 40-building portfolio. AMIGOS' AI dashboard is the only system that gives us a truthful,
-              forward-looking TCO per asset."</p>
+            <p>"We run a 40-building portfolio. AMIGOS' planning dashboard is the only system that gives us a truthful,
+              forward-looking cost view per asset."</p>
             <div class="who"><b>J. Brunner</b><span>Institutional · Zürich</span></div>
           </div>
         </div>
@@ -1030,7 +1029,7 @@ const pageHtml = `
     <div class="inner">
       <div class="eyebrow">Ready when you are</div>
       <h2>The future of your property, in one conversation.</h2>
-      <p>Book a private consultation with our senior team. No pressure, no callbacks — just AI-powered clarity.</p>
+      <p>Book a private consultation with our senior team. No pressure, no callbacks — just clear project guidance.</p>
       <a class="btn btn-solid mag" href="dashboard.html">Book Consultation</a>
     </div>
   </section>
@@ -1135,7 +1134,7 @@ const pageHtml = `
     })();
 
 
-    // Vision Studio — upload demo + swatch tinting
+    // Visual planning studio — upload demo + swatch tinting
     (function () {
       const upload = document.getElementById('vs-upload');
       const preview = document.getElementById('vs-preview');
@@ -1146,7 +1145,7 @@ const pageHtml = `
       upload.addEventListener('click', () => {
         upload.classList.add('loading');
         upload.querySelector('.vs-up-title').textContent = 'Detecting walls…';
-        upload.querySelector('.vs-up-sub').textContent = 'AI vision model at work';
+        upload.querySelector('.vs-up-sub').textContent = 'Preparing visual preview';
         setTimeout(() => {
           upload.hidden = true;
           preview.hidden = false;
