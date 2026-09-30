@@ -643,8 +643,27 @@ SERVICES
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 35px;
+    gap: 30px;
 
+}
+
+/* 4-column variant for mold page */
+.service-grid.mold-service-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.mold-service-grid .service-image {
+    height: 200px;
+}
+
+.mold-service-grid .service-content {
+    padding: 18px;
+}
+
+.mold-service-grid .service-content h3 {
+    font-size: 18px;
+    margin: 8px 0;
 }
 
 
@@ -678,12 +697,13 @@ SERVICES
 .service-image {
     width: 100%;
     overflow: hidden;
-    height: 300px;
+    height: 260px;
 }
 
 
 
 .service-image img {
+    width: 100%;
     height: 100%;
     object-fit: cover;
     transition: .5s;
@@ -701,15 +721,21 @@ SERVICES
 
 .service-content {
 
-    padding: 30px;
+    padding: 28px;
 
 }
 
 
 
 .number {
-    color: #ffffff;
+    color: #B7893D !important;
+    -webkit-text-fill-color: #B7893D !important;
     font-size: 28px;
+}
+
+html[data-theme="amigos-dark"] .number {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 
@@ -718,9 +744,9 @@ SERVICES
 
     color: var(--am-ink);
 
-    font-size: 32px;
+    font-size: 26px;
 
-    margin: 15px 0;
+    margin: 12px 0;
 
 
 }
@@ -917,16 +943,30 @@ PROCESS SECTION
     color: var(--am-navy-soft) !important;
 }
 
+/* Mold page compact overrides */
+.process-section.mold-process {
+    padding: 40px 0px;
+}
+
+.mold-process .section-heading h2 {
+    font-size: 36px !important;
+}
+
+.mold-process .section-heading p {
+    margin-bottom: 30px !important;
+}
+
 
 .process-grid {
     max-width: 1200px;
     margin: 0px auto 0;
+    padding: 0 30px;
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
-    gap: 30px;
+    gap: 20px;
 
 }
 
@@ -936,9 +976,9 @@ PROCESS SECTION
 
     background: white;
 
-    border-radius: 25px;
+    border-radius: 20px;
 
-    padding: 35px;
+    padding: 24px;
 
     border: 1px solid var(--border);
 
@@ -982,6 +1022,11 @@ PROCESS SECTION
 
 }
 
+.mold-process .process-card h3 {
+    margin: 12px 0 10px;
+    font-size: 20px;
+}
+
 
 
 .process-card p {
@@ -991,6 +1036,7 @@ PROCESS SECTION
     color: var(--text);
 
 }
+
 
 
 
@@ -1116,24 +1162,20 @@ WHY AMIGOS SECTION
 
 
 .why-card .icon {
-
-    width: 55px;
-
-    height: 55px;
-
-    border-radius: 50%;
-
-    background: var(--gold);
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
+    width: auto;
+    min-width: 3ch;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    color: var(--logo-yellow);
+    -webkit-text-fill-color: currentColor;
+    display: inline-block;
     margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    overflow: visible;
+    font-variant-numeric: tabular-nums;
 
 }
 
@@ -1191,6 +1233,9 @@ REVIEWS
 .review-slider {
     max-width: 1200px;
     margin: 50px auto;
+    display: flex;
+    overflow: hidden;
+    --review-index: 0;
 }
 
 
@@ -1210,7 +1255,61 @@ REVIEWS
     padding: 45px;
 
     animation: reviewFade .5s ease;
+    flex: 0 0 100%;
+    min-height: 280px;
+    transform: translateX(calc(var(--review-index) * -100%));
+    transition: transform .5s cubic-bezier(.22, 1, .36, 1);
 
+}
+
+.review-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: -18px auto 34px;
+}
+
+.review-control {
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(7, 26, 51, .16);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--am-navy);
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.review-control:hover {
+    transform: translateY(-2px);
+    border-color: var(--logo-pink);
+}
+
+.review-dots {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.review-dot {
+    width: 10px;
+    height: 10px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(7, 26, 51, .24);
+    cursor: pointer;
+    padding: 0;
+}
+
+.review-dot.active {
+    width: 28px;
+    background: var(--logo-pink);
 }
 
 
@@ -1322,11 +1421,12 @@ PROPERTY CARE
 
 .property-image img {
 
+    width: 100%;
     height: 100%;
 
     object-fit: cover;
 
-    transition: transform 1s ease;
+    transition: none;
 
 }
 
@@ -1334,7 +1434,7 @@ PROPERTY CARE
 
 .property-care:hover .property-image img {
 
-    transform: scale(1.05);
+    transform: none;
 
 }
 
@@ -1634,6 +1734,16 @@ ANIMATION CLASSES
 
     will-change: transform;
 
+}
+
+/* Disable parallax on the property-care image */
+.property-image.parallax {
+    will-change: auto;
+}
+
+.property-image.parallax img {
+    transform: none !important;
+    transition: none !important;
 }
 
 
@@ -1993,24 +2103,28 @@ RESPONSIVE
 }
 
 .colour-sample {
-    background: var(--logo-gradient-moving) !important;
-    background-size: 260% 260% !important;
-    color: #fff !important;
-    animation: servicesLogoGradientShift 9s ease-in-out infinite;
+    color: #071a33 !important;
+    animation: none !important;
 }
 
-.colour-sample:nth-child(1),
-.colour-sample:nth-child(4) {
-    background-image: linear-gradient(135deg, var(--logo-yellow), var(--logo-orange), var(--logo-pink)) !important;
+.colour-sample.warm-white {
+    background: #E8E1D4 !important;
 }
 
-.colour-sample:nth-child(2),
-.colour-sample:nth-child(5) {
-    background-image: linear-gradient(135deg, var(--logo-orange), var(--logo-pink), var(--logo-magenta)) !important;
+.colour-sample.sand {
+    background: #C9B89D !important;
 }
 
-.colour-sample:nth-child(3) {
-    background-image: linear-gradient(135deg, var(--logo-magenta), var(--logo-pink), var(--logo-yellow)) !important;
+.colour-sample.greige {
+    background: #A89F92 !important;
+}
+
+.colour-sample.natural {
+    background: #82927D !important;
+}
+
+.colour-sample.clay {
+    background: #B59E84 !important;
 }
 
 .property-care:after {
@@ -2150,6 +2264,19 @@ html:not([data-theme="amigos-dark"]) .process-card p {
     color: var(--am-navy) !important;
 }
 
+html:not([data-theme="amigos-dark"]) .why-card:hover {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    border-color: transparent !important;
+    box-shadow: 0 24px 65px rgba(230, 36, 83, .18) !important;
+    animation: servicesLogoGradientShift 8s ease-in-out infinite;
+}
+
+.why-card:hover::before {
+    opacity: 0 !important;
+    width: 0 !important;
+}
+
 .colour-sample span {
     z-index: 2;
     opacity: 1 !important;
@@ -2195,9 +2322,64 @@ html[data-theme="amigos-dark"] .review-card {
     border-color: rgba(255, 255, 255, .14) !important;
 }
 
+html[data-theme="amigos-dark"] .colour-sample.warm-white {
+    background: #E8E1D4 !important;
+}
+
+html[data-theme="amigos-dark"] .colour-sample.sand {
+    background: #C9B89D !important;
+}
+
+html[data-theme="amigos-dark"] .colour-sample.greige {
+    background: #A89F92 !important;
+}
+
+html[data-theme="amigos-dark"] .colour-sample.natural {
+    background: #82927D !important;
+}
+
+html[data-theme="amigos-dark"] .colour-sample.clay {
+    background: #B59E84 !important;
+}
+
+html[data-theme="amigos-dark"] .review-control {
+    background: rgba(255, 255, 255, .08) !important;
+    border: 1px solid rgba(255, 255, 255, .42) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+}
+
+html[data-theme="amigos-dark"] .review-control:hover {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    border-color: transparent !important;
+}
+
+html[data-theme="amigos-dark"] .review-dot {
+    background: rgba(255, 255, 255, .44) !important;
+}
+
+html[data-theme="amigos-dark"] .review-dot.active {
+    background: var(--logo-pink) !important;
+    box-shadow: 0 0 0 4px rgba(230, 36, 83, .18);
+}
+
 html[data-theme="amigos-dark"] .process-card h3,
 html[data-theme="amigos-dark"] .process-card p,
 html[data-theme="amigos-dark"] .why-card h3,
 html[data-theme="amigos-dark"] .why-card p {
     color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .service-card .service-content h3 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] .service-card .service-content h4,
+html[data-theme="amigos-dark"] .service-card .service-content p,
+html[data-theme="amigos-dark"] .service-card .service-content a {
+    color: rgba(255, 255, 255, 0.85) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
 }

@@ -31,21 +31,6 @@ document.querySelectorAll('.projects-magnetic-disabled').forEach(el => {
   el.addEventListener('mouseleave', () => { el.style.transform = ''; });
 });
 
-/* ============ HERO PARTICLES ============ */
-(() => {
-  const p = document.querySelector('.hero-particles');
-  if (!p) return;
-  for (let i=0;i<48;i++){
-    const s = document.createElement('i');
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDuration = (8+Math.random()*16)+'s';
-    s.style.animationDelay = (-Math.random()*20)+'s';
-    const size = 2 + Math.random()*3;
-    s.style.width = size+'px'; s.style.height = size+'px';
-    s.style.opacity = (0.45+Math.random()*0.5).toFixed(2);
-    p.appendChild(s);
-  }
-})();
 
 /* ============ PROJECT SHOWCASE — POINTER DEPTH ============ */
 (() => {

@@ -1,0 +1,1445 @@
+.testimonials {
+    position: relative;
+    padding: 100px 20px 80px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.testimonial-center {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    max-width: 520px;
+    margin-bottom: 70px;
+}
+.testimonial-kicker {
+    display: block;
+    letter-spacing: 5px;
+    font-size: 13px;
+    color: #9B9386;
+    margin-bottom: 25px;
+}
+.testimonial-center h2 {
+    font-size: 50px;
+    line-height: 1.02;
+    font-weight: 500;
+    color: #101A2E;
+}
+.rating {
+    margin-top: 35px;
+    font-size: 22px;
+    color: #B58A3A;
+}
+.rating span {
+    display: block;
+    margin-top: 10px;
+    color: #B58A3A;
+    font-size: 17px;
+}
+.review-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 55px;
+    text-decoration: none;
+    color: #101A2E;
+    border-radius: 999px;
+    padding: 14px 28px;
+    background: rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255, 255, 255, .8);
+    backdrop-filter: blur(20px);
+    transition: .35s;
+    position: relative;
+    z-index: 20;
+}
+.review-btn:hover {
+    transform: translateY(-4px);
+}
+.testimonial-orb {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255, 255, 255, .95) 0%, rgba(220, 220, 220, .45) 45%, rgba(180, 180, 180, .15) 72%, transparent 100%);
+    filter: blur(90px);
+    opacity: .95;
+    pointer-events: none;
+}
+.carousel-wrap {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1400px;
+}
+.carousel-stage {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    height: 480px;
+    perspective: 1600px;
+    /* the "depth" of the 3D arc */
+    /* overflow: hidden; */
+}
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+.carousel-arrow {
+    flex-shrink: 0;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .08);
+    background: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(20px);
+    color: #101A2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .08);
+    transition: transform .35s cubic-bezier(.22, 1, .36, 1), background .3s ease;
+    z-index: 30;
+}
+.carousel-arrow:hover {
+    background: #101A2E;
+    color: #ffffff;
+    transform: scale(1.08);
+}
+.testimonial-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    padding: 34px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, .85);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .1);
+    cursor: default;
+    transition: transform .7s cubic-bezier(.22, 1, .36, 1), opacity .6s ease, box-shadow .5s ease;
+    /* margin offset so top/left:50% centers the card on its own point */
+    margin-left: -160px;
+    margin-top: -155px;
+}
+.testimonial-card[data-offset="-1"],
+.testimonial-card[data-offset="1"] {
+    cursor: pointer;
+    /* side cards are clickable to bring to center */
+}
+.testimonial-card .stars {
+    color: #B58A3A;
+    font-size: 18px;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+}
+.testimonial-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 24px;
+}
+.testimonial-card h4 {
+    font-size: 17px;
+    color: #101A2E;
+    font-weight: 500;
+}
+.testimonial-card span.city {
+    color: #B58A3A;
+    font-size: 14px;
+}
+.testimonial-card[data-offset="0"] {
+    box-shadow: 0 40px 90px rgba(0, 0, 0, .16);
+}
+.carousel-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 20;
+}
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .18);
+    border: none;
+    cursor: pointer;
+    transition: transform .35s ease, background .35s ease;
+}
+.carousel-dot.active {
+    background: #101A2E;
+    transform: scale(1.3);
+}
+    .testimonials {
+        min-height: auto;
+        padding: 100px 20px 80px;
+    }
+    .testimonial-center h2 {
+        font-size: 40px;
+    }
+    .carousel-stage {
+        height: 400px;
+    }
+    .testimonial-card {
+        width: 270px;
+        padding: 26px;
+        margin-left: -135px;
+        margin-top: -135px;
+    }
+    .carousel-arrow {
+        width: 46px;
+        height: 46px;
+    }
+    .carousel-arrow {
+        display: none;
+    }
+    .carousel-stage {
+        height: 380px;
+        touch-action: pan-y;
+    }
+    .testimonial-card {
+        width: 240px;
+        padding: 22px;
+        margin-left: -120px;
+        margin-top: -140px;
+    }
+.testimonial-card,
+.projects-dock {
+    background: rgba(255, 255, 255, .72);
+    border-color: rgba(222, 210, 192, .95);
+}
+.testimonial-center h2,
+.audience-cards-heading h2,
+.why-content h2,
+.stat h3,
+.scc-content h3,
+.ai-heading h2,
+.palette-wrapper h4,
+.color-selected-label b,
+.wallpaperAI.active span {
+    color: var(--am-navy);
+}
+.testimonial-card p,
+.audience-card p,
+.why-content p,
+.scc-content p,
+.ai-side p,
+.plan-card p {
+    color: var(--am-text);
+}
+.testimonial-kicker,
+.ai-heading .section-tag,
+.upload-hint,
+.scc-num {
+    color: #8A806F;
+}
+.carousel-arrow:hover,
+.proj-arrow:hover {
+    background: var(--am-navy);
+    color: var(--am-offwhite);
+}
+.carousel-dot.active,
+.dock-indicator {
+    background: var(--am-navy);
+}
+.review-btn,
+.billing-toggle,
+.carousel-arrow,
+.proj-arrow {
+    background: rgba(255, 255, 255, .86);
+    border-color: rgba(222, 210, 192, .95);
+    color: var(--am-navy);
+}
+.testimonial-card .stars,
+.testimonial-card span.city,
+.rating,
+.rating span {
+    color: var(--am-ochre);
+}
+.testimonials {
+    background: var(--am-offwhite);
+}
+.testimonial-orb {
+    background: radial-gradient(circle, rgba(233, 221, 201, .80) 0%, rgba(207, 195, 177, .30) 48%, transparent 74%);
+}
+html[data-theme="amigos-dark"] .review-btn {
+    background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+    color: #fff !important;
+    border-color: rgba(246, 190, 16, .44) !important;
+    box-shadow: 0 18px 46px rgba(230, 36, 83, .22), 0 10px 30px rgba(246, 190, 16, .18) !important;
+}
+html[data-theme="amigos-dark"] .testimonials {
+    background:
+        radial-gradient(circle at 82% 10%, rgba(199, 59, 142, .12), transparent 30%),
+        radial-gradient(circle at 12% 82%, rgba(246, 190, 16, .08), transparent 28%),
+        #071A33 !important;
+}
+html[data-theme="amigos-dark"] .testimonial-kicker,
+html[data-theme="amigos-dark"] .plans-eyebrow,
+html[data-theme="amigos-dark"] .services-nav-heading .section-tag,
+html[data-theme="amigos-dark"] .ai-heading .section-tag,
+html[data-theme="amigos-dark"] .dtools-heading .section-tag {
+    color: #f6be10 !important;
+}
+html[data-theme="amigos-dark"] .testimonial-center h2,
+html[data-theme="amigos-dark"] .audience-cards-heading h2,
+html[data-theme="amigos-dark"] .why-content h2,
+html[data-theme="amigos-dark"] .ai-heading h2,
+html[data-theme="amigos-dark"] .scc-content h3 {
+    color: #ffffff !important;
+}
+html[data-theme="amigos-dark"] .testimonial-card p,
+html[data-theme="amigos-dark"] .audience-card p,
+html[data-theme="amigos-dark"] .why-content p,
+html[data-theme="amigos-dark"] .scc-content p,
+html[data-theme="amigos-dark"] .ai-side p,
+html[data-theme="amigos-dark"] .plan-card p {
+    color: rgba(255, 255, 255, .76) !important;
+}
+html[data-theme="amigos-dark"] .testimonial-card,
+html[data-theme="amigos-dark"] .ai-controls-dock,
+html[data-theme="amigos-dark"] .palette-wrapper,
+html[data-theme="amigos-dark"] .wallpaperAI,
+html[data-theme="amigos-dark"] .projects-dock,
+html[data-theme="amigos-dark"] .billing-toggle {
+    background: rgba(13, 37, 66, .78) !important;
+    border-color: rgba(247, 241, 231, .16) !important;
+    color: #ffffff !important;
+}
+html[data-theme="amigos-dark"] .testimonials,
+html[data-theme="amigos-dark"] .quote-section,
+html[data-theme="amigos-dark"] .about-cta,
+html[data-theme="amigos-dark"] .cta-section {
+    background:
+        radial-gradient(circle at 16% 16%, rgba(255, 255, 255, .18), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(246, 190, 16, .26), transparent 28%),
+        linear-gradient(135deg, #F6BE10 0%, #F39125 38%, #E62453 100%) !important;
+    color: #fff !important;
+}
+html[data-theme="amigos-dark"] .testimonial-center h2,
+html[data-theme="amigos-dark"] .why-content h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+html[data-theme="amigos-dark"] .testimonial-card p,
+html[data-theme="amigos-dark"] .why-content p,
+html[data-theme="amigos-dark"] .plan-card p {
+    color: rgba(255, 255, 255, .78) !important;
+}
+html[data-theme="amigos-dark"] .testimonial-kicker,
+html[data-theme="amigos-dark"] .plans-eyebrow,
+html[data-theme="amigos-dark"] .plan-name,
+html[data-theme="amigos-dark"] [class*="kicker"],
+html[data-theme="amigos-dark"] [class*="eyebrow"] {
+    background: var(--am-brand-gradient) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+html[data-theme="amigos-dark"] .testimonial-card,
+html[data-theme="amigos-dark"] .audience-card,
+html[data-theme="amigos-dark"] .dtools-card,
+html[data-theme="amigos-dark"] .ai-stage,
+html[data-theme="amigos-dark"] .projects-dock,
+html[data-theme="amigos-dark"] .billing-toggle,
+html[data-theme="amigos-dark"] .about-card,
+html[data-theme="amigos-dark"] .value-card,
+html[data-theme="amigos-dark"] .process-step,
+html[data-theme="amigos-dark"] .svc-intro-point,
+html[data-theme="amigos-dark"] .service-card,
+html[data-theme="amigos-dark"] .process-card,
+html[data-theme="amigos-dark"] .material-card,
+html[data-theme="amigos-dark"] .benefit-card,
+html[data-theme="amigos-dark"] .intro-points div,
+html[data-theme="amigos-dark"] .value-points div,
+html[data-theme="amigos-dark"] .creation-card,
+html[data-theme="amigos-dark"] .transform-card,
+html[data-theme="amigos-dark"] .flow-item,
+html[data-theme="amigos-dark"] .problem-item,
+html[data-theme="amigos-dark"] .spray-intro-points div,
+html[data-theme="amigos-dark"] .step-number,
+html[data-theme="amigos-dark"] .connection-number,
+html[data-theme="amigos-dark"] .flow-icon,
+html[data-theme="amigos-dark"] article:not(.process-item):not(.value-row) {
+    background: var(--am-dark-surface) !important;
+    border-color: var(--am-dark-line) !important;
+    color: #ffffff !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .28) !important;
+}
+html[data-theme="amigos-dark"] .testimonials *,
+html[data-theme="amigos-dark"] .quote-section *,
+html[data-theme="amigos-dark"] .about-cta *,
+html[data-theme="amigos-dark"] .cta-section * {
+    color: #fff !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+html[data-theme="amigos-dark"] .review-btn,
+html[data-theme="amigos-dark"] a[class*="btn"],
+html[data-theme="amigos-dark"] button[class*="btn"] {
+    background: var(--am-brand-gradient) !important;
+    border-color: rgba(246, 190, 16, .44) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 18px 46px rgba(230, 36, 83, .2), 0 12px 34px rgba(246, 190, 16, .14) !important;
+}
+    --am-mixed-grad: linear-gradient(120deg, #F6BE10 0%, #F39125 42%, #E62453 100%);
+}
+
+body[data-page="home"] .introBtn,
+body[data-page="home"] .hero-buttons .btn-primary,
+body[data-page="home"] .quote-start-btn,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn {
+    background: var(--am-mixed-grad) !important;
+    border: 1px solid rgba(246, 190, 16, .44) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 18px 44px rgba(230, 36, 83, .22), 0 12px 28px rgba(246, 190, 16, .16) !important;
+}
+
+body[data-page="home"] .hero-buttons .btn-secondary,
+body[data-page="home"] .quote-side .btn-secondary,
+body[data-page="home"] .btn-secondary {
+    background: rgba(255, 255, 255, .08) !important;
+    border: 1px solid rgba(255, 255, 255, .62) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10) !important;
+}
+
+body[data-page="home"] .introBtn:hover,
+body[data-page="home"] .hero-buttons .btn-primary:hover,
+body[data-page="home"] .quote-start-btn:hover,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn:hover {
+    transform: translateY(-4px) scale(1.015);
+    filter: saturate(1.14) brightness(1.04);
+    box-shadow: 0 24px 58px rgba(230, 36, 83, .30), 0 16px 36px rgba(246, 190, 16, .22) !important;
+}
+
+body[data-page="home"] .hero-buttons .btn-secondary:hover,
+body[data-page="home"] .btn-secondary:hover {
+    background: rgba(255, 255, 255, .16) !important;
+    border-color: rgba(255, 255, 255, .92) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    transform: translateY(-4px);
+}
+
+body[data-page="home"] .audience-card {
+    background: rgba(13, 37, 66, .82) !important;
+    border-color: rgba(255, 255, 255, .16) !important;
+    color: #ffffff !important;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .22) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(1):hover {
+    background: var(--am-yellow-grad) !important;
+    border-color: rgba(246, 190, 16, .84) !important;
+    box-shadow: 0 28px 80px rgba(246, 190, 16, .22) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(2):hover {
+    background: var(--am-orange-grad) !important;
+    border-color: rgba(243, 145, 37, .84) !important;
+    box-shadow: 0 28px 80px rgba(243, 145, 37, .24) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(3):hover {
+    background: var(--am-pink-grad) !important;
+    border-color: rgba(230, 36, 83, .84) !important;
+    box-shadow: 0 28px 80px rgba(230, 36, 83, .26) !important;
+}
+
+body[data-page="home"] .audience-card-icon {
+    background: rgba(255, 255, 255, .14) !important;
+    color: #ffffff !important;
+}
+
+body[data-page="home"] .audience-card:hover .audience-card-icon {
+    background: rgba(255, 255, 255, .24) !important;
+}
+
+body[data-page="home"] .audience-card-num,
+body[data-page="home"] .audience-card h3,
+body[data-page="home"] .audience-card p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+body[data-page="home"] .quote-section,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section {
+    background:
+        radial-gradient(circle at 14% 20%, rgba(255, 255, 255, .18), transparent 24%),
+        radial-gradient(circle at 86% 18%, rgba(230, 36, 83, .26), transparent 28%),
+        linear-gradient(135deg, #F6BE10 0%, #F39125 42%, #E62453 100%) !important;
+}
+
+body[data-page="home"] .home-calculator-cta,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] section.home-calculator-cta,
+html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-cta {
+    background-color: transparent !important;
+    background-image: none !important;
+    background-size: cover, cover !important;
+    background-position: center, center bottom !important;
+    background-repeat: no-repeat !important;
+    animation: none !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-cta {
+    background-color: transparent !important;
+    background-image: none !important;
+    background-size: cover, cover !important;
+    background-position: center, center bottom !important;
+    background-repeat: no-repeat !important;
+    animation: none !important;
+}
+
+body[data-page="home"] .home-calculator-cta::before,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] section.home-calculator-cta::before,
+html[data-theme="amigos-light"] body[data-page="home"] section.home-calculator-cta::before {
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] section.home-calculator-cta::before {
+    background: radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 60%) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .quote-section::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::before {
+    background: linear-gradient(90deg, rgba(7, 26, 51, .34), rgba(7, 26, 51, .16)) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .quote-section::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::after {
+    background: radial-gradient(circle at 52% 12%, rgba(255, 255, 255, .22), transparent 58%) !important;
+}
+
+body[data-page="home"] .quote-section *,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section * {
+    color: #fff !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+body[data-page="home"] .projects-dock,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock {
+    background: var(--am-mixed-grad) !important;
+    border-color: rgba(255, 255, 255, .28) !important;
+    box-shadow: 0 22px 56px rgba(7, 26, 51, .26), 0 0 0 1px rgba(255, 255, 255, .10) inset !important;
+}
+
+body[data-page="home"] .projects-dock .dock-tab {
+    color: rgba(255, 255, 255, .76) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .76) !important;
+}
+
+body[data-page="home"] .projects-dock .dock-tab.active {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .projects-dock .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock .dock-indicator {
+    background: var(--am-yellow-grad) !important;
+    box-shadow: 0 14px 34px rgba(246, 190, 16, .26) !important;
+}
+
+body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(2).active) .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(2).active) .dock-indicator {
+    background: var(--am-orange-grad) !important;
+    box-shadow: 0 14px 34px rgba(243, 145, 37, .28) !important;
+}
+
+body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(3).active) .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(3).active) .dock-indicator {
+    background: var(--am-pink-grad) !important;
+    box-shadow: 0 14px 34px rgba(230, 36, 83, .30) !important;
+}
+
+body[data-page="home"] .plans-grid .plan-card.featured .popular,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.featured .popular {
+    background: #fff !important;
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+    border: 1px solid rgba(7, 26, 51, .08) !important;
+    box-shadow: 0 10px 24px rgba(7, 26, 51, .14) !important;
+}
+
+body[data-page="home"] .plans-grid .plan-card button,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card button {
+    background: rgba(7, 26, 51, .86) !important;
+    border-color: rgba(255, 255, 255, .36) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .16) !important;
+}
+
+body[data-page="home"] .plans-grid .plan-card:nth-child(1) button:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(1) button:hover {
+    background: var(--am-pink-grad) !important;
+    border-color: rgba(230, 36, 83, .78) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    transform: translateY(-3px);
+}
+
+body[data-page="home"] .plans-grid .plan-card:nth-child(2) button:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2) button:hover {
+    background: var(--am-yellow-grad) !important;
+    border-color: rgba(246, 190, 16, .82) !important;
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+    transform: translateY(-3px);
+}
+
+body[data-page="home"] .plans-grid .plan-card:nth-child(3) button:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3) button:hover {
+    background: var(--am-orange-grad) !important;
+    border-color: rgba(243, 145, 37, .82) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    transform: translateY(-3px);
+}
+
+body[data-page="home"] .rating,
+body[data-page="home"] .rating span,
+html[data-theme="amigos-dark"] body[data-page="home"] .rating,
+html[data-theme="amigos-dark"] body[data-page="home"] .rating span {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .testimonial-card .stars {
+    color: #F6BE10 !important;
+    -webkit-text-fill-color: #F6BE10 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials {
+    background:
+        radial-gradient(circle at 18% 14%, rgba(230, 36, 83, .12), transparent 28%),
+        radial-gradient(circle at 82% 78%, rgba(246, 190, 16, .08), transparent 30%),
+        #071A33 !important;
+    color: #fff !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials h2,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials p,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials h2,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Homepage moving-gradient emphasis requested for Why Amigos and Calculator sections. */
+body[data-page="home"] .why-amigos,
+html[data-theme="amigos-dark"] body[data-page="home"] .why-amigos,
+body[data-page="home"] .quote-section,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, .26), transparent 25%),
+        radial-gradient(circle at 86% 14%, rgba(255, 255, 255, .16), transparent 28%),
+        linear-gradient(120deg, #F6BE10 0%, #F39125 28%, #E62453 58%, #C73B8E 78%, #F6BE10 100%) !important;
+    background-size: 240% 240% !important;
+    animation: homeMovingBrandGradient 7s ease-in-out infinite alternate !important;
+    color: #fff !important;
+}
+
+body[data-page="home"] .why-amigos::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .why-amigos::before,
+body[data-page="home"] .quote-section::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::before {
+    background: linear-gradient(90deg, rgba(7, 26, 51, .18), rgba(7, 26, 51, .04)) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .why-amigos *,
+html[data-theme="amigos-dark"] body[data-page="home"] .why-amigos *,
+body[data-page="home"] .quote-section *,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section * {
+    color: #fff !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+body[data-page="home"] .quote-section::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::before {
+    background: linear-gradient(90deg, rgba(7, 26, 51, .18), rgba(7, 26, 51, .04)) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .quote-section::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .quote-section::after {
+    background: radial-gradient(circle at 52% 12%, rgba(255, 255, 255, .24), transparent 58%) !important;
+}
+
+body[data-page="home"] .carousel-dot,
+html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot {
+    background: rgba(255, 255, 255, .48) !important;
+}
+
+body[data-page="home"] .carousel-dot.active,
+html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot.active {
+    background: #fff !important;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, .12) !important;
+}
+
+@keyframes homeMovingBrandGradient {
+    0% {
+        background-position: 0% 18%;
+    }
+    --am-orange-clean: #FF7A1A;
+    --am-orange-deep: #D94D12;
+    --am-pink-clean: #E62453;
+    --am-pink-deep: #A91452;
+    --am-black: #050505;
+    --am-grey: #626262;
+    --am-soft-white: #ffffff;
+    --am-clean-light: #ffffff;
+    --am-yellow-grad: linear-gradient(135deg, #FFD21F 0%, #F39125 100%);
+    --am-orange-grad: linear-gradient(135deg, #FF8A1F 0%, #D94D12 100%);
+    --am-pink-grad: linear-gradient(135deg, #FF2F6D 0%, #A91452 100%);
+    --am-mixed-grad: linear-gradient(120deg, #FFD21F 0%, #FF7A1A 44%, #E62453 100%);
+}
+
+body[data-page="home"] .audience-cards-section {
+    background:
+        radial-gradient(circle at 18% 4%, rgba(255, 210, 31, .10), transparent 32%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
+}
+
+body[data-page="home"] .audience-cards-heading .section-tag,
+body[data-page="home"] .plans-eyebrow,
+body[data-page="home"] .services-nav-heading .section-tag,
+body[data-page="home"] .ai-heading .section-tag,
+body[data-page="home"] .dtools-heading .section-tag,
+body[data-page="home"] .sp-link,
+body[data-page="home"] .price small,
+body[data-page="home"] .plan-name,
+body[data-page="home"] .testimonial-card span.city {
+    color: var(--am-orange-clean) !important;
+    -webkit-text-fill-color: var(--am-orange-clean) !important;
+}
+
+body[data-page="home"] .sp-collapsed .sp-num,
+body[data-page="home"] .sp-expanded .sp-num {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+body[data-page="home"] .audience-cards-heading h2,
+body[data-page="home"] .audience-cards-heading h2 span {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+body[data-page="home"] .audience-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 2px solid transparent !important;
+    color: #fff !important;
+}
+
+body[data-page="home"] .audience-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -2;
+    border-radius: inherit;
+    opacity: 0;
+    background: conic-gradient(from 0deg, currentColor, transparent 28%, currentColor 58%, transparent 78%, currentColor);
+    animation: audienceBorderMove 2.2s linear infinite;
+}
+
+body[data-page="home"] .audience-card::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    z-index: -1;
+    border-radius: calc(20px - 2px);
+    opacity: 0;
+    background: var(--am-soft-white);
+}
+
+body[data-page="home"] .audience-card:nth-child(1) {
+    background: var(--am-yellow-grad) !important;
+    box-shadow: 0 24px 70px rgba(255, 210, 31, .18) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(2) {
+    background: var(--am-pink-grad) !important;
+    box-shadow: 0 24px 70px rgba(230, 36, 83, .18) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(3) {
+    background: var(--am-orange-grad) !important;
+    box-shadow: 0 24px 70px rgba(255, 122, 26, .18) !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(1):hover {
+    color: var(--am-yellow-clean) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(2):hover {
+    color: var(--am-pink-clean) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+body[data-page="home"] .audience-card:nth-child(3):hover {
+    color: var(--am-orange-clean) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+body[data-page="home"] .audience-card:hover::before,
+body[data-page="home"] .audience-card:hover::after {
+    opacity: 1;
+}
+
+body[data-page="home"] .audience-card:hover h3,
+body[data-page="home"] .audience-card:hover .audience-card-num {
+    color: var(--am-black) !important;
+    -webkit-text-fill-color: var(--am-black) !important;
+}
+
+body[data-page="home"] .audience-card:hover p {
+    color: var(--am-grey) !important;
+    -webkit-text-fill-color: var(--am-grey) !important;
+}
+
+body[data-page="home"] .audience-card:hover .audience-card-icon {
+    background: rgba(7, 26, 51, .08) !important;
+    color: var(--am-black) !important;
+}
+
+body[data-page="home"] .services-nav-section {
+    background:
+        radial-gradient(circle at 82% 8%, rgba(230, 36, 83, .08), transparent 28%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
+}
+
+body[data-page="home"] .services-bg-vignette,
+body[data-page="home"] .services-bg-noise {
+    opacity: 0 !important;
+}
+
+body[data-page="home"] .services-bg-grid {
+    background-image:
+        linear-gradient(rgba(7, 26, 51, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7, 26, 51, .045) 1px, transparent 1px) !important;
+}
+
+body[data-page="home"] .services-glow-1,
+body[data-page="home"] .services-glow-2,
+body[data-page="home"] .services-glow-3 {
+    background: radial-gradient(circle, rgba(230, 36, 83, .14) 0%, transparent 70%) !important;
+    opacity: .32 !important;
+}
+
+body[data-page="home"] .services-nav-heading h2,
+body[data-page="home"] .services-nav-heading h2 span {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+body[data-page="home"] .services-view-all-btn,
+body[data-page="home"] .why-btn,
+body[data-page="home"] .upload-btn,
+body[data-page="home"] .generate-btn {
+    background: #050505 !important;
+    border-color: #050505 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .why-content h2 {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+body[data-page="home"] .ai-section {
+    background:
+        linear-gradient(rgba(7, 26, 51, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(7, 26, 51, .035) 1px, transparent 1px),
+        #ffffff !important;
+}
+
+body[data-page="home"] .ai-heading h2 span,
+body[data-page="home"] .dtools-heading h2 span,
+body[data-page="home"] .plans-header p,
+body[data-page="home"] .ai-side p {
+    color: #626262 !important;
+    -webkit-text-fill-color: #626262 !important;
+}
+
+body[data-page="home"] .upload-hint,
+body[data-page="home"] .rating,
+body[data-page="home"] .rating span {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+
+body[data-page="home"] .projects-dock .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock .dock-indicator {
+    background: #fff !important;
+    box-shadow: 0 12px 28px rgba(7, 26, 51, .16) !important;
+}
+
+body[data-page="home"] .projects-dock .dock-tab.active,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock .dock-tab.active {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(2).active) .dock-indicator,
+body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(3).active) .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(2).active) .dock-indicator,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock:has(.dock-tab:nth-of-type(3).active) .dock-indicator {
+    background: #fff !important;
+    box-shadow: 0 12px 28px rgba(7, 26, 51, .16) !important;
+}
+
+body[data-page="home"] .plans-section {
+    background:
+        radial-gradient(circle at 82% 12%, rgba(230, 36, 83, .08), transparent 30%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
+}
+
+body[data-page="home"] .billing-toggle button.active {
+    background: #050505 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .plans-header h2 {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials {
+    min-height: 100vh !important;
+    padding: clamp(54px, 7vh, 84px) 20px clamp(44px, 6vh, 66px) !important;
+    background:
+        radial-gradient(circle at 50% 48%, rgba(7, 26, 51, .08), transparent 36%),
+        linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
+    color: #071A33 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-center {
+    margin-bottom: clamp(18px, 3vh, 34px) !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-center h2 {
+    font-size: clamp(34px, 4.4vw, 58px) !important;
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-kicker {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-stage {
+    height: clamp(310px, 38vh, 430px) !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-card {
+    background: rgba(255, 255, 255, .76) !important;
+    border-color: rgba(7, 26, 51, .12) !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dots {
+    margin-top: clamp(16px, 2.2vh, 28px) !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dot,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dot {
+    background: rgba(7, 26, 51, .28) !important;
+}
+
+body[data-page="home"] .carousel-dot.active,
+html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot.active {
+    background: #071A33 !important;
+    box-shadow: 0 0 0 6px rgba(7, 26, 51, .10) !important;
+}
+
+body[data-page="home"] .site-header.is-scrolled {
+    background: rgba(255, 255, 255, .94) !important;
+    border-bottom: 1px solid rgba(7, 26, 51, .12) !important;
+    box-shadow: 0 18px 48px rgba(7, 26, 51, .10) !important;
+}
+
+body[data-page="home"] .site-header.is-scrolled .site-nav a,
+body[data-page="home"] .site-header.is-scrolled .dropdown-trigger,
+body[data-page="home"] .site-header.is-scrolled .nav-link {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+body[data-page="home"] .site-header.is-scrolled .header-btn,
+body[data-page="home"] .site-header.is-scrolled .customer-header-btn {
+    background: transparent !important;
+    border-color: rgba(7, 26, 51, .28) !important;
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+body[data-page="home"] .site-header.is-scrolled .theme-toggle {
+    background: rgba(7, 26, 51, .06) !important;
+    border-color: rgba(7, 26, 51, .24) !important;
+}
+
+body[data-page="home"] .site-footer {
+    background: #fff !important;
+    color: #071A33 !important;
+    border-top: 1px solid #050505 !important;
+}
+
+body[data-page="home"] .site-footer h4,
+body[data-page="home"] .site-footer p,
+body[data-page="home"] .site-footer a,
+body[data-page="home"] .site-footer span,
+body[data-page="home"] .footer-bottom,
+body[data-page="home"] .footer-bottom a {
+    color: #071A33 !important;
+    -webkit-text-fill-color: #071A33 !important;
+}
+
+@keyframes audienceBorderMove {
+    to {
+        transform: rotate(1turn);
+    }
+body[data-page="home"] .testimonial-card span.city {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+    background: var(--am-mixed-grad) !important;
+    border-color: transparent !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .color-slider {
+    background: linear-gradient(90deg,
+            #FFD21F, #FF7A1A, #E62453, #C73B8E,
+            #071A33, #E62453, #FF7A1A, #FFD21F) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(1) {
+    background: linear-gradient(145deg, #FFD21F 0%, #FF7A1A 100%) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2) {
+    background: linear-gradient(145deg, #FF7A1A 0%, #D94D12 100%) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3) {
+    background: linear-gradient(145deg, #E62453 0%, #A91452 100%) !important;
+}
+
+/* Final homepage polish: testimonials readability + single-line audience hover border. */
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
+    color: #FFD21F !important;
+    -webkit-text-fill-color: #FFD21F !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card {
+    background: rgba(255, 255, 255, .86) !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card p,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card h4,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span:not(.stars):not(.city),
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card h4,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span:not(.stars):not(.city) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span.city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span.city {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
+    color: #FFD21F !important;
+    -webkit-text-fill-color: #FFD21F !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
+    margin-bottom: 24px !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
+    margin-top: 24px !important;
+}
+
+body[data-page="home"] .audience-card {
+    transition:
+        background .42s ease,
+        box-shadow .42s ease,
+        transform .42s cubic-bezier(.22, 1, .36, 1),
+        color .32s ease !important;
+}
+
+body[data-page="home"] .audience-card::before {
+    inset: 0 !important;
+    z-index: -1 !important;
+    border-radius: inherit !important;
+    background: #fff !important;
+    opacity: 0 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: opacity .36s ease !important;
+}
+
+body[data-page="home"] .audience-card::after {
+    inset: -2px !important;
+    z-index: -2 !important;
+    border-radius: inherit !important;
+    opacity: 0 !important;
+    padding: 2px !important;
+    background:
+        conic-gradient(from 0deg,
+            transparent 0deg,
+            transparent 292deg,
+            currentColor 316deg,
+            currentColor 344deg,
+            transparent 360deg) !important;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+    animation: audienceSingleLine 1.45s linear infinite !important;
+    transition: opacity .3s ease !important;
+}
+
+body[data-page="home"] .audience-card:hover {
+    background: transparent !important;
+    transform: translateY(-8px);
+}
+
+body[data-page="home"] .audience-card:hover::before,
+body[data-page="home"] .audience-card:hover::after {
+    opacity: 1 !important;
+}
+
+@keyframes audienceSingleLine {
+    to {
+        transform: rotate(1turn);
+    }
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
+    color: #FFD21F !important;
+    -webkit-text-fill-color: #FFD21F !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card {
+    background: rgba(255, 255, 255, .94) !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card * {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
+    color: #FFD21F !important;
+    -webkit-text-fill-color: #FFD21F !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .city {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
+    margin-bottom: 22px !important;
+}
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
+    margin-top: 0 !important;
+}
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-control {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-stars,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card span {
+    color: #E62453 !important;
+    -webkit-text-fill-color: #E62453 !important;
+}
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active {
+    background: rgba(255, 255, 255, .86) !important;
+    border-color: rgba(5, 5, 5, .16) !important;
+    color: #050505 !important;
+}
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active * {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card:hover,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active:hover {
+    background: #FFD21F !important;
+    border-color: #FFD21F !important;
+}
+    background: var(--am-mixed-grad) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .upload-btn,
+body[data-page="home"] .generate-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .upload-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .generate-btn {
+    background: var(--am-mixed-grad) !important;
+    border-color: rgba(246, 190, 16, .44) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] .projects-dock,
+html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: max-content;
+    max-width: calc(100% - 28px);
+    margin: 24px auto 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    filter: none !important;
+    z-index: 20 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
+    margin-bottom: 54px !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
+    background: var(--am-mixed-grad) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+@media (max-width: 700px) {
+
+    body[data-page="home"] .audience-bar,
+    html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
+        margin-top: -56px !important;
+    }
+    background: var(--am-mixed-grad) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled {
+    background: #071A33 !important;
+    border-bottom-color: rgba(255, 255, 255, .12) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer {
+    background: #071A33 !important;
+    color: #ffffff !important;
+    border-top-color: rgba(255, 255, 255, .12) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer h4,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer p,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer a,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-footer span,
+html[data-theme="amigos-dark"] body[data-page="home"] .footer-bottom,
+html[data-theme="amigos-dark"] body[data-page="home"] .footer-bottom a {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .ai-stage {
+    background: #ffffff !important;
+    box-shadow: 0 24px 70px rgba(7, 26, 51, .12) !important;
+}
+
+@media (max-width: 700px) {
+
+    body[data-page="home"] .audience-bar,
+    html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
+        margin-top: 0 !important;
+    }
+html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot {
+    background: rgba(255, 255, 255, .36) !important;
+}
+html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot.active {
+    background: #fff !important;
+}
+    background: var(--am-mixed-grad) !important;
+    border-color: rgba(255, 255, 255, .30) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .theme-toggle,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled .theme-toggle {
+    background: rgba(255, 255, 255, .10) !important;
+    border-color: rgba(255, 255, 255, .36) !important;
+}
+
+/* Dark homepage gradient/header and plans readability fixes. */
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .header-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .customer-header-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .header-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled .header-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.is-scrolled .customer-header-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header.scrolled .customer-header-btn {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background: linear-gradient(135deg, #F6BE10 0%, #F39125 52%, #E62453 100%) padding-box !important;
+    border: 1px solid transparent !important;
+    border-radius: 999px !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: none !important;
+    background-clip: padding-box !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .header-btn::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .header-btn::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .customer-header-btn::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .customer-header-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .header-btn *,
+html[data-theme="amigos-dark"] body[data-page="home"] .site-header .customer-header-btn * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card li,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .plan-name,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .price,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .price small,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .price span,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .price-period {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card .price strong {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card li::before {
+    border-color: rgba(255, 255, 255, .82) !important;
+}
+
+body[data-page="home"] .home-calculator-cta,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] .home-calculator-cta,
+html[data-theme="amigos-light"] body[data-page="home"] .home-calculator-cta {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-size: cover, cover !important;
+    background-position: center, center bottom !important;
+    background-repeat: no-repeat !important;
+    animation: none !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .home-calculator-cta {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-size: auto, auto, cover, auto !important;
+    background-position: center, center, center bottom, center !important;
+    background-repeat: no-repeat !important;
+    animation: none !important;
+}
+
+
+/* ==================================================
+   GLOBAL RESPONSIVE MATRIX PASS
+================================================== */
+
+/* Single line on all screen sizes as requested */
+@media (max-width: 900px) {
+    .hero-content h1 {
+        white-space: nowrap !important;
+        font-size: clamp(20px, 4.2vw, 36px) !important;
+        line-height: 1.25 !important;
+    }

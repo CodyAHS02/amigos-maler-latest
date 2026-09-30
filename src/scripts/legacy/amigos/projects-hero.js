@@ -224,7 +224,38 @@
     const cards = Array.from(section.querySelectorAll("[data-re-category]"));
     const detailButtons = Array.from(section.querySelectorAll("[data-detail-target]"));
     const panels = Array.from(section.querySelectorAll("[data-detail-panel]"));
+    const carouselTrack = section.querySelector("[data-re-carousel-track]");
+    const carouselPrev = section.querySelector("[data-re-carousel-prev]");
+    const carouselNext = section.querySelector("[data-re-carousel-next]");
     if (!filterButtons.length || !cards.length || !panels.length) return;
+
+    function visibleCards() {
+      return cards.filter((card) => !card.hidden);
+    }
+
+    function updateCarouselButtons() {
+      if (!carouselTrack || !carouselPrev || !carouselNext) return;
+
+      const cardsShown = visibleCards();
+      const canScroll = cardsShown.length > 1 && carouselTrack.scrollWidth > carouselTrack.clientWidth + 2;
+      const atStart = carouselTrack.scrollLeft <= 4;
+      const atEnd = carouselTrack.scrollLeft + carouselTrack.clientWidth >= carouselTrack.scrollWidth - 4;
+
+      carouselPrev.disabled = !canScroll || atStart;
+      carouselNext.disabled = !canScroll || atEnd;
+    }
+
+    function scrollCarousel(direction) {
+      if (!carouselTrack) return;
+
+      const firstVisible = visibleCards()[0];
+      const cardWidth = firstVisible ? firstVisible.getBoundingClientRect().width : carouselTrack.clientWidth;
+      const gap = Number.parseFloat(getComputedStyle(carouselTrack).columnGap || "16") || 16;
+      carouselTrack.scrollBy({
+        left: direction * (cardWidth + gap),
+        behavior: "smooth"
+      });
+    }
 
     function clearDetail() {
       section.classList.remove("has-real-estate-detail");
@@ -269,11 +300,14 @@
       });
 
       cards.forEach((card, index) => {
-        const visible = activeFilter === "all" ? index < 3 : card.dataset.reCategory === activeFilter;
+        const visible = activeFilter === "all" || card.dataset.reCategory === activeFilter;
         card.hidden = !visible;
         card.classList.toggle("is-filtered-out", !visible);
 
       });
+
+      if (carouselTrack) carouselTrack.scrollTo({ left: 0, behavior: "smooth" });
+      window.requestAnimationFrame(updateCarouselButtons);
     }
 
     section.addEventListener("click", (event) => {
@@ -289,6 +323,19 @@
       }
     });
 
+    if (carouselPrev) {
+      carouselPrev.addEventListener("click", () => scrollCarousel(-1));
+    }
+
+    if (carouselNext) {
+      carouselNext.addEventListener("click", () => scrollCarousel(1));
+    }
+
+    if (carouselTrack) {
+      carouselTrack.addEventListener("scroll", updateCarouselButtons, { passive: true });
+      window.addEventListener("resize", updateCarouselButtons, { passive: true });
+    }
+
     filterButtons.forEach((button) => {
       button.setAttribute("aria-pressed", button.classList.contains("is-active") ? "true" : "false");
     });
@@ -302,6 +349,7 @@
     });
 
     setFilter("all");
+    updateCarouselButtons();
   }
 
   if (document.readyState === "loading") {
@@ -351,4 +399,53 @@
     divider.addEventListener('touchstart', (e) => { active = true; }, {passive: true});
     window.addEventListener('touchend', () => { active = false; });
     window.addEventListener('touchmove', (e) => { if (active) updateSlider(e.touches[0].clientX); }, {passive: true});
+})();
+
+(function initProjectsFounderCardTilt() {
+  const wrap = document.getElementById("projectsFounderCardWrap");
+  const card = document.getElementById("projectsFounderCard3d");
+  const glare = document.getElementById("projectsFounderGlare");
+
+  if (!wrap || !card) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  let bounds;
+
+  const updateBounds = () => {
+    bounds = wrap.getBoundingClientRect();
+  };
+
+  wrap.addEventListener("mouseenter", () => {
+    updateBounds();
+    card.classList.add("is-tilting");
+    if (glare) glare.style.opacity = "1";
+  });
+
+  wrap.addEventListener("mousemove", (event) => {
+    if (!bounds) updateBounds();
+
+    const mouseX = event.clientX - bounds.left;
+    const mouseY = event.clientY - bounds.top;
+    const xPct = (mouseX / bounds.width - 0.5) * 2;
+    const yPct = (mouseY / bounds.height - 0.5) * 2;
+    const rotX = -yPct * 8;
+    const rotY = xPct * 8;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+    if (glare) {
+      const glareX = (mouseX / bounds.width) * 100;
+      const glareY = (mouseY / bounds.height) * 100;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.40) 0%, transparent 60%)`;
+    }
+  });
+
+  wrap.addEventListener("mouseleave", () => {
+    card.classList.remove("is-tilting");
+    card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+    if (glare) glare.style.opacity = "0";
+  });
+
+  window.addEventListener("scroll", updateBounds, { passive: true });
+  window.addEventListener("resize", updateBounds, { passive: true });
 })();

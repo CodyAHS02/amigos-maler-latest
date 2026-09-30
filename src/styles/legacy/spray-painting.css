@@ -1144,14 +1144,14 @@ a {
     transform: scale(1.1);
 }
 
-.step-content h3 {
+.spray-process .step-content h3 {
     font-size: 15px;
     margin-bottom: 15px;
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
 
-.step-content p {
+.spray-process .step-content p {
     font-size: 14px;
     line-height: 1.7;
     color: rgba(255, 255, 255, .7) !important;

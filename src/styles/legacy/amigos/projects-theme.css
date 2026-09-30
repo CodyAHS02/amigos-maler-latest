@@ -719,15 +719,14 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
   display: none !important;
 }
 
-/* Restore only the lightweight hero particles. Cursor and trail effects stay off. */
-.amigos-wrapper .hero .hero-particles {
-  display: block !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .amigos-wrapper .hero .hero-particles {
-    display: none !important;
-  }
+.amigos-wrapper .hero .hero-particles,
+.amigos-wrapper .hero .hero-particles *,
+body[data-page="projects"] .amigos-wrapper .hero .hero-particles,
+body[data-page="projects"] .amigos-wrapper .hero .hero-particles * {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  animation: none !important;
 }
 
 .amigos-wrapper .amb .blob,
@@ -780,101 +779,162 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #showcase .se
   gap: clamp(54px, 8vw, 130px);
 }
 
-.amigos-wrapper .founder-portrait-wrap {
+.amigos-wrapper .projects-founder-visual-wrap {
   position: relative;
-  max-width: 520px;
-  padding: clamp(18px, 2.5vw, 32px);
-  perspective: 1000px;
+  max-width: min(100%, 560px);
+  perspective: 1200px;
 }
 
-.amigos-wrapper .founder-portrait {
+.amigos-wrapper .projects-founder-ambient-glow {
+  position: absolute;
+  inset: -18px;
+  z-index: 0;
+  border-radius: 42px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 155, 26, .32), rgba(230, 36, 83, .16), transparent 70%);
+  filter: blur(36px);
+  opacity: .72;
+  pointer-events: none;
+}
+
+.amigos-wrapper .projects-founder-card {
   position: relative;
-  z-index: 2;
-  margin: 0;
+  z-index: 1;
+  padding: 10px;
+  border-radius: 36px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .45));
+  box-shadow:
+    0 25px 50px -12px rgba(16, 35, 60, .16),
+    0 0 0 1px rgba(255, 255, 255, .75),
+    inset 0 1px 2px rgba(255, 255, 255, .85);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .18s ease-out, box-shadow .3s ease;
+}
+
+.amigos-wrapper .projects-founder-card:hover {
+  box-shadow:
+    0 35px 65px -15px rgba(16, 35, 60, .24),
+    0 0 0 1.5px rgba(255, 155, 26, .45),
+    0 0 40px rgba(255, 155, 26, .2);
+  transform: perspective(1000px) rotateX(3deg) rotateY(-5deg) scale3d(1.02, 1.02, 1.02);
+}
+
+.amigos-wrapper .projects-founder-image {
+  position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, .18);
-  border-radius: 48% 48% 24px 24px;
-  background: #0d2542;
-  box-shadow: 0 34px 80px rgba(0, 0, 0, .34);
-  transform: rotate(-1.5deg);
-  transition: transform .6s cubic-bezier(.2, .75, .2, 1), box-shadow .6s ease;
+  margin: 0;
+  aspect-ratio: 4 / 5.2;
+  border-radius: 28px;
+  background: #0d1e32;
 }
 
-.amigos-wrapper .founder-portrait-wrap:hover .founder-portrait {
-  box-shadow: 0 42px 100px rgba(0, 0, 0, .42), 0 0 0 1px rgba(243, 145, 37, .25);
-  transform: rotate(0deg) translateY(-8px);
-}
-
-.amigos-wrapper .founder-portrait img {
+.amigos-wrapper .projects-founder-image img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
+  border-radius: 28px;
   object-fit: cover;
   object-position: center top;
-  filter: saturate(.94) contrast(1.03);
+  filter: saturate(.96) contrast(1.03);
+  transition: transform .6s cubic-bezier(.16, 1, .3, 1);
 }
 
-.amigos-wrapper .founder-portrait figcaption {
+.amigos-wrapper .projects-founder-card:hover .projects-founder-image img {
+  transform: scale(1.03);
+}
+
+.amigos-wrapper .projects-founder-image-glare {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  left: 18px;
+  inset: 0;
+  z-index: 2;
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .35) 0%, transparent 65%);
+  mix-blend-mode: overlay;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.amigos-wrapper .projects-founder-badge {
+  position: absolute;
+  right: 24px;
+  bottom: -18px;
+  z-index: 3;
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 15px 18px;
-  border: 1px solid rgba(255, 255, 255, .16);
-  border-radius: 14px;
-  background: rgba(7, 26, 51, .80);
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100% - 48px);
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .92);
+  box-shadow: 0 14px 32px rgba(16, 35, 60, .12);
+  color: #10233c;
+  transform: translateZ(35px);
+  transition: transform .3s ease, box-shadow .3s ease;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.amigos-wrapper .projects-founder-badge:hover {
+  transform: translateZ(45px) translateY(-3px);
+  box-shadow: 0 18px 38px rgba(16, 35, 60, .18);
+}
+
+.amigos-wrapper .projects-founder-badge .badge-icon-wrap {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 210, 31, .22), rgba(255, 122, 26, .22));
+}
+
+.amigos-wrapper .projects-founder-badge .badge-text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.amigos-wrapper .projects-founder-badge .badge-text strong {
+  color: #10233c;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.amigos-wrapper .projects-founder-badge .badge-text span {
+  color: #637387;
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-card,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03));
+  box-shadow:
+    0 30px 60px -15px rgba(0, 0, 0, .6),
+    0 0 0 1px rgba(255, 255, 255, .14);
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge {
+  border-color: rgba(255, 255, 255, .15);
+  background: rgba(13, 27, 44, .92);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .5);
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge .badge-text strong,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge .badge-text strong {
   color: #fff;
 }
 
-.amigos-wrapper .founder-portrait figcaption strong {
-  font-size: clamp(15px, 1.8vw, 17px);
-}
-
-.amigos-wrapper .founder-portrait figcaption span {
-  color: #bdcada;
-  font-size: 14px;
-}
-
-.amigos-wrapper .founder-orbit {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  border: 1px solid rgba(243, 145, 37, .28);
-  border-radius: 50%;
-  transform: rotate(-9deg);
-  transition: transform .8s cubic-bezier(.2, .75, .2, 1);
-}
-
-.amigos-wrapper .founder-portrait-wrap:hover .founder-orbit {
-  transform: rotate(6deg) scale(1.03);
-}
-
-.amigos-wrapper .founder-orbit span {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--am-gradient);
-  box-shadow: 0 0 20px rgba(243, 145, 37, .40);
-}
-
-.amigos-wrapper .founder-orbit span:nth-child(1) {
-  top: 8%;
-  left: 20%;
-}
-
-.amigos-wrapper .founder-orbit span:nth-child(2) {
-  right: 3%;
-  top: 48%;
-}
-
-.amigos-wrapper .founder-orbit span:nth-child(3) {
-  bottom: 7%;
-  left: 24%;
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge .badge-text span,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-founder-badge .badge-text span {
+  color: rgba(255, 255, 255, .65);
 }
 
 .amigos-wrapper .founder-story {
@@ -949,16 +1009,23 @@ body[data-page="projects"] .chatbot-msg-avatar {
     gap: 46px;
   }
 
-  .amigos-wrapper .founder-portrait-wrap {
+  .amigos-wrapper .projects-founder-visual-wrap {
     width: min(100%, 440px);
     margin-inline: auto;
+  }
+
+  .amigos-wrapper .projects-founder-badge {
+    right: 14px;
+    bottom: -14px;
+    padding: 10px 14px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
 
-  .amigos-wrapper .founder-portrait,
-  .amigos-wrapper .founder-orbit,
+  .amigos-wrapper .projects-founder-card,
+  .amigos-wrapper .projects-founder-image img,
+  .amigos-wrapper .projects-founder-badge,
   .amigos-wrapper .founder-link {
     transition: none !important;
     transform: none !important;
@@ -2522,13 +2589,29 @@ body[data-page="projects"] .amigos-wrapper .real-estate-hub-grid {
   display: block;
 }
 
+body[data-page="projects"] .amigos-wrapper .real-estate-carousel {
+  position: relative;
+}
+
 body[data-page="projects"] .amigos-wrapper .real-estate-card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 22px;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 2px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-card-grid::-webkit-scrollbar {
+  display: none;
 }
 
 body[data-page="projects"] .amigos-wrapper .real-estate-card {
+  flex: 0 0 calc((100% - 32px) / 3);
+  min-width: 0;
   overflow: hidden;
   border: 1px solid transparent;
   border-radius: 24px;
@@ -2536,6 +2619,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card {
     linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .78)) padding-box,
     linear-gradient(135deg, rgba(243, 145, 37, .62), rgba(230, 36, 83, .55), rgba(199, 59, 142, .58)) border-box;
   box-shadow: 0 22px 58px rgba(7, 26, 51, .10);
+  scroll-snap-align: start;
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
@@ -2554,6 +2638,47 @@ body[data-page="projects"] .amigos-wrapper .real-estate-card:hover {
 
 body[data-page="projects"] .amigos-wrapper .real-estate-card[hidden] {
   display: none;
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls button {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(7, 26, 51, .18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+  color: #071a33;
+  box-shadow: 0 16px 34px rgba(7, 26, 51, .12);
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+
+html[data-theme="amigos-dark"] body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls button,
+html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls button {
+  border-color: rgba(255, 255, 255, .2);
+  background: rgba(13, 37, 66, .74);
+  color: #fff;
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(243, 145, 37, .55);
+  box-shadow: 0 20px 40px rgba(7, 26, 51, .18);
+}
+
+body[data-page="projects"] .amigos-wrapper .real-estate-carousel-controls button:disabled {
+  cursor: default;
+  opacity: .38;
 }
 
 body[data-page="projects"] .amigos-wrapper .real-estate-card > img {
@@ -2889,7 +3014,11 @@ body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy ul {
 
 @media (max-width: 1160px) {
   body[data-page="projects"] .amigos-wrapper .real-estate-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: none;
+  }
+
+  body[data-page="projects"] .amigos-wrapper .real-estate-card {
+    flex-basis: calc((100% - 16px) / 2);
   }
 
   body[data-page="projects"] .amigos-wrapper .real-estate-detail-panel {
@@ -2902,13 +3031,16 @@ body[data-page="projects"] .amigos-wrapper .real-estate-detail-copy ul {
 }
 
 @media (max-width: 860px) {
-  body[data-page="projects"] .amigos-wrapper .real-estate-hub-head,
-  body[data-page="projects"] .amigos-wrapper .real-estate-card-grid {
+  body[data-page="projects"] .amigos-wrapper .real-estate-hub-head {
     grid-template-columns: 1fr;
   }
 
   body[data-page="projects"] .amigos-wrapper .real-estate-hub-head {
     align-items: start;
+  }
+
+  body[data-page="projects"] .amigos-wrapper .real-estate-card {
+    flex-basis: min(88vw, 430px);
   }
 }
 

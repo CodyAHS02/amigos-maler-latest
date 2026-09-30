@@ -1,4 +1,5 @@
 // Next loads legacy browser scripts after hydration. If DOMContentLoaded has
+document.body.dataset.page = "interior-painting";
 // already fired, run the initializer immediately so approved HTML behavior stays intact.
 function runWhenDomReady(init) {
     if (document.readyState === "loading") {

@@ -11643,7 +11643,7 @@ html[data-theme="amigos-dark"] .site-header .customer-header-btn {
 }
 
 /* Homepage client polish: strict button formula, controlled gradients, and readable dark theme accents. */
-body[data-page="home"] {
+body[data-page="home"], body[data-page="interior-painting"], body[data-page="about"] {
     --am-yellow-grad: linear-gradient(135deg, #F6BE10 0%, #C89400 100%);
     --am-orange-grad: linear-gradient(135deg, #F39125 0%, #B94E10 100%);
     --am-pink-grad: linear-gradient(135deg, #E62453 0%, #97134D 100%);
@@ -11653,7 +11653,7 @@ body[data-page="home"] {
 body[data-page="home"] .introBtn,
 body[data-page="home"] .hero-buttons .btn-primary,
 body[data-page="home"] .quote-start-btn,
-body[data-page="home"] .review-btn {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn {
     background: var(--am-mixed-grad) !important;
     border: 1px solid rgba(246, 190, 16, .44) !important;
     color: #fff !important;
@@ -11674,7 +11674,7 @@ body[data-page="home"] .btn-secondary {
 body[data-page="home"] .introBtn:hover,
 body[data-page="home"] .hero-buttons .btn-primary:hover,
 body[data-page="home"] .quote-start-btn:hover,
-body[data-page="home"] .review-btn:hover {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn:hover {
     transform: translateY(-4px) scale(1.015);
     filter: saturate(1.14) brightness(1.04);
     box-shadow: 0 24px 58px rgba(230, 36, 83, .30), 0 16px 36px rgba(246, 190, 16, .22) !important;
@@ -11882,8 +11882,8 @@ body[data-page="home"] .testimonial-card .stars {
     -webkit-text-fill-color: #F6BE10 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials {
     background:
         radial-gradient(circle at 18% 14%, rgba(230, 36, 83, .12), transparent 28%),
         radial-gradient(circle at 82% 78%, rgba(246, 190, 16, .08), transparent 30%),
@@ -11891,16 +11891,16 @@ html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about
     color: #fff !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials h2,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials p,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials h2,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials p,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials h2,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials p,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials h2,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
@@ -12226,47 +12226,45 @@ body[data-page="home"] .plans-header h2 {
     -webkit-text-fill-color: #071A33 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials {
     min-height: 100vh !important;
-    height: 100vh !important;
     padding: clamp(54px, 7vh, 84px) 20px clamp(44px, 6vh, 66px) !important;
-    overflow: hidden !important;
     background:
         radial-gradient(circle at 50% 48%, rgba(7, 26, 51, .08), transparent 36%),
         linear-gradient(180deg, #ffffff 0%, #ffffff 100%) !important;
     color: #071A33 !important;
 }
 
-body[data-page="home"] .testimonial-center {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-center {
     margin-bottom: clamp(18px, 3vh, 34px) !important;
 }
 
-body[data-page="home"] .testimonial-center h2 {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-center h2 {
     font-size: clamp(34px, 4.4vw, 58px) !important;
     color: #071A33 !important;
     -webkit-text-fill-color: #071A33 !important;
 }
 
-body[data-page="home"] .testimonial-kicker {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-kicker {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-body[data-page="home"] .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-stage {
     height: clamp(310px, 38vh, 430px) !important;
 }
 
-body[data-page="home"] .testimonial-card {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonial-card {
     background: rgba(255, 255, 255, .76) !important;
     border-color: rgba(7, 26, 51, .12) !important;
 }
 
-body[data-page="home"] .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dots {
     margin-top: clamp(16px, 2.2vh, 28px) !important;
 }
 
-body[data-page="home"] .carousel-dot,
-html[data-theme="amigos-dark"] body[data-page="home"] .carousel-dot {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dot,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .carousel-dot {
     background: rgba(7, 26, 51, .28) !important;
 }
 
@@ -12382,54 +12380,54 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
 }
 
 /* Final homepage polish: testimonials readability + single-line audience hover border. */
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card {
     background: rgba(255, 255, 255, .86) !important;
     color: #050505 !important;
     -webkit-text-fill-color: currentColor !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card p,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card h4,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span:not(.stars):not(.city),
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card p,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card h4,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span:not(.stars):not(.city) {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card p,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card h4,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span:not(.stars):not(.city),
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card p,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card h4,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span:not(.stars):not(.city) {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span.city,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card span.city {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span.city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card span.city {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
     margin-bottom: 24px !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
     margin-top: 24px !important;
 }
 
@@ -12494,50 +12492,50 @@ body[data-page="home"] .audience-card:hover::after {
 }
 
 /* Final client polish override: testimonial contrast + cleaner one-stroke audience border. */
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-kicker {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-kicker {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card {
     background: rgba(255, 255, 255, .94) !important;
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card *,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card * {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card * {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
     color: #FFD21F !important;
     -webkit-text-fill-color: #FFD21F !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .city,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .city {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .city,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .city {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
     margin-bottom: 22px !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
     margin-top: 0 !important;
 }
 
@@ -12709,7 +12707,7 @@ html:not([data-theme="amigos-dark"]) .footer-bottom a {
 }
 
 /* About dark-theme hard override: keep requested accent sections visibly colored. */
-html[data-theme="amigos-dark"] body[data-page="about"] {
+html[data-theme="amigos-dark"] body[data-page="about"], html[data-theme="amigos-dark"] body[data-page="interior-painting"] {
     --about-hard-mix: linear-gradient(135deg,
             #FFD21F 0%,
             #FF9B1A 30%,
@@ -12718,7 +12716,7 @@ html[data-theme="amigos-dark"] body[data-page="about"] {
             #C73B8E 100%);
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .numbers-section {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .numbers-section {
     background:
         radial-gradient(circle at 12% 16%, rgba(255, 210, 31, .55), transparent 30%),
         radial-gradient(circle at 78% 18%, rgba(230, 36, 83, .48), transparent 34%),
@@ -12728,7 +12726,7 @@ html[data-theme="amigos-dark"] body[data-page="about"] main .numbers-section {
     animation: aboutMovingGradient 12s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .values-section {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section {
     background:
         radial-gradient(circle at 14% 18%, rgba(255, 210, 31, .46), transparent 28%),
         radial-gradient(circle at 82% 28%, rgba(255, 122, 26, .42), transparent 32%),
@@ -12738,45 +12736,45 @@ html[data-theme="amigos-dark"] body[data-page="about"] main .values-section {
     animation: aboutMovingGradient 13s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials {
     color: #ffffff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials h2,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials p,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .review-link,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-control {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials h2,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials p,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .review-link,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-control {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .section-kicker,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-stars,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card span {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .section-kicker,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-stars,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card span {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card.active {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active {
     background: rgba(255, 255, 255, .86) !important;
     border-color: rgba(5, 5, 5, .16) !important;
     color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card *,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card.active * {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active * {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card:hover,
-html[data-theme="amigos-dark"] body[data-page="about"] main .about-testimonials .testimonial-card.active:hover {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card:hover,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active:hover {
     background: #FFD21F !important;
     border-color: #FFD21F !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta {
     background:
         radial-gradient(circle at 14% 18%, rgba(255, 210, 31, .50), transparent 28%),
         radial-gradient(circle at 82% 24%, rgba(230, 36, 83, .48), transparent 34%),
@@ -12786,27 +12784,27 @@ html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta {
     animation: aboutMovingGradient 13s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .numbers-section *,
-html[data-theme="amigos-dark"] body[data-page="about"] main .values-section *,
-html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta * {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .numbers-section *,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section *,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta * {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .values-section .value-icon::before,
-html[data-theme="amigos-dark"] body[data-page="about"] main .values-section .value-icon::after {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section .value-icon::before,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section .value-icon::after {
     background: #fff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta .btn,
-html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta .btn-light {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn,
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn-light {
     background: #fff !important;
     border-color: #fff !important;
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta .btn-ghost {
+html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn-ghost {
     background: rgba(255, 255, 255, .14) !important;
     border-color: rgba(255, 255, 255, .72) !important;
     color: #fff !important;
@@ -12917,21 +12915,21 @@ html[data-theme="amigos-dark"] body[data-page="home"] .projects-dock {
     z-index: 20 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-stage {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-stage {
     margin-bottom: 54px !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .carousel-dots {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .carousel-dots {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
 
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
-:is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .rating span,
-html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"]) .testimonials .testimonial-card .stars {
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .rating span,
+html[data-theme="amigos-dark"] :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials .testimonial-card .stars {
     background: var(--am-mixed-grad) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;

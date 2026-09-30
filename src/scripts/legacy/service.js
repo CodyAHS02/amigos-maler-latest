@@ -357,6 +357,52 @@ runWhenDomReady(() => {
 
     }
 
+    /* ================================
+    REVIEW CAROUSEL
+    ================================ */
+
+    const reviewSlider = document.getElementById("serviceReviewSlider");
+
+    if (reviewSlider) {
+        const reviewCards = Array.from(reviewSlider.querySelectorAll(".review-card"));
+        const prevReview = document.querySelector(".review-prev");
+        const nextReview = document.querySelector(".review-next");
+        const reviewDots = document.querySelector(".review-dots");
+        let currentReview = 0;
+
+        function showReview(index) {
+            if (!reviewCards.length) return;
+            currentReview = (index + reviewCards.length) % reviewCards.length;
+            reviewSlider.style.setProperty("--review-index", currentReview);
+
+            reviewCards.forEach((card, cardIndex) => {
+                card.toggleAttribute("aria-hidden", cardIndex !== currentReview);
+            });
+
+            if (reviewDots) {
+                reviewDots.querySelectorAll(".review-dot").forEach((dot, dotIndex) => {
+                    dot.classList.toggle("active", dotIndex === currentReview);
+                    dot.setAttribute("aria-current", dotIndex === currentReview ? "true" : "false");
+                });
+            }
+        }
+
+        if (reviewDots && reviewCards.length) {
+            reviewCards.forEach((_, index) => {
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "review-dot";
+                dot.setAttribute("aria-label", "Show review " + (index + 1));
+                dot.addEventListener("click", () => showReview(index));
+                reviewDots.appendChild(dot);
+            });
+        }
+
+        prevReview?.addEventListener("click", () => showReview(currentReview - 1));
+        nextReview?.addEventListener("click", () => showReview(currentReview + 1));
+        showReview(0);
+    }
+
 
     /* ================================
     REFRESH

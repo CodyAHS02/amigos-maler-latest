@@ -31,7 +31,7 @@ const pageHtml = `<main>
         <h2>Identify Causes. Eliminate Mold. Prevent Recurrence.</h2>
         <p>Treating surface mold without resolving underlying physics only leads to repeated outbreaks. We combine thermal and moisture inspection with targeted Swiss-grade remediation systems.</p>
       </div>
-      <div class="service-grid">
+      <div class="service-grid mold-service-grid">
         <article class="service-card reveal">
           <div class="service-image"><img src="/assets/Plastering/plaster-repair.jpeg" alt="Moisture measurement and surface diagnostics"></div>
           <div class="service-content">
@@ -62,11 +62,21 @@ const pageHtml = `<main>
             <a href="/#quote">Calculate Project →</a>
           </div>
         </article>
+        <article class="service-card reveal">
+          <div class="service-image"><img src="/assets/services/pexels-kseniachernaya-5691513.jpg" alt="Final sealing and protective coating"></div>
+          <div class="service-content">
+            <span class="number">04</span>
+            <h3>Sealing & Finishing</h3>
+            <h4>Long-lasting surface protection.</h4>
+            <p>Final sealant layers lock in the remediation and give surfaces a clean, durable finish that resists future moisture intrusion.</p>
+            <a href="/contact">Get a Quote →</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="process-section">
+  <section class="process-section mold-process">
     <div class="section-heading reveal">
       <span>REMEDIATION PROCESS</span>
       <h2>Step-by-Step Restoration to Clean, Healthy Spaces.</h2>

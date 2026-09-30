@@ -30,7 +30,6 @@ const pageHtml = `
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-spotlight"></div>
-    <div class="hero-particles"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow">AI Powered Real Estate | Painting | Renovation Services</div>
       <h1>YOUR PARTNER FOR<br><span class="project-accentline">PROPERTY VALUE PRESERVATION</span></h1>
@@ -317,19 +316,29 @@ const pageHtml = `
   <!-- FOUNDER · placed directly before the price engine -->
   <section id="founder" class="founder-section">
     <div class="container founder-shell reveal">
-      <div class="founder-portrait-wrap" data-founder-portrait>
-        <div class="founder-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
-        <figure class="founder-portrait">
-          <img src="/Projects-Page-Woman.jpeg" alt="Patricia, founder of Amigos Immo" loading="lazy">
-          <figcaption>
-            <strong>Patricia</strong>
-            <span>Founder · Amigos Immo</span>
-          </figcaption>
-        </figure>
+      <div class="projects-founder-visual-wrap founder-visual-wrap" id="projectsFounderCardWrap">
+        <div class="projects-founder-ambient-glow founder-ambient-glow" aria-hidden="true"></div>
+        <div class="projects-founder-card founder-card-3d" id="projectsFounderCard3d">
+          <figure class="projects-founder-image founder-image">
+            <img src="/Projects-Page-Woman.jpeg" alt="Patricia, founder of Amigos Immo" loading="lazy">
+            <div class="projects-founder-image-glare founder-image-glare" id="projectsFounderGlare" aria-hidden="true"></div>
+          </figure>
+          <div class="projects-founder-badge founder-badge-floating">
+            <div class="badge-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB800" stroke="#FF7A1A" stroke-width="1.2"/>
+              </svg>
+            </div>
+            <div class="badge-text">
+              <strong>Patricia</strong>
+              <span>Founder · Amigos Immo</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="founder-story">
         <p class="founder-kicker">A personal standard for every property</p>
-        <h2>Meet Patricia.</h2>
+        <h2>Meet Melanie Bryan.</h2>
         <p class="founder-lede">Patricia founded Amigos Immo around a simple belief: property care should feel personal, transparent and thoughtfully planned—not reactive.</p>
         <p>She brings clients, craftspeople and technology together to make complex renovation and maintenance decisions easier to understand. Every recommendation starts with listening, every estimate is explained clearly, and every project is considered in the context of the property's long-term value.</p>
         <blockquote>“A property is more than a project. It is a responsibility we share with every owner.”</blockquote>
@@ -368,11 +377,14 @@ const pageHtml = `
           <label class="enquiry-field">
             <span>Which size fits best?</span>
             <select name="scope" id="enquiry-scope" required>
-              <option>Studio</option>
-              <option>1 bedroom</option>
-              <option>2 bedrooms</option>
-              <option>3 bedrooms</option>
-              <option>Full apartment</option>
+              <option>1,5 Bedroom</option>
+              <option>2,5 Bedroom</option>
+              <option>3 Bedroom</option>
+              <option>3,5 Bedroom</option>
+              <option>4,5 Bedroom</option>
+              <option>5,5 Bedroom</option>
+              <option>6,5 Bedroom</option>
+              <option>8,5 Bedroom</option>
             </select>
           </label>
 
@@ -455,7 +467,7 @@ const pageHtml = `
   </section>
 
   <!-- SECTION 8 · REAL ESTATE HUB (separate add-on; existing sections untouched) -->
-  <section id="real-estate-hub" class="real-estate-hub-section" aria-labelledby="real-estate-hub-title" onclick="(function(e){var t=e.target.closest('[data-re-filter],[data-detail-target]');if(!t||!e.currentTarget.contains(t))return;if(t.dataset.reFilter){var s=e.currentTarget,f=t.dataset.reFilter;s.classList.remove('has-real-estate-detail');s.querySelectorAll('[data-re-filter]').forEach(function(b){var on=b.dataset.reFilter===f;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false')});s.querySelectorAll('[data-re-category]').forEach(function(c,i){var show=f==='all'?i<3:c.dataset.reCategory===f;c.hidden=!show;c.style.display=show?'':'none'});s.querySelectorAll('[data-detail-panel]').forEach(function(p){p.classList.remove('is-active');p.setAttribute('aria-hidden','true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-expanded','false')})}else if(t.dataset.detailTarget){var id=t.dataset.detailTarget,s=e.currentTarget;s.classList.add('has-real-estate-detail');s.querySelectorAll('[data-detail-panel]').forEach(function(p){var on=p.dataset.detailPanel===id;p.classList.toggle('is-active',on);p.setAttribute('aria-hidden',on?'false':'true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){var on=b.dataset.detailTarget===id;b.classList.toggle('is-active',on);b.setAttribute('aria-expanded',on?'true':'false')})}})(event)">
+  <section id="real-estate-hub" class="real-estate-hub-section" aria-labelledby="real-estate-hub-title" onclick="(function(e){var t=e.target.closest('[data-re-filter],[data-detail-target]');if(!t||!e.currentTarget.contains(t))return;if(t.dataset.reFilter){var s=e.currentTarget,f=t.dataset.reFilter;s.classList.remove('has-real-estate-detail');s.querySelectorAll('[data-re-filter]').forEach(function(b){var on=b.dataset.reFilter===f;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false')});s.querySelectorAll('[data-re-category]').forEach(function(c){var show=f==='all'||c.dataset.reCategory===f;c.hidden=!show;c.style.display=show?'':'none'});var track=s.querySelector('[data-re-carousel-track]');if(track)track.scrollLeft=0;s.querySelectorAll('[data-detail-panel]').forEach(function(p){p.classList.remove('is-active');p.setAttribute('aria-hidden','true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-expanded','false')})}else if(t.dataset.detailTarget){var id=t.dataset.detailTarget,s=e.currentTarget;s.classList.add('has-real-estate-detail');s.querySelectorAll('[data-detail-panel]').forEach(function(p){var on=p.dataset.detailPanel===id;p.classList.toggle('is-active',on);p.setAttribute('aria-hidden',on?'false':'true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){var on=b.dataset.detailTarget===id;b.classList.toggle('is-active',on);b.setAttribute('aria-expanded',on?'true':'false')})}})(event)">
     <div class="container">
       <div class="real-estate-hub-head reveal">
         <div>
@@ -475,7 +487,8 @@ const pageHtml = `
       </div>
 
       <div class="real-estate-hub-grid">
-        <div class="real-estate-card-grid reveal" aria-label="Property cards">
+        <div class="real-estate-carousel reveal" data-re-carousel>
+          <div class="real-estate-card-grid" data-re-carousel-track aria-label="Property cards">
           <article class="real-estate-card" data-re-category="rent">
             <img src="/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg" alt="Bright apartment interior in Olten" loading="lazy" decoding="async">
             <div class="real-estate-card-body">
@@ -560,6 +573,11 @@ const pageHtml = `
               <button type="button" class="real-estate-action" data-detail-target="zug-new">View project details</button>
             </div>
           </article>
+          </div>
+          <div class="real-estate-carousel-controls" aria-label="Property carousel controls">
+            <button type="button" data-re-carousel-prev aria-label="Previous property">‹</button>
+            <button type="button" data-re-carousel-next aria-label="Next property">›</button>
+          </div>
         </div>
       </div>
 
@@ -1056,8 +1074,9 @@ const pageHtml = `
       const wantInput = document.getElementById('enquiry-want');
       const scopeInput = document.getElementById('enquiry-scope');
       const status = document.getElementById('projects-enquiry-status');
+      const apartmentRooms = ["1,5 Bedroom", "2,5 Bedroom", "3 Bedroom", "3,5 Bedroom", "4,5 Bedroom", "5,5 Bedroom", "6,5 Bedroom", "8,5 Bedroom"];
       const options = {
-        "Apartment": ["Studio", "1 bedroom", "2 bedrooms", "3 bedrooms", "Full apartment"],
+        "Apartment": apartmentRooms,
         "House": ["Small house", "3 bedrooms", "4+ bedrooms", "Full house", "Interior + exterior"],
         "Office": ["Private office", "Small team office", "Full floor", "Reception area", "Meeting rooms"],
         "Commercial space": ["Shop", "Restaurant", "Clinic", "Showroom", "Full commercial unit"],
@@ -1145,6 +1164,48 @@ const pageHtml = `
       }));
       const first = swatches ? swatches.querySelector('.sw.on') : null;
       if (first && tint) tint.style.background = first.dataset.tint;
+    })();
+
+    // Projects founder card: same 3D hover treatment as the about-page frame.
+    (function () {
+      const wrap = document.getElementById('projectsFounderCardWrap');
+      const card = document.getElementById('projectsFounderCard3d');
+      const glare = document.getElementById('projectsFounderGlare');
+      if (!wrap || !card || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let bounds;
+      const updateBounds = () => {
+        bounds = wrap.getBoundingClientRect();
+      };
+
+      wrap.addEventListener('mouseenter', () => {
+        updateBounds();
+        if (glare) glare.style.opacity = '1';
+      });
+
+      window.addEventListener('scroll', updateBounds, { passive: true });
+      window.addEventListener('resize', updateBounds, { passive: true });
+
+      wrap.addEventListener('mousemove', (event) => {
+        if (!bounds) updateBounds();
+        const mouseX = event.clientX - bounds.left;
+        const mouseY = event.clientY - bounds.top;
+        const xPct = (mouseX / bounds.width - 0.5) * 2;
+        const yPct = (mouseY / bounds.height - 0.5) * 2;
+        const rotX = -yPct * 8;
+        const rotY = xPct * 8;
+
+        card.style.transform = \`perspective(1000px) rotateX(\${rotX.toFixed(2)}deg) rotateY(\${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)\`;
+
+        if (glare) {
+          glare.style.background = \`radial-gradient(circle at \${(mouseX / bounds.width) * 100}% \${(mouseY / bounds.height) * 100}%, rgba(255, 255, 255, 0.40) 0%, transparent 60%)\`;
+        }
+      });
+
+      wrap.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        if (glare) glare.style.opacity = '0';
+      });
     })();
     
 

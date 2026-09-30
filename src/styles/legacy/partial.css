@@ -2522,7 +2522,6 @@ html[data-theme="amigos-dark"] .section-heading>span,
 html[data-theme="amigos-dark"] .eyebrow,
 html[data-theme="amigos-dark"] .section-tag,
 html[data-theme="amigos-dark"] .partners-kicker,
-html[data-theme="amigos-dark"] .number,
 html[data-theme="amigos-dark"] .process-card>span,
 html[data-theme="amigos-dark"] .why-card .icon,
 html[data-theme="amigos-dark"] [class*="kicker"],
@@ -2543,7 +2542,6 @@ html[data-theme="amigos-dark"] .review-card,
 html[data-theme="amigos-dark"] .why-card,
 html[data-theme="amigos-dark"] .process-card,
 html[data-theme="amigos-dark"] .colour-sample,
-html[data-theme="amigos-dark"] .property-content,
 html[data-theme="amigos-dark"] .svc-intro-point,
 html[data-theme="amigos-dark"] .material-card,
 html[data-theme="amigos-dark"] .benefit-card,
@@ -3097,3 +3095,29 @@ html:not([data-theme="amigos-dark"]) .property-floating-cards .floating-card spa
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
+
+/* ── Dark mode: force service-card content text to be readable ── */
+html[data-theme="amigos-dark"] .service-card .service-content h3,
+html[data-theme="amigos-dark"] .service-card .service-content h4,
+html[data-theme="amigos-dark"] .services-overview .service-content h3,
+html[data-theme="amigos-dark"] .services-overview .service-content h4 {
+    color: #FDFBF6 !important;
+    -webkit-text-fill-color: #FDFBF6 !important;
+    background: none !important;
+    background-image: none !important;
+}
+
+html[data-theme="amigos-dark"] .service-card .service-content p,
+html[data-theme="amigos-dark"] .service-card .service-content a,
+html[data-theme="amigos-dark"] .services-overview .service-content p,
+html[data-theme="amigos-dark"] .services-overview .service-content a {
+    color: rgba(253, 251, 246, 0.82) !important;
+    -webkit-text-fill-color: rgba(253, 251, 246, 0.82) !important;
+}
+
+html[data-theme="amigos-dark"] .service-card .service-content .number,
+html[data-theme="amigos-dark"] .services-overview .service-content .number {
+    color: #FDFBF6 !important;
+    -webkit-text-fill-color: #FDFBF6 !important;
+}
+

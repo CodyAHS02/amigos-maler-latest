@@ -1211,6 +1211,7 @@ a {
 .material-card:hover p,
 .material-card:hover * {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .svc-intro-point:hover svg,
@@ -1224,10 +1225,12 @@ a {
 
 .svc-intro-point:hover {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .svc-intro-point:hover span {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .benefit-card {
@@ -1254,6 +1257,7 @@ a {
 .benefit-card h3,
 .benefit-card p {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .slider-divider,

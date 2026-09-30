@@ -729,14 +729,14 @@ a {
     color: white;
 }
 
-.step-content h3 {
+.ren-process .step-content h3 {
     font-size: 28px;
     margin-bottom: 15px;
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
 
-.step-content p {
+.ren-process .step-content p {
     line-height: 1.7;
     color: rgba(255, 255, 255, .7) !important;
     -webkit-text-fill-color: rgba(255, 255, 255, .7) !important;
@@ -973,7 +973,6 @@ a {
     position: absolute;
     inset: 0;
     background: url("/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg") center/cover;
-    transform: scale(1.05);
 }
 
 .cta-background:after {
@@ -1274,7 +1273,6 @@ a {
 .intro-points div,
 .ren-card,
 .scope-item,
-.process-step .step-content,
 .flow-item,
 .value-points div,
 .why-card {
@@ -1291,7 +1289,6 @@ a {
 .intro-points div::before,
 .ren-card::before,
 .scope-item::before,
-.process-step .step-content::before,
 .flow-item::before,
 .value-points div::before,
 .why-card::before {
@@ -1310,7 +1307,6 @@ a {
 .intro-points div:nth-child(3n + 1)::before,
 .ren-card:nth-child(3n + 1)::before,
 .scope-item:nth-child(3n + 1)::before,
-.process-step:nth-child(3n + 1) .step-content::before,
 .flow-item:nth-child(3n + 1)::before,
 .value-points div:nth-child(3n + 1)::before,
 .why-card:nth-child(3n + 1)::before {
@@ -1321,7 +1317,6 @@ a {
 .intro-points div:nth-child(3n + 2)::before,
 .ren-card:nth-child(3n + 2)::before,
 .scope-item:nth-child(3n + 2)::before,
-.process-step:nth-child(3n + 2) .step-content::before,
 .flow-item:nth-child(3n + 2)::before,
 .value-points div:nth-child(3n + 2)::before,
 .why-card:nth-child(3n + 2)::before {
@@ -1332,7 +1327,6 @@ a {
 .intro-points div:nth-child(3n)::before,
 .ren-card:nth-child(3n)::before,
 .scope-item:nth-child(3n)::before,
-.process-step:nth-child(3n) .step-content::before,
 .flow-item:nth-child(3n)::before,
 .value-points div:nth-child(3n)::before,
 .why-card:nth-child(3n)::before {
@@ -1343,7 +1337,6 @@ a {
 .intro-points div>*,
 .ren-card>*,
 .scope-item>*,
-.process-step .step-content>*,
 .flow-item>*,
 .value-points div>*,
 .why-card>* {
@@ -1356,7 +1349,6 @@ a {
 .intro-points div:hover::before,
 .ren-card:hover::before,
 .scope-item:hover::before,
-.process-step:hover .step-content::before,
 .flow-item:hover::before,
 .value-points div:hover::before,
 .why-card:hover::before {
@@ -1367,7 +1359,6 @@ a {
 .intro-points div:hover,
 .ren-card:hover,
 .scope-item:hover,
-.process-step:hover .step-content,
 .flow-item:hover,
 .value-points div:hover,
 .why-card:hover {
@@ -1379,11 +1370,11 @@ a {
 .intro-points div:hover *,
 .ren-card:hover *,
 .scope-item:hover *,
-.process-step:hover .step-content *,
 .flow-item:hover *,
 .value-points div:hover *,
 .why-card:hover * {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .why-card {
@@ -1406,11 +1397,12 @@ a {
     background-image: linear-gradient(135deg, var(--logo-magenta), var(--logo-pink), var(--logo-yellow));
 }
 
-.why-card *,
-.why-card span,
-.why-card h3,
-.why-card p {
+.why-amigos-section .why-card *,
+.why-amigos-section .why-card span,
+.why-amigos-section .why-card h3,
+.why-amigos-section .why-card p {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .ren-process,
@@ -1611,7 +1603,6 @@ html[data-theme="amigos-dark"] .partner-flow-section .flow-item:hover p {
     .intro-points div::before,
     .ren-card::before,
     .scope-item::before,
-    .process-step .step-content::before,
     .flow-item::before,
     .value-points div::before,
     .why-card,

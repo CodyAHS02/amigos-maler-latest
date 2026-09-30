@@ -320,18 +320,7 @@ runWhenDomReady(() => {
 
 
     if (document.querySelector(".cta-background")) {
-
-        gsap.to(".cta-background", {
-            y: -80,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".ren-final-cta",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.5
-            }
-        });
-
+        // Animation removed as requested
     }
 
 

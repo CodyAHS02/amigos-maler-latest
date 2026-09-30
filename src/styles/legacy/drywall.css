@@ -1345,6 +1345,7 @@ html[data-theme="amigos-dark"] .property-points p {
 .benefit-card:hover *,
 .property-points div:hover * {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .benefit-card {
@@ -1372,6 +1373,7 @@ html[data-theme="amigos-dark"] .property-points p {
 .benefit-card h3,
 .benefit-card p {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .drywall-applications,
@@ -1390,6 +1392,7 @@ html[data-theme="amigos-dark"] .property-points p {
 
 .why-amigos .section-heading h2 {
     color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
 }
 
 .why-amigos .section-heading .section-label {
