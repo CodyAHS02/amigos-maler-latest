@@ -2484,6 +2484,61 @@ html[data-theme="amigos-dark"] body:has(.property-hero) .process-item-side {
     display: none !important;
   }
 }
+
+@media (max-width: 640px) {
+  .property-hero {
+    overflow: hidden !important;
+    padding: 110px 30px 46px !important;
+  }
+
+  .property-hero .hero-content,
+  .property-hero .hero-introduction {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .property-hero .hero-label {
+    max-width: 100% !important;
+    letter-spacing: .18em !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .property-hero .hero-introduction h1 {
+    width: 100% !important;
+    max-width: 300px !important;
+    font-size: 30px !important;
+    line-height: 1.14 !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .property-hero .hero-introduction > p {
+    width: 100% !important;
+    max-width: 300px !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .property-hero .hero-actions {
+    width: 100% !important;
+    max-width: 300px !important;
+  }
+
+  .property-hero .hero-actions .property-button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    white-space: normal !important;
+  }
+}
 `;
 
 export default function Page() {

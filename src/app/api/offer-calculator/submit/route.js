@@ -15,7 +15,11 @@ export async function POST(request) {
     return NextResponse.json({ errors: validation.errors }, { status: 400 });
   }
 
-  const result = await submitOfferRequest({ sessionId, customerInfo: validation.values });
+  const result = await submitOfferRequest({
+    sessionId,
+    customerInfo: validation.values,
+    calculatorState: payload.calculatorState && typeof payload.calculatorState === "object" ? payload.calculatorState : null
+  });
 
   if (result.error) {
     return NextResponse.json({ error: result.error }, { status: 400 });

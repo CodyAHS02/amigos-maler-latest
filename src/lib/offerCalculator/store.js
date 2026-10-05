@@ -324,7 +324,7 @@ export async function addProjectPhoto({ sessionId, category, file }) {
   return { photo };
 }
 
-export async function submitOfferRequest({ sessionId, customerInfo }) {
+export async function submitOfferRequest({ sessionId, customerInfo, calculatorState = null }) {
   const session = await getVerifiedSession(sessionId);
 
   if (!session) return { error: "Please verify your e-mail before requesting an offer." };
@@ -335,6 +335,7 @@ export async function submitOfferRequest({ sessionId, customerInfo }) {
     memorySessions.set(sessionId, {
       ...session,
       customerInfo,
+      calculatorState,
       requestedAction: customerInfo.requestedAction,
       status: "REQUEST_SUBMITTED",
       projectId,
@@ -379,6 +380,11 @@ export async function submitOfferRequest({ sessionId, customerInfo }) {
     components: session.components,
     services: session.services,
     quantities: session.quantities,
+    condition: session.condition || null,
+    postalCode: session.postalCode || null,
+    city: session.city || null,
+    projectNotes: session.projectNotes || null,
+    calculatorState,
     customerInfo,
     requestedAction: customerInfo.requestedAction,
     estimate: { minCents: session.minCents, maxCents: session.maxCents, currency: session.currency }

@@ -11,6 +11,7 @@
     document.getElementById("projectsHeroVideoDark")
   ].filter(Boolean);
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const compactHero = window.matchMedia("(max-width: 620px)").matches;
   let activeVideo = null;
 
   function clamp(value) {
@@ -119,7 +120,7 @@
     });
   }
 
-  if (reducedMotion) {
+  if (reducedMotion || compactHero) {
     videos.forEach((video) => {
       video.muted = true;
       video.loop = true;
