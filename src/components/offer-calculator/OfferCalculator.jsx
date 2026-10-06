@@ -1507,6 +1507,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   }
                 }}
               >
+                <span className={styles.selectionCardVisual} aria-hidden="true" />
                 <div className={styles.tabBadgeRow}>
                   <span className={styles.tabTagFast}>
                     <span className={styles.tabTagIcon}>⚡</span> FOR HOMEOWNERS
@@ -1569,6 +1570,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   }
                 }}
               >
+                <span className={styles.selectionCardVisual} aria-hidden="true" />
                 <div className={styles.tabBadgeRow}>
                   <span className={styles.tabTagDetailed}>
                     <span className={styles.tabTagIcon}>📐</span> FOR PROFESSIONALS

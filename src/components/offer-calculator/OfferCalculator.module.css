@@ -1300,7 +1300,9 @@
 }
 
 .selectionTabCard {
+  position: relative;
   display: flex;
+  overflow: hidden;
   min-height: 360px;
   flex-direction: column;
   padding: 30px;
@@ -1309,7 +1311,23 @@
   background: var(--panel);
   color: var(--ink);
   cursor: pointer;
-  box-shadow: var(--shadow)
+  box-shadow: var(--shadow);
+  isolation: isolate
+}
+
+.selectionTabCard>*:not(.selectionCardVisual) {
+  position: relative;
+  z-index: 2
+}
+
+.selectionTabCard>.tabHeadline,
+.selectionTabCard>.tabDescription,
+.selectionTabCard>.tabFeatureList {
+  width: min(58%, 380px)
+}
+
+.selectionTabCard>.tabButtonWrapper {
+  width: 100%
 }
 
 .selectionTabCard:hover {
@@ -1320,7 +1338,14 @@
 .tabBadgeRow {
   display: flex;
   justify-content: space-between;
-  gap: 12px
+  gap: 12px;
+  width: 100%
+}
+
+.tabTagEstimateTime {
+  margin-left: auto;
+  text-align: right;
+  white-space: nowrap
 }
 
 .tabTagFast,
@@ -1477,6 +1502,12 @@
 }
 
 @media(max-width:640px) {
+  .selectionCardVisual {
+    width: 72%;
+    opacity: .28;
+    background-size: cover;
+    background-position: right center;
+  }
 
   .heroCopy h1,
   .quickQuoteIntro h2,
@@ -1696,6 +1727,31 @@
   border-top: 4px solid var(--c);
 }
 
+.selectionCardVisual {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 88px;
+  left: 58%;
+  width: auto;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  opacity: .94;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .18) 13%, rgba(0, 0, 0, .9) 36%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .18) 13%, rgba(0, 0, 0, .9) 36%, #000 100%);
+  pointer-events: none;
+}
+
+.tabFastEstimate .selectionCardVisual {
+  background-image: url("/assets/calculator-card-quick-visual.webp");
+}
+
+.tabDetailedSpecs .selectionCardVisual {
+  background-image: url("/assets/calculator-card-detailed-visual.webp");
+}
+
 .tabTagIcon {
   margin-right: 5px;
 }
@@ -1839,6 +1895,23 @@
 }
 
 @media (max-width: 1000px) {
+  .selectionTabCard>.tabBadgeRow,
+  .selectionTabCard>.tabHeadline,
+  .selectionTabCard>.tabDescription,
+  .selectionTabCard>.tabFeatureList {
+    width: min(62%, 420px);
+  }
+
+  .selectionCardVisual {
+    left: 62%;
+    opacity: .94;
+  }
+
+  .tabFastEstimate .selectionCardVisual,
+  .tabDetailedSpecs .selectionCardVisual {
+    background-size: cover;
+  }
+
   .homeLayout .embeddedRail {
     order: 1;
     align-self: start;
@@ -1970,6 +2043,33 @@
     max-width: 480px;
     font-size: 12px;
     line-height: 1.45;
+  }
+}
+
+@media (max-width: 640px) {
+  .selectionTabCard>.tabBadgeRow,
+  .selectionTabCard>.tabHeadline,
+  .selectionTabCard>.tabDescription,
+  .selectionTabCard>.tabFeatureList {
+    width: 100%;
+  }
+
+  .selectionCardVisual {
+    position: relative;
+    inset: auto;
+    order: 4;
+    width: 100%;
+    height: 170px;
+    margin: 4px 0 18px;
+    opacity: .94;
+    background-size: contain;
+    background-position: right center;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .9) 18%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .9) 18%, #000 76%, transparent 100%);
+  }
+
+  .selectionTabCard>.tabButtonWrapper {
+    order: 5;
   }
 }
 
