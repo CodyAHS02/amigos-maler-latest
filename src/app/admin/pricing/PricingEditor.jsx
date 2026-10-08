@@ -7,10 +7,12 @@ import styles from "./PricingEditor.module.css";
 // Handles automatic conversion between internal representation (e.g. cents) and visual display (CHF).
 
 const QUICK_PROPERTY_PRICES = [
-  { key: "2_5_room_apartment_base_price", label: "2½-Room Apartment", description: "Standard average 2.5 room flat (~55–70m²)", unit: "CHF", defaultVal: 2400 },
-  { key: "3_5_room_apartment_base_price", label: "3½-Room Apartment", description: "Standard average 3.5 room flat (~75–90m²)", unit: "CHF", defaultVal: 3200 },
-  { key: "4_5_room_apartment_base_price", label: "4½-Room Apartment", description: "Standard average 4.5 room flat (~95–115m²)", unit: "CHF", defaultVal: 4100 },
-  { key: "5_5_room_apartment_base_price", label: "5½-Room Apartment", description: "Large apartment or duplex (~120–145m²)", unit: "CHF", defaultVal: 5200 },
+  { key: "1_5_room_apartment_base_price", label: "1.5-Room Apartment Package", description: "Painting Package up to 30m²", unit: "CHF", defaultVal: 1500 },
+  { key: "2_5_room_apartment_base_price", label: "2.5-Room Apartment Package", description: "Painting Package up to 50m²", unit: "CHF", defaultVal: 2500 },
+  { key: "3_5_room_apartment_base_price", label: "3.5-Room Apartment Package", description: "Painting Package up to 70m²", unit: "CHF", defaultVal: 3700 },
+  { key: "4_5_room_apartment_base_price", label: "4.5-Room Apartment Package", description: "Painting Package up to 100m²", unit: "CHF", defaultVal: 5000 },
+  { key: "5_5_room_apartment_base_price", label: "5.5-Room Apartment Package", description: "Painting Package up to 150m²", unit: "CHF", defaultVal: 5900 },
+  { key: "6_5_room_apartment_base_price", label: "6.5-Room Apartment Package", description: "Painting Package up to 190m²", unit: "CHF", defaultVal: 6900 },
   { key: "house_base_price", label: "Single-Family House", description: "Detached villa / house average (~150–220m²)", unit: "CHF", defaultVal: 6500 },
   { key: "commercial_base_price", label: "Commercial Space", description: "Offices, retail or commercial property", unit: "CHF", defaultVal: 4800 },
   { key: "other_base_price", label: "Other / Custom Property", description: "Baseline reference for custom buildings", unit: "CHF", defaultVal: 3200 },
@@ -871,10 +873,12 @@ export default function PricingEditor({ initialSettings = {} }) {
                 <div className={styles.simField}>
                   <label>Property Type:</label>
                   <select value={simProperty} onChange={(e) => setSimProperty(e.target.value)}>
-                    <option value="2_5_apartment">2½-Room Apartment</option>
-                    <option value="3_5_apartment">3½-Room Apartment</option>
-                    <option value="4_5_apartment">4½-Room Apartment</option>
-                    <option value="5_5_apartment">5½-Room Apartment</option>
+                    <option value="1_5_apartment">1.5-Room Apartment Package</option>
+                    <option value="2_5_apartment">2.5-Room Apartment Package</option>
+                    <option value="3_5_apartment">3.5-Room Apartment Package</option>
+                    <option value="4_5_apartment">4.5-Room Apartment Package</option>
+                    <option value="5_5_apartment">5.5-Room Apartment Package</option>
+                    <option value="6_5_apartment">6.5-Room Apartment Package</option>
                     <option value="house">Single-Family House</option>
                     <option value="commercial">Commercial Property</option>
                     <option value="other">Other</option>

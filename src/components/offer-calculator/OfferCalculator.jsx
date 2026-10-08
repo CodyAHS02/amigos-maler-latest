@@ -45,12 +45,112 @@ function isValidSwissPostalCode(value) {
 }
 
 const homeQuickStepMeta = [
-  { number: "01", key: "type", title: "Project Type", icon: "step_property" },
-  { number: "02", key: "location", title: "Location", icon: "step_location" },
-  { number: "03", key: "size", title: "Size", icon: "step_quantities" },
-  { number: "04", key: "condition", title: "Condition & Photos", icon: "step_condition" },
-  { number: "05", key: "email", title: "Verify E-Mail", icon: "step_verify" },
-  { number: "06", key: "quote", title: "Quote", icon: "step_price" }
+  { number: "01", key: "package", title: "Choose Package", icon: "step_property" },
+  { number: "02", key: "confirm", title: "Confirm Package", icon: "step_summary" },
+  { number: "03", key: "contact", title: "Contact Details", icon: "step_price" },
+  { number: "04", key: "verify", title: "Verify E-Mail", icon: "step_verify" }
+];
+
+const homeQuickPropertyTypes = [
+  {
+    id: "1_5_apartment",
+    title: "1.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 2,
+    packageBackTitle: "1.5-Room Package",
+    packageDetails: [
+      "CHF 1,500",
+      "max 30m²",
+      "Standard wall and ceiling painting for apartments up to 30m²."
+    ],
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+  },
+  {
+    id: "2_5_apartment",
+    title: "2.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 3,
+    packageBackTitle: "2.5-Room Package",
+    packageDetails: [
+      "CHF 2,500",
+      "max 50m²",
+      "Standard wall and ceiling painting for apartments up to 50m²."
+    ],
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+  },
+  {
+    id: "3_5_apartment",
+    title: "3.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 4,
+    packageBackTitle: "3.5-Room Package",
+    packageDetails: [
+      "CHF 3,700",
+      "max 70m²",
+      "Standard wall and ceiling painting for apartments up to 70m²."
+    ],
+    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg"
+  },
+  {
+    id: "4_5_apartment",
+    title: "4.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 5,
+    packageBackTitle: "4.5-Room Package",
+    packageDetails: [
+      "CHF 5,000",
+      "max 100m²",
+      "Standard wall and ceiling painting for apartments up to 100m²."
+    ],
+    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.jpg"
+  },
+  {
+    id: "5_5_apartment",
+    title: "5.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 6,
+    packageBackTitle: "5.5-Room Package",
+    packageDetails: [
+      "CHF 5,900",
+      "max 150m²",
+      "Standard wall and ceiling painting for apartments up to 150m²."
+    ],
+    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
+  },
+  {
+    id: "6_5_apartment",
+    title: "6.5-room apartment",
+    subtitle: "Painting Package",
+    iconKey: "apartment",
+    roomCount: 7,
+    packageBackTitle: "6.5-Room Package",
+    packageDetails: [
+      "CHF 6,900",
+      "max 190m²",
+      "Standard wall and ceiling painting for apartments up to 190m²."
+    ],
+    image: "/assets/projects/project-04.jpg"
+  }
+];
+
+const homeQuickConditionOptions = [
+  {
+    id: "good",
+    title: "Normal condition",
+    desc: "Surfaces are ready for standard painting.",
+    iconKey: "condition_good"
+  },
+  {
+    id: "minor_repairs",
+    title: "Repairs Required",
+    desc: "Cracks, holes or damaged areas should be reviewed.",
+    iconKey: "condition_minor"
+  }
 ];
 
 function quickPackageDetails(option) {
@@ -562,6 +662,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   // offered alongside as a link to its own page rather than as an in-place mode switch.
   const isHomeQuickQuote = embedded && isSimple && Boolean(detailedQuoteHref);
   const currentStepMeta = isHomeQuickQuote ? homeQuickStepMeta : (isSimple ? simpleStepMeta : detailedStepMeta);
+  const selectedHomeQuickPackage = useMemo(() => (
+    homeQuickPropertyTypes.find((option) => option.id === state.propertyType) || null
+  ), [state.propertyType]);
   // Detailed inputs run 0–4 since Location was added as step 05 (§7B); the simple flow
   // still ends its inputs at 3, with 4 as its contact screen.
   const inputStepCount = isSimple ? 4 : 5;
@@ -800,7 +903,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
   const progress = useMemo(() => {
     if (isHomeQuickQuote) {
-      const currentIndex = step >= 5 ? 5 : step;
+      const currentIndex = Math.min(step, homeQuickStepMeta.length - 1);
       return ((currentIndex + 1) / homeQuickStepMeta.length) * 100;
     }
     if (isSimple) {
@@ -854,11 +957,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   function canContinue() {
     if (isHomeQuickQuote) {
       if (step === 0) return Boolean(state.propertyType);
-      if (step === 1) {
-        return Boolean(state.customerInfo.address.trim()) && isValidSwissPostalCode(state.postalCode) && Boolean(state.locationCity.trim());
-      }
-      if (step === 2) return Number(state.livingArea) > 0;
-      if (step === 3) return Boolean(state.condition);
+      if (step === 1) return Boolean(state.condition);
+      if (step === 2) return Boolean(state.customerInfo.firstName.trim()) && Boolean(state.customerInfo.lastName.trim()) && Boolean(state.email.trim());
       return true;
     }
     if (isSimple) {
@@ -974,7 +1074,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
   function next() {
     if (isHomeQuickQuote) {
-      if (canContinue()) setStep((current) => Math.min(current + 1, 4));
+      if (step === 2) {
+        submitContactAndSendCode();
+        return;
+      }
+      if (canContinue()) setStep((current) => Math.min(current + 1, homeQuickStepMeta.length - 1));
       return;
     }
 
@@ -1095,7 +1199,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       }
 
       setCodeSent(true);
-      setStep(isHomeQuickQuote ? 5 : (isSimple ? 10 : 6)); // Move to code entry screen
+      setStep(isHomeQuickQuote ? 3 : (isSimple ? 10 : 6)); // Move to code entry screen
       setNotice(codeData.developmentCode ? `Development code: ${codeData.developmentCode}` : "Verification code sent. Please check your e-mail.");
     } catch (err) {
       setBusy(false);
@@ -1168,7 +1272,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
       setPriceRange(data.priceRange);
       // Simple mode → step 11 (simple price); Detailed mode → step 7 (price)
-      setStep(isHomeQuickQuote ? 6 : (isSimple ? 11 : 7));
+      setStep(isHomeQuickQuote ? 3 : (isSimple ? 11 : 7));
     } catch (err) {
       setBusy(false);
       setErrors({ general: "Verification failed. Please try again." });
@@ -1308,15 +1412,12 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               </div>
             </div>
             <div className={cx(styles.quickPackageFace, styles.quickPackageBack)} aria-hidden="true">
-              <strong>{option.title} package includes</strong>
-              <ul>
-                {packageDetails.map((item) => (
-                  <li key={item}>
-                    <span aria-hidden="true">✓</span>
-                    <em>{item}</em>
-                  </li>
-                ))}
-              </ul>
+              <strong>{option.packageBackTitle || `${option.title} package includes`}</strong>
+              <div className={styles.quickPackagePricing}>
+                <span className={styles.quickPackagePrice}>{packageDetails[0]}</span>
+                <span className={styles.quickPackageSize}>{packageDetails[1]}</span>
+                <p>{packageDetails[2]}</p>
+              </div>
             </div>
           </div>
         </button>
@@ -1534,7 +1635,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   </li>
                   <li className={styles.tabFeatureItem}>
                     <span className={styles.tabFeatureIcon}>✓</span>
-                    <span>Instant price range delivered via e-mail</span>
+                    <span>Apartment packages from 1.5 to 6.5 rooms</span>
                   </li>
                 </ul>
 
@@ -1627,7 +1728,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </span>
                 <div>
                   <strong>Prices Are Protected</strong>
-                  <p>Secure calculation revealed after quick e-mail verification.</p>
+                  <p>Clear package pricing before the detailed project review.</p>
                 </div>
               </div>
               <div className={styles.selectionTrustItem}>
@@ -1652,7 +1753,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             /* Homepage rail is the Detailed Quote CTA for Customer B — it links to the
                separate calculator page rather than swapping this one in place. */
             <div className={styles.sidebarModeCard}>
-              <span className={styles.sidebarModeKicker}>For professionals &amp; precise planning</span>
               <h3 className={styles.sidebarModeTitle}>Create a detailed quote.</h3>
               <ul className={styles.detailedCtaList}>
                 <li>Selectable components and services</li>
@@ -1721,12 +1821,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           {isHomeQuickQuote && (
             <header className={styles.quickQuoteIntro}>
               <div className={styles.quickQuoteTopBar}>
+                <span className={styles.sidebarModeKicker}>Your Painting Package at a Glance</span>
                 <h2>Your estimated quote in just a few steps</h2>
               </div>
-              <p className={styles.protectedPriceNote}>
-                🔒 <strong>Prices are protected</strong> — visible after e-mail verification.
-              </p>
-              <p>Simple. Fast. No obligation. Receive your price after entering your email address.</p>
+              <p>Simple. Fast. No obligation. Receive your price after entering your e-mail address.</p>
             </header>
           )}
           {/* PROGRESS BAR */}
@@ -1735,8 +1833,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             {currentStepMeta.map((item, index) => {
               let isCurrent, isDone;
               if (isHomeQuickQuote) {
-                isCurrent = step === index || (index === 5 && step >= 5);
-                isDone = index < Math.min(step, 5);
+                isCurrent = step === index;
+                isDone = index < Math.min(step, homeQuickStepMeta.length - 1);
               } else if (isSimple) {
                 isCurrent = step === index || (index === 4 && (step === 10 || step === 11));
                 isDone = step > index && !(index === 4 && step >= 10);
@@ -1774,13 +1872,19 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {/* STEP 0: Project Type */}
               {step === 0 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>01 Project Type</span>
-                  <h2>{isSimple ? "What type of property would you like us to paint?" : "What type of property is it?"}</h2>
-                  <p>Please select your property type below.</p>
+                  <span className={styles.stepKicker}>{isHomeQuickQuote ? "01 Choose Painting Package" : "01 Project Type"}</span>
+                  <h2>{isHomeQuickQuote ? "Choose your Painting Package." : (isSimple ? "What type of property would you like us to paint?" : "What type of property is it?")}</h2>
+                  <p>{isHomeQuickQuote ? "Select the apartment package that best matches your home." : "Please select your property type below."}</p>
                   <div className={styles.propertyGrid}>
-                    {(isSimple ? quickPropertyTypes : propertyTypes).map((option) =>
+                    {(isHomeQuickQuote ? homeQuickPropertyTypes : (isSimple ? quickPropertyTypes : propertyTypes)).map((option) =>
                       renderPropertyCard(option, state.propertyType === option.id, () => {
                         if (isSimple) {
+                          if (isHomeQuickQuote) {
+                            setPriceRange("");
+                            setSessionId("");
+                            setNotice("");
+                            setErrors({});
+                          }
                           setState((current) => ({
                             ...current,
                             propertyType: option.id,
@@ -1806,44 +1910,72 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </div>
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 1: Location */}
+              {/* HOMEPAGE QUICK MODE — STEP 2: Confirm Package */}
               {isHomeQuickQuote && step === 1 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>02 Location</span>
-                  <h2>Where is the property located?</h2>
-                  <p>Your location helps us calculate any travel costs accurately.</p>
-                  <LocationFields
-                    street={state.customerInfo.address}
-                    postalCode={state.postalCode}
-                    city={state.locationCity}
-                    onChange={updateField}
-                    onStreetChange={(value) => updateCustomerInfo("address", value)}
-                  />
+                  <span className={styles.stepKicker}>02 Confirm Package</span>
+                  <h2>{selectedHomeQuickPackage?.packageBackTitle || "Confirm your package."}</h2>
+                  <p>Customer A package pricing is based on apartment size, without wall or ceiling measurements.</p>
+                  <div className={styles.summaryPanel}>
+                    <h3>Your selected package</h3>
+                    <dl>
+                      <div><dt>Package</dt><dd>{selectedHomeQuickPackage?.packageBackTitle || "Not selected"}</dd></div>
+                      <div><dt>Package size</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[1] || "Not selected"}</dd></div>
+                      <div><dt>Includes</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[2] || "Standard wall and ceiling painting."}</dd></div>
+                    </dl>
+                  </div>
+                  <div className={styles.conditionCardGrid} style={{ marginTop: "18px" }}>
+                    {homeQuickConditionOptions.map((option) =>
+                      renderConditionCard(option, state.condition === option.id, () => {
+                        setState((curr) => ({ ...curr, condition: option.id }));
+                      })
+                    )}
+                  </div>
                 </div>
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 2: Size */}
+              {/* HOMEPAGE QUICK MODE — STEP 3: Contact Details */}
               {isHomeQuickQuote && step === 2 && (
                 <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>03 Size</span>
-                  <h2>How large is the living space?</h2>
-                  <p>Enter the approximate living space in square metres.</p>
-                  <div className={styles.quantityGrid}>
-                    <label className={styles.quantityField}>
-                      <span>Living space in m²</span>
-                      <div>
+                  <span className={styles.stepKicker}>03 Contact Details</span>
+                  <h2>Where should we send your quote?</h2>
+                  <p>Enter your details to receive your protected package quote after e-mail verification.</p>
+                  <LockedPricePlaceholder />
+                  <div className={styles.customerGrid} style={{ marginTop: "16px" }}>
+                    {[
+                      ["firstName", "First Name *"],
+                      ["lastName", "Last Name *"],
+                      ["phone", "Phone (optional)"]
+                    ].map(([key, label]) => (
+                      <label key={key}>
+                        <span>{label}</span>
                         <input
-                          type="number"
-                          min="0"
-                          inputMode="decimal"
-                          value={state.livingArea}
-                          placeholder="35"
-                          onChange={(event) => selectSimpleOption("livingArea", event.target.value)}
+                          value={state.customerInfo[key]}
+                          onChange={(event) => updateCustomerInfo(key, event.target.value)}
+                          aria-invalid={Boolean(errors[key])}
                         />
-                        <b>m²</b>
-                      </div>
+                        {errors[key] && <small>{errors[key]}</small>}
+                      </label>
+                    ))}
+                    <label style={{ gridColumn: "1 / -1" }}>
+                      <span>E-Mail Address *</span>
+                      <input
+                        type="email"
+                        value={state.email}
+                        placeholder="you@example.com"
+                        onChange={(event) => setState((current) => ({ ...current, email: event.target.value }))}
+                        aria-invalid={Boolean(errors.email)}
+                      />
                     </label>
                   </div>
+                  <label className={styles.notesField} style={{ marginTop: "16px" }}>
+                    <span>Notes about your project</span>
+                    <textarea
+                      value={state.projectNotes}
+                      placeholder="Tell us anything important about the rooms, timing, damage, or access."
+                      onChange={(event) => setState((current) => ({ ...current, projectNotes: event.target.value }))}
+                    />
+                  </label>
                 </div>
               )}
 
@@ -2062,71 +2194,79 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </div>
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 3: Condition & Photos */}
+              {/* HOMEPAGE QUICK MODE — STEP 4: E-Mail Verification / Quote Result */}
               {isHomeQuickQuote && step === 3 && (
-                <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>04 Condition &amp; Photos</span>
-                  <h2>What is the current condition?</h2>
-                  <p>This helps us give you the most accurate estimate possible.</p>
-
-                  <div className={styles.conditionCardGrid}>
-                    {conditionOptions.map((option) =>
-                      renderConditionCard(option, state.condition === option.id, () => {
-                        setState((curr) => ({ ...curr, condition: option.id }));
-                      })
-                    )}
-                  </div>
-
-                  <div style={{ marginTop: "18px" }}>
-                    <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>
-                      Special work or damage
+                priceRange ? (
+                  <div className={styles.pricePanel}>
+                    <div className={styles.successMark}>✓</div>
+                    <span className={styles.stepKicker}>E-mail successfully verified</span>
+                    <h2>Your Painting Package quote</h2>
+                    <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
+                      <h3>Your package summary</h3>
+                      <dl>
+                        <div><dt>Package</dt><dd>{selectedHomeQuickPackage?.packageBackTitle || "Not selected"}</dd></div>
+                        <div><dt>Package size</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[1] || "Not selected"}</dd></div>
+                        <div><dt>Condition</dt><dd>{homeQuickConditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
+                      </dl>
                     </div>
-                    <p style={{ margin: "0 0 10px", color: "var(--ink-muted)", fontSize: "13px" }}>
-                      Select anything that should be reviewed. These items can be priced manually or with later surcharge rules.
-                    </p>
-                    <div className={styles.roomChips}>
-                      {specialWorkOptions.map((option) => (
-                        <button
-                          key={option.id}
-                          type="button"
-                          className={state.specialWork.includes(option.id) ? styles.activeChip : ""}
-                          onClick={() => toggleSpecialWork(option.id)}
+                    <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
+                      <strong className={styles.priceRange}>{priceRange}</strong>
+                      <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
+                    </div>
+                    <p>This estimate is non-binding and based on your selected package. The final price may vary after review or an on-site inspection.</p>
+                    <div className={styles.finalActions} style={{ marginTop: "20px" }}>
+                      <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
+                        {busy ? "SUBMITTING…" : "REQUEST OFFER"}
+                      </button>
+                      {sessionId && (
+                        <a
+                          href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
+                          download
+                          className={styles.secondaryAction}
+                          style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
                         >
-                          {option.title}
-                        </button>
-                      ))}
+                          <span>📄</span>
+                          <b>DOWNLOAD PDF QUOTE</b>
+                        </a>
+                      )}
                     </div>
                   </div>
-
-                  <div className={styles.uploadPanel} style={{ marginTop: "16px" }}>
-                    <h3>Photos before e-mail verification</h3>
-                    <p style={{ margin: "0 0 12px", color: "var(--ink-muted)", fontSize: "13px" }}>
-                      Upload photos of surfaces, damage or areas you want us to review.
-                    </p>
-                    <div className={styles.photoGrid}>
-                      {["Room overview", "Damage", "Other"].map((category) => (
-                        <label key={category} className={styles.photoDrop}>
-                          <span>{category}</span>
-                          <small>JPG, PNG, WEBP, HEIC or PDF</small>
-                          <input
-                            type="file"
-                            accept="image/*,.pdf,application/pdf"
-                            multiple
-                            onChange={(event) => {
-                              attachPendingPhotos(event.target.files, category);
-                              event.target.value = "";
-                            }}
-                          />
-                        </label>
+                ) : (
+                  <div className={styles.verifyPanel}>
+                    <span className={styles.stepKicker}>04 Verify E-Mail</span>
+                    <h2>Check your e-mail</h2>
+                    <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
+                    {notice && <p className={styles.notice}>{notice}</p>}
+                    {errors.general && <p className={styles.error}>{errors.general}</p>}
+                    <div className={styles.codeInputs}>
+                      {state.code.map((digit, index) => (
+                        <input
+                          key={index}
+                          ref={(node) => { codeRefs.current[index] = node; }}
+                          type="text"
+                          inputMode="numeric"
+                          maxLength={1}
+                          value={digit}
+                          onChange={(event) => {
+                            const value = event.target.value.replace(/\D/g, "").slice(0, 1);
+                            setState((current) => {
+                              const code = [...current.code];
+                              code[index] = value;
+                              return { ...current, code };
+                            });
+                            if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
+                          }}
+                        />
                       ))}
                     </div>
-                    {pendingPhotos.length > 0 && (
-                      <p className={styles.notice} style={{ marginTop: "10px" }}>
-                        {pendingPhotos.length} photo{pendingPhotos.length === 1 ? "" : "s"} ready to attach after calculation.
-                      </p>
-                    )}
+                    <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
+                      {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+                    </button>
+                    <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
+                      Didn't receive the code? Send again
+                    </button>
                   </div>
-                </div>
+                )
               )}
 
               {/* SIMPLE MODE — STEP 3: Location */}
@@ -2150,7 +2290,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               )}
 
                   {/* SIMPLE MODE — STEP 4: Contact + Send Code */}
-                  {isSimple && step === 4 && (
+                  {isSimple && !isHomeQuickQuote && step === 4 && (
                     <div className={styles.stepPanel}>
                       <span className={styles.stepKicker}>{isHomeQuickQuote ? "05 Verify E-Mail" : "05 Your Quote"}</span>
                       <h2>Your estimated quote is ready.</h2>
@@ -2251,7 +2391,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   )}
 
                   {/* SIMPLE MODE — STEP 10 / HOMEPAGE QUICK STEP 5: Code Verification */}
-                  {isSimple && (step === 10 || (isHomeQuickQuote && step === 5)) && (
+                  {isSimple && !isHomeQuickQuote && step === 10 && (
                     <div className={styles.verifyPanel}>
                       <span className={styles.stepKicker}>{isHomeQuickQuote ? "06 OTP & Quote Reveal" : "05 Verify E-Mail"}</span>
                       <h2>Check your e-mail</h2>
@@ -2291,7 +2431,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   )}
 
                   {/* SIMPLE MODE — STEP 11 / HOMEPAGE QUICK STEP 6: Price Result */}
-                  {isSimple && (step === 11 || (isHomeQuickQuote && step === 6)) && (
+                  {isSimple && !isHomeQuickQuote && step === 11 && (
                     <div className={styles.pricePanel}>
                       <div className={styles.successMark}>✓</div>
                       <span className={styles.stepKicker}>E-mail successfully verified</span>
@@ -2523,7 +2663,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   )}
 
                   {/* NAV ACTIONS (Back & Continue) */}
-                  {step < inputStepCount && !(isHomeQuickQuote && step === 0) && (
+                  {step < inputStepCount && !(isHomeQuickQuote && (step === 0 || step === homeQuickStepMeta.length - 1)) && (
                     <div className={styles.navActions}>
                       <div className={styles.navActionsLeft}>
                         {embedded ? (
@@ -2546,7 +2686,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         )}
                       </div>
                       <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
-                        {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
+                        {isHomeQuickQuote && step === 2 ? (busy ? "SENDING…" : "SEND VERIFICATION CODE →") : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →"))}
                       </button>
                     </div>
                   )}
