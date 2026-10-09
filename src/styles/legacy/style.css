@@ -12613,6 +12613,84 @@ body[data-page="home"] .audience-card:hover::after {
     }
 }
 
+/* Client update: transparent audience cards with animated brand-gradient borders. */
+body[data-page="home"] .audience-card,
+body[data-page="home"] .audience-card:nth-child(1),
+body[data-page="home"] .audience-card:nth-child(2),
+body[data-page="home"] .audience-card:nth-child(3),
+body[data-page="home"] .audience-card:hover,
+body[data-page="home"] .audience-card:nth-child(1):hover,
+body[data-page="home"] .audience-card:nth-child(2):hover,
+body[data-page="home"] .audience-card:nth-child(3):hover {
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: 0 24px 70px rgba(7, 26, 51, .08) !important;
+    color: #050505 !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+}
+
+body[data-page="home"] .audience-card:hover::before,
+body[data-page="home"] .audience-card:hover::after {
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .audience-card::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 2px !important;
+    z-index: -1 !important;
+    border-radius: inherit !important;
+    background: #fff !important;
+    opacity: 1 !important;
+}
+
+body[data-page="home"] .audience-card::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -2 !important;
+    border-radius: inherit !important;
+    padding: 2px !important;
+    opacity: 1 !important;
+    background:
+        conic-gradient(from var(--audience-line-angle, 0deg),
+            #f6be10 0deg,
+            #f39125 96deg,
+            #c73b8e 188deg,
+            #e62453 276deg,
+            #f6be10 360deg) !important;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+    animation: audienceBorderSingleSweep 2.6s linear infinite !important;
+}
+
+body[data-page="home"] .audience-card :where(h3, p, .audience-card-num),
+body[data-page="home"] .audience-card:hover :where(h3, p, .audience-card-num) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+body[data-page="home"] .audience-card .audience-card-icon,
+body[data-page="home"] .audience-card:hover .audience-card-icon {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 220% 220% !important;
+    color: #fff !important;
+    animation: svcLogoGradientShift 6s ease-in-out infinite !important;
+}
+
+body[data-page="home"] .audience-card .audience-card-icon svg,
+body[data-page="home"] .audience-card:hover .audience-card-icon svg {
+    color: #fff !important;
+    stroke: currentColor !important;
+}
+
 /* Global light-theme header/footer polish shared by public pages. */
 html:not([data-theme="amigos-dark"]) .site-header.is-scrolled,
 html:not([data-theme="amigos-dark"]) .site-header.scrolled {
@@ -12968,11 +13046,39 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar {
     margin: 40px auto 0 !important;
     padding: 38px 52px !important;
     border-radius: 26px !important;
+    overflow: hidden !important;
     transform: none !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 40px !important;
+    background: rgba(255, 255, 255, .94) !important;
+    border: 0 !important;
+    box-shadow: 0 18px 42px rgba(7, 26, 51, .08) !important;
+}
+
+body[data-page="home"] .audience-bar::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 32%, #c73b8e 66%, #e62453 100%) !important;
+    background-size: 220% 220% !important;
+    animation: audienceBarLogoFlow 3.8s ease-in-out infinite alternate !important;
+    pointer-events: none !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+}
+
+body[data-page="home"] .audience-bar > *,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar > * {
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 body[data-page="home"] .audience-left,
@@ -12986,7 +13092,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-left h3 {
     font-size: clamp(24px, 2.2vw, 30px) !important;
     font-weight: 700 !important;
     letter-spacing: -0.01em !important;
-    color: #ffffff !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
     margin: 0 0 10px 0 !important;
     line-height: 1.25 !important;
 }
@@ -12995,7 +13102,8 @@ body[data-page="home"] .audience-left p,
 html[data-theme="amigos-dark"] body[data-page="home"] .audience-left p {
     font-size: 15.5px !important;
     line-height: 1.55 !important;
-    color: rgba(255, 255, 255, .92) !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
     margin: 0 !important;
     text-wrap: pretty !important;
 }
@@ -13019,7 +13127,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item {
     gap: 12px !important;
     font-size: 14px !important;
     font-weight: 600 !important;
-    color: #ffffff !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
     white-space: nowrap !important;
     line-height: 1.35 !important;
 }
@@ -13031,8 +13140,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-right .item::bef
     width: 7.5px !important;
     height: 7.5px !important;
     border-radius: 50% !important;
-    background: #ffffff !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.85) !important;
+    background: #050505 !important;
+    box-shadow: none !important;
     flex-shrink: 0 !important;
 }
 
@@ -13093,6 +13202,21 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audi
     color: #071A33 !important;
     -webkit-text-fill-color: #071A33 !important;
     stroke: #071A33 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card :where(h3, p, .audience-card-num),
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover :where(h3, p, .audience-card-num) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card .audience-card-icon svg,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audience-card-icon svg {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: currentColor !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-section {
@@ -13434,4 +13558,160 @@ html body .site-header .header-actions .header-btn {
     border-radius: 999px !important;
     font-size: 15px !important;
     line-height: 1 !important;
+}
+
+/* Final audience card override: black readable copy, no glow, gradient icon tile. */
+body[data-page="home"] .audience-card .audience-card-num,
+body[data-page="home"] .audience-card h3,
+body[data-page="home"] .audience-card p,
+body[data-page="home"] .audience-card:hover .audience-card-num,
+body[data-page="home"] .audience-card:hover h3,
+body[data-page="home"] .audience-card:hover p,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card .audience-card-num,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audience-card-num,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover p {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+body[data-page="home"] .audience-card .audience-card-icon,
+body[data-page="home"] .audience-card:nth-child(1) .audience-card-icon,
+body[data-page="home"] .audience-card:nth-child(2) .audience-card-icon,
+body[data-page="home"] .audience-card:nth-child(3) .audience-card-icon,
+body[data-page="home"] .audience-card:hover .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:nth-child(1) .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:nth-child(2) .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:nth-child(3) .audience-card-icon,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audience-card-icon {
+    background: linear-gradient(135deg, #f6be10 0%, #f39125 34%, #c73b8e 68%, #e62453 100%) !important;
+    background-image: linear-gradient(135deg, #f6be10 0%, #f39125 34%, #c73b8e 68%, #e62453 100%) !important;
+    background-size: 220% 220% !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 14px 34px rgba(230, 36, 83, .18) !important;
+    animation: svcLogoGradientShift 6s ease-in-out infinite !important;
+}
+
+body[data-page="home"] .audience-card .audience-card-icon svg,
+body[data-page="home"] .audience-card:hover .audience-card-icon svg,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card .audience-card-icon svg,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-card:hover .audience-card-icon svg {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: currentColor !important;
+    filter: none !important;
+}
+
+/* Final Why Amigos section override: dark section with readable copy. */
+body[data-page="home"] section.why-amigos,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos,
+html:not([data-theme="amigos-dark"]) body[data-page="home"] section.why-amigos {
+    background: #111 !important;
+    background-color: #111 !important;
+    background-image: none !important;
+    animation: none !important;
+    color: #fff !important;
+}
+
+body[data-page="home"] section.why-amigos::before,
+body[data-page="home"] section.why-amigos::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos::after {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+}
+
+body[data-page="home"] section.why-amigos .section-tag,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .section-tag {
+    color: #f6be10 !important;
+    -webkit-text-fill-color: #f6be10 !important;
+}
+
+body[data-page="home"] section.why-amigos .why-content h2,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-content h2 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] section.why-amigos .why-content p,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-content p {
+    color: rgba(255, 255, 255, .78) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
+}
+
+body[data-page="home"] section.why-amigos .why-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-btn {
+    background: linear-gradient(135deg, #f6be10 0%, #f39125 45%, #e62453 100%) !important;
+    border: 1px solid rgba(255, 255, 255, .18) !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    box-shadow: 0 18px 42px rgba(230, 36, 83, .18) !important;
+}
+
+body[data-page="home"] section.why-amigos .stat,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat {
+    position: relative !important;
+    border-bottom-color: transparent !important;
+}
+
+body[data-page="home"] section.why-amigos .stat:not(:last-child)::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: -2px !important;
+    height: 3px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, #f6be10 0%, #f39125 38%, #c73b8e 68%, #e62453 100%) !important;
+    background-size: 220% 100% !important;
+    box-shadow: 0 0 18px rgba(230, 36, 83, .18), 0 0 18px rgba(246, 190, 16, .12) !important;
+    animation: whyStatLineFlow 4.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes whyStatLineFlow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
+}
+
+body[data-page="home"] section.why-amigos .stat h3,
+body[data-page="home"] section.why-amigos .stat:hover h3,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat h3,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat:hover h3 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body[data-page="home"] section.why-amigos .stat span,
+body[data-page="home"] section.why-amigos .stat:hover span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat:hover span {
+    color: rgba(255, 255, 255, .78) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
+}
+
+/* Homepage review CTA: outline-only, black text. */
+body[data-page="home"] .review-btn,
+body[data-page="home"] .review-btn:hover,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn,
+:is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .review-btn:hover {
+    background:
+        linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) border-box !important;
+    border: 2px solid transparent !important;
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+    box-shadow: none !important;
 }

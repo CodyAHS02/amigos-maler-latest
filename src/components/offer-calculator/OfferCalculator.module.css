@@ -2668,3 +2668,37 @@
     box-shadow: 0 24px 70px rgba(0, 7, 20, .36);
   }
 }
+
+/* Homepage selection buttons: outline-only, black text. */
+.homeLayout .tabActionBtn,
+.homeLayout .tabActionBtnDetailed,
+.homeLayout .sidebarModeSwitchBtn,
+.page.homeLayout .tabActionBtn,
+.page.homeLayout .tabActionBtnDetailed,
+.page.homeLayout .sidebarModeSwitchBtn {
+  background:
+    linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(105deg, var(--a), var(--b) 52%, var(--c)) border-box !important;
+  border: 2px solid transparent !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+  box-shadow: none !important;
+}
+
+.homeLayout .tabActionBtn *,
+.homeLayout .tabActionBtnDetailed *,
+.homeLayout .sidebarModeSwitchBtn *,
+.page.homeLayout .tabActionBtn *,
+.page.homeLayout .tabActionBtnDetailed *,
+.page.homeLayout .sidebarModeSwitchBtn * {
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+.homeLayout .tabActionBtn:hover,
+.homeLayout .tabActionBtnDetailed:hover,
+.homeLayout .sidebarModeSwitchBtn:hover {
+  background:
+    linear-gradient(rgba(255, 255, 255, .38), rgba(255, 255, 255, .38)) padding-box,
+    linear-gradient(105deg, var(--a), var(--b) 52%, var(--c)) border-box !important;
+}
