@@ -3589,32 +3589,31 @@ runWhenDomReady(() => {
 
 
 
-            gsap.to(cards, {
+            if (!section.classList.contains("plans-stack-ready")) {
+                gsap.to(cards, {
 
-                y: 0,
+                    y: 0,
 
-                opacity: 1,
+                    opacity: 1,
 
-                scale: 1,
+                    scale: 1,
 
-                duration: 1,
+                    duration: 1,
 
-                stagger: .15,
+                    stagger: .15,
 
-                ease: "power3.out",
+                    ease: "power3.out",
 
-                delay: .15
+                    delay: .15
 
-            });
+                });
+            }
 
 
         }
 
 
     });
-
-
-
 
 
     /* =========================================
@@ -3724,6 +3723,8 @@ runWhenDomReady(() => {
 
         card.addEventListener("mousemove", (e) => {
 
+            if (section.classList.contains("plans-stack-ready")) return;
+
 
             const rect =
                 card.getBoundingClientRect();
@@ -3769,6 +3770,8 @@ runWhenDomReady(() => {
 
 
         card.addEventListener("mouseleave", () => {
+
+            if (section.classList.contains("plans-stack-ready")) return;
 
 
             gsap.to(card, {

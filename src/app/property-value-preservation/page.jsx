@@ -255,22 +255,29 @@ html:not([data-theme="amigos-dark"]) body:has(.property-hero) .site-header .site
 }
 
 html:not([data-theme="amigos-dark"]) body:has(.property-hero) .site-header .customer-header-btn {
-  background: #F6BE10 !important;
-  border-color: #F6BE10 !important;
-  color: var(--pv-ink) !important;
-  -webkit-text-fill-color: var(--pv-ink) !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body:has(.property-hero) .site-header .header-btn {
-  background: #E62453 !important;
-  border-color: #E62453 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body:has(.property-hero) .site-header .customer-header-btn:hover,
 html:not([data-theme="amigos-dark"]) body:has(.property-hero) .site-header .header-btn:hover {
-  opacity: .76 !important;
+  background: #111111 !important;
+  background-image: none !important;
+  border-color: #111111 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 html:not([data-theme="amigos-dark"]) body:has(.property-hero) .property-hero,

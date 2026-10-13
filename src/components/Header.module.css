@@ -133,22 +133,29 @@
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn) {
-  background: #FFD21F !important;
-  border-color: #FFD21F !important;
-  color: #050505 !important;
-  -webkit-text-fill-color: #050505 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn) {
-  background: #E62453 !important;
-  border-color: #E62453 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .customer-header-btn:hover),
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .header-btn:hover) {
-  opacity: .72;
+  background: #111111 !important;
+  background-image: none !important;
+  border-color: #111111 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1;
 }
 
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .theme-toggle),

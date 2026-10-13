@@ -24,14 +24,110 @@ const serviceHoverGradients = [
   },
 ];
 
+const serviceCategories = [
+  {
+    id: "painting",
+    label: "Painting & Finishes",
+    title: "Painting & Finishes",
+    description: "Interior, exterior and precision coating services for clean surfaces, durable protection and polished details.",
+    cta: "Explore Painting Services",
+    href: "/services",
+    links: [
+      {
+        href: "/interior-painting",
+        title: "Interior Painting",
+        desc: "Walls, ceilings, doors and refined coatings",
+      },
+      {
+        href: "/exterior-painting",
+        title: "Exterior Painting",
+        desc: "Facades, woodwork and weather protection",
+      },
+      {
+        href: "/spray-painting",
+        title: "Spray Painting",
+        desc: "Doors, frames, shutters and precision parts",
+      },
+      {
+        href: "/color-and-material",
+        title: "Color & Material Consultation",
+        desc: "Color concepts and suitable coating systems",
+      },
+    ],
+  },
+  {
+    id: "renovation",
+    label: "Renovation & Repair",
+    title: "Renovation & Repair",
+    description: "Surface repairs, plastering, drywall and renovation work for apartments, rooms and building elements.",
+    cta: "Explore Renovation Services",
+    href: "/appartment-renovation",
+    links: [
+      {
+        href: "/appartment-renovation",
+        title: "Apartment Renovation",
+        desc: "Tenant changes, sales preparation and updates",
+      },
+      {
+        href: "/Plastering",
+        title: "Plastering Work",
+        desc: "Filling, smoothing and surface preparation",
+      },
+      {
+        href: "/Drywall",
+        title: "Drywall Construction",
+        desc: "Walls, ceilings and custom room solutions",
+      },
+      {
+        href: "/Facade-Renovation",
+        title: "Facade Renovation",
+        desc: "Protection, repair and exterior redesign",
+      },
+    ],
+  },
+  {
+    id: "care",
+    label: "Property Care",
+    title: "Property Care",
+    description: "Maintenance, damage response and value-preservation services for homes, villas and managed properties.",
+    cta: "Explore Property Care",
+    href: "/property-value-preservation",
+    links: [
+      {
+        href: "/property-value-preservation",
+        title: "Property Value Preservation",
+        desc: "Maintenance plans and long-term care concepts",
+      },
+      {
+        href: "/mold",
+        title: "Mold Remediation",
+        desc: "Analysis, removal and durable prevention",
+      },
+      {
+        href: "/water-damage",
+        title: "Water Damage",
+        desc: "Drying coordination and surface restoration",
+      },
+      {
+        href: "/schadensservice",
+        title: "Schadensservice",
+        desc: "Fast support for damage cases and restoration work",
+      },
+    ],
+  },
+];
+
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isProjects = pathname === "/projects";
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [activeServiceCategory, setActiveServiceCategory] = useState(serviceCategories[0].id);
   const { isPlaying: isAudioPlaying, toggleSound } = useAmigosAudio();
   const lastHoverVariants = useRef(new WeakMap());
+  const activeServiceGroup =
+    serviceCategories.find((category) => category.id === activeServiceCategory) || serviceCategories[0];
 
   useEffect(() => {
     if (isHome) return undefined;
@@ -134,91 +230,43 @@ export default function Header() {
               />
             </svg>
           </a>
-          <div className="dropdown-menu">
-            <a href="/property-value-preservation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">01</span>
-              <div className="item-info">
-                <span className="item-title">Property Value Preservation</span>
-                <span className="item-desc">Care concepts, maintenance and long-term value preservation</span>
+          <div className="dropdown-menu services-mega-menu">
+            <aside className="services-mega-sidebar" aria-label="Service categories">
+              {serviceCategories.map((category) => (
+                <button
+                  key={category.id}
+                  type="button"
+                  className={`services-mega-tab${activeServiceGroup.id === category.id ? " is-active" : ""}`}
+                  onClick={() => setActiveServiceCategory(category.id)}
+                  onMouseEnter={() => setActiveServiceCategory(category.id)}
+                >
+                  {category.label}
+                </button>
+              ))}
+              <a className="services-mega-cta" href={activeServiceGroup.href}>
+                <span>{activeServiceGroup.cta}</span>
+                <i aria-hidden="true">↗</i>
+              </a>
+            </aside>
+
+            <div className="services-mega-content">
+              <div className="services-mega-intro">
+                <strong>{activeServiceGroup.title}</strong>
+                <span>{activeServiceGroup.description}</span>
               </div>
-            </a>
-            <a href="/interior-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">02</span>
-              <div className="item-info">
-                <span className="item-title">Interior Painting</span>
-                <span className="item-desc">Walls, ceilings, doors and high-quality coatings</span>
+
+              <div className="services-mega-grid">
+                {activeServiceGroup.links.map((service, index) => (
+                  <a key={service.href} href={service.href} className="dropdown-item" onMouseEnter={setRandomServiceHover}>
+                    <span className="item-num">{String(index + 1).padStart(2, "0")}</span>
+                    <div className="item-info">
+                      <span className="item-title">{service.title}</span>
+                      <span className="item-desc">{service.desc}</span>
+                    </div>
+                  </a>
+                ))}
               </div>
-            </a>
-            <a href="/exterior-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">03</span>
-              <div className="item-info">
-                <span className="item-title">Exterior Painting</span>
-                <span className="item-desc">Facades, woodwork and weather-resistant coatings</span>
-              </div>
-            </a>
-            <a href="/Plastering" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">04</span>
-              <div className="item-info">
-                <span className="item-title">Plastering Work</span>
-                <span className="item-desc">Filling, plastering and surface work</span>
-              </div>
-            </a>
-            <a href="/Drywall" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">05</span>
-              <div className="item-info">
-                <span className="item-title">Drywall/Interior construction</span>
-                <span className="item-desc">Walls, ceilings and customized room solutions</span>
-              </div>
-            </a>
-            <a href="/Facade-Renovation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">06</span>
-              <div className="item-info">
-                <span className="item-title">Facade Renovation</span>
-                <span className="item-desc">Protection, renovation and redesign of facades</span>
-              </div>
-            </a>
-            <a href="/appartment-renovation" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">07</span>
-              <div className="item-info">
-                <span className="item-title">Apartment Renovation</span>
-                <span className="item-desc">Renovations for tenant changes, property sales or personal use</span>
-              </div>
-            </a>
-            <a href="/spray-painting" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">08</span>
-              <div className="item-info">
-                <span className="item-title">Spray Painting</span>
-                <span className="item-desc">Doors, frames, shutters and other components</span>
-              </div>
-            </a>
-            <a href="/color-and-material" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">09</span>
-              <div className="item-info">
-                <span className="item-title">Color & Material Construction</span>
-                <span className="item-desc">Color concepts and suitable coating systems</span>
-              </div>
-            </a>
-            <a href="/mold" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">10</span>
-              <div className="item-info">
-                <span className="item-title">Mold Remediation</span>
-                <span className="item-desc">Professional mold analysis, safe removal and durable prevention</span>
-              </div>
-            </a>
-            <a href="/water-damage" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">11</span>
-              <div className="item-info">
-                <span className="item-title">Water Damage (Wasserschäden)</span>
-                <span className="item-desc">Fast drying coordination, surface repair and restoration</span>
-              </div>
-            </a>
-            <a href="/services" className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-              <span className="item-num">12</span>
-              <div className="item-info">
-                <span className="item-title">Discover All Services</span>
-                <span className="item-desc">Explore More Services</span>
-              </div>
-            </a>
+            </div>
           </div>
         </div>
 

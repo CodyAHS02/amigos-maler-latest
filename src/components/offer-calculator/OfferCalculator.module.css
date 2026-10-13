@@ -2318,6 +2318,312 @@
   }
 }
 
+/* Client reference pass: cinematic calculator flow with warm glow navigation. */
+@keyframes calculatorGlowDrift {
+  0% {
+    background-position: 18% 16%, 86% 10%, 50% 100%, center;
+  }
+
+  50% {
+    background-position: 24% 20%, 78% 16%, 54% 96%, center;
+  }
+
+  100% {
+    background-position: 18% 16%, 86% 10%, 50% 100%, center;
+  }
+}
+
+:global(body[data-page="offer-calculator"]) {
+  background: #071a33 !important;
+}
+
+.page,
+:global(html[data-theme="amigos-dark"]) .page,
+:global(html:not([data-theme="amigos-dark"])) .page,
+:global(html[data-theme="amigos-light"]) .page {
+  --ink: #ffffff;
+  --copy: #d8e8f6;
+  --muted: #a7c1d9;
+  --line: rgba(174, 210, 245, .28);
+  --panel: rgba(9, 36, 75, .72);
+  --soft: rgba(8, 31, 68, .62);
+  --field: rgba(5, 24, 54, .78);
+  --a: #ffd22e;
+  --b: #ff8a2f;
+  --c: #ff3d73;
+  --shadow: 0 30px 90px rgba(0, 8, 28, .42);
+  background:
+    radial-gradient(circle at 18% 16%, rgba(255, 210, 46, .24), transparent 28%),
+    radial-gradient(circle at 86% 10%, rgba(255, 61, 115, .22), transparent 30%),
+    linear-gradient(180deg, rgba(7, 26, 51, .84), rgba(5, 21, 48, .92) 54%, rgba(2, 14, 33, .96)),
+    url("/assets/calculator-night-bg.png") center bottom / cover fixed no-repeat !important;
+  color: #fff !important;
+  animation: calculatorGlowDrift 16s ease-in-out infinite;
+}
+
+.page::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(100deg, rgba(255, 210, 46, .18), transparent 18% 76%, rgba(255, 61, 115, .18)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .035) 0 1px, transparent 1px 120px);
+  opacity: .62;
+  pointer-events: none;
+  content: "";
+}
+
+.page::after {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: 38%;
+  background: linear-gradient(180deg, transparent, rgba(3, 16, 37, .88));
+  pointer-events: none;
+  content: "";
+}
+
+.heroCopy h1,
+.quickQuoteIntro h2,
+.selectionTitle,
+.stepPanel h2,
+.resultLocked h2,
+.verifyPanel h2,
+.pricePanel h2 {
+  max-width: 980px;
+  text-shadow: 0 0 34px rgba(255, 210, 46, .16), 0 0 58px rgba(255, 61, 115, .12);
+}
+
+.brand,
+.sidebarModeKicker,
+.selectionKicker,
+.stepKicker,
+.detailGroupTitle,
+:global(html[data-theme="amigos-dark"]) .brand,
+:global(html[data-theme="amigos-dark"]) .sidebarModeKicker,
+:global(html[data-theme="amigos-dark"]) .selectionKicker,
+:global(html[data-theme="amigos-dark"]) .stepKicker,
+:global(html[data-theme="amigos-dark"]) .detailGroupTitle {
+  color: #ffd66f !important;
+  -webkit-text-fill-color: #ffd66f !important;
+  letter-spacing: .08em;
+  text-shadow: 0 0 18px rgba(255, 210, 46, .34);
+}
+
+.progressNav {
+  min-height: 122px;
+  padding: 14px 18px 12px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(10, 40, 84, .78), rgba(5, 22, 51, .58));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 24px 72px rgba(0, 8, 28, .34);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+}
+
+.progressNav::before,
+.progressFill {
+  top: 60px;
+  left: 7%;
+}
+
+.progressNav::before {
+  right: 7%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(202, 224, 248, .38), transparent);
+}
+
+.progressFill {
+  height: 2px;
+  background: linear-gradient(90deg, var(--c), var(--b) 48%, var(--a));
+  box-shadow: 0 0 20px rgba(255, 138, 47, .58);
+}
+
+.progressStep {
+  gap: 4px;
+}
+
+.progressStep span {
+  color: rgba(216, 232, 246, .76) !important;
+  -webkit-text-fill-color: rgba(216, 232, 246, .76) !important;
+}
+
+.progressStep i {
+  border-color: rgba(189, 219, 248, .32);
+  background: radial-gradient(circle at 35% 25%, rgba(255, 255, 255, .18), rgba(9, 36, 75, .86));
+  color: #d8e8f6;
+  box-shadow: 0 0 0 8px rgba(10, 45, 90, .55), inset 0 1px 0 rgba(255, 255, 255, .16);
+}
+
+.currentStep i,
+.doneStep i {
+  border-color: rgba(255, 214, 111, .72);
+  background: linear-gradient(145deg, var(--a), var(--b) 48%, var(--c));
+  box-shadow: 0 0 0 8px rgba(255, 138, 47, .14), 0 0 30px rgba(255, 138, 47, .62);
+}
+
+.currentStep b,
+.doneStep b,
+.currentStep span,
+.doneStep span {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.propertyCard,
+.selectionCard,
+.scopeCard,
+.conditionCard,
+.quantityField,
+.notesField,
+.detailGroup,
+.customerGrid label,
+.emailField,
+.autoMeasurementPanel,
+.photoDrop,
+.summaryPanel,
+.resultLocked,
+.verifyPanel,
+.pricePanel,
+.uploadPanel,
+.homeLayout .sidebarModeCard,
+.selectionTabCard,
+:global(html[data-theme="amigos-dark"]) .propertyCard,
+:global(html[data-theme="amigos-dark"]) .propertyCardInfo,
+:global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+  border-color: rgba(255, 255, 255, .16);
+  background: linear-gradient(145deg, rgba(12, 45, 92, .78), rgba(5, 24, 56, .66));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 24px 74px rgba(0, 8, 28, .34);
+  backdrop-filter: blur(18px) saturate(126%);
+  -webkit-backdrop-filter: blur(18px) saturate(126%);
+}
+
+.propertyCardInfo,
+:global(html[data-theme="amigos-dark"]) .propertyCardInfo {
+  background: linear-gradient(180deg, rgba(9, 36, 75, .92), rgba(5, 24, 56, .88));
+}
+
+.propertyCard:hover,
+.propertyCardSelected,
+.selectionCard:hover,
+.scopeCard:hover,
+.conditionCard:hover,
+.selectedCard,
+.scopeCardSelected,
+.conditionCardSelected {
+  border-color: rgba(255, 210, 46, .78);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 26px 80px rgba(0, 8, 28, .42), 0 0 34px rgba(255, 138, 47, .24);
+}
+
+.cardIcon,
+.scopeCardIcon,
+.conditionCardIcon,
+:global(html[data-theme="amigos-dark"]) .cardIcon,
+:global(html[data-theme="amigos-dark"]) .scopeCardIcon,
+:global(html[data-theme="amigos-dark"]) .conditionCardIcon {
+  background: rgba(255, 255, 255, .08);
+  color: #ffd66f;
+  box-shadow: inset 0 0 0 1px rgba(255, 214, 111, .18);
+}
+
+.primaryAction,
+.sidebarModeSwitchBtn,
+.tabActionBtn,
+.themeToggleIcon,
+.soundToggleIcon,
+.selectedCard .cardIcon,
+.scopeCardSelected .scopeCardIcon,
+.conditionCardSelected .conditionCardIcon,
+.propertyCardBadge {
+  background: linear-gradient(105deg, var(--a), var(--b) 48%, var(--c)) !important;
+  box-shadow: 0 16px 42px rgba(255, 88, 86, .32), 0 0 24px rgba(255, 210, 46, .18);
+}
+
+.quantityField input,
+.quantityField select,
+.customerGrid input,
+.emailField input,
+.notesField textarea,
+.detailSelect,
+.locationInput input {
+  border-color: rgba(205, 229, 250, .24);
+  background: rgba(3, 18, 42, .66);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page,
+:global(html:not([data-theme="amigos-dark"])) .page h1,
+:global(html:not([data-theme="amigos-dark"])) .page h2,
+:global(html:not([data-theme="amigos-dark"])) .page h3,
+:global(html:not([data-theme="amigos-dark"])) .page h4,
+:global(html:not([data-theme="amigos-dark"])) .page strong,
+:global(html:not([data-theme="amigos-dark"])) .page label,
+:global(html:not([data-theme="amigos-dark"])) .page dt,
+:global(html:not([data-theme="amigos-dark"])) .page dd,
+:global(html:not([data-theme="amigos-dark"])) .page .progressStep b,
+:global(html:not([data-theme="amigos-dark"])) .page .progressStep span,
+:global(html:not([data-theme="amigos-dark"])) .page .propertyCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .page .scopeCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .page .conditionCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .page .tabHeadline,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem strong {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page p,
+:global(html:not([data-theme="amigos-dark"])) .page li,
+:global(html:not([data-theme="amigos-dark"])) .page small,
+:global(html:not([data-theme="amigos-dark"])) .page .propertyCardSubtitle,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionCardUnit,
+:global(html:not([data-theme="amigos-dark"])) .page .scopeCardDesc,
+:global(html:not([data-theme="amigos-dark"])) .page .conditionCardDesc,
+:global(html:not([data-theme="amigos-dark"])) .page .tabDescription,
+:global(html:not([data-theme="amigos-dark"])) .page .tabFeatureItem,
+:global(html:not([data-theme="amigos-dark"])) .page .tabTagEstimateTime,
+:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem p {
+  color: #d8e8f6 !important;
+  -webkit-text-fill-color: #d8e8f6 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page input,
+:global(html:not([data-theme="amigos-dark"])) .page textarea,
+:global(html:not([data-theme="amigos-dark"])) .page select {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+@media (min-width: 1001px) {
+  .homeLayout .progressNav::before,
+  .homeLayout .progressFill {
+    top: 57px;
+  }
+
+  .homeLayout .progressStep i {
+    box-shadow: 0 0 0 7px rgba(10, 45, 90, .52), inset 0 1px 0 rgba(255, 255, 255, .16);
+  }
+}
+
+@media (max-width: 1000px) {
+  .page,
+  :global(html[data-theme="amigos-dark"]) .page,
+  :global(html:not([data-theme="amigos-dark"])) .page,
+  :global(html[data-theme="amigos-light"]) .page {
+    background-attachment: scroll !important;
+  }
+
+  .progressNav {
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none !important;
+  }
+}
+
 .selectionTrustIcon {
   display: grid;
   width: 38px;
@@ -2669,36 +2975,470 @@
   }
 }
 
-/* Homepage selection buttons: outline-only, black text. */
+/* Final homepage calculator CTA correction: no fill, gradient stroke only. */
 .homeLayout .tabActionBtn,
 .homeLayout .tabActionBtnDetailed,
 .homeLayout .sidebarModeSwitchBtn,
 .page.homeLayout .tabActionBtn,
 .page.homeLayout .tabActionBtnDetailed,
-.page.homeLayout .sidebarModeSwitchBtn {
-  background:
-    linear-gradient(transparent, transparent) padding-box,
-    linear-gradient(105deg, var(--a), var(--b) 52%, var(--c)) border-box !important;
-  border: 2px solid transparent !important;
+.page.homeLayout .sidebarModeSwitchBtn,
+.homeLayout .tabActionBtn:hover,
+.homeLayout .tabActionBtnDetailed:hover,
+.homeLayout .sidebarModeSwitchBtn:hover,
+.page.homeLayout .tabActionBtn:hover,
+.page.homeLayout .tabActionBtnDetailed:hover,
+.page.homeLayout .sidebarModeSwitchBtn:hover {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
   box-shadow: none !important;
 }
 
-.homeLayout .tabActionBtn *,
-.homeLayout .tabActionBtnDetailed *,
-.homeLayout .sidebarModeSwitchBtn *,
-.page.homeLayout .tabActionBtn *,
-.page.homeLayout .tabActionBtnDetailed *,
-.page.homeLayout .sidebarModeSwitchBtn * {
+.homeLayout .tabActionBtn::after,
+.homeLayout .tabActionBtnDetailed::after,
+.homeLayout .sidebarModeSwitchBtn::after,
+.page.homeLayout .tabActionBtn::after,
+.page.homeLayout .tabActionBtnDetailed::after,
+.page.homeLayout .sidebarModeSwitchBtn::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  border-radius: inherit !important;
+  padding: 2px !important;
+  background: linear-gradient(105deg, var(--a), var(--b) 52%, var(--c)) !important;
+  pointer-events: none !important;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) !important;
+  -webkit-mask-composite: xor !important;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0) !important;
+  mask-composite: exclude !important;
+}
+
+.homeLayout .tabActionBtn > *,
+.homeLayout .tabActionBtnDetailed > *,
+.homeLayout .sidebarModeSwitchBtn > *,
+.page.homeLayout .tabActionBtn > *,
+.page.homeLayout .tabActionBtnDetailed > *,
+.page.homeLayout .sidebarModeSwitchBtn > * {
+  position: relative !important;
+  z-index: 1 !important;
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
 }
 
 .homeLayout .tabActionBtn:hover,
 .homeLayout .tabActionBtnDetailed:hover,
-.homeLayout .sidebarModeSwitchBtn:hover {
+.homeLayout .sidebarModeSwitchBtn:hover,
+.page.homeLayout .tabActionBtn:hover,
+.page.homeLayout .tabActionBtnDetailed:hover,
+.page.homeLayout .sidebarModeSwitchBtn:hover {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 34px rgba(7, 26, 51, .12) !important;
+}
+
+/* Client reference final override: keep homepage calculator CTA and rail in the glow system. */
+.homeLayout .sidebarModeCard,
+:global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background: linear-gradient(145deg, rgba(12, 45, 92, .78), rgba(5, 24, 56, .66)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 24px 74px rgba(0, 8, 28, .34) !important;
+}
+
+.homeLayout .sidebarModeTitle,
+.homeLayout .detailedCtaList,
+.homeLayout .protectedPriceNote {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.homeLayout .sidebarModeKicker {
+  color: #ffd66f !important;
+  -webkit-text-fill-color: #ffd66f !important;
+}
+
+.homeLayout .tabActionBtn,
+.homeLayout .tabActionBtnDetailed,
+.homeLayout .sidebarModeSwitchBtn,
+.page.homeLayout .tabActionBtn,
+.page.homeLayout .tabActionBtnDetailed,
+.page.homeLayout .sidebarModeSwitchBtn {
+  background: linear-gradient(105deg, var(--a), var(--b) 48%, var(--c)) !important;
+  border: 0 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 16px 42px rgba(255, 88, 86, .32), 0 0 24px rgba(255, 210, 46, .18) !important;
+}
+
+.homeLayout .tabActionBtn::after,
+.homeLayout .tabActionBtnDetailed::after,
+.homeLayout .sidebarModeSwitchBtn::after,
+.page.homeLayout .tabActionBtn::after,
+.page.homeLayout .tabActionBtnDetailed::after,
+.page.homeLayout .sidebarModeSwitchBtn::after {
+  content: none !important;
+  display: none !important;
+}
+
+.homeLayout .tabActionBtn > *,
+.homeLayout .tabActionBtnDetailed > *,
+.homeLayout .sidebarModeSwitchBtn > *,
+.page.homeLayout .tabActionBtn > *,
+.page.homeLayout .tabActionBtnDetailed > *,
+.page.homeLayout .sidebarModeSwitchBtn > * {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.homeLayout .tabActionBtn:hover,
+.homeLayout .tabActionBtnDetailed:hover,
+.homeLayout .sidebarModeSwitchBtn:hover,
+.page.homeLayout .tabActionBtn:hover,
+.page.homeLayout .tabActionBtnDetailed:hover,
+.page.homeLayout .sidebarModeSwitchBtn:hover {
+  background: linear-gradient(105deg, #ffe16c, var(--b) 46%, var(--c)) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 20px 54px rgba(255, 88, 86, .38), 0 0 34px rgba(255, 210, 46, .24) !important;
+}
+
+.heroCopy,
+.quickQuoteIntro,
+.stepPanel {
+  max-width: calc(100vw - 56px);
+}
+
+.heroCopy h1,
+.quickQuoteIntro h2,
+.selectionTitle,
+.stepPanel h2,
+.resultLocked h2,
+.verifyPanel h2,
+.pricePanel h2 {
+  width: min(980px, calc(100vw - 56px));
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .page,
+  .embedded,
+  .embedded.homeLayout,
+  .embeddedWorkspace,
+  .embeddedLayout,
+  .embeddedLayoutExpanded,
+  .consultationShell,
+  .embeddedLeft,
+  .embeddedRail {
+    width: 100% !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+  }
+
+  .page {
+    overflow-x: hidden !important;
+  }
+
+  .embeddedRail,
+  .heroCopy,
+  .quickQuoteIntro,
+  .stepPanel {
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .heroCopy h1,
+  .quickQuoteIntro h2,
+  .selectionTitle,
+  .stepPanel h2,
+  .resultLocked h2,
+  .verifyPanel h2,
+  .pricePanel h2 {
+    max-width: 100%;
+    font-size: 38px;
+    line-height: 1.05;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .progressNav {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overscroll-behavior-inline: contain;
+  }
+
+  .heroCopy p,
+  .quickQuoteIntro p,
+  .selectionLead,
+  .stepPanel > p {
+    max-width: 100%;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Final light-theme homepage calculator correction. Dark theme intentionally keeps the glow system. */
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage,
+:global(html:not([data-theme="amigos-dark"])) .page.embedded.selectionPage,
+:global(html[data-theme="amigos-light"]) .page.selectionPage,
+:global(html[data-theme="amigos-light"]) .page.embedded.selectionPage {
+  --ink: #071a33;
+  --copy: #38546f;
+  --muted: #6b8298;
+  --line: rgba(15, 43, 76, .14);
+  --panel: rgba(255, 255, 255, .92);
+  --soft: rgba(246, 249, 252, .9);
+  --field: #ffffff;
+  --shadow: 0 24px 70px rgba(15, 43, 76, .12);
   background:
-    linear-gradient(rgba(255, 255, 255, .38), rgba(255, 255, 255, .38)) padding-box,
-    linear-gradient(105deg, var(--a), var(--b) 52%, var(--c)) border-box !important;
+    radial-gradient(circle at 14% 12%, rgba(255, 210, 46, .18), transparent 24%),
+    radial-gradient(circle at 86% 10%, rgba(230, 36, 83, .10), transparent 28%),
+    linear-gradient(180deg, #fbfcfd 0%, #f4f7fa 52%, #eef3f7 100%) !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: initial !important;
+  animation: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage::before,
+:global(html[data-theme="amigos-light"]) .page.selectionPage::before {
+  background:
+    linear-gradient(100deg, rgba(246, 190, 16, .08), transparent 22% 78%, rgba(230, 36, 83, .08)),
+    repeating-linear-gradient(90deg, rgba(7, 26, 51, .035) 0 1px, transparent 1px 120px) !important;
+  opacity: 1 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage::after,
+:global(html[data-theme="amigos-light"]) .page.selectionPage::after {
+  background: linear-gradient(180deg, transparent, rgba(238, 243, 247, .94)) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionHeader,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionHeader {
+  width: min(1180px, 100%) !important;
+  margin: 0 auto 34px !important;
+  text-align: center !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTitle,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionSubTitle,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTitle,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionSubTitle {
+  width: auto !important;
+  max-width: 1180px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTitle,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTitle {
+  font-size: clamp(36px, 3.8vw, 58px) !important;
+  line-height: 1.05 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionSubTitle,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionSubTitle {
+  margin-top: 14px !important;
+  font-size: clamp(22px, 2.1vw, 34px) !important;
+  line-height: 1.18 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionLead,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionLead {
+  max-width: 760px !important;
+  margin: 18px auto 0 !important;
+  color: #26394e !important;
+  -webkit-text-fill-color: #26394e !important;
+  text-align: center !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard {
+  border-color: rgba(15, 43, 76, .14) !important;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .94) 54%, rgba(255, 255, 255, .72) 100%) !important;
+  color: #071a33 !important;
+  box-shadow: 0 24px 70px rgba(15, 43, 76, .13) !important;
+  backdrop-filter: blur(14px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(118%) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard:hover,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard:hover {
+  border-color: rgba(243, 145, 37, .68) !important;
+  box-shadow: 0 28px 76px rgba(15, 43, 76, .16), 0 0 0 1px rgba(246, 190, 16, .18) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+  opacity: .82 !important;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .10) 12%, rgba(0, 0, 0, .72) 40%, #000 100%) !important;
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .10) 12%, rgba(0, 0, 0, .72) 40%, #000 100%) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabHeadline,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustItem strong,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabHeadline,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustItem strong {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDescription,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabFeatureItem,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustItem p,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDescription,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabFeatureItem,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustItem p {
+  color: #3f5872 !important;
+  -webkit-text-fill-color: #3f5872 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagFast,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagDetailed,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagFast,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagDetailed {
+  color: #bf6c12 !important;
+  -webkit-text-fill-color: #bf6c12 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustRow,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustRow {
+  border: 1px solid rgba(15, 43, 76, .10) !important;
+  background: rgba(255, 255, 255, .88) !important;
+  box-shadow: 0 22px 54px rgba(15, 43, 76, .12) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabActionBtn,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabActionBtnDetailed,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabActionBtn,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabActionBtnDetailed {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Remove decorative trust-row icons from the calculator selection block. */
+.selectionTrustIcon {
+  display: none !important;
+}
+
+.selectionTrustItem {
+  gap: 0 !important;
+  padding-left: 24px !important;
+}
+
+@media (max-width: 640px) {
+  .selectionTrustItem {
+    padding-left: 0 !important;
+  }
+}
+
+/* Final image visibility pass for the light-theme calculator selection cards. */
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard {
+  background: #ffffff !important;
+  overflow: hidden !important;
+}
+
+@media (min-width: 641px) {
+  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard::before,
+  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    background:
+      linear-gradient(90deg,
+        rgba(255, 255, 255, .98) 0%,
+        rgba(255, 255, 255, .98) 40%,
+        rgba(255, 255, 255, .82) 50%,
+        rgba(255, 255, 255, .34) 66%,
+        rgba(255, 255, 255, .08) 82%,
+        rgba(255, 255, 255, 0) 100%) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
+  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 94px !important;
+    left: 42% !important;
+    opacity: 1 !important;
+    filter: saturate(1.12) contrast(1.08) !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .32) 30%, rgba(0, 0, 0, .82) 52%, #000 72%) !important;
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .32) 30%, rgba(0, 0, 0, .82) 52%, #000 72%) !important;
+  }
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabFastEstimate .selectionCardVisual,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabFastEstimate .selectionCardVisual {
+  background-image: url("/assets/services-imags/photo-upload.jpg") !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .selectionCardVisual,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .selectionCardVisual {
+  background-image: url("/assets/services-imags/quote-calculator.jpg") !important;
+}
+
+@media (max-width: 640px) {
+  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
+  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+    height: 190px !important;
+    margin: 10px 0 18px !important;
+    opacity: 1 !important;
+    border-radius: 16px !important;
+    filter: saturate(1.08) contrast(1.04) !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+}
+
+/* Light theme: top-right estimate/PDF labels must stay black over images. */
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime *,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime * {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
+:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime *,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
+:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .35) !important;
 }

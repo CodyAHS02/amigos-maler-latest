@@ -412,68 +412,92 @@ const pageHtmlAfterOffer = `
     </div>
 
     <!-- PLANS SECTION -->
-    <section class="plans-section">
+    <section class="plans-section" id="plans">
         <div class="plans-header">
-            <span class="plans-eyebrow">PROPERTY MAINTENANCE PLAN</span>
-            <h2>Care that compounds.</h2>
-            <p>Continuously monitored property care — designed to preserve, and quietly grow, the value of your holdings.</p>
-            <div class="billing-toggle">
-                <button class="active" data-period="monthly">Monthly</button>
-                <button data-period="yearly">Yearly · save 15%</button>
+            <span class="plans-eyebrow">Property Maintenance Plans</span>
+            <div class="plans-header-grid">
+                <h2>Your property care program, structured for every level of ownership.</h2>
+                <div class="plans-header-side">
+                    <p>Choose the level of monitoring, planning and response that fits your home, villa or managed portfolio.</p>
+                    <a class="plans-overview-cta" href="/contact">
+                        <span>Request plan consultation</span>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="plans-grid">
-            <article class="plan-card">
-                <span class="plan-name">BASIC</span>
-                <div class="price">
-                    <small>CHF</small>
-                    <strong data-month="290" data-year="2958">290</strong>
-                    <span class="price-period">/mo</span>
+        <div class="plans-grid plans-overview-list">
+            <article class="plan-card plan-overview-card">
+                <div class="plan-overview-index">(01)</div>
+                <div class="plan-overview-main">
+                    <span class="plan-name">BASIC</span>
+                    <h3>Basic Care Plan</h3>
+                    <p>Essential upkeep for classic homeowners who want a clear yearly check and professional recommendations.</p>
+                    <div class="price">
+                        <small>CHF</small>
+                        <strong data-month="290" data-year="2958">290</strong>
+                        <span class="price-period">/mo</span>
+                    </div>
+                    <ul>
+                        <li>Annual inspection</li>
+                        <li>Maintenance report</li>
+                        <li>Priority recommendations</li>
+                    </ul>
                 </div>
-                <p>Essential upkeep for classic homeowners.</p>
-                <ul>
-                    <li>Annual inspection</li>
-                    <li>Maintenance report</li>
-                    <li>Priority recommendations</li>
-                </ul>
-                <button>Select Basic</button>
+                <div class="plan-overview-action">
+                    <button>Select Basic</button>
+                    <i aria-hidden="true" class="plan-detail-mark"></i>
+                </div>
             </article>
 
-            <article class="plan-card featured">
-                <span class="popular">MOST POPULAR</span>
-                <span class="plan-name">PLUS</span>
-                <div class="price">
-                    <small>CHF</small>
-                    <strong data-month="590" data-year="6018">590</strong>
-                    <span class="price-period">/mo</span>
+            <article class="plan-card featured plan-overview-card">
+                <div class="plan-overview-index">(02)</div>
+                <div class="plan-overview-main">
+                    <span class="popular">MOST POPULAR</span>
+                    <span class="plan-name">PLUS</span>
+                    <h3>Plus Care Program</h3>
+                    <p>The complete program for discerning owners who want proactive planning, faster support and service advantages.</p>
+                    <div class="price">
+                        <small>CHF</small>
+                        <strong data-month="590" data-year="6018">590</strong>
+                        <span class="price-period">/mo</span>
+                    </div>
+                    <ul>
+                        <li>Interior & Exterior inspection</li>
+                        <li>Maintenance planning</li>
+                        <li>Discount on services</li>
+                        <li>Emergency support</li>
+                    </ul>
                 </div>
-                <p>The complete program for discerning owners.</p>
-                <ul>
-                    <li>Interior & Exterior inspection</li>
-                    <li>Maintenance planning</li>
-                    <li>Discount on services</li>
-                    <li>Emergency support</li>
-                </ul>
-                <button>Select Plus</button>
+                <div class="plan-overview-action">
+                    <button>Select Plus</button>
+                    <i aria-hidden="true" class="plan-detail-mark"></i>
+                </div>
             </article>
 
-            <article class="plan-card">
-                <span class="plan-name">PREMIUM</span>
-                <div class="price">
-                    <small>CHF</small>
-                    <strong data-month="1290" data-year="13158">1290</strong>
-                    <span class="price-period">/mo</span>
+            <article class="plan-card plan-overview-card">
+                <div class="plan-overview-index">(03)</div>
+                <div class="plan-overview-main">
+                    <span class="plan-name">PREMIUM</span>
+                    <h3>Premium Estate Care</h3>
+                    <p>Signature care for luxury villas and institutions that need personal guidance and long-term value strategy.</p>
+                    <div class="price">
+                        <small>CHF</small>
+                        <strong data-month="1290" data-year="13158">1290</strong>
+                        <span class="price-period">/mo</span>
+                    </div>
+                    <ul>
+                        <li>Complete Property Management Support</li>
+                        <li>Priority scheduling</li>
+                        <li>Personal advisor</li>
+                        <li>Long-term strategy</li>
+                        <li>Annual property review</li>
+                    </ul>
                 </div>
-                <p>Signature care for luxury villas & institutions.</p>
-                <ul>
-                    <li>Complete Property Management Support</li>
-                    <li>Priority scheduling</li>
-                    <li>Personal advisor</li>
-                    <li>Long-term strategy</li>
-                    <li>Annual property review</li>
-                </ul>
-                <button>Select Premium</button>
+                <div class="plan-overview-action">
+                    <button>Select Premium</button>
+                    <i aria-hidden="true" class="plan-detail-mark"></i>
+                </div>
             </article>
         </div>
     </section>

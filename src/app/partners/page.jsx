@@ -588,16 +588,18 @@ html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-header:not
 
 html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header:not(.is-scrolled):not(.scrolled) .customer-header-btn,
 html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-header:not(.is-scrolled):not(.scrolled) .customer-header-btn {
-  background: #FFD21F !important;
-  border-color: #FFD21F !important;
-  color: #050505 !important;
-  -webkit-text-fill-color: #050505 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header:not(.is-scrolled):not(.scrolled) .header-btn,
 html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-header:not(.is-scrolled):not(.scrolled) .header-btn {
-  background: #E62453 !important;
-  border-color: #E62453 !important;
+  background: #000000 !important;
+  background-image: none !important;
+  border-color: #000000 !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
@@ -606,7 +608,12 @@ html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header:not(.
 html:not([data-theme="amigos-dark"]) body:has(.partners-page) .site-header:not(.is-scrolled):not(.scrolled) .header-btn:hover,
 html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-header:not(.is-scrolled):not(.scrolled) .customer-header-btn:hover,
 html:not([data-theme="amigos-dark"]) body[data-page="partners"] .site-header:not(.is-scrolled):not(.scrolled) .header-btn:hover {
-  opacity: .72 !important;
+  background: #111111 !important;
+  background-image: none !important;
+  border-color: #111111 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
 /* Final Partners correction: homepage calculator gradient, plain boxes until hover. */

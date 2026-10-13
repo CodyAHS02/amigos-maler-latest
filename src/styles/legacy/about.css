@@ -2327,22 +2327,29 @@ html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.i
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .customer-header-btn {
-    background: #FFD21F !important;
-    border-color: #FFD21F !important;
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+    background: #000000 !important;
+    background-image: none !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-btn {
-    background: #E62453 !important;
-    border-color: #E62453 !important;
+    background: #000000 !important;
+    background-image: none !important;
+    border-color: #000000 !important;
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .customer-header-btn:hover,
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-btn:hover {
-    opacity: .72;
+    background: #111111 !important;
+    background-image: none !important;
+    border-color: #111111 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1;
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .theme-toggle,
@@ -2676,6 +2683,151 @@ html[data-theme="amigos-dark"] body[data-page="about"] .number-item>* {
 html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials h2 {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
+}
+
+/* Light theme: client requested the numbers section not be colorful. */
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.numbers-section,
+html[data-theme="amigos-light"] body[data-page="about"] main>.numbers-section,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .numbers-section,
+html[data-theme="amigos-light"] body[data-page="about"] .numbers-section {
+    background:
+        linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%) !important;
+    background-size: auto !important;
+    animation: none !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.numbers-section *,
+html[data-theme="amigos-light"] body[data-page="about"] main>.numbers-section *,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .numbers-section *,
+html[data-theme="amigos-light"] body[data-page="about"] .numbers-section * {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    text-shadow: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .numbers-section .section-kicker,
+html[data-theme="amigos-light"] body[data-page="about"] .numbers-section .section-kicker {
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .numbers-grid,
+html[data-theme="amigos-light"] body[data-page="about"] .numbers-grid {
+    overflow: hidden !important;
+    border: 1px solid rgba(7, 26, 51, .10) !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, .82) !important;
+    box-shadow: 0 22px 70px rgba(7, 26, 51, .08) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .number-item,
+html[data-theme="amigos-light"] body[data-page="about"] .number-item {
+    background: transparent !important;
+    border-color: rgba(7, 26, 51, .10) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .number-item:hover,
+html[data-theme="amigos-light"] body[data-page="about"] .number-item:hover {
+    background: #ffffff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .number-item strong,
+html[data-theme="amigos-light"] body[data-page="about"] .number-item strong {
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .number-item span,
+html[data-theme="amigos-light"] body[data-page="about"] .number-item span {
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+/* Light theme: keep the values section calm and aligned with the numbers section. */
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.values-section,
+html[data-theme="amigos-light"] body[data-page="about"] main>.values-section,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .values-section,
+html[data-theme="amigos-light"] body[data-page="about"] .values-section {
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f7f9fc 100%) !important;
+    background-size: auto !important;
+    animation: none !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.values-section *,
+html[data-theme="amigos-light"] body[data-page="about"] main>.values-section *,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .values-section *,
+html[data-theme="amigos-light"] body[data-page="about"] .values-section * {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    text-shadow: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .values-section .section-kicker,
+html[data-theme="amigos-light"] body[data-page="about"] .values-section .section-kicker {
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .values-list,
+html[data-theme="amigos-light"] body[data-page="about"] .values-list {
+    overflow: hidden !important;
+    border: 2px solid transparent !important;
+    border-radius: 22px !important;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, .98), rgba(248, 250, 252, .96)) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 34%, #e62453 68%, #f6be10 100%) border-box !important;
+    background-size: auto, 280% 280% !important;
+    animation: aboutMovingGradient 8s ease-in-out infinite !important;
+    box-shadow: 0 24px 76px rgba(7, 26, 51, .10) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-row,
+html[data-theme="amigos-light"] body[data-page="about"] .value-row,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-row:hover,
+html[data-theme="amigos-light"] body[data-page="about"] .value-row:hover {
+    grid-template-columns: 64px 54px minmax(260px, .9fr) minmax(360px, 1.15fr) !important;
+    padding: clamp(24px, 2.2vw, 34px) clamp(42px, 4.8vw, 76px) !important;
+    background: transparent !important;
+    background-image: none !important;
+    border-color: rgba(7, 26, 51, .10) !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    box-sizing: border-box !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-row:hover,
+html[data-theme="amigos-light"] body[data-page="about"] .value-row:hover {
+    background: #ffffff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-num,
+html[data-theme="amigos-light"] body[data-page="about"] .value-num,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-row h3,
+html[data-theme="amigos-light"] body[data-page="about"] .value-row h3 {
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-row p,
+html[data-theme="amigos-light"] body[data-page="about"] .value-row p {
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-icon::before,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-icon::after,
+html[data-theme="amigos-light"] body[data-page="about"] .value-icon::before,
+html[data-theme="amigos-light"] body[data-page="about"] .value-icon::after {
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .testimonial-card,
