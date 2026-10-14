@@ -434,6 +434,7 @@ function createPaintFinishPanel() {
 
     const panel = document.createElement("div");
     panel.className = "paint-finish-panel";
+    panel.id = "paintFinishPanel";
     panel.setAttribute("aria-label", "Paint finish options");
 
     panel.innerHTML = `

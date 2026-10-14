@@ -2099,12 +2099,20 @@ runWhenDomReady(() => {
 
         track.appendChild(card);
 
+    });
+
+    const visibleDotCount = Math.min(3, total);
+
+    for (let i = 0; i < visibleDotCount; i += 1) {
         const dot = document.createElement("button");
         dot.className = "carousel-dot";
-        dot.addEventListener("click", () => goTo(i));
+        dot.type = "button";
+        dot.addEventListener("click", () => {
+            const targetIndex = Number(dot.dataset.targetIndex || activeIndex);
+            goTo(targetIndex);
+        });
         dotsEl.appendChild(dot);
-
-    });
+    }
 
     const cardEls = track.querySelectorAll(".testimonial-card");
     const dotEls = dotsEl.querySelectorAll(".carousel-dot");
@@ -2175,7 +2183,13 @@ runWhenDomReady(() => {
 
         });
 
-        dotEls.forEach((dot, i) => dot.classList.toggle("active", i === activeIndex));
+        dotEls.forEach((dot, i) => {
+            const dotOffset = i - Math.floor(visibleDotCount / 2);
+            const targetIndex = ((activeIndex + dotOffset) % total + total) % total;
+            dot.dataset.targetIndex = targetIndex;
+            dot.classList.toggle("active", dotOffset === 0);
+            dot.setAttribute("aria-label", dotOffset === 0 ? "Current testimonial" : `Go to testimonial ${targetIndex + 1}`);
+        });
 
     }
 

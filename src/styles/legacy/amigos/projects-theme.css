@@ -3749,3 +3749,94 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper .projects-enq
     width: min(100%, 280px) !important;
   }
 }
+
+/* Final projects CTA lock: match the requested pill button treatment. */
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta),
+body[data-page="projects"] main .hero-ctas :is(a, button),
+body[data-page="projects"] main .new-final-cta :is(a, button) {
+  position: relative !important;
+  isolation: isolate !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  min-height: 58px !important;
+  padding: 16px 30px 16px 72px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  text-decoration: none !important;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .18) !important;
+  transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta)::before,
+body[data-page="projects"] main .hero-ctas :is(a, button)::before,
+body[data-page="projects"] main .new-final-cta :is(a, button)::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: auto auto auto 10px !important;
+  top: 50% !important;
+  z-index: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+  transform: translateY(-50%) !important;
+  transition: transform .25s ease !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta)::after,
+body[data-page="projects"] main .hero-ctas :is(a, button)::after,
+body[data-page="projects"] main .new-final-cta :is(a, button)::after {
+  content: "→" !important;
+  position: absolute !important;
+  inset: auto auto auto 22px !important;
+  top: 50% !important;
+  z-index: 1 !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  transform: translateY(-52%) !important;
+  transition: transform .25s ease !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta) > *,
+body[data-page="projects"] main .hero-ctas :is(a, button) > *,
+body[data-page="projects"] main .new-final-cta :is(a, button) > * {
+  position: relative !important;
+  z-index: 2 !important;
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta):hover,
+body[data-page="projects"] main .hero-ctas :is(a, button):hover,
+body[data-page="projects"] main .new-final-cta :is(a, button):hover {
+  transform: translateY(-3px) !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta):hover::before,
+body[data-page="projects"] main .hero-ctas :is(a, button):hover::before,
+body[data-page="projects"] main .new-final-cta :is(a, button):hover::before {
+  transform: translate(6px, -50%) !important;
+}
+
+body[data-page="projects"] main :is(a, button):is(.btn, .btn-solid, .btn-cta):hover::after,
+body[data-page="projects"] main .hero-ctas :is(a, button):hover::after,
+body[data-page="projects"] main .new-final-cta :is(a, button):hover::after {
+  transform: translate(6px, -52%) !important;
+}

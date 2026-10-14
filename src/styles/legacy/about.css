@@ -2419,6 +2419,108 @@ html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .test
     -webkit-text-fill-color: #050505 !important;
 }
 
+/* Final about CTA button lock: match the shared Uiverse-style CTA treatment. */
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost),
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost),
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost),
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost) {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-height: 58px !important;
+    padding: 16px 30px 16px 72px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    text-decoration: none !important;
+    box-shadow: 0 18px 38px rgba(230, 36, 83, .18) !important;
+    transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::before,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::before,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::before,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: auto auto auto 10px !important;
+    top: 50% !important;
+    z-index: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+    transform: translateY(-50%) !important;
+    transition: transform .25s ease !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::after,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::after,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::after,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost)::after {
+    content: "→" !important;
+    position: absolute !important;
+    inset: auto auto auto 22px !important;
+    top: 50% !important;
+    z-index: 1 !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    transform: translateY(-52%) !important;
+    transition: transform .25s ease !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost) > *,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost) > *,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost) > *,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost) > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover {
+    background: #000000 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::before,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::before,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::before,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::before {
+    transform: translate(6px, -50%) !important;
+}
+
+body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::after,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::after,
+html[data-theme="amigos-light"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::after,
+html[data-theme="amigos-dark"] body[data-page="about"] main .final-cta :is(a, button):is(.btn, .btn-light, .btn-ghost):hover::after {
+    transform: translate(6px, -52%) !important;
+}
+
 /* Absolute final override: match the homepage bar exactly. */
 html[data-theme="amigos-dark"] body[data-page="about"] main,
 html[data-theme="amigos-dark"] body main {
@@ -2828,6 +2930,120 @@ html:not([data-theme="amigos-dark"]) body[data-page="about"] .value-icon::after,
 html[data-theme="amigos-light"] body[data-page="about"] .value-icon::before,
 html[data-theme="amigos-light"] body[data-page="about"] .value-icon::after {
     background: linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+}
+
+/* Light theme: final CTA should be calm, not a full colorful panel. */
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.final-cta,
+html[data-theme="amigos-light"] body[data-page="about"] main>.final-cta,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta {
+    background:
+        radial-gradient(circle at 16% 20%, rgba(246, 190, 16, .10), transparent 28%),
+        radial-gradient(circle at 84% 24%, rgba(230, 36, 83, .08), transparent 32%),
+        linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%) !important;
+    background-size: auto !important;
+    animation: none !important;
+    color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] main>.final-cta *,
+html[data-theme="amigos-light"] body[data-page="about"] main>.final-cta *,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta *,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta * {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    text-shadow: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .section-kicker,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .section-kicker,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta-inner > span,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta-inner > span {
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-light,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-light {
+    background: #000000 !important;
+    border-color: #000000 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-ghost,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-ghost {
+    background: #ffffff !important;
+    border-color: rgba(7, 26, 51, .18) !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta p,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta p {
+    max-width: 780px !important;
+    font-size: clamp(17px, 1.25vw, 20px) !important;
+    line-height: 1.65 !important;
+    color: #526173 !important;
+    -webkit-text-fill-color: #526173 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-light,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-ghost,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-light,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-ghost {
+    background-clip: padding-box, text !important;
+    -webkit-background-clip: padding-box, text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn,
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-light,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-light {
+    background:
+        linear-gradient(#000000, #000000) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) text !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-ghost,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-ghost {
+    background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) text !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-light,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-light {
+    background:
+        linear-gradient(transparent, transparent) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) border-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) text !important;
+    background-clip: padding-box, border-box, text !important;
+    -webkit-background-clip: padding-box, border-box, text !important;
+    border: 2px solid transparent !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    box-shadow: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .final-cta .btn-light:hover,
+html[data-theme="amigos-light"] body[data-page="about"] .final-cta .btn-light:hover {
+    background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) border-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 42%, #e62453 100%) text !important;
+    background-clip: padding-box, border-box, text !important;
+    -webkit-background-clip: padding-box, border-box, text !important;
+    border-color: transparent !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    box-shadow: 0 16px 34px rgba(7, 26, 51, .12) !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .testimonial-card,
