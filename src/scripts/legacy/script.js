@@ -180,6 +180,18 @@ function onPartialsReady() {
     initHeaderInteractions();
     initStickyHeader();
     initScrollTopButton();
+    removeAboutButtonSuffixArrows();
+}
+
+function removeAboutButtonSuffixArrows() {
+    if (!document.querySelector(".about-hero")) return;
+
+    document.querySelectorAll(".about-hero .hero-actions > a.btn").forEach((button) => {
+        if (button.getAttribute("href") === "#process") {
+            button.classList.add("about-process-button");
+        }
+        button.lastChild.textContent = button.lastChild.textContent.replace(/\s*[↓→]\s*$/, "");
+    });
 }
 
 if (window.__partialsLoaded) {
@@ -2198,8 +2210,27 @@ runWhenDomReady(() => {
         updateCarousel();
     }
 
+    let autoplayId = null;
+    const stopAutoplay = () => {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+    };
+    const startAutoplay = () => {
+        stopAutoplay();
+        autoplayId = window.setInterval(() => goTo(activeIndex + 1), 5200);
+    };
+
     prevBtn.addEventListener("click", () => goTo(activeIndex - 1));
     nextBtn.addEventListener("click", () => goTo(activeIndex + 1));
+
+    stage.addEventListener("pointerenter", stopAutoplay);
+    stage.addEventListener("pointerleave", startAutoplay);
+    stage.addEventListener("focusin", stopAutoplay);
+    stage.addEventListener("focusout", startAutoplay);
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) stopAutoplay();
+        else startAutoplay();
+    });
 
     /*==========================
         DRAG / SWIPE (touch + mouse)
@@ -2233,6 +2264,7 @@ runWhenDomReady(() => {
     ==========================*/
 
     updateCarousel();
+    startAutoplay();
 
 });
 

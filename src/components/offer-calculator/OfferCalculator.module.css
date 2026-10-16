@@ -3576,3 +3576,12 @@
 ):hover::after {
   transform: translate(6px, -52%) !important;
 }
+
+/* Calculator tab CTAs intentionally use text-only pills. */
+.page .tabActionBtn::before,
+.page .tabActionBtn::after,
+.page .tabActionBtnDetailed::before,
+.page .tabActionBtnDetailed::after {
+  content: none !important;
+  display: none !important;
+}

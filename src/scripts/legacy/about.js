@@ -18,8 +18,14 @@ function applyAboutDarkThemeSurfaces() {
         ["background", "background-size", "animation", "color", "border-color", "padding-left", "padding-right"].forEach(prop => el.style.removeProperty(prop));
     };
 
+    // Numbers owns its appearance in CSS. Keep it out of this shared theme
+    // loop so the legacy gradient cannot be written inline over that section.
     document
-        .querySelectorAll(".numbers-section, .values-section, .final-cta")
+        .querySelectorAll(".numbers-section")
+        .forEach(section => clearInlineTheme(section));
+
+    document
+        .querySelectorAll(".values-section, .final-cta")
         .forEach(section => {
             if (!isDark) {
                 clearInlineTheme(section);
@@ -399,6 +405,104 @@ runWhenDomReady(() => {
     });
 
 })();
+
+/*==================================================
+    LIVE INTERACTION LAYER — pointer-led moments
+==================================================*/
+
+runWhenDomReady(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hero = document.querySelector(".about-hero");
+
+    if (!reduceMotion && hero) {
+        hero.addEventListener("pointermove", (event) => {
+            const bounds = hero.getBoundingClientRect();
+            const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+            const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+            hero.style.setProperty("--pointer-x", `${x}%`);
+            hero.style.setProperty("--pointer-y", `${y}%`);
+        }, { passive: true });
+
+        hero.addEventListener("pointerleave", () => {
+            hero.style.setProperty("--pointer-x", "50%");
+            hero.style.setProperty("--pointer-y", "50%");
+        });
+
+        hero.querySelectorAll(".hero-actions .btn").forEach((button) => {
+            button.addEventListener("pointermove", (event) => {
+                const bounds = button.getBoundingClientRect();
+                const x = ((event.clientX - bounds.left) / bounds.width - .5) * 8;
+                const y = ((event.clientY - bounds.top) / bounds.height - .5) * 5;
+                gsap.to(button, { x, y, duration: .25, overwrite: true, ease: "power2.out" });
+            });
+
+            button.addEventListener("pointerleave", () => {
+                gsap.to(button, { x: 0, y: 0, duration: .45, overwrite: true, ease: "elastic.out(1, .5)" });
+            });
+        });
+    }
+
+    document.querySelectorAll(".story-image").forEach((image) => {
+        if (!reduceMotion) {
+            image.addEventListener("pointermove", (event) => {
+                const bounds = image.getBoundingClientRect();
+                const rotateY = ((event.clientX - bounds.left) / bounds.width - .5) * 5;
+                const rotateX = ((event.clientY - bounds.top) / bounds.height - .5) * -5;
+                gsap.to(image, { rotateX, rotateY, y: -4, duration: .35, overwrite: true, ease: "power2.out" });
+            });
+
+            image.addEventListener("pointerleave", () => {
+                gsap.to(image, { rotateX: 0, rotateY: 0, y: 0, duration: .6, overwrite: true, ease: "power3.out" });
+            });
+        }
+    });
+
+    document.querySelectorAll(".value-row").forEach((row) => {
+        row.tabIndex = 0;
+        row.setAttribute("role", "button");
+        row.setAttribute("aria-pressed", "false");
+
+        const select = () => {
+            document.querySelectorAll(".value-row.is-selected").forEach((item) => {
+                item.classList.remove("is-selected");
+                item.setAttribute("aria-pressed", "false");
+            });
+            row.classList.add("is-selected");
+            row.setAttribute("aria-pressed", "true");
+        };
+
+        row.addEventListener("click", select);
+        row.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                select();
+            }
+        });
+    });
+
+    document.querySelectorAll(".process-step").forEach((step) => {
+        step.tabIndex = 0;
+        step.setAttribute("role", "button");
+        step.setAttribute("aria-expanded", "false");
+
+        const focusStep = () => {
+            document.querySelectorAll(".process-step.is-focused").forEach((item) => {
+                item.classList.remove("is-focused");
+                item.setAttribute("aria-expanded", "false");
+            });
+            step.classList.add("is-focused");
+            step.setAttribute("aria-expanded", "true");
+        };
+
+        step.addEventListener("click", focusStep);
+        step.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                focusStep();
+            }
+        });
+    });
+});
 
 /* ==================================================
    ABOUT TESTIMONIAL SLIDER

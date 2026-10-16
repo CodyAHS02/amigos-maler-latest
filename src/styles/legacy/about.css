@@ -1169,6 +1169,23 @@ html[data-theme="amigos-dark"] .founder-sig-title {
     width: 0;
     height: 100%;
     background: var(--am-logo-gradient);
+    position: relative;
+    overflow: hidden;
+}
+
+.process-progress span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 34%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .9), transparent);
+    animation: aboutProcessShimmer 2.2s linear infinite;
+}
+
+@keyframes aboutProcessShimmer {
+    from { transform: translateX(-140%); }
+    to { transform: translateX(320%); }
+}
 }
 
 .process-step {
@@ -2417,6 +2434,140 @@ html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .test
 html[data-theme="amigos-dark"] body[data-page="about"] .about-testimonials .testimonial-card.active:hover * {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
+}
+
+/*==================================================
+    LIVE INTERACTION DETAILS
+==================================================*/
+
+.about-hero {
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+}
+
+.about-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .7;
+    background: radial-gradient(circle 260px at var(--pointer-x) var(--pointer-y), rgba(255, 210, 31, .16), transparent 72%);
+    mix-blend-mode: screen;
+    transition: opacity .4s ease;
+    animation: aboutHeroLightDrift 9s ease-in-out infinite alternate;
+}
+
+@keyframes aboutHeroLightDrift {
+    0% { transform: translate3d(-2%, -1%, 0) scale(1); opacity: .45; }
+    50% { transform: translate3d(2%, 1%, 0) scale(1.08); opacity: .78; }
+    100% { transform: translate3d(-1%, 2%, 0) scale(1.03); opacity: .58; }
+}
+
+.about-hero-inner,
+.about-hero .scroll-indicator {
+    will-change: transform;
+}
+
+.story-images {
+    perspective: 900px;
+}
+
+.story-image {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+@keyframes aboutStoryFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -6px; }
+}
+
+.story-image:not(:hover) {
+    animation: aboutStoryFloat 6s ease-in-out infinite;
+}
+
+.story-image-2 { animation-delay: -1.5s !important; }
+.story-image-3 { animation-delay: -3s !important; }
+.story-image-4 { animation-delay: -4.5s !important; }
+
+.value-row {
+    cursor: pointer;
+    outline: none;
+}
+
+.value-row:focus-visible {
+    outline: 2px solid var(--am-logo-yellow);
+    outline-offset: 5px;
+}
+
+.value-row.is-selected {
+    border-color: rgba(246, 190, 16, .82);
+    transform: translateX(10px);
+    background:
+        linear-gradient(90deg, rgba(246, 190, 16, .18), rgba(230, 36, 83, .10), transparent);
+}
+
+.value-row.is-selected .value-icon::before {
+    transform: scaleX(1.35);
+}
+
+.value-row.is-selected .value-icon::after {
+    transform: scaleY(.45);
+}
+
+.process-step {
+    cursor: pointer;
+    outline: none;
+    will-change: transform;
+}
+
+.process-step:focus-visible {
+    outline: 2px solid var(--am-logo-orange);
+    outline-offset: 8px;
+}
+
+.process-step.is-focused {
+    transform: translateY(-9px);
+}
+
+.process-step.is-focused span {
+    background: var(--am-logo-gradient-moving);
+    background-size: 220% 220%;
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 0 0 10px var(--am-offwhite), 0 16px 34px rgba(230, 36, 83, .24);
+    animation: aboutLogoGradientShift 4s ease-in-out infinite;
+}
+
+.process-step.is-focused h3 {
+    color: var(--am-logo-pink);
+}
+
+.carousel-stage {
+    cursor: grab;
+}
+
+.carousel-stage:active {
+    cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-hero::after {
+        display: none;
+    }
+
+    .story-image:not(:hover),
+    .process-progress span::after {
+        animation: none !important;
+    }
+
+    .story-image,
+    .value-row,
+    .process-step {
+        transition: none !important;
+        transform: none !important;
+    }
 }
 
 /* Final about CTA button lock: match the shared Uiverse-style CTA treatment. */

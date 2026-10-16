@@ -7595,7 +7595,7 @@ span.section-tag {
     width: min(600px, 100%);
     margin: 0 auto;
 
-    font-size: 14px;
+    font-size: 18px;
     line-height: 1.65;
 
     color: #6D675C;
@@ -8059,7 +8059,7 @@ span.section-tag {
     .projects-heading p {
         max-width: 360px;
 
-        font-size: 12px;
+        font-size: 16px;
     }
 
 

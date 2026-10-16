@@ -247,35 +247,6 @@ ${mobileColorDockHtml}
         </div>
     </section>
 
-    <!-- WHY AMIGOS SECTION -->
-    <section class="why-amigos">
-        <div class="why-container">
-            <div class="why-content reveal">
-                <span class="section-tag">Why Amigos?</span>
-                <h2>Craftsmanship. Trust. Property Preservation.</h2>
-                <p>From individual painting work to complete renovations, we personally support owners and property managers with transparency and reliability.</p>
-                <a href="/about" class="why-btn">GET TO KNOW AMIGOS</a>
-            </div>
-            <div class="stats-column">
-                <div class="stat reveal">
-                    <h3 class="counter" data-target="500">500</h3>
-                    <span>Completed Projects</span>
-                </div>
-                <div class="stat reveal">
-                    <h3 class="counter" data-target="100">100</h3>
-                    <span>Satisfied Clients</span>
-                </div>
-                <div class="stat reveal">
-                    <h3 class="counter" data-target="10">10</h3>
-                    <span>Years Experience</span>
-                </div>
-                <div class="stat reveal">
-                    <h3 class="counter" data-target="6000">6000</h3>
-                    <span>m² of Completed Surfaces</span>
-                </div>
-            </div>
-        </div>
-    </section>
 `;
 
 const pageHtmlAfterOffer = `
@@ -373,6 +344,36 @@ const pageHtmlAfterOffer = `
         </div>
     </section>
 
+    <!-- WHY AMIGOS SECTION -->
+    <section class="why-amigos">
+        <div class="why-container">
+            <div class="why-content reveal">
+                <span class="section-tag">Why Amigos?</span>
+                <h2>Craftsmanship. Trust. Property Preservation.</h2>
+                <p>From individual painting work to complete renovations, we personally support owners and property managers with transparency and reliability.</p>
+                <a href="/about" class="why-btn">GET TO KNOW AMIGOS</a>
+            </div>
+            <div class="stats-column">
+                <div class="stat reveal">
+                    <h3 class="counter" data-target="500">500</h3>
+                    <span>Completed Projects</span>
+                </div>
+                <div class="stat reveal">
+                    <h3 class="counter" data-target="100">100</h3>
+                    <span>Satisfied Clients</span>
+                </div>
+                <div class="stat reveal">
+                    <h3 class="counter" data-target="10">10</h3>
+                    <span>Years Experience</span>
+                </div>
+                <div class="stat reveal">
+                    <h3 class="counter" data-target="6000">6000</h3>
+                    <span>m² of Completed Surfaces</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SELECTED PROJECTS -->
     <section class="projects" id="projectsSection">
         <div class="projects-heading">
@@ -414,7 +415,6 @@ const pageHtmlAfterOffer = `
     <!-- PLANS SECTION -->
     <section class="plans-section" id="plans">
         <div class="plans-header">
-            <span class="plans-eyebrow">Property Maintenance Plans</span>
             <div class="plans-header-grid">
                 <h2>Your property care program, structured for every level of ownership.</h2>
                 <div class="plans-header-side">

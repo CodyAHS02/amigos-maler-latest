@@ -1642,7 +1642,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 <div className={styles.tabButtonWrapper}>
                   <button type="button" className={styles.tabActionBtn}>
                     <span>Start Quick Estimate</span>
-                    <span className={styles.tabActionArrow}>→</span>
                   </button>
                 </div>
               </div>
@@ -1705,7 +1704,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 <div className={styles.tabButtonWrapper}>
                   <button type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
                     <span>Create Detailed Quote</span>
-                    <span className={styles.tabActionArrow}>→</span>
                   </button>
                 </div>
               </div>
@@ -3010,7 +3008,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <div className={styles.tabButtonWrapper}>
                 <button type="button" className={styles.tabActionBtn}>
                   <span>Start Quick Estimate</span>
-                  <span className={styles.tabActionArrow}>→</span>
                 </button>
               </div>
             </div>
@@ -3061,7 +3058,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <div className={styles.tabButtonWrapper}>
                 <button type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
                   <span>Create Detailed Quote</span>
-                  <span className={styles.tabActionArrow}>→</span>
                 </button>
               </div>
             </div>
