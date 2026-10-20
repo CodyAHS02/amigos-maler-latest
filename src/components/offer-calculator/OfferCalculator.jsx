@@ -6,6 +6,12 @@ import Link from "next/link";
 import { useAmigosTheme } from "@/lib/useAmigosTheme";
 import styles from "./OfferCalculator.module.css";
 import {
+  QuickCalculatorStep1,
+  QuickCalculatorStep2,
+  QuickCalculatorStep3,
+  QuickCalculatorStep4
+} from "./QuickCalculatorSteps";
+import {
   propertyTypes,
   quickPropertyTypes,
   roomTypes,
@@ -46,9 +52,9 @@ function isValidSwissPostalCode(value) {
 
 const homeQuickStepMeta = [
   { number: "01", key: "package", title: "Choose Package", icon: "step_property" },
-  { number: "02", key: "confirm", title: "Confirm Package", icon: "step_summary" },
-  { number: "03", key: "contact", title: "Contact Details", icon: "step_price" },
-  { number: "04", key: "verify", title: "Verify E-Mail", icon: "step_verify" }
+  { number: "02", key: "location", title: "Location", icon: "step_location" },
+  { number: "03", key: "size", title: "Size", icon: "step_quantities" },
+  { number: "04", key: "condition", title: "Condition & Photos", icon: "step_condition" }
 ];
 
 const homeQuickPropertyTypes = [
@@ -88,7 +94,7 @@ const homeQuickPropertyTypes = [
     roomCount: 4,
     packageBackTitle: "3.5-Room Package",
     packageDetails: [
-      "CHF 3,700",
+      "CHF 3,500",
       "max 70m²",
       "Standard wall and ceiling painting for apartments up to 70m²."
     ],
@@ -102,9 +108,9 @@ const homeQuickPropertyTypes = [
     roomCount: 5,
     packageBackTitle: "4.5-Room Package",
     packageDetails: [
-      "CHF 5,000",
-      "max 100m²",
-      "Standard wall and ceiling painting for apartments up to 100m²."
+      "CHF 4,500",
+      "max 90m²",
+      "Standard wall and ceiling painting for apartments up to 90m²."
     ],
     image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.jpg"
   },
@@ -116,9 +122,9 @@ const homeQuickPropertyTypes = [
     roomCount: 6,
     packageBackTitle: "5.5-Room Package",
     packageDetails: [
-      "CHF 5,900",
-      "max 150m²",
-      "Standard wall and ceiling painting for apartments up to 150m²."
+      "CHF 5,800",
+      "max 115m²",
+      "Standard wall and ceiling painting for apartments up to 115m²."
     ],
     image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
   },
@@ -130,9 +136,9 @@ const homeQuickPropertyTypes = [
     roomCount: 7,
     packageBackTitle: "6.5-Room Package",
     packageDetails: [
-      "CHF 6,900",
-      "max 190m²",
-      "Standard wall and ceiling painting for apartments up to 190m²."
+      "CHF 6,500",
+      "max 140m²",
+      "Standard wall and ceiling painting for apartments up to 140m²."
     ],
     image: "/assets/projects/project-04.jpg"
   }
@@ -141,15 +147,21 @@ const homeQuickPropertyTypes = [
 const homeQuickConditionOptions = [
   {
     id: "good",
-    title: "Normal condition",
-    desc: "Surfaces are ready for standard painting.",
+    title: "Good Condition",
+    desc: "No major preparation work needed.",
     iconKey: "condition_good"
   },
   {
     id: "minor_repairs",
-    title: "Repairs Required",
-    desc: "Cracks, holes or damaged areas should be reviewed.",
+    title: "Minor Repairs",
+    desc: "Small filling work or hairline cracks.",
     iconKey: "condition_minor"
+  },
+  {
+    id: "renovation",
+    title: "Renovation Required",
+    desc: "More extensive preparation or remediation is needed.",
+    iconKey: "condition_renovation"
   }
 ];
 
@@ -644,6 +656,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [codeSent, setCodeSent] = useState(false);
+  const [emailVerified, setEmailVerified] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [pendingPhotos, setPendingPhotos] = useState([]);
   const [showSiteVisitForm, setShowSiteVisitForm] = useState(false);
@@ -756,6 +769,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   }, []);
 
   function selectDetailedProperty(option) {
+    setEmailVerified(false);
+    setCodeSent(false);
     setState((current) => {
       const nextComponentOptions = advancedComponentOptionsForProperty(option.id);
       const allowedComponentIds = new Set(nextComponentOptions.map((item) => item.id));
@@ -872,6 +887,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         text: state.projectNotes.trim()
       },
       location: {
+        address: state.customerInfo.address,
         postalCode: state.postalCode,
         city: state.locationCity
       }
@@ -886,6 +902,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     selectedComponentTitles,
     selectedServiceTitles,
     state.condition,
+    state.customerInfo.address,
     state.locationCity,
     state.postalCode,
     state.projectNotes,
@@ -957,9 +974,13 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   function canContinue() {
     if (isHomeQuickQuote) {
       if (step === 0) return Boolean(state.propertyType);
-      if (step === 1) return Boolean(state.condition);
-      if (step === 2) return Boolean(state.customerInfo.firstName.trim()) && Boolean(state.customerInfo.lastName.trim()) && Boolean(state.email.trim());
-      return true;
+      if (step === 1) {
+        return Boolean(state.customerInfo.address.trim())
+          && isValidSwissPostalCode(state.postalCode)
+          && Boolean(state.locationCity.trim());
+      }
+      if (step === 2) return Number(state.livingArea) > 0;
+      return Boolean(state.condition);
     }
     if (isSimple) {
       if (step === 0) return Boolean(state.propertyType);
@@ -971,8 +992,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     }
     if (step === 0) return Boolean(state.propertyType);
     if (step === 1) return state.components.length > 0;
-    if (step === 2) return state.services.length > 0;
-    if (step === 3) return visibleQuantities.every((item) => Number(state.quantities[item.quantityKey]) > 0);
+    if (step === 2) {
+      return state.services.length > 0
+        && visibleQuantities.every((item) => Number(state.quantities[item.quantityKey]) > 0);
+    }
+    if (step === 3) return Boolean(state.condition);
     if (step === 4) return isValidSwissPostalCode(state.postalCode);
     return true;
   }
@@ -1013,6 +1037,14 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       }
 
       setSessionId(data.sessionId);
+      setEmailVerified(false);
+
+      if (pendingPhotos.length > 0) {
+        for (const pending of pendingPhotos) {
+          await uploadPhotos(pending.file, pending.category, data.sessionId, { imagesOnly: true });
+        }
+        setPendingPhotos([]);
+      }
       setStep(5);
     } catch {
       setBusy(false);
@@ -1064,7 +1096,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       }
 
       setSessionId(data.sessionId);
-      // After calculate, move to email verify (step 10 = verify for simple mode)
+
+      if (isHomeQuickQuote) {
+        setPriceRange(selectedHomeQuickPackage?.packageDetails?.[0] || data.priceRange || "");
+        if (pendingPhotos.length > 0) {
+          for (const pending of pendingPhotos) {
+            await uploadPhotos(pending.file, pending.category, data.sessionId, { imagesOnly: true });
+          }
+          setPendingPhotos([]);
+        }
+        setNotice("Your personalized offer details are ready.");
+        return;
+      }
+
+      // The standalone simple calculator keeps its existing e-mail verification flow.
       setStep(10);
     } catch (err) {
       setBusy(false);
@@ -1074,10 +1119,6 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
   function next() {
     if (isHomeQuickQuote) {
-      if (step === 2) {
-        submitContactAndSendCode();
-        return;
-      }
       if (canContinue()) setStep((current) => Math.min(current + 1, homeQuickStepMeta.length - 1));
       return;
     }
@@ -1098,6 +1139,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
     if (step === 4) {
       if (canContinue()) calculateDetailed();
       else setErrors({ general: "Please enter a valid 4-digit Swiss postal code." });
+      return;
+    }
+
+    if (step === 5) {
+      setStep(6);
       return;
     }
 
@@ -1271,8 +1317,14 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
       }
 
       setPriceRange(data.priceRange);
-      // Simple mode → step 11 (simple price); Detailed mode → step 7 (price)
-      setStep(isHomeQuickQuote ? 3 : (isSimple ? 11 : 7));
+      // Simple mode → step 11 (simple price); detailed mode keeps the final price
+      // in the seventh (email) column after verification.
+      if (isHomeQuickQuote) setStep(3);
+      else if (isSimple) setStep(11);
+      else {
+        setEmailVerified(true);
+        setStep(6);
+      }
     } catch (err) {
       setBusy(false);
       setErrors({ general: "Verification failed. Please try again." });
@@ -1534,7 +1586,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             ) : (
               <span>Not selected</span>
             )}
-            {renderEdit(1)}
+            {renderEdit(2)}
           </dd>
         </div>
         <div className={styles.advancedSummaryItem}>
@@ -1854,9 +1906,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     }
                   }}
                 >
-                  <span>{item.number}</span>
+                  <span className={styles.progressStepNumber}>{item.number}</span>
                   <i>{item.icon?.startsWith?.("step_") ? <ComponentIcon iconKey={item.icon} /> : item.icon}</i>
-                  <b>{item.title}</b>
+                  <b className={styles.progressStepTitle}>{item.title}</b>
                 </button>
               );
             })}
@@ -1869,6 +1921,24 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
               {/* STEP 0: Project Type */}
               {step === 0 && (
+                isHomeQuickQuote ? (
+                  <QuickCalculatorStep1
+                    packages={homeQuickPropertyTypes}
+                    selectedId={state.propertyType}
+                    onSelect={(option) => {
+                      setPriceRange("");
+                      setSessionId("");
+                      setNotice("");
+                      setErrors({});
+                      setState((current) => ({
+                        ...current,
+                        propertyType: option.id,
+                        roomCount: option.roomCount
+                      }));
+                      setStep(1);
+                    }}
+                  />
+                ) : (
                 <div className={styles.stepPanel}>
                   <span className={styles.stepKicker}>{isHomeQuickQuote ? "01 Choose Painting Package" : "01 Project Type"}</span>
                   <h2>{isHomeQuickQuote ? "Choose your Painting Package." : (isSimple ? "What type of property would you like us to paint?" : "What type of property is it?")}</h2>
@@ -1906,75 +1976,25 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     </div>
                   )}
                 </div>
+                )
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 2: Confirm Package */}
+              {/* HOMEPAGE QUICK MODE — STEP 2: Location */}
               {isHomeQuickQuote && step === 1 && (
-                <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>02 Confirm Package</span>
-                  <h2>{selectedHomeQuickPackage?.packageBackTitle || "Confirm your package."}</h2>
-                  <p>Customer A package pricing is based on apartment size, without wall or ceiling measurements.</p>
-                  <div className={styles.summaryPanel}>
-                    <h3>Your selected package</h3>
-                    <dl>
-                      <div><dt>Package</dt><dd>{selectedHomeQuickPackage?.packageBackTitle || "Not selected"}</dd></div>
-                      <div><dt>Package size</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[1] || "Not selected"}</dd></div>
-                      <div><dt>Includes</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[2] || "Standard wall and ceiling painting."}</dd></div>
-                    </dl>
-                  </div>
-                  <div className={styles.conditionCardGrid} style={{ marginTop: "18px" }}>
-                    {homeQuickConditionOptions.map((option) =>
-                      renderConditionCard(option, state.condition === option.id, () => {
-                        setState((curr) => ({ ...curr, condition: option.id }));
-                      })
-                    )}
-                  </div>
-                </div>
+                <QuickCalculatorStep2
+                  LocationFields={LocationFields}
+                  state={state}
+                  onFieldChange={updateField}
+                  onStreetChange={(value) => updateCustomerInfo("address", value)}
+                />
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 3: Contact Details */}
+              {/* HOMEPAGE QUICK MODE — STEP 3: Size */}
               {isHomeQuickQuote && step === 2 && (
-                <div className={styles.stepPanel}>
-                  <span className={styles.stepKicker}>03 Contact Details</span>
-                  <h2>Where should we send your quote?</h2>
-                  <p>Enter your details to receive your protected package quote after e-mail verification.</p>
-                  <LockedPricePlaceholder />
-                  <div className={styles.customerGrid} style={{ marginTop: "16px" }}>
-                    {[
-                      ["firstName", "First Name *"],
-                      ["lastName", "Last Name *"],
-                      ["phone", "Phone (optional)"]
-                    ].map(([key, label]) => (
-                      <label key={key}>
-                        <span>{label}</span>
-                        <input
-                          value={state.customerInfo[key]}
-                          onChange={(event) => updateCustomerInfo(key, event.target.value)}
-                          aria-invalid={Boolean(errors[key])}
-                        />
-                        {errors[key] && <small>{errors[key]}</small>}
-                      </label>
-                    ))}
-                    <label style={{ gridColumn: "1 / -1" }}>
-                      <span>E-Mail Address *</span>
-                      <input
-                        type="email"
-                        value={state.email}
-                        placeholder="you@example.com"
-                        onChange={(event) => setState((current) => ({ ...current, email: event.target.value }))}
-                        aria-invalid={Boolean(errors.email)}
-                      />
-                    </label>
-                  </div>
-                  <label className={styles.notesField} style={{ marginTop: "16px" }}>
-                    <span>Notes about your project</span>
-                    <textarea
-                      value={state.projectNotes}
-                      placeholder="Tell us anything important about the rooms, timing, damage, or access."
-                      onChange={(event) => setState((current) => ({ ...current, projectNotes: event.target.value }))}
-                    />
-                  </label>
-                </div>
+                <QuickCalculatorStep3
+                  livingArea={state.livingArea}
+                  onChange={(value) => updateField("livingArea", value)}
+                />
               )}
 
               {/* SIMPLE MODE — STEP 1: Scope & Work */}
@@ -2192,79 +2212,27 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </div>
               )}
 
-              {/* HOMEPAGE QUICK MODE — STEP 4: E-Mail Verification / Quote Result */}
+              {/* HOMEPAGE QUICK MODE — STEP 4: Condition & Photos */}
               {isHomeQuickQuote && step === 3 && (
-                priceRange ? (
-                  <div className={styles.pricePanel}>
-                    <div className={styles.successMark}>✓</div>
-                    <span className={styles.stepKicker}>E-mail successfully verified</span>
-                    <h2>Your Painting Package quote</h2>
-                    <div className={styles.summaryPanel} style={{ marginTop: "16px" }}>
-                      <h3>Your package summary</h3>
-                      <dl>
-                        <div><dt>Package</dt><dd>{selectedHomeQuickPackage?.packageBackTitle || "Not selected"}</dd></div>
-                        <div><dt>Package size</dt><dd>{selectedHomeQuickPackage?.packageDetails?.[1] || "Not selected"}</dd></div>
-                        <div><dt>Condition</dt><dd>{homeQuickConditionOptions.find((o) => o.id === state.condition)?.title || state.condition}</dd></div>
-                      </dl>
-                    </div>
-                    <div style={{ margin: "20px 0 8px", textAlign: "center" }}>
-                      <strong className={styles.priceRange}>{priceRange}</strong>
-                      <p style={{ margin: "6px 0 0", fontSize: "0.9rem", color: "var(--color-muted, #888)" }}>Estimated price incl. VAT</p>
-                    </div>
-                    <p>This estimate is non-binding and based on your selected package. The final price may vary after review or an on-site inspection.</p>
-                    <div className={styles.finalActions} style={{ marginTop: "20px" }}>
-                      <button className={styles.primaryAction} type="button" onClick={() => submitRequest("OFFER")} disabled={busy}>
-                        {busy ? "SUBMITTING…" : "REQUEST OFFER"}
-                      </button>
-                      {sessionId && (
-                        <a
-                          href={`/api/offer-calculator/pdf?sessionId=${sessionId}`}
-                          download
-                          className={styles.secondaryAction}
-                          style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", textDecoration: "none", gap: "6px" }}
-                        >
-                          <span>📄</span>
-                          <b>DOWNLOAD PDF QUOTE</b>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  <div className={styles.verifyPanel}>
-                    <span className={styles.stepKicker}>04 Verify E-Mail</span>
-                    <h2>Check your e-mail</h2>
-                    <p>Enter the four-digit code we sent to <strong>{state.email}</strong>.</p>
-                    {notice && <p className={styles.notice}>{notice}</p>}
-                    {errors.general && <p className={styles.error}>{errors.general}</p>}
-                    <div className={styles.codeInputs}>
-                      {state.code.map((digit, index) => (
-                        <input
-                          key={index}
-                          ref={(node) => { codeRefs.current[index] = node; }}
-                          type="text"
-                          inputMode="numeric"
-                          maxLength={1}
-                          value={digit}
-                          onChange={(event) => {
-                            const value = event.target.value.replace(/\D/g, "").slice(0, 1);
-                            setState((current) => {
-                              const code = [...current.code];
-                              code[index] = value;
-                              return { ...current, code };
-                            });
-                            if (value && codeRefs.current[index + 1]) codeRefs.current[index + 1].focus();
-                          }}
-                        />
-                      ))}
-                    </div>
-                    <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-                      {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
-                    </button>
-                    <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
-                      Didn't receive the code? Send again
-                    </button>
-                  </div>
-                )
+                <QuickCalculatorStep4
+                  conditionOptions={homeQuickConditionOptions}
+                  selectedCondition={state.condition}
+                  onConditionChange={(value) => updateField("condition", value)}
+                  renderConditionCard={renderConditionCard}
+                  specialWorkOptions={specialWorkOptions}
+                  selectedSpecialWork={state.specialWork}
+                  onSpecialWorkToggle={toggleSpecialWork}
+                  notes={state.projectNotes}
+                  onNotesChange={(value) => updateField("projectNotes", value)}
+                  onPhotosChange={(event) => {
+                    attachPendingPhotos(event.target.files, "quick_photos");
+                    event.target.value = "";
+                  }}
+                  pendingPhotoCount={pendingPhotos.length}
+                  selectedPackage={selectedHomeQuickPackage}
+                  onComplete={calculateQuick}
+                  busy={busy}
+                />
               )}
 
               {/* SIMPLE MODE — STEP 3: Location */}
@@ -2423,7 +2391,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
                       </button>
                       <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
-                        Didn't receive the code? Send again
+                        Didn&apos;t receive the code? Send again
                       </button>
                     </div>
                   )}
@@ -2670,21 +2638,21 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                             className={styles.secondaryAction}
                             onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
                           >
-                            ← Back to Calculator Selection
+                          {isHomeQuickQuote ? "Back to Calculator Selection" : "← Back to Calculator Selection"}
                           </button>
                         ) : (
                           <a className={styles.backToQuickNavBtn} href="/#quote">
-                            ← Back to Calculator Selection
+                            {isHomeQuickQuote ? "Back to Calculator Selection" : "← Back to Calculator Selection"}
                           </a>
                         )}
                         {step > 0 && (
                           <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                            ← BACK
+                            {isHomeQuickQuote ? "BACK" : "← BACK"}
                           </button>
                         )}
                       </div>
                       <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
-                        {isHomeQuickQuote && step === 2 ? (busy ? "SENDING…" : "SEND VERIFICATION CODE →") : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →"))}
+                        {isHomeQuickQuote && step === 2 ? (busy ? "SENDING…" : "SEND VERIFICATION CODE") : (isHomeQuickQuote ? "CONTINUE" : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")))}
                       </button>
                     </div>
                   )}
@@ -2788,7 +2756,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
                         </button>
                         <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
-                          Didn't receive the code? Send again
+                          Didn&apos;t receive the code? Send again
                         </button>
                       </div>
                     )}
@@ -3194,9 +3162,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 }
               }}
             >
-              <span>{item.number}</span>
+              <span className={styles.progressStepNumber}>{item.number}</span>
               <i>{item.icon?.startsWith?.("step_") ? <ComponentIcon iconKey={item.icon} /> : item.icon}</i>
-              <b>{item.title}</b>
+              <b className={styles.progressStepTitle}>{item.title}</b>
             </button>
           );
         })}
@@ -3423,7 +3391,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
             </button>
             <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
-              Didn't receive the code? Send again
+              Didn&apos;t receive the code? Send again
             </button>
           </div>
         )}
@@ -3593,10 +3561,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           </div>
         )}
 
-        {/* DETAILED MODE STEP 2 */}
+        {/* DETAILED MODE STEP 2: Components, services and measurements */}
         {!isSimple && step === 2 && (
           <div className={styles.stepPanel}>
-            <span className={styles.stepKicker}>03 Work & Services</span>
+            <span className={styles.stepKicker}>03 Measurements</span>
             <h2>What work should we do?</h2>
             <p>Select multiple services. The catalogue is structured so it can grow with AMIGOS.</p>
             <div className={styles.serviceGrid}>
@@ -3604,15 +3572,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 setState((current) => ({ ...current, services: toggle(current.services, option.id) }));
               }))}
             </div>
-          </div>
-        )}
-
-        {/* DETAILED MODE STEP 3 */}
-        {!isSimple && step === 3 && (
-          <div className={styles.stepPanel}>
-            <span className={styles.stepKicker}>04 Quantities</span>
-            <h2>Enter the quantities</h2>
-            <p>Please enter the areas, lengths and quantities.</p>
+            <h2 style={{ marginTop: "24px" }}>Enter the quantities</h2>
+            <p>Please enter the areas, lengths and quantities for the selected components.</p>
             <DetailedMeasurementFields state={state} setState={setState} />
             <div className={styles.quantityGrid}>
               {visibleQuantities.map((item) => (
@@ -3636,9 +3597,75 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               ))}
             </div>
             <ComponentDetailFields components={state.components} details={state.componentDetails} onChange={updateComponentDetail} />
+          </div>
+        )}
+
+        {/* DETAILED MODE STEP 3: Condition */}
+        {!isSimple && step === 3 && (
+          <div className={styles.stepPanel}>
+            <span className={styles.stepKicker}>04 Condition</span>
+            <h2>What condition is the property in?</h2>
+            <p>Tell us what preparation or repair work should be considered.</p>
+            <div className={styles.conditionCardGrid}>
+              {conditionOptions.map((option) => renderConditionCard(option, state.condition === option.id, () => {
+                setState((current) => ({ ...current, condition: option.id }));
+              }))}
+            </div>
+            <div style={{ marginTop: "18px" }}>
+              <div style={{ fontSize: "13px", fontWeight: "700", marginBottom: "8px", color: "var(--ink)" }}>Repairs or special damage</div>
+              <div className={styles.roomChips}>
+                {specialWorkOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    role="checkbox"
+                    aria-checked={state.specialWork.includes(option.id)}
+                    className={state.specialWork.includes(option.id) ? styles.activeChip : ""}
+                    onClick={() => toggleSpecialWork(option.id)}
+                  >
+                    {option.title}
+                  </button>
+                ))}
+              </div>
+            </div>
             <label className={styles.notesField}>
               <span>Project information</span>
               <textarea value={state.projectNotes} placeholder="Tell us anything important about access, condition, damage or timing." onChange={(event) => setState((current) => ({ ...current, projectNotes: event.target.value }))} />
+            </label>
+          </div>
+        )}
+
+        {/* DETAILED MODE STEP 4: Photos, remarks and location */}
+        {!isSimple && step === 4 && (
+          <div className={styles.stepPanel}>
+            <span className={styles.stepKicker}>05 Photos &amp; Other</span>
+            <h2>Where is the property and what should we know?</h2>
+            <p>Add the location, photos and any final remarks before reviewing the summary.</p>
+            <LocationFields postalCode={state.postalCode} city={state.locationCity} onChange={updateField} />
+            <div className={styles.uploadPanel} style={{ marginTop: "24px" }}>
+              <h3>Upload photos of your project (optional)</h3>
+              <div className={styles.photoGrid}>
+                <label className={styles.photoDrop}>
+                  <span>Project photos</span>
+                  <small>JPG or PNG, max. 10 MB each</small>
+                  <input
+                    type="file"
+                    accept="image/jpeg,image/png"
+                    multiple
+                    onChange={(event) => {
+                      attachPendingPhotos(event.target.files, "project_photos");
+                      event.target.value = "";
+                    }}
+                  />
+                </label>
+              </div>
+              {(photos.length + pendingPhotos.length) > 0 && (
+                <p className={styles.notice}>{photos.length + pendingPhotos.length} photo{photos.length + pendingPhotos.length === 1 ? "" : "s"} attached to this project.</p>
+              )}
+            </div>
+            <label className={styles.notesField}>
+              <span>Other remarks</span>
+              <textarea value={state.projectNotes} placeholder="Anything else we should know?" onChange={(event) => setState((current) => ({ ...current, projectNotes: event.target.value }))} />
             </label>
           </div>
         )}
@@ -3670,7 +3697,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         )}
 
         {/* DETAILED MODE index 6 — "07 Verify E-Mail" */}
-        {step === 6 && (
+        {!isSimple && step === 6 && !emailVerified && (
           <div className={styles.verifyPanel}>
             <span className={styles.stepKicker}>07 Verify E-Mail</span>
             {!codeSent ? (
@@ -3732,14 +3759,14 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   </div>
                   <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>{busy ? "VERIFYING…" : "VERIFY E-MAIL →"}</button>
                 </div>
-                <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>Didn't receive the code? Send again</button>
+                <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>Didn&apos;t receive the code? Send again</button>
               </>
             )}
           </div>
         )}
 
         {/* DETAILED MODE index 7 — "08 Your Estimated Quotation" */}
-        {step === 7 && (
+        {!isSimple && step === 6 && emailVerified && (
           <div className={styles.pricePanel}>
             <div className={styles.successMark}>✓</div>
             <span className={styles.stepKicker}>E-mail successfully verified</span>

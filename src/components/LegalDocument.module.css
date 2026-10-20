@@ -1,0 +1,80 @@
+.page {
+  min-height: 80vh;
+  padding: 120px 0 80px;
+  background: #fff;
+  color: #102238;
+}
+
+:global(html[data-theme="amigos-dark"]) .page {
+  background: #071a33;
+  color: #fff;
+}
+
+.container {
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #f6be10;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.container h1 {
+  margin: 0 0 32px;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.sections {
+  display: grid;
+  gap: 32px;
+}
+
+.card {
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .04);
+}
+
+.card h2 {
+  margin: 0 0 16px;
+  color: #f6be10;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card a {
+  color: #f6be10;
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding-top: 96px;
+  }
+
+  .container {
+    width: min(100% - 32px, 900px);
+  }
+
+  .card {
+    padding: 24px;
+  }
+}

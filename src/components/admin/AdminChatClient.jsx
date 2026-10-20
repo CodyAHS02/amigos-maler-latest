@@ -57,23 +57,32 @@ export default function AdminChatClient({ initialConversations, initialChannel =
   }
 
   useEffect(() => {
-    loadConversations();
+    const initialLoad = window.setTimeout(() => {
+      void loadConversations();
+    }, 0);
     const timer = window.setInterval(() => {
-      loadConversations();
-      loadMessages();
+      void loadConversations();
+      void loadMessages();
     }, POLL_INTERVAL_MS);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearTimeout(initialLoad);
+      window.clearInterval(timer);
+    };
   }, [activeId, channel]);
 
   useEffect(() => {
-    setActiveId("");
-    setMessages([]);
-    loadConversations();
+    const reset = window.setTimeout(() => {
+      setActiveId("");
+      setMessages([]);
+      void loadConversations();
+    }, 0);
+    return () => window.clearTimeout(reset);
   }, [channel]);
 
   useEffect(() => {
-    loadMessages(activeId);
+    const load = window.setTimeout(() => void loadMessages(activeId), 0);
+    return () => window.clearTimeout(load);
   }, [activeId]);
 
   useEffect(() => {

@@ -31,7 +31,8 @@ export function useAmigosTheme() {
 
     const dark = stored === DARK_THEME;
     applyTheme(dark ? DARK_THEME : LIGHT_THEME);
-    setIsDark(dark);
+    const frame = window.requestAnimationFrame(() => setIsDark(dark));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const toggleTheme = useCallback(() => {

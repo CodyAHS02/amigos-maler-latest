@@ -53,7 +53,7 @@
   background: linear-gradient(180deg, rgba(244, 250, 255, .8), rgba(248, 251, 253, .42) 60%, rgba(255, 249, 239, .28)), url("/assets/calculator-day-bg.webp") center bottom/cover fixed no-repeat
 }
 
-:global(html[data-theme="amigos-dark"]) .page {
+:global(html[data-theme="__never"]) .page {
   --ink: #fff;
   --copy: #edf5ff;
   --muted: #b8c9dd;
@@ -65,7 +65,7 @@
   background: linear-gradient(180deg, rgba(1, 16, 38, .58), rgba(1, 18, 42, .72)), url("/assets/calculator-night-bg.png") center bottom/cover fixed no-repeat !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .selectionPage {
+:global(html[data-theme="__never"]) .selectionPage {
   background:
     linear-gradient(180deg, rgba(1, 16, 38, .16), rgba(1, 18, 42, .34)),
     url("/assets/calculator-night-bg.png") center center / cover scroll no-repeat !important;
@@ -147,6 +147,10 @@
   gap: 12px
 }
 
+.themeToggle {
+  display: none !important
+}
+
 .themeToggle,
 .soundToggle {
   display: inline-flex;
@@ -163,8 +167,8 @@
   box-shadow: 0 8px 22px rgba(28, 59, 88, .1)
 }
 
-:global(html[data-theme="amigos-dark"]) .themeToggle,
-:global(html[data-theme="amigos-dark"]) .soundToggle {
+:global(html[data-theme="__never"]) .themeToggle,
+:global(html[data-theme="__never"]) .soundToggle {
   background: rgba(7, 31, 63, .82)
 }
 
@@ -206,11 +210,11 @@
   text-transform: uppercase
 }
 
-:global(html[data-theme="amigos-dark"]) .brand,
-:global(html[data-theme="amigos-dark"]) .sidebarModeKicker,
-:global(html[data-theme="amigos-dark"]) .selectionKicker,
-:global(html[data-theme="amigos-dark"]) .stepKicker,
-:global(html[data-theme="amigos-dark"]) .detailGroupTitle {
+:global(html[data-theme="__never"]) .brand,
+:global(html[data-theme="__never"]) .sidebarModeKicker,
+:global(html[data-theme="__never"]) .selectionKicker,
+:global(html[data-theme="__never"]) .stepKicker,
+:global(html[data-theme="__never"]) .detailGroupTitle {
   color: #b9d0e8
 }
 
@@ -247,7 +251,8 @@
   grid-template-columns: repeat(8, minmax(0, 1fr));
   width: min(1450px, 100%);
   margin: 0 auto 38px;
-  padding: 0
+  padding: 0;
+  background: none !important;
 }
 
 .progressNavSimple {
@@ -275,7 +280,7 @@
 .progressFill {
   z-index: 1;
   max-width: 92%;
-  background: linear-gradient(90deg, var(--c), var(--a));
+  background: transparent !important;
   transition: width .3s ease
 }
 
@@ -312,7 +317,7 @@
   box-shadow: 0 0 0 12px rgba(231, 241, 250, .58)
 }
 
-:global(html[data-theme="amigos-dark"]) .progressStep i {
+:global(html[data-theme="__never"]) .progressStep i {
   background: rgba(7, 31, 65, .9);
   box-shadow: 0 0 0 12px rgba(30, 60, 94, .44)
 }
@@ -395,7 +400,7 @@
   transition: transform .2s, border-color .2s
 }
 
-:global(html[data-theme="amigos-dark"]) .propertyCard {
+:global(html[data-theme="__never"]) .propertyCard {
   border-color: rgba(215, 232, 249, .24)
 }
 
@@ -674,9 +679,9 @@
   color: #466889
 }
 
-:global(html[data-theme="amigos-dark"]) .cardIcon,
-:global(html[data-theme="amigos-dark"]) .scopeCardIcon,
-:global(html[data-theme="amigos-dark"]) .conditionCardIcon {
+:global(html[data-theme="__never"]) .cardIcon,
+:global(html[data-theme="__never"]) .scopeCardIcon,
+:global(html[data-theme="__never"]) .conditionCardIcon {
   background: #143b68;
   color: #d8e8f8
 }
@@ -1027,7 +1032,7 @@
   box-shadow: 0 10px 24px rgba(32, 65, 96, .07)
 }
 
-:global(html[data-theme="amigos-dark"]) .advancedSummaryItem {
+:global(html[data-theme="__never"]) .advancedSummaryItem {
   background: rgba(7, 31, 65, .62);
   border-color: rgba(215, 232, 249, .18)
 }
@@ -1065,7 +1070,7 @@
   line-height: 1.35
 }
 
-.advancedSummaryItem dd > span {
+.advancedSummaryItem dd>span {
   min-width: 0;
   overflow-wrap: anywhere
 }
@@ -1422,9 +1427,9 @@
   font-weight: 800
 }
 
-:global(html[data-theme="amigos-dark"]) .tabTagFast,
-:global(html[data-theme="amigos-dark"]) .tabTagDetailed,
-:global(html[data-theme="amigos-dark"]) .tabTagEstimateTime {
+:global(html[data-theme="__never"]) .tabTagFast,
+:global(html[data-theme="__never"]) .tabTagDetailed,
+:global(html[data-theme="__never"]) .tabTagEstimateTime {
   color: #ffd078
 }
 
@@ -1656,94 +1661,94 @@
 
 /* Contrast lock: public-page legacy styles use !important text fills. Keep every
    calculator label readable regardless of where the component is mounted. */
-:global(html:not([data-theme="amigos-dark"])) .page,
-:global(html[data-theme="amigos-light"]) .page {
+:global(html:not([data-theme="__never"])) .page,
+:global(html:not([data-theme="__never"])) .page {
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page h1,
-:global(html:not([data-theme="amigos-dark"])) .page h2,
-:global(html:not([data-theme="amigos-dark"])) .page h3,
-:global(html:not([data-theme="amigos-dark"])) .page h4,
-:global(html:not([data-theme="amigos-dark"])) .page strong,
-:global(html:not([data-theme="amigos-dark"])) .page label,
-:global(html:not([data-theme="amigos-dark"])) .page dt,
-:global(html:not([data-theme="amigos-dark"])) .page dd,
-:global(html:not([data-theme="amigos-dark"])) .page .progressStep b,
-:global(html:not([data-theme="amigos-dark"])) .page .progressStep span,
-:global(html:not([data-theme="amigos-dark"])) .page .propertyCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .scopeCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .conditionCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .tabHeadline,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem strong {
+:global(html:not([data-theme="__never"])) .page h1,
+:global(html:not([data-theme="__never"])) .page h2,
+:global(html:not([data-theme="__never"])) .page h3,
+:global(html:not([data-theme="__never"])) .page h4,
+:global(html:not([data-theme="__never"])) .page strong,
+:global(html:not([data-theme="__never"])) .page label,
+:global(html:not([data-theme="__never"])) .page dt,
+:global(html:not([data-theme="__never"])) .page dd,
+:global(html:not([data-theme="__never"])) .page .progressStep b,
+:global(html:not([data-theme="__never"])) .page .progressStep span,
+:global(html:not([data-theme="__never"])) .page .propertyCardTitle,
+:global(html:not([data-theme="__never"])) .page .selectionCardTitle,
+:global(html:not([data-theme="__never"])) .page .scopeCardTitle,
+:global(html:not([data-theme="__never"])) .page .conditionCardTitle,
+:global(html:not([data-theme="__never"])) .page .tabHeadline,
+:global(html:not([data-theme="__never"])) .page .selectionTrustItem strong {
   color: #050505 !important;
   -webkit-text-fill-color: #050505 !important;
   opacity: 1 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page p,
-:global(html:not([data-theme="amigos-dark"])) .page li,
-:global(html:not([data-theme="amigos-dark"])) .page small,
-:global(html:not([data-theme="amigos-dark"])) .page .propertyCardSubtitle,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCardUnit,
-:global(html:not([data-theme="amigos-dark"])) .page .scopeCardDesc,
-:global(html:not([data-theme="amigos-dark"])) .page .conditionCardDesc,
-:global(html:not([data-theme="amigos-dark"])) .page .tabDescription,
-:global(html:not([data-theme="amigos-dark"])) .page .tabFeatureItem,
-:global(html:not([data-theme="amigos-dark"])) .page .tabTagEstimateTime,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem p {
+:global(html:not([data-theme="__never"])) .page p,
+:global(html:not([data-theme="__never"])) .page li,
+:global(html:not([data-theme="__never"])) .page small,
+:global(html:not([data-theme="__never"])) .page .propertyCardSubtitle,
+:global(html:not([data-theme="__never"])) .page .selectionCardUnit,
+:global(html:not([data-theme="__never"])) .page .scopeCardDesc,
+:global(html:not([data-theme="__never"])) .page .conditionCardDesc,
+:global(html:not([data-theme="__never"])) .page .tabDescription,
+:global(html:not([data-theme="__never"])) .page .tabFeatureItem,
+:global(html:not([data-theme="__never"])) .page .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page .selectionTrustItem p {
   color: #26394e !important;
   -webkit-text-fill-color: #26394e !important;
   opacity: 1 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page .brand,
-:global(html:not([data-theme="amigos-dark"])) .page .sidebarModeKicker,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionKicker,
-:global(html:not([data-theme="amigos-dark"])) .page .stepKicker,
-:global(html:not([data-theme="amigos-dark"])) .page .detailGroupTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .tabTagFast,
-:global(html:not([data-theme="amigos-dark"])) .page .tabTagDetailed {
+:global(html:not([data-theme="__never"])) .page .brand,
+:global(html:not([data-theme="__never"])) .page .sidebarModeKicker,
+:global(html:not([data-theme="__never"])) .page .selectionKicker,
+:global(html:not([data-theme="__never"])) .page .stepKicker,
+:global(html:not([data-theme="__never"])) .page .detailGroupTitle,
+:global(html:not([data-theme="__never"])) .page .tabTagFast,
+:global(html:not([data-theme="__never"])) .page .tabTagDetailed {
   color: #31577f !important;
   -webkit-text-fill-color: #31577f !important;
   opacity: 1 !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page,
-:global(html[data-theme="amigos-dark"]) .page h1,
-:global(html[data-theme="amigos-dark"]) .page h2,
-:global(html[data-theme="amigos-dark"]) .page h3,
-:global(html[data-theme="amigos-dark"]) .page h4,
-:global(html[data-theme="amigos-dark"]) .page strong,
-:global(html[data-theme="amigos-dark"]) .page label,
-:global(html[data-theme="amigos-dark"]) .page dt,
-:global(html[data-theme="amigos-dark"]) .page dd,
-:global(html[data-theme="amigos-dark"]) .page .progressStep b,
-:global(html[data-theme="amigos-dark"]) .page .progressStep span,
-:global(html[data-theme="amigos-dark"]) .page .propertyCardTitle,
-:global(html[data-theme="amigos-dark"]) .page .selectionCardTitle,
-:global(html[data-theme="amigos-dark"]) .page .scopeCardTitle,
-:global(html[data-theme="amigos-dark"]) .page .conditionCardTitle,
-:global(html[data-theme="amigos-dark"]) .page .tabHeadline,
-:global(html[data-theme="amigos-dark"]) .page .selectionTrustItem strong {
+:global(html[data-theme="__never"]) .page,
+:global(html[data-theme="__never"]) .page h1,
+:global(html[data-theme="__never"]) .page h2,
+:global(html[data-theme="__never"]) .page h3,
+:global(html[data-theme="__never"]) .page h4,
+:global(html[data-theme="__never"]) .page strong,
+:global(html[data-theme="__never"]) .page label,
+:global(html[data-theme="__never"]) .page dt,
+:global(html[data-theme="__never"]) .page dd,
+:global(html[data-theme="__never"]) .page .progressStep b,
+:global(html[data-theme="__never"]) .page .progressStep span,
+:global(html[data-theme="__never"]) .page .propertyCardTitle,
+:global(html[data-theme="__never"]) .page .selectionCardTitle,
+:global(html[data-theme="__never"]) .page .scopeCardTitle,
+:global(html[data-theme="__never"]) .page .conditionCardTitle,
+:global(html[data-theme="__never"]) .page .tabHeadline,
+:global(html[data-theme="__never"]) .page .selectionTrustItem strong {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   opacity: 1 !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page p,
-:global(html[data-theme="amigos-dark"]) .page li,
-:global(html[data-theme="amigos-dark"]) .page small,
-:global(html[data-theme="amigos-dark"]) .page .propertyCardSubtitle,
-:global(html[data-theme="amigos-dark"]) .page .selectionCardUnit,
-:global(html[data-theme="amigos-dark"]) .page .scopeCardDesc,
-:global(html[data-theme="amigos-dark"]) .page .conditionCardDesc,
-:global(html[data-theme="amigos-dark"]) .page .tabDescription,
-:global(html[data-theme="amigos-dark"]) .page .tabFeatureItem,
-:global(html[data-theme="amigos-dark"]) .page .tabTagEstimateTime,
-:global(html[data-theme="amigos-dark"]) .page .selectionTrustItem p {
+:global(html[data-theme="__never"]) .page p,
+:global(html[data-theme="__never"]) .page li,
+:global(html[data-theme="__never"]) .page small,
+:global(html[data-theme="__never"]) .page .propertyCardSubtitle,
+:global(html[data-theme="__never"]) .page .selectionCardUnit,
+:global(html[data-theme="__never"]) .page .scopeCardDesc,
+:global(html[data-theme="__never"]) .page .conditionCardDesc,
+:global(html[data-theme="__never"]) .page .tabDescription,
+:global(html[data-theme="__never"]) .page .tabFeatureItem,
+:global(html[data-theme="__never"]) .page .tabTagEstimateTime,
+:global(html[data-theme="__never"]) .page .selectionTrustItem p {
   color: #d7e4f2 !important;
   -webkit-text-fill-color: #d7e4f2 !important;
   opacity: 1 !important;
@@ -1762,16 +1767,16 @@
 }
 
 /* Form values follow their surface instead of inherited homepage text fills. */
-:global(html:not([data-theme="amigos-dark"])) .page input,
-:global(html:not([data-theme="amigos-dark"])) .page textarea,
-:global(html:not([data-theme="amigos-dark"])) .page select {
+:global(html:not([data-theme="__never"])) .page input,
+:global(html:not([data-theme="__never"])) .page textarea,
+:global(html:not([data-theme="__never"])) .page select {
   color: #071a33 !important;
   -webkit-text-fill-color: #071a33 !important;
 }
 
-:global(html[data-theme="amigos-dark"]) .page input,
-:global(html[data-theme="amigos-dark"]) .page textarea,
-:global(html[data-theme="amigos-dark"]) .page select {
+:global(html[data-theme="__never"]) .page input,
+:global(html[data-theme="__never"]) .page textarea,
+:global(html[data-theme="__never"]) .page select {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
@@ -1968,12 +1973,23 @@
   line-height: 1.45;
 }
 
-:global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+:global(html[data-theme="__never"]) .homeLayout .sidebarModeCard {
   background: rgba(5, 25, 55, .88);
   box-shadow: 0 18px 44px rgba(0, 7, 20, .32);
 }
 
+:global(html[data-theme="amigos-light"]) .homeLayout .sidebarModeCard {
+  background: linear-gradient(145deg, #ffffffc7, #ffffffa8) !important;
+}
+
+:global(html[data-theme="amigos-light"]) .homeLayout .sidebarModeCard .sidebarModeTitle,
+:global(html[data-theme="amigos-light"]) .homeLayout .sidebarModeCard .detailedCtaList {
+  color: #111 !important;
+  -website-text-fill-color: #111 !important;
+}
+
 @media (max-width: 1000px) {
+
   .selectionTabCard>.tabBadgeRow,
   .selectionTabCard>.tabHeadline,
   .selectionTabCard>.tabDescription,
@@ -2126,6 +2142,7 @@
 }
 
 @media (max-width: 640px) {
+
   .selectionTabCard>.tabBadgeRow,
   .selectionTabCard>.tabHeadline,
   .selectionTabCard>.tabDescription,
@@ -2204,17 +2221,17 @@
   height: auto;
 }
 
-:global(html[data-theme="amigos-dark"]) .propertyCard {
+:global(html[data-theme="__never"]) .propertyCard {
   border-color: rgba(215, 232, 249, .28);
   background: var(--panel);
 }
 
-:global(html[data-theme="amigos-dark"]) .propertyCardInfo {
+:global(html[data-theme="__never"]) .propertyCardInfo {
   background: var(--panel);
 }
 
-:global(html[data-theme="amigos-dark"]) .propertyCard:hover,
-:global(html[data-theme="amigos-dark"]) .propertyCardSelected {
+:global(html[data-theme="__never"]) .propertyCard:hover,
+:global(html[data-theme="__never"]) .propertyCardSelected {
   border-color: var(--b);
 }
 
@@ -2303,7 +2320,7 @@
     box-shadow: 0 0 0 7px rgba(231, 241, 250, .62);
   }
 
-  :global(html[data-theme="amigos-dark"]) .homeLayout .progressStep i {
+  :global(html[data-theme="__never"]) .homeLayout .progressStep i {
     box-shadow: 0 0 0 7px rgba(30, 60, 94, .48);
   }
 
@@ -2338,9 +2355,9 @@
 }
 
 .page,
-:global(html[data-theme="amigos-dark"]) .page,
-:global(html:not([data-theme="amigos-dark"])) .page,
-:global(html[data-theme="amigos-light"]) .page {
+:global(html[data-theme="__never"]) .page,
+:global(html:not([data-theme="__never"])) .page,
+:global(html:not([data-theme="__never"])) .page {
   --ink: #ffffff;
   --copy: #d8e8f6;
   --muted: #a7c1d9;
@@ -2359,6 +2376,10 @@
     url("/assets/calculator-night-bg.png") center bottom / cover fixed no-repeat !important;
   color: #fff !important;
   animation: calculatorGlowDrift 16s ease-in-out infinite;
+}
+
+:global(html[data-theme="amigos-light"]) .page {
+  background: radial-gradient(circle at 14% 12%, #fffae6e0, #e0d6d6b8 24%), url(/assets/calculator-day-bg.webp) bottom / cover no-repeat fixed !important;
 }
 
 .page::before {
@@ -2399,11 +2420,11 @@
 .selectionKicker,
 .stepKicker,
 .detailGroupTitle,
-:global(html[data-theme="amigos-dark"]) .brand,
-:global(html[data-theme="amigos-dark"]) .sidebarModeKicker,
-:global(html[data-theme="amigos-dark"]) .selectionKicker,
-:global(html[data-theme="amigos-dark"]) .stepKicker,
-:global(html[data-theme="amigos-dark"]) .detailGroupTitle {
+:global(html[data-theme="__never"]) .brand,
+:global(html[data-theme="__never"]) .sidebarModeKicker,
+:global(html[data-theme="__never"]) .selectionKicker,
+:global(html[data-theme="__never"]) .stepKicker,
+:global(html[data-theme="__never"]) .detailGroupTitle {
   color: #ffd66f !important;
   -webkit-text-fill-color: #ffd66f !important;
   letter-spacing: .08em;
@@ -2488,9 +2509,9 @@
 .uploadPanel,
 .homeLayout .sidebarModeCard,
 .selectionTabCard,
-:global(html[data-theme="amigos-dark"]) .propertyCard,
-:global(html[data-theme="amigos-dark"]) .propertyCardInfo,
-:global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+:global(html[data-theme="__never"]) .propertyCard,
+:global(html[data-theme="__never"]) .propertyCardInfo,
+:global(html[data-theme="__never"]) .homeLayout .sidebarModeCard {
   border-color: rgba(255, 255, 255, .16);
   background: linear-gradient(145deg, rgba(12, 45, 92, .78), rgba(5, 24, 56, .66));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 24px 74px rgba(0, 8, 28, .34);
@@ -2499,7 +2520,7 @@
 }
 
 .propertyCardInfo,
-:global(html[data-theme="amigos-dark"]) .propertyCardInfo {
+:global(html[data-theme="__never"]) .propertyCardInfo {
   background: linear-gradient(180deg, rgba(9, 36, 75, .92), rgba(5, 24, 56, .88));
 }
 
@@ -2518,9 +2539,9 @@
 .cardIcon,
 .scopeCardIcon,
 .conditionCardIcon,
-:global(html[data-theme="amigos-dark"]) .cardIcon,
-:global(html[data-theme="amigos-dark"]) .scopeCardIcon,
-:global(html[data-theme="amigos-dark"]) .conditionCardIcon {
+:global(html[data-theme="__never"]) .cardIcon,
+:global(html[data-theme="__never"]) .scopeCardIcon,
+:global(html[data-theme="__never"]) .conditionCardIcon {
   background: rgba(255, 255, 255, .08);
   color: #ffd66f;
   box-shadow: inset 0 0 0 1px rgba(255, 214, 111, .18);
@@ -2551,50 +2572,51 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page,
-:global(html:not([data-theme="amigos-dark"])) .page h1,
-:global(html:not([data-theme="amigos-dark"])) .page h2,
-:global(html:not([data-theme="amigos-dark"])) .page h3,
-:global(html:not([data-theme="amigos-dark"])) .page h4,
-:global(html:not([data-theme="amigos-dark"])) .page strong,
-:global(html:not([data-theme="amigos-dark"])) .page label,
-:global(html:not([data-theme="amigos-dark"])) .page dt,
-:global(html:not([data-theme="amigos-dark"])) .page dd,
-:global(html:not([data-theme="amigos-dark"])) .page .progressStep b,
-:global(html:not([data-theme="amigos-dark"])) .page .progressStep span,
-:global(html:not([data-theme="amigos-dark"])) .page .propertyCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .scopeCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .conditionCardTitle,
-:global(html:not([data-theme="amigos-dark"])) .page .tabHeadline,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem strong {
+:global(html:not([data-theme="__never"])) .page,
+:global(html:not([data-theme="__never"])) .page h1,
+:global(html:not([data-theme="__never"])) .page h2,
+:global(html:not([data-theme="__never"])) .page h3,
+:global(html:not([data-theme="__never"])) .page h4,
+:global(html:not([data-theme="__never"])) .page strong,
+:global(html:not([data-theme="__never"])) .page label,
+:global(html:not([data-theme="__never"])) .page dt,
+:global(html:not([data-theme="__never"])) .page dd,
+:global(html:not([data-theme="__never"])) .page .progressStep b,
+:global(html:not([data-theme="__never"])) .page .progressStep span,
+:global(html:not([data-theme="__never"])) .page .propertyCardTitle,
+:global(html:not([data-theme="__never"])) .page .selectionCardTitle,
+:global(html:not([data-theme="__never"])) .page .scopeCardTitle,
+:global(html:not([data-theme="__never"])) .page .conditionCardTitle,
+:global(html:not([data-theme="__never"])) .page .tabHeadline,
+:global(html:not([data-theme="__never"])) .page .selectionTrustItem strong {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page p,
-:global(html:not([data-theme="amigos-dark"])) .page li,
-:global(html:not([data-theme="amigos-dark"])) .page small,
-:global(html:not([data-theme="amigos-dark"])) .page .propertyCardSubtitle,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionCardUnit,
-:global(html:not([data-theme="amigos-dark"])) .page .scopeCardDesc,
-:global(html:not([data-theme="amigos-dark"])) .page .conditionCardDesc,
-:global(html:not([data-theme="amigos-dark"])) .page .tabDescription,
-:global(html:not([data-theme="amigos-dark"])) .page .tabFeatureItem,
-:global(html:not([data-theme="amigos-dark"])) .page .tabTagEstimateTime,
-:global(html:not([data-theme="amigos-dark"])) .page .selectionTrustItem p {
+:global(html:not([data-theme="__never"])) .page p,
+:global(html:not([data-theme="__never"])) .page li,
+:global(html:not([data-theme="__never"])) .page small,
+:global(html:not([data-theme="__never"])) .page .propertyCardSubtitle,
+:global(html:not([data-theme="__never"])) .page .selectionCardUnit,
+:global(html:not([data-theme="__never"])) .page .scopeCardDesc,
+:global(html:not([data-theme="__never"])) .page .conditionCardDesc,
+:global(html:not([data-theme="__never"])) .page .tabDescription,
+:global(html:not([data-theme="__never"])) .page .tabFeatureItem,
+:global(html:not([data-theme="__never"])) .page .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page .selectionTrustItem p {
   color: #d8e8f6 !important;
   -webkit-text-fill-color: #d8e8f6 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page input,
-:global(html:not([data-theme="amigos-dark"])) .page textarea,
-:global(html:not([data-theme="amigos-dark"])) .page select {
+:global(html:not([data-theme="__never"])) .page input,
+:global(html:not([data-theme="__never"])) .page textarea,
+:global(html:not([data-theme="__never"])) .page select {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
 
 @media (min-width: 1001px) {
+
   .homeLayout .progressNav::before,
   .homeLayout .progressFill {
     top: 57px;
@@ -2606,10 +2628,11 @@
 }
 
 @media (max-width: 1000px) {
+
   .page,
-  :global(html[data-theme="amigos-dark"]) .page,
-  :global(html:not([data-theme="amigos-dark"])) .page,
-  :global(html[data-theme="amigos-light"]) .page {
+  :global(html[data-theme="__never"]) .page,
+  :global(html:not([data-theme="__never"])) .page,
+  :global(html:not([data-theme="__never"])) .page {
     background-attachment: scroll !important;
   }
 
@@ -2655,18 +2678,18 @@
   line-height: 1.45;
 }
 
-:global(html[data-theme="amigos-dark"]) .selectionTrustItem {
+:global(html[data-theme="__never"]) .selectionTrustItem {
   border: 0;
   background: transparent;
   box-shadow: none;
 }
 
-:global(html[data-theme="amigos-dark"]) .selectionTrustRow {
+:global(html[data-theme="__never"]) .selectionTrustRow {
   background: linear-gradient(100deg, rgba(5, 25, 55, .96), rgba(9, 38, 76, .9));
   box-shadow: 0 18px 42px rgba(0, 7, 20, .32);
 }
 
-:global(html[data-theme="amigos-dark"]) .selectionTrustItem+.selectionTrustItem::before {
+:global(html[data-theme="__never"]) .selectionTrustItem+.selectionTrustItem::before {
   background: linear-gradient(180deg, transparent, rgba(207, 225, 245, .25), transparent);
 }
 
@@ -2731,7 +2754,7 @@
     -webkit-backdrop-filter: none;
   }
 
-  :global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+  :global(html[data-theme="__never"]) .homeLayout .sidebarModeCard {
     background: transparent;
     box-shadow: none;
   }
@@ -2968,7 +2991,7 @@
     font-size: 18px;
   }
 
-  :global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+  :global(html[data-theme="__never"]) .homeLayout .sidebarModeCard {
     border-color: rgba(215, 232, 249, .2);
     background: rgba(5, 25, 55, .86);
     box-shadow: 0 24px 70px rgba(0, 7, 20, .36);
@@ -3024,12 +3047,12 @@
   mask-composite: exclude !important;
 }
 
-.homeLayout .tabActionBtn > *,
-.homeLayout .tabActionBtnDetailed > *,
-.homeLayout .sidebarModeSwitchBtn > *,
-.page.homeLayout .tabActionBtn > *,
-.page.homeLayout .tabActionBtnDetailed > *,
-.page.homeLayout .sidebarModeSwitchBtn > * {
+.homeLayout .tabActionBtn>*,
+.homeLayout .tabActionBtnDetailed>*,
+.homeLayout .sidebarModeSwitchBtn>*,
+.page.homeLayout .tabActionBtn>*,
+.page.homeLayout .tabActionBtnDetailed>*,
+.page.homeLayout .sidebarModeSwitchBtn>* {
   position: relative !important;
   z-index: 1 !important;
   color: #050505 !important;
@@ -3053,7 +3076,7 @@
 
 /* Client reference final override: keep homepage calculator CTA and rail in the glow system. */
 .homeLayout .sidebarModeCard,
-:global(html[data-theme="amigos-dark"]) .homeLayout .sidebarModeCard {
+:global(html[data-theme="__never"]) .homeLayout .sidebarModeCard {
   border-color: rgba(255, 255, 255, .16) !important;
   background: linear-gradient(145deg, rgba(12, 45, 92, .78), rgba(5, 24, 56, .66)) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 24px 74px rgba(0, 8, 28, .34) !important;
@@ -3094,12 +3117,12 @@
   display: none !important;
 }
 
-.homeLayout .tabActionBtn > *,
-.homeLayout .tabActionBtnDetailed > *,
-.homeLayout .sidebarModeSwitchBtn > *,
-.page.homeLayout .tabActionBtn > *,
-.page.homeLayout .tabActionBtnDetailed > *,
-.page.homeLayout .sidebarModeSwitchBtn > * {
+.homeLayout .tabActionBtn>*,
+.homeLayout .tabActionBtnDetailed>*,
+.homeLayout .sidebarModeSwitchBtn>*,
+.page.homeLayout .tabActionBtn>*,
+.page.homeLayout .tabActionBtnDetailed>*,
+.page.homeLayout .sidebarModeSwitchBtn>* {
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
@@ -3135,6 +3158,7 @@
 }
 
 @media (max-width: 640px) {
+
   .page,
   .embedded,
   .embedded.homeLayout,
@@ -3187,7 +3211,7 @@
   .heroCopy p,
   .quickQuoteIntro p,
   .selectionLead,
-  .stepPanel > p {
+  .stepPanel>p {
     max-width: 100%;
     font-size: 15px;
     overflow-wrap: anywhere;
@@ -3195,10 +3219,10 @@
 }
 
 /* Final light-theme homepage calculator correction. Dark theme intentionally keeps the glow system. */
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage,
-:global(html:not([data-theme="amigos-dark"])) .page.embedded.selectionPage,
-:global(html[data-theme="amigos-light"]) .page.selectionPage,
-:global(html[data-theme="amigos-light"]) .page.embedded.selectionPage {
+:global(html:not([data-theme="__never"])) .page.selectionPage,
+:global(html:not([data-theme="__never"])) .page.embedded.selectionPage,
+:global(html:not([data-theme="__never"])) .page.selectionPage,
+:global(html:not([data-theme="__never"])) .page.embedded.selectionPage {
   --ink: #071a33;
   --copy: #38546f;
   --muted: #6b8298;
@@ -3216,30 +3240,30 @@
   animation: none !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage::before,
-:global(html[data-theme="amigos-light"]) .page.selectionPage::before {
+:global(html:not([data-theme="__never"])) .page.selectionPage::before,
+:global(html:not([data-theme="__never"])) .page.selectionPage::before {
   background:
     linear-gradient(100deg, rgba(246, 190, 16, .08), transparent 22% 78%, rgba(230, 36, 83, .08)),
     repeating-linear-gradient(90deg, rgba(7, 26, 51, .035) 0 1px, transparent 1px 120px) !important;
   opacity: 1 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage::after,
-:global(html[data-theme="amigos-light"]) .page.selectionPage::after {
+:global(html:not([data-theme="__never"])) .page.selectionPage::after,
+:global(html:not([data-theme="__never"])) .page.selectionPage::after {
   background: linear-gradient(180deg, transparent, rgba(238, 243, 247, .94)) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionHeader,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionHeader {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionHeader,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionHeader {
   width: min(1180px, 100%) !important;
   margin: 0 auto 34px !important;
   text-align: center !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTitle,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionSubTitle,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTitle,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionSubTitle {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTitle,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionSubTitle,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTitle,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionSubTitle {
   width: auto !important;
   max-width: 1180px !important;
   margin-right: auto !important;
@@ -3251,21 +3275,21 @@
   opacity: 1 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTitle,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTitle {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTitle,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTitle {
   font-size: clamp(36px, 3.8vw, 58px) !important;
   line-height: 1.05 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionSubTitle,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionSubTitle {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionSubTitle,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionSubTitle {
   margin-top: 14px !important;
   font-size: clamp(22px, 2.1vw, 34px) !important;
   line-height: 1.18 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionLead,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionLead {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionLead,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionLead {
   max-width: 760px !important;
   margin: 18px auto 0 !important;
   color: #26394e !important;
@@ -3275,8 +3299,8 @@
   opacity: 1 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard {
   border-color: rgba(15, 43, 76, .14) !important;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .94) 54%, rgba(255, 255, 255, .72) 100%) !important;
@@ -3286,59 +3310,59 @@
   -webkit-backdrop-filter: blur(14px) saturate(118%) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard:hover,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard:hover {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard:hover,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard:hover {
   border-color: rgba(243, 145, 37, .68) !important;
   box-shadow: 0 28px 76px rgba(15, 43, 76, .16), 0 0 0 1px rgba(246, 190, 16, .18) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual {
   opacity: .82 !important;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .10) 12%, rgba(0, 0, 0, .72) 40%, #000 100%) !important;
   mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, .10) 12%, rgba(0, 0, 0, .72) 40%, #000 100%) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabHeadline,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustItem strong,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabHeadline,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustItem strong {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabHeadline,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustItem strong,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabHeadline,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustItem strong {
   color: #071a33 !important;
   -webkit-text-fill-color: #071a33 !important;
   text-shadow: none !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDescription,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabFeatureItem,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustItem p,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDescription,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabFeatureItem,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustItem p {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDescription,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabFeatureItem,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustItem p,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDescription,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabFeatureItem,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustItem p {
   color: #3f5872 !important;
   -webkit-text-fill-color: #3f5872 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagFast,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagDetailed,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagFast,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagDetailed {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagFast,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagDetailed,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagFast,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagDetailed {
   color: #bf6c12 !important;
   -webkit-text-fill-color: #bf6c12 !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTrustRow,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTrustRow {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustRow,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTrustRow {
   border: 1px solid rgba(15, 43, 76, .10) !important;
   background: rgba(255, 255, 255, .88) !important;
   box-shadow: 0 22px 54px rgba(15, 43, 76, .12) !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabActionBtn,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabActionBtnDetailed,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabActionBtn,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabActionBtnDetailed {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabActionBtn,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabActionBtnDetailed,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabActionBtn,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabActionBtnDetailed {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -3360,15 +3384,16 @@
 }
 
 /* Final image visibility pass for the light-theme calculator selection cards. */
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard {
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard,
+:global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard {
   background: #ffffff !important;
   overflow: hidden !important;
 }
 
 @media (min-width: 641px) {
-  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionTabCard::before,
-  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionTabCard::before {
+
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard::before,
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionTabCard::before {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
@@ -3384,8 +3409,8 @@
         rgba(255, 255, 255, 0) 100%) !important;
   }
 
-  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
-  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual,
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual {
     top: 0 !important;
     right: 0 !important;
     bottom: 94px !important;
@@ -3399,19 +3424,20 @@
   }
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabFastEstimate .selectionCardVisual,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabFastEstimate .selectionCardVisual {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabFastEstimate .selectionCardVisual,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabFastEstimate .selectionCardVisual {
   background-image: url("/assets/services-imags/photo-upload.jpg") !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .selectionCardVisual,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .selectionCardVisual {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .selectionCardVisual,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .selectionCardVisual {
   background-image: url("/assets/services-imags/quote-calculator.jpg") !important;
 }
 
 @media (max-width: 640px) {
-  :global(html:not([data-theme="amigos-dark"])) .page.selectionPage .selectionCardVisual,
-  :global(html[data-theme="amigos-light"]) .page.selectionPage .selectionCardVisual {
+
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual,
+  :global(html:not([data-theme="__never"])) .page.selectionPage .selectionCardVisual {
     height: 190px !important;
     margin: 10px 0 18px !important;
     opacity: 1 !important;
@@ -3425,34 +3451,32 @@
 }
 
 /* Light theme: top-right estimate/PDF labels must stay black over images. */
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabTagEstimateTime *,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabTagEstimateTime * {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime *,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabTagEstimateTime * {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
   text-shadow: none !important;
 }
 
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
-:global(html:not([data-theme="amigos-dark"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime *,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
-:global(html[data-theme="amigos-light"]) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime * {
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime *,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime,
+:global(html:not([data-theme="__never"])) .page.selectionPage .tabDetailedSpecs .tabTagEstimateTime * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   text-shadow: 0 1px 12px rgba(0, 0, 0, .35) !important;
 }
 
 /* Final calculator button lock: match the public CTA pill style. */
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-) {
+  .backToSelectionTopBtn) {
   position: relative !important;
   isolation: isolate !important;
   display: inline-flex !important;
@@ -3475,15 +3499,13 @@
   transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-)::before {
+  .backToSelectionTopBtn)::before {
   content: "" !important;
   position: absolute !important;
   inset: auto auto auto 10px !important;
@@ -3499,15 +3521,13 @@
   transition: transform .25s ease !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-)::after {
+  .backToSelectionTopBtn)::after {
   content: "→" !important;
   position: absolute !important;
   inset: auto auto auto 22px !important;
@@ -3522,30 +3542,26 @@
   transition: transform .25s ease !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-) > * {
+  .backToSelectionTopBtn)>* {
   position: relative !important;
   z-index: 2 !important;
   color: inherit !important;
   -webkit-text-fill-color: inherit !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-):hover {
+  .backToSelectionTopBtn):hover {
   transform: translateY(-3px) !important;
   background: #000000 !important;
   color: #ffffff !important;
@@ -3553,27 +3569,23 @@
   box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-):hover::before {
+  .backToSelectionTopBtn):hover::before {
   transform: translate(6px, -50%) !important;
 }
 
-.page :is(
-  .tabActionBtn,
+.page :is(.tabActionBtn,
   .tabActionBtnDetailed,
   .sidebarModeSwitchBtn,
   .primaryAction,
   .secondaryAction,
   .backToQuickNavBtn,
-  .backToSelectionTopBtn
-):hover::after {
+  .backToSelectionTopBtn):hover::after {
   transform: translate(6px, -52%) !important;
 }
 
@@ -3584,4 +3596,449 @@
 .page .tabActionBtnDetailed::after {
   content: none !important;
   display: none !important;
+}
+/* Homepage detailed-calculator CTA: arrow lives inside the left white circle (black),
+   not as a separate glyph on the right. */
+.page.homeLayout .sidebarModeSwitchBtn>i {
+  display: none !important;
+}
+
+.page.homeLayout .sidebarModeSwitchBtn::after {
+  content: "→" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: auto auto auto 22px !important;
+  top: 50% !important;
+  z-index: 1 !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  transform: translateY(-52%) !important;
+  padding: 0 !important;
+  background: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+}
+
+.page.homeLayout .sidebarModeSwitchBtn:hover::after {
+  transform: translate(6px, -52%) !important;
+}
+
+/* Homepage quick calculator: keep light-theme copy readable above the photo background. */
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout {
+  --ink: #071a33;
+  --copy: #38546f;
+  --muted: #60758b;
+  color: var(--ink) !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickQuoteIntro h2,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .stepPanel h2,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .resultLocked h2,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .verifyPanel h2,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .pricePanel h2 {
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  text-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickQuoteIntro p,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .stepPanel > p,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .sidebarModeDesc,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .detailedCtaList,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .protectedPriceNote {
+  color: var(--copy) !important;
+  -webkit-text-fill-color: var(--copy) !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .sidebarModeTitle,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .detailedCtaList,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .detailedCtaList li {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .progressNav {
+  border-color: rgba(7, 26, 51, .18);
+  background: linear-gradient(135deg, rgba(7, 26, 51, .96), rgba(15, 49, 83, .94));
+  box-shadow: 0 20px 54px rgba(7, 26, 51, .24);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .progressStep b,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .progressStep span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Light-theme package backs use a white surface with high-contrast text. */
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageBack {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageBack strong,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackagePrice,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageSize,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackagePricing p {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageFront .propertyCardInfo {
+  background: #ffffff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageFront .propertyCardTitle,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickPackageFront .propertyCardSubtitle {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Keep the homepage progress bar opaque so its labels stay readable over the hero image. */
+.page.homeLayout .progressNav {
+  background: rgba(255, 255, 255, .6) !important;
+  border-color: rgba(7, 26, 51, .16) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.page.homeLayout .progressStep b,
+.page.homeLayout .progressStep span,
+.page.homeLayout .currentStep b,
+.page.homeLayout .currentStep span,
+.page.homeLayout .doneStep b,
+.page.homeLayout .doneStep span {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  font-size: 15px !important;
+}
+
+.page.homeLayout .progressStep:not(.currentStep):not(.doneStep) i {
+  border-color: #8ea3bb !important;
+  background: #e8eef5 !important;
+  color: #071a33 !important;
+  box-shadow: 0 0 0 8px rgba(232, 238, 245, .72), inset 0 1px 0 rgba(255, 255, 255, .9) !important;
+}
+
+.page.homeLayout .progressStep:not(.currentStep):not(.doneStep) i svg {
+  color: #071a33 !important;
+  stroke: #071a33 !important;
+}
+
+:global(html) .page.homeLayout .progressStep b,
+:global(html) .page.homeLayout .progressStep span,
+:global(html) .page.homeLayout .progressStep.currentStep b,
+:global(html) .page.homeLayout .progressStep.currentStep span,
+:global(html) .page.homeLayout .progressStep.doneStep b,
+:global(html) .page.homeLayout .progressStep.doneStep span {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Match the site's standard body-copy size without changing calculator headings. */
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickQuoteIntro p,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .stepPanel > p,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .sidebarModeDesc,
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .protectedPriceNote {
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+}
+
+/* The light homepage progress controls use black text for reliable contrast. */
+:global(html) .page.homeLayout .progressStep,
+:global(html) .page.homeLayout .progressStep span,
+:global(html) .page.homeLayout .progressStep b {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+:global(html) .page.homeLayout .progressStepNumber,
+:global(html) .page.homeLayout .progressStepTitle {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Homepage light-theme location fields use a clean white input surface. */
+:global(html) .page.homeLayout .quantityField input,
+:global(html) .page.homeLayout .locationInput {
+  background: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border-color: rgba(7, 26, 51, .18) !important;
+}
+
+:global(html) .page.homeLayout .quantityField input::placeholder,
+:global(html) .page.homeLayout .locationInput::placeholder {
+  color: #52657a !important;
+  -webkit-text-fill-color: #52657a !important;
+  opacity: 1 !important;
+}
+
+/* Keep the homepage location cards in the light theme as white, readable panels. */
+:global(html) .page.homeLayout .locationGrid .quantityField {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: rgba(7, 26, 51, .18) !important;
+  box-shadow: 0 10px 28px rgba(7, 26, 51, .08) !important;
+}
+
+:global(html) .page.homeLayout .locationGrid .quantityField > span,
+:global(html) .page.homeLayout .locationGrid .locationInputIcon,
+:global(html) .page.homeLayout .locationGrid .locationInputIcon svg {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Back controls use a single left-pointing arrow in the circle. */
+.page.homeLayout :is(.secondaryAction, .backToQuickNavBtn)::after {
+  content: "←" !important;
+}
+
+/* Inactive homepage steps keep the same black text contrast as the active step. */
+:global(html) .page.homeLayout .progressNavHomeQuick .progressStep:not(.currentStep):not(.doneStep) .progressStepNumber,
+:global(html) .page.homeLayout .progressNavHomeQuick .progressStep:not(.currentStep):not(.doneStep) .progressStepTitle {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Give the homepage progress icons a small size increase without changing their layout. */
+.page.homeLayout .progressStep i {
+  width: 62px !important;
+  height: 62px !important;
+}
+
+.page.homeLayout .progressStep i svg {
+  width: 29px !important;
+  height: 29px !important;
+}
+
+@media (max-width: 640px) {
+  .page.homeLayout .progressStep i {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .page.homeLayout .progressStep i svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* Add breathing room above the step numbers in the homepage progress bar. */
+.page.homeLayout .progressNav {
+  padding-top: 12px !important;
+}
+
+/* Match the light-theme location cards for the homepage living-space field. */
+:global(html) .page.homeLayout .homeLivingSpaceField {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: rgba(7, 26, 51, .18) !important;
+  box-shadow: 0 10px 28px rgba(7, 26, 51, .08) !important;
+}
+
+:global(html) .page.homeLayout .homeLivingSpaceField > span {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* The homepage verification action is a simple text CTA without the mini circle. */
+.page.homeLayout .primaryAction {
+  padding-left: 30px !important;
+}
+
+.page.homeLayout .primaryAction::before,
+.page.homeLayout .primaryAction::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Keep the homepage condition, notes, upload, and result surfaces in the light theme. */
+:global(html) .page.homeLayout .conditionCard,
+:global(html) .page.homeLayout .notesField,
+:global(html) .page.homeLayout .uploadPanel,
+:global(html) .page.homeLayout .photoDrop,
+:global(html) .page.homeLayout .pricePanel {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: rgba(7, 26, 51, .18) !important;
+  box-shadow: 0 10px 28px rgba(7, 26, 51, .08) !important;
+}
+
+:global(html) .page.homeLayout .conditionCardTitle,
+:global(html) .page.homeLayout .conditionCardDesc,
+:global(html) .page.homeLayout .notesField > span,
+:global(html) .page.homeLayout .uploadPanel h3,
+:global(html) .page.homeLayout .photoDrop > span,
+:global(html) .page.homeLayout .photoDrop > small,
+:global(html) .page.homeLayout .roomChips label,
+:global(html) .page.homeLayout .roomChips label span,
+:global(html) .page.homeLayout .pricePanel .stepKicker,
+:global(html) .page.homeLayout .pricePanel > p {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+:global(html) .page.homeLayout .notesField textarea {
+  background: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  border-color: rgba(7, 26, 51, .18) !important;
+}
+
+:global(html) .page.homeLayout .notesField textarea::placeholder {
+  color: #52657a !important;
+  -webkit-text-fill-color: #52657a !important;
+  opacity: 1 !important;
+}
+
+/* Center the final estimate content so its price, copy, and action read as one group. */
+:global(html) .page.homeLayout .pricePanel {
+  text-align: center !important;
+}
+
+:global(html) .page.homeLayout .pricePanel .priceRange {
+  display: block;
+  margin: 12px 0 8px;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+:global(html) .page.homeLayout .pricePanel > p {
+  max-width: 760px;
+  margin: 0 auto 18px;
+}
+
+:global(html) .page.homeLayout .pricePanel .primaryAction {
+  margin-inline: auto;
+}
+
+/* Keep upload and pricing together to reduce scrolling on the final quick step. */
+.page.homeLayout .quickFinalGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.page.homeLayout .quickFinalGrid > .uploadPanel,
+.page.homeLayout .quickFinalGrid > .pricePanel {
+  min-width: 0;
+  margin-top: 0 !important;
+}
+
+/* Modern card-style controls for homepage condition and damage selections. */
+.page.homeLayout .quickSpecialWorkList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+  margin-top: 18px !important;
+}
+
+.page.homeLayout .quickSpecialWorkList label {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(7, 26, 51, .14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .88);
+  color: #000000 !important;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(7, 26, 51, .07);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.page.homeLayout .quickSpecialWorkList label:hover {
+  border-color: rgba(7, 26, 51, .34);
+  box-shadow: 0 10px 22px rgba(7, 26, 51, .12);
+  transform: translateY(-1px);
+}
+
+.page.homeLayout .quickSpecialWorkList input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  border: 2px solid #8294a8;
+  border-radius: 5px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.page.homeLayout .quickSpecialWorkList input:hover {
+  border-color: #071a33;
+  box-shadow: 0 0 0 3px rgba(7, 26, 51, .1);
+}
+
+.page.homeLayout .quickSpecialWorkList input:checked {
+  border-color: #071a33;
+  background-color: #071a33;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 8 3 3 7-7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+}
+
+.page.homeLayout .quickSpecialWorkList label:has(input:checked) {
+  border-color: #071a33;
+  background: #f3f6fa;
+  box-shadow: 0 10px 24px rgba(7, 26, 51, .14);
+}
+
+.page.homeLayout .quickSpecialWorkList label span {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+/* Give the homepage photo picker a deliberate upload CTA instead of the browser default. */
+.page.homeLayout .photoDrop input::file-selector-button {
+  margin-right: 10px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 9px;
+  background: #071a33;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(7, 26, 51, .16);
+  transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.page.homeLayout .photoDrop input::file-selector-button:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(7, 26, 51, .22);
+}
+
+@media (max-width: 900px) {
+  .page.homeLayout .quickFinalGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keep dark-theme homepage calculator paragraphs readable without changing headings. */
+.page.homeLayout .quickQuoteIntro > p,
+.page.homeLayout .stepPanel > p {
+  font-size: 18px !important;
+  line-height: 1.5 !important;
+}
+
+/* Dark-theme homepage calculator kickers need white contrast over the navy surface. */
+.page.homeLayout .stepKicker,
+.page.homeLayout .quickQuoteTopBar .sidebarModeKicker {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }

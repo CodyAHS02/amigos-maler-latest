@@ -7,7 +7,6 @@
     font-family: "themeFont";
 }
 
-
 @font-face {
     font-family: "themeFont";
     src: url("/fonts/n.woff2");
@@ -1871,11 +1870,11 @@ WHY AMIGOS
     color: #8A8275;
 
     font-size: 28px;
-    
+
     line-height: 1.3;
 
     letter-spacing: .02em;
-    
+
     padding-bottom: 10px;
 
 }
@@ -11476,6 +11475,12 @@ html[data-theme="amigos-dark"] .chatbot-dot {
     background: #20C974 !important;
 }
 
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-home-hero]):not([data-hero]) span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]),
+html:not([data-theme="amigos-dark"]) section.hero:not([data-home-hero]):not([data-hero]) span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]) {
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+}
+
 /* Dark theme final layer: navy is the base, brand gradient is reserved for accents and high-emphasis sections. */
 html[data-theme="amigos-dark"] {
     color-scheme: dark;
@@ -11644,7 +11649,9 @@ html[data-theme="amigos-dark"] .site-header .customer-header-btn {
 }
 
 /* Homepage client polish: strict button formula, controlled gradients, and readable dark theme accents. */
-body[data-page="home"], body[data-page="interior-painting"], body[data-page="about"] {
+body[data-page="home"],
+body[data-page="interior-painting"],
+body[data-page="about"] {
     --am-yellow-grad: linear-gradient(135deg, #F6BE10 0%, #C89400 100%);
     --am-orange-grad: linear-gradient(135deg, #F39125 0%, #B94E10 100%);
     --am-pink-grad: linear-gradient(135deg, #E62453 0%, #97134D 100%);
@@ -12786,7 +12793,8 @@ html:not([data-theme="amigos-dark"]) .footer-bottom a {
 }
 
 /* About dark-theme hard override: keep requested accent sections visibly colored. */
-html[data-theme="amigos-dark"] body[data-page="about"], html[data-theme="amigos-dark"] body[data-page="interior-painting"] {
+html[data-theme="amigos-dark"] body[data-page="about"],
+html[data-theme="amigos-dark"] body[data-page="interior-painting"] {
     --about-hard-mix: linear-gradient(135deg,
             #FFD21F 0%,
             #FF9B1A 30%,
@@ -12795,7 +12803,8 @@ html[data-theme="amigos-dark"] body[data-page="about"], html[data-theme="amigos-
             #C73B8E 100%);
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .numbers-section {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .numbers-section {
     background:
         radial-gradient(circle at 12% 16%, rgba(255, 210, 31, .55), transparent 30%),
         radial-gradient(circle at 78% 18%, rgba(230, 36, 83, .48), transparent 34%),
@@ -12805,7 +12814,8 @@ html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior
     animation: aboutMovingGradient 12s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .values-section {
     background:
         radial-gradient(circle at 14% 18%, rgba(255, 210, 31, .46), transparent 28%),
         radial-gradient(circle at 82% 28%, rgba(255, 122, 26, .42), transparent 32%),
@@ -12815,45 +12825,60 @@ html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior
     animation: aboutMovingGradient 13s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials {
     color: #ffffff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials h2,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials p,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .review-link,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-control {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials h2,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials p,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .review-link,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-control {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .section-kicker,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-stars,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card span {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .section-kicker,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-stars,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card span {
     color: #E62453 !important;
     -webkit-text-fill-color: #E62453 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active {
     background: rgba(255, 255, 255, .86) !important;
     border-color: rgba(5, 5, 5, .16) !important;
     color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card *,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active * {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card *,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active * {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card:hover,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active:hover {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card:hover,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .about-testimonials .testimonial-card.active:hover {
     background: #FFD21F !important;
     border-color: #FFD21F !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .final-cta {
     background:
         radial-gradient(circle at 14% 18%, rgba(255, 210, 31, .50), transparent 28%),
         radial-gradient(circle at 82% 24%, rgba(230, 36, 83, .48), transparent 34%),
@@ -12863,27 +12888,35 @@ html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior
     animation: aboutMovingGradient 13s ease-in-out infinite !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .numbers-section *,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section *,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta * {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .numbers-section *,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .values-section *,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .final-cta * {
     color: #fff !important;
     -webkit-text-fill-color: #fff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section .value-icon::before,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .values-section .value-icon::after {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .values-section .value-icon::before,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .values-section .value-icon::after {
     background: #fff !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn,
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn-light {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .final-cta .btn,
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .final-cta .btn-light {
     background: #fff !important;
     border-color: #fff !important;
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
 
-html[data-theme="amigos-dark"] body[data-page="about"], body[data-page="interior-painting"] main .final-cta .btn-ghost {
+html[data-theme="amigos-dark"] body[data-page="about"],
+body[data-page="interior-painting"] main .final-cta .btn-ghost {
     background: rgba(255, 255, 255, .14) !important;
     border-color: rgba(255, 255, 255, .72) !important;
     color: #fff !important;
@@ -13076,8 +13109,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar::before {
     mask-composite: exclude !important;
 }
 
-body[data-page="home"] .audience-bar > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar > * {
+body[data-page="home"] .audience-bar>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .audience-bar>* {
     position: relative !important;
     z-index: 1 !important;
 }
@@ -13703,6 +13736,29 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat:h
     -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
 }
 
+/* Final dark-theme contrast for the homepage visualizer and trust sections. */
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-heading h2,
+html[data-theme="amigos-dark"] body[data-page="home"] .why-content h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-heading h2 span {
+    background: linear-gradient(90deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-side p,
+html[data-theme="amigos-dark"] body[data-page="home"] .why-content p,
+html[data-theme="amigos-dark"] body[data-page="home"] .stat h3,
+html[data-theme="amigos-dark"] body[data-page="home"] .stat span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
 /* Homepage AI upload controls: border-only with black icon/text. */
 body[data-page="home"] .upload-icon,
 body[data-page="home"] .upload-icon:hover,
@@ -13943,8 +13999,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] :is(.introBtn, .hero-butto
     mask-composite: exclude !important;
 }
 
-body[data-page="home"] :is(.introBtn, .hero-buttons .btn-primary, .hero-buttons .btn-secondary, .services-view-all-btn, .quote-btn-primary) > *,
-html[data-theme="amigos-dark"] body[data-page="home"] :is(.introBtn, .hero-buttons .btn-primary, .hero-buttons .btn-secondary, .services-view-all-btn, .quote-btn-primary) > * {
+body[data-page="home"] :is(.introBtn, .hero-buttons .btn-primary, .hero-buttons .btn-secondary, .services-view-all-btn, .quote-btn-primary)>*,
+html[data-theme="amigos-dark"] body[data-page="home"] :is(.introBtn, .hero-buttons .btn-primary, .hero-buttons .btn-secondary, .services-view-all-btn, .quote-btn-primary)>* {
     position: relative !important;
     z-index: 1 !important;
     color: #050505 !important;
@@ -14167,8 +14223,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .stage-empty::after {
     pointer-events: none !important;
 }
 
-body[data-page="home"] .stage-empty > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .stage-empty > * {
+body[data-page="home"] .stage-empty>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .stage-empty>* {
     position: relative !important;
     z-index: 2 !important;
 }
@@ -14278,6 +14334,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage.dragover .stage-
 }
 
 @media (max-width: 700px) {
+
     body[data-page="home"] .ai-stage,
     html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage {
         min-height: 560px !important;
@@ -14407,6 +14464,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .stage-corner {
 }
 
 @media (max-width: 900px) {
+
     body[data-page="home"] .ai-stage,
     html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage {
         min-height: 500px !important;
@@ -14517,6 +14575,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .upload-hint {
 }
 
 @media (max-width: 900px) {
+
     body[data-page="home"] .ai-section,
     html[data-theme="amigos-dark"] body[data-page="home"] .ai-section {
         min-height: auto !important;
@@ -14641,23 +14700,23 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::af
         -42px 40px 0 rgba(230, 36, 83, .08) !important;
 }
 
-body[data-page="home"] .plans-grid .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card > * {
+body[data-page="home"] .plans-grid .plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card>* {
     position: relative !important;
     z-index: 1 !important;
 }
 
 /* EOF override: photo starts at the top and fades into a clean white reading area. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card,
-body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card,
+body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -14671,8 +14730,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     animation: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -14683,8 +14742,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -14695,10 +14754,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-body[data-page="home"] .plans-section .plans-grid > .plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::after {
+body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+body[data-page="home"] .plans-section .plans-grid>.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::after {
     content: none !important;
     display: none !important;
     background: none !important;
@@ -14777,6 +14836,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
+
     body[data-page="home"] section.plans-section#plans .plans-header,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header {
         width: min(100% - 40px, 760px) !important;
@@ -14799,16 +14859,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 /* TRUE FINAL: plans rows requested layout and readable faded images. */
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     position: relative !important;
     overflow: hidden !important;
     min-height: clamp(560px, 48vw, 720px) !important;
@@ -14826,8 +14886,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
     background:
         linear-gradient(90deg,
             rgba(31, 27, 73, .99) 0%,
@@ -14837,8 +14897,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     background:
         linear-gradient(90deg,
             rgba(31, 27, 73, .99) 0%,
@@ -14848,18 +14908,18 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after,
 body[data-page="home"] section.plans-section#plans .plan-detail-mark,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-detail-mark {
     content: none !important;
     display: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plan-overview-action > span,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action > span {
+body[data-page="home"] section.plans-section#plans .plan-overview-action>span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action>span {
     display: none !important;
 }
 
@@ -14923,10 +14983,11 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured {
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured {
         grid-template-columns: 1fr !important;
         min-height: auto !important;
         padding: 42px 24px !important;
@@ -14946,6 +15007,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* LAST RULE: stable full-screen sticky stack for plans. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         background: #211d49 !important;
@@ -14964,16 +15026,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         perspective: none !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: sticky !important;
         top: 0 !important;
         display: grid !important;
@@ -14992,13 +15054,13 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         box-shadow: 0 -24px 90px rgba(5, 4, 24, .42) !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main {
         max-width: 760px !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main ul,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main ul {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main ul,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main ul {
         display: flex !important;
         flex-direction: column !important;
         flex-wrap: nowrap !important;
@@ -15007,39 +15069,40 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         margin-top: clamp(34px, 4vw, 58px) !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main li,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-main li {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main li,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-main li {
         font-size: clamp(18px, 1.35vw, 25px) !important;
         line-height: 1.2 !important;
         white-space: normal !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-action,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card .plan-overview-action {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-action,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card .plan-overview-action {
         align-self: end !important;
         justify-self: start !important;
         width: min(100%, 390px) !important;
         margin: 0 0 clamp(42px, 5vw, 82px) !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1) {
         z-index: 1 !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
         z-index: 2 !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         z-index: 3 !important;
     }
 }
 
 /* LAST RULE: restore full-screen pinned stack layout. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans.plans-stack-ready,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready {
         min-height: 100vh !important;
@@ -15064,16 +15127,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         transform-style: preserve-3d !important;
     }
 
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
@@ -15089,6 +15152,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* EOF: pinned scroll stacking animation for plans. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans.plans-stack-ready,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready {
         min-height: 100vh !important;
@@ -15113,16 +15177,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         transform-style: preserve-3d !important;
     }
 
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
@@ -15138,6 +15202,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* Pinned scroll stacking animation for the plans section. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans.plans-stack-ready,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready {
         min-height: 100vh !important;
@@ -15162,16 +15227,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         transform-style: preserve-3d !important;
     }
 
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
@@ -15208,16 +15273,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 /* Final plans row polish: no details label, one-line features, readable faded images. */
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     position: relative !important;
     overflow: hidden !important;
     min-height: clamp(560px, 48vw, 720px) !important;
@@ -15235,8 +15300,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
     background:
         linear-gradient(90deg,
             rgba(31, 27, 73, .99) 0%,
@@ -15246,8 +15311,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     background:
         linear-gradient(90deg,
             rgba(31, 27, 73, .99) 0%,
@@ -15257,16 +15322,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after {
     content: none !important;
     display: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plan-overview-action > span,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action > span {
+body[data-page="home"] section.plans-section#plans .plan-overview-action>span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action>span {
     display: none !important;
 }
 
@@ -15328,10 +15393,11 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured {
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured {
         grid-template-columns: 1fr !important;
         min-height: auto !important;
         padding: 42px 24px !important;
@@ -15485,16 +15551,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     transform: translateX(0) rotate(45deg) !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card.featured,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(1),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(2),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card.featured,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(1),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(2),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(3) {
     background: rgba(255, 255, 255, .025) !important;
     background-image: none !important;
     border: 1px solid rgba(255, 255, 255, .16) !important;
@@ -15505,10 +15571,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     filter: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::before,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::after,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::before,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::after,
 body[data-page="home"] section.plans-section#plans .plan-detail-mark,
 body[data-page="home"] section.plans-section#plans .plan-detail-mark::before,
 body[data-page="home"] section.plans-section#plans .plan-detail-mark::after,
@@ -15520,6 +15586,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
+
     body[data-page="home"] section.plans-section#plans .plans-header,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header {
         width: min(100% - 36px, 760px) !important;
@@ -15604,6 +15671,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
+
     body[data-page="home"] section.plans-section#plans .plans-header,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header {
         width: min(100% - 36px, 760px) !important;
@@ -15637,28 +15705,28 @@ body[data-page="home"] section.plans-section#plans .plan-overview-index,
 body[data-page="home"] section.plans-section#plans .plan-overview-main h3,
 body[data-page="home"] section.plans-section#plans .plan-overview-main p,
 body[data-page="home"] section.plans-section#plans .plan-overview-main li,
-body[data-page="home"] section.plans-section#plans .plan-overview-action > span,
+body[data-page="home"] section.plans-section#plans .plan-overview-action>span,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header h2,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header p,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-index,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main h3,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main p,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main li,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action > span {
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action>span {
     opacity: 1 !important;
     text-shadow: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card.featured,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(1),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(2),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card.featured,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(1),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(2),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card:nth-child(3) {
     background: rgba(255, 255, 255, .025) !important;
     background-image: none !important;
     border: 1px solid rgba(255, 255, 255, .16) !important;
@@ -15671,10 +15739,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     -webkit-backdrop-filter: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::before,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-card::after {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::before,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-card::after {
     content: none !important;
     display: none !important;
     opacity: 0 !important;
@@ -15745,9 +15813,9 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 body[data-page="home"] section.plans-section#plans .plan-overview-index,
-body[data-page="home"] section.plans-section#plans .plan-overview-action > span,
+body[data-page="home"] section.plans-section#plans .plan-overview-action>span,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-index,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action > span {
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action>span {
     color: rgba(255, 255, 255, .78) !important;
     -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
     text-shadow: none !important;
@@ -15783,16 +15851,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 /* Pricing numbers: use solid contrast instead of pale gradient text. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price small,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price strong,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price span,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price-period,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price small,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price strong,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price span,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price-period {
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price small,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price strong,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price span,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price-period,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price small,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price strong,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price span,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price-period {
     background: none !important;
     background-image: none !important;
     background-clip: border-box !important;
@@ -15805,10 +15873,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         0 12px 28px rgba(7, 26, 51, .14) !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price small,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price-period,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price small,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price-period {
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price small,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price-period,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price small,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price-period {
     color: #d96f14 !important;
     -webkit-text-fill-color: #d96f14 !important;
     font-weight: 900 !important;
@@ -15842,8 +15910,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section::before {
     pointer-events: none !important;
 }
 
-body[data-page="home"] .plans-section > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section > * {
+body[data-page="home"] .plans-section>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section>* {
     position: relative !important;
     z-index: 1 !important;
 }
@@ -15970,16 +16038,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid.plans-overview
     grid-template-columns: 1fr !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card,
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured,
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(1),
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(2),
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card,
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured,
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(1),
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(2),
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:nth-child(3) {
     position: relative !important;
     display: grid !important;
     grid-template-columns: minmax(120px, .34fr) minmax(0, 1.12fr) minmax(260px, .42fr) !important;
@@ -16000,17 +16068,17 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     overflow: hidden !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:hover,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card:hover {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card:hover {
     background:
         linear-gradient(90deg, rgba(255, 138, 53, .08), transparent 44%),
         rgba(255, 255, 255, .028) !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card::before,
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card::after {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card::before,
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card::after {
     content: none !important;
     display: none !important;
 }
@@ -16074,8 +16142,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-overview-main h3 {
     letter-spacing: 0 !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card p,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card p {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card p {
     max-width: 880px !important;
     margin: 0 !important;
     color: rgba(255, 255, 255, .82) !important;
@@ -16119,8 +16187,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     text-shadow: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card ul,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card ul {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card ul,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card ul {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(190px, 1fr)) !important;
     gap: 18px clamp(38px, 5vw, 96px) !important;
@@ -16130,8 +16198,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     list-style: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card li,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card li {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card li,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card li {
     position: relative !important;
     min-height: 0 !important;
     padding: 0 0 0 28px !important;
@@ -16143,8 +16211,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     line-height: 1.15 !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card li::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card li::before {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card li::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card li::before {
     content: "" !important;
     position: absolute !important;
     top: .48em !important;
@@ -16167,8 +16235,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-overview-action {
     min-width: 0 !important;
 }
 
-body[data-page="home"] .plan-overview-action > span,
-html[data-theme="amigos-dark"] body[data-page="home"] .plan-overview-action > span {
+body[data-page="home"] .plan-overview-action>span,
+html[data-theme="amigos-dark"] body[data-page="home"] .plan-overview-action>span {
     justify-self: start !important;
     color: rgba(255, 190, 27, .92) !important;
     -webkit-text-fill-color: rgba(255, 190, 27, .92) !important;
@@ -16176,10 +16244,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-overview-action > sp
     font-weight: 900 !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button,
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured button,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured button {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button,
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured button,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured button {
     align-self: start !important;
     justify-self: end !important;
     min-height: 56px !important;
@@ -16195,8 +16263,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     box-shadow: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button:hover,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button:hover {
+body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button:hover {
     border-color: #ff9b35 !important;
     background: #ffffff !important;
     color: #181818 !important;
@@ -16238,6 +16306,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-detail-mark::after {
 }
 
 @media (max-width: 1100px) {
+
     body[data-page="home"] .plans-header,
     html[data-theme="amigos-dark"] body[data-page="home"] .plans-header {
         width: min(100% - 36px, 760px) !important;
@@ -16254,10 +16323,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-detail-mark::after {
         justify-items: start !important;
     }
 
-    body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card,
-    body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card.featured {
+    body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card,
+    body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card.featured {
         grid-template-columns: 1fr !important;
         min-height: 0 !important;
         padding: 42px 22px !important;
@@ -16269,13 +16338,14 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-detail-mark::after {
         justify-items: start !important;
     }
 
-    body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button,
-    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card button {
+    body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button,
+    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card button {
         justify-self: start !important;
     }
 }
 
 @media (max-width: 640px) {
+
     body[data-page="home"] .plans-section,
     html[data-theme="amigos-dark"] body[data-page="home"] .plans-section {
         padding: 64px 0 !important;
@@ -16298,8 +16368,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-detail-mark::after {
         padding: 0 22px !important;
     }
 
-    body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card ul,
-    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list > .plan-card ul {
+    body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card ul,
+    html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid.plans-overview-list>.plan-card ul {
         grid-template-columns: 1fr !important;
     }
 
@@ -16312,16 +16382,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plan-detail-mark::after {
 
 /* Pricing cards readability fix: keep the photo mood, but give all copy a clean
    white reading surface. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card,
-body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card,
+body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -16332,8 +16402,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-01.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -16344,8 +16414,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .06) 0%,
@@ -16356,20 +16426,20 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-body[data-page="home"] .plans-section .plans-grid > .plan-card ul,
-body[data-page="home"] .plans-section .plans-grid > .plan-card li,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card ul,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card li {
+body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+body[data-page="home"] .plans-section .plans-grid>.plan-card ul,
+body[data-page="home"] .plans-section .plans-grid>.plan-card li,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card ul,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card li {
     color: #071a33 !important;
     -webkit-text-fill-color: #071a33 !important;
     opacity: 1 !important;
     text-shadow: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card li::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card li::before {
+body[data-page="home"] .plans-section .plans-grid>.plan-card li::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card li::before {
     background: #fff !important;
     border-color: #f39125 !important;
     opacity: 1 !important;
@@ -16377,16 +16447,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
 }
 
 /* Final plan-card image pass: remove the card-face gradient that was hiding the photos. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card,
-body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card,
+body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background: none !important;
     background-color: transparent !important;
     background-image: url("/assets/plans/Plan-01.jpg") !important;
@@ -16399,8 +16469,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     animation: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2) {
     background: none !important;
     background-color: transparent !important;
     background-image: url("/assets/plans/Plan-02.jpg") !important;
@@ -16410,8 +16480,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     background-attachment: scroll !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background: none !important;
     background-color: transparent !important;
     background-image: url("/assets/plans/Plan-03.jpg") !important;
@@ -16421,10 +16491,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     background-attachment: scroll !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-body[data-page="home"] .plans-section .plans-grid > .plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::after {
+body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+body[data-page="home"] .plans-section .plans-grid>.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::after {
     content: none !important;
     display: none !important;
     background: none !important;
@@ -16433,30 +16503,30 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     transform: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card > * {
+body[data-page="home"] .plans-section .plans-grid>.plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card>* {
     position: relative !important;
     z-index: 1 !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-body[data-page="home"] .plans-section .plans-grid > .plan-card li,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card li {
+body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+body[data-page="home"] .plans-section .plans-grid>.plan-card li,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card li {
     color: #071A33 !important;
     -webkit-text-fill-color: #071A33 !important;
     text-shadow: 0 1px 14px rgba(255, 255, 255, .92), 0 1px 2px rgba(255, 255, 255, .86) !important;
 }
 
 /* Fade the plan photos into a clean reading surface, like a premium image card. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::before {
+body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::before {
     content: none !important;
     display: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::after {
+body[data-page="home"] .plans-section .plans-grid>.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::after {
     content: "" !important;
     display: block !important;
     position: absolute !important;
@@ -16475,14 +16545,14 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     transform: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card .plan-name,
-body[data-page="home"] .plans-section .plans-grid > .plan-card .price,
-body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-body[data-page="home"] .plans-section .plans-grid > .plan-card li,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .plan-name,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card .price,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card p,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card li {
+body[data-page="home"] .plans-section .plans-grid>.plan-card .plan-name,
+body[data-page="home"] .plans-section .plans-grid>.plan-card .price,
+body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+body[data-page="home"] .plans-section .plans-grid>.plan-card li,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .plan-name,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card .price,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card p,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card li {
     text-shadow: 0 1px 18px rgba(255, 255, 255, .96), 0 1px 3px rgba(255, 255, 255, .9) !important;
 }
 
@@ -16744,6 +16814,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.fea
 }
 
 @media (max-width: 980px) {
+
     body[data-page="home"] .plans-grid .plan-card.featured,
     html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.featured {
         transform: none !important;
@@ -16937,6 +17008,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage.has-image .stage
 }
 
 @media (max-width: 800px) {
+
     body[data-page="home"] .stage-empty,
     html[data-theme="amigos-dark"] body[data-page="home"] .stage-empty {
         grid-template-columns: 1fr !important;
@@ -17006,6 +17078,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .stage-corner {
 }
 
 @keyframes aiScanCornerPulse {
+
     0%,
     100% {
         opacity: .42;
@@ -17205,6 +17278,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.fea
 }
 
 @media (max-height: 820px) and (min-width: 981px) {
+
     body[data-page="home"] .plans-section,
     html[data-theme="amigos-dark"] body[data-page="home"] .plans-section {
         padding: 24px 0 !important;
@@ -17225,6 +17299,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.fea
 }
 
 @media (max-width: 980px) {
+
     body[data-page="home"] .plans-section,
     html[data-theme="amigos-dark"] body[data-page="home"] .plans-section {
         min-height: auto !important;
@@ -17253,8 +17328,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card.fea
 }
 
 /* Stronger per-plan image artwork: visible, relevant, and readable. */
-body[data-page="home"] .plans-grid .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card > * {
+body[data-page="home"] .plans-grid .plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card>* {
     position: relative !important;
     z-index: 3 !important;
 }
@@ -17370,8 +17445,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::af
     z-index: 2 !important;
 }
 
-body[data-page="home"] .plans-grid .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card > * {
+body[data-page="home"] .plans-grid .plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card>* {
     z-index: 3 !important;
 }
 
@@ -17439,8 +17514,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::af
     pointer-events: none !important;
 }
 
-body[data-page="home"] .plans-grid .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card > * {
+body[data-page="home"] .plans-grid .plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card>* {
     z-index: 4 !important;
 }
 
@@ -17534,23 +17609,23 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::af
     transform: none !important;
 }
 
-body[data-page="home"] .plans-grid .plan-card > *,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card > * {
+body[data-page="home"] .plans-grid .plan-card>*,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card>* {
     position: relative !important;
     z-index: 1 !important;
 }
 
 /* True final plan photo fade: visible image at the top, clean white text area below. */
-body[data-page="home"] .plans-section .plans-grid > .plan-card,
-body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card,
+body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .02) 0%,
@@ -17564,8 +17639,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
     animation: none !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(2) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .02) 0%,
@@ -17576,8 +17651,8 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card:nth-child(3) {
+body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background:
         linear-gradient(180deg,
             rgba(255, 255, 255, .02) 0%,
@@ -17588,10 +17663,10 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
         url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
 }
 
-body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-body[data-page="home"] .plans-section .plans-grid > .plan-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid > .plan-card::after {
+body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+body[data-page="home"] .plans-section .plans-grid>.plan-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card::after {
     content: none !important;
     display: none !important;
     background: none !important;
@@ -17670,6 +17745,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
+
     body[data-page="home"] section.plans-section#plans .plans-header,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header {
         width: min(100% - 40px, 760px) !important;
@@ -17692,16 +17768,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 /* EOF OVERRIDE: plans rows requested layout and readable faded images. */
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     position: relative !important;
     overflow: hidden !important;
     min-height: clamp(520px, 42vw, 650px) !important;
@@ -17715,32 +17791,32 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
     background:
         linear-gradient(90deg, rgba(31, 27, 73, .98) 0%, rgba(31, 27, 73, .90) 44%, rgba(31, 27, 73, .70) 70%, rgba(31, 27, 73, .46) 100%),
         url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     background:
         linear-gradient(90deg, rgba(31, 27, 73, .98) 0%, rgba(31, 27, 73, .90) 44%, rgba(31, 27, 73, .70) 70%, rgba(31, 27, 73, .46) 100%),
         url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::before,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card::after,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::after,
 body[data-page="home"] section.plans-section#plans .plan-detail-mark,
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-detail-mark {
     content: none !important;
     display: none !important;
 }
 
-body[data-page="home"] section.plans-section#plans .plan-overview-action > span,
-html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action > span {
+body[data-page="home"] section.plans-section#plans .plan-overview-action>span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action>span {
     display: none !important;
 }
 
@@ -17825,6 +17901,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans.plans-stack-ready,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready {
         min-height: 100vh !important;
@@ -17849,16 +17926,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         transform-style: preserve-3d !important;
     }
 
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans.plans-stack-ready .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: absolute !important;
         inset: 0 !important;
         width: 100% !important;
@@ -17873,10 +17950,11 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured {
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured {
         grid-template-columns: 1fr !important;
         min-height: auto !important;
         padding: 42px 24px !important;
@@ -17896,6 +17974,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* TRUE EOF: stable full-screen sticky stack for plans. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         overflow: visible !important;
@@ -17913,16 +17992,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         perspective: none !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: sticky !important;
         top: 0 !important;
         width: 100% !important;
@@ -17935,24 +18014,25 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         box-shadow: 0 -24px 90px rgba(5, 4, 24, .42) !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1) {
         z-index: 1 !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
         z-index: 2 !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         z-index: 3 !important;
     }
 }
 
 /* FINAL LOCK FIX: keep stacked plan cards below the fixed header. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         --plans-sticky-offset: 122px;
@@ -17971,16 +18051,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         overflow: visible !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: sticky !important;
         top: var(--plans-sticky-offset) !important;
         display: grid !important;
@@ -18064,13 +18144,14 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (min-width: 1101px) and (max-height: 820px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         --plans-sticky-offset: 104px;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card {
         padding-top: 28px !important;
         padding-bottom: 28px !important;
     }
@@ -18093,8 +18174,9 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (max-width: 1100px) {
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card {
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card {
         position: relative !important;
         top: auto !important;
         height: auto !important;
@@ -18107,6 +18189,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* FINAL FULLSCREEN PADDING FIX: full-height cards with internal header clearance. */
 @media (min-width: 1101px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         --plans-header-padding: clamp(92px, 8.5svh, 116px);
@@ -18115,16 +18198,16 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         overflow: visible !important;
     }
 
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
-    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         position: sticky !important;
         top: 0 !important;
         display: grid !important;
@@ -18210,6 +18293,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 }
 
 @media (min-width: 1101px) and (max-height: 780px) {
+
     body[data-page="home"] section.plans-section#plans,
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
         --plans-header-padding: 86px;
@@ -18533,6 +18617,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 
 /* Final mega-menu readability and Amigos-specific content polish. */
 @media (min-width: 1001px) {
+
     html body .site-header .services-mega-menu .services-mega-tab,
     html body .site-header .services-mega-menu .services-mega-intro span {
         color: #4d5560 !important;
@@ -18581,7 +18666,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
         -webkit-text-fill-color: #3d4651 !important;
     }
 
-html body .site-header .services-mega-menu .services-mega-cta span,
+    html body .site-header .services-mega-menu .services-mega-cta span,
     html body .site-header .services-mega-menu .services-mega-cta i {
         background: #241f55 !important;
         color: #ffffff !important;
@@ -18590,18 +18675,24 @@ html body .site-header .services-mega-menu .services-mega-cta span,
 }
 
 /* Inner-page header action buttons only. Keep the homepage header buttons unchanged. */
-html body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
-html body:not([data-page="home"]) .site-header .header-actions .header-btn,
 html:not([data-theme="amigos-dark"]) body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
-html:not([data-theme="amigos-dark"]) body:not([data-page="home"]) .site-header .header-actions .header-btn,
-html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
-html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .header-btn {
+html:not([data-theme="amigos-dark"]) body:not([data-page="home"]) .site-header .header-actions .header-btn {
     background: #000000 !important;
     background-image: none !important;
     border-color: #000000 !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     box-shadow: 0 12px 28px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
+html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .header-btn {
+    background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+    background-image: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 12px 28px rgba(230, 36, 83, .2) !important;
 }
 
 html body:not([data-page="home"]) .site-header .header-actions .customer-header-btn *,
@@ -18612,11 +18703,20 @@ html body:not([data-page="home"]) .site-header .header-actions .header-btn svg {
     -webkit-text-fill-color: #ffffff !important;
 }
 
-html body:not([data-page="home"]) .site-header .header-actions .customer-header-btn:hover,
-html body:not([data-page="home"]) .site-header .header-actions .header-btn:hover {
+html:not([data-theme="amigos-dark"]) body:not([data-page="home"]) .site-header .header-actions .customer-header-btn:hover,
+html:not([data-theme="amigos-dark"]) body:not([data-page="home"]) .site-header .header-actions .header-btn:hover {
     background: #111111 !important;
     background-image: none !important;
     border-color: #111111 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn:hover,
+html[data-theme="amigos-dark"] body:not([data-page="home"]) .site-header .header-actions .header-btn:hover {
+    background: linear-gradient(135deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+    background-image: linear-gradient(135deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+    border-color: transparent !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
 }
@@ -18635,8 +18735,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .review-btn:
     --am-cta-gradient: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%);
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18652,8 +18751,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-),
+    .btn-ghost),
 main .hero-ctas :is(a, button).btn,
 main .cta-buttons :is(a, button),
 main .partners-hero-actions :is(a, button),
@@ -18681,8 +18779,7 @@ main .partner-cta :is(a, button).partners-btn {
     transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18698,8 +18795,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-)::before,
+    .btn-ghost)::before,
 main .hero-ctas :is(a, button).btn::before,
 main .cta-buttons :is(a, button)::before,
 main .partners-hero-actions :is(a, button)::before,
@@ -18724,8 +18820,7 @@ main .partner-cta :is(a, button).partners-btn::before {
     mask: none !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18741,8 +18836,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-)::after,
+    .btn-ghost)::after,
 main .hero-ctas :is(a, button).btn::after,
 main .cta-buttons :is(a, button)::after,
 main .partners-hero-actions :is(a, button)::after,
@@ -18771,8 +18865,7 @@ main .partner-cta :is(a, button).partners-btn::after {
     mask: none !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18788,20 +18881,18 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-) > *,
-main .hero-ctas :is(a, button).btn > *,
-main .cta-buttons :is(a, button) > *,
-main .partners-hero-actions :is(a, button) > *,
-main .partner-cta :is(a, button).partners-btn > * {
+    .btn-ghost)>*,
+main .hero-ctas :is(a, button).btn>*,
+main .cta-buttons :is(a, button)>*,
+main .partners-hero-actions :is(a, button)>*,
+main .partner-cta :is(a, button).partners-btn>* {
     position: relative !important;
     z-index: 2 !important;
     color: inherit !important;
     -webkit-text-fill-color: inherit !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18817,8 +18908,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-):hover,
+    .btn-ghost):hover,
 main .hero-ctas :is(a, button).btn:hover,
 main .cta-buttons :is(a, button):hover,
 main .partners-hero-actions :is(a, button):hover,
@@ -18830,8 +18920,7 @@ main .partner-cta :is(a, button).partners-btn:hover {
     box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18847,8 +18936,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-):hover::before,
+    .btn-ghost):hover::before,
 main .hero-ctas :is(a, button).btn:hover::before,
 main .cta-buttons :is(a, button):hover::before,
 main .partners-hero-actions :is(a, button):hover::before,
@@ -18856,8 +18944,7 @@ main .partner-cta :is(a, button).partners-btn:hover::before {
     transform: translate(6px, -50%) !important;
 }
 
-main :is(a, button):is(
-    .introBtn,
+main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
     .primary-btn,
@@ -18873,8 +18960,7 @@ main :is(a, button):is(
     .damage-btn,
     .btn-cta,
     .btn-light,
-    .btn-ghost
-):hover::after,
+    .btn-ghost):hover::after,
 main .hero-ctas :is(a, button).btn:hover::after,
 main .cta-buttons :is(a, button):hover::after,
 main .partners-hero-actions :is(a, button):hover::after,
@@ -18883,8 +18969,8 @@ main .partner-cta :is(a, button).partners-btn:hover::after {
 }
 
 @media (max-width: 640px) {
-    main :is(a, button):is(
-        .introBtn,
+
+    main :is(a, button):is(.introBtn,
         .btn-primary,
         .btn-secondary,
         .primary-btn,
@@ -18900,8 +18986,7 @@ main .partner-cta :is(a, button).partners-btn:hover::after {
         .damage-btn,
         .btn-cta,
         .btn-light,
-        .btn-ghost
-    ),
+        .btn-ghost),
     main .hero-ctas :is(a, button).btn,
     main .cta-buttons :is(a, button),
     main .partners-hero-actions :is(a, button),
@@ -18911,4 +18996,27 @@ main .partner-cta :is(a, button).partners-btn:hover::after {
         min-height: 54px !important;
         padding: 15px 24px 15px 66px !important;
     }
+}
+
+/* Final homepage dark-theme text contrast. */
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-heading h2,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-content h2,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat h3 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-heading h2 span {
+    background: linear-gradient(90deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .ai-side p,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-content p,
+html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }

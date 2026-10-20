@@ -145,7 +145,6 @@ export function useAmigosAudio() {
   useEffect(() => {
     // Subscribe to shared state
     subscribers.add(setIsPlaying);
-    setIsPlaying(isCurrentlyPlaying);
 
     // Global hook for script.js / outside triggers
     window.__amigosPlayMusic = playAmigosMusic;

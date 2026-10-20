@@ -21,11 +21,11 @@ function applyAboutDarkThemeSurfaces() {
     // Numbers owns its appearance in CSS. Keep it out of this shared theme
     // loop so the legacy gradient cannot be written inline over that section.
     document
-        .querySelectorAll(".numbers-section")
+        .querySelectorAll(".numbers-section, .values-section")
         .forEach(section => clearInlineTheme(section));
 
     document
-        .querySelectorAll(".values-section, .final-cta")
+        .querySelectorAll(".final-cta")
         .forEach(section => {
             if (!isDark) {
                 clearInlineTheme(section);

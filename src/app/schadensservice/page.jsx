@@ -1,4 +1,4 @@
-import LegacyPage from "@/components/LegacyPage";
+import DamageServiceShell from "@/components/DamageServiceShell";
 
 export const metadata = {
   title: "Schadensservice | Amigos Maler GmbH",
@@ -16,7 +16,7 @@ const Icon = ({ children, className = "" }) => (
 
 export default function Page() {
   return (
-    <LegacyPage css={["/damage-service.css", "/partial.css"]} html="" scripts={["/script.js"]} shell={true} gsap={true}>
+    <DamageServiceShell>
       <main className="damage-page">
         <section className="damage-hero">
           <div className="damage-shell damage-hero-grid">
@@ -169,7 +169,7 @@ export default function Page() {
         </section>
 
       </main>
-    </LegacyPage>
+    </DamageServiceShell>
   );
 }
 

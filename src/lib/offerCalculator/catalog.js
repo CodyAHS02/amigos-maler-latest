@@ -573,12 +573,11 @@ export const photoCategories = [
 export const detailedStepMeta = [
   { number: "01", key: "type", title: "Project Type", icon: "step_property" },
   { number: "02", key: "components", title: "Components", icon: "step_components" },
-  { number: "03", key: "services", title: "Work & Services", icon: "step_services" },
-  { number: "04", key: "quantities", title: "Quantities", icon: "step_quantities" },
-  { number: "05", key: "location", title: "Location", icon: "step_location" },
-  { number: "06", key: "result", title: "Summary", icon: "step_summary" },
-  { number: "07", key: "verify", title: "Verify E-Mail", icon: "step_verify" },
-  { number: "08", key: "price", title: "Price", icon: "step_price" }
+  { number: "03", key: "measurements", title: "Measurements", icon: "step_quantities" },
+  { number: "04", key: "condition", title: "Condition", icon: "step_condition" },
+  { number: "05", key: "photos", title: "Photos & Other", icon: "step_photos" },
+  { number: "06", key: "summary", title: "Summary", icon: "step_summary" },
+  { number: "07", key: "email", title: "Receive Quote", icon: "step_verify" }
 ];
 
 export const simpleStepMeta = [
@@ -607,6 +606,7 @@ export const initialState = {
   projectNotes: "",
   email: "",
   code: ["", "", "", ""],
+  emailVerified: false,
   customerInfo: {
     firstName: "",
     lastName: "",

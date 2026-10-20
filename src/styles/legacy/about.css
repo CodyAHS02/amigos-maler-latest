@@ -2332,8 +2332,8 @@ body[data-page="about"] {
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a,
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger,
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .nav-link {
-    color: #050505 !important;
-    -webkit-text-fill-color: #050505 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a:hover,

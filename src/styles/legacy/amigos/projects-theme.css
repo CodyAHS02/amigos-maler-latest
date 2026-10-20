@@ -3840,3 +3840,50 @@ body[data-page="projects"] main .hero-ctas :is(a, button):hover::after,
 body[data-page="projects"] main .new-final-cta :is(a, button):hover::after {
   transform: translate(6px, -52%) !important;
 }
+
+/* Hero CTAs: centered labels with one consistent gradient stroke and glass fill. */
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn,
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn.btn-solid {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 220px !important;
+  min-width: 220px !important;
+  min-height: 56px !important;
+  padding: 15px 26px !important;
+  border: 2px solid transparent !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(rgba(7, 26, 51, .78), rgba(7, 26, 51, .78)) padding-box,
+    linear-gradient(120deg, #f6be10 0%, #f39125 35%, #e62453 66%, #c73b8e 100%) border-box !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  box-shadow: 0 14px 32px rgba(7, 26, 51, .22) !important;
+}
+
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn::before,
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn:hover,
+body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn.btn-solid:hover {
+  transform: translateY(-3px) !important;
+  background:
+    linear-gradient(rgba(230, 36, 83, .24), rgba(199, 59, 142, .24)) padding-box,
+    linear-gradient(120deg, #f6be10 0%, #f39125 35%, #e62453 66%, #c73b8e 100%) border-box !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .24) !important;
+}
+
+@media (max-width: 620px) {
+  body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn,
+  body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn.btn-solid {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}

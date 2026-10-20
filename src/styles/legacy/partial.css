@@ -2993,14 +2993,14 @@ html:not([data-theme="amigos-dark"]) section.hero [class*="overlay"] {
 }
 
 /* Light Mode Typography */
-html:not([data-theme="amigos-dark"]) section[class*="hero"] h1,
-html:not([data-theme="amigos-dark"]) section[class*="hero"] p,
-html:not([data-theme="amigos-dark"]) section[class*="hero"] strong,
-html:not([data-theme="amigos-dark"]) section[class*="hero"] h4,
-html:not([data-theme="amigos-dark"]) section.hero h1,
-html:not([data-theme="amigos-dark"]) section.hero p,
-html:not([data-theme="amigos-dark"]) section.hero strong,
-html:not([data-theme="amigos-dark"]) section.hero h4 {
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-hero]) h1,
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-hero]) p,
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-hero]) strong,
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-hero]) h4,
+html:not([data-theme="amigos-dark"]) section.hero:not([data-hero]) h1,
+html:not([data-theme="amigos-dark"]) section.hero:not([data-hero]) p,
+html:not([data-theme="amigos-dark"]) section.hero:not([data-hero]) strong,
+html:not([data-theme="amigos-dark"]) section.hero:not([data-hero]) h4 {
     color: #050505 !important;
     -webkit-text-fill-color: #050505 !important;
 }
@@ -3013,10 +3013,17 @@ html:not([data-theme="amigos-dark"]) section.hero [class*="eyebrow"] {
     -webkit-text-fill-color: #e62453 !important;
 }
 
-html:not([data-theme="amigos-dark"]) section[class*="hero"] span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]),
-html:not([data-theme="amigos-dark"]) section.hero span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]) {
+html:not([data-theme="amigos-dark"]) section[class*="hero"]:not([data-home-hero]):not([data-hero]) span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]),
+html:not([data-theme="amigos-dark"]) section.hero:not([data-home-hero]):not([data-hero]) span:not([class*="label"]):not([class*="eyebrow"]):not([class*="line"]) {
     color: #4a4a4a !important;
     -webkit-text-fill-color: #4a4a4a !important;
+}
+
+/* Homepage hero copy is white in both themes. */
+html section[data-home-hero] .hero-overlay .intro-title span,
+html section[data-home-hero] .hero-overlay .intro-title-sub {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 /* Light Mode Secondary Buttons */

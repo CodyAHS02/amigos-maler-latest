@@ -120,6 +120,7 @@ const serviceCategories = [
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isAbout = pathname === "/about";
   const isProjects = pathname === "/projects";
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -134,16 +135,21 @@ export default function Header() {
 
     const header = document.getElementById("siteHeader");
     if (!header) return;
+    const hero = document.querySelector("[data-hero]");
 
     const updateHeaderState = () => {
-      header.classList.toggle("is-scrolled", window.scrollY > 20);
+      const heroHasPassed = hero
+        ? hero.getBoundingClientRect().bottom <= header.offsetHeight
+        : window.scrollY > 20;
+
+      header.classList.toggle("is-scrolled", heroHasPassed);
     };
 
     updateHeaderState();
     window.addEventListener("scroll", updateHeaderState, { passive: true });
 
     return () => window.removeEventListener("scroll", updateHeaderState);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     let active = true;
@@ -166,7 +172,8 @@ export default function Header() {
     const shouldUseDarkTheme = savedTheme === "amigos-dark";
 
     document.documentElement.dataset.theme = shouldUseDarkTheme ? "amigos-dark" : "amigos-light";
-    setIsDarkTheme(shouldUseDarkTheme);
+    const frame = window.requestAnimationFrame(() => setIsDarkTheme(shouldUseDarkTheme));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const toggleTheme = () => {
@@ -198,7 +205,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`site-header${isHome ? " home-initial" : ""}`} id="siteHeader">
+      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout ? " about-header" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
         <span className={styles.logoSymbol} aria-hidden="true">
           <img src="/logo.webp" alt="" />

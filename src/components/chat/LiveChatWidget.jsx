@@ -55,10 +55,13 @@ export default function LiveChatWidget() {
   useEffect(() => {
     if (!LIVE_CHAT_ENABLED) return undefined;
 
-    loadMessages();
+    const initialLoad = window.setTimeout(loadMessages, 0);
     const timer = window.setInterval(loadMessages, POLL_INTERVAL_MS);
 
-    return () => window.clearInterval(timer);
+    return () => {
+      window.clearTimeout(initialLoad);
+      window.clearInterval(timer);
+    };
   }, []);
 
   useEffect(() => {

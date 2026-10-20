@@ -1,0 +1,920 @@
+.aboutPage {
+  --navy: #071b45;
+  --blue: #0b2864;
+  --accent: linear-gradient(100deg, #ffc500, #ff7a24 48%, #f52b73);
+  background: #f4f8fc;
+  color: var(--navy);
+  font-family: themeFont, Inter, Arial, sans-serif;
+  overflow: hidden
+}
+
+.aboutPage h1,
+.aboutPage h2,
+.aboutPage h3,
+.aboutPage p {
+  margin: 0
+}
+
+.hero {
+  min-height: 560px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden
+}
+
+.heroImageDay,
+.heroImageNight {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0
+}
+
+.heroImageNight {
+  display: none
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(2, 13, 31, .82), rgba(3, 17, 38, .3) 55%, rgba(3, 17, 38, .05))
+}
+
+.heroInner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: auto
+}
+
+.kicker {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 10px
+}
+
+.hero .kicker {
+  color: #000
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: .97;
+  letter-spacing: -2px
+}
+
+.hero h1 span,
+.sectionIntro h2 span {
+  background: var(--accent);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent
+}
+
+.aboutPage .hero h1 .heroHighlight {
+  background: var(--accent) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.heroText {
+  font-size: 20px;
+  line-height: 1.28;
+  margin: 22px 0 28px !important
+}
+
+.expertise {
+  position: absolute;
+  right: 7%;
+  top: 24%;
+  z-index: 2;
+  font-size: 33px;
+  line-height: .95;
+  font-weight: 700;
+  transform: rotate(-7deg);
+  color: var(--navy)
+}
+
+.expertise em {
+  color: #e83f72
+}
+
+.gradientButton,
+.lightButton,
+.whiteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border-radius: 999px;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-weight: 800
+}
+
+.gradientButton {
+  background: var(--accent);
+  color: #fff
+}
+
+.arrow {
+  font-size: 23px;
+  line-height: 1
+}
+
+.story,
+.values,
+.process,
+.partners,
+.testimonials {
+  padding: 76px max(24px, calc((100% - 1180px)/2))
+}
+
+.story {
+  background: #fff
+}
+
+.sectionIntro {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 30px
+}
+
+.sectionIntro h2 {
+  font-size: clamp(30px, 3.1vw, 45px);
+  line-height: 1.05;
+  letter-spacing: -1.4px
+}
+
+.sectionIntro>p:last-child {
+  font-size: 17px;
+  line-height: 1.4;
+  margin-top: 14px
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px
+}
+
+.storyCard {
+  position: relative
+}
+
+.storyCard>img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px
+}
+
+.storyCardBody {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  margin-top: -1px
+}
+
+.year {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 5px
+}
+
+.storyCard h3,
+.valueCard h3,
+.processCard h3 {
+  font-size: 20px;
+  line-height: 1.05;
+  margin: 8px 0
+}
+
+.storyCard p,
+.valueCard p,
+.processCard p {
+  font-size: 14px;
+  line-height: 1.35
+}
+
+.storyCard>.arrow,
+.processCard>.arrow {
+  position: absolute;
+  right: -25px;
+  top: 175px;
+  color: var(--blue)
+}
+
+.values {
+  background: #f4f8fc
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px
+}
+
+.valueCard {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 26px rgba(7, 27, 69, .07)
+}
+
+.valueIcon {
+  font-size: 38px;
+  line-height: 1;
+  color: #f52b73;
+  margin-bottom: 20px
+}
+
+.process {
+  background: #fff
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px
+}
+
+.processCard {
+  position: relative
+}
+
+.stepImage {
+  position: relative
+}
+
+.stepImage img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+  background: #f4f8fc
+}
+
+.stepImage span {
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  background: var(--accent);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800
+}
+
+.partners {
+  background: #f4f8fc;
+  position: relative
+}
+
+.partnerText {
+  max-width: 420px;
+  margin: 0 0 28px auto !important;
+  line-height: 1.4
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px
+}
+
+.logoGrid div {
+  background: #fff;
+  border-radius: 7px;
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: #152d58;
+  box-shadow: 0 5px 16px rgba(7, 27, 69, .06)
+}
+
+.testimonials {
+  background: #fff
+}
+
+.reviewGrid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 44px;
+  align-items: center
+}
+
+.googleReview strong {
+  font-size: 64px;
+  color: #4285f4
+}
+
+.googleReview b {
+  display: block;
+  font-size: 28px
+}
+
+.googleReview b span,
+.quoteGrid small {
+  color: #ffb900;
+  letter-spacing: 2px
+}
+
+.googleReview p {
+  margin: 5px 0 20px !important
+}
+
+.quoteGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px
+}
+
+.quoteGrid blockquote {
+  margin: 0;
+  padding: 24px;
+  background: #f7f9fc;
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgba(7, 27, 69, .06)
+}
+
+.quoteGrid blockquote>span {
+  font-size: 48px;
+  color: #ccd1da
+}
+
+.quoteGrid p {
+  font-size: 15px;
+  line-height: 1.35
+}
+
+.quoteGrid cite {
+  display: block;
+  margin-top: 14px;
+  font-style: normal;
+  font-weight: 700
+}
+
+.quoteGrid small {
+  display: block;
+  margin-top: 8px
+}
+
+.cta {
+  padding: 64px max(24px, calc((100% - 1180px)/2));
+  background: #071a33;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  overflow: hidden
+}
+
+.cta .kicker {
+  color: #fff
+}
+
+.cta h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.02;
+  color: #fff
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px
+}
+
+.lightButton {
+  color: #fff;
+  border: 2px solid #fff
+}
+
+.whiteButton {
+  background: #fff;
+  color: var(--navy)
+}
+
+.roller {
+  position: absolute;
+  right: 8%;
+  bottom: -30px;
+  font-size: 160px;
+  transform: rotate(-24deg);
+  color: rgba(255, 255, 255, .35)
+}
+
+@media(max-width:900px) {
+
+  .storyGrid,
+  .valueGrid,
+  .processGrid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr)
+  }
+
+  .expertise {
+    right: 5%;
+    top: 15%;
+    font-size: 24px
+  }
+
+  .reviewGrid {
+    grid-template-columns: 1fr
+  }
+
+  .partnerText {
+    margin-left: 0 !important
+  }
+
+  .storyCard>.arrow,
+  .processCard>.arrow {
+    display: none
+  }
+}
+
+@media(max-width:600px) {
+  .hero {
+    min-height: 570px
+  }
+
+  .hero h1 {
+    font-size: 48px
+  }
+
+  .heroText {
+    font-size: 17px
+  }
+
+  .expertise {
+    top: 10%;
+    right: 10px
+  }
+
+  .story,
+  .values,
+  .process,
+  .partners,
+  .testimonials {
+    padding-top: 52px;
+    padding-bottom: 52px
+  }
+
+  .storyGrid,
+  .valueGrid,
+  .processGrid,
+  .quoteGrid {
+    grid-template-columns: 1fr
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    align-items: center
+  }
+
+  .ctaActions a {
+    width: min(280px, 100%);
+    justify-content: center
+  }
+}
+
+:global(html[data-theme="amigos-dark"]) .heroImageDay {
+  display: none
+}
+
+:global(html[data-theme="amigos-dark"]) .heroImageNight {
+  display: block
+}
+
+.aboutPage .hero {
+  min-height: 100svh;
+  height: 100svh
+}
+
+.aboutPage .gradientButton {
+  position: relative;
+  justify-content: center;
+  min-height: 58px;
+  padding-left: 76px;
+  overflow: hidden
+}
+
+.aboutPage .gradientButton::before {
+  content: "→";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #071a33;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-50%)
+}
+
+:global(html[data-theme="amigos-dark"]) .aboutPage .gradientButton:hover {
+  background: #fff;
+  color: #050505;
+  -webkit-text-fill-color: #050505;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, .2)
+}
+
+:global(html[data-theme="amigos-dark"]) .aboutPage .gradientButton:hover::before {
+  background: #071a33;
+  color: #fff
+}
+
+.aboutPage .sectionIntro .kicker {
+  font-size: clamp(15px, 1.25vw, 18px);
+  letter-spacing: 2px
+}
+
+.aboutPage .storyCardBody {
+  display: block;
+  position: relative;
+  padding: 28px 20px 20px
+}
+
+.aboutPage .storyCopy {
+  min-width: 0
+}
+
+.aboutPage .year {
+  position: absolute;
+  top: -26px;
+  left: 20px;
+  z-index: 1
+}
+
+.aboutPage .storyCard h3 {
+  margin-top: 0
+}
+
+.aboutPage .storyCard p {
+  font-size: 14px;
+  line-height: 1.45
+}
+
+.aboutPage .readMore {
+  margin-top: 13px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #e62453;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer
+}
+
+.aboutPage .readMore:hover {
+  color: #071a33;
+  text-decoration: underline
+}
+
+.aboutPage .sectionIntro>p:last-child,
+.aboutPage .partnerText,
+.aboutPage .storyCard p,
+.aboutPage .valueCard p,
+.aboutPage .processCard p,
+.aboutPage .quoteGrid blockquote p {
+  font-size: clamp(16px, 1.35vw, 20px) !important;
+  line-height: 1.45
+}
+
+.aboutPage .valueCard {
+  border: 1px solid transparent;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background-color .25s ease
+}
+
+.aboutPage .valueCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(230, 36, 83, .5);
+  box-shadow: 0 18px 36px rgba(7, 27, 69, .18);
+  background: linear-gradient(145deg, #fff 0%, #fff8fb 100%)
+}
+
+.aboutPage .valueCard:hover .valueIcon {
+  color: #e62453;
+  transform: scale(1.08)
+}
+
+.aboutPage .valueIcon {
+  transition: color .25s ease, transform .25s ease
+}
+
+.aboutPage .processCard h3,
+.aboutPage .processCard p {
+  padding-inline: 10px
+}
+
+.aboutPage .processCard h3 {
+  margin-top: 14px
+}
+
+.aboutPage .processCard>.arrow {
+  right: -18px
+}
+
+.aboutPage .partnerText {
+  max-width: 760px;
+  margin: 0 auto 30px !important;
+  text-align: center
+}
+
+.aboutPage .logoGrid div {
+  color: #152d58 !important;
+  -webkit-text-fill-color: #152d58 !important;
+  font-weight: 800;
+  opacity: 1 !important
+}
+
+.aboutPage .logoGrid div::first-line {
+  color: #152d58 !important;
+  -webkit-text-fill-color: #152d58 !important
+}
+
+.aboutPage .googleLogo {
+  display: block;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 14px
+}
+
+.aboutPage .googleReview b,
+.aboutPage .googleReview p {
+  color: #071b45 !important;
+  -webkit-text-fill-color: #071b45 !important
+}
+
+.aboutPage .quoteGrid blockquote {
+  background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%);
+  color: #fff !important
+}
+
+.aboutPage .quoteGrid blockquote>span,
+.aboutPage .quoteGrid blockquote p,
+.aboutPage .quoteGrid blockquote cite,
+.aboutPage .quoteGrid blockquote small {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important
+}
+
+.aboutPage .quoteGrid blockquote>span {
+  opacity: .75
+}
+
+.aboutPage .founder-cta-btn svg {
+  display: none
+}
+
+.aboutPage .primaryButton,
+.aboutPage .secondaryButton {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 16px 30px 16px 72px;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  text-decoration: none;
+  font-weight: 800;
+  line-height: 1.1;
+  transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease
+}
+
+.aboutPage .primaryButton {
+  background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%);
+  color: #fff;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .18)
+}
+
+.aboutPage .secondaryButton {
+  background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  background-image: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .18) !important
+}
+
+.aboutPage .primaryButton::before,
+.aboutPage .secondaryButton::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  z-index: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(7, 26, 51, .16);
+  transform: translateY(-50%);
+  transition: transform .25s ease
+}
+
+.aboutPage .primaryButton::after,
+.aboutPage .secondaryButton::after {
+  content: "→";
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  z-index: 1;
+  color: #071a33;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-52%);
+  transition: transform .25s ease
+}
+
+.aboutPage .primaryButton:hover {
+  background: #000;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, .18);
+  transform: translateY(-3px)
+}
+
+.aboutPage .primaryButton:hover,
+.aboutPage .primaryButton:hover::after {
+  color: #fff;
+  -webkit-text-fill-color: #fff
+}
+
+.aboutPage .primaryButton:hover::before,
+.aboutPage .primaryButton:hover::after,
+.aboutPage .secondaryButton:hover::before,
+.aboutPage .secondaryButton:hover::after {
+  transform: translate(6px, -50%)
+}
+
+.aboutPage .secondaryButton:hover {
+  background: linear-gradient(105deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+  background-image: linear-gradient(105deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .24) !important;
+  transform: translateY(-3px)
+}
+
+@media(max-width:640px) {
+
+  .aboutPage .primaryButton,
+  .aboutPage .secondaryButton {
+    width: 100%;
+    max-width: 360px;
+    min-height: 54px;
+    padding: 15px 24px 15px 66px
+  }
+}
+
+.aboutPage .valueCard:hover {
+  background: linear-gradient(135deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  background-image: linear-gradient(135deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 18px 36px rgba(230, 36, 83, .24)
+}
+
+.aboutPage .valueCard:hover h3,
+.aboutPage .valueCard:hover p,
+.aboutPage .valueCard:hover .valueIcon {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important
+}
+
+.aboutPage .storyCard>img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  background: transparent
+}
+
+.aboutPage .storyCard p {
+  font-size: 15px !important;
+  line-height: 1.45
+}
+
+.aboutPage .processCard p {
+  font-size: 15px !important;
+  line-height: 1.4
+}
+
+.aboutPage .processCard {
+  padding-bottom: 20px
+}
+
+.aboutPage .processCard h3,
+.aboutPage .processCard p {
+  padding-inline: 16px
+}
+
+.aboutPage .processCard h3 {
+  margin-top: 16px;
+  margin-bottom: 8px
+}
+
+.aboutPage .processCard p {
+  margin: 0
+}
+
+.aboutPage .storyGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr))
+}
+
+@media(max-width:900px) {
+  .aboutPage .storyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+}
+
+@media(max-width:600px) {
+  .aboutPage .storyGrid {
+    grid-template-columns: 1fr
+  }
+}
+
+/* Secondary CTA: transparent center with a brand-gradient border. */
+.aboutPage .secondaryOutline,
+.aboutPage .secondaryOutline:hover {
+  background: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) border-box !important;
+  background-color: transparent !important;
+  background-image: linear-gradient(transparent, transparent) padding-box,
+    linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) border-box !important;
+  border: 2px solid transparent !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  box-shadow: none !important;
+}
+
+.aboutPage .secondaryOutline:hover {
+  transform: translateY(-3px);
+}
+
+/* Hero copy stays white over the daylight and night imagery. */
+.aboutPage .hero h1,
+.aboutPage .hero .heroText,
+.aboutPage .hero .expertise {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.aboutPage .hero .kicker {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.aboutPage .hero h1 span {
+  display: inline-block !important;
+  background: var(--accent) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}

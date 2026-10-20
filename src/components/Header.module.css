@@ -201,4 +201,273 @@
   border-radius: 999px !important;
   font-size: 14px !important;
   line-height: 1 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+/* Sticky header actions use one consistent outline treatment on every page. */
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn),
+:global(html body .site-header.is-scrolled .header-actions .header-btn),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn),
+:global(html body .site-header.scrolled .header-actions .header-btn) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: none !important;
+}
+
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn svg),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn svg) {
+  color: currentColor !important;
+  stroke: currentColor !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn::before),
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn::after),
+:global(html body .site-header.is-scrolled .header-actions .header-btn::before),
+:global(html body .site-header.is-scrolled .header-actions .header-btn::after),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn::before),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn::after),
+:global(html body .site-header.scrolled .header-actions .header-btn::before),
+:global(html body .site-header.scrolled .header-actions .header-btn::after) {
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn:hover),
+:global(html body .site-header.is-scrolled .header-actions .header-btn:hover),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn:hover),
+:global(html body .site-header.scrolled .header-actions .header-btn:hover) {
+  background: #000 !important;
+  background-color: #000 !important;
+  background-image: none !important;
+  border-color: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn:hover svg),
+:global(html body .site-header.is-scrolled .header-actions .header-btn:hover svg),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn:hover svg),
+:global(html body .site-header.scrolled .header-actions .header-btn:hover svg) {
+  color: #fff !important;
+  stroke: currentColor !important;
+}
+
+/* Dark theme header actions use the brand gradient on every page and state. */
+:global(html[data-theme="amigos-dark"] body .site-header .header-actions .customer-header-btn),
+:global(html[data-theme="amigos-dark"] body .site-header .header-actions .header-btn) {
+  background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+  background-image: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 10px 24px rgba(230, 36, 83, .2) !important;
+}
+
+/* Contact light hero uses the same transparent header treatment with dark controls. */
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .nav-link),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoLink),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark strong),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark small),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button svg) {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  stroke: currentColor !important;
+}
+
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid #071a33 !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  box-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn svg),
+:global(html[data-theme="amigos-light"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn svg) {
+  color: #071a33 !important;
+  stroke: currentColor !important;
+}
+
+:global(html[data-theme="amigos-dark"] body .site-header .header-actions .customer-header-btn:hover),
+:global(html[data-theme="amigos-dark"] body .site-header .header-actions .header-btn:hover) {
+  background: linear-gradient(135deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+  background-image: linear-gradient(135deg, #ffd447 0%, #f39125 42%, #c73b8e 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* About hero header: transparent until the hero has passed. */
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled)) {
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .nav-link),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .logoLink) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn svg),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn svg),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button svg) {
+  color: #fff !important;
+  stroke: currentColor !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark strong),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark small) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled)) .site-nav a,
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled)) .dropdown-trigger,
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header:not(.is-scrolled):not(.scrolled)) .nav-link {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.is-scrolled .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.is-scrolled .header-actions .header-btn),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.scrolled .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.scrolled .header-actions .header-btn),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.is-scrolled .header-actions .customer-header-btn:hover),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.is-scrolled .header-actions .header-btn:hover),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.scrolled .header-actions .customer-header-btn:hover),
+:global(html:not([data-theme="amigos-dark"]) body[data-page="about"] .site-header.scrolled .header-actions .header-btn:hover) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid #000 !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  box-shadow: none !important;
+}
+
+/* About header state is identified on the header itself so it applies before body attributes hydrate. */
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled)) {
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .site-nav a),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .nav-link),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .logoWordmark),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .logoWordmark strong),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .logoWordmark small),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .header-toggle-group svg) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: currentColor !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled)) .logoWordmark,
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled)) .logoWordmark strong,
+:global(html:not([data-theme="amigos-dark"]) .site-header.about-header:not(.is-scrolled):not(.scrolled)) .logoWordmark small {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Contact hero header: match the About light-theme treatment over the navy hero. */
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled)) {
+  background: transparent !important;
+  background-image: none !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .site-nav a),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .dropdown-trigger),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .nav-link),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoLink),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark strong),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .logoWordmark small),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-toggle-group button svg) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: currentColor !important;
+}
+
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn) {
+  background: transparent !important;
+  background-image: none !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn svg),
+:global(html[data-theme="amigos-dark"] body[data-page="contact"] .site-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn svg) {
+  color: #fff !important;
+  stroke: currentColor !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Sticky header actions use the brand gradient instead of the legacy black fill. */
+:global(html body .site-header.is-scrolled .header-actions .customer-header-btn),
+:global(html body .site-header.is-scrolled .header-actions .header-btn),
+:global(html body .site-header.scrolled .header-actions .customer-header-btn),
+:global(html body .site-header.scrolled .header-actions .header-btn) {
+  background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+  background-image: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 10px 24px rgba(230, 36, 83, .2) !important;
 }
