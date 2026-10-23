@@ -15,7 +15,7 @@ function Icon({ name }) {
   return <svg className={styles.icon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{icons[name]}</svg>;
 }
 
-const steps = [["Your Service", "What can we do for you?"], ["Project Details", "Tell us about your project"], ["Location", "Where is your property?"], ["Contact Information", "How can we reach you?"]];
+const steps = [["Your Service", "What can we do for you?"], ["Location", "Where is your property?"], ["Contact Information", "How can we reach you?"]];
 const services = [
   ["Interior Painting", "home", "/external/interior-painting/photo-1482731215275-a1f151646268-w1200-q80.jpg"],
   ["Facade Painting", "facade", "/assets/facade/Facade-maintain.jpeg"],
@@ -28,22 +28,118 @@ const services = [
 export default function ContactFormStepper() {
   const [selectedService, setSelectedService] = useState(services[0][0]);
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({ location: "", name: "", email: "", phone: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const updateField = (field) => (event) => {
+    setFormData((current) => ({ ...current, [field]: event.target.value }));
+  };
+
+  const goToStep = (step) => {
+    setSubmitted(false);
+    setStatus("");
+    setCurrentStep(Math.max(1, Math.min(step, 3)));
+  };
+
+  const isStepComplete = (step) => {
+    if (step === 1) return Boolean(selectedService);
+    if (step === 2) return Boolean(formData.location.trim());
+    return Boolean(formData.name.trim() && /\S+@\S+\.\S+/.test(formData.email));
+  };
+
+  const handleNext = async () => {
+    if (!isStepComplete(currentStep)) {
+      setStatus("Please complete this step before continuing.");
+      return;
+    }
+
+    if (currentStep < 3) {
+      setStatus("");
+      setCurrentStep((step) => step + 1);
+      return;
+    }
+
+    setStatus("Sending your enquiry…");
+    const payload = new FormData();
+    payload.set("name", formData.name);
+    payload.set("email", formData.email);
+    payload.set("phone", formData.phone);
+    payload.set("projectType", selectedService);
+    payload.set("message", `Service: ${selectedService}\nLocation: ${formData.location}`);
+
+    try {
+      const response = await fetch("/api/consultations", { method: "POST", body: payload });
+      if (!response.ok) throw new Error("Unable to send your enquiry right now.");
+      setSubmitted(true);
+      setStatus("");
+    } catch (error) {
+      setStatus(error.message);
+    }
+  };
+
+  const resetForm = () => {
+    setSelectedService(services[0][0]);
+    setFormData({ location: "", name: "", email: "", phone: "" });
+    setSubmitted(false);
+    setStatus("");
+    setCurrentStep(1);
+  };
+
+  const renderStepContent = () => {
+    if (submitted) {
+      return <div className={styles.successState} role="status">
+        <span className={styles.successIcon}>✓</span>
+        <h2>Thank you. We received your enquiry.</h2>
+        <p className={styles.formIntro}>Our team will review your details and get back to you personally.</p>
+      </div>;
+    }
+
+    if (currentStep === 1) {
+      return <>
+        <h2>What can we do for you?</h2>
+        <p className={styles.formIntro}>Select the service area where we can support you.</p>
+        <div className={styles.serviceGrid}>{services.map(([label, icon, image]) => { const isSelected = selectedService === label; return <button className={`${styles.serviceCard} ${isSelected ? styles.selectedCard : ""}`} type="button" key={label} onClick={() => setSelectedService(label)} style={{ "--service-image": `url("${image}")` }} aria-pressed={isSelected}>
+          <span className={styles.serviceIcon}><Icon name={icon} /></span><span className={styles.serviceLabel}>{label}</span><span className={styles.radio}>{isSelected ? "✓" : ""}</span>
+        </button>; })}</div>
+      </>;
+    }
+
+    if (currentStep === 2) {
+      return <>
+        <h2>Where is your property?</h2>
+        <p className={styles.formIntro}>Tell us where the work will take place.</p>
+        <label className={styles.field}><span>Property location</span><input value={formData.location} onChange={updateField("location")} placeholder="City, postcode or address" /></label>
+      </>;
+    }
+
+    return <>
+      <h2>How can we reach you?</h2>
+      <p className={styles.formIntro}>Leave your details and we will get back to you personally.</p>
+      <div className={styles.fieldGrid}>
+        <label className={styles.field}><span>Name</span><input value={formData.name} onChange={updateField("name")} placeholder="Your name" /></label>
+        <label className={styles.field}><span>E-Mail</span><input type="email" value={formData.email} onChange={updateField("email")} placeholder="you@example.com" /></label>
+        <label className={styles.field}><span>Phone</span><input type="tel" value={formData.phone} onChange={updateField("phone")} placeholder="Your phone number" /></label>
+      </div>
+    </>;
+  };
 
   return <section className={styles.formSection} id="contact-form">
     <div className={styles.formPanel}>
       <aside className={styles.stepper} aria-label="Contact form progress">
         <div className={styles.stepLine} />
-        {steps.map(([title, description], index) => { const step = index + 1; return <div className={`${styles.step} ${step === currentStep ? styles.activeStep : ""}`} key={title}>
+        {steps.map(([title, description], index) => { const step = index + 1; return <button className={`${styles.step} ${step === currentStep ? styles.activeStep : ""} ${step < currentStep || isStepComplete(step) ? styles.completedStep : ""}`} type="button" onClick={() => goToStep(step)} key={title} aria-current={step === currentStep ? "step" : undefined}>
           <span className={styles.stepNumber}>{step}</span><div><strong>{title}</strong><small>{description}</small></div>
-        </div>; })}
+        </button>; })}
       </aside>
       <div className={styles.formContent}>
-        <p className={styles.formKicker}>STEP {currentStep} OF 4</p>
-        <h2>What can we do for you?</h2><p className={styles.formIntro}>Select the service area where we can support you.</p>
-        <div className={styles.serviceGrid}>{services.map(([label, icon, image]) => { const isSelected = selectedService === label; return <button className={`${styles.serviceCard} ${isSelected ? styles.selectedCard : ""}`} type="button" key={label} onClick={() => setSelectedService(label)} style={{ "--service-image": `url("${image}")` }} aria-pressed={isSelected}>
-          <span className={styles.serviceIcon}><Icon name={icon} /></span><span className={styles.serviceLabel}>{label}</span><span className={styles.radio}>{isSelected ? "✓" : ""}</span>
-        </button>; })}</div>
-        <button className={styles.nextButton} type="button" onClick={() => setCurrentStep((step) => Math.min(step + 1, 4))}>Next Step <span>→</span></button>
+        <p className={styles.formKicker}>STEP {currentStep} OF 3</p>
+        {renderStepContent()}
+        {status && <p className={styles.formStatus} role="alert">{status}</p>}
+        <div className={styles.stepActions}>
+          {!submitted && currentStep > 1 && <button className={styles.backButton} type="button" onClick={() => goToStep(currentStep - 1)}>Back</button>}
+          {submitted ? <button className={styles.nextButton} type="button" onClick={resetForm}>Start Again</button> : <button className={styles.nextButton} type="button" onClick={handleNext}>{currentStep === 3 ? "Send Enquiry" : "Next Step"}</button>}
+        </div>
       </div>
     </div>
   </section>;

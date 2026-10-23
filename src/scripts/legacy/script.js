@@ -19,6 +19,7 @@ const video = document.getElementById("heroVideo");
 const colors = document.querySelectorAll(".color");
 
 const intro = document.querySelector(".intro-title");
+const introCta = document.querySelector(".desktop-intro-btn");
 let header = null; // populated once the header partial is injected — see "partials:loaded" below
 const content = document.querySelector(".hero-content");
 const glow = document.querySelector(".content-glow");
@@ -265,7 +266,7 @@ if (document.querySelector(".hero")) {
             // INTRO
             //-----------------------------------
 
-            if (intro) gsap.set(intro, {
+            if (intro || introCta) gsap.set([intro, introCta].filter(Boolean), {
                 y: -140 * Math.min(p / .20, 1),
                 opacity: 1 - Math.min(p / .18, 1),
                 scale: 1 + .08 * Math.min(p / .18, 1)
@@ -312,7 +313,7 @@ if (document.querySelector(".hero")) {
 
                 if (content) gsap.set(content, { y: -220 * exit, opacity: 1 - exit, pointerEvents: "none" });
                 if (glow)    gsap.set(glow, { opacity: 1 - exit });
-                if (intro)   gsap.set(intro, { pointerEvents: "none" });
+                if (intro || introCta) gsap.set([intro, introCta].filter(Boolean), { pointerEvents: "none" });
 
             }
 

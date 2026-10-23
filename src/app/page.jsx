@@ -4,6 +4,7 @@ import HomeBeforeProjects from "@/components/home/HomeBeforeProjects";
 import HomeProjectsAndAfter from "@/components/home/HomeProjectsAndAfter";
 import OfferCalculatorHomeCta from "@/components/offer-calculator/OfferCalculatorHomeCta";
 
+// Keep the homepage legacy stylesheet in sync with the responsive hero controls.
 export const metadata = {
   title: "Amigos Maler GmbH | Premium Painting & Property Value Preservation"
 };

@@ -524,6 +524,36 @@ body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.
     mask: none !important;
 }
 
+/* Components that own their arrow/icon must not receive a second generated arrow. */
+body :is(a, button).founder-cta-btn::before,
+body :is(a, button).founder-cta-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Preserve component-owned SVG arrows/icons across every page. */
+body :is(a, button):has(> svg)::before,
+body :is(a, button):has(> svg)::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Navigation direction: Back points left; forward actions point right. */
+html body[data-page="contact"] .backButton::after {
+    content: "←" !important;
+}
+
+/* One arrow treatment everywhere: use the original heavy site glyph, never the thin fallback. */
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+)::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button)::after,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button)::after {
+    font-family: "themeFont", Arial, sans-serif !important;
+}
+
 body :is(a, button):where(
     [class*="btn" i],
     [class*="button" i],

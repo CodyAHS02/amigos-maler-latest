@@ -121,11 +121,13 @@
   }
 
   if (reducedMotion || compactHero) {
-    videos.forEach((video) => {
-      video.muted = true;
-      video.loop = true;
-      video.play().catch(() => {});
-    });
+    const compactVideo = getActiveVideo();
+    if (compactVideo) {
+      compactVideo.muted = true;
+      compactVideo.loop = true;
+      compactVideo.preload = "auto";
+      compactVideo.play().catch(() => {});
+    }
     if (header) gsap.set(header, { opacity: 1, y: 0, clearProps: "transform" });
     if (content) {
       content.style.setProperty("--projects-content-glow", "1");
@@ -145,17 +147,22 @@
     gsap.set(content, { opacity: 0, y: 44, pointerEvents: "none" });
   }
 
-  Promise.all(videos.map(primeVideo)).finally(() => {
+  activeVideo = getActiveVideo();
+  primeVideo(activeVideo).finally(() => {
     let lastTime = -1;
-    activeVideo = getActiveVideo();
 
     const observer = new MutationObserver(() => {
       const previous = activeVideo;
-      activeVideo = getActiveVideo();
+      const nextVideo = getActiveVideo();
 
-      if (previous && activeVideo && previous !== activeVideo) {
+      if (previous === nextVideo) return;
+
+      activeVideo = nextVideo;
+      activeVideo.preload = "auto";
+      primeVideo(activeVideo).then(() => {
+        if (!previous || !activeVideo.duration) return;
         activeVideo.currentTime = Math.min(previous.currentTime, Math.max(activeVideo.duration - 0.04, 0));
-      }
+      });
     });
 
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

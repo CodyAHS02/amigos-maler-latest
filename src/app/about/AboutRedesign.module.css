@@ -526,6 +526,13 @@
   height: 100svh
 }
 
+@media (min-width: 1361px) {
+  .aboutPage .heroInner {
+    width: calc(100% - 140px);
+    max-width: none;
+  }
+}
+
 .aboutPage .gradientButton {
   position: relative;
   justify-content: center;
@@ -550,6 +557,43 @@
   font-weight: 900;
   line-height: 1;
   transform: translateY(-50%)
+}
+
+.founderArrow {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #071a33;
+  font-family: "themeFont", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.founderArrowIcon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #071a33 !important;
+  opacity: 1;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:global(html[data-theme="amigos-dark"]) .aboutPage :global(.founder-cta-btn:hover) .founderArrowIcon,
+:global(html[data-theme="amigos-dark"]) .aboutPage :global(.founder-cta-btn:focus-visible) .founderArrowIcon {
+  stroke: #fff !important;
 }
 
 :global(html[data-theme="amigos-dark"]) .aboutPage .gradientButton:hover {
@@ -687,6 +731,12 @@
   -webkit-text-fill-color: #071b45 !important
 }
 
+:global(html[data-theme="amigos-dark"]) .aboutPage .googleReview b,
+:global(html[data-theme="amigos-dark"]) .aboutPage .googleReview p {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important
+}
+
 .aboutPage .quoteGrid blockquote {
   background: linear-gradient(135deg, #f6be10 0%, #f39125 42%, #e62453 100%);
   color: #fff !important
@@ -702,10 +752,6 @@
 
 .aboutPage .quoteGrid blockquote>span {
   opacity: .75
-}
-
-.aboutPage .founder-cta-btn svg {
-  display: none
 }
 
 .aboutPage .primaryButton,
@@ -906,8 +952,8 @@
 }
 
 .aboutPage .hero .kicker {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 .aboutPage .hero h1 span {
@@ -917,4 +963,18 @@
   -webkit-background-clip: text !important;
   color: transparent !important;
   -webkit-text-fill-color: transparent !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .aboutPage .hero .gradientButton:hover,
+:global(html[data-theme="amigos-dark"]) .aboutPage .hero .gradientButton:focus-visible {
+  background: #fff !important;
+  background-image: none !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .aboutPage .hero .gradientButton:hover::before,
+:global(html[data-theme="amigos-dark"]) .aboutPage .hero .gradientButton:focus-visible::before {
+  background: #071a33 !important;
+  color: #fff !important;
 }

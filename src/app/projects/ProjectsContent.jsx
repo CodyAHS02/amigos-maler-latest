@@ -18,10 +18,12 @@ export default function ProjectsContent() {
   {/* SECTION 1 · HERO (scroll-scrubbed video) */}
   <section className="hero projects-scrub-hero" data-projects-hero data-hero>
     <div className="hero-media">
-      <video id="projectsHeroVideoLight" className="projects-hero-video projects-hero-video-light media-light" muted playsInline preload="auto" aria-label="Amigos Maler projects hero, daytime interior">
+      <video id="projectsHeroVideoLight" className="projects-hero-video projects-hero-video-light media-light" muted playsInline preload="none" aria-label="Amigos Maler projects hero, daytime interior">
+        <source src="/projects%20page/projects-hero-day.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-day.mp4" type="video/mp4" />
       </video>
-      <video id="projectsHeroVideoDark" className="projects-hero-video projects-hero-video-dark media-dark" muted playsInline preload="auto" aria-label="Amigos Maler projects hero, nighttime interior">
+      <video id="projectsHeroVideoDark" className="projects-hero-video projects-hero-video-dark media-dark" muted playsInline preload="none" aria-label="Amigos Maler projects hero, nighttime interior">
+        <source src="/projects%20page/projects-hero-night.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-night.mp4" type="video/mp4" />
       </video>
     </div>
@@ -37,34 +39,6 @@ export default function ProjectsContent() {
       </div>
     </div>
     <div className="scroll-indicator">⌄</div>
-  </section>
-
-  {/* SECTION 2 · TRUST / STATS */}
-  <section id="trust-stats">
-    <div className="container">
-      <div className="section-head track-record-head reveal">
-        <div className="eyebrow">Track record</div>
-        <svg className="brush" viewBox="0 0 180 22">
-          <path d="M2 14 C 30 4, 70 20, 110 10 S 170 14, 178 8" />
-        </svg>
-        <h2>Two decades of quiet excellence, built on careful planning.</h2>
-        <p>12'400 properties reviewed. 380 active maintenance portfolios. Zero missed maintenance windows.</p>
-      </div>
-      <div className="project-stats-grid reveal">
-        <div className="project-stat-card"><span className="project-stat-number"><span data-count="500">0</span><span className="project-stat-suffix">+</span></span>
-          <div className="project-stat-label">Projects Completed</div>
-        </div>
-        <div className="project-stat-card"><span className="project-stat-number"><span data-count="100">0</span><span className="project-stat-suffix">+</span></span>
-          <div className="project-stat-label">Satisfied Clients</div>
-        </div>
-        <div className="project-stat-card"><span className="project-stat-number"><span data-count="10">0</span><span className="project-stat-suffix">+yrs</span></span>
-          <div className="project-stat-label">Experience</div>
-        </div>
-        <div className="project-stat-card"><span className="project-stat-number"><span data-count="6000">0</span><span className="project-stat-suffix">+</span></span>
-          <div className="project-stat-label">m² renovated</div>
-        </div>
-      </div>
-    </div>
   </section>
 
   {/* SECTION 3 · SERVICES (scroll-driven horizontal reveal) */}
@@ -707,6 +681,34 @@ export default function ProjectsContent() {
             <a className="real-estate-primary-link" href="#calc">Register interest</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  {/* TRACK RECORD — placed after the Real Estate Projects section */}
+  <section id="trust-stats">
+    <div className="container">
+      <div className="section-head track-record-head reveal">
+        <div className="eyebrow">Track record</div>
+        <svg className="brush" viewBox="0 0 180 22">
+          <path d="M2 14 C 30 4, 70 20, 110 10 S 170 14, 178 8" />
+        </svg>
+        <h2>Two decades of quiet excellence, built on careful planning.</h2>
+        <p>12'400 properties reviewed. 380 active maintenance portfolios. Zero missed maintenance windows.</p>
+      </div>
+      <div className="project-stats-grid reveal">
+        <div className="project-stat-card"><span className="project-stat-number"><span data-count="500">0</span><span className="project-stat-suffix">+</span></span>
+          <div className="project-stat-label">Projects Completed</div>
+        </div>
+        <div className="project-stat-card"><span className="project-stat-number"><span data-count="100">0</span><span className="project-stat-suffix">+</span></span>
+          <div className="project-stat-label">Satisfied Clients</div>
+        </div>
+        <div className="project-stat-card"><span className="project-stat-number"><span data-count="10">0</span><span className="project-stat-suffix">+yrs</span></span>
+          <div className="project-stat-label">Experience</div>
+        </div>
+        <div className="project-stat-card"><span className="project-stat-number"><span data-count="6000">0</span><span className="project-stat-suffix">+</span></span>
+          <div className="project-stat-label">m² renovated</div>
+        </div>
       </div>
     </div>
   </section>

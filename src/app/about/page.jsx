@@ -305,6 +305,7 @@ html body main .about-hero.about-hero .hero-actions.hero-actions > a.btn[href="#
   background: transparent !important;
   color: #071a33 !important;
   -webkit-text-fill-color: #071a33 !important;
+  font-family: "themeFont", Arial, sans-serif !important;
   font-size: 22px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
@@ -450,6 +451,117 @@ html[data-theme="amigos-dark"] body main .final-cta.final-cta .hero-actions.hero
 html[data-theme="amigos-dark"] body main .final-cta.final-cta .hero-actions.hero-actions > a.btn.btn-ghost[href]:focus-visible {
   background: rgba(255, 255, 255, .16) !important;
   background-image: none !important;
+}
+
+/* Keep the About hero CTA readable when the global button hover pass runs. */
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:hover,
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:focus-visible {
+  background: #fff !important;
+  background-image: none !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:hover::before,
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:focus-visible::before {
+  background: #071a33 !important;
+  color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:hover::after,
+html[data-theme="amigos-dark"] body[data-page="about"] main #aboutHeroStoryCta:focus-visible::after {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Apply the same dark-theme hover treatment to every full-size About CTA. */
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):hover,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):focus-visible {
+  background: #fff !important;
+  background-image: none !important;
+  border-color: #fff !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):hover::before,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):focus-visible::before {
+  background: #071a33 !important;
+  color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):hover::after,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage :is(
+  a[class*="gradientButton"],
+  a[class*="primaryButton"],
+  a[class*="secondaryButton"]
+):focus-visible::after {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible {
+  background: #fff !important;
+  background-image: none !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+html body[data-page="about"] main#aboutPage a.founder-cta-btn::before,
+html body[data-page="about"] main#aboutPage a.founder-cta-btn::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body[data-page="about"] main#aboutPage a.founder-cta-btn > .founder-arrow {
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  font-family: Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 900 !important;
+  -webkit-text-stroke: .45px currentColor !important;
+}
+
+html body[data-page="about"] main#aboutPage a.founder-cta-btn .founder-arrow-icon {
+  stroke: #071a33 !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow {
+  background: #071a33 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow-icon,
+html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow-icon {
+  stroke: #fff !important;
 }
 
 /* Dark theme: the process label must remain readable over the navy hero image. */

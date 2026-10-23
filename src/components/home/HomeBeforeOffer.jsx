@@ -104,10 +104,19 @@ export default function HomeBeforeOffer() {
                 <span className="intro-title-sub">Transforming properties with expert painting, professional renovations, <br /> and real estate
                     solutions
                     designed to enhance value, beauty, and lasting impressions.</span>
-                <a href="#quote" className="introBtn">Get A Free Quote</a>
+                <span className="responsive-hero-copy" aria-hidden="true">
+                    <span className="responsive-hero-brand">
+                        <span className="responsive-hero-amigos">AMIGOS</span>
+                        <span className="responsive-hero-maler-line">
+                            <span className="responsive-hero-maler">MALER</span>
+                            <small>GmbH</small>
+                        </span>
+                    </span>
+                    <span className="responsive-hero-heading">Preserving Value.<br />Creating Beauty.</span>
+                    <span className="responsive-hero-services">Expert Painting <i aria-hidden="true">•</i> Renovation <i aria-hidden="true">•</i> Property Care</span>
+                </span>
             </h1>
-
-            {/*5843*/}
+            <a href="#quote" className="introBtn desktop-intro-btn">Get A Free Quote</a>
             <div className="hero-content">
                 <div className="content-glow"></div>
                 <h1>Preserving Your Property’s Value</h1>

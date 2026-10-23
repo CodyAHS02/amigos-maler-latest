@@ -18865,6 +18865,11 @@ main .partner-cta :is(a, button).partners-btn::after {
     mask: none !important;
 }
 
+/* Keep the homepage quote arrow's original glyph after the site font update. */
+section[data-home-hero] .introBtn::after {
+    font-family: "themeFont", Arial, sans-serif !important;
+}
+
 main :is(a, button):is(.introBtn,
     .btn-primary,
     .btn-secondary,
@@ -19019,4 +19024,304 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .why-co
 html[data-theme="amigos-dark"] body[data-page="home"] section.why-amigos .stat span {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Homepage hero layout: desktop keeps legacy content; tablet/mobile use one responsive stack. */
+section[data-home-hero] .responsive-hero-copy {
+    display: none !important;
+}
+
+@media (min-width: 1201px) {
+    section[data-home-hero] .hero-overlay {
+        display: block;
+        padding: 0;
+    }
+
+    section[data-home-hero] .intro-title {
+        position: absolute;
+        top: 8vh;
+        left: 50%;
+        display: block;
+        width: auto;
+        margin: 0;
+        transform: translateX(-50%) !important;
+        text-align: center;
+        white-space: nowrap;
+        mix-blend-mode: overlay;
+    }
+
+    section[data-home-hero] .intro-title-brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    section[data-home-hero] .intro-title-main {
+        display: inline-block;
+        font-size: clamp(80px, 8.5vw, 140px) !important;
+        font-weight: 800;
+        line-height: .95;
+    }
+
+    section[data-home-hero] .intro-title-gmbh {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        margin: 0 !important;
+        font-size: clamp(14px, 1.4vw, 24px);
+        letter-spacing: .22em;
+    }
+
+    section[data-home-hero] .intro-title-sub {
+        display: block;
+        width: min(980px, 78vw);
+        margin: 24px auto 0;
+        font-family: var(--font-body) !important;
+        font-size: 18px !important;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0;
+    }
+
+    section[data-home-hero] .desktop-intro-btn {
+        position: absolute !important;
+        top: 42vh !important;
+        left: 50%;
+        z-index: 31;
+        display: inline-flex !important;
+        width: auto;
+        min-width: 230px;
+        margin: 0 !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+/* Tall, narrow desktop windows need the same reading scale as the wide desktop hero. */
+@media (min-width: 1201px) and (max-width: 1600px) and (min-height: 800px) {
+    section[data-home-hero] .intro-title-main {
+        font-size: clamp(104px, 9vw, 136px) !important;
+    }
+
+    section[data-home-hero] .intro-title-sub {
+        width: min(1100px, 82vw);
+        margin-top: 28px;
+        font-size: 22px !important;
+        line-height: 1.45;
+    }
+}
+
+@media (max-width: 1200px) {
+    section[data-home-hero] .hero-overlay {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 76px 28px 40px !important;
+    }
+
+    section[data-home-hero] .intro-title {
+        position: static;
+        display: flex;
+        width: min(760px, 100%);
+        margin: 0 auto;
+        transform: none !important;
+        text-align: center;
+        white-space: normal;
+        mix-blend-mode: normal;
+    }
+
+    section[data-home-hero] .intro-title > .intro-title-brand,
+    section[data-home-hero] .intro-title > .intro-title-sub,
+    section[data-home-hero] .hero-content {
+        display: none !important;
+    }
+
+    section[data-home-hero] .responsive-hero-copy {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+
+    section[data-home-hero] .responsive-hero-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: var(--font-heading) !important;
+        font-weight: 800;
+        line-height: .9;
+        letter-spacing: 0;
+    }
+
+    section[data-home-hero] .responsive-hero-amigos {
+        font-size: clamp(72px, 9.2vw, 108px) !important;
+        line-height: .92;
+        background: linear-gradient(100deg, #ffc21c 0%, #ff8a2b 34%, #ef285f 78%, #e900a8 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    section[data-home-hero] .hero-overlay .responsive-hero-copy .responsive-hero-amigos {
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
+    }
+
+    section[data-home-hero] .responsive-hero-maler-line {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: .18em;
+        margin-top: -2px;
+    }
+
+    section[data-home-hero] .responsive-hero-maler {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-size: clamp(60px, 7.5vw, 88px) !important;
+        line-height: .95;
+    }
+
+    section[data-home-hero] .responsive-hero-brand small {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 8px;
+        font-family: var(--font-body) !important;
+        font-size: clamp(26px, 3.6vw, 40px) !important;
+        font-weight: 400;
+        letter-spacing: .04em;
+        transform: translateY(-.04em);
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+
+    section[data-home-hero] .responsive-hero-brand small::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #f6be10, #ef1d78);
+        content: "";
+    }
+
+    section[data-home-hero] .responsive-hero-heading {
+        margin-top: 28px;
+        font-family: var(--font-body) !important;
+        font-size: 44px !important;
+        font-weight: 400 !important;
+        line-height: 1.14;
+        letter-spacing: 0;
+        color: #f7f7f7 !important;
+        -webkit-text-fill-color: #f7f7f7 !important;
+    }
+
+    section[data-home-hero] .responsive-hero-services {
+        margin-top: 22px;
+        font-family: var(--font-body) !important;
+        font-size: 18px !important;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: normal;
+    }
+
+    section[data-home-hero] .responsive-hero-services i {
+        margin: 0 8px;
+        font-style: normal;
+    }
+
+    section[data-home-hero] .responsive-hero-services i:first-of-type {
+        color: #f6be10;
+    }
+
+    section[data-home-hero] .responsive-hero-services i:last-of-type {
+        color: #ef1d78;
+    }
+
+    html body section[data-home-hero].hero a.desktop-intro-btn {
+        display: inline-flex;
+        align-self: center !important;
+        align-items: center;
+        justify-content: center;
+        width: 280px !important;
+        max-width: 280px !important;
+        flex: 0 0 auto !important;
+        min-width: 0;
+        min-height: 58px;
+        height: 58px !important;
+        margin: 28px auto 0 !important;
+        padding: 16px 30px;
+        transform: none !important;
+        border-radius: 999px;
+        background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%);
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        font-family: var(--font-body) !important;
+        font-size: 16px !important;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 768px) {
+    section[data-home-hero] .hero-overlay {
+        padding: 72px 20px 36px !important;
+    }
+
+    section[data-home-hero] .responsive-hero-amigos {
+        font-size: clamp(58px, 16vw, 78px) !important;
+    }
+
+    section[data-home-hero] .responsive-hero-maler {
+        font-size: clamp(50px, 14vw, 68px) !important;
+    }
+
+    section[data-home-hero] .responsive-hero-brand small {
+        padding-bottom: 6px;
+        font-size: clamp(20px, 5.2vw, 26px) !important;
+    }
+
+    section[data-home-hero] .responsive-hero-heading {
+        margin-top: 24px;
+        font-size: 34px !important;
+    }
+
+    section[data-home-hero] .responsive-hero-services {
+        max-width: 340px;
+        margin-top: 18px;
+        font-size: 16px !important;
+        line-height: 1.55;
+    }
+
+    section[data-home-hero] .responsive-hero-services i {
+        margin: 0 4px;
+    }
+
+    html body section[data-home-hero].hero a.desktop-intro-btn {
+        width: min(100%, 280px) !important;
+        max-width: 280px !important;
+        flex: 0 0 auto !important;
+        min-width: 0;
+        height: 58px !important;
+        margin-top: 24px;
+        transform: scaleX(.8) !important;
+    }
+}
+
+@media (max-width: 400px) {
+    section[data-home-hero] .responsive-hero-amigos {
+        font-size: 58px !important;
+    }
+
+    section[data-home-hero] .responsive-hero-maler {
+        font-size: 50px !important;
+    }
+
+    section[data-home-hero] .responsive-hero-heading {
+        font-size: 30px !important;
+    }
 }
