@@ -139,6 +139,14 @@ export default function HomeBeforeProjects() {
                 <p>From individual painting work to complete renovations, we personally support owners and property managers with transparency and reliability.</p>
                 <a href="/about" className="why-btn">GET TO KNOW AMIGOS</a>
             </div>
+            <div className="why-project-image reveal">
+                <img
+                    src="/assets/home/why-amigos-project.jpg"
+                    alt="Amigos Maler project vehicle outside a completed building"
+                    loading="lazy"
+                    decoding="async"
+                />
+            </div>
             <div className="stats-column">
                 <div className="stat reveal">
                     <h3 className="counter" data-target="500">500</h3>

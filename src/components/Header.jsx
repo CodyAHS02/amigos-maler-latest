@@ -117,11 +117,30 @@ const serviceCategories = [
   },
 ];
 
+const imageHeroPaths = new Set([
+  "/",
+  "/about",
+  "/appartment-renovation",
+  "/color-and-material",
+  "/Drywall",
+  "/exterior-painting",
+  "/Facade-Renovation",
+  "/interior-painting",
+  "/mold",
+  "/molding",
+  "/Plastering",
+  "/projects",
+  "/services",
+  "/spray-painting",
+  "/water-damage",
+]);
+
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isProjects = pathname === "/projects";
+  const hasImageHero = imageHeroPaths.has(pathname);
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [activeServiceCategory, setActiveServiceCategory] = useState(serviceCategories[0].id);
@@ -205,7 +224,7 @@ export default function Header() {
   };
 
   return (
-      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout ? " about-header" : ""}`} id="siteHeader">
+      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout ? " about-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
         <span className={styles.logoSymbol} aria-hidden="true">
           <img src="/logo.webp" alt="" />

@@ -19325,3 +19325,131 @@ section[data-home-hero] .responsive-hero-copy {
         font-size: 30px !important;
     }
 }
+
+/* Homepage Why Amigos: project image above a compact horizontal track record. */
+@media (min-width: 992px) {
+    body[data-page="home"] section.why-amigos {
+        height: calc(100svh - 56px);
+        min-height: 0;
+        padding: clamp(28px, 5svh, 54px) 0 clamp(18px, 3svh, 34px) !important;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    body[data-page="home"] section.why-amigos .why-container {
+        height: 100%;
+        grid-template-rows: minmax(0, 1fr) auto;
+        align-items: center;
+    }
+}
+
+body[data-page="home"] section.why-amigos .why-container {
+    grid-template-columns: minmax(0, 1fr) minmax(420px, .92fr) !important;
+    column-gap: clamp(42px, 7vw, 100px) !important;
+    row-gap: clamp(14px, 2.5vh, 26px) !important;
+}
+
+body[data-page="home"] section.why-amigos .why-project-image {
+    height: clamp(300px, 47svh, 430px);
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 22px 54px rgba(7, 26, 51, .16);
+}
+
+body[data-page="home"] section.why-amigos .why-project-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 42% center;
+}
+
+body[data-page="home"] section.why-amigos .stats-column {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 0;
+    border-top: 1px solid rgba(7, 26, 51, .14);
+}
+
+body[data-page="home"] section.why-amigos .stat {
+    min-width: 0;
+    padding: clamp(16px, 2.5vh, 24px) clamp(18px, 2.5vw, 34px) 4px;
+    border-bottom: 0;
+    border-right: 1px solid rgba(7, 26, 51, .14);
+}
+
+body[data-page="home"] section.why-amigos .stat:first-child {
+    padding-top: clamp(16px, 2.5vh, 24px);
+    padding-left: 0;
+}
+
+body[data-page="home"] section.why-amigos .stat:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+body[data-page="home"] section.why-amigos .stat:not(:last-child)::after {
+    content: none !important;
+    display: none !important;
+}
+
+body[data-page="home"] section.why-amigos .stat:hover {
+    transform: translateY(-4px);
+}
+
+body[data-page="home"] section.why-amigos .stat h3 {
+    font-size: clamp(38px, 4vw, 58px);
+}
+
+body[data-page="home"] section.why-amigos .stat span {
+    font-size: clamp(15px, 1.5vw, 20px);
+    line-height: 1.35;
+}
+
+@media (max-width: 991px) {
+    body[data-page="home"] section.why-amigos .why-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    body[data-page="home"] section.why-amigos .why-project-image {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    body[data-page="home"] section.why-amigos .stats-column {
+        grid-column: auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body[data-page="home"] section.why-amigos .stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    body[data-page="home"] section.why-amigos .stat:nth-child(n + 3) {
+        border-top: 1px solid rgba(7, 26, 51, .14);
+    }
+}
+
+@media (max-width: 520px) {
+    body[data-page="home"] section.why-amigos .why-project-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    body[data-page="home"] section.why-amigos .stats-column {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="home"] section.why-amigos .stat,
+    body[data-page="home"] section.why-amigos .stat:first-child,
+    body[data-page="home"] section.why-amigos .stat:last-child {
+        padding: 24px 0 10px;
+        border-top: 1px solid rgba(7, 26, 51, .14);
+        border-right: 0;
+    }
+
+    body[data-page="home"] section.why-amigos .stat:first-child {
+        border-top: 0;
+    }
+}

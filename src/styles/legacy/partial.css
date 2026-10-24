@@ -3388,3 +3388,62 @@ html body :is(button, [role="button"], .btn, [class*="button"]) {
     html body h4 { font-size: 20px !important; }
     html body :is(p, li, td, th, label) { font-size: 16px; }
 }
+
+/* Shared header actions: outlined everywhere, with hero-aware text contrast. */
+html[data-theme] body #siteHeader.site-header .header-actions .customer-header-btn,
+html[data-theme] body #siteHeader.site-header .header-actions .header-btn,
+html[data-theme] body #siteHeader.site-header .header-actions .customer-header-btn:hover,
+html[data-theme] body #siteHeader.site-header .header-actions .header-btn:hover {
+    position: relative !important;
+    isolation: isolate !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    box-shadow: none !important;
+}
+
+html[data-theme] body #siteHeader.site-header .header-actions .customer-header-btn::before,
+html[data-theme] body #siteHeader.site-header .header-actions .header-btn::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    padding: 2px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    pointer-events: none !important;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+}
+
+html[data-theme] body #siteHeader.site-header .header-actions .customer-header-btn::after,
+html[data-theme] body #siteHeader.site-header .header-actions .header-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+html[data-theme] body #siteHeader.site-header .header-actions .customer-header-btn *,
+html[data-theme] body #siteHeader.site-header .header-actions .header-btn * {
+    position: relative;
+    z-index: 1;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn:hover,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn:hover,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn *,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: #fff !important;
+}
