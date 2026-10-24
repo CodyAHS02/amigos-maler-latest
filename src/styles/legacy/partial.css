@@ -3447,3 +3447,14 @@ html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled
     -webkit-text-fill-color: #fff !important;
     stroke: #fff !important;
 }
+
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .customer-header-btn,
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .header-btn,
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .customer-header-btn:hover,
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .header-btn:hover,
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .customer-header-btn *,
+html[data-theme="amigos-dark"] body #siteHeader.site-header:is(.is-scrolled, .scrolled) .header-actions .header-btn * {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    stroke: #fff !important;
+}
