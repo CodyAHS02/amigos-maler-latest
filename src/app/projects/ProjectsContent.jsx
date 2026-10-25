@@ -19,11 +19,11 @@ export default function ProjectsContent() {
   <section className="hero projects-scrub-hero" data-projects-hero data-hero>
     <div className="hero-media">
       <video id="projectsHeroVideoLight" className="projects-hero-video projects-hero-video-light media-light" muted playsInline preload="none" aria-label="Amigos Maler projects hero, daytime interior">
-        <source src="/projects%20page/projects-hero-day.webm" type="video/webm" />
+        <source src="/projects%20page/projects-hero-day-revised.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-day.mp4" type="video/mp4" />
       </video>
       <video id="projectsHeroVideoDark" className="projects-hero-video projects-hero-video-dark media-dark" muted playsInline preload="none" aria-label="Amigos Maler projects hero, nighttime interior">
-        <source src="/projects%20page/projects-hero-night.webm" type="video/webm" />
+        <source src="/projects%20page/projects-hero-night-revised.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-night.mp4" type="video/mp4" />
       </video>
     </div>
