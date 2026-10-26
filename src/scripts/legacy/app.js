@@ -412,7 +412,7 @@ function updateFinishMode() {
             bannerTitle.textContent = "Discover what wallpaper can change.";
             bannerSub.textContent = "Choose a texture and experience the room a new.";
         } else {
-            bannerTitle.textContent = "Discover what color can change.";
+            bannerTitle.innerHTML = 'Discover the <span id="homeHeroColorAccent" class="hero-color-accent">power of color.</span>';
             bannerSub.textContent = "Choose a color and experience the room a new.";
         }
     }

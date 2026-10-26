@@ -4,7 +4,7 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const header = document.querySelector(".site-header");
+  const header = document.getElementById("siteHeader");
   const content = hero.querySelector(".hero-inner");
   const videos = [
     document.getElementById("projectsHeroVideoLight"),
@@ -128,19 +128,20 @@
       compactVideo.preload = "auto";
       compactVideo.play().catch(() => {});
     }
-    if (header) gsap.set(header, { opacity: 1, y: 0, clearProps: "transform" });
     if (content) {
       content.style.setProperty("--projects-content-glow", "1");
       gsap.set(content, { opacity: 1, y: 0, pointerEvents: "auto" });
     }
+    const updateCompactHeader = () => {
+      if (!header) return;
+      header.classList.toggle("is-scrolled", hero.getBoundingClientRect().bottom <= header.offsetHeight);
+    };
+    updateCompactHeader();
+    window.addEventListener("scroll", updateCompactHeader, { passive: true });
     return;
   }
 
-  if (header) {
-    header.classList.add("projects-hero-header");
-    header.classList.remove("projects-header-solid");
-    gsap.set(header, { opacity: 0, y: -86 });
-  }
+  header?.classList.remove("is-scrolled");
 
   if (content) {
     content.style.setProperty("--projects-content-glow", "0");
@@ -179,25 +180,15 @@
         const progress = self.progress;
         const videoProgress = Math.min(progress / 0.92, 1);
 
+        header?.classList.toggle("is-scrolled", progress >= 0.9999);
+
         if (activeVideo && activeVideo.duration && !Number.isNaN(activeVideo.duration)) {
           const targetTime = activeVideo.duration * videoProgress;
 
-          if (Math.abs(targetTime - lastTime) > 0.055) {
+          if (Math.abs(targetTime - lastTime) > 0.075) {
             activeVideo.currentTime = targetTime;
             lastTime = targetTime;
           }
-        }
-
-        if (header) {
-          const headerProgress = clamp((progress - 0.12) / 0.12);
-          const shouldBeSolid = progress >= 0.995;
-
-          header.classList.toggle("projects-header-solid", shouldBeSolid);
-
-          gsap.set(header, {
-            opacity: headerProgress,
-            y: -86 + (86 * headerProgress)
-          });
         }
 
         if (content) {
@@ -377,10 +368,7 @@
     const tagBefore = document.getElementById('new-ba-tag-before');
     const tagAfter = document.getElementById('new-ba-tag-after');
     
-    if (!slider || !beforePane || !afterPane || !divider) {
-        setTimeout(initSlider, 100);
-        return;
-    }
+    if (!slider || !beforePane || !afterPane || !divider) return;
     
     let active = false;
     const EDGE_FADE_ZONE = 10;
@@ -407,6 +395,172 @@
     divider.addEventListener('touchstart', (e) => { active = true; }, {passive: true});
     window.addEventListener('touchend', () => { active = false; });
     window.addEventListener('touchmove', (e) => { if (active) updateSlider(e.touches[0].clientX); }, {passive: true});
+})();
+
+(function initProjectsEnquiry() {
+  const form = document.getElementById("projects-enquiry-form");
+  if (!form) return;
+
+  const wantInput = document.getElementById("enquiry-want");
+  const scopeInput = document.getElementById("enquiry-scope");
+  const status = document.getElementById("projects-enquiry-status");
+  const submit = form.querySelector('button[type="submit"]');
+  if (!wantInput || !scopeInput || !status || !submit) return;
+
+  const closeSelects = (except) => {
+    form.querySelectorAll("[data-enquiry-select].is-open").forEach((root) => {
+      if (root === except) return;
+      root.classList.remove("is-open");
+      root.querySelector(".enquiry-select-trigger")?.setAttribute("aria-expanded", "false");
+      root.querySelector(".enquiry-listbox").hidden = true;
+    });
+  };
+
+  form.querySelectorAll("[data-enquiry-select]").forEach((root) => {
+    const select = root.querySelector(".enquiry-native-select");
+    const trigger = root.querySelector(".enquiry-select-trigger");
+    const value = root.querySelector(".enquiry-select-value");
+    const listbox = root.querySelector(".enquiry-listbox");
+    if (!select || !trigger || !value || !listbox) return;
+
+    const syncOptions = () => {
+      listbox.replaceChildren();
+      Array.from(select.options).forEach((option) => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "enquiry-option";
+        item.setAttribute("role", "option");
+        item.dataset.value = option.value;
+        item.textContent = option.textContent;
+        item.addEventListener("click", () => {
+          select.value = option.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+          closeSelects();
+          trigger.focus();
+        });
+        listbox.appendChild(item);
+      });
+      syncValue();
+    };
+
+    const syncValue = () => {
+      const selected = select.options[select.selectedIndex];
+      value.textContent = selected?.textContent || "Select an option";
+      root.classList.toggle("has-value", Boolean(select.value));
+      listbox.querySelectorAll("[role=option]").forEach((item) => {
+        const selectedItem = item.dataset.value === select.value;
+        item.setAttribute("aria-selected", String(selectedItem));
+        item.classList.toggle("is-selected", selectedItem);
+      });
+    };
+
+    const open = () => {
+      closeSelects(root);
+      root.classList.add("is-open");
+      trigger.setAttribute("aria-expanded", "true");
+      listbox.hidden = false;
+      listbox.querySelector(".is-selected")?.focus();
+    };
+
+    trigger.addEventListener("click", () => root.classList.contains("is-open") ? closeSelects() : open());
+    trigger.addEventListener("keydown", (event) => {
+      if (["Enter", " ", "ArrowDown"].includes(event.key)) {
+        event.preventDefault();
+        open();
+      }
+    });
+    listbox.addEventListener("keydown", (event) => {
+      const items = Array.from(listbox.querySelectorAll("[role=option]"));
+      const index = items.indexOf(document.activeElement);
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSelects();
+        trigger.focus();
+      } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+        event.preventDefault();
+        items[(index + (event.key === "ArrowDown" ? 1 : -1) + items.length) % items.length]?.focus();
+      } else if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        document.activeElement?.click();
+      }
+    });
+    select.addEventListener("change", syncValue);
+    select.__refreshEnquiryOptions = syncOptions;
+    syncOptions();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!form.contains(event.target)) closeSelects();
+  }, { passive: true });
+
+  const options = {
+    Apartment: ["1,5 Bedroom", "2,5 Bedroom", "3 Bedroom", "3,5 Bedroom", "4,5 Bedroom", "5,5 Bedroom", "6,5 Bedroom", "8,5 Bedroom"],
+    House: ["Small house", "3 bedrooms", "4+ bedrooms", "Full house", "Interior + exterior"],
+    Office: ["Private office", "Small team office", "Full floor", "Reception area", "Meeting rooms"],
+    "Commercial space": ["Shop", "Restaurant", "Clinic", "Showroom", "Full commercial unit"],
+    "Facade / exterior": ["Balcony", "Facade refresh", "Woodwork", "Windows / doors", "Full exterior"],
+    Other: ["Painting", "Plastering", "Renovation", "Repair work", "Not sure yet"]
+  };
+
+  function renderScopes() {
+    const values = options[wantInput.value] || options.Other;
+    scopeInput.replaceChildren(...values.map((value) => new Option(value)));
+    scopeInput.__refreshEnquiryOptions?.();
+  }
+
+  wantInput.addEventListener("change", renderScopes);
+  renderScopes();
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const details = [
+      "Projects page enquiry.",
+      `What do I want: ${data.get("want")}`,
+      `Scope: ${data.get("scope")}`,
+      `Budget: ${data.get("budget")}`,
+      `Timeline: ${data.get("timeline")}`,
+      data.get("phone") ? `Phone: ${data.get("phone")}` : "",
+      `Details: ${data.get("details")}`
+    ].filter(Boolean).join("\n");
+    const payload = new FormData();
+    payload.set("name", data.get("name"));
+    payload.set("email", data.get("email"));
+    payload.set("projectType", data.get("projectType") || "Renovation");
+    payload.set("message", details);
+
+    status.textContent = "Sending enquiry...";
+    status.className = "";
+    submit.disabled = true;
+
+    try {
+      const response = await fetch("/api/consultations", { method: "POST", body: payload });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || "Unable to save enquiry.");
+      status.textContent = "Enquiry sent. Patricia's team will review it shortly.";
+      status.className = "is-success";
+      form.reset();
+      renderScopes();
+    } catch (error) {
+      status.textContent = error.message || "Unable to send right now. Please try again.";
+      status.className = "is-error";
+    } finally {
+      submit.disabled = false;
+    }
+  });
+})();
+
+(function pauseOffscreenAnimations() {
+  const sections = [
+    document.getElementById("partners-strip"),
+    document.getElementById("project-showcase-lab")
+  ].filter(Boolean);
+  if (!sections.length || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => entry.target.classList.toggle("is-visible", entry.isIntersecting));
+  }, { rootMargin: "180px 0px" });
+  sections.forEach((section) => observer.observe(section));
 })();
 
 (function initProjectsFounderCardTilt() {
@@ -454,6 +608,4 @@
     if (glare) glare.style.opacity = "0";
   });
 
-  window.addEventListener("scroll", updateBounds, { passive: true });
-  window.addEventListener("resize", updateBounds, { passive: true });
 })();

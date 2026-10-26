@@ -7,6 +7,379 @@
     font-family: "themeFont";
 }
 
+/* Homepage only: Solutions for Every Property carousel. */
+body[data-page="home"] .home-solutions-carousel {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 78px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 4vh, 52px) clamp(20px, 5vw, 72px);
+  background: #071a33;
+  color: #fff;
+}
+
+body[data-page="home"] .home-solutions-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 1040px;
+  margin: 0 auto clamp(18px, 2.5vh, 30px);
+  text-align: center;
+}
+
+body[data-page="home"] .home-solutions-heading > span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #f6be10;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .home-solutions-heading h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(36px, 4.4vw, 64px);
+  font-weight: 800;
+  letter-spacing: -.04em;
+  line-height: .98;
+}
+
+body[data-page="home"] .home-solutions-heading h2 em {
+  color: transparent;
+  font-style: normal;
+  background: linear-gradient(100deg, #f6be10, #f39125 42%, #e62453 78%, #ef168e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body[data-page="home"] .home-solutions-heading p {
+  max-width: 790px;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: clamp(15px, 1.25vw, 19px);
+  line-height: 1.45;
+}
+
+body[data-page="home"] .home-solutions-stage-wrap {
+  position: relative;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+body[data-page="home"] .home-solutions-stage {
+  overflow: hidden;
+  border-radius: 24px;
+  touch-action: pan-y;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, .24);
+}
+
+body[data-page="home"] .home-solutions-track {
+  display: flex;
+  transition: transform .65s cubic-bezier(.22, .8, .24, 1);
+  will-change: transform;
+}
+
+body[data-page="home"] .home-solutions-slide {
+  position: relative;
+  display: grid;
+  flex: 0 0 100%;
+  min-height: clamp(360px, 51vh, 520px);
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(110deg, #f6be10, #f39125 44%, #e62453 78%, #ef168e) border-box;
+}
+
+body[data-page="home"] .home-solutions-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(32px, 5vw, 70px);
+  color: #071a33;
+}
+
+body[data-page="home"] .home-solutions-icon {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 20px;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f6be10, #f39125);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(243, 145, 37, .22);
+}
+
+body[data-page="home"] .home-solutions-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+body[data-page="home"] .home-solutions-label {
+  margin: 0 0 18px;
+  color: #53647d;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .home-solutions-copy h3 {
+  max-width: 680px;
+  margin: 0;
+  color: #071a33;
+  font-size: 48px !important;
+  font-weight: 800;
+  letter-spacing: -.05em;
+  line-height: .94;
+}
+
+body[data-page="home"] .home-solutions-copy h3 span {
+  color: transparent;
+  background: linear-gradient(100deg, #f6be10, #f39125 42%, #e62453 78%, #ef168e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body[data-page="home"] .home-solutions-description {
+  max-width: 520px;
+  margin: 22px 0 28px;
+  color: #33445f;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+body[data-page="home"] .home-solutions-media {
+  position: relative;
+  min-height: 100%;
+}
+
+body[data-page="home"] .home-solutions-media::before {
+  position: absolute;
+  inset: 0 auto 0 -1px;
+  z-index: 1;
+  width: 28%;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, .86) 28%, rgba(255, 255, 255, 0) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+body[data-page="home"] .home-solutions-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+body[data-page="home"] .home-solutions-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 430px;
+  margin: 20px auto 0;
+}
+
+body[data-page="home"] .home-solutions-dots {
+  display: flex;
+  gap: 12px;
+}
+
+body[data-page="home"] .home-solutions-dot {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .32);
+  cursor: pointer;
+}
+
+body[data-page="home"] .home-solutions-dot.is-active {
+  background: #f6be10;
+  box-shadow: 0 0 0 4px rgba(246, 190, 16, .12);
+}
+
+body[data-page="home"] .home-solutions-progress {
+  width: 190px;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .22);
+}
+
+body[data-page="home"] .home-solutions-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f6be10, #f39125, #e62453);
+  transition: width .4s ease;
+}
+
+body[data-page="home"] .home-solutions-pause {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .74);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-carousel,
+html[data-theme="light"] body[data-page="home"] .home-solutions-carousel {
+  background: #fff;
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-heading h2,
+html[data-theme="light"] body[data-page="home"] .home-solutions-heading h2 {
+  color: #071a33;
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-heading p,
+html[data-theme="light"] body[data-page="home"] .home-solutions-heading p {
+  color: #53647d;
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-dot,
+html[data-theme="light"] body[data-page="home"] .home-solutions-dot {
+  background: rgba(7, 26, 51, .32);
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-dot.is-active,
+html[data-theme="light"] body[data-page="home"] .home-solutions-dot.is-active {
+  background: linear-gradient(135deg, #f6be10, #e62453);
+  box-shadow: 0 0 0 4px rgba(230, 36, 83, .16);
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-progress,
+html[data-theme="light"] body[data-page="home"] .home-solutions-progress {
+  background: rgba(7, 26, 51, .14);
+}
+
+html[data-theme="amigos-light"] body[data-page="home"] .home-solutions-pause,
+html[data-theme="light"] body[data-page="home"] .home-solutions-pause {
+  border-color: rgba(7, 26, 51, .42);
+  color: #071a33;
+}
+
+@media (max-width: 760px) {
+  body[data-page="home"] .home-solutions-carousel {
+    min-height: auto;
+    padding-inline: 14px;
+  }
+
+  body[data-page="home"] .home-solutions-heading {
+    margin-bottom: 24px;
+  }
+
+  body[data-page="home"] .home-solutions-heading h2 {
+    font-size: clamp(34px, 10vw, 54px);
+  }
+
+  body[data-page="home"] .home-solutions-heading p {
+    font-size: 16px;
+  }
+
+  body[data-page="home"] .home-solutions-stage {
+    border-radius: 18px;
+  }
+
+  body[data-page="home"] .home-solutions-slide {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="home"] .home-solutions-copy {
+    min-height: 390px;
+    padding: 32px 26px 36px;
+  }
+
+  body[data-page="home"] .home-solutions-copy h3 {
+    font-size: clamp(46px, 12vw, 68px) !important;
+  }
+
+  body[data-page="home"] .home-solutions-media {
+    min-height: 250px;
+    order: 2;
+  }
+
+  body[data-page="home"] .home-solutions-media::before {
+    inset: -1px 0 auto;
+    width: 100%;
+    height: 34%;
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  body[data-page="home"] .home-solutions-controls {
+    gap: 10px;
+  }
+
+  body[data-page="home"] .home-solutions-progress {
+    width: 110px;
+  }
+}
+
+.paint-screen-banner h2,
+.paint-screen-banner p {
+    text-shadow: none !important;
+}
+
+/* Keep the hero accent isolated from the legacy global heading color rules. */
+html body .hero-content h1 .hero-title-accent {
+    background: linear-gradient(100deg, #f6be10 0%, #f36b35 48%, #ef168e 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+#homeHeroCreatingLastingValue .hero-title-accent {
+    font-weight: 800 !important;
+    background: linear-gradient(100deg, #f6be10 0%, #f36b35 48%, #ef168e 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+#homeHeroCreatingLastingValue {
+    font-weight: 800 !important;
+}
+
+#homeHeroColorMessage .hero-color-accent {
+    background: linear-gradient(100deg, #f6be10 0%, #f36b35 48%, #ef168e 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    font-weight: 800 !important;
+    text-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="home"] .home-solutions-track,
+  body[data-page="home"] .home-solutions-progress span {
+    transition: none;
+  }
+}
+
 @font-face {
     font-family: "themeFont";
     src: url("/fonts/n.woff2");
@@ -604,6 +977,19 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 
 }
 
+.hero-content h1 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.hero-content h1 .hero-title-accent {
+    background: linear-gradient(100deg, #f6be10 0%, #f36b35 48%, #ef168e 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
 .hero-content p {
 
     max-width: 720px;
@@ -799,7 +1185,43 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 }
 
 .paint-icons.editing .paint-screen-banner {
-    opacity: 0.35;
+    opacity: 1 !important;
+}
+
+.paint-screen-banner h2,
+.paint-screen-banner p {
+    opacity: 1 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: 0 3px 20px rgba(0, 0, 0, .72), 0 8px 34px rgba(0, 0, 0, .45) !important;
+}
+
+.paint-screen-banner h2 {
+    font-weight: 800 !important;
+}
+
+.paint-screen-banner p {
+    font-weight: 600 !important;
+}
+
+.paint-screen-banner {
+    isolation: isolate;
+}
+
+.paint-screen-banner::before {
+    position: absolute;
+    inset: -14px -24px;
+    z-index: -1;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, .12);
+    content: "";
+}
+
+.paint-screen-banner h2,
+.paint-screen-banner p {
+    position: relative;
+    z-index: 1;
+    text-shadow: none !important;
 }
 
 .paint-finish-panel {
@@ -998,6 +1420,21 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
 .paint-trigger svg {
     width: 20px;
     height: 20px;
+}
+
+.paint-trigger .paint-icon svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.paint-trigger .paint-icon img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 .paint-trigger .paint-icon {
@@ -19451,5 +19888,51 @@ body[data-page="home"] section.why-amigos .stat span {
 
     body[data-page="home"] section.why-amigos .stat:first-child {
         border-top: 0;
+    }
+}
+
+/* Homepage solutions slider buttons only; unique IDs avoid global button selectors. */
+body[data-page="home"] :is(#homeSolutionsExplore1, #homeSolutionsExplore2, #homeSolutionsExplore3) {
+    display: inline-block !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    min-height: 48px !important;
+    margin: 0 !important;
+    padding: 12px 24px 12px 30px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    background: linear-gradient(105deg, #f6be10, #f39125 44%, #e62453 100%) !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    box-shadow: 0 14px 26px rgba(230, 36, 83, .18) !important;
+    transition: transform .25s ease, box-shadow .25s ease, filter .25s ease !important;
+}
+
+body[data-page="home"] :is(#homeSolutionsExplore1, #homeSolutionsExplore2, #homeSolutionsExplore3)::before,
+body[data-page="home"] :is(#homeSolutionsExplore1, #homeSolutionsExplore2, #homeSolutionsExplore3)::after {
+    content: none !important;
+    display: none !important;
+}
+
+body[data-page="home"] :is(#homeSolutionsExplore1, #homeSolutionsExplore2, #homeSolutionsExplore3):hover,
+body[data-page="home"] :is(#homeSolutionsExplore1, #homeSolutionsExplore2, #homeSolutionsExplore3):focus-visible {
+    filter: saturate(1.12);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 34px rgba(230, 36, 83, .28) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="home"] .home-solutions-media::before {
+    background: linear-gradient(90deg, #0b223d 0%, rgba(11, 34, 61, .88) 32%, rgba(11, 34, 61, 0) 100%) !important;
+}
+
+@media (max-width: 760px) {
+    html[data-theme="amigos-dark"] body[data-page="home"] .home-solutions-media::before {
+        background: linear-gradient(180deg, #0b223d 0%, rgba(11, 34, 61, 0) 100%) !important;
     }
 }

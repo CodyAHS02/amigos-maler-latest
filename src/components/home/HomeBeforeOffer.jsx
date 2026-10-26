@@ -1,4 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
+import HomeSolutionsCarousel from "./HomeSolutionsCarousel";
+import Image from "next/image";
+
 export default function HomeBeforeOffer() {
   return (
     <>
@@ -23,14 +26,14 @@ export default function HomeBeforeOffer() {
                 <div className="paint-focus"></div>
 
                 <div className="paint-screen-banner">
-                    <h2>Discover what color can change.</h2>
+                    <h2 id="homeHeroColorMessage">Discover the <span id="homeHeroColorAccent" className="hero-color-accent">power of color.</span></h2>
                     <p>Choose a color and experience the room anew.</p>
                 </div>
 
                 {/*909*/}
                 <div className="paint-point left" data-wall="left-wall">
                     <button className="paint-trigger">
-                        <i className="fa-solid fa-paint-roller"></i>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -46,7 +49,7 @@ export default function HomeBeforeOffer() {
                 {/*1748*/}
                 <div className="paint-point front" data-wall="front-wall">
                     <button className="paint-trigger">
-                        <i className="fa-solid fa-paint-roller"></i>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -62,7 +65,7 @@ export default function HomeBeforeOffer() {
                 {/*2590*/}
                 <div className="paint-point right" data-wall="right-wall">
                     <button className="paint-trigger">
-                        <i className="fa-solid fa-paint-roller"></i>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -78,7 +81,7 @@ export default function HomeBeforeOffer() {
                 {/*3432*/}
                 <div className="paint-point ceiling" data-wall="ceiling">
                     <button className="paint-trigger">
-                        <i className="fa-solid fa-paint-roller"></i>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -119,7 +122,7 @@ export default function HomeBeforeOffer() {
             <a href="#quote" className="introBtn desktop-intro-btn">Get A Free Quote</a>
             <div className="hero-content">
                 <div className="content-glow"></div>
-                <h1>Preserving Your Property’s Value</h1>
+                <h1 id="homeHeroCreatingLastingValue">Creating <span className="hero-title-accent">Lasting Value</span></h1>
                 <p>More than paint — a new sense of space.</p>
                 <div id="homeHeroButtons" className="hero-buttons">
                     <a className="btn-primary" href="/contact">Free consultation</a>
@@ -145,51 +148,7 @@ export default function HomeBeforeOffer() {
     </section>
 
     {/*7002*/}
-    <section className="audience-cards-section" id="audienceCardsSection">
-        <div className="audience-cards-wrapper">
-            <div className="audience-cards-heading reveal">
-                <span className="section-tag">WHO WE WORK WITH</span>
-                <h2>Solutions for<br />every <span>property.</span></h2>
-            </div>
-            <div className="audience-card-grid">
-                <div className="audience-card reveal" data-tilt>
-                    <span className="audience-card-num">01</span>
-                    <div className="audience-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 11l9-8 9 8" />
-                            <path d="M5 10v10h14V10" />
-                            <path d="M9 20v-6h6v6" />
-                        </svg>
-                    </div>
-                    <h3>Private Customers</h3>
-                    <p>Renovations, refreshes and property preservation for your home.</p>
-                </div>
-                <div className="audience-card reveal" data-tilt>
-                    <span className="audience-card-num">02</span>
-                    <div className="audience-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 21V7l8-4 8 4v14" />
-                            <path d="M9 21v-6h6v6" />
-                            <path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01" />
-                        </svg>
-                    </div>
-                    <h3>Property Management</h3>
-                    <p>Maintenance, tenant changes, renovations and coordinated processes.</p>
-                </div>
-                <div className="audience-card reveal" data-tilt>
-                    <span className="audience-card-num">03</span>
-                    <div className="audience-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 17l6-6 4 4 8-8" />
-                            <path d="M14 7h7v7" />
-                        </svg>
-                    </div>
-                    <h3>Owners &amp; Investors</h3>
-                    <p>Property preservation, renovation projects and long-term support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <HomeSolutionsCarousel />
 
     {/*9571*/}
     <section className="services-nav-section" id="servicesNavSection">

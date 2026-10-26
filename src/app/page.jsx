@@ -129,6 +129,16 @@ html body section[data-home-hero] .hero-overlay p {
   -webkit-text-fill-color: #ffffff !important;
   text-shadow: 0 2px 18px rgba(0, 0, 0, .35) !important;
 }
+
+html body section[data-home-hero] .hero-overlay h2#homeHeroColorMessage span#homeHeroColorAccent {
+  background: linear-gradient(100deg, #f6be10 0%, #f36b35 48%, #ef168e 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+}
 `;
 
 export default function Page() {

@@ -4,7 +4,7 @@
 
 // Sticky header
 const header = document.querySelector('.site-header');
-if (header) {
+if (header && document.body.dataset.page !== 'projects') {
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();

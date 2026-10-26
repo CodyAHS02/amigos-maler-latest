@@ -1,121 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useAmigosAudio } from "@/lib/useAmigosAudio";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 import styles from "./Header.module.css";
-
-const serviceHoverGradients = [
-  {
-    background: "linear-gradient(135deg, rgba(246, 190, 16, .94), rgba(243, 145, 37, .94))",
-    border: "rgba(246, 190, 16, .58)",
-  },
-  {
-    background: "linear-gradient(135deg, rgba(199, 59, 142, .94), rgba(230, 36, 83, .94))",
-    border: "rgba(199, 59, 142, .6)",
-  },
-  {
-    background: "linear-gradient(135deg, rgba(230, 36, 83, .94), rgba(199, 59, 142, .94))",
-    border: "rgba(230, 36, 83, .6)",
-  },
-  {
-    background: "linear-gradient(135deg, rgba(243, 145, 37, .94), rgba(230, 36, 83, .94))",
-    border: "rgba(243, 145, 37, .58)",
-  },
-];
-
-const serviceCategories = [
-  {
-    id: "painting",
-    label: "Painting & Finishes",
-    title: "Painting & Finishes",
-    description: "Interior, exterior and precision coating services for clean surfaces, durable protection and polished details.",
-    cta: "Explore Painting Services",
-    href: "/services",
-    links: [
-      {
-        href: "/interior-painting",
-        title: "Interior Painting",
-        desc: "Walls, ceilings, doors and refined coatings",
-      },
-      {
-        href: "/exterior-painting",
-        title: "Exterior Painting",
-        desc: "Facades, woodwork and weather protection",
-      },
-      {
-        href: "/spray-painting",
-        title: "Spray Painting",
-        desc: "Doors, frames, shutters and precision parts",
-      },
-      {
-        href: "/color-and-material",
-        title: "Color & Material Consultation",
-        desc: "Color concepts and suitable coating systems",
-      },
-    ],
-  },
-  {
-    id: "renovation",
-    label: "Renovation & Repair",
-    title: "Renovation & Repair",
-    description: "Surface repairs, plastering, drywall and renovation work for apartments, rooms and building elements.",
-    cta: "Explore Renovation Services",
-    href: "/appartment-renovation",
-    links: [
-      {
-        href: "/appartment-renovation",
-        title: "Apartment Renovation",
-        desc: "Tenant changes, sales preparation and updates",
-      },
-      {
-        href: "/Plastering",
-        title: "Plastering Work",
-        desc: "Filling, smoothing and surface preparation",
-      },
-      {
-        href: "/Drywall",
-        title: "Drywall Construction",
-        desc: "Walls, ceilings and custom room solutions",
-      },
-      {
-        href: "/Facade-Renovation",
-        title: "Facade Renovation",
-        desc: "Protection, repair and exterior redesign",
-      },
-    ],
-  },
-  {
-    id: "care",
-    label: "Property Care",
-    title: "Property Care",
-    description: "Maintenance, damage response and value-preservation services for homes, villas and managed properties.",
-    cta: "Explore Property Care",
-    href: "/property-value-preservation",
-    links: [
-      {
-        href: "/property-value-preservation",
-        title: "Property Value Preservation",
-        desc: "Maintenance plans and long-term care concepts",
-      },
-      {
-        href: "/mold",
-        title: "Mold Remediation",
-        desc: "Analysis, removal and durable prevention",
-      },
-      {
-        href: "/water-damage",
-        title: "Water Damage",
-        desc: "Drying coordination and surface restoration",
-      },
-      {
-        href: "/schadensservice",
-        title: "Schadensservice",
-        desc: "Fast support for damage cases and restoration work",
-      },
-    ],
-  },
-];
 
 const imageHeroPaths = new Set([
   "/",
@@ -143,17 +32,17 @@ export default function Header() {
   const hasImageHero = imageHeroPaths.has(pathname);
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [activeServiceCategory, setActiveServiceCategory] = useState(serviceCategories[0].id);
   const { isPlaying: isAudioPlaying, toggleSound } = useAmigosAudio();
-  const lastHoverVariants = useRef(new WeakMap());
-  const activeServiceGroup =
-    serviceCategories.find((category) => category.id === activeServiceCategory) || serviceCategories[0];
 
   useEffect(() => {
     if (isHome) return undefined;
 
     const header = document.getElementById("siteHeader");
     if (!header) return;
+    if (isProjects) {
+      header.classList.remove("is-scrolled");
+      return undefined;
+    }
     const hero = document.querySelector("[data-hero]");
 
     const updateHeaderState = () => {
@@ -168,7 +57,7 @@ export default function Header() {
     window.addEventListener("scroll", updateHeaderState, { passive: true });
 
     return () => window.removeEventListener("scroll", updateHeaderState);
-  }, [isHome]);
+  }, [isHome, isProjects]);
 
   useEffect(() => {
     let active = true;
@@ -207,24 +96,8 @@ export default function Header() {
     });
   };
 
-  const setRandomServiceHover = (event) => {
-    const item = event.currentTarget;
-    const previousVariant = lastHoverVariants.current.get(item);
-    let nextVariant = Math.floor(Math.random() * serviceHoverGradients.length);
-
-    if (serviceHoverGradients.length > 1) {
-      while (nextVariant === previousVariant) {
-        nextVariant = Math.floor(Math.random() * serviceHoverGradients.length);
-      }
-    }
-
-    lastHoverVariants.current.set(item, nextVariant);
-    item.style.setProperty("--dropdown-hover-bg", serviceHoverGradients[nextVariant].background);
-    item.style.setProperty("--dropdown-hover-border", serviceHoverGradients[nextVariant].border);
-  };
-
   return (
-      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout ? " about-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
+      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout || isProjects ? " about-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
         <span className={styles.logoSymbol} aria-hidden="true">
           <img src="/logo.webp" alt="" />
@@ -256,44 +129,7 @@ export default function Header() {
               />
             </svg>
           </a>
-          <div className="dropdown-menu services-mega-menu">
-            <aside className="services-mega-sidebar" aria-label="Service categories">
-              {serviceCategories.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  className={`services-mega-tab${activeServiceGroup.id === category.id ? " is-active" : ""}`}
-                  onClick={() => setActiveServiceCategory(category.id)}
-                  onMouseEnter={() => setActiveServiceCategory(category.id)}
-                >
-                  {category.label}
-                </button>
-              ))}
-              <a className="services-mega-cta" href={activeServiceGroup.href}>
-                <span>{activeServiceGroup.cta}</span>
-                <i aria-hidden="true">↗</i>
-              </a>
-            </aside>
-
-            <div className="services-mega-content">
-              <div className="services-mega-intro">
-                <strong>{activeServiceGroup.title}</strong>
-                <span>{activeServiceGroup.description}</span>
-              </div>
-
-              <div className="services-mega-grid">
-                {activeServiceGroup.links.map((service, index) => (
-                  <a key={service.href} href={service.href} className="dropdown-item" onMouseEnter={setRandomServiceHover}>
-                    <span className="item-num">{String(index + 1).padStart(2, "0")}</span>
-                    <div className="item-info">
-                      <span className="item-title">{service.title}</span>
-                      <span className="item-desc">{service.desc}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ServicesMegaMenu isDark={isDarkTheme} />
         </div>
 
         <a href="/schadensservice" data-page="schadensservice">

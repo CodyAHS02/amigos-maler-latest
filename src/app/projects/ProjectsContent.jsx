@@ -1,28 +1,48 @@
 /* eslint-disable react/no-unescaped-entities */
+function EnquirySelect({ id, name, label, options, placeholder }) {
+  const initialValue = placeholder || options[0];
+
+  return (
+    <label className="enquiry-field enquiry-select-field">
+      <span id={`${id}-label`}>{label}</span>
+      <div className="enquiry-select" data-enquiry-select>
+        <select className="enquiry-native-select" name={name} id={id} required tabIndex={-1} defaultValue={placeholder ? "" : initialValue}>
+          {placeholder && <option value="">{placeholder}</option>}
+          {options.map((option) => <option key={option}>{option}</option>)}
+        </select>
+        <button
+          className="enquiry-select-trigger"
+          type="button"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby={`${id}-label ${id}-value`}
+        >
+          <span className="enquiry-select-value" id={`${id}-value`}>{initialValue}</span>
+          <span className="enquiry-select-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg>
+          </span>
+        </button>
+        <div className="enquiry-listbox" role="listbox" tabIndex="-1" hidden></div>
+      </div>
+    </label>
+  );
+}
+
 export default function ProjectsContent() {
   return (
     <>
-<div className="amigos-wrapper">
+<div id="projectsPage" className="amigos-wrapper">
 
-  {/* Ambient background layer */}
-  <div className="amb">
-    <div className="blob b1"></div>
-    <div className="blob b2"></div>
-    <div className="blob b3"></div>
-    <div className="blob b4"></div>
-  </div>
-  <div className="grain"></div>
-
-  
+  <div className="amb"></div>
 
   {/* SECTION 1 · HERO (scroll-scrubbed video) */}
   <section className="hero projects-scrub-hero" data-projects-hero data-hero>
     <div className="hero-media">
-      <video id="projectsHeroVideoLight" className="projects-hero-video projects-hero-video-light media-light" muted playsInline preload="none" aria-label="Amigos Maler projects hero, daytime interior">
+      <video id="projectsHeroVideoLight" className="projects-hero-video projects-hero-video-light media-light" muted playsInline preload="none" poster="/projects%20page/projects-hero-day-poster.webp" aria-label="Amigos Maler projects hero, daytime interior">
         <source src="/projects%20page/projects-hero-day-revised.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-day.mp4" type="video/mp4" />
       </video>
-      <video id="projectsHeroVideoDark" className="projects-hero-video projects-hero-video-dark media-dark" muted playsInline preload="none" aria-label="Amigos Maler projects hero, nighttime interior">
+      <video id="projectsHeroVideoDark" className="projects-hero-video projects-hero-video-dark media-dark" muted playsInline preload="none" poster="/projects%20page/projects-hero-night-poster.webp" aria-label="Amigos Maler projects hero, nighttime interior">
         <source src="/projects%20page/projects-hero-night-revised.webm" type="video/webm" />
         <source src="/projects%20page/projects-hero-night.mp4" type="video/mp4" />
       </video>
@@ -41,247 +61,8 @@ export default function ProjectsContent() {
     <div className="scroll-indicator">⌄</div>
   </section>
 
-  {/* SECTION 3 · SERVICES (scroll-driven horizontal reveal) */}
-  <template id="removed-services">
-    <div className="svc-pin">
-      <div className="container svc-head-wrap">
-        <div className="section-head reveal">
-          <div className="eyebrow">Services</div>
-          <svg className="brush" viewBox="0 0 180 22">
-            <path d="M2 12 C 40 22, 80 2, 120 14 S 170 6, 178 12" />
-          </svg>
-          <h2>Eight disciplines. One carefully managed standard.</h2>
-          <p>Scroll to explore — every service, shaped around Amigos Immo precision and clear project planning.</p>
-        </div>
-      </div>
-      <div className="svc-track-wrap">
-        <div className="svc-track" id="svc-track">
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M8 32 L20 8 L32 32 Z M14 22 L26 22" />
-                <circle cx="20" cy="16" r="2" />
-              </svg>
-            </div>
-            <div className="num">01</div>
-            <h3>Wall Painting</h3>
-            <p>Premium interior and exterior painting with flawless finishes built to last.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M6 34 L20 8 L34 34 Z M6 34 L34 34" />
-                <circle cx="20" cy="24" r="3" />
-                <path d="M20 24 L20 30" />
-              </svg>
-            </div>
-            <div className="num">02</div>
-            <h3>Drywall</h3>
-            <p>Seamless drywall installation and repairs for perfectly smooth surfaces.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <rect x="6" y="10" width="28" height="24" />
-                <path d="M6 18 L34 18 M14 10 L14 34 M26 10 L26 34" />
-              </svg>
-            </div>
-            <div className="num">03</div>
-            <h3>Renovations</h3>
-            <p>Modern renovations that enhance comfort, functionality, and property appeal.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h featured">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <circle cx="20" cy="20" r="14" />
-                <circle cx="20" cy="20" r="6" />
-                <path d="M20 2 L20 8 M20 32 L20 38 M2 20 L8 20 M32 20 L38 20" />
-              </svg>
-            </div>
-            <div className="num">04</div>
-            <h3>Facade Restoration</h3>
-            <p>Restore and protect exterior facades with durable, weather-resistant solutions.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M20 4 L36 12 L36 28 L20 36 L4 28 L4 12 Z" />
-                <path d="M20 4 L20 36 M4 12 L20 20 L36 12" />
-              </svg>
-            </div>
-            <div className="num">05</div>
-            <h3>Appartment Preparation</h3>
-            <p>Prepare apartments for sale or rental with fast, high-quality finishing work.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M20 4 L36 12 L36 28 L20 36 L4 28 L4 12 Z" />
-                <path d="M20 4 L20 36 M4 12 L20 20 L36 12" />
-              </svg>
-            </div>
-            <div className="num">06</div>
-            <h3>Property Maintenance</h3>
-            <p>Reliable maintenance services to keep your property in excellent condition year-round.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M20 4 L36 12 L36 28 L20 36 L4 28 L4 12 Z" />
-                <path d="M20 4 L20 36 M4 12 L20 20 L36 12" />
-              </svg>
-            </div>
-            <div className="num">07</div>
-            <h3>Property Value Preservation</h3>
-            <p>Proactive care that protects your property's value for the long term.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-          <div className="glass svc-card-h">
-            <div className="svc-icon">
-              <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path d="M20 4 L36 12 L36 28 L20 36 L4 28 L4 12 Z" />
-                <path d="M20 4 L20 36 M4 12 L20 20 L36 12" />
-              </svg>
-            </div>
-            <div className="num">08</div>
-            <h3>Investment Property Support</h3>
-            <p>Tailored maintenance and renovation solutions for property investors and portfolios.</p>
-            <div className="arrow">Discover →</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
 
-  {/* SECTION 4 · PROJECT WORKFLOW */}
-  <template id="removed-project-workflow">
-    <div className="container">
-      <div className="section-head reveal sec-alt">
-        <div className="eyebrow">The Project Workflow</div>
-        <svg className="brush" viewBox="0 0 180 22">
-          <path d="M2 10 C 50 20, 90 4, 130 12 S 172 10, 178 14" />
-        </svg>
-        <h2>From room photo to painting quote.</h2>
-        <p>Four steps. This is how AMIGOS turns a room request into a clear painting quotation.
-        </p>
-      </div>
-      <div className="flow reveal">
-        <div className="flow-step">
-          <div className="flow-num">01</div>
-          <div className="flow-ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-              <rect x="6" y="10" width="28" height="22" rx="2" />
-              <path d="M6 26 L14 18 L22 26 L28 22 L34 28" />
-              <circle cx="26" cy="16" r="2" />
-            </svg></div>
-          <h4>Upload room image</h4>
-          <p>Drop a photo of any room, from any angle.</p>
-        </div>
-        <div className="flow-arrow"></div>
-        <div className="flow-step">
-          <div className="flow-num">02</div>
-          <div className="flow-ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-              <rect x="6" y="6" width="28" height="28" />
-              <path d="M6 14 L34 14 M14 6 L14 34 M22 14 L22 34" />
-            </svg></div>
-          <h4>Review wall surfaces</h4>
-          <p>Our team checks the room surfaces and project requirements carefully.</p>
-        </div>
-        <div className="flow-arrow"></div>
-        <div className="flow-step">
-          <div className="flow-num">03</div>
-          <div className="flow-ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-              <circle cx="14" cy="14" r="6" />
-              <circle cx="26" cy="14" r="6" />
-              <circle cx="20" cy="26" r="6" />
-            </svg></div>
-          <h4>Apply paint · wallpaper · texture</h4>
-          <p>Preview finishes clearly before work begins.</p>
-        </div>
-        <div className="flow-arrow"></div>
-        <div className="flow-step">
-          <div className="flow-num">04</div>
-          <div className="flow-ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3">
-              <rect x="8" y="4" width="24" height="32" rx="2" />
-              <path d="M14 12 L26 12 M14 18 L26 18 M14 24 L22 24" />
-              <path d="M22 32 L26 36 L34 26" stroke-width="1.6" />
-            </svg></div>
-          <h4>Generate painting quote</h4>
-          <p>Clear quotation, ready to review.</p>
-        </div>
-      </div>
-    </div>
-  </template>
 
-  {/* SECTION 5 · VISUAL PLANNING STUDIO (two-column: copy + interactive preview) */}
-  <template id="removed-visual-planning-studio">
-    <div className="container">
-      <div className="vs-grid reveal">
-        <div className="vs-left">
-          <div className="eyebrow">Visual Planning Studio</div>
-          <svg className="brush" viewBox="0 0 180 22">
-            <path d="M2 10 C 50 20, 90 4, 130 12 S 172 10, 178 14" />
-          </svg>
-          <h2>See your walls, before you paint them.</h2>
-          <p className="vs-lede">Upload a photo of any room. AMIGOS helps you preview the paint colours, wallpapers, and textures you're considering.</p>
-          <ol className="vs-steps">
-            <li><span>01</span>Upload a room photo</li>
-            <li><span>02</span>Review the wall surfaces</li>
-            <li><span>03</span>Preview paint, wallpaper &amp; textures</li>
-            <li><span>04</span>Prepare a painting quotation</li>
-          </ol>
-        </div>
-        <div className="vs-right">
-          <div className="vs-stage glass" id="vs-stage">
-            <div className="vs-upload" id="vs-upload">
-              <div className="vs-up-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">
-                  <path d="M24 32 L24 10 M14 20 L24 10 L34 20" />
-                  <path d="M8 34 L8 40 L40 40 L40 34" />
-                </svg>
-              </div>
-              <div className="vs-up-title">Upload your room photo</div>
-              <div className="vs-up-sub">Click to try the demo</div>
-            </div>
-            <div className="vs-preview" id="vs-preview" hidden>
-              <img className="vs-room" src="/amigos/img/after.jpg" alt="Room preview" loading="lazy" />
-              <div className="vs-wall" id="vs-wall"></div>
-              <svg className="vs-outline" viewBox="0 0 100 62" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M4 6 L54 4 L54 54 L4 58 Z" fill="none" stroke="#f39125" stroke-width=".25"
-                  stroke-dasharray="1.2 1.2" />
-                <path d="M60 4 L96 8 L96 56 L60 54 Z" fill="none" stroke="#f39125" stroke-width=".25"
-                  stroke-dasharray="1.2 1.2" opacity=".75" />
-              </svg>
-              <div className="vs-badge">Walls detected</div>
-            </div>
-          </div>
-          <div className="vs-swatches" id="vs-swatches" hidden>
-            <div className="vs-sw-label">Preview finish</div>
-            <div className="vs-sw-row">
-              <button className="sw on" data-tint="rgba(232,223,209,.55)" data-name="Alpine Cream"
-                style={{ "background": "#E8DFD1" }}></button>
-              <button className="sw" data-tint="rgba(58,74,92,.55)" data-name="Zurich Slate"
-                style={{ "background": "#3A4A5C" }}></button>
-              <button className="sw" data-tint="rgba(139,107,71,.5)" data-name="Bronze Oak"
-                style={{ "background": "#8B6B47" }}></button>
-              <button className="sw" data-tint="rgba(74,93,74,.5)" data-name="Alpine Sage"
-                style={{ "background": "#4A5D4A" }}></button>
-              <button className="sw" data-tint="rgba(180,150,110,.35)" data-name="Silk Wallpaper"
-                style={{ "background": "repeating-linear-gradient(45deg,#f39125 0 4px,#c73b8e 4px 8px)" }}></button>
-              <button className="sw" data-tint="rgba(200,190,175,.4)" data-name="Marble Texture"
-                style={{ "background": "radial-gradient(circle at 30% 30%,#e6dfd1,#a09889)" }}></button>
-            </div>
-            <div className="sw-name" id="sw-name">Alpine Cream</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
 
   {/* FOUNDER · placed directly before the price engine */}
   <section id="founder" className="founder-section">
@@ -296,7 +77,7 @@ export default function ProjectsContent() {
           <div className="projects-founder-badge founder-badge-floating">
             <div className="badge-icon-wrap">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB800" stroke="#FF7A1A" stroke-width="1.2"/>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB800" stroke="#FF7A1A" strokeWidth="1.2"/>
               </svg>
             </div>
             <div className="badge-text">
@@ -312,7 +93,7 @@ export default function ProjectsContent() {
         <p className="founder-lede">Patricia founded Amigos Immo around a simple belief: property care should feel personal, transparent and thoughtfully planned—not reactive.</p>
         <p>She brings clients, craftspeople and technology together to make complex renovation and maintenance decisions easier to understand. Every recommendation starts with listening, every estimate is explained clearly, and every project is considered in the context of the property's long-term value.</p>
         <blockquote>“A property is more than a project. It is a responsibility we share with every owner.”</blockquote>
-        <a className="founder-link" href="#calc">Plan your project with Patricia <span aria-hidden="true">→</span></a>
+        <a className="founder-link" href="#calc">Plan your project with Patricia</a>
       </div>
     </div>
   </section>
@@ -332,54 +113,35 @@ export default function ProjectsContent() {
       <form className="glass projects-enquiry-form reveal" id="projects-enquiry-form">
         <input type="hidden" name="projectType" value="Renovation" />
         <div className="enquiry-grid">
-          <label className="enquiry-field">
-            <span>What do I want?</span>
-            <select name="want" id="enquiry-want" required>
-              <option>Apartment</option>
-              <option>House</option>
-              <option>Office</option>
-              <option>Commercial space</option>
-              <option>Facade / exterior</option>
-              <option>Other</option>
-            </select>
-          </label>
+          <EnquirySelect
+            id="enquiry-want"
+            name="want"
+            label="What do I want?"
+            options={["Apartment", "House", "Office", "Commercial space", "Facade / exterior", "Other"]}
+          />
 
-          <label className="enquiry-field">
-            <span>Which size fits best?</span>
-            <select name="scope" id="enquiry-scope" required>
-              <option>1,5 Bedroom</option>
-              <option>2,5 Bedroom</option>
-              <option>3 Bedroom</option>
-              <option>3,5 Bedroom</option>
-              <option>4,5 Bedroom</option>
-              <option>5,5 Bedroom</option>
-              <option>6,5 Bedroom</option>
-              <option>8,5 Bedroom</option>
-            </select>
-          </label>
+          <EnquirySelect
+            id="enquiry-scope"
+            name="scope"
+            label="Which size fits best?"
+            options={["1,5 Bedroom", "2,5 Bedroom", "3 Bedroom", "3,5 Bedroom", "4,5 Bedroom", "5,5 Bedroom", "6,5 Bedroom", "8,5 Bedroom"]}
+          />
 
-          <label className="enquiry-field">
-            <span>Budget</span>
-            <select name="budget" required>
-              <option value="">Select budget</option>
-              <option>Under CHF 2'000</option>
-              <option>CHF 2'000 – 5'000</option>
-              <option>CHF 5'000 – 10'000</option>
-              <option>CHF 10'000 – 25'000</option>
-              <option>CHF 25'000+</option>
-            </select>
-          </label>
+          <EnquirySelect
+            id="enquiry-budget"
+            name="budget"
+            label="Budget"
+            placeholder="Select budget"
+            options={["Under CHF 2'000", "CHF 2'000 – 5'000", "CHF 5'000 – 10'000", "CHF 10'000 – 25'000", "CHF 25'000+"]}
+          />
 
-          <label className="enquiry-field">
-            <span>Timeline</span>
-            <select name="timeline" required>
-              <option value="">Select timeline</option>
-              <option>As soon as possible</option>
-              <option>Within 1 month</option>
-              <option>1–3 months</option>
-              <option>Planning ahead</option>
-            </select>
-          </label>
+          <EnquirySelect
+            id="enquiry-timeline"
+            name="timeline"
+            label="Timeline"
+            placeholder="Select timeline"
+            options={["As soon as possible", "Within 1 month", "1–3 months", "Planning ahead"]}
+          />
 
           <label className="enquiry-field">
             <span>Name</span>
@@ -393,7 +155,7 @@ export default function ProjectsContent() {
 
           <label className="enquiry-field">
             <span>Phone</span>
-            <input name="phone" type="tel" placeholder="+41 ..." autocomplete="tel" />
+            <input name="phone" type="tel" placeholder="+41 ..." autoComplete="tel" />
           </label>
 
           <label className="enquiry-field enquiry-wide">
@@ -437,7 +199,7 @@ export default function ProjectsContent() {
   </section>
 
   {/* SECTION 8 · REAL ESTATE HUB (separate add-on; existing sections untouched) */}
-  <section id="real-estate-hub" className="real-estate-hub-section" aria-labelledby="real-estate-hub-title" onclick="(function(e){var t=e.target.closest('[data-re-filter],[data-detail-target]');if(!t||!e.currentTarget.contains(t))return;if(t.dataset.reFilter){var s=e.currentTarget,f=t.dataset.reFilter;s.classList.remove('has-real-estate-detail');s.querySelectorAll('[data-re-filter]').forEach(function(b){var on=b.dataset.reFilter===f;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',on?'true':'false')});s.querySelectorAll('[data-re-category]').forEach(function(c){var show=f==='all'||c.dataset.reCategory===f;c.hidden=!show;c.style.display=show?'':'none'});var track=s.querySelector('[data-re-carousel-track]');if(track)track.scrollLeft=0;s.querySelectorAll('[data-detail-panel]').forEach(function(p){p.classList.remove('is-active');p.setAttribute('aria-hidden','true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-expanded','false')})}else if(t.dataset.detailTarget){var id=t.dataset.detailTarget,s=e.currentTarget;s.classList.add('has-real-estate-detail');s.querySelectorAll('[data-detail-panel]').forEach(function(p){var on=p.dataset.detailPanel===id;p.classList.toggle('is-active',on);p.setAttribute('aria-hidden',on?'false':'true')});s.querySelectorAll('[data-detail-target]').forEach(function(b){var on=b.dataset.detailTarget===id;b.classList.toggle('is-active',on);b.setAttribute('aria-expanded',on?'true':'false')})}})(event)">
+  <section id="real-estate-hub" className="real-estate-hub-section" aria-labelledby="real-estate-hub-title">
     <div className="container">
       <div className="real-estate-hub-head reveal">
         <div>
@@ -714,7 +476,6 @@ export default function ProjectsContent() {
   </section>
 
   {/* NEW SECTIONS ADDED FROM REFERENCE */}
-  <style dangerouslySetInnerHTML={{ __html: "\n    /* New Sections Custom Styles */\n    .new-sections-wrapper { font-family: inherit; }\n    \n    .new-intl-showcase { position: relative; padding: 120px 0; color: #fff !important; overflow: hidden; display: flex; align-items: center; min-height: 70vh; }\n    .new-intl-showcase .bg-wrap { position: absolute; inset: 0; z-index: 1; }\n    .new-intl-showcase img.bg-img { width: 100%; height: 100%; object-fit: cover; }\n    .new-intl-showcase .overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,32,0.85) 0%, rgba(15,23,32,0.4) 50%, transparent 100%); }\n    .new-intl-showcase .content { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 40px; }\n    .new-intl-showcase .text-col { max-width: 600px; }\n    .new-intl-showcase .eyebrow-text { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #F39125; margin-bottom: 20px; font-weight: 600; }\n    .new-intl-showcase h2 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; margin-bottom: 24px; font-weight: 300; letter-spacing: -0.02em; color: #fff !important; }\n    .new-intl-showcase p { font-size: 1.25rem; line-height: 1.6; margin-bottom: 40px; color: #fff !important; font-weight: 300; }\n    .new-intl-showcase .badge { text-align: center; border: 1px solid rgba(255,255,255,0.2); padding: 40px 30px; border-radius: 8px; backdrop-filter: blur(10px); background: rgba(0,0,0,0.2); min-width: 180px; }\n    \n    #new-services-section { color: #fff; padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }\n    /* Indestructible Gradient Rule */\n    html body[data-page] .amigos-wrapper section#new-services-section,\n    html[data-theme] body[data-page] .amigos-wrapper section#new-services-section {\n        background: linear-gradient(135deg, #f6be10 0%, #f39125 40%, #c73b8e 100%) !important;\n        background-color: transparent !important;\n    }\n\n    .new-services .container { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; width: 100%; }\n    .new-services .text-col { max-width: 100%; width: 100%; }\n    .new-services .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.8) !important; margin-bottom: 16px; }\n    .new-services h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; font-weight: 300; margin: 0; color: #fff !important; }\n    .new-services .icons-row { display: flex; gap: 20px; flex-wrap: nowrap; width: 100%; overflow-x: auto; scrollbar-width: none; }\n    .new-services .icon-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; cursor: pointer; color: rgba(255,255,255,0.75); padding: 32px 24px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex: 1; min-width: 160px; padding: 40px 24px; }\n    .new-services .icon-item svg { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }\n    .new-services .icon-item:hover { color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.4); transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }\n    .new-services .icon-item:hover svg { color: #fff; filter: drop-shadow(0 4px 8px rgba(255,255,255,0.5)); transform: scale(1.15) translateY(-2px); }\n    \n    .new-ba-section { background: #0F1720; color: #fff; overflow: hidden; }\n    .new-ba-grid { display: grid; grid-template-columns: minmax(350px, 450px) 1fr; align-items: stretch; min-height: 60vh; }\n    .new-ba-text { padding: 80px 5vw; display: flex; flex-direction: column; justify-content: center; z-index: 2; position: relative; text-align: left; }\n    .new-ba-text-inner { max-width: 500px; margin-left: auto; }\n    .new-ba-text .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }\n    .new-ba-text h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 24px; font-weight: 300; }\n    .new-ba-text p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; font-weight: 300; }\n    \n    .new-ba-interactive { position: relative; display: flex; width: 100%; min-height: 500px; height: 100%; overflow: hidden; user-select: none; }\n    .new-ba-before, .new-ba-after { position: relative; height: 100%; overflow: hidden; flex-shrink: 0; }\n    .new-ba-before { width: 50%; }\n    .new-ba-after { width: 50%; }\n    .new-ba-before img, .new-ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; }\n    .new-ba-tag { position: absolute; top: 30px; z-index: 3; padding: 8px 18px; border-radius: 999px; background: rgba(0,0,0,0.55); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; backdrop-filter: blur(8px); pointer-events: none; white-space: nowrap; text-transform: uppercase; }\n    .new-ba-tag.before { left: 30px; }\n    .new-ba-tag.after { right: 30px; }\n    .new-ba-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; transform: translateX(-50%); cursor: ew-resize; z-index: 4; }\n    .new-ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }\n    .new-ba-handle svg { width: 18px; height: 18px; stroke: #000; margin: 0 -2px; }\n    \n    \n    \n    \n    \n    \n    \n    \n    \n    \n    .new-final-cta { background: #0B1117; color: #fff; padding: 100px 0; position: relative; overflow: hidden; }\n    .new-final-cta .bg-letter { position: absolute; right: -5%; bottom: -20%; font-size: 600px; font-weight: 800; line-height: 0.8; color: rgba(255,255,255,0.02); pointer-events: none; z-index: 1; }\n    .new-final-cta .container { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px; }\n    .new-final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }\n    .new-final-cta p { font-size: 1.2rem; color: rgba(255,255,255,0.7); font-weight: 300; margin: 0; }\n    .new-final-cta .btn-cta { background: #F39125; color: #0F1720; border: none; font-weight: 500; padding: 16px 32px; font-size: 1.1rem; flex-shrink: 0; border-radius: 40px; text-decoration: none; display: inline-block; transition: background 0.3s; }\n    .new-final-cta .btn-cta:hover { background: #fff; }\n\n    @media (max-width: 900px) {\n      .new-ba-grid { grid-template-columns: 1fr; }\n      .new-intl-showcase .content { flex-direction: column; align-items: flex-start; }\n    }\n  " }} />
 
   <div className="new-sections-wrapper">
     {/* NEW SECTION 1: INTERNATIONAL SHOWCASE */}
@@ -728,10 +489,10 @@ export default function ProjectsContent() {
           <div className="eyebrow-text">Discover International</div>
           <h2>Punta Cana</h2>
           <p>Exclusive residences & investment opportunities in the Dominican Republic.</p>
-          <a href="#calc" className="btn btn-solid mag" style={{ "background": "#F39125", "color": "#0F1720", "border": "none" }}>Discover projects →</a>
+          <a href="#calc" className="btn btn-solid mag">Discover projects</a>
         </div>
         <div className="badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#F39125" stroke-width="1.5" style={{ "width": "40px", "height": "40px", "marginBottom": "20px", "display": "block", "marginInline": "auto" }}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F39125" strokeWidth="1.5" style={{ "width": "40px", "height": "40px", "marginBottom": "20px", "display": "block", "marginInline": "auto" }}>
             <path d="M12 2v20M17 5S12 8 12 8s-5-3-5-3M17 12s-5 3-5 3-5-3-5-3M7 19s5-3 5-3 5 3 5 3"/>
           </svg>
           <div style={{ "fontSize": "11px", "letterSpacing": "0.15em", "textTransform": "uppercase", "lineHeight": "1.6", "color": "#fff !important" }}>Sun<br />Quality of Life<br />Investment<br />Future</div>
@@ -748,23 +509,23 @@ export default function ProjectsContent() {
         </div>
         <div className="icons-row">
           <div className="icon-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M19 14h-4v7h-6v-7h-4v-7h14v7z"/><path d="M12 7v-4"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M19 14h-4v7h-6v-7h-4v-7h14v7z"/><path d="M12 7v-4"/></svg>
             <span style={{ "fontSize": "13px", "fontWeight": "500" }}>Renovation</span>
           </div>
           <div className="icon-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M20 4L4 20M20 4l-4 4M20 4l-8 8"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M20 4L4 20M20 4l-4 4M20 4l-8 8"/></svg>
             <span style={{ "fontSize": "13px", "fontWeight": "500" }}>Painting</span>
           </div>
           <div className="icon-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             <span style={{ "fontSize": "13px", "fontWeight": "500" }}>Facades</span>
           </div>
           <div className="icon-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style={{ "width": "52px", "height": "52px" }}><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ "width": "52px", "height": "52px" }}><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
             <span style={{ "fontSize": "13px", "fontWeight": "500" }}>Interior Fit-out</span>
           </div>
           <div className="icon-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{ "width": "52px", "height": "52px" }}><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
             <span style={{ "fontSize": "13px", "fontWeight": "500" }}>Value Retention</span>
           </div>
         </div>
@@ -779,22 +540,22 @@ export default function ProjectsContent() {
             <div className="eyebrow-text">Before / After</div>
           <h2>Real Results.<br />Sustainable Value.</h2>
           <p>Drag the handle and see for yourself how we make properties shine in new splendor.</p>
-          <a href="#showcase" className="btn mag" style={{ "border": "1px solid rgba(255,255,255,0.3)", "color": "#fff", "width": "fit-content", "padding": "12px 30px" }}>View all references →</a>
+          <a href="#showcase" className="btn mag">View all references</a>
           </div>
         </div>
         <div className="new-ba-interactive" id="new-ba-slider">
             <div className="new-ba-before" id="new-ba-before">
-                <img src="/amigos/img/before.jpg" alt="Before renovation" />
+                <img src="/amigos/img/before.jpg" alt="Before renovation" loading="lazy" decoding="async" />
                 <span className="new-ba-tag before" id="new-ba-tag-before">BEFORE</span>
             </div>
             <div className="new-ba-after" id="new-ba-after">
-                <img src="/amigos/img/after.jpg" alt="After renovation" />
+                <img src="/amigos/img/after.jpg" alt="After renovation" loading="lazy" decoding="async" />
                 <span className="new-ba-tag after" id="new-ba-tag-after">AFTER</span>
             </div>
             <div className="new-ba-divider" id="new-ba-divider">
                 <div className="new-ba-handle">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M9 18l6-6-6-6"/></svg>
                 </div>
             </div>
         </div>
@@ -809,7 +570,7 @@ export default function ProjectsContent() {
           <h2>Let's talk about your project.</h2>
           <p>Whether real estate, renovation, or value retention – we are here for you.</p>
         </div>
-        <a href="#calc" className="btn-cta">Request a free quote →</a>
+        <a href="#calc" className="btn-cta">Request a free quote</a>
       </div>
     </section>
   </div>
@@ -890,7 +651,7 @@ export default function ProjectsContent() {
       </div>
       <div className="ring reveal" id="ring">
         <div className="ring-avatar" data-idx="0" style={{ "--i": "0", "--x": "14%", "--y": "22%", "--size": "120px" }}>
-          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="M. Rüegg" />
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="M. Rüegg" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"Amigos maintain three of our residences across Zürich and St. Moritz. The service is invisible until you
               notice, five years in, that nothing has ever aged."</p>
@@ -898,7 +659,7 @@ export default function ProjectsContent() {
           </div>
         </div>
         <div className="ring-avatar" data-idx="1" style={{ "--i": "1", "--x": "32%", "--y": "70%", "--size": "100px" }}>
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="S. Lehmann" />
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="S. Lehmann" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"Their maintenance planning has cut our reactive maintenance budget by 34%. Their dashboard is the
               quietest, most useful planning tool we run."</p>
@@ -906,7 +667,7 @@ export default function ProjectsContent() {
           </div>
         </div>
         <div className="ring-avatar" data-idx="2" style={{ "--i": "2", "--x": "48%", "--y": "16%", "--size": "110px" }}>
-          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="E. Kobler" />
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="E. Kobler" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"Their project quote came within 2% of our architect's final tender. Precise, punctual, and completely
               discreet. I have not accepted a rival bid since."</p>
@@ -914,7 +675,7 @@ export default function ProjectsContent() {
           </div>
         </div>
         <div className="ring-avatar" data-idx="3" style={{ "--i": "3", "--x": "62%", "--y": "62%", "--size": "130px" }}>
-          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="A. Vogel" />
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="A. Vogel" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"The drone facade scan caught a moisture problem two winters before it would have shown on the inside.
               That single report paid for a decade of subscription."</p>
@@ -922,7 +683,7 @@ export default function ProjectsContent() {
           </div>
         </div>
         <div className="ring-avatar" data-idx="4" style={{ "--i": "4", "--x": "80%", "--y": "26%", "--size": "100px" }}>
-          <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="J. Brunner" />
+          <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="J. Brunner" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"We run a 40-building portfolio. AMIGOS' planning dashboard is the only system that gives us a truthful,
               forward-looking cost view per asset."</p>
@@ -930,7 +691,7 @@ export default function ProjectsContent() {
           </div>
         </div>
         <div className="ring-avatar" data-idx="5" style={{ "--i": "5", "--x": "86%", "--y": "74%", "--size": "115px" }}>
-          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="C. Hunziker" />
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="C. Hunziker" loading="lazy" decoding="async" />
           <div className="ring-pop">
             <p>"Elegant, quiet, and technically brilliant. Everything a Swiss owner could want. Our chalet has never
               looked better."</p>
@@ -974,7 +735,6 @@ export default function ProjectsContent() {
   
   
   
-  <script dangerouslySetInnerHTML={{ __html: "\n    // Plan toggle\n    const pt = document.getElementById('plan-toggle');\n    if (pt) {\n      pt.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {\n        pt.querySelectorAll('button').forEach(x => x.classList.remove('on'));\n        b.classList.add('on');\n        const key = b.dataset.p === 'y' ? 'priceY' : 'priceM';\n        document.querySelectorAll('[data-price-m]').forEach(el => {\n          const v = parseInt(el.dataset[key]);\n          el.textContent = v.toLocaleString('de-CH').replace(/,/g, \"'\");\n        });\n        document.querySelectorAll('.plan-price .per').forEach(p => p.textContent = b.dataset.p === 'y' ? '/mo · billed yearly' : '/mo');\n      });\n    }\n\n    // Projects enquiry form — saved to admin consultations.\n    (function () {\n      const form = document.getElementById('projects-enquiry-form');\n      if (!form) return;\n\n      const wantInput = document.getElementById('enquiry-want');\n      const scopeInput = document.getElementById('enquiry-scope');\n      const status = document.getElementById('projects-enquiry-status');\n      const apartmentRooms = [\"1,5 Bedroom\", \"2,5 Bedroom\", \"3 Bedroom\", \"3,5 Bedroom\", \"4,5 Bedroom\", \"5,5 Bedroom\", \"6,5 Bedroom\", \"8,5 Bedroom\"];\n      const options = {\n        \"Apartment\": apartmentRooms,\n        \"House\": [\"Small house\", \"3 bedrooms\", \"4+ bedrooms\", \"Full house\", \"Interior + exterior\"],\n        \"Office\": [\"Private office\", \"Small team office\", \"Full floor\", \"Reception area\", \"Meeting rooms\"],\n        \"Commercial space\": [\"Shop\", \"Restaurant\", \"Clinic\", \"Showroom\", \"Full commercial unit\"],\n        \"Facade / exterior\": [\"Balcony\", \"Facade refresh\", \"Woodwork\", \"Windows / doors\", \"Full exterior\"],\n        \"Other\": [\"Painting\", \"Plastering\", \"Renovation\", \"Repair work\", \"Not sure yet\"]\n      };\n\n      function renderScopes(want) {\n        const values = options[want] || options.Other;\n        scopeInput.innerHTML = values.map(value => '<option>' + value + '</option>').join('');\n        scopeInput.value = values[0];\n      }\n\n      wantInput.addEventListener('change', () => renderScopes(wantInput.value));\n\n      renderScopes(wantInput.value);\n\n      form.addEventListener('submit', async event => {\n        event.preventDefault();\n        const data = new FormData(form);\n        const details = [\n          \"Projects page enquiry.\",\n          \"What do I want: \" + data.get('want'),\n          \"Scope: \" + data.get('scope'),\n          \"Budget: \" + data.get('budget'),\n          \"Timeline: \" + data.get('timeline'),\n          data.get('phone') ? \"Phone: \" + data.get('phone') : \"\",\n          \"Details: \" + data.get('details')\n        ].filter(Boolean).join(\"\\n\");\n\n        const payload = new FormData();\n        payload.set('name', data.get('name'));\n        payload.set('email', data.get('email'));\n        payload.set('projectType', data.get('projectType') || 'Renovation');\n        payload.set('message', details);\n\n        status.textContent = 'Sending enquiry…';\n        status.className = '';\n        form.querySelector('button[type=\"submit\"]').disabled = true;\n\n        try {\n          const response = await fetch('/api/consultations', { method: 'POST', body: payload });\n          const result = await response.json().catch(() => ({}));\n          if (!response.ok) throw new Error(result.error || 'Unable to save enquiry.');\n          status.textContent = 'Enquiry sent. Patricia’s team will review it shortly.';\n          status.className = 'is-success';\n          form.reset();\n          renderScopes(wantInput.value);\n        } catch (error) {\n          status.textContent = error.message || 'Unable to send right now. Please try again.';\n          status.className = 'is-error';\n        } finally {\n          form.querySelector('button[type=\"submit\"]').disabled = false;\n        }\n      });\n    })();\n\n\n    // Visual planning studio — upload demo + swatch tinting\n    (function () {\n      const upload = document.getElementById('vs-upload');\n      const preview = document.getElementById('vs-preview');\n      const swatches = document.getElementById('vs-swatches');\n      const tint = document.getElementById('vs-wall');\n      const name = document.getElementById('sw-name');\n      if (!upload) return;\n      upload.addEventListener('click', () => {\n        upload.classList.add('loading');\n        upload.querySelector('.vs-up-title').textContent = 'Detecting walls…';\n        upload.querySelector('.vs-up-sub').textContent = 'Preparing visual preview';\n        setTimeout(() => {\n          upload.hidden = true;\n          preview.hidden = false;\n          swatches.hidden = false;\n          preview.classList.add('in');\n          swatches.classList.add('in');\n        }, 1100);\n      });\n      const sws = swatches ? swatches.querySelectorAll('.sw') : [];\n      sws.forEach(sw => sw.addEventListener('click', () => {\n        sws.forEach(x => x.classList.remove('on'));\n        sw.classList.add('on');\n        if (tint) tint.style.background = sw.dataset.tint || 'transparent';\n        if (name) name.textContent = sw.dataset.name || '';\n      }));\n      const first = swatches ? swatches.querySelector('.sw.on') : null;\n      if (first && tint) tint.style.background = first.dataset.tint;\n    })();\n\n    // Projects founder card: same 3D hover treatment as the about-page frame.\n    (function () {\n      const wrap = document.getElementById('projectsFounderCardWrap');\n      const card = document.getElementById('projectsFounderCard3d');\n      const glare = document.getElementById('projectsFounderGlare');\n      if (!wrap || !card || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;\n\n      let bounds;\n      const updateBounds = () => {\n        bounds = wrap.getBoundingClientRect();\n      };\n\n      wrap.addEventListener('mouseenter', () => {\n        updateBounds();\n        if (glare) glare.style.opacity = '1';\n      });\n\n      window.addEventListener('scroll', updateBounds, { passive: true });\n      window.addEventListener('resize', updateBounds, { passive: true });\n\n      wrap.addEventListener('mousemove', (event) => {\n        if (!bounds) updateBounds();\n        const mouseX = event.clientX - bounds.left;\n        const mouseY = event.clientY - bounds.top;\n        const xPct = (mouseX / bounds.width - 0.5) * 2;\n        const yPct = (mouseY / bounds.height - 0.5) * 2;\n        const rotX = -yPct * 8;\n        const rotY = xPct * 8;\n\n        card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;\n\n        if (glare) {\n          glare.style.background = `radial-gradient(circle at ${(mouseX / bounds.width) * 100}% ${(mouseY / bounds.height) * 100}%, rgba(255, 255, 255, 0.40) 0%, transparent 60%)`;\n        }\n      });\n\n      wrap.addEventListener('mouseleave', () => {\n        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';\n        if (glare) glare.style.opacity = '0';\n      });\n    })();\n    \n\n" }} />
 </div>
     </>
   );

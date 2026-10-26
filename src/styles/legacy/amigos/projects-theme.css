@@ -472,12 +472,15 @@ body[data-page="projects"] .amigos-wrapper,
 body[data-page="projects"] .amigos-wrapper button,
 body[data-page="projects"] .amigos-wrapper input,
 body[data-page="projects"] .amigos-wrapper select,
-body[data-page="projects"] .amigos-wrapper textarea,
+body[data-page="projects"] .amigos-wrapper textarea {
+  font-family: var(--font-body, Inter, "Plus Jakarta Sans", Arial, sans-serif) !important;
+}
+
 body[data-page="projects"] .amigos-wrapper h1,
 body[data-page="projects"] .amigos-wrapper h2,
 body[data-page="projects"] .amigos-wrapper h3,
 body[data-page="projects"] .amigos-wrapper h4 {
-  font-family: "themeFont", sans-serif !important;
+  font-family: var(--font-heading, "Plus Jakarta Sans", "Manrope", Inter, Arial, sans-serif) !important;
 }
 
 body[data-page="projects"] .amigos-wrapper {
@@ -1587,6 +1590,11 @@ body[data-page="projects"] .amigos-wrapper .project-card-carousel img {
   opacity: 0;
   animation: projectCardFade 12s infinite;
   animation-delay: calc(var(--carousel-delay, 0s) + var(--img-delay, 0s));
+  animation-play-state: paused;
+}
+
+body[data-page="projects"] .amigos-wrapper #project-showcase-lab.is-visible .project-card-carousel img {
+  animation-play-state: running;
 }
 
 body[data-page="projects"] .amigos-wrapper .project-card-carousel img:nth-child(2) {
@@ -1804,6 +1812,11 @@ body[data-page="projects"] .amigos-wrapper .partner-logo-track {
   gap: 18px;
   padding: 18px;
   animation: partnersMarquee 28s linear infinite;
+  animation-play-state: paused;
+}
+
+body[data-page="projects"] .amigos-wrapper #partners-strip.is-visible .partner-logo-track {
+  animation-play-state: running;
 }
 
 body[data-page="projects"] .amigos-wrapper .partner-marquee:hover .partner-logo-track {
@@ -2165,55 +2178,6 @@ body[data-page="projects"] .amigos-wrapper .hero .hero-ctas .btn::after {
   display: none !important;
   background: transparent !important;
   transform: none !important;
-}
-
-body[data-page="projects"] .site-header {
-  opacity: 0;
-  transform: translateY(-86px);
-  will-change: opacity, transform;
-}
-
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid),
-html[data-theme="amigos-dark"] body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid),
-html:not([data-theme="amigos-dark"]) body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid),
-html:not([data-theme="amigos-dark"]) body[data-page="projects"] .site-header.projects-hero-header.is-scrolled:not(.projects-header-solid),
-html:not([data-theme="amigos-dark"]) body[data-page="projects"] .site-header.projects-hero-header.scrolled:not(.projects-header-solid),
-html[data-theme="amigos-dark"] body[data-page="projects"] .site-header.projects-hero-header.is-scrolled:not(.projects-header-solid),
-html[data-theme="amigos-dark"] body[data-page="projects"] .site-header.projects-hero-header.scrolled:not(.projects-header-solid) {
-  background: transparent !important;
-  background-color: transparent !important;
-  border-bottom-color: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .site-nav a,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .dropdown-trigger,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .nav-link,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .logo strong,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .logo small {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-}
-
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .hamburger span {
-  background: #fff !important;
-}
-
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .customer-header-btn,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .header-btn {
-  background: rgba(255, 255, 255, .08) !important;
-  border-color: rgba(255, 255, 255, .38) !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-}
-
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .theme-toggle,
-body[data-page="projects"] .site-header.projects-hero-header:not(.projects-header-solid) .sound-toggle {
-  background: rgba(255, 255, 255, .10) !important;
-  border-color: rgba(255, 255, 255, .28) !important;
-  color: #fff !important;
 }
 
 body[data-page="projects"] .amigos-wrapper .projects-scrub-hero {
@@ -3278,6 +3242,7 @@ body[data-page="projects"] .amigos-wrapper {
   --re-orange: var(--am-orange-clean);
   --re-red: var(--am-pink-clean);
   --re-pink: var(--am-magenta-clean);
+  --projects-action-gradient: linear-gradient(105deg, #9A5A00 0%, #B43F00 44%, #A91452 100%);
 }
 
 body[data-page="projects"] .amigos-wrapper section:not(.hero):not(#final) {
@@ -3313,7 +3278,7 @@ body[data-page="projects"] .amigos-wrapper .founder-link,
 body[data-page="projects"] .amigos-wrapper .projects-enquiry-form button[type="submit"],
 body[data-page="projects"] .amigos-wrapper .real-estate-action,
 body[data-page="projects"] .amigos-wrapper .real-estate-primary-link {
-  background: var(--am-mixed-grad) !important;
+  background: var(--projects-action-gradient) !important;
   border: 1px solid rgba(246, 190, 16, .44) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
@@ -3346,7 +3311,7 @@ body[data-page="projects"] .amigos-wrapper .real-estate-action.is-active,
 body[data-page="projects"] .amigos-wrapper .real-estate-primary-link:hover {
   transform: translateY(-4px) scale(1.015) !important;
   filter: saturate(1.14) brightness(1.04) !important;
-  background: var(--am-mixed-grad) !important;
+  background: var(--projects-action-gradient) !important;
   border-color: rgba(246, 190, 16, .44) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
@@ -3372,8 +3337,22 @@ body[data-page="projects"] .amigos-wrapper .num,
 body[data-page="projects"] .amigos-wrapper .flow-num,
 body[data-page="projects"] .amigos-wrapper .arrow,
 body[data-page="projects"] .amigos-wrapper .gold {
-  color: #E62453 !important;
-  -webkit-text-fill-color: #E62453 !important;
+  color: #A91452 !important;
+  -webkit-text-fill-color: #A91452 !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .eyebrow,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .founder-kicker,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .real-estate-kicker,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .section-head .eyebrow,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .project-stat-suffix,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .stats .stat .num .suffix,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .num,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .flow-num,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .arrow,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .gold {
+  color: #FFD21F !important;
+  -webkit-text-fill-color: #FFD21F !important;
 }
 
 body[data-page="projects"] .amigos-wrapper .brush path {
@@ -3468,7 +3447,7 @@ html[data-theme="dark"] body[data-page="projects"] .amigos-wrapper #real-estate-
 
 body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button:hover,
 body[data-page="projects"] .amigos-wrapper #real-estate-hub .real-estate-filter-bar > button.is-active {
-  background: var(--am-mixed-grad) !important;
+  background: var(--projects-action-gradient) !important;
   border-color: rgba(246, 190, 16, .44) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
@@ -3482,18 +3461,28 @@ body[data-page="projects"] .amigos-wrapper .ba-dot.on,
 body[data-page="projects"] .amigos-wrapper .chip.on,
 body[data-page="projects"] .amigos-wrapper .tab.on,
 body[data-page="projects"] .amigos-wrapper .sw.on {
-  background: #E62453 !important;
-  border-color: #E62453 !important;
+  background: #A91452 !important;
+  border-color: #A91452 !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   box-shadow: 0 0 0 6px rgba(230, 36, 83, .16), 0 10px 24px rgba(230, 36, 83, .18) !important;
 }
 
 body[data-page="projects"] .amigos-wrapper a:hover,
-body[data-page="projects"] .amigos-wrapper .tab.on,
 body[data-page="projects"] .amigos-wrapper .dash-side .side-item.on {
-  color: #E62453 !important;
-  -webkit-text-fill-color: #E62453 !important;
+  color: #A91452 !important;
+  -webkit-text-fill-color: #A91452 !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper a:hover,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .dash-side .side-item.on {
+  color: #FFD21F !important;
+  -webkit-text-fill-color: #FFD21F !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .tab.on {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* Exact homepage primary CTA styling for the final Projects button. */
@@ -3885,5 +3874,521 @@ body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn.btn-solid:h
   body[data-page="projects"] main .projects-scrub-hero .hero-ctas .btn.btn-solid {
     width: 100% !important;
     min-width: 0 !important;
+  }
+}
+
+/* Projects UI audit: readable first frame and consistent theme contrast. */
+body[data-page="projects"] .amigos-wrapper .projects-scrub-hero .hero-inner {
+  --projects-content-glow: 1 !important;
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+html[data-theme] body.projects-page[data-page="projects"] .amigos-wrapper section.hero.projects-scrub-hero :is(.hero-eyebrow, h1, .project-accentline, .hero-sub) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: 0 2px 18px rgba(7, 26, 51, .72);
+}
+
+/* Match every Projects CTA to the About page button treatment. */
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+) {
+  position: relative !important;
+  isolation: isolate !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 58px !important;
+  padding: 16px 30px 16px 72px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  overflow: hidden !important;
+  background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  text-decoration: none !important;
+  box-shadow: 0 18px 38px rgba(230, 36, 83, .18) !important;
+  transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
+}
+
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+)::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  z-index: 0 !important;
+  display: block !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+  transform: translateY(-50%) !important;
+  transition: transform .25s ease, background .25s ease !important;
+  pointer-events: none !important;
+}
+
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+)::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 18px !important;
+  top: 50% !important;
+  z-index: 1 !important;
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+  background: #071a33 !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M13 5l7 7-7 7' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M13 5l7 7-7 7' fill='none' stroke='black' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat !important;
+  transform: translateY(-50%) !important;
+  transition: transform .25s ease, background .25s ease !important;
+  pointer-events: none !important;
+}
+
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible) {
+  background: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible)::before {
+  transform: translate(6px, -50%) !important;
+}
+
+body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible)::after {
+  transform: translate(6px, -50%) !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible) {
+  background: #fff !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible)::before {
+  background: #071a33 !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] #projectsPage :is(
+  .btn,
+  .founder-link,
+  .real-estate-action,
+  .real-estate-primary-link,
+  .new-final-cta .btn-cta
+):is(:hover, :focus-visible)::after {
+  background: #fff !important;
+}
+
+@media (max-width: 640px) {
+  body[data-page="projects"] #projectsPage :is(
+    .btn,
+    .founder-link,
+    .real-estate-action,
+    .real-estate-primary-link,
+    .new-final-cta .btn-cta
+  ) {
+    width: 100% !important;
+    max-width: 360px !important;
+    min-height: 54px !important;
+    padding: 15px 24px 15px 66px !important;
+  }
+}
+/* Projects page feature sections */
+    .new-sections-wrapper { font-family: inherit; }
+
+    .new-intl-showcase { position: relative; padding: 120px 0; color: #fff !important; overflow: hidden; display: flex; align-items: center; min-height: 70vh; }
+    .new-intl-showcase .bg-wrap { position: absolute; inset: 0; z-index: 1; }
+    .new-intl-showcase img.bg-img { width: 100%; height: 100%; object-fit: cover; }
+    .new-intl-showcase .overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,23,32,0.85) 0%, rgba(15,23,32,0.4) 50%, transparent 100%); }
+    .new-intl-showcase .content { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 40px; }
+    .new-intl-showcase .text-col { max-width: 600px; }
+    .new-intl-showcase .eyebrow-text { font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: #F39125; margin-bottom: 20px; font-weight: 600; }
+    .new-intl-showcase h2 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.05; margin-bottom: 24px; font-weight: 300; letter-spacing: -0.02em; color: #fff !important; }
+    .new-intl-showcase p { font-size: 1.25rem; line-height: 1.6; margin-bottom: 40px; color: #fff !important; font-weight: 300; }
+    .new-intl-showcase .badge { text-align: center; border: 1px solid rgba(255,255,255,0.2); padding: 40px 30px; border-radius: 8px; backdrop-filter: blur(10px); background: rgba(0,0,0,0.2); min-width: 180px; }
+
+    #new-services-section { color: #fff; padding: 100px 0; border-bottom: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    /* Indestructible Gradient Rule */
+    html body[data-page] .amigos-wrapper section#new-services-section,
+    html[data-theme] body[data-page] .amigos-wrapper section#new-services-section {
+        background: linear-gradient(135deg, #f6be10 0%, #f39125 40%, #c73b8e 100%) !important;
+        background-color: transparent !important;
+    }
+
+    .new-services .container { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; width: 100%; }
+    .new-services .text-col { max-width: 100%; width: 100%; }
+    .new-services .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.8) !important; margin-bottom: 16px; }
+    .new-services h2 { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.15; font-weight: 300; margin: 0; color: #fff !important; }
+    .new-services .icons-row { display: flex; gap: 20px; flex-wrap: nowrap; width: 100%; overflow-x: auto; scrollbar-width: none; }
+    .new-services .icon-item { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; cursor: pointer; color: rgba(255,255,255,0.75); padding: 32px 24px; border-radius: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); flex: 1; min-width: 160px; padding: 40px 24px; }
+    .new-services .icon-item svg { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .new-services .icon-item:hover { color: #fff; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.4); transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .new-services .icon-item:hover svg { color: #fff; filter: drop-shadow(0 4px 8px rgba(255,255,255,0.5)); transform: scale(1.15) translateY(-2px); }
+
+    .new-ba-section { background: #0F1720; color: #fff; overflow: hidden; }
+    .new-ba-grid { display: grid; grid-template-columns: minmax(350px, 450px) 1fr; align-items: stretch; min-height: 60vh; }
+    .new-ba-text { padding: 80px 5vw; display: flex; flex-direction: column; justify-content: center; z-index: 2; position: relative; text-align: left; }
+    .new-ba-text-inner { max-width: 500px; margin-left: auto; }
+    .new-ba-text .eyebrow-text { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; }
+    .new-ba-text h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.1; margin-bottom: 24px; font-weight: 300; }
+    .new-ba-text p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
+
+    .new-ba-interactive { position: relative; display: flex; width: 100%; min-height: 500px; height: 100%; overflow: hidden; user-select: none; }
+    .new-ba-before, .new-ba-after { position: relative; height: 100%; overflow: hidden; flex-shrink: 0; }
+    .new-ba-before { width: 50%; }
+    .new-ba-after { width: 50%; }
+    .new-ba-before img, .new-ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 500px; }
+    .new-ba-tag { position: absolute; top: 30px; z-index: 3; padding: 8px 18px; border-radius: 999px; background: rgba(0,0,0,0.55); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; backdrop-filter: blur(8px); pointer-events: none; white-space: nowrap; text-transform: uppercase; }
+    .new-ba-tag.before { left: 30px; }
+    .new-ba-tag.after { right: 30px; }
+    .new-ba-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 3px; background: #fff; transform: translateX(-50%); cursor: ew-resize; z-index: 4; }
+    .new-ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .new-ba-handle svg { width: 18px; height: 18px; stroke: #000; margin: 0 -2px; }
+
+
+
+
+
+
+
+
+
+
+    .new-final-cta { background: #0B1117; color: #fff; padding: 100px 0; position: relative; overflow: hidden; }
+    .new-final-cta .bg-letter { position: absolute; right: -5%; bottom: -20%; font-size: 600px; font-weight: 800; line-height: 0.8; color: rgba(255,255,255,0.02); pointer-events: none; z-index: 1; }
+    .new-final-cta .container { position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 40px; }
+    .new-final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
+    .new-final-cta p { font-size: 1.2rem; color: rgba(255,255,255,0.7); font-weight: 300; margin: 0; }
+    .new-final-cta .btn-cta { background: #F39125; color: #0F1720; border: none; font-weight: 500; padding: 16px 32px; font-size: 1.1rem; flex-shrink: 0; border-radius: 40px; text-decoration: none; display: inline-block; transition: background 0.3s; }
+    .new-final-cta .btn-cta:hover { background: #fff; }
+
+    @media (max-width: 900px) {
+      .new-ba-grid { grid-template-columns: 1fr; }
+      .new-intl-showcase .content { flex-direction: column; align-items: flex-start; }
+    }
+
+/* Enquiry controls: select-only combobox treatment. */
+body[data-page="projects"] .amigos-wrapper .projects-enquiry-form {
+  overflow: visible !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field > span {
+  margin-bottom: 9px !important;
+  color: rgba(7, 26, 51, .72) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: .06em !important;
+  line-height: 1.35 !important;
+  text-transform: none !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field input,
+body[data-page="projects"] .amigos-wrapper .enquiry-field textarea {
+  min-height: 58px !important;
+  border: 1px solid rgba(7, 26, 51, .14) !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, .82) !important;
+  box-shadow: 0 8px 24px rgba(7, 26, 51, .055) !important;
+  color: #071a33 !important;
+  padding: 15px 18px !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field textarea {
+  min-height: 116px !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select {
+  position: relative;
+  z-index: 2;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-native-select {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-trigger {
+  display: flex !important;
+  position: relative !important;
+  z-index: 3 !important;
+  width: 100% !important;
+  min-height: 58px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  border: 1px solid rgba(7, 26, 51, .14) !important;
+  border-radius: 18px !important;
+  background: rgba(255, 255, 255, .82) !important;
+  box-shadow: 0 8px 24px rgba(7, 26, 51, .055) !important;
+  color: #071a33 !important;
+  font: inherit !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  padding: 9px 12px 9px 18px !important;
+  text-align: left !important;
+  transform: none !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-trigger:hover,
+body[data-page="projects"] .amigos-wrapper .enquiry-select-trigger:focus-visible,
+body[data-page="projects"] .amigos-wrapper .enquiry-select.is-open .enquiry-select-trigger {
+  border-color: rgba(230, 36, 83, .56) !important;
+  box-shadow: 0 0 0 4px rgba(230, 36, 83, .10), 0 10px 28px rgba(7, 26, 51, .08) !important;
+  outline: none !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select:not(.has-value) .enquiry-select-value {
+  color: rgba(7, 26, 51, .48) !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-icon {
+  display: flex !important;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(7, 26, 51, .10);
+  border-radius: 50%;
+  background: #f2f5f9;
+  color: #20344f;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-icon svg {
+  display: block !important;
+  position: static !important;
+  inset: auto !important;
+  margin: 0 !important;
+  width: 18px !important;
+  height: 18px !important;
+  flex: 0 0 18px !important;
+  vertical-align: middle !important;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select.is-open .enquiry-select-icon {
+  transform: rotate(180deg);
+  background: #071a33;
+  color: #fff;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-listbox {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  z-index: 50 !important;
+  max-height: 238px;
+  overflow-y: auto;
+  padding: 6px;
+  border: 1px solid rgba(7, 26, 51, .12);
+  border-radius: 16px;
+  background: #fff !important;
+  opacity: 1 !important;
+  box-shadow: 0 18px 42px rgba(7, 26, 51, .16);
+  pointer-events: auto;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select.is-open .enquiry-listbox {
+  display: block !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-field {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-select-field:has(.enquiry-select.is-open) {
+  z-index: 30 !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-option {
+  display: flex !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  color: #071a33 !important;
+  font: inherit !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  padding: 10px 12px !important;
+  text-align: left !important;
+  transform: none !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-option:hover,
+body[data-page="projects"] .amigos-wrapper .enquiry-option:focus-visible,
+body[data-page="projects"] .amigos-wrapper .enquiry-option.is-selected {
+  background: rgba(243, 145, 37, .12) !important;
+  color: #071a33 !important;
+  outline: none !important;
+}
+
+body[data-page="projects"] .amigos-wrapper .enquiry-option.is-selected::after {
+  content: "✓";
+  color: #c73b8e;
+  font-weight: 800;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-field > span {
+  color: rgba(255, 255, 255, .72) !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-field input,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-field textarea,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-select-trigger {
+  border-color: rgba(255, 255, 255, .16) !important;
+  background: rgba(255, 255, 255, .08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .16) !important;
+  color: #fff !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-select:not(.has-value) .enquiry-select-value,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-field input::placeholder,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-field textarea::placeholder {
+  color: rgba(255, 255, 255, .54) !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-select-icon {
+  border-color: rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-select.is-open .enquiry-select-icon {
+  background: linear-gradient(135deg, #f6be10, #e62453);
+  color: #071a33;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-listbox {
+  border-color: rgba(255, 255, 255, .14);
+  background: #102b4b !important;
+  opacity: 1 !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .32);
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-option {
+  color: rgba(255, 255, 255, .86) !important;
+}
+
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-option:hover,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-option:focus-visible,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] .amigos-wrapper .enquiry-option.is-selected {
+  background: rgba(243, 145, 37, .18) !important;
+  color: #fff !important;
+}
+
+@media (max-width: 980px) {
+  body[data-page="projects"] .amigos-wrapper .enquiry-listbox {
+    max-height: 220px;
+  }
+}
+
+/* Card actions keep the shared CTA style without the standalone arrow treatment. */
+body[data-page="projects"] #projectsPage .real-estate-action {
+  padding-left: 30px !important;
+}
+
+body[data-page="projects"] #projectsPage .real-estate-action::before,
+body[data-page="projects"] #projectsPage .real-estate-action::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  body[data-page="projects"] #projectsPage .real-estate-action {
+    padding: 15px 24px !important;
+  }
+}
+
+body[data-page="projects"] #projectsPage #final a.btn.btn-solid.mag {
+  padding-left: 104px !important;
+}
+
+@media (max-width: 640px) {
+  body[data-page="projects"] #projectsPage #final a.btn.btn-solid.mag {
+    padding-left: 88px !important;
   }
 }
