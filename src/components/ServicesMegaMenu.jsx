@@ -92,7 +92,10 @@ export default function ServicesMegaMenu({ isDark = false }) {
             {group.label}
           </button>
         ))}
-        <a className={styles.allServices} href="/services">See All Services <span aria-hidden="true">→</span></a>
+        <a className={styles.allServices} href="/services">
+          <span className={styles.allServicesLabel}>See All Services</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </div>
 
       <div className={styles.services} role="tabpanel">
