@@ -24,12 +24,30 @@ const imageHeroPaths = new Set([
   "/water-damage",
 ]);
 
+const servicePaths = new Set([
+  "/services",
+  "/appartment-renovation",
+  "/color-and-material",
+  "/Drywall",
+  "/exterior-painting",
+  "/Facade-Renovation",
+  "/interior-painting",
+  "/mold",
+  "/molding",
+  "/Plastering",
+  "/spray-painting",
+  "/water-damage",
+]);
+
 export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
   const isProjects = pathname === "/projects";
+  const isDamageService = pathname === "/schadensservice";
   const hasImageHero = imageHeroPaths.has(pathname);
+  const isServicesPage = servicePaths.has(pathname);
+  const isActive = (href) => pathname === href;
   const [isCustomerLoggedIn, setIsCustomerLoggedIn] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const { isPlaying: isAudioPlaying, toggleSound } = useAmigosAudio();
@@ -97,7 +115,7 @@ export default function Header() {
   };
 
   return (
-      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout || isProjects ? " about-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
+      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout || isProjects ? " about-header" : ""}${isDamageService ? " damage-service-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
         <span className={styles.logoSymbol} aria-hidden="true">
           <img src="/logo.webp" alt="" />
@@ -109,40 +127,31 @@ export default function Header() {
       </a>
 
       <nav className="site-nav">
-        <a href="/" data-page="home">
+        <a href="/" data-page="home" className={isActive("/") ? "is-active" : undefined} aria-current={isActive("/") ? "page" : undefined}>
           Home
         </a>
-        <a href="/about" data-page="about">
+        <a href="/about" data-page="about" className={isActive("/about") ? "is-active" : undefined} aria-current={isActive("/about") ? "page" : undefined}>
           About
         </a>
 
         <div className="nav-dropdown">
-          <a href="/services" className="dropdown-trigger">
+          <a href="/services" className={`dropdown-trigger${isServicesPage ? " is-active" : ""}`} aria-current={isServicesPage ? "page" : undefined}>
             Services
-            <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 9l6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
           </a>
           <ServicesMegaMenu isDark={isDarkTheme} />
         </div>
 
-        <a href="/schadensservice" data-page="schadensservice">
+        <a href="/schadensservice" data-page="schadensservice" className={isActive("/schadensservice") ? "is-active" : undefined} aria-current={isActive("/schadensservice") ? "page" : undefined}>
           Schadensservice
         </a>
 
-        <a href="/projects" data-page="projects">
+        <a href="/projects" data-page="projects" className={isActive("/projects") ? "is-active" : undefined} aria-current={isActive("/projects") ? "page" : undefined}>
           Projects
         </a>
-        <a href="/partners" data-page="partners">
+        <a href="/partners" data-page="partners" className={isActive("/partners") ? "is-active" : undefined} aria-current={isActive("/partners") ? "page" : undefined}>
           Partners
         </a>
-        <a href="/contact" data-page="contact">
+        <a href="/contact" data-page="contact" className={isActive("/contact") ? "is-active" : undefined} aria-current={isActive("/contact") ? "page" : undefined}>
           Contact
         </a>
       </nav>

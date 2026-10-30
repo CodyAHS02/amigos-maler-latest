@@ -205,6 +205,30 @@
   flex-shrink: 0;
 }
 
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn),
+:global(html body .site-header.damage-service-header .header-actions .header-btn),
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn:hover),
+:global(html body .site-header.damage-service-header .header-actions .header-btn:hover),
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn svg) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Keep the current page visible in every header state. */
+:global(html body .site-header .site-nav > a.is-active),
+:global(html body .site-header .site-nav .dropdown-trigger.is-active) {
+  position: relative !important;
+  color: #050505 !important;
+  -webkit-text-fill-color: #050505 !important;
+}
+
+:global(html[data-theme="amigos-dark"] body .site-header .site-nav > a.is-active),
+:global(html[data-theme="amigos-dark"] body .site-header .site-nav .dropdown-trigger.is-active) {
+  color: #ffd21f !important;
+  -webkit-text-fill-color: #ffd21f !important;
+}
+
 /* Sticky header actions use one consistent outline treatment on every page. */
 :global(html body .site-header.is-scrolled .header-actions .customer-header-btn),
 :global(html body .site-header.is-scrolled .header-actions .header-btn),
@@ -459,6 +483,26 @@
   -webkit-text-fill-color: #fff !important;
 }
 
+@media (max-width: 1120px) {
+  :global(html:not([data-theme="amigos-dark"]) .site-nav.open) {
+    background: linear-gradient(135deg, #fffaf0 0%, #ffffff 52%, #fff0f5 100%) !important;
+    color: #071a33 !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) .site-nav.open > a),
+  :global(html:not([data-theme="amigos-dark"]) .site-nav.open .dropdown-trigger) {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    border-bottom-color: rgba(7, 26, 51, .14) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) .site-nav.open > a::before),
+  :global(html:not([data-theme="amigos-dark"]) .site-nav.open .dropdown-trigger::before) {
+    color: rgba(7, 26, 51, .56) !important;
+    -webkit-text-fill-color: rgba(7, 26, 51, .56) !important;
+  }
+}
+
 /* Sticky header actions use the brand gradient instead of the legacy black fill. */
 :global(html body .site-header.is-scrolled .header-actions .customer-header-btn),
 :global(html body .site-header.is-scrolled .header-actions .header-btn),
@@ -470,4 +514,43 @@
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   box-shadow: 0 10px 24px rgba(230, 36, 83, .2) !important;
+}
+
+/* Keep Schadensservice action labels white after every sticky-header override. */
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn),
+:global(html body .site-header.damage-service-header .header-actions .header-btn),
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn:hover),
+:global(html body .site-header.damage-service-header .header-actions .header-btn:hover),
+:global(html body .site-header.damage-service-header .header-actions .customer-header-btn svg) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: #fff !important;
+}
+@media (max-width: 1120px) {
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open),
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open *) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open) {
+    background: linear-gradient(135deg, #fffaf0 0%, #ffffff 52%, #fff0f5 100%) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open > a),
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open .dropdown-trigger) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+    border-bottom-color: rgba(5, 5, 5, .16) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open > a::before),
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open .dropdown-trigger::before) {
+    color: rgba(5, 5, 5, .56) !important;
+    -webkit-text-fill-color: rgba(5, 5, 5, .56) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body .site-header .hamburger.active span) {
+    background: #050505 !important;
+  }
 }

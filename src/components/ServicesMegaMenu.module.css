@@ -112,6 +112,13 @@
   -webkit-text-fill-color: #fff !important;
 }
 
+.allServices::before,
+.allServices::after,
+.allServices > span:not(.allServicesLabel) {
+  display: none !important;
+  content: none !important;
+}
+
 .services {
   min-width: 0;
   padding: 34px 30px 28px;
@@ -353,7 +360,11 @@
     color: #ff91ad;
   }
 
-  .allServices { display: none; }
+  :global(.site-nav) .allServices {
+    display: inline-flex;
+    width: 100%;
+    margin: 10px 0 0;
+  }
 
   .services {
     padding: 16px 10px 12px;
@@ -377,9 +388,86 @@
     color: #fff;
   }
 
+  :global(.site-nav) .service {
+    opacity: 1 !important;
+    transform: none !important;
+    border: 0 !important;
+  }
+
+  :global(.site-nav) .service::before {
+    display: none !important;
+    content: none !important;
+  }
+
   .serviceCopy small { color: #b5c2d3; }
   .icon { background: linear-gradient(#071a33, #071a33) padding-box, linear-gradient(135deg, #f6be10, #e62453, #ef168e) border-box; }
   .imagePanel { display: none; }
+}
+
+@media (max-width: 1000px) {
+  :global(html:not([data-theme="amigos-dark"])) .menu {
+    border: 1px solid rgba(7, 26, 51, .14);
+    background: rgba(255, 255, 255, .96);
+    color: #071a33;
+    box-shadow: 0 18px 40px rgba(7, 26, 51, .12);
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .tabs {
+    background: #fffaf0;
+    border-bottom: 1px solid rgba(7, 26, 51, .10);
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .tab {
+    color: #071a33;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .activeTab {
+    background: linear-gradient(100deg, rgba(246, 190, 16, .18), rgba(230, 36, 83, .12));
+    color: #d52968;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .intro span,
+  :global(html:not([data-theme="amigos-dark"])) .serviceCopy small {
+    color: #5f6b7a;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .service {
+    color: #071a33;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .service:hover,
+  :global(html:not([data-theme="amigos-dark"])) .service:focus-visible {
+    background: rgba(246, 190, 16, .10);
+    color: #071a33;
+  }
+
+  :global(html:not([data-theme="amigos-dark"])) .icon {
+    background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #f6be10, #e62453, #ef168e) border-box;
+  }
+}
+
+@media (max-width: 1000px) {
+  :global(html:not([data-theme="amigos-dark"]) .menu),
+  :global(html:not([data-theme="amigos-dark"]) .menu *) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) .menu) {
+    background: rgba(255, 255, 255, .98) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) .tab),
+  :global(html:not([data-theme="amigos-dark"]) .serviceCopy strong) {
+    color: #050505 !important;
+    -webkit-text-fill-color: #050505 !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) .intro span),
+  :global(html:not([data-theme="amigos-dark"]) .serviceCopy small) {
+    color: #4d5560 !important;
+    -webkit-text-fill-color: #4d5560 !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

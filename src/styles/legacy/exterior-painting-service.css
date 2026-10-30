@@ -65,6 +65,34 @@ a {
     margin: auto;
 }
 
+/* Keep exterior service content on the shared header gutter. */
+body:has(.svc-hero) .svc-wrapper {
+    width: calc(100% - 140px);
+    max-width: none;
+    margin-inline: 70px;
+}
+
+@media (max-width: 1360px) {
+    body:has(.svc-hero) .svc-wrapper {
+        width: calc(100% - 88px);
+        margin-inline: 44px;
+    }
+}
+
+@media (max-width: 1120px) {
+    body:has(.svc-hero) .svc-wrapper {
+        width: calc(100% - 56px);
+        margin-inline: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    body:has(.svc-hero) .svc-wrapper {
+        width: calc(100% - 48px);
+        margin-inline: 24px;
+    }
+}
+
 
 
 /* =========================================
@@ -435,18 +463,20 @@ a {
 
 .ba-before-pane,
 .ba-after-pane {
-    position: relative;
+    position: absolute;
+    inset: 0;
     height: 100%;
+    width: 100%;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .ba-before-pane {
-    width: 50%;
+    z-index: 1;
 }
 
 .ba-after-pane {
-    width: 50%;
+    z-index: 2;
+    clip-path: inset(0 0 0 50%);
 }
 
 .ba-before-pane img,
@@ -675,12 +705,14 @@ a {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 30px;
 }
 
 .process-card {
     background: var(--am-cream);
     padding: 35px;
     border-radius: 25px;
+    overflow: hidden;
     border: 1px solid var(--am-line'
 
         );
@@ -1093,6 +1125,13 @@ a {
     animation: exteriorLogoGradientShift 9s ease-in-out infinite;
 }
 
+/* Exterior benefits use the site's solid navy surface, not the animated gradient. */
+body .benefits-section.navy-section {
+    background: #071A33 !important;
+    background-image: none !important;
+    animation: none !important;
+}
+
 .svc-marquee-track span {
     color: rgba(255, 255, 255, .78);
 }
@@ -1117,6 +1156,10 @@ a {
     background-size: 260% 260%;
     transition: opacity .45s ease;
     animation: exteriorLogoGradientShift 9s ease-in-out infinite;
+}
+
+.process-card::before {
+    border-radius: inherit;
 }
 
 .svc-intro-point>*,
@@ -1320,7 +1363,6 @@ a {
     }
 }
 
-
 /* =========================================
    LIGHT MODE OVERRIDES FOR HERO
 ========================================= */
@@ -1365,4 +1407,37 @@ html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary {
 
 html:not([data-theme="amigos-dark"]) .svc-hero-buttons .svc-btn-secondary:hover {
     box-shadow: 0 12px 24px rgba(243, 145, 37, .12) !important;
+}
+
+/* Keep the material swatch distinct when its card is hovered. */
+body .materials-section .material-card:hover {
+    background: #071A33 !important;
+    background-image: none !important;
+    border-color: rgba(255, 255, 255, .18) !important;
+}
+
+body .materials-section .material-card:hover::before {
+    opacity: 0 !important;
+}
+
+body .materials-section .material-card:hover :where(h3, p) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Give the exterior CTA a relevant facade image without sacrificing text contrast. */
+body .final-cta {
+    position: relative;
+    isolation: isolate;
+    background-image:
+        linear-gradient(90deg, rgba(7, 26, 51, .94), rgba(7, 26, 51, .78)),
+        url('/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.jpg') !important;
+    background-size: cover !important;
+    background-position: center 58% !important;
+    animation: none !important;
+}
+
+body .final-cta > * {
+    position: relative;
+    z-index: 1;
 }

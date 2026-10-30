@@ -191,12 +191,12 @@ export default function ExteriorPaintingContent() {
             <div className="before-after-slider" id="baSlider">
 
                 <div className="ba-before-pane" id="baBeforePane">
-                    <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+                    <img src="/assets/exterior-painting-before-facade.png" alt="Weathered exterior facade before painting" />
                     <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                 </div>
 
                 <div className="ba-after-pane" id="baAfterPane">
-                    <img src="/assets/Services-After-Room.png" alt="After renovation" />
+                    <img src="/assets/exterior-painting-after-facade.png" alt="Freshly painted exterior facade after painting" />
                     <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                 </div>
 
@@ -788,7 +788,7 @@ export default function ExteriorPaintingContent() {
 
 
             <a href="/property-value-preservation" className="svc-btn-primary">
-                Discover Property Preservation →
+                Discover Property Preservation
             </a>
 
 
@@ -797,6 +797,13 @@ export default function ExteriorPaintingContent() {
     </section>
 
     <section className="final-cta navy-section svc-reveal">
+
+        <img
+            className="final-cta-bg"
+            src="/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.jpg"
+            alt=""
+            aria-hidden="true"
+        />
 
         <div className="svc-wrapper">
 

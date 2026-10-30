@@ -493,8 +493,9 @@ runWhenDomReady(() => {
             let value = ((x - box.left) / box.width) * 100;
             value = Math.max(0, Math.min(100, value));
 
-            beforePane.style.width = value + "%";
-            afterPane.style.width = (100 - value) + "%";
+            beforePane.style.width = "100%";
+            afterPane.style.width = "100%";
+            afterPane.style.clipPath = `inset(0 0 0 ${value}%)`;
             divider.style.left = value + "%";
 
             baTagBefore.style.opacity = value < EDGE_FADE_ZONE ? clamp01(value / EDGE_FADE_ZONE) : 1;

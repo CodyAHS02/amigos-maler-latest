@@ -196,33 +196,54 @@ runWhenDomReady(() => {
     });
 
 
-    gsap.to(".process-progress", {
-        height: "100%",
-        ease: "none",
-        scrollTrigger: {
-            trigger: ".process-timeline",
-            start: "top center",
-            end: "bottom center",
-            scrub: 1.5
-        }
-    });
+    const processTimeline = document.querySelector(".process-timeline");
+    const processTrack = document.querySelector(".process-track");
+    const processSection = document.querySelector(".process-section");
 
-
-    gsap.utils.toArray(".process-step").forEach((step, index) => {
-
-        gsap.to(step, {
-            opacity: 1,
-            y: 0,
-            duration: .8,
-            ease: "power3.out",
+    if (processTimeline && processTrack && processSection && window.matchMedia("(min-width: 769px)").matches) {
+        const getTravel = () => Math.max(0, processTrack.scrollWidth - processTimeline.clientWidth);
+        const horizontalProcess = gsap.timeline({
             scrollTrigger: {
-                trigger: step,
-                start: "top 80%",
-                once: true
+                trigger: processSection,
+                start: "top 96px",
+                end: () => `+=${getTravel()}`,
+                pin: true,
+                pinSpacing: true,
+                scrub: 1.2,
+                invalidateOnRefresh: true
             }
         });
 
-    });
+        horizontalProcess
+            .to(processTrack, { x: () => -getTravel(), ease: "none" }, 0)
+            .to(".process-progress", { width: "100%", ease: "none" }, 0);
+        gsap.set(".process-step", { opacity: 1, y: 0 });
+    } else {
+        gsap.to(".process-progress", {
+            height: "100%",
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".process-timeline",
+                start: "top center",
+                end: "bottom center",
+                scrub: 1.5
+            }
+        });
+
+        gsap.utils.toArray(".process-step").forEach((step) => {
+            gsap.to(step, {
+                opacity: 1,
+                y: 0,
+                duration: .8,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: step,
+                    start: "top 80%",
+                    once: true
+                }
+            });
+        });
+    }
 
 
 

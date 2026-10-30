@@ -437,7 +437,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary),
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) {
     position: relative !important;
     isolation: isolate !important;
@@ -471,7 +471,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary)::before,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::before,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::before,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::before {
     content: "" !important;
     position: absolute !important;
@@ -499,7 +499,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary)::after,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::after,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::after {
     content: "→" !important;
     position: absolute !important;
@@ -543,6 +543,36 @@ html body[data-page="contact"] .backButton::after {
     content: "←" !important;
 }
 
+/* Keep service card numbers readable on the light-theme hover gradient. */
+html:not([data-theme="amigos-dark"]) body :is(
+    .service-card:hover .number,
+    .service-card:hover .service-number,
+    .process-card:hover span,
+    .process-card:hover .step-number,
+    .why-card:hover .icon,
+    .review-card:hover .stars,
+    .review-card:hover span,
+    .svc-intro-point:hover span
+) {
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* Override the light-theme gradient text on hovered service intro numbers. */
+html:not([data-theme="amigos-dark"]) body:has(.svc-intro-point) .svc-intro-point:hover > span {
+    background: none !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: none !important;
+}
+
 /* One arrow treatment everywhere: use the original heavy site glyph, never the thin fallback. */
 body :is(a, button):where(
     [class*="btn" i],
@@ -559,7 +589,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary) > *,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) > *,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) > *,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) > * {
     position: relative !important;
     z-index: 2 !important;
@@ -572,7 +602,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover {
     transform: translateY(-3px) !important;
     background: #000000 !important;
@@ -588,7 +618,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover::before,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::before,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::before,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::before {
     transform: translate(6px, -50%) !important;
 }
@@ -598,7 +628,7 @@ body :is(a, button):where(
     [class*="button" i],
     [class*="cta" i]
 ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover::after,
-body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::after,
 body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::after {
     transform: translate(6px, -52%) !important;
 }
@@ -609,7 +639,7 @@ body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.
         [class*="button" i],
         [class*="cta" i]
     ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary),
-    body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
+    body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
     body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) {
         width: 100% !important;
         max-width: 360px !important;
@@ -1327,4 +1357,33 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
 :is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn:hover::after,
 :is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn:hover::after {
     transform: translate(6px, -52%) !important;
+}
+
+/* Keep the exterior CTA image visible after theme background overrides. */
+body .final-cta {
+    position: relative !important;
+    overflow: hidden !important;
+    background: #071A33 !important;
+    background-image: none !important;
+}
+
+body .final-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, rgba(7, 26, 51, .9), rgba(7, 26, 51, .68));
+    pointer-events: none;
+}
+
+body .final-cta .final-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+    opacity: .72;
+    pointer-events: none;
 }

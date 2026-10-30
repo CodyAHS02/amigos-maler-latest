@@ -1,52 +1,50 @@
 /* eslint-disable react/no-unescaped-entities */
+function ProcessIcon({ name }) {
+  const paths = {
+    inquiry: <><rect x="6" y="4" width="12" height="16" rx="2" /><path d="M9 4.5h6M9 9h6M9 13h4" /></>,
+    network: <><circle cx="12" cy="5" r="2.5" /><circle cx="5" cy="17" r="2.5" /><circle cx="19" cy="17" r="2.5" /><path d="m10.5 7-4 7.5M13.5 7l4 7.5M7.5 17h9" /></>,
+    collaboration: <><path d="M4 8h4l4 4 4-4h4" /><path d="M4 8v5l4 4 4-4 4 4 4-4V8" /><path d="M8 8V5h8v3" /></>,
+    value: <><path d="M4 11.5 12 5l8 6.5V20H4z" /><path d="M9 20v-5h6v5M12 2v3M4 5l2 2M20 5l-2 2" /></>
+  };
+
+  return <svg className="flow-step-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
+}
+
+function BenefitIcon({ name }) {
+  const paths = {
+    opportunities: <><path d="M4 19V10M10 19V6M16 19V3M22 19H2" /><path d="m4 8 5-3 5 1 6-4" /></>,
+    projects: <><circle cx="9" cy="8" r="3" /><circle cx="17" cy="8" r="3" /><path d="M3 20v-2a5 5 0 0 1 10 0v2M13 20v-2a5 5 0 0 1 8 0v2" /></>,
+    recommendations: <><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" /></>,
+    visibility: <><rect x="4" y="4" width="16" height="12" rx="1.5" /><path d="M8 20h8M12 16v4" /></>
+  };
+
+  return <svg className="benefit-icon-svg" viewBox="0 0 24 24" fill="none" stroke={`url(#benefit-${name})`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><defs><linearGradient id={`benefit-${name}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f6be10" /><stop offset=".48" stopColor="#f39125" /><stop offset="1" stopColor="#e62453" /></linearGradient></defs>{paths[name]}</svg>;
+}
+
 export default function PartnersContent() {
   return (
     <>
 
 <main className="partners-page">
-  <section className="partners-hero" data-hero>
-    <div className="partners-shell partners-hero-grid">
-      <div className="partners-hero-copy partners-reveal">
+  <section className="partners-hero partner-service-hero" data-hero>
+    <div className="partner-service-hero-bg">
+      <img src="/partners/partner-network-hero.png" alt="Premium modern interior prepared for a coordinated property project" />
+    </div>
+    <div className="partner-service-hero-overlay"></div>
+    <div className="partner-service-hero-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div className="partners-shell partner-service-hero-shell">
+      <div className="partners-hero-copy partner-service-hero-copy">
         <p className="partners-kicker">PARTNER NETWORK</p>
-        <h1>Reliable work gets stronger when the right specialists connect.</h1>
-        <p>
-          Amigos Maler partners with selected companies, suppliers and real estate professionals to deliver clean,
-          coordinated property solutions from first consultation to final handover.
-        </p>
+        <h1>Stronger Together.<br /><span>Connecting Values.</span></h1>
+        <p>Whether crafts, real estate, planning or institutions, we bring the right specialists together to create lasting value.</p>
         <div className="partners-hero-actions">
-          <a href="/contact" className="partners-btn partners-btn-primary">Become a Partner <span>↗</span></a>
-          <a href="/customer/login" className="partners-btn partners-btn-outline">Partner Portal <span>→</span></a>
+          <a href="/contact" className="partners-btn partners-btn-primary">Become a Partner</a>
+          <a href="/contact" className="partners-btn partners-btn-outline">Discuss Collaboration</a>
         </div>
-      </div>
-
-      <div className="partner-network" aria-label="Amigos partner network">
-        <div className="network-rings"></div>
-        <div className="network-core">
-          <img src="/New-Logo.png" alt="Amigos Maler" />
-          <span>Coordination</span>
-        </div>
-        <article className="network-node network-node-one" data-depth="24">
-          <span>01</span>
-          <strong>Craft</strong>
-          <small>Painting, plastering, drywall</small>
-        </article>
-        <article className="network-node network-node-two" data-depth="36">
-          <span>02</span>
-          <strong>Supply</strong>
-          <small>Materials, coatings, tools</small>
-        </article>
-        <article className="network-node network-node-three" data-depth="18">
-          <span>03</span>
-          <strong>Property</strong>
-          <small>Managers, investors, owners</small>
-        </article>
-        <article className="network-node network-node-four" data-depth="30">
-          <span>04</span>
-          <strong>Planning</strong>
-          <small>Architecture, inspection, advice</small>
-        </article>
       </div>
     </div>
+    <div className="partner-service-hero-bg-text" aria-hidden="true">NETWORK</div>
+    <div className="partner-service-hero-scroll" aria-hidden="true"><span></span><p>SCROLL</p></div>
   </section>
 
   <section className="partner-marquee" aria-label="Partner disciplines">
@@ -86,109 +84,134 @@ export default function PartnersContent() {
     </div>
   </section>
 
-  <section className="partners-intro">
-    <div className="partners-shell partners-split">
-      <div className="partners-section-heading partners-reveal">
-        <p className="partners-kicker">WHY PARTNER WITH AMIGOS</p>
-        <h2>One standard. Many capabilities.</h2>
+  <section className="partner-flow">
+    <div className="partners-shell">
+      <div className="partners-section-heading centered">
+        <p className="partners-kicker">OUR NETWORK PROCESS</p>
+        <h2>A Network That Creates Opportunities.</h2>
       </div>
-      <div className="partners-lead partners-reveal">
-        <p>
-          Customers need confidence that every specialist works with the same care, timing and communication. Our
-          partner network is built for coordinated projects where quality, reliability and property value matter.
-        </p>
+      <div className="flow-track">
+        <article className="flow-step partners-reveal">
+          <span>01</span>
+          <span className="flow-step-icon"><ProcessIcon name="inquiry" /></span>
+          <h3>Inquiry</h3>
+          <p>A partner wants to collaborate.</p>
+        </article>
+        <article className="flow-step partners-reveal">
+          <span>02</span>
+          <span className="flow-step-icon"><ProcessIcon name="network" /></span>
+          <h3>Amigos Network</h3>
+          <p>We find the right partner match.</p>
+        </article>
+        <article className="flow-step partners-reveal">
+          <span>03</span>
+          <span className="flow-step-icon"><ProcessIcon name="collaboration" /></span>
+          <h3>Collaboration</h3>
+          <p>We deliver projects together.</p>
+        </article>
+        <article className="flow-step partners-reveal">
+          <span>04</span>
+          <span className="flow-step-icon"><ProcessIcon name="value" /></span>
+          <h3>Sustainable Value</h3>
+          <p>Strong partnerships create new opportunities.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section className="partner-benefits" aria-labelledby="partner-benefits-title">
+    <div className="partners-shell partner-benefits-grid">
+      <div className="partner-benefits-heading">
+        <p className="partners-kicker">WHY BECOME A PARTNER?</p>
+        <h2 id="partner-benefits-title">More Possibilities.<br />More Success.</h2>
+      </div>
+      <div className="partner-benefit-list">
+        <article className="partner-benefit">
+          <BenefitIcon name="opportunities" />
+          <h3>New Business Opportunities</h3>
+          <p>Access new customers and exciting projects.</p>
+        </article>
+        <article className="partner-benefit">
+          <BenefitIcon name="projects" />
+          <h3>Joint Projects</h3>
+          <p>Combine expertise for stronger solutions.</p>
+        </article>
+        <article className="partner-benefit">
+          <BenefitIcon name="recommendations" />
+          <h3>Mutual Recommendations</h3>
+          <p>Recommend trusted partners with confidence.</p>
+        </article>
+        <article className="partner-benefit">
+          <BenefitIcon name="visibility" />
+          <h3>Digital Visibility</h3>
+          <p>Be presented across our partner network.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <section className="partner-types">
     <div className="partners-shell">
+      <div className="partners-section-heading centered partner-types-heading">
+        <p className="partners-kicker">OUR PARTNER AREAS</p>
+        <h2>Strong Partners for Strong Solutions.</h2>
+      </div>
       <div className="partner-card-grid">
         <article className="partner-card partners-reveal">
-          <span>01</span>
+          <img className="partner-card-image" src="/assets/projects/project-08.jpg" alt="Trade partner working on a property" />
+          <span className="partner-card-icon" aria-hidden="true">⚒</span>
           <h3>Trade Partners</h3>
-          <p>Specialist teams for plastering, drywall, facade work, flooring, cleaning and connected renovation tasks.</p>
+          <p>Electrical, sanitary, heating, flooring, carpentry and more.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <span>02</span>
-          <h3>Material Partners</h3>
-          <p>Reliable suppliers for premium paints, coatings, tools and surface systems suited to each property.</p>
+          <img className="partner-card-image" src="/assets/projects/project-09.jpg" alt="Residential property for a real estate partner" />
+          <span className="partner-card-icon" aria-hidden="true">▦</span>
+          <h3>Real Estate</h3>
+          <p>Property owners, managers, investors and estate agencies.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <span>03</span>
-          <h3>Property Partners</h3>
-          <p>Real estate companies, property managers and investors who need dependable maintenance execution.</p>
+          <img className="partner-card-image" src="/assets/projects/project-10.jpg" alt="Planning team reviewing architectural plans" />
+          <span className="partner-card-icon" aria-hidden="true">✦</span>
+          <h3>Planning &amp; Specialists</h3>
+          <p>Architecture, construction, energy, insurance and specialist partners.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <span>04</span>
-          <h3>Planning Partners</h3>
-          <p>Architects, consultants and project planners who want clear communication from site visit to delivery.</p>
+          <img className="partner-card-image" src="/assets/projects/project-11.jpg" alt="Business partners discussing a property project" />
+          <span className="partner-card-icon" aria-hidden="true">◎</span>
+          <h3>Companies &amp; Institutions</h3>
+          <p>Firms, organizations and service providers built for lasting collaboration.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <section className="partner-flow">
-    <div className="partners-shell">
-      <div className="partners-section-heading centered partners-reveal">
-        <p className="partners-kicker">HOW COLLABORATION WORKS</p>
-        <h2>Simple enough to move fast. Structured enough to stay clean.</h2>
+  <section className="partner-listing">
+    <div className="partners-shell partner-listing-grid">
+      <div className="partner-listing-image" role="img" aria-label="Modern property beside a lake"></div>
+      <div className="partner-listing-copy">
+        <p className="partners-kicker">LIST YOUR PROPERTY</p>
+        <h2>Your Property.<br />Our Network.</h2>
+        <p>Reach the right people with a clear, focused property listing.</p>
       </div>
-      <div className="flow-track">
-        <article className="flow-step partners-reveal">
-          <span>01</span>
-          <h3>Introduce</h3>
-          <p>We understand your company, work standards and the type of projects you want to support.</p>
-        </article>
-        <article className="flow-step partners-reveal">
-          <span>02</span>
-          <h3>Align</h3>
-          <p>We define responsibilities, communication rhythm, quality expectations and project handover points.</p>
-        </article>
-        <article className="flow-step partners-reveal">
-          <span>03</span>
-          <h3>Coordinate</h3>
-          <p>For matching projects, Amigos manages the customer relationship and keeps delivery transparent.</p>
-        </article>
-        <article className="flow-step partners-reveal">
-          <span>04</span>
-          <h3>Improve</h3>
-          <p>After delivery, we review outcomes so the next project becomes even smoother.</p>
-        </article>
-      </div>
+      <form className="partner-listing-form" action="/api/consultations" method="post" encType="multipart/form-data">
+        <h3>Listing Request</h3>
+        <p className="partner-form-intro">Tell us a little about the property and we will take it from there.</p>
+        <div className="partner-form-grid">
+          <label>Name<input name="name" required placeholder="Your name" /></label>
+          <label>Email<input name="email" type="email" required placeholder="you@example.com" /></label>
+          <label>Object Type<select name="projectType" defaultValue=""><option value="" disabled>Select type</option><option>House</option><option>Apartment</option><option>Commercial property</option></select></label>
+          <label>Purpose<select name="purpose" defaultValue=""><option value="" disabled>Select purpose</option><option>Sell</option><option>Rent</option><option>Partner project</option></select></label>
+          <label>Region<input name="region" placeholder="Region / town" /></label>
+          <label className="partner-form-wide">Description<textarea name="message" required placeholder="Short property description" /></label>
+          <label className="partner-form-upload">Upload<input name="upload" type="file" accept="image/*,.pdf" /></label>
+        </div>
+        <label className="partner-check"><input type="checkbox" name="updates" /> I would like to hear about new projects.</label>
+        <label className="partner-check"><input type="checkbox" name="longTerm" /> I am interested in a long-term partnership.</label>
+        <button className="partners-btn partners-btn-primary" type="submit">Send Request</button>
+      </form>
     </div>
   </section>
 
-  <section className="partner-standards">
-    <div className="partners-shell standards-layout">
-      <div className="standards-copy partners-reveal">
-        <p className="partners-kicker">PARTNER STANDARDS</p>
-        <h2>The network grows only when quality stays visible.</h2>
-        <p>
-          We prefer a smaller group of reliable partners over a large list of random contacts. The goal is trust:
-          for customers, for buildings and for everyone involved in the project.
-        </p>
-      </div>
-      <div className="standards-list">
-        <div className="standard-row partners-reveal"><span>Careful work</span><p>Clean execution, prepared surfaces and respect for occupied spaces.</p></div>
-        <div className="standard-row partners-reveal"><span>Clear timing</span><p>Reliable availability, realistic schedules and early communication if something changes.</p></div>
-        <div className="standard-row partners-reveal"><span>Premium materials</span><p>Products and systems chosen for durability, suitability and long-term value.</p></div>
-        <div className="standard-row partners-reveal"><span>Direct communication</span><p>Simple updates, documented decisions and one aligned project standard.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section className="partner-cta">
-    <div className="partners-shell partner-cta-inner partners-reveal">
-      <p className="partners-kicker">BUILD WITH AMIGOS</p>
-      <h2>Let’s create a stronger property network around Olten.</h2>
-      <p>Tell us where your company fits and how we can collaborate on future painting, renovation and property care projects.</p>
-      <div className="partners-hero-actions">
-        <a href="/contact" className="partners-btn partners-btn-primary">Start Partnership Talk <span>↗</span></a>
-        <a href="/customer/register" className="partners-btn partners-btn-outline">Create Portal Access <span>→</span></a>
-      </div>
-    </div>
-  </section>
 </main>
 
     </>

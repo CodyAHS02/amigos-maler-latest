@@ -253,13 +253,13 @@ export default function PlasteringContent() {
         </div>
         <div className="before-after-slider" id="baSlider">
           <div className="ba-before-pane" id="baBeforePane">
-            <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+            <img src="/assets/Plastering/plastering-before.png" alt="Uneven plaster before professional surface preparation" />
             <span className="ba-tag ba-tag-before" id="baTagBefore">
               BEFORE
             </span>
           </div>
           <div className="ba-after-pane" id="baAfterPane">
-            <img src="/assets/Services-After-Room.png" alt="After renovation" />
+            <img src="/assets/Plastering/plastering-after.png" alt="Smooth plaster after professional surface preparation" />
             <span className="ba-tag ba-tag-after" id="baTagAfter">
               AFTER
             </span>
@@ -369,10 +369,11 @@ export default function PlasteringContent() {
         </p>
       </div>
       <div className="process-timeline">
-        <div className="process-line">
-          <span className="process-progress">
-          </span>
-        </div>
+        <div className="process-track">
+          <div className="process-line">
+            <span className="process-progress">
+            </span>
+          </div>
         <div className="process-step reveal-step">
           <div className="step-number">
             01
@@ -456,6 +457,7 @@ export default function PlasteringContent() {
               The completed surface is prepared for painting or decorative finishing.
             </p>
           </div>
+        </div>
         </div>
       </div>
     </section>

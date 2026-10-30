@@ -107,21 +107,21 @@
         return attempt
           .then(() => {
             video.pause();
-            video.currentTime = 0;
+            video.currentTime = Math.min(0.8, Math.max(video.duration - 0.8, 0));
           })
           .catch(() => {
-            video.currentTime = 0;
+            video.currentTime = 0.8;
           });
       }
 
       video.pause();
-      video.currentTime = 0;
+      video.currentTime = 0.8;
       return undefined;
     });
   }
 
   if (reducedMotion || compactHero) {
-    const compactVideo = getActiveVideo();
+    let compactVideo = getActiveVideo();
     if (compactVideo) {
       compactVideo.muted = true;
       compactVideo.loop = true;
@@ -138,14 +138,27 @@
     };
     updateCompactHeader();
     window.addEventListener("scroll", updateCompactHeader, { passive: true });
-    return;
+    const observer = new MutationObserver(() => {
+      const nextVideo = getActiveVideo();
+      if (nextVideo === compactVideo) return;
+      compactVideo = nextVideo;
+      compactVideo.muted = true;
+      compactVideo.loop = true;
+      compactVideo.preload = "auto";
+      compactVideo.play().catch(() => {});
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", updateCompactHeader);
+    };
   }
 
   header?.classList.remove("is-scrolled");
 
   if (content) {
     content.style.setProperty("--projects-content-glow", "0");
-    gsap.set(content, { opacity: 0, y: 44, pointerEvents: "none" });
+    gsap.set(content, { opacity: 0.85, y: 7, pointerEvents: "auto" });
   }
 
   activeVideo = getActiveVideo();
@@ -183,7 +196,7 @@
         header?.classList.toggle("is-scrolled", progress >= 0.9999);
 
         if (activeVideo && activeVideo.duration && !Number.isNaN(activeVideo.duration)) {
-          const targetTime = activeVideo.duration * videoProgress;
+          const targetTime = Math.min(activeVideo.duration, Math.max(0.8, activeVideo.duration * videoProgress));
 
           if (Math.abs(targetTime - lastTime) > 0.075) {
             activeVideo.currentTime = targetTime;
@@ -192,7 +205,7 @@
         }
 
         if (content) {
-          const contentProgress = clamp((progress - 0.78) / 0.10);
+          const contentProgress = 0.85 + (0.15 * clamp(progress / 0.2));
           const glowProgress = clamp((contentProgress - 0.18) / 0.82);
 
           content.style.setProperty("--projects-content-glow", glowProgress.toFixed(3));
@@ -200,7 +213,7 @@
           gsap.set(content, {
             opacity: contentProgress,
             y: 44 - (44 * contentProgress),
-            pointerEvents: contentProgress > 0.96 ? "auto" : "none"
+            pointerEvents: "auto"
           });
         }
 

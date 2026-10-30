@@ -199,6 +199,19 @@ section {
     overflow: hidden;
 }
 
+@media (min-width: 1101px) {
+    .property-hero {
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .property-hero .hero-content {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+}
+
 @media (max-width: 640px) {
     body[data-page="property-value-preservation"] .property-hero {
         overflow: hidden !important;
@@ -315,6 +328,18 @@ section {
     gap: 11px;
     flex-wrap: wrap;
     margin-top: 34px;
+}
+
+@media (min-width: 901px) {
+    .property-hero .hero-actions {
+        flex-wrap: nowrap;
+    }
+
+    .property-hero .hero-actions .property-button {
+        flex: 1 1 0;
+        min-width: 0;
+        white-space: nowrap;
+    }
 }
 
 .property-condition-visual {

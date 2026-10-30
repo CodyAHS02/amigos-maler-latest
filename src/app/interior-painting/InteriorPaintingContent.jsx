@@ -168,7 +168,8 @@ export default function InteriorPaintingContent() {
     <section className="svc-section svc-section-alt svc-reveal">
         <div className="svc-wrapper" id="why-amigos-IP">
 
-            <div className="svc-section-heading">id="why-amigos-IP"n                <span>WHAT'S INCLUDED</span>
+            <div className="svc-section-heading">
+                <span>WHAT'S INCLUDED</span>
                 <h2>Every Interior Surface Covered.</h2>
                 <p>Walls, ceilings and woodwork, all handled by the same crew for a consistent finish throughout.</p>
             </div>

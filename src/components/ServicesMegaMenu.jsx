@@ -94,7 +94,6 @@ export default function ServicesMegaMenu({ isDark = false }) {
         ))}
         <a className={styles.allServices} href="/services">
           <span className={styles.allServicesLabel}>See All Services</span>
-          <span aria-hidden="true">→</span>
         </a>
       </div>
 

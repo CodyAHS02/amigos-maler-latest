@@ -25,14 +25,14 @@ body {
     --am-navy-soft: #0D2542;
     --am-cream: #ffffff;
     --am-offwhite: #ffffff;
-    --am-sand: #E9DDC9;
-    --am-greige: #CFC3B1;
+    --am-sand: #ffffff;
+    --am-greige: #ffffff;
     --am-ochre: #B7893D;
     --am-olive: #7F8E74;
     --am-mist: #7FA0A3;
     --am-ink: #102238;
     --am-text: #5F5A50;
-    --am-line: #DED2C0;
+    --am-line: #ffffff;
     --logo-yellow: #f6be10;
     --logo-orange: #f39125;
     --logo-magenta: #c73b8e;
@@ -334,7 +334,7 @@ body {
 
 .svc-section {
     padding: 140px 0;
-    background: #f5f3ef;
+    background: #fff;
 }
 
 .svc-section-alt {
@@ -1023,7 +1023,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
 .svc-color-tint {
     position: absolute;
     inset: 0;
-    background: #F5F3EE;
+    background: #fff;
     mix-blend-mode: multiply;
     opacity: .55;
     transition: background .5s ease;
@@ -1393,7 +1393,7 @@ article.svc-feature-row.svc-row-in-view:nth-child(5) .svc-feature-text p {
     flex-direction: column;
     align-items: center;
     gap: 50px;
-    background-color: #F5F3EE;
+    background-color: #fff;
     transition: background-color .7s cubic-bezier(.22, 1, .36, 1);
     overflow: hidden;
 }
@@ -2217,6 +2217,25 @@ div#why-amigos-IP .svc-section-heading {
     .carousel-stage {
 
 /* ======================== */
+
+/* Interior Painting light theme uses clean white section surfaces. */
+html:not([data-theme="amigos-dark"]) body:has(.svc-hero) {
+    background: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body:has(.svc-hero) :is(
+    .svc-marquee-wrap,
+    .svc-intro,
+    .before-after-section,
+    .svc-section,
+    .svc-color-stage,
+    .svc-werterhalt,
+    .testimonials,
+    .svc-cta
+) {
+    background: #fff !important;
+    background-image: none !important;
+}
 html[data-theme="amigos-dark"] .plans-section,
 html[data-theme="amigos-dark"] .testimonials {
     background:
@@ -2355,6 +2374,49 @@ body[data-page="home"] .audience-card {
         box-shadow .42s ease,
         transform .42s cubic-bezier(.22, 1, .36, 1),
         color .32s ease !important;
+}
+
+/* Keep only the Interior Painting light-theme intro surface pure white. */
+html:not([data-theme="amigos-dark"]) body:has(.svc-hero) .svc-intro {
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+/* Match the service content gutter to the shared header/logo gutter. */
+body:has(.svc-hero) .svc-wrapper,
+body:has(.svc-hero) .svc-hero-lines {
+    width: calc(100% - 70px);
+    max-width: none;
+    margin-left: 0;
+    margin-right: 70px;
+    padding-inline: 0;
+}
+
+@media (max-width: 1360px) {
+    body:has(.svc-hero) .svc-wrapper,
+    body:has(.svc-hero) .svc-hero-lines {
+        width: calc(100% - 44px);
+        margin-left: 0;
+        margin-right: 44px;
+    }
+}
+
+@media (max-width: 1120px) {
+    body:has(.svc-hero) .svc-wrapper,
+    body:has(.svc-hero) .svc-hero-lines {
+        width: calc(100% - 28px);
+        margin-left: 0;
+        margin-right: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    body:has(.svc-hero) .svc-wrapper,
+    body:has(.svc-hero) .svc-hero-lines {
+        width: calc(100% - 24px);
+        margin-left: 0;
+        margin-right: 24px;
+    }
 }
 
 /* ======================== */
