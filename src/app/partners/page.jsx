@@ -49,6 +49,7 @@ html:not([data-theme="amigos-dark"]) .partner-cta h2 {
 .partner-imagery,
 .partners-intro,
 .partner-types,
+.partner-logos,
 .partner-flow,
 .partner-standards,
 .partner-cta {
@@ -153,6 +154,7 @@ html:not([data-theme="amigos-dark"]) .partners-hero,
 html:not([data-theme="amigos-dark"]) .partner-imagery,
 html:not([data-theme="amigos-dark"]) .partners-intro,
 html:not([data-theme="amigos-dark"]) .partner-types,
+html:not([data-theme="amigos-dark"]) .partner-logos,
 html:not([data-theme="amigos-dark"]) .partner-flow,
 html:not([data-theme="amigos-dark"]) .partner-standards,
 html:not([data-theme="amigos-dark"]) .partner-cta {
@@ -165,6 +167,7 @@ html:not([data-theme="amigos-dark"]) .partners-hero,
 html:not([data-theme="amigos-dark"]) .partner-imagery,
 html:not([data-theme="amigos-dark"]) .partners-intro,
 html:not([data-theme="amigos-dark"]) .partner-types,
+html:not([data-theme="amigos-dark"]) .partner-logos,
 html:not([data-theme="amigos-dark"]) .partner-flow,
 html:not([data-theme="amigos-dark"]) .partner-standards,
 html:not([data-theme="amigos-dark"]) .partner-cta {

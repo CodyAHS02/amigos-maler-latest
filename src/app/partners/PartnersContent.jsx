@@ -21,6 +21,21 @@ function BenefitIcon({ name }) {
   return <svg className="benefit-icon-svg" viewBox="0 0 24 24" fill="none" stroke={`url(#benefit-${name})`} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><defs><linearGradient id={`benefit-${name}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f6be10" /><stop offset=".48" stopColor="#f39125" /><stop offset="1" stopColor="#e62453" /></linearGradient></defs>{paths[name]}</svg>;
 }
 
+const partnerLogos = [
+  ['Aare Energie AG', 'aare-energie.png'],
+  ['Anliker', 'anliker.png'],
+  ['PowerSports.ch', 'power-sports.png'],
+  ['Fellmann Coiffeur', 'fellmann.png'],
+  ['Office & Business AG', 'office-business.png'],
+  ['E. Floccari AG', 'floccari.png'],
+  ['Bati Spezialbau', 'bati-spezialbau.png'],
+  ['Maler Gipser', 'maler-gipser.png'],
+  ['Trifari', 'trifari.png'],
+  ['Bernasconi.ch', 'bernasconi.png'],
+  ['Scaffs Geruestbau', 'scaffs.png'],
+  ['Kay Spenglerei & Flachdach', 'kay-spenglerei.png'],
+];
+
 export default function PartnersContent() {
   return (
     <>
@@ -181,6 +196,23 @@ export default function PartnersContent() {
           <h3>Companies &amp; Institutions</h3>
           <p>Firms, organizations and service providers built for lasting collaboration.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section className="partner-logos" aria-labelledby="partner-logos-title">
+    <div className="partners-shell">
+      <div className="partners-section-heading centered">
+        <p className="partners-kicker">STRONGER TOGETHER</p>
+        <h2 id="partner-logos-title">Our Partners and References.</h2>
+        <p>Trusted companies and specialists who support our work every day.</p>
+      </div>
+      <div className="partner-logo-grid">
+        {partnerLogos.map(([name, file]) => (
+          <div className="partner-logo-card" key={name}>
+            <img src={`/assets/about-partners/extracted/${file}`} alt={name} />
+          </div>
+        ))}
       </div>
     </div>
   </section>
