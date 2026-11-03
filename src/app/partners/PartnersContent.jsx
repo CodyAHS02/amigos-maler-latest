@@ -22,18 +22,18 @@ function BenefitIcon({ name }) {
 }
 
 const partnerLogos = [
-  ['Aare Energie AG', 'aare-energie.png'],
-  ['Anliker', 'anliker.png'],
-  ['PowerSports.ch', 'power-sports.png'],
-  ['Fellmann Coiffeur', 'fellmann.png'],
-  ['Office & Business AG', 'office-business.png'],
-  ['E. Floccari AG', 'floccari.png'],
-  ['Bati Spezialbau', 'bati-spezialbau.png'],
-  ['Maler Gipser', 'maler-gipser.png'],
-  ['Trifari', 'trifari.png'],
-  ['Bernasconi.ch', 'bernasconi.png'],
-  ['Scaffs Geruestbau', 'scaffs.png'],
-  ['Kay Spenglerei & Flachdach', 'kay-spenglerei.png'],
+  ['Aare Energie AG', 'aare-energie.png', 'light'],
+  ['Anliker', 'anliker.png', 'light'],
+  ['PowerSports.ch', 'power-sports.png', 'dark'],
+  ['Fellmann Coiffeur', 'fellmann.png', 'light'],
+  ['Office & Business AG', 'office-business.png', 'light'],
+  ['E. Floccari AG', 'floccari.png', 'light'],
+  ['Bati Spezialbau', 'bati-spezialbau.png', 'light'],
+  ['Maler Gipser', 'maler-gipser.png', 'light'],
+  ['Trifari', 'trifari.png', 'light'],
+  ['Bernasconi.ch', 'bernasconi.png', 'light'],
+  ['Scaffs Geruestbau', 'scaffs.png', 'dark'],
+  ['Kay Spenglerei & Flachdach', 'kay-spenglerei.png', 'light'],
 ];
 
 export default function PartnersContent() {
@@ -53,8 +53,8 @@ export default function PartnersContent() {
         <h1>Stronger Together.<br /><span>Connecting Values.</span></h1>
         <p>Whether crafts, real estate, planning or institutions, we bring the right specialists together to create lasting value.</p>
         <div className="partners-hero-actions">
-          <a href="/contact" className="partners-btn partners-btn-primary">Become a Partner</a>
-          <a href="/contact" className="partners-btn partners-btn-outline">Discuss Collaboration</a>
+          <a id="partnersBecomeButton" href="/contact" className="partners-btn partners-btn-primary">Become a Partner</a>
+          <a id="partnersDiscussButton" href="/contact" className="partners-btn partners-btn-outline">Discuss Collaboration</a>
         </div>
       </div>
     </div>
@@ -207,12 +207,14 @@ export default function PartnersContent() {
         <h2 id="partner-logos-title">Our Partners and References.</h2>
         <p>Trusted companies and specialists who support our work every day.</p>
       </div>
-      <div className="partner-logo-grid">
-        {partnerLogos.map(([name, file]) => (
-          <div className="partner-logo-card" key={name}>
-            <img src={`/assets/about-partners/extracted/${file}`} alt={name} />
-          </div>
-        ))}
+      <div className="partner-logo-grid" aria-label="Partner logos">
+        <div className="partner-logo-track">
+          {[...partnerLogos, ...partnerLogos].map(([name, file, tone], index) => (
+            <div className={`partner-logo-card partner-logo-${tone}`} key={`${name}-${index}`} aria-hidden={index >= partnerLogos.length}>
+              <img src={`/assets/about-partners/extracted/${file}`} alt={index >= partnerLogos.length ? '' : name} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -239,7 +241,7 @@ export default function PartnersContent() {
         </div>
         <label className="partner-check"><input type="checkbox" name="updates" /> I would like to hear about new projects.</label>
         <label className="partner-check"><input type="checkbox" name="longTerm" /> I am interested in a long-term partnership.</label>
-        <button className="partners-btn partners-btn-primary" type="submit">Send Request</button>
+        <button id="partnersSendRequestButton" className="partners-btn partners-btn-primary" type="submit">Send Request</button>
       </form>
     </div>
   </section>

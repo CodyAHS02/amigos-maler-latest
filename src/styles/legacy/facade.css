@@ -2670,3 +2670,97 @@ html:not([data-theme=amigos-dark]) body .main-content .facade-page .benefit-card
     -webkit-text-fill-color: var(--am-ink) !important;
     text-shadow: none !important;
 }
+
+/* Use the brand gradient for the facade work accent instead of yellow. */
+body .main-content .facade-page .facade-work .section-kicker,
+body .main-content .facade-page .facade-work .facade-section-heading h2 span {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: facadeLogoGradientShift 8s ease-in-out infinite !important;
+}
+
+/* Final facade-work override: match the page structure without a main-content wrapper. */
+body .facade-page .facade-work .section-kicker,
+body .facade-page .facade-work .facade-section-heading h2 span {
+    background: var(--logo-gradient-moving) !important;
+    background-size: 260% 260% !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    animation: facadeLogoGradientShift 8s ease-in-out infinite !important;
+}
+
+/* Keep Protection/Design cards clean on light-theme hover: white surface, soft shadow. */
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel::after,
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover::after {
+    opacity: 0 !important;
+    display: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover {
+    background: #fff !important;
+    border-color: rgba(7, 26, 51, .12) !important;
+    box-shadow: 0 24px 65px rgba(7, 26, 51, .16) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover .pd-content h2,
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover .pd-content p,
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover .pd-content span {
+    color: var(--am-ink) !important;
+    -webkit-text-fill-color: var(--am-ink) !important;
+    text-shadow: none !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel:hover .pd-arrow {
+    background: #fff !important;
+    border-color: rgba(7, 26, 51, .22) !important;
+    color: var(--am-ink) !important;
+}
+
+/* Match the larger mobile hero heading scale used across service pages. */
+@media (max-width: 640px) {
+    .facade-page .facade-hero-title {
+        font-size: 45px !important;
+        letter-spacing: -3px !important;
+    }
+}
+
+/* Keep Protection/Design copy below the image in light mode. */
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-content {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    padding: 34px 50px 48px !important;
+    min-height: 220px;
+    color: var(--am-ink) !important;
+}
+
+/* Keep the image and copy as separate blocks in light mode. */
+html:not([data-theme="amigos-dark"]) body .facade-page .facade-protection-design {
+    height: auto !important;
+    min-height: 780px;
+    background: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-panel {
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-image {
+    position: relative !important;
+    inset: auto !important;
+    flex: 0 0 clamp(260px, 31vw, 420px) !important;
+    height: clamp(260px, 31vw, 420px) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .facade-page .pd-overlay {
+    background: transparent !important;
+}

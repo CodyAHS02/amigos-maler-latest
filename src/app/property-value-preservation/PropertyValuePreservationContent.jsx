@@ -18,8 +18,8 @@ function LineIcon({ type }) {
   return <svg className={styles.icon} viewBox="0 0 24 24" fill="none" aria-hidden="true">{paths[type]}</svg>;
 }
 
-function ActionLink({ children, variant = "gradient" }) {
-  return <a className={`${styles.action} ${styles[variant]}`} href="#contact"><Arrow /><span>{children}</span></a>;
+function ActionLink({ children, variant = "gradient", id }) {
+  return <a id={id} className={`${styles.action} ${styles[variant]}`} href="#contact"><Arrow /><span>{children}</span></a>;
 }
 
 function HeroSection() {
@@ -91,7 +91,7 @@ function PropertyCheckSection() {
         </div>
         <aside className={styles.checkInfo}>
           <div className={styles.checkTop}><span>SELECT AN AREA</span><span>0{activeArea + 1} / 05</span></div>
-          <div className={styles.checkCopy}><small>0{activeArea + 1} / 05</small><h3>{title}</h3><p>{text}</p></div>
+          <div className={styles.checkCopy}><small>0{activeArea + 1} / 05</small><h3 id="propertyAreaHeading">{title}</h3><p>{text}</p></div>
         </aside>
       </div>
     </section>
@@ -130,9 +130,9 @@ function AudienceSection() {
 }
 
 const homePlans = [
-  { title: "BASIC HOME CARE", price: "CHF 89 / Monat", features: ["Jährliche Objektkontrolle", "Kleine Ausbesserungen", "Priorisierte Empfehlungen", "Persönliche Dokumentation"] },
+  { title: "BASIC HOME CARE", price: "CHF 89 / Monat", actionId: "propertyPlanBasicAction", features: ["Jährliche Objektkontrolle", "Kleine Ausbesserungen", "Priorisierte Empfehlungen", "Persönliche Dokumentation"] },
   { title: "PLUS HOME CARE", badge: "BELIEBT", price: "CHF 199 / Monat", featured: true, features: ["Halbjährliche Objektkontrolle", "Kleine Ausbesserungen inklusive", "Saisonale Pflegearbeiten", "Priorisierte Empfehlungen", "Persönliche Betreuung"] },
-  { title: "PREMIUM HOME CARE", price: "CHF 399 / Monat", features: ["Monatliche Objektkontrolle", "Ausbesserungen und Pflege", "Früherkennung von Schäden", "Individueller Unterhaltsplan", "Direkte Ansprechpartner"] }
+  { title: "PREMIUM HOME CARE", price: "CHF 399 / Monat", actionId: "propertyPlanPremiumAction", features: ["Monatliche Objektkontrolle", "Ausbesserungen und Pflege", "Früherkennung von Schäden", "Individueller Unterhaltsplan", "Direkte Ansprechpartner"] }
 ];
 
 function PlanCard({ plan }) {
@@ -142,7 +142,7 @@ function PlanCard({ plan }) {
       <p className={styles.cardKicker}>{plan.title}</p>
       <ul>{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
       <strong className={styles.price}>{plan.price}</strong>
-      <ActionLink variant={plan.featured ? "gradient" : "outline"}>{plan.featured ? "Paket auswählen" : "Mehr erfahren"}</ActionLink>
+      <ActionLink id={plan.actionId} variant={plan.featured ? "gradient" : "outline"}>{plan.featured ? "Paket auswählen" : "Mehr erfahren"}</ActionLink>
     </article>
   );
 }

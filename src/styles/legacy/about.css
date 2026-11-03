@@ -939,10 +939,13 @@ p {
 }
 
 .founder-cta-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 12px 24px;
+    min-height: 58px;
+    padding: 16px 30px 16px 72px;
     border-radius: 100px;
     background: linear-gradient(120deg, #FFD21F 0%, #FF7A1A 48%, #E62453 100%);
     color: #fff !important;
@@ -952,6 +955,31 @@ p {
     text-decoration: none;
     box-shadow: 0 6px 18px rgba(255, 122, 26, 0.32);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.founder-cta-btn::before,
+.founder-cta-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+.founder-cta-arrow {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    color: #071a33;
+    transform: translateY(-50%);
+}
+
+.founder-cta-arrow svg {
+    display: block;
+    stroke: currentColor;
 }
 
 .founder-cta-btn:hover {

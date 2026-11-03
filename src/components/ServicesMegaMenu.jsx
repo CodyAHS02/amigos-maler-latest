@@ -15,7 +15,7 @@ const groups = [
     imageAlt: "Paint roller applying warm paint to a textured wall",
     services: [
       { href: "/interior-painting", icon: "roller", title: "Interior Rooms", description: "Walls, ceilings and doors, painted cleanly and precisely." },
-      { href: "/exterior-painting", icon: "house", title: "Facades", description: "Long-lasting protection in all weather conditions." },
+      { href: "/Facade-Renovation", icon: "house", title: "Exterior", description: "Long-lasting protection in all weather conditions." },
       { href: "/Plastering", icon: "tools", title: "Plastering", description: "Flawless surfaces with modern technology." },
       { href: "/color-and-material", icon: "palette", title: "Color Consultation", description: "Individual concepts and harmonious colors." },
     ],

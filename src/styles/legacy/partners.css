@@ -731,21 +731,34 @@ body {
 }
 
 .partner-logo-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
     margin-top: 48px;
+    padding: 30px 0;
+    background: linear-gradient(110deg, rgba(255, 255, 255, .22), rgba(255, 255, 255, .07) 52%, rgba(255, 255, 255, .20));
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    mask-composite: intersect;
+}
+
+.partner-logo-track {
+    display: flex;
+    width: max-content;
+    gap: 44px;
+    align-items: center;
+    animation: partnerLogoScroll 34s linear infinite;
 }
 
 .partner-logo-card {
+    flex: 0 0 190px;
     display: grid;
-    min-width: 0;
     min-height: 112px;
-    padding: 14px;
+    padding: 14px 0;
     place-items: center;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 5px 16px rgba(7, 27, 69, .06);
+    background: transparent !important;
+    box-shadow: none;
 }
 
 .partner-logo-card img {
@@ -753,6 +766,16 @@ body {
     width: 100%;
     height: 76px;
     object-fit: contain;
+}
+
+.partner-logo-grid:hover .partner-logo-track {
+    animation-play-state: paused;
+}
+
+@keyframes partnerLogoScroll {
+    to {
+        transform: translateX(calc(-50% - 22px));
+    }
 }
 
 .partner-listing {
@@ -1052,15 +1075,19 @@ body {
         padding: 84px 0 90px;
     }
 
+    .partner-logo-track {
+        gap: 28px;
+        animation-duration: 26s;
+    }
+
     .partner-logo-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
         margin-top: 34px;
     }
 
     .partner-logo-card {
-        min-height: 92px;
-        padding: 8px;
+        flex-basis: 170px;
+        min-height: 88px;
+        padding: 8px 0;
     }
 
     .partner-logo-card img {

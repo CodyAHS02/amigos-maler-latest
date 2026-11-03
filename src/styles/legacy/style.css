@@ -19952,3 +19952,31 @@ html[data-theme="amigos-dark"] body[data-page="home"] .home-solutions-media::bef
         background: linear-gradient(180deg, #0b223d 0%, rgba(11, 34, 61, 0) 100%) !important;
     }
 }
+
+/* Final light-theme header CTA override: labels must stay black on inner pages. */
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn:hover,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn:hover {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn *,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn *,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn svg,
+html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn svg {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: currentColor !important;
+}
+
+/* Header CTA labels and icons are black as requested, regardless of theme state. */
+html[data-theme] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
+html[data-theme] body:not([data-page="home"]) .site-header .header-actions .header-btn,
+html[data-theme] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn *,
+html[data-theme] body:not([data-page="home"]) .site-header .header-actions .header-btn * {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}

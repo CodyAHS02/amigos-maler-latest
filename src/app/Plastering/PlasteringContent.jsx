@@ -25,10 +25,10 @@ export default function PlasteringContent() {
                         premium coatings.
           </p>
           <div className="hero-actions">
-            <a href="#" className="btn-primary">
+            <a id="plasterHeroOfferButton" href="#" className="btn-primary">
               Request An Offer
             </a>
-            <a href="#services" className="btn-outline">
+            <a id="plasterHeroWorkButton" href="#services" className="btn-outline">
               View Our Work
             </a>
           </div>
@@ -645,7 +645,7 @@ export default function PlasteringContent() {
             </p>
           </div>
         </div>
-        <a href="/interior-painting" className="btn-primary">
+        <a id="plasterDiscoverPaintingButton" href="/interior-painting" className="btn-primary">
           Discover Painting Services →
         </a>
       </div>
@@ -667,7 +667,7 @@ export default function PlasteringContent() {
           Regular repairs, professional plastering and proper surface maintenance help preserve the condition,
                     appearance and long-term value of your property.
         </p>
-        <a href="/property-value-preservation" className="btn-primary">
+        <a id="plasterPropertyPreservationButton" href="/property-value-preservation" className="btn-primary">
           Discover Property Preservation →
         </a>
       </div>
@@ -711,10 +711,10 @@ export default function PlasteringContent() {
                     beautiful and lasting results.
         </p>
         <div className="cta-buttons">
-          <a href="/contact" className="btn-primary">
+          <a id="plasterFinalOfferButton" href="/contact" className="btn-primary">
             Request A Free Offer
           </a>
-          <a href="/contact" className="btn-outline">
+          <a id="plasterFinalDiscussButton" href="/contact" className="btn-outline">
             Discuss Your Project
           </a>
         </div>

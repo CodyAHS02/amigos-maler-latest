@@ -28,11 +28,11 @@ export default function ContactHero() {
       <div className={styles.heroInner}>
         <div className={styles.heroCopy}>
           <p className={styles.kicker}>GET IN TOUCH</p>
-          <h1>Let&apos;s talk about<br />your <span>property.</span></h1>
+          <h1>Let&apos;s talk about your <span>property.</span></h1>
           <p className={styles.heroText}>Tell us what you are planning. Whether it&apos;s painting work, renovations or long-term property maintenance &ndash; we will advise you personally and find the best solution together.</p>
           <div className={styles.heroActions}>
-            <a className={`${styles.actionButton} ${styles.primaryAction}`} href="#contact-form"><span>Contact Form</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
-            <a className={`${styles.actionButton} ${styles.secondaryAction}`} href="mailto:info@amigos-maler.ch"><span>Free Consultation</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
+            <a id="contactHeroFormButton" className={`${styles.actionButton} ${styles.primaryAction}`} href="#contact-form"><span>Contact Form</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
+            <a id="contactHeroConsultationButton" className={`${styles.actionButton} ${styles.secondaryAction}`} href="mailto:info@amigos-maler.ch"><span>Free Consultation</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
           </div>
           <div className={styles.contactGrid}>
             {contactItems.map((item) => <div className={styles.contactItem} key={item.label}>

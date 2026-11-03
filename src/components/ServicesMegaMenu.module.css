@@ -22,11 +22,16 @@
 
 .menu::before {
   position: absolute;
-  top: -24px;
+  top: -40px;
   left: 0;
   width: 100%;
-  height: 24px;
+  height: 40px;
   content: "";
+  pointer-events: auto;
+}
+
+:global(.nav-dropdown)::after {
+  height: 40px;
 }
 
 :global(.nav-dropdown:hover) .menu,

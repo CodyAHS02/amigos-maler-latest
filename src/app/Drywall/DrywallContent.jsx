@@ -10,7 +10,7 @@ export default function DrywallContent() {
                     alt="Drywall construction interior" />
             </div>
             <div className="hero-grid-overlay"></div>
-            <div className="hero-content">
+            <div id="drywallHeroContent" className="hero-content">
                 <p className="hero-label">TROCKENBAU</p>
                 <h1>
                     Räume neu denken.<br />
@@ -22,8 +22,8 @@ export default function DrywallContent() {
                     designed around your vision.
                 </p>
                 <div className="hero-actions">
-                    <a href="#" className="primary-btn">Request An Offer</a>
-                    <a href="#" className="secondary-btn">View Our Work</a>
+                    <a id="drywallHeroOfferButton" href="#" className="primary-btn">Request An Offer</a>
+                    <a id="drywallHeroWorkButton" href="#" className="secondary-btn">View Our Work</a>
                 </div>
             </div>
             <div className="blueprint-lines"></div>
@@ -150,12 +150,12 @@ export default function DrywallContent() {
             <div className="before-after-wrapper">
                 <div className="before-after-slider">
                     <div className="before-image">
-                        <img src="/assets/external/drywall/photo-1513694203232-719a280e022f.jpg"
+                        <img src="/assets/drywall/drywall-before-generated.png"
                             alt="Empty room before drywall transformation" />
                         <span>BEFORE</span>
                     </div>
                     <div className="after-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg"
+                        <img src="/assets/drywall/drywall-after-generated.png"
                             alt="Finished room after drywall transformation" />
                         <span>AFTER</span>
                     </div>
@@ -177,8 +177,6 @@ export default function DrywallContent() {
             </div>
 
             <div className="transformation-carousel">
-                <button className="carousel-btn carousel-prev">←</button>
-
                 <div className="carousel-track">
 
                     <article className="transform-card">
@@ -238,8 +236,6 @@ export default function DrywallContent() {
                     </article>
 
                 </div>
-
-                <button className="carousel-btn carousel-next">→</button>
             </div>
         </section>
 
@@ -519,8 +515,8 @@ export default function DrywallContent() {
                     property. Well-planned drywall solutions help create spaces that remain valuable and adaptable.
                 </p>
 
-                <a href="#" className="primary-btn">
-                    Discover Property Preservation →
+                <a id="drywallPropertyPreservationButton" href="#" className="primary-btn">
+                    Discover Property Preservation
                 </a>
 
                 <div className="property-points">
@@ -555,11 +551,11 @@ export default function DrywallContent() {
                 </p>
 
                 <div className="cta-buttons">
-                    <a href="#" className="primary-btn">
+                    <a id="drywallFinalOfferButton" href="#" className="primary-btn">
                         Request A Free Offer
                     </a>
 
-                    <a href="#" className="secondary-btn">
+                    <a id="drywallFinalWorkButton" href="#" className="secondary-btn">
                         Discuss Project
                     </a>
                 </div>

@@ -12,8 +12,8 @@ export default function AppartmentRenovationContent() {
                 plastering and coordinated renovation work, we create refreshed spaces prepared for their next purpose.
             </p>
             <div className="ren-buttons reveal">
-                <a href="#" className="gold-btn">Request A Quote</a>
-                <a href="#" className="outline-btn">Discuss Your Project</a>
+                <a id="renFreeQuoteButton" href="#" className="gold-btn">Request A Quote</a>
+                <a id="renDiscussProjectButton" href="#" className="outline-btn">Discuss Your Project</a>
             </div>
         </div>
         <div className="ren-floating-shape"></div>
@@ -27,7 +27,7 @@ export default function AppartmentRenovationContent() {
                 <p>An apartment renovation involves more than a new coat of paint. Amigos coordinates connected tasks
                     including surface repairs, plastering, painting and renovation work to create a complete
                     transformation.</p>
-                <div className="intro-points">
+                <div className="intro-points" id="renIntroPoints">
                     <div>
                         <span>01</span>
                         <p>Refreshing rooms</p>
@@ -104,7 +104,7 @@ export default function AppartmentRenovationContent() {
             <p>From surfaces and colours to complete room improvements, Amigos coordinates the renovation elements that
                 transform apartments.</p>
         </div>
-        <div className="scope-grid">
+        <div className="scope-grid" id="renovationScopeGrid">
             <div className="scope-item reveal">
                 <img src="/assets/appartment-renovation/Wall-celing.jpeg" alt="Wall renovation" />
                 <div className="scope-overlay">
@@ -274,7 +274,7 @@ export default function AppartmentRenovationContent() {
         </div>
     </section>
 
-    <section className="property-value-section">
+    <section className="property-value-section" id="renovationPropertyValue">
         <div className="property-image reveal">
             <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg" alt="Renovated apartment interior" />
         </div>
@@ -283,7 +283,7 @@ export default function AppartmentRenovationContent() {
             <h2>Renovated Spaces.<br />Long-Term Value.</h2>
             <p>A professionally renovated apartment improves appearance, usability and overall condition. Regular
                 maintenance and thoughtful improvements help preserve the value of your property.</p>
-            <a href="#" className="gold-btn">Discover Property Preservation →</a>
+            <a id="renPropertyPreservationButton" href="#" className="gold-btn">Discover Property Preservation</a>
             <div className="value-points">
                 <div>
                     <span>01</span>
@@ -333,13 +333,13 @@ export default function AppartmentRenovationContent() {
     <section className="ren-final-cta">
         <div className="cta-background"></div>
         <div className="cta-content reveal">
-            <div className="section-label">START YOUR PROJECT</div>
+            <div className="section-label" id="renFinalCtaLabel">START YOUR PROJECT</div>
             <h2>Ready For The Next Chapter?</h2>
             <p>Whether it is a tenant change, personal use or preparing a property for sale, Amigos creates a clear
                 renovation process from beginning to end.</p>
             <div className="cta-buttons">
-                <a href="#" className="gold-btn">Request A Free Quote</a>
-                <a href="#" className="outline-btn">Discuss Your Project</a>
+            <a id="renFinalQuoteButton" href="#" className="gold-btn">Request A Free Quote</a>
+            <a id="renFinalDiscussButton" href="#" className="outline-btn">Discuss Your Project</a>
             </div>
         </div>
     </section>

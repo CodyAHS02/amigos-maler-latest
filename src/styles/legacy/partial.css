@@ -772,6 +772,18 @@ html:not([data-theme="amigos-dark"]) .site-header.scrolled .dropdown-menu .item-
     }
 }
 
+/* Image-hero header CTAs: keep labels and the login icon black. */
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn:hover,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn:hover,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .customer-header-btn *,
+html[data-theme] body #siteHeader.site-header.image-hero-header:not(.is-scrolled):not(.scrolled) .header-actions .header-btn * {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
 /* Plastering light hero: keep the photo visible and copy readable. */
 html[data-theme="amigos-light"] body:has(.gipser-hero) .gipser-hero-overlay {
     background: linear-gradient(90deg, rgba(7, 26, 51, .22) 0%, rgba(7, 26, 51, .12) 55%, rgba(7, 26, 51, .04) 100%) !important;

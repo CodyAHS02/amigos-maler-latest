@@ -10,6 +10,7 @@ const routeBodyState = {
   "/offer-calculator": { dataPage: "offer-calculator" },
   "/partners": { dataPage: "partners" },
   "/projects": { className: "projects-page", dataPage: "projects" },
+  "/services": { dataPage: "services" },
   "/property-value-preservation": { dataPage: "werterhalt" }
 };
 

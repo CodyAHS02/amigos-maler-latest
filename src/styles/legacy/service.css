@@ -1791,6 +1791,22 @@ ANIMATION CLASSES
     }
 }
 
+/* Mold light-theme hero overrides: keep the copy readable over the softened photo. */
+html:not([data-theme="amigos-dark"]) body:has(#moldHeroHeading) #moldHeroHeading,
+html:not([data-theme="amigos-dark"]) body:has(#moldHeroHeading) #moldHeroDescription {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body:has(#moldHeroOverlay) #moldHeroOverlay {
+    background: linear-gradient(90deg, rgba(255, 255, 255, .52) 0%, rgba(255, 255, 255, .32) 52%, rgba(255, 255, 255, .18) 100%) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body:has(#moldInspectionButton) #moldInspectionButton {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
 
 
 

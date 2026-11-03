@@ -164,6 +164,28 @@
   border-color: rgba(7, 26, 51, .22) !important;
 }
 
+/* Keep header CTA labels readable over the light-theme facade header. */
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Light-theme header CTA text must stay black in every header state. */
+:global(html:not([data-theme="amigos-dark"]) #headerCustomerLoginBtn),
+:global(html:not([data-theme="amigos-dark"]) #headerQuoteBtn),
+:global(html:not([data-theme="amigos-dark"]) #headerCustomerLoginBtn:hover),
+:global(html:not([data-theme="amigos-dark"]) #headerQuoteBtn:hover) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) #headerQuoteBtn svg) {
+  color: #000 !important;
+  stroke: #000 !important;
+}
+
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .sound-toggle:not(.is-playing) .sound-toggle-icon) {
   background: rgba(7, 26, 51, .15) !important;
   color: #071A33 !important;
@@ -333,6 +355,21 @@
   border-color: transparent !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
+}
+
+/* Final light-theme CTA contrast override for image-hero pages. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn:hover),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn:hover) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn svg) {
+  color: #000 !important;
+  stroke: #000 !important;
 }
 
 /* About hero header: transparent until the hero has passed. */
@@ -553,4 +590,39 @@
   :global(html:not([data-theme="amigos-dark"]) body .site-header .hamburger.active span) {
     background: #050505 !important;
   }
+}
+
+/* Final light-theme CTA label override; later sticky/header rules must not turn it white. */
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn:hover),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn:hover) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Explicit light-theme CTA color: keep both header button labels black. */
+:global(html[data-theme="amigos-light"] body .site-header .header-actions a.customer-header-btn),
+:global(html[data-theme="amigos-light"] body .site-header .header-actions a.header-btn),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions a.customer-header-btn),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions a.header-btn) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Final CTA text override for the rendered header buttons. */
+:global(html[data-theme] body .site-header .header-actions .customer-header-btn),
+:global(html[data-theme] body .site-header .header-actions .header-btn),
+:global(html[data-theme] body .site-header .header-actions .customer-header-btn *),
+:global(html[data-theme] body .site-header .header-actions .header-btn *) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  stroke: #000 !important;
+}
+
+/* Keep the customer-login icon black with the light-theme label. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg path) {
+  color: #000 !important;
+  stroke: #000 !important;
 }

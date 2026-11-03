@@ -319,9 +319,9 @@ runWhenDomReady(() => {
     const prev = document.querySelector(".carousel-prev");
 
 
-    if (track && next && prev) {
+    if (track) {
 
-        next.addEventListener("click", () => {
+        if (next) next.addEventListener("click", () => {
 
             track.scrollBy({
                 left: 400,
@@ -331,7 +331,7 @@ runWhenDomReady(() => {
         });
 
 
-        prev.addEventListener("click", () => {
+        if (prev) prev.addEventListener("click", () => {
 
             track.scrollBy({
                 left: -400,
@@ -345,9 +345,11 @@ runWhenDomReady(() => {
         let startX = 0;
         let currentScroll = 0;
 
+        track.addEventListener("dragstart", (e) => e.preventDefault());
 
         track.addEventListener("mousedown", (e) => {
 
+            e.preventDefault();
             pressed = true;
             startX = e.pageX - track.offsetLeft;
             currentScroll = track.scrollLeft;
@@ -443,4 +445,4 @@ runWhenDomReady(() => {
 });
 
 
-    
+

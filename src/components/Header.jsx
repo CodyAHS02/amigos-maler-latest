@@ -158,6 +158,7 @@ export default function Header() {
 
       <div className="header-actions">
         <a
+          id="headerCustomerLoginBtn"
           href={isCustomerLoggedIn ? "/customer/dashboard" : "/customer/login"}
           className="customer-header-btn"
         >
@@ -173,7 +174,7 @@ export default function Header() {
           {isCustomerLoggedIn ? "Customer Portal" : "Customer Login"}
         </a>
 
-        <a href="/#quote" className="header-btn">
+        <a id="headerQuoteBtn" href="/#quote" className="header-btn">
           Request A Quote
         </a>
       </div>

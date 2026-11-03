@@ -19,14 +19,67 @@ export default function Page() {
   return (
     <ServicePageShell>
       <main>
+        <style>{`
+          html:not([data-theme="amigos-dark"]) body #waterDamageHeroHeading,
+          html:not([data-theme="amigos-dark"]) body #waterDamageHeroDescription {
+            color: #000 !important;
+            -webkit-text-fill-color: #000 !important;
+          }
+          #waterDamageFinalCta {
+            isolation: isolate !important;
+          }
+          #waterDamageFinalCta::after {
+            display: none !important;
+          }
+          #waterDamageFinalCta > div {
+            position: relative !important;
+            z-index: 2 !important;
+            opacity: 1 !important;
+            transform: none !important;
+          }
+          #waterDamageFinalCta > div * {
+            opacity: 1 !important;
+            filter: none !important;
+          }
+          @media (max-width: 1100px) {
+            #waterDamageFinalCta {
+              box-sizing: border-box !important;
+              padding: 56px 32px !important;
+            }
+            #waterDamageFinalCta > div {
+              width: 100% !important;
+              max-width: 560px !important;
+              margin-inline: auto !important;
+            }
+            #waterDamageFinalCta h2,
+            #waterDamageFinalCta p {
+              max-width: 100% !important;
+              text-align: center !important;
+            }
+            #waterDamageFinalCta .cta-buttons {
+              width: 100% !important;
+              flex-direction: column !important;
+              align-items: center !important;
+              gap: 16px !important;
+              margin-top: 32px !important;
+            }
+            #waterDamageFinalCta .cta-buttons a {
+              width: 100% !important;
+              max-width: 520px !important;
+              box-sizing: border-box !important;
+              justify-content: center !important;
+              text-align: center !important;
+            }
+          }
+        `}</style>
         <section className="services-hero" data-hero>
           <div className="services-qc-wrap">
             <div className="hero-overlay" />
             <div className="hero-content reveal">
               <span className="eyebrow">DAMAGE REMEDIATION - DRYING - SURFACE RESTORATION</span>
-              <h1>Damage Remediation With A Clean Finish.</h1>
-              <p>From moisture marks and damaged plaster to repainting after drying work, Amigos Maler restores affected interiors with careful preparation and durable finishing.</p>
-              <div className="hero-buttons"><a href="/contact" className="primary-btn">Request Help</a><a href="/services" className="secondary-btn">View Services -&gt;</a></div>
+              <h1 id="waterDamageHeroHeading">Damage Remediation With A Clean Finish.</h1>
+              <p id="waterDamageHeroDescription">From moisture marks and damaged plaster to repainting after drying work, Amigos Maler restores affected interiors with careful preparation and durable finishing.</p>
+              <div className="hero-buttons"><a id="waterDamageHeroHelpButton" href="/contact" className="primary-btn">Request Help</a><a id="waterDamageHeroServicesButton" href="/services" className="secondary-btn">View Services</a></div>
             </div>
             <div className="hero-image parallax"><img src="/assets/services/pexels-mikhail-nilov-8296991.jpg" alt="Damage remediation surface repair and restoration" /></div>
           </div>
@@ -51,7 +104,7 @@ export default function Page() {
           <div className="process-grid">{steps.map(([number, title, text]) => <div className="process-card reveal" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></div>)}</div>
         </section>
 
-        <section className="final-cta"><div className="reveal"><h2>Need Damage Remediation?</h2><p>Tell us what happened and we will help define the next clean step for your walls or ceilings.</p><div className="cta-buttons"><a href="/contact">Request Support</a><a href="/services">Explore Services</a></div></div></section>
+        <section id="waterDamageFinalCta" className="final-cta"><div><h2>Need Damage Remediation?</h2><p>Tell us what happened and we will help define the next clean step for your walls or ceilings.</p><div className="cta-buttons"><a id="waterDamageFinalSupportButton" href="/contact">Request Support</a><a id="waterDamageFinalServicesButton" href="/services">Explore Services</a></div></div></section>
       </main>
     </ServicePageShell>
   );

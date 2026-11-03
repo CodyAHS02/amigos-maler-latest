@@ -15,8 +15,8 @@ export default function ColorAndMaterialContent() {
             <p className="reveal-color">Support with color, surface and material selection — tailored to the architecture,
                 usage and personal style.</p>
             <div className="color-hero-actions reveal-color">
-                <a href="#consultation" className="color-btn color-btn-primary">Request a Consultation <span>↗</span></a>
-                <a href="#color-experience" className="color-btn color-btn-light">Explore Colors <span>↓</span></a>
+                <a id="colorHeroConsultationBtn" href="#consultation" className="color-btn color-btn-primary">Request a Consultation</a>
+                <a id="colorHeroExploreBtn" href="#color-experience" className="color-btn color-btn-light">Explore Colors</a>
             </div>
         </div>
         <div className="color-hero-note">
@@ -69,7 +69,6 @@ export default function ColorAndMaterialContent() {
                     <span>01</span>
                     <h3>Color</h3>
                     <p>Find colors that suit the room, architecture and personal style.</p>
-                    <div className="choice-arrow">↗</div>
                 </div>
             </article>
             <article className="choice-card reveal-choice">
@@ -81,7 +80,6 @@ export default function ColorAndMaterialContent() {
                     <span>02</span>
                     <h3>Surface</h3>
                     <p>Choose the right visual and tactile surface effect.</p>
-                    <div className="choice-arrow">↗</div>
                 </div>
             </article>
             <article className="choice-card reveal-choice">
@@ -93,7 +91,6 @@ export default function ColorAndMaterialContent() {
                     <span>03</span>
                     <h3>Material</h3>
                     <p>Select suitable materials for the specific application.</p>
-                    <div className="choice-arrow">↗</div>
                 </div>
             </article>
             <article className="choice-card reveal-choice">
@@ -105,7 +102,6 @@ export default function ColorAndMaterialContent() {
                     <span>04</span>
                     <h3>Coating System</h3>
                     <p>Choose an appropriate coating system based on the surface and its use.</p>
-                    <div className="choice-arrow">↗</div>
                 </div>
             </article>
         </div>
@@ -127,7 +123,7 @@ export default function ColorAndMaterialContent() {
                 <div className="room-color-wall"></div>
                 <div className="room-color-glow"></div>
             </div>
-            <div className="color-room-info">
+            <div id="colorRoomInfo" className="color-room-info">
                 <span className="room-selection-label">SELECTED COLOR</span>
                 <h3 className="room-selected-name">Warm White</h3>
                 <p className="room-selected-description">A soft, timeless tone that keeps the room bright and calm.</p>
@@ -345,7 +341,7 @@ export default function ColorAndMaterialContent() {
                     <div className="palette-transition"></div>
 
                 </div>
-                <div className="palette-preview-label">
+                <div id="palettePreviewLabel" className="palette-preview-label">
                     <span>LIVE PALETTE PREVIEW</span>
                     <strong className="palette-preview-name">Warm &amp; Natural</strong>
                 </div>
@@ -452,7 +448,7 @@ export default function ColorAndMaterialContent() {
                 <div><strong>Visualize Before Implementation</strong><span>Explore possible directions before making the
                         final decision.</span></div>
             </div>
-            <a href="#contact" className="color-btn color-btn-primary">Discover AI Visualizer <span>↗</span></a>
+            <a href="#contact" className="color-btn color-btn-primary">Discover AI Visualizer</a>
             <div className="digital-disclaimer">Colors may vary slightly depending on lighting conditions in your photo.
             </div>
         </div>
@@ -466,8 +462,8 @@ export default function ColorAndMaterialContent() {
             <p>Let's discuss your project and find a combination that fits your space, architecture and personal style.
             </p>
             <div className="color-final-actions">
-                <a href="#consultation" className="color-btn color-btn-primary">Request a Consultation <span>↗</span></a>
-                <a href="#" className="color-btn color-btn-outline-dark">Discuss Your Project <span>→</span></a>
+                <a href="#consultation" className="color-btn color-btn-primary">Request a Consultation</a>
+                <a href="#" className="color-btn color-btn-outline-dark">Discuss Your Project</a>
             </div>
         </div>
     </section>

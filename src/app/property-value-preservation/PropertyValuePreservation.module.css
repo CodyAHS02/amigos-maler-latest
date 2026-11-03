@@ -61,24 +61,54 @@
 .page h1 span, .pricingHeader h2 span, .businessHeader h2 span { color: transparent; background: var(--gradient); -webkit-background-clip: text; background-clip: text; }
 .lead { max-width: 590px; margin-top: 30px; color: rgba(255,255,255,.72); font-size: clamp(16px, 1.35vw, 21px); line-height: 1.6; }
 .imagePlaceholder { display: block; width: 100%; min-height: 500px; object-fit: cover; background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(246,190,16,.12)); border: 1px solid rgba(255,255,255,.14); border-radius: 24px; }
-.action { display: inline-flex; align-items: center; justify-content: flex-start; gap: 18px; min-width: 230px; min-height: 58px; margin-top: 34px; padding: 0 28px 0 10px; border: 1px solid transparent; border-radius: 999px; color: #fff; font-size: 16px; font-weight: 800; text-decoration: none; white-space: nowrap; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
+.action { display: inline-flex; align-items: center; justify-content: flex-start; gap: 18px; min-width: 230px; min-height: 58px; margin-top: 34px; padding: 0 28px 0 10px; border: 1px solid transparent; border-radius: 999px; color: #fff; font-size: 16px; font-weight: 800; text-decoration: none; white-space: nowrap; user-select: none; -webkit-user-select: none; cursor: pointer; transition: transform .25s ease, box-shadow .25s ease, background .25s ease; }
 .arrowCircle { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border-radius: 50%; background: #fff; color: var(--ink); }
 .arrowCircle svg, .arrowCircle path { width: 23px; height: 23px; stroke: #071a33 !important; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .action:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(230,36,83,.24); }
 .gradient { background: var(--gradient); }
 .outline { border-color: rgba(246,190,16,.78); background: transparent; color: var(--ink); }
 
+:global(html:not([data-theme="amigos-dark"])) .heroCopy .action:hover {
+  background: #000;
+  background-image: none;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .24);
+}
+
+:global(html:not([data-theme="amigos-dark"])) .finalActions .action:hover {
+  background: #000;
+  background-image: none;
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .24);
+}
+
+:global(html[data-theme="amigos-dark"]) .page .action:hover,
+:global(html[data-theme="amigos-dark"]) .page .action:hover span {
+  background: #fff !important;
+  background-image: none !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .24);
+}
+
 .approach { background: #f7f9fb; }
 .sectionIntro { max-width: 760px; }
 .approach h2, .pricingHeader h2, .businessHeader h2, .finalCopy h2 { font-size: clamp(36px, 4.5vw, 70px); line-height: 1; letter-spacing: -.035em; }
 .approach h2 { color: var(--ink); }
 .approachGrid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 72px; border-top: 1px solid var(--line); }
-.approachItem { min-height: 230px; padding: 34px 28px 10px 0; border-right: 1px solid var(--line); }
+.approachItem { min-height: 230px; padding: 34px 28px 10px; border-right: 1px solid var(--line); border-radius: 16px; transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
 .approachItem:not(:first-child) { padding-left: 28px; }
 .approachItem:last-child { border-right: 0; }
 .icon { width: 42px; height: 42px; margin-bottom: 32px; stroke: var(--pink); stroke-width: 1.4; }
 .approachItem h3 { color: var(--ink); font-size: 20px; }
 .approachItem p { max-width: 190px; margin-top: 12px; color: var(--muted); font-size: 15px; line-height: 1.55; }
+.approachItem:hover { background: #fff; transform: translateY(-6px); box-shadow: 0 18px 36px rgba(230, 36, 83, .14); }
+.approachItem:hover h3 { color: var(--ink); }
+.approachItem:hover p { color: var(--muted); }
+.approachItem:hover .icon { transform: scale(1.08); stroke: var(--yellow); }
+.approachItem .icon { transition: transform .25s ease, stroke .25s ease; }
 
 .propertyCheck { background: linear-gradient(120deg, #ffd15a 0%, #ff9b2d 48%, #f36f22 100%); color: #fff; }
 .checkHeader { display: grid; grid-template-columns: 1fr .55fr; gap: 80px; align-items: end; max-width: 1250px; margin: 0 auto; }
@@ -191,7 +221,7 @@
   .hero { padding-top: 130px; }
   .hero .imagePlaceholder { min-height: 280px; }
   .approachGrid { grid-template-columns: 1fr; margin-top: 44px; }
-  .approachItem, .approachItem:not(:first-child) { min-height: auto; padding: 26px 0; border-right: 0; border-top: 1px solid var(--line); }
+  .approachItem, .approachItem:not(:first-child) { min-height: auto; padding: 26px 24px; border-right: 0; border-top: 1px solid var(--line); }
   .approachItem:first-child { border-top: 0; }
   .planCard, .businessCard { padding: 28px; }
   .businessCard { min-height: 0; }
@@ -286,4 +316,35 @@
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
   stroke: #000 !important;
+}
+
+:global(html[data-theme="amigos-dark"] body:has(.property-page) .page .checkInfo),
+:global(html[data-theme="amigos-dark"] body:has(.property-page) .page .checkInfo .checkCopy h3),
+:global(html[data-theme="amigos-dark"] body:has(.property-page) .page .checkInfo .checkCopy p),
+:global(html[data-theme="amigos-dark"] body:has(.property-page) .page .checkInfo .checkCopy small) {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html:not([data-theme="amigos-light"]) body:has(.property-page) .page .planCard .outline:not(:hover)) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html:not([data-theme="amigos-light"]) body #propertyPlanBasicAction:not(:hover)),
+:global(html:not([data-theme="amigos-light"]) body #propertyPlanPremiumAction:not(:hover)),
+:global(html:not([data-theme="amigos-light"]) body #propertyPlanBasicAction:not(:hover) span),
+:global(html:not([data-theme="amigos-light"]) body #propertyPlanPremiumAction:not(:hover) span) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(body:has(.property-page) .page .checkInfo .checkCopy h3) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+:global(html[data-theme="amigos-dark"] body #propertyAreaHeading) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
 }

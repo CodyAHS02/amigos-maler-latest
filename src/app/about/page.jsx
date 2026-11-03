@@ -550,6 +550,40 @@ html body[data-page="about"] main#aboutPage a.founder-cta-btn > .founder-arrow {
 html body[data-page="about"] main#aboutPage a.founder-cta-btn .founder-arrow-icon {
   stroke: #071a33 !important;
   opacity: 1 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-cta-arrow svg,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-cta-arrow svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: #fff !important;
+}
+
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow-icon,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow-icon,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow-icon path,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow-icon path {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: #fff !important;
+}
+
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow > svg,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow > svg,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow > svg path,
+html[data-theme*="dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:focus-visible .founder-arrow > svg path {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  fill: none !important;
+  stroke: #fff !important;
 }
 
 html[data-theme="amigos-dark"] body[data-page="about"] main#aboutPage a.founder-cta-btn:hover .founder-arrow,

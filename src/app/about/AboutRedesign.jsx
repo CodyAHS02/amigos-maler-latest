@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './AboutRedesign.module.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const storyCards = [
   { year: '2016', title: 'The Founding of Amigos Maler', image: '/assets/about-redesign/story-reference-2016.jpg', text: 'In 2016, Patricio Arias and his best friend Marco Castillo Guzman founded Amigos Maler GmbH together. Built on friendship, mutual trust, and a shared passion for the painting trade, they established an independent company.' },
@@ -23,6 +23,30 @@ const steps = [
   ['4', 'Final Result', 'We hand over your project on schedule and make sure you enjoy the results.', '/assets/projects/project-14.jpg'],
 ];
 
+const partnerLogos = [
+  ['Schaeppi', '/assets/about-partners/schaeppi.svg'],
+  ['Maler Gipser', '/assets/about-partners/maler-gipser.webp'],
+  ['Fellmann Coiffeur', '/assets/about-partners/fellmann-coiffeur.webp'],
+  ['Akineta', '/assets/about-partners/akineta.webp'],
+  ['SBB CFF FFS', '/assets/about-partners/sbb-cff-ffs.png'],
+  ['Regimo Aarau', '/assets/about-partners/regimo-aarau.jpg'],
+  ['Baur Trinh & Partner', '/assets/about-partners/btp-immobilien.webp'],
+  ['MCI Group', '/assets/about-partners/mci-group.jpg'],
+  ['Scaffs Geruestbau', '/assets/about-partners/scaffs.webp', true],
+  ['GTT', '/assets/about-partners/gtt.webp', true],
+];
+
+const customerReviews = [
+  ['Natasha Fischer', 'Switzerland', "We are absolutely thrilled with Patricio's work. Both interior and exterior walls were painted perfectly. The work was clean, precise, and completed with great attention to detail."],
+  ['Bettina Marinelli', 'Switzerland', 'Our ground floor, entrance, living room, kitchen, stairwell and doors were beautifully painted. Expert advice, careful execution, and excellent quality.'],
+  ['Melanie Bryan', 'Aarau', 'Amigos Maler provided expert advice and professional service. They were dedicated, helpful, and delivered outstanding results.'],
+  ['Sabiduri 1010', 'Switzerland', "I needed help painting my office wall and couldn't have wished for a better person. Professional, reliable, and excellent work."],
+  ['Rineta Slishani', 'Switzerland', 'Highly recommended! The work was completed reliably, on schedule, and with excellent quality.'],
+  ['Corinne Sittmann', 'Switzerland', 'Very friendly and competent advice. The work was completed quickly and to a high standard. I would definitely hire Amigos again.'],
+  ['Erich Leimgruber', 'Switzerland', 'The workers are very competent, clean, and precise. The price-performance ratio is excellent.'],
+  ['Benjamin Allemann', 'Switzerland', 'You guys are great, friendly, and very helpful. We would book you again anytime.'],
+];
+
 function Arrow() { return <span className={styles.arrow} aria-hidden="true">→</span>; }
 
 function FounderSection() {
@@ -38,6 +62,47 @@ function FounderSection() {
 
 export default function AboutRedesign() {
   const [expandedStory, setExpandedStory] = useState(null);
+  const reviewViewportRef = useRef(null);
+  const reviewDragRef = useRef(null);
+
+  useEffect(() => {
+    const viewport = reviewViewportRef.current;
+    if (!viewport) return undefined;
+
+    let frame;
+    let previousTime = 0;
+    const autoScroll = (time) => {
+      if (!reviewDragRef.current && previousTime && viewport.scrollWidth > viewport.clientWidth) {
+        viewport.scrollLeft += (time - previousTime) * 0.035;
+        if (viewport.scrollLeft >= viewport.scrollWidth / 2) viewport.scrollLeft = 0;
+      }
+      previousTime = time;
+      frame = requestAnimationFrame(autoScroll);
+    };
+
+    frame = requestAnimationFrame(autoScroll);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  function startReviewDrag(event) {
+    const viewport = reviewViewportRef.current;
+    if (!viewport || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    reviewDragRef.current = { startX: event.clientX, startScrollLeft: viewport.scrollLeft };
+    viewport.setPointerCapture(event.pointerId);
+  }
+
+  function moveReviewDrag(event) {
+    const viewport = reviewViewportRef.current;
+    const drag = reviewDragRef.current;
+    if (!viewport || !drag) return;
+    viewport.scrollLeft = drag.startScrollLeft - (event.clientX - drag.startX);
+  }
+
+  function stopReviewDrag(event) {
+    const viewport = reviewViewportRef.current;
+    if (viewport?.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
+    reviewDragRef.current = null;
+  }
 
   return <main id="aboutPage" className={styles.aboutPage}>
     <section className={styles.hero} data-hero><img className={styles.heroImageDay} src="/assets/about-redesign/hero-house-day.png" alt="Modern luxury house in daylight" /><img className={styles.heroImageNight} src="/assets/about-redesign/hero-house.png" alt="Modern luxury house at dusk" /><div className={styles.heroShade}></div><div className={styles.heroInner}><p className={styles.kicker}>ABOUT US</p><h1>Every Entrepreneur<br />Has <span className={styles.heroHighlight}>a Story.</span></h1><p className={styles.heroText}>Our story is shaped by people, passion,<br />and the trust of our customers.</p><a id="aboutHeroStoryCta" className={styles.gradientButton} href="#story">Discover Our Story</a></div><p className={styles.expertise}>Expertise<br /><em>connects.</em></p></section>
@@ -45,8 +110,8 @@ export default function AboutRedesign() {
     <FounderSection />
     <section className={styles.values}><div className={styles.sectionIntro}><p className={styles.kicker}>WHAT SETS US APART</p><h2>Our Values. <span>Your Advantage.</span></h2></div><div className={styles.valueGrid}>{values.map(([icon, title, text]) => <article className={styles.valueCard} key={title}><div className={styles.valueIcon}>{icon}</div><h3>{title}</h3><p>{text}</p></article>)}</div></section>
     <section className={styles.process}><div className={styles.sectionIntro}><p className={styles.kicker}>HOW WE WORK</p><h2>From Consultation to Completion.</h2></div><div className={styles.processGrid}>{steps.map(([num, title, text, image], i) => <article className={styles.processCard} key={title}><div className={styles.stepImage}><img src={image} alt="" /><span>{num}</span></div><h3>{title}</h3><p>{text}</p>{i < steps.length - 1 && <Arrow />}</article>)}</div></section>
-    <section className={styles.partners}><div className={styles.sectionIntro}><p className={styles.kicker}>STRONGER TOGETHER</p><h2>Our Partners and References.</h2></div><p className={styles.partnerText}>We are proud of our network of trusted partners, suppliers and customers who support us every day. Together, we turn visions into reality.</p><div className={styles.logoGrid}>{['RE/MAX', 'INOVA WOHNBAU', 'ANLIKER', 'SPP', 'TRIFARI', 'SCAFFS GERÜSTBAU'].map(logo => <div key={logo}>{logo}</div>)}</div></section>
-    <section className={styles.testimonials}><div className={styles.sectionIntro}><p className={styles.kicker}>WHAT OUR CLIENTS SAY</p><h2>Your Satisfaction Is Our Success.</h2></div><div className={styles.reviewGrid}><div className={styles.googleReview}><svg className={styles.googleLogo} viewBox="0 0 48 48" role="img" aria-label="Google"><path fill="#4285F4" d="M43.6 20H42v-.1H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-4Z"/><path fill="#34A853" d="M6.3 14.7 12.9 19C14.7 15.4 18.9 13 24 13c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7Z"/><path fill="#FBBC05" d="M24 44c5.1 0 9.5-1.7 12.7-4.6l-6.2-5.1c-1.7 1.1-3.9 1.7-6.5 1.7-5.1 0-9.4-3.4-11-8l-6.5 5C9.7 39.7 16.3 44 24 44Z"/><path fill="#EA4335" d="M13 28c-.4-1.2-.7-2.6-.7-4s.2-2.8.7-4l-6.7-5.3C5 17.2 4 20.5 4 24s1 6.8 2.3 9.3L13 28Z"/></svg><b>5.0 <span>★★★★★</span></b><p>Over 35 Google reviews</p><a className={styles.gradientButton} href="#reviews">Read All Reviews</a></div><div className={styles.quoteGrid}>{[['Rineta Shishpani', 'Very professional work, friendly advice and a great result. I would always work with them again.'], ['Corinne Sittmann', 'Reliable, clean and very friendly. I can only recommend them.']].map(([name, text]) => <blockquote key={name}><span>“</span><p>{text}</p><cite>{name}</cite><small>★★★★★</small></blockquote>)}</div></div></section>
+    <section className={styles.partners}><div className={styles.sectionIntro}><p className={styles.kicker}>STRONGER TOGETHER</p><h2>Our Partners and References.</h2></div><p className={styles.partnerText}>We are proud of our network of trusted partners, suppliers and customers who support us every day. Together, we turn visions into reality.</p><div className={styles.logoGrid} aria-label="Partner logos"><div className={styles.logoTrack}>{[...partnerLogos, ...partnerLogos].map(([name, src, darkLogo], index) => <div key={`${name}-${index}`} className={`${styles.logoItem} ${darkLogo ? styles.darkLogoCard : ''}`} aria-hidden={index >= partnerLogos.length}><img src={src} alt={index >= partnerLogos.length ? '' : name} /></div>)}</div></div></section>
+    <section className={styles.testimonials}><div className={styles.sectionIntro}><p className={styles.kicker}>WHAT OUR CLIENTS SAY</p><h2>Your Satisfaction Is Our Success.</h2></div><div className={styles.reviewGrid}><div className={styles.googleReview}><svg className={styles.googleLogo} viewBox="0 0 48 48" role="img" aria-label="Google"><path fill="#4285F4" d="M43.6 20H42v-.1H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-4Z"/><path fill="#34A853" d="M6.3 14.7 12.9 19C14.7 15.4 18.9 13 24 13c3.1 0 5.8 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7Z"/><path fill="#FBBC05" d="M24 44c5.1 0 9.5-1.7 12.7-4.6l-6.2-5.1c-1.7 1.1-3.9 1.7-6.5 1.7-5.1 0-9.4-3.4-11-8l-6.5 5C9.7 39.7 16.3 44 24 44Z"/><path fill="#EA4335" d="M13 28c-.4-1.2-.7-2.6-.7-4s.2-2.8.7-4l-6.7-5.3C5 17.2 4 20.5 4 24s1 6.8 2.3 9.3L13 28Z"/></svg><b>5.0 <span>★★★★★</span></b><p>Over 35 Google reviews</p></div><div className={styles.reviewViewport} ref={reviewViewportRef} onPointerDown={startReviewDrag} onPointerMove={moveReviewDrag} onPointerUp={stopReviewDrag} onPointerCancel={stopReviewDrag}><div className={styles.quoteGrid}>{[...customerReviews, ...customerReviews].map(([name, location, text], index) => <blockquote key={`${name}-${index}`}><span>“</span><p>{text}</p><cite>{name} · {location}</cite><small>★★★★★</small></blockquote>)}</div></div></div></section>
     <section className={styles.cta}><div><p className={styles.kicker}>GET IN TOUCH</p><h2>We look forward to bringing<br />your next project to life.</h2><div className={styles.ctaActions}><a className={styles.gradientButton} href="/contact">Contact Us</a><a className={styles.gradientButton} href="/contact">Request a Free Quote</a></div></div></section>
   </main>;
 }

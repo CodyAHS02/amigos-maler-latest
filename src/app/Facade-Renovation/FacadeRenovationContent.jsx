@@ -17,8 +17,8 @@ export default function FacadeRenovationContent() {
                 <p className="facade-hero-copy reveal-hero">Inspect, prepare and repair existing facades, then protect them
                     long-term with suitable coating systems.</p>
                 <div className="facade-hero-actions reveal-hero">
-                    <a href="#contact" className="facade-btn facade-btn-primary">Request a Quote <span>↗</span></a>
-                    <a href="#facade-work" className="facade-btn facade-btn-outline">View Our Work <span>↓</span></a>
+                    <a href="#contact" className="facade-btn facade-btn-primary">Request a Quote</a>
+                    <a href="#facade-work" className="facade-btn facade-btn-outline">View Our Work</a>
                 </div>
             </div>
             <div className="facade-hero-side-note">
@@ -122,19 +122,19 @@ export default function FacadeRenovationContent() {
                 <div className="section-heading reveal">
 
                     <span>
-                        SEE THE DIFFERENCE
+                        SEE THE TRANSFORMATION
                     </span>
 
 
                     <h2>
-                        Good preparation changes everything.
+                        From worn facade to lasting finish.
                     </h2>
 
 
                     <p>
-                        Paint alone does not create a premium surface.
-                        The difference comes from preparation,
-                        materials and professional execution.
+                        A lasting facade finish starts with inspection,
+                        repairs and careful surface preparation.
+                        The result is a cleaner appearance and dependable protection.
                     </p>
 
 
@@ -143,12 +143,12 @@ export default function FacadeRenovationContent() {
                 <div className="before-after-slider" id="baSlider">
 
                     <div className="ba-before-pane" id="baBeforePane">
-                        <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+                        <img src="/assets/facade/facade-before.png" alt="Weathered facade before renovation" />
                         <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                     </div>
 
                     <div className="ba-after-pane" id="baAfterPane">
-                        <img src="/assets/Services-After-Room.png" alt="After renovation" />
+                        <img src="/assets/facade/facade-after.png" alt="Renovated facade after professional finishing" />
                         <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                     </div>
 
@@ -191,7 +191,7 @@ export default function FacadeRenovationContent() {
                 </div>
                 <div className="facade-products-note">
                     <p><strong>Welches Produkt passt zu Ihrer Fassade?</strong><span>Wir prüfen Untergrund und Zustand vor Ort und empfehlen danach den passenden Aufbau.</span></p>
-                    <a href="/contact" className="facade-btn facade-btn-primary">Fassade anfragen <span>↗</span></a>
+                    <a href="/contact" className="facade-btn facade-btn-primary">Fassade anfragen</a>
                 </div>
             </div>
         </section>
@@ -381,7 +381,7 @@ export default function FacadeRenovationContent() {
                 <h2>A well-maintained facade protects more than first impressions.</h2>
                 <p>Regular maintenance, professional renovation and suitable coatings can contribute to protecting the
                     building and maintaining the property's condition.</p>
-                <a href="#contact" className="facade-btn facade-btn-light">Discover Property Preservation <span>↗</span></a>
+                    <a href="#contact" className="facade-btn facade-btn-light">Discover Property Preservation</a>
             </div>
             <div className="value-stat"><strong>01</strong><span>MAINTAIN</span></div>
             <div className="value-stat"><strong>02</strong><span>PROTECT</span></div>
@@ -396,8 +396,8 @@ export default function FacadeRenovationContent() {
                 <p>Professional facade inspection, renovation, protection and redesign — carried out with care from
                     preparation through completion.</p>
                 <div className="cta-actions">
-                    <a href="#" className="facade-btn facade-btn-primary">Request a Free Quote <span>↗</span></a>
-                    <a href="#" className="facade-btn facade-btn-outline">Discuss Your Project <span>→</span></a>
+                    <a href="#" className="facade-btn facade-btn-primary">Request a Free Quote</a>
+                    <a href="#" className="facade-btn facade-btn-outline">Discuss Your Project</a>
                 </div>
             </div>
         </section>

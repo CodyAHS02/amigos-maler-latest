@@ -648,6 +648,93 @@ body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.
     }
 }
 
+/* Dark-theme arrow CTAs: hover to white with black copy and icon. */
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    border-color: #fff !important;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover::before,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover::before,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover::before {
+    background: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover::after,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover::after,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover::after {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):hover > *,
+html[data-theme="amigos-dark"] body main :is(a, button):hover svg,
+html[data-theme="amigos-dark"] body main :is(a, button):hover svg path {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Cover both dark-theme attribute names used by the site runtime. */
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    border-color: #fff !important;
+}
+
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover::before,
+html[data-theme*="dark"] body main :is(a, button):hover > *,
+html[data-theme*="dark"] body main :is(a, button):hover svg,
+html[data-theme*="dark"] body main :is(a, button):hover svg path {
+    background-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
 /* Homepage hero buttons: kill the global gradient fill and keep only glass + animated stroke. */
 @keyframes auditHeroButtonBorderFlow {
     0% { background-position: 0% 50%; }
@@ -887,6 +974,157 @@ html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint
         min-height: 56px !important;
         padding: 0 18px !important;
         font-size: 16px !important;
+    }
+}
+
+/* Keep final CTA content above its background veil. */
+html body .final-cta > div:not(.final-cta-bg) {
+    position: relative !important;
+    z-index: 1 !important;
+    opacity: 1 !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+/* Services CTA hover contract: white surface in the dark presentation. */
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+@media (max-width: 760px) {
+    html body[data-page="services"] .final-cta {
+        box-sizing: border-box !important;
+        padding: 64px 20px !important;
+    }
+
+    html body[data-page="services"] .final-cta > div {
+        width: 100% !important;
+        max-width: 620px !important;
+        margin-inline: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    html body[data-page="services"] .final-cta h2 {
+        font-size: clamp(34px, 9vw, 48px) !important;
+        line-height: 1.04 !important;
+    }
+
+    html body[data-page="services"] .final-cta p {
+        font-size: 18px !important;
+        line-height: 1.45 !important;
+    }
+
+    html body[data-page="services"] .final-cta .cta-buttons {
+        width: 100% !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+
+    html body[data-page="services"] .final-cta .cta-buttons a {
+        display: inline-flex !important;
+        width: min(100%, 420px) !important;
+        box-sizing: border-box !important;
+        justify-content: center !important;
     }
 }
 
@@ -1386,4 +1624,458 @@ body .final-cta .final-cta-bg {
     object-position: center 58%;
     opacity: .72;
     pointer-events: none;
+}
+
+/* Apartment renovation CTAs: ID-level dark-theme hover override. */
+html[data-theme*="dark"] body #renFreeQuoteButton:hover,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover::before,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover::before,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover::before,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover::before,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover::after,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover::after,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover::after,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover::after,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover > *,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover > *,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover > *,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover > *,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover > *,
+html[data-theme*="dark"] body #renFreeQuoteButton:hover svg,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover svg,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover svg,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover svg,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover svg,
+html[data-theme*="dark"] body #renFreeQuoteButton:hover svg path,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover svg path,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover svg path,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover svg path,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Plastering CTAs: every dark-theme hover uses a white surface and black content. */
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover::before,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover::after,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover::after,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover > *,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover > *,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover svg,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover svg,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover svg path,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover::before,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover::before,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover::before,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover::after,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover::after,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover::after,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover::after,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover > *,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover > *,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover > *,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover > *,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover svg,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover svg,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover svg,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover svg,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover svg path,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover svg path,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover svg path,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Mold CTAs: explicit dark-theme hover override for every mold button. */
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Water-damage hero CTAs: explicit dark-theme hover override. */
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Schadenservice CTAs: explicit dark-theme hover override. */
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Contact hero: override the late global span hover rule that creates the white text bar. */
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Contact form navigation: all dark-theme hover surfaces are white with black copy. */
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Contact form steps: keep hover text containers transparent; never paint a white block behind them. */
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div,
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div * {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div strong {
+    color: #ffca16 !important;
+    -webkit-text-fill-color: #ffca16 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover > span {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover::after {
+    background: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+@media (max-width: 768px) {
+    html body :is(
+        .services-hero .hero-content h1,
+        .svc-hero .svc-hero-content h1,
+        .spray-hero .spray-hero-content h1,
+        .color-hero .color-hero-content h1,
+        .ren-hero .ren-hero-content h1,
+        .drywall-hero .hero-content h1,
+        .gipser-hero .gipser-hero-content h1,
+        .facade-hero .facade-hero-title,
+        .damage-hero h1
+    ) {
+        font-size: clamp(40px, 9.5vw, 58px) !important;
+        line-height: .96 !important;
+    }
 }

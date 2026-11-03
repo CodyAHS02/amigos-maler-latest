@@ -185,10 +185,12 @@ export default function AboutContent() {
                             <span className="founder-sig-title">Managing Director · Amigos Maler GmbH</span>
                         </div>
                         <a href="/contact" className="founder-cta-btn">
+                            <span className="founder-cta-arrow" aria-hidden="true">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </span>
                             <span>Discuss Your Project</span>
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
                         </a>
                     </div>
                 </div>

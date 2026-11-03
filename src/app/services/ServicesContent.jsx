@@ -32,13 +32,13 @@ export default function ServicesContent() {
 
                 <div className="hero-buttons">
 
-                    <a href="/#quote" className="primary-btn">
+                    <a id="servicesHeroQuoteButton" href="/#quote" className="primary-btn">
                         Request Quote
                     </a>
 
 
-                    <a href="/projects" className="secondary-btn">
-                        View Our Work →
+                    <a id="servicesHeroWorkButton" href="/projects" className="secondary-btn">
+                        View Our Work
                     </a>
 
 
@@ -985,10 +985,6 @@ export default function ServicesContent() {
             </div>
 
 
-            <a href="https://amigos-immo.vercel.app/" className="text-link" target="_blank" rel="noopener noreferrer">
-                View All Reviews →
-            </a>
-
         </div>
     </section>
 
@@ -1026,8 +1022,8 @@ export default function ServicesContent() {
             </p>
 
 
-            <a href="/property-value-preservation">
-                Discover Property Care →
+            <a id="servicesPropertyCareButton" href="/property-value-preservation" className="primary-btn">
+                Discover Property Care
             </a>
 
 
@@ -1041,7 +1037,7 @@ export default function ServicesContent() {
     <section className="final-cta">
 
 
-        <div className="reveal">
+        <div>
 
 
             <h2>
@@ -1059,12 +1055,12 @@ export default function ServicesContent() {
             <div className="cta-buttons">
 
 
-                <a href="/#quote">
+                <a id="servicesFinalQuoteButton" href="/#quote">
                     Request Free Quote
                 </a>
 
 
-                <a href="/contact">
+                <a id="servicesFinalDiscussButton" href="/contact">
                     Discuss Project
                 </a>
 

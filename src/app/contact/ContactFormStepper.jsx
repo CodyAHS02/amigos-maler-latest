@@ -128,7 +128,7 @@ export default function ContactFormStepper() {
     <div className={styles.formPanel}>
       <aside className={styles.stepper} aria-label="Contact form progress">
         <div className={styles.stepLine} />
-        {steps.map(([title, description], index) => { const step = index + 1; return <button className={`${styles.step} ${step === currentStep ? styles.activeStep : ""} ${step < currentStep || isStepComplete(step) ? styles.completedStep : ""}`} type="button" onClick={() => goToStep(step)} key={title} aria-current={step === currentStep ? "step" : undefined}>
+        {steps.map(([title, description], index) => { const step = index + 1; return <button id={`contactStep${step}`} className={`${styles.step} ${step === currentStep ? styles.activeStep : ""} ${step < currentStep || isStepComplete(step) ? styles.completedStep : ""}`} type="button" onClick={() => goToStep(step)} key={title} aria-current={step === currentStep ? "step" : undefined}>
           <span className={styles.stepNumber}>{step}</span><div><strong>{title}</strong><small>{description}</small></div>
         </button>; })}
       </aside>
@@ -137,8 +137,8 @@ export default function ContactFormStepper() {
         {renderStepContent()}
         {status && <p className={styles.formStatus} role="alert">{status}</p>}
         <div className={styles.stepActions}>
-          {!submitted && currentStep > 1 && <button className={styles.backButton} type="button" onClick={() => goToStep(currentStep - 1)}>Back</button>}
-          {submitted ? <button className={styles.nextButton} type="button" onClick={resetForm}>Start Again</button> : <button className={styles.nextButton} type="button" onClick={handleNext}>{currentStep === 3 ? "Send Enquiry" : "Next Step"}</button>}
+          {!submitted && currentStep > 1 && <button id="contactFormBackButton" className={styles.backButton} type="button" onClick={() => goToStep(currentStep - 1)}>Back</button>}
+          {submitted ? <button id="contactFormStartAgainButton" className={styles.nextButton} type="button" onClick={resetForm}>Start Again</button> : <button id="contactFormNextButton" className={styles.nextButton} type="button" onClick={handleNext}>{currentStep === 3 ? "Send Enquiry" : "Next Step"}</button>}
         </div>
       </div>
     </div>

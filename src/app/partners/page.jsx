@@ -1191,10 +1191,15 @@ html[data-theme="amigos-dark"] .partner-listing {
   .partner-listing {
     height: auto !important;
     min-height: 0 !important;
+    margin-top: 32px !important;
   }
 
   .partner-listing-grid {
     height: auto !important;
+  }
+
+  .partner-listing-copy {
+    margin-top: 0 !important;
   }
 }
 
@@ -1220,6 +1225,14 @@ html[data-theme="amigos-dark"] .partner-listing {
   line-height: .99 !important;
   letter-spacing: -.045em !important;
   font-weight: 700 !important;
+}
+
+@media (max-width: 768px) {
+  .partners-hero-copy h1 {
+    max-width: none !important;
+    font-size: clamp(40px, 9.5vw, 58px) !important;
+    line-height: .96 !important;
+  }
 }
 
 .partners-hero-copy > p:not(.partners-kicker) {
@@ -1941,6 +1954,65 @@ html:not([data-theme="amigos-dark"]) .partner-benefit p {
 
   .partner-benefit:nth-child(even) {
     border-left: 1px solid rgba(255, 255, 255, .28) !important;
+  }
+}
+
+#partnersDiscussButton::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 10px !important;
+  top: 50% !important;
+  z-index: 2 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  background-image: none !important;
+  box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+  transform: translateY(-50%) !important;
+}
+
+#partnersDiscussButton::after {
+  content: "→" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 22px !important;
+  top: 50% !important;
+  z-index: 3 !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  transform: translateY(-52%) !important;
+}
+
+html body[data-page="partners"] main.partners-page :is(#partnersBecomeButton, #partnersDiscussButton, #partnersSendRequestButton):hover {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  border-color: #fff !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+html body[data-page="partners"] main.partners-page :is(#partnersBecomeButton, #partnersDiscussButton, #partnersSendRequestButton):hover::before {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+}
+
+html body[data-page="partners"] main.partners-page :is(#partnersBecomeButton, #partnersDiscussButton, #partnersSendRequestButton):hover::after {
+  background: transparent !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+@media (max-width: 768px) {
+  .partner-flow {
+    margin-top: 32px !important;
   }
 }
 
