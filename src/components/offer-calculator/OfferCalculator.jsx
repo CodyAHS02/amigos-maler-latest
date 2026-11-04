@@ -1728,7 +1728,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </ul>
 
                 <div className={styles.tabButtonWrapper}>
-                  <button type="button" className={styles.tabActionBtn}>
+                  <button id="home-quick-estimate-button" type="button" className={styles.tabActionBtn}>
                     <span>Start Quick Estimate</span>
                   </button>
                 </div>
@@ -1790,7 +1790,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 </ul>
 
                 <div className={styles.tabButtonWrapper}>
-                  <button type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
+                  <button id="home-detailed-quote-button" type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
                     <span>Create Detailed Quote</span>
                   </button>
                 </div>
@@ -2453,7 +2453,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                         ))}
                       </div>
                       <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-                        {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+                        {busy ? "VERIFYING…" : "VERIFY E-MAIL"}
                       </button>
                       <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
                         Didn&apos;t receive the code? Send again
@@ -2699,6 +2699,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       <div className={styles.navActionsLeft}>
                         {embedded ? (
                           <button
+                            id="calculator-back-selection-button"
                             type="button"
                             className={styles.secondaryAction}
                             onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
@@ -2706,20 +2707,20 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           Back to Calculator Selection
                           </button>
                         ) : (
-                          <a className={styles.backToQuickNavBtn} href="/#quote">
+                          <a id="calculator-back-selection-link" className={styles.backToQuickNavBtn} href="/#quote">
                             Back to Calculator Selection
                           </a>
                         )}
                         {step > 0 && (
-                          <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
+                          <button id="calculator-back-step-button" type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
                             BACK
                           </button>
                         )}
                       </div>
-                      <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
+                      <button id="calculator-continue-button" type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
                         {isHomeQuickQuote
                           ? (step === 2 ? (busy ? "SENDING…" : "Next") : (step === 3 ? "GET YOUR PRICE" : "CONTINUE"))
-                          : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →"))}
+                          : (isSimple ? "CONTINUE" : (step === 4 ? "CALCULATE" : "CONTINUE"))}
                       </button>
                     </div>
                   )}
@@ -2820,7 +2821,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                           ))}
                         </div>
                         <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-                          {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+                          {busy ? "VERIFYING…" : "VERIFY E-MAIL"}
                         </button>
                         <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
                           Didn&apos;t receive the code? Send again
@@ -3041,7 +3042,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               </ul>
 
               <div className={styles.tabButtonWrapper}>
-                <button type="button" className={styles.tabActionBtn}>
+                <button id="home-quick-estimate-button" type="button" className={styles.tabActionBtn}>
                   <span>Start Quick Estimate</span>
                 </button>
               </div>
@@ -3091,7 +3092,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               </ul>
 
               <div className={styles.tabButtonWrapper}>
-                <button type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
+                <button id="home-detailed-quote-button" type="button" className={cx(styles.tabActionBtn, styles.tabActionBtnDetailed)}>
                   <span>Create Detailed Quote</span>
                 </button>
               </div>
@@ -3174,19 +3175,19 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               <span className={styles.themeToggleIcon} aria-hidden="true">
                 {isDark ? (
                   <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                ) : (
+                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="4.2" fill="currentColor" />
                     <path
                       d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
-                    />
-                  </svg>
-                ) : (
-                  <svg className={styles.themeIcon} viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M20.2 14.2A7.6 7.6 0 0 1 9.8 3.8 8.5 8.5 0 1 0 20.2 14.2Z"
-                      fill="currentColor"
                     />
                   </svg>
                 )}
@@ -3455,7 +3456,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
               ))}
             </div>
             <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>
-              {busy ? "VERIFYING…" : "VERIFY E-MAIL →"}
+              {busy ? "VERIFYING…" : "VERIFY E-MAIL"}
             </button>
             <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>
               Didn&apos;t receive the code? Send again
@@ -3749,15 +3750,15 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <LockedPricePlaceholder />
             <div className={styles.navActions} style={{ marginTop: "18px" }}>
               <div className={styles.navActionsLeft}>
-                <a className={styles.backToQuickNavBtn} href="/#quote">
+                <a id="calculator-summary-back-selection-link" className={styles.backToQuickNavBtn} href="/#quote">
                   Back to Calculator Selection
                 </a>
                 <button type="button" className={styles.secondaryAction} onClick={() => setStep(4)}>
                   EDIT SELECTIONS
                 </button>
               </div>
-              <button className={styles.primaryAction} type="button" onClick={() => setStep(6)}>
-                CONTINUE →
+              <button id="calculator-summary-continue-button" className={styles.primaryAction} type="button" onClick={() => setStep(6)}>
+                CONTINUE
               </button>
             </div>
           </div>
@@ -3785,7 +3786,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       Back to Calculator Selection
                     </a>
                   </div>
-                  <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>{busy ? "SENDING…" : "SEND VERIFICATION CODE →"}</button>
+                  <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>{busy ? "SENDING…" : "SEND VERIFICATION CODE"}</button>
                 </div>
               </>
             ) : (
@@ -3824,7 +3825,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                       Back to Calculator Selection
                     </a>
                   </div>
-                  <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>{busy ? "VERIFYING…" : "VERIFY E-MAIL →"}</button>
+                  <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>{busy ? "VERIFYING…" : "VERIFY E-MAIL"}</button>
                 </div>
                 <button className={styles.textButton} type="button" onClick={resendCode} disabled={busy}>Didn&apos;t receive the code? Send again</button>
               </>
@@ -3982,17 +3983,17 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {step < inputStepCount && (
           <div className={styles.navActions}>
             <div className={styles.navActionsLeft}>
-              <a className={styles.backToQuickNavBtn} href="/#quote">
+              <a id="calculator-final-back-selection-link" className={styles.backToQuickNavBtn} href="/#quote">
                 Back to Calculator Selection
               </a>
               {step > 0 && (
-                <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
+                <button id="calculator-final-back-step-button" type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
                   BACK
                 </button>
               )}
             </div>
-            <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
-              {isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")}
+            <button id="calculator-final-continue-button" type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
+              {isSimple ? "CONTINUE" : (step === 4 ? "CALCULATE" : "CONTINUE")}
             </button>
           </div>
         )}

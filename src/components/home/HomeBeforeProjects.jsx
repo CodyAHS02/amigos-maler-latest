@@ -45,8 +45,8 @@ export default function HomeBeforeProjects() {
                     </div>
 
                     <div className="preview-images" id="previewImages">
-                        <img className="preview-before active" id="beforeImg" src="" alt="Before" />
-                        <img className="preview-after" id="afterImg" src="" alt="After" />
+                        <img className="preview-before active" id="beforeImg" src={null} alt="Before" />
+                        <img className="preview-after" id="afterImg" src={null} alt="After" />
                     </div>
 
                     <div className="scan-overlay" id="scanOverlay">
