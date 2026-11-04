@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProjectsContent.module.css";
 
 const properties = [
-  { type: "sale", tag: "ZU VERKAUFEN", title: "Moderne Villa am See", location: "Olten · Schweiz", price: "CHF 1'280'000", details: "5.5 Zimmer · 168 m²", image: "/assets/external/projects/photo-1600607688969-a5bfcd646154-w1800-q90.jpg" },
-  { type: "rent", tag: "ZU VERMIETEN", title: "Lichtvolle Stadtwohnung", location: "Aarau · Schweiz", price: "CHF 2'450 / Monat", details: "4.5 Zimmer · 112 m²", image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1800-q90.jpg" },
-  { type: "sale", tag: "ZU VERKAUFEN", title: "Architektenhaus mit Garten", location: "Solothurn · Schweiz", price: "CHF 1'095'000", details: "6.5 Zimmer · 194 m²", image: "/assets/external/projects/photo-1600210491892-03d54c0aaf87-w1800-q90.jpg" },
-  { type: "rent", tag: "ZU VERMIETEN", title: "Penthouse mit Weitblick", location: "Zürich · Schweiz", price: "CHF 3'800 / Monat", details: "4.5 Zimmer · 126 m²", image: "/assets/external/projects/photo-1618220179428-22790b461013-w1800-q90.jpg" }
+  { type: "sale", tag: "For Sale", title: "Modern villa with garden", location: "Olten, Switzerland", price: "CHF 1'280'000", details: "5.5 rooms · 168 m²", image: "/assets/external/projects/photo-1600607688969-a5bfcd646154-w1800-q90.jpg" },
+  { type: "rent", tag: "For Rent", title: "Light-filled city apartment", location: "Aarau, Switzerland", price: "CHF 2'450 / month", details: "4.5 rooms · 112 m²", image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1800-q90.jpg" },
+  { type: "sale", tag: "For Sale", title: "Architect-designed family home", location: "Solothurn, Switzerland", price: "CHF 1'095'000", details: "6.5 rooms · 194 m²", image: "/assets/external/projects/photo-1600210491892-03d54c0aaf87-w1800-q90.jpg" },
+  { type: "rent", tag: "For Rent", title: "Penthouse with a view", location: "Zurich, Switzerland", price: "CHF 3'800 / month", details: "4.5 rooms · 126 m²", image: "/assets/external/projects/photo-1618220179428-22790b461013-w1800-q90.jpg" }
 ];
 
 const internationalProperties = [
@@ -181,10 +181,38 @@ function ProjectEnquiry() {
   );
 }
 
-export default function ProjectsContent() {
+function PropertyListings() {
   const [filter, setFilter] = useState("all");
   const visibleProperties = filter === "all" ? properties : properties.filter((property) => property.type === filter);
 
+  return (
+    <section className={styles.listings} id="objekte">
+      <div className={styles.sectionHeader}><div><p className={styles.kicker}>SWITZERLAND</p><h2>Current Real Estate in Switzerland</h2><p className={styles.listingIntro}>Discover selected properties with character, potential and a clear path to the right decision.</p></div></div>
+      <div className={styles.filters} aria-label="Property filters">{[["all", "All"], ["sale", "Buy"], ["rent", "Rent"]].map(([value, label]) => <button key={value} type="button" className={filter === value ? styles.filterActive : ""} onClick={() => setFilter(value)}>{label}</button>)}</div>
+      <div className={styles.propertyGrid}>{visibleProperties.map((property) => <article className={styles.propertyCard} key={property.title}><div className={styles.propertyImage}><img src={property.image} alt={property.title} loading="lazy" /><span>{property.tag}</span></div><div className={styles.propertyBody}><p>{property.location}</p><h3>{property.title}</h3><span>{property.details}</span><strong>{property.price}</strong><a href="/contact">View property <Arrow /></a></div></article>)}</div>
+    </section>
+  );
+}
+
+function QualityStandard() {
+  return (
+    <section className={styles.qualityStandard}>
+      <div><p className={styles.kicker}>OUR STANDARD</p><h2>Quality with sustainable added value.</h2></div>
+      <p>We look beyond the transaction: every property deserves thoughtful presentation, reliable coordination and decisions that protect its long-term value.</p>
+    </section>
+  );
+}
+
+function SellRentCta() {
+  return (
+    <section className={styles.sellRentCta}>
+      <div><p className={styles.kicker}>SELL OR RENT</p><h2>Would you like to sell or rent your property or apartment?</h2><p>List your properties directly on our platform and reach our interested buyers targeted.</p></div>
+      <a className={styles.sellRentButton} href="/contact"><span aria-hidden="true">→</span>List Property Now</a>
+    </section>
+  );
+}
+
+export default function ProjectsContent() {
   useEffect(() => {
     const root = document.documentElement;
     const syncHeroVideos = () => {
@@ -217,18 +245,16 @@ export default function ProjectsContent() {
           </video>
         </div>
         <div className="hero-overlay" /><div className="hero-spotlight" />
-        <div className={`hero-inner ${styles.heroContent}`}><div className="hero-eyebrow">Projects | Painting | Renovation</div><h1>CRAFTED SPACES.<br /><span className="project-accentline">LASTING VALUE.</span></h1><p className="hero-sub">Interior painting | Renovation | Property care</p><div className={styles.heroActions}><a id="projects-start-button" className={styles.heroButton} href="/contact"><span>→</span>Start a Project</a><a id="projects-explore-button" className={styles.heroButton} href="#objekte"><span>→</span>Explore Projects</a></div></div>
+        <div className={`hero-inner ${styles.heroContent}`}><div className="hero-eyebrow">Projects | Painting | Renovation</div><h1>Projects | Real Estate</h1><p className="hero-sub">Selected properties, international projects and personal guidance for owners, buyers and investors.</p><div className={styles.heroActions}><a id="projects-start-button" className={styles.heroButton} href="/contact"><span>→</span>Start a Project</a><a id="projects-explore-button" className={styles.heroButton} href="#objekte"><span>→</span>Explore Projects</a></div></div>
         <div className="scroll-indicator">⌄</div>
       </section>
 
+      <PropertyListings />
+      <QualityStandard />
+      <SellRentCta />
+
       <FounderSection />
       <InternationalFeature />
-
-      <section className={styles.listings} id="objekte">
-        <div className={styles.sectionHeader}><div><p className={styles.kicker}>AKTUELLE OBJEKTE</p><h2>Ein Ort, der zu Ihnen passt.</h2></div><p>Entdecken Sie Immobilien mit Charakter. Von der ersten Idee bis zur Schlüsselübergabe begleiten wir Sie persönlich.</p></div>
-        <div className={styles.filters} aria-label="Immobilien filtern">{[["all", "Alle Objekte"], ["sale", "Kaufen"], ["rent", "Mieten"]].map(([value, label]) => <button key={value} type="button" className={filter === value ? styles.filterActive : ""} onClick={() => setFilter(value)}>{label}</button>)}</div>
-        <div className={styles.propertyGrid}>{visibleProperties.map((property) => <article className={styles.propertyCard} key={property.title}><div className={styles.propertyImage}><img src={property.image} alt={property.title} loading="lazy" /><span>{property.tag}</span></div><div className={styles.propertyBody}><p>{property.location}</p><h3>{property.title}</h3><span>{property.details}</span><strong>{property.price}</strong><a href="/contact">Objekt ansehen <Arrow /></a></div></article>)}</div>
-      </section>
 
       <section className={styles.international} id="international"><div className={styles.sectionHeader}><div><p className={styles.kicker}>INTERNATIONAL</p><h2>Investieren. Leben.<br /><span>Geniessen.</span></h2></div><p>Die Dominikanische Republik verbindet Lebensqualität, Wachstum und besondere Immobilien. Wir öffnen Ihnen den Zugang zu ausgewählten Projekten vor Ort.</p></div><div className={styles.internationalGrid}>{internationalProperties.map(([title, text, image]) => <article className={styles.internationalCard} key={title}><img src={image} alt={`${title} Immobilien`} loading="lazy" /><div><p>DOMINIKANISCHE REPUBLIK</p><h3>{title}</h3><span>{text}</span><a href="/contact">Mehr entdecken <Arrow /></a></div></article>)}</div></section>
 
