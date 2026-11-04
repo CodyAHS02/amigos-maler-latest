@@ -30,6 +30,15 @@ const customerReviews = [
 
 function Arrow() { return <span className={styles.arrow} aria-hidden="true">→</span>; }
 
+function PuntaIcon({ type }) {
+  const paths = {
+    property: <><path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10" /><path d="M9 20v-6h6v6" /></>,
+    rent: <><path d="M4 19h16" /><path d="M6 17v-5" /><path d="M10 17V8" /><path d="M14 17v-3" /><path d="m5 8 5-4 4 3 5-4" /></>,
+    invest: <><path d="M12 3v18" /><path d="M17 7.5c-.8-1.3-2.4-2.2-4.4-2.2-2.4 0-4.1 1.2-4.1 3 0 4.8 8.5 1.8 8.5 6.1 0 1.8-1.7 3-4.3 3-2 0-3.7-.8-4.6-2.2" /></>
+  };
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[type]}</svg>;
+}
+
 function FounderSection() {
   return (
     <section className={styles.founder}>
@@ -51,11 +60,32 @@ function FounderSection() {
 
 function InternationalFeature() {
   return (
-    <section className={styles.internationalFeature}>
-      <div className={styles.internationalFeatureImage} />
-      <div className={styles.internationalFeatureOverlay} />
-      <div className={styles.internationalFeatureCopy}><p className={styles.kicker}>DISCOVER INTERNATIONAL</p><h2>Punta Cana</h2><p>Exclusive residences &amp; investment opportunities in the Dominican Republic.</p><a className={styles.internationalButton} href="#international">Discover projects</a></div>
-      <div className={styles.internationalFeaturePanel}><strong>✳</strong><span>SUN<br />QUALITY OF LIFE<br />INVESTMENT<br />FUTURE</span></div>
+    <section className={styles.puntaCana} id="punta-cana">
+      <div className={styles.puntaCanaBeach} aria-hidden="true" />
+      <div className={styles.puntaCanaShade} aria-hidden="true" />
+      <div className={styles.puntaCanaInner}>
+        <div className={styles.puntaCanaCopy}>
+          <p className={styles.puntaCanaEyebrow}>PROJECTS &amp; REAL ESTATE</p>
+          <h2>Punta <span>Cana</span></h2>
+          <p className={styles.puntaCanaSubheading}>INVEST. LIVE. ENJOY.</p>
+          <p className={styles.puntaCanaDescription}>Your connection to the Dominican Republic – with trust and strong partnership.</p>
+          <div className={styles.puntaCanaFeatures}>
+            <article className={styles.puntaCanaFeature}><span className={styles.puntaCanaFeatureIcon}><PuntaIcon type="property" /></span><h3>BUY REAL ESTATE</h3><p>Villas, apartments and land.</p></article>
+            <article className={styles.puntaCanaFeature}><span className={styles.puntaCanaFeatureIcon}><PuntaIcon type="rent" /></span><h3>RENT</h3><p>Attractive returns in a growing region.</p></article>
+            <article className={styles.puntaCanaFeature}><span className={styles.puntaCanaFeatureIcon}><PuntaIcon type="invest" /></span><h3>INVEST</h3><p>Secure opportunities in the Caribbean&apos;s most popular destination.</p></article>
+          </div>
+          <a id="punta-cana-learn-more" className={styles.puntaCanaButton} href="#international">LEARN MORE</a>
+        </div>
+        <div className={styles.puntaCanaVisual}>
+          <img className={styles.puntaCanaPeople} src="/assets/projects/punta-cana-original.jpeg" alt="Two representatives standing with Dominican Republic flags" />
+          <aside className={styles.puntaCanaPersonCard}>
+            <span className={styles.puntaCanaCrest} aria-hidden="true">✦</span>
+            <div><strong>José Luis Díaz</strong><span>Consul General de la República Dominicana en Zürich, Suiza</span></div>
+            <img className={styles.puntaCanaCardLogo} src="/assets/projects/dominican-republic-crest.png" alt="Dominican Republic crest" />
+          </aside>
+          <div className={styles.puntaCanaBadge}>In close cooperation with the General Consulate of the Dominican Republic in Zurich</div>
+        </div>
+      </div>
     </section>
   );
 }

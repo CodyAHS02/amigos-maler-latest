@@ -4410,3 +4410,14 @@ body[data-page="projects"] #projectsPage #final a.btn.btn-solid.mag {
     padding-left: 88px !important;
   }
 }
+
+/* Punta Cana CTA: override the shared dark-theme anchor hover rule. */
+body[data-page="projects"] main a#punta-cana-learn-more:hover,
+body[data-page="projects"] main a#punta-cana-learn-more:focus-visible,
+html:is([data-theme="amigos-dark"], [data-theme="dark"]) body[data-page="projects"] main a#punta-cana-learn-more:hover {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}

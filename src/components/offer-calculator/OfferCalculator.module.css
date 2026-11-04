@@ -260,7 +260,7 @@
 }
 
 .progressNavHomeQuick {
-  grid-template-columns: repeat(4, minmax(0, 1fr))
+  grid-template-columns: repeat(5, minmax(0, 1fr))
 }
 
 .progressNav:before,
@@ -3535,6 +3535,7 @@
   z-index: 1 !important;
   color: #071a33 !important;
   -webkit-text-fill-color: #071a33 !important;
+  font-family: "themeFont", Arial, sans-serif !important;
   font-size: 22px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
@@ -3563,9 +3564,11 @@
   .backToQuickNavBtn,
   .backToSelectionTopBtn):hover {
   transform: translateY(-3px) !important;
-  background: #000000 !important;
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
   box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
 }
 
@@ -3612,6 +3615,7 @@
   z-index: 1 !important;
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
+  font-family: "themeFont", Arial, sans-serif !important;
   font-size: 22px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
@@ -3795,11 +3799,6 @@
   stroke: #000000 !important;
 }
 
-/* Back controls use a single left-pointing arrow in the circle. */
-.page.homeLayout :is(.secondaryAction, .backToQuickNavBtn)::after {
-  content: "←" !important;
-}
-
 /* Inactive homepage steps keep the same black text contrast as the active step. */
 :global(html) .page.homeLayout .progressNavHomeQuick .progressStep:not(.currentStep):not(.doneStep) .progressStepNumber,
 :global(html) .page.homeLayout .progressNavHomeQuick .progressStep:not(.currentStep):not(.doneStep) .progressStepTitle {
@@ -3819,6 +3818,55 @@
 }
 
 @media (max-width: 640px) {
+  .page .progressNav {
+    display: grid !important;
+    grid-auto-columns: minmax(48%, 1fr) !important;
+    grid-auto-flow: column !important;
+    grid-template-columns: none !important;
+    gap: 14px !important;
+    padding: 12px 14px 16px !important;
+    overflow-x: auto !important;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+    touch-action: pan-y;
+  }
+
+  .page .progressNav:active {
+    cursor: grabbing;
+  }
+
+  .page .progressNav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page .progressNav::before,
+  .page .progressNav .progressFill {
+    display: none !important;
+  }
+
+  .page .progressStep {
+    width: 100% !important;
+    min-height: 128px !important;
+    padding: 8px 12px !important;
+    gap: 4px !important;
+    scroll-snap-align: center;
+  }
+
+  .page .progressStep b {
+    max-width: 100%;
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.2 !important;
+  }
+
+  @media (min-width: 481px) {
+    .page .progressNav {
+      grid-auto-columns: minmax(32%, 1fr) !important;
+    }
+  }
+
   .page.homeLayout .progressStep i {
     width: 46px !important;
     height: 46px !important;
@@ -4041,4 +4089,87 @@
 .page.homeLayout .quickQuoteTopBar .sidebarModeKicker {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .page.homeLayout .quickQuoteTopBar .sidebarModeKicker {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Dark-theme calculator hover: keep the entire CTA readable on white. */
+:global(html[data-theme="amigos-dark"]) .page :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover {
+  background: #ffffff !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html[data-theme*="dark"]) body .page.homeLayout :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html[data-theme*="dark"]) body .page.homeLayout :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover > * {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+/* Homepage calculator hover must stay readable even when legacy theme rules load later. */
+:global(html[data-theme*="dark"]) body[data-page="home"] .page.homeLayout :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html[data-theme*="dark"]) body[data-page="home"] .page.homeLayout :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover > * {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html[data-theme="amigos-dark"]) .page :is(.tabActionBtn,
+  .tabActionBtnDetailed,
+  .sidebarModeSwitchBtn,
+  .primaryAction,
+  .secondaryAction,
+  .backToQuickNavBtn,
+  .backToSelectionTopBtn):hover > * {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
 }

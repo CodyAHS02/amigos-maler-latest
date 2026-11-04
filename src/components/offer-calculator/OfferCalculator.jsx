@@ -54,7 +54,8 @@ const homeQuickStepMeta = [
   { number: "01", key: "package", title: "Choose Package", icon: "step_property" },
   { number: "02", key: "location", title: "Location", icon: "step_location" },
   { number: "03", key: "size", title: "Size", icon: "step_quantities" },
-  { number: "04", key: "condition", title: "Condition & Photos", icon: "step_condition" }
+  { number: "04", key: "condition", title: "Condition & Photos", icon: "step_condition" },
+  { number: "05", key: "price", title: "Price", icon: "step_price" }
 ];
 
 const homeQuickPropertyTypes = [
@@ -663,6 +664,8 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   const [isSoundOn, setIsSoundOn] = useState(false);
   const calculatorRootRef = useRef(null);
   const homeQuickStepAnchorRef = useRef(null);
+  const progressNavRef = useRef(null);
+  const progressDragRef = useRef({ active: false, moved: false, startX: 0, scrollLeft: 0 });
   const codeRefs = useRef([]);
   const previousHomeQuickStepRef = useRef(step);
   const previousCalculatorTypeRef = useRef(state.calculatorType);
@@ -681,6 +684,33 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
   // Detailed inputs run 0–4 since Location was added as step 05 (§7B); the simple flow
   // still ends its inputs at 3, with 4 as its contact screen.
   const inputStepCount = isSimple ? 4 : 5;
+
+  const handleProgressPointerDown = (event) => {
+    const node = progressNavRef.current;
+    if (!node || node.scrollWidth <= node.clientWidth) return;
+    progressDragRef.current = {
+      active: true,
+      moved: false,
+      startX: event.clientX,
+      scrollLeft: node.scrollLeft
+    };
+    node.setPointerCapture?.(event.pointerId);
+  };
+
+  const handleProgressPointerMove = (event) => {
+    const node = progressNavRef.current;
+    const drag = progressDragRef.current;
+    if (!node || !drag.active) return;
+    const distance = event.clientX - drag.startX;
+    if (Math.abs(distance) > 4) drag.moved = true;
+    node.scrollLeft = drag.scrollLeft - distance;
+    if (drag.moved) event.preventDefault();
+  };
+
+  const handleProgressPointerUp = (event) => {
+    progressDragRef.current.active = false;
+    progressNavRef.current?.releasePointerCapture?.(event.pointerId);
+  };
 
   useEffect(() => {
     const previousType = previousCalculatorTypeRef.current;
@@ -1106,6 +1136,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           setPendingPhotos([]);
         }
         setNotice("Your personalized offer details are ready.");
+        setStep(4);
         return;
       }
 
@@ -1119,7 +1150,12 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
   function next() {
     if (isHomeQuickQuote) {
-      if (canContinue()) setStep((current) => Math.min(current + 1, homeQuickStepMeta.length - 1));
+      if (!canContinue()) return;
+      if (step === 3) {
+        calculateQuick();
+        return;
+      }
+      setStep((current) => Math.min(current + 1, homeQuickStepMeta.length - 1));
       return;
     }
 
@@ -1878,7 +1914,18 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             </header>
           )}
           {/* PROGRESS BAR */}
-          <nav ref={isHomeQuickQuote ? homeQuickStepAnchorRef : null} className={cx(styles.progressNav, isSimple && styles.progressNavSimple, isHomeQuickQuote && styles.progressNavHomeQuick)} aria-label="Calculator progress">
+          <nav
+            ref={(node) => {
+              progressNavRef.current = node;
+              if (isHomeQuickQuote) homeQuickStepAnchorRef.current = node;
+            }}
+            className={cx(styles.progressNav, isSimple && styles.progressNavSimple, isHomeQuickQuote && styles.progressNavHomeQuick)}
+            aria-label="Calculator progress"
+            onPointerDown={handleProgressPointerDown}
+            onPointerMove={handleProgressPointerMove}
+            onPointerUp={handleProgressPointerUp}
+            onPointerCancel={handleProgressPointerUp}
+          >
             <span className={styles.progressFill} style={{ width: `${progress}%` }} />
             {currentStepMeta.map((item, index) => {
               let isCurrent, isDone;
@@ -1899,6 +1946,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   className={cx(styles.progressStep, isCurrent && styles.currentStep, isDone && styles.doneStep)}
                   type="button"
                   onClick={() => {
+                    if (progressDragRef.current.moved) {
+                      progressDragRef.current.moved = false;
+                      return;
+                    }
                     if (isSimple) {
                       if (step <= inputStepCount && index < step) setStep(index);
                     } else {
@@ -2229,10 +2280,24 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                     event.target.value = "";
                   }}
                   pendingPhotoCount={pendingPhotos.length}
-                  selectedPackage={selectedHomeQuickPackage}
-                  onComplete={calculateQuick}
-                  busy={busy}
                 />
+              )}
+
+              {/* HOMEPAGE QUICK MODE — STEP 5: Price */}
+              {isHomeQuickQuote && step === 4 && (
+                <div className={styles.stepPanel} style={{ textAlign: "center" }}>
+                  <div className={styles.pricePanel} style={{ textAlign: "center" }}>
+                    <span className={styles.stepKicker}>05 Price</span>
+                    <h2 style={{ marginInline: "auto" }}>Your estimated package price</h2>
+                    <strong className={styles.priceRange}>{priceRange || selectedHomeQuickPackage?.packageDetails?.[0] || "—"}</strong>
+                    <p>Final pricing may vary after reviewing the apartment and requested work.</p>
+                  </div>
+                  <div className={styles.navActions} style={{ justifyContent: "flex-end", marginTop: "18px" }}>
+                    <button type="button" className={styles.secondaryAction} onClick={() => setStep(3)}>
+                      BACK
+                    </button>
+                  </div>
+                </div>
               )}
 
               {/* SIMPLE MODE — STEP 3: Location */}
@@ -2342,7 +2407,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
                       <div className={styles.navActions} style={{ marginTop: "16px" }}>
                         <button type="button" className={styles.secondaryAction} onClick={() => setStep(3)}>
-                          ← BACK
+                          BACK
                         </button>
                         <button
                           type="button"
@@ -2629,7 +2694,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   )}
 
                   {/* NAV ACTIONS (Back & Continue) */}
-                  {step < inputStepCount && !(isHomeQuickQuote && (step === 0 || step === homeQuickStepMeta.length - 1)) && (
+                  {step < inputStepCount && !(isHomeQuickQuote && step === 0) && (
                     <div className={styles.navActions}>
                       <div className={styles.navActionsLeft}>
                         {embedded ? (
@@ -2638,21 +2703,23 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                             className={styles.secondaryAction}
                             onClick={() => setState((curr) => ({ ...curr, calculatorType: "SELECT" }))}
                           >
-                          {isHomeQuickQuote ? "Back to Calculator Selection" : "← Back to Calculator Selection"}
+                          Back to Calculator Selection
                           </button>
                         ) : (
                           <a className={styles.backToQuickNavBtn} href="/#quote">
-                            {isHomeQuickQuote ? "Back to Calculator Selection" : "← Back to Calculator Selection"}
+                            Back to Calculator Selection
                           </a>
                         )}
                         {step > 0 && (
                           <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                            {isHomeQuickQuote ? "BACK" : "← BACK"}
+                            BACK
                           </button>
                         )}
                       </div>
                       <button type="button" className={styles.primaryAction} disabled={!canContinue() || busy} onClick={next}>
-                        {isHomeQuickQuote && step === 2 ? (busy ? "SENDING…" : "SEND VERIFICATION CODE") : (isHomeQuickQuote ? "CONTINUE" : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →")))}
+                        {isHomeQuickQuote
+                          ? (step === 2 ? (busy ? "SENDING…" : "Next") : (step === 3 ? "GET YOUR PRICE" : "CONTINUE"))
+                          : (isSimple ? "CONTINUE →" : (step === 4 ? "CALCULATE" : "CONTINUE →"))}
                       </button>
                     </div>
                   )}
@@ -2660,7 +2727,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                   {!isSimple && step >= 5 && step < 7 && (
                     <div className={styles.navActions}>
                       <button type="button" className={styles.secondaryAction} onClick={() => setStep(4)}>
-                        ← EDIT SELECTIONS
+                        EDIT SELECTIONS
                       </button>
                     </div>
                   )}
@@ -3342,7 +3409,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
 
             <div className={styles.navActions}>
               <button type="button" className={styles.secondaryAction} onClick={() => setStep(3)}>
-                ← BACK
+                BACK
               </button>
               <button
                 type="button"
@@ -3683,10 +3750,10 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <div className={styles.navActions} style={{ marginTop: "18px" }}>
               <div className={styles.navActionsLeft}>
                 <a className={styles.backToQuickNavBtn} href="/#quote">
-                  ← Back to Calculator Selection
+                  Back to Calculator Selection
                 </a>
                 <button type="button" className={styles.secondaryAction} onClick={() => setStep(4)}>
-                  ← EDIT SELECTIONS
+                  EDIT SELECTIONS
                 </button>
               </div>
               <button className={styles.primaryAction} type="button" onClick={() => setStep(6)}>
@@ -3713,9 +3780,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
                 {errors.general && <p className={styles.error}>{errors.general}</p>}
                 <div className={styles.navActions} style={{ marginTop: "18px" }}>
                   <div className={styles.navActionsLeft}>
-                    <button type="button" className={styles.secondaryAction} onClick={() => setStep(5)}>← BACK</button>
+                    <button type="button" className={styles.secondaryAction} onClick={() => setStep(5)}>BACK</button>
                     <a className={styles.backToQuickNavBtn} href="/#quote">
-                      ← Back to Calculator Selection
+                      Back to Calculator Selection
                     </a>
                   </div>
                   <button className={styles.primaryAction} type="button" onClick={submitContactAndSendCode} disabled={busy}>{busy ? "SENDING…" : "SEND VERIFICATION CODE →"}</button>
@@ -3752,9 +3819,9 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             </div>
                 <div className={styles.navActions} style={{ marginTop: "18px" }}>
                   <div className={styles.navActionsLeft}>
-                    <button type="button" className={styles.secondaryAction} onClick={() => setCodeSent(false)}>← BACK</button>
+                    <button type="button" className={styles.secondaryAction} onClick={() => setCodeSent(false)}>BACK</button>
                     <a className={styles.backToQuickNavBtn} href="/#quote">
-                      ← Back to Calculator Selection
+                      Back to Calculator Selection
                     </a>
                   </div>
                   <button className={styles.primaryAction} type="button" onClick={verifyCode} disabled={busy}>{busy ? "VERIFYING…" : "VERIFY E-MAIL →"}</button>
@@ -3916,11 +3983,11 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
           <div className={styles.navActions}>
             <div className={styles.navActionsLeft}>
               <a className={styles.backToQuickNavBtn} href="/#quote">
-                ← Back to Calculator Selection
+                Back to Calculator Selection
               </a>
               {step > 0 && (
                 <button type="button" className={styles.secondaryAction} onClick={() => setStep((current) => current - 1)}>
-                  ← BACK
+                  BACK
                 </button>
               )}
             </div>

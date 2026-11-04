@@ -99,10 +99,7 @@ export function QuickCalculatorStep4({
   notes,
   onNotesChange,
   onPhotosChange,
-  pendingPhotoCount,
-  selectedPackage,
-  onComplete,
-  busy
+  pendingPhotoCount
 }) {
   return (
     <div className={styles.stepPanel}>
@@ -129,16 +126,16 @@ export function QuickCalculatorStep4({
         ))}
       </div>
 
-      <label className={styles.notesField} style={{ marginTop: "16px" }}>
-        <span>Notes or other information</span>
-        <textarea
-          value={notes}
-          placeholder="Tell us anything else about the apartment or project."
-          onChange={(event) => onNotesChange(event.target.value)}
-        />
-      </label>
-
       <div className={styles.quickFinalGrid}>
+        <label className={styles.notesField} style={{ marginTop: "16px" }}>
+          <span>Notes or other information</span>
+          <textarea
+            value={notes}
+            placeholder="Tell us anything else about the apartment or project."
+            onChange={(event) => onNotesChange(event.target.value)}
+          />
+        </label>
+
         <div className={styles.uploadPanel}>
           <h3>Photos</h3>
           <label className={styles.photoDrop}>
@@ -150,15 +147,6 @@ export function QuickCalculatorStep4({
               {pendingPhotoCount} photo{pendingPhotoCount === 1 ? "" : "s"} ready to attach.
             </p>
           )}
-        </div>
-
-        <div className={styles.pricePanel}>
-          <span className={styles.stepKicker}>Estimated package price</span>
-          <strong className={styles.priceRange}>{selectedPackage?.packageDetails?.[0] || "—"}</strong>
-          <p>Final pricing may vary after reviewing the apartment and requested work.</p>
-          <button className={styles.primaryAction} type="button" onClick={onComplete} disabled={busy || !selectedCondition}>
-            {busy ? "PREPARING OFFER…" : "GET PERSONALIZED OFFER"}
-          </button>
         </div>
       </div>
     </div>
