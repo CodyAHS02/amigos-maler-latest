@@ -174,6 +174,32 @@
 @media (max-width: 900px) { .puntaCana { min-height: auto; }.puntaCanaInner { display: flex; flex-direction: column; width: min(100% - 32px, 640px); min-height: 0; gap: 22px; padding-top: 72px; }.puntaCanaCopy { padding: 0 0 18px; }.puntaCanaCopy h2 { font-size: 48px !important; }.puntaCanaVisual { width: 100%; min-height: 500px; }.puntaCanaPeople { right: -7%; width: 115%; }.puntaCanaBadge { right: 8px; bottom: 0; width: calc(100% - 16px); font-size: 11px; }.puntaCanaPersonCard { right: 8px; bottom: 58px; left: 8px; width: auto; padding: 14px; } }
 @media (max-width: 600px) { .puntaCanaInner { padding-top: 58px; }.puntaCanaSubheading { font-size: 16px; }.puntaCanaDescription { font-size: 16px; }.puntaCanaFeatures { gap: 8px; }.puntaCanaFeatureIcon { width: 42px; height: 42px; font-size: 22px; }.puntaCanaFeature h3 { font-size: 10px; }.puntaCanaFeature p { font-size: 11px; }.puntaCanaVisual { min-height: 430px; }.puntaCanaPersonCard strong { font-size: 17px; }.puntaCanaPersonCard div span { font-size: 10px; }.puntaCanaCrest { width: 38px; height: 38px; }.puntaCanaCardLogo { width: 54px; height: 54px; } }
 
+/* Keep the homepage market cards readable when global dark-theme text rules apply. */
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketShowcase {
+  background: #071a33 !important;
+  color: #fff !important;
+}
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketShowcaseHeader h2,
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketShowcaseHeader > p:last-child {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketTabs a {
+  border-color: rgba(255, 255, 255, .68) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketLink {
+  background: #f8f9fb !important;
+  border-color: rgba(255, 255, 255, .55) !important;
+  color: #101b2d !important;
+  -webkit-text-fill-color: #101b2d !important;
+}
+:global(html:is([data-theme="amigos-dark"], [data-theme="dark"])) .marketLink strong {
+  color: #101b2d !important;
+  -webkit-text-fill-color: #101b2d !important;
+}
+
 :global(html:not([data-theme="amigos-dark"]):not([data-theme="dark"])) .puntaCana { color: #071a33; background: #fff; }
 :global(html:not([data-theme="amigos-dark"]):not([data-theme="dark"])) .puntaCanaBeach { background: linear-gradient(90deg, rgba(255,255,255,.96), rgba(255,255,255,.82) 58%, rgba(255,255,255,.66)), url('/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.webp') left center / cover no-repeat; opacity: .72; mix-blend-mode: normal; }
 :global(html:not([data-theme="amigos-dark"]):not([data-theme="dark"])) .puntaCanaShade { background: linear-gradient(90deg, rgba(255,255,255,.45), rgba(255,255,255,.78) 68%, rgba(255,255,255,.92)); }

@@ -44,6 +44,7 @@ export default function Header() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const isAbout = pathname === "/about";
+  const isContact = pathname === "/contact";
   const isProjects = pathname === "/projects";
   const isInteriorPainting = pathname === "/interior-painting";
   const isExteriorPainting = pathname === "/exterior-painting";
@@ -152,7 +153,7 @@ export default function Header() {
   };
 
   return (
-      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout || isProjects ? " about-header" : ""}${pathname === "/services" ? " services-overview-header" : ""}${isDamageService ? " damage-service-header" : ""}${isInteriorPainting ? " interior-painting-header" : ""}${isExteriorPainting ? " exterior-painting-header" : ""}${isFacadeRenovation ? " facade-renovation-header" : ""}${isAppartmentRenovation ? " appartment-renovation-header" : ""}${isDrywall ? " drywall-header" : ""}${isPlastering ? " plastering-header" : ""}${isColorMaterial ? " color-material-header" : ""}${isMold ? " mold-header" : ""}${isWaterDamage ? " water-damage-header" : ""}${isPropertyValuePreservation ? " property-value-preservation-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
+      <header className={`site-header${isHome ? " home-initial" : ""}${isAbout || isProjects ? " about-header" : ""}${isContact ? " contact-header" : ""}${pathname === "/services" ? " services-overview-header" : ""}${isDamageService ? " damage-service-header" : ""}${isInteriorPainting ? " interior-painting-header" : ""}${isExteriorPainting ? " exterior-painting-header" : ""}${isFacadeRenovation ? " facade-renovation-header" : ""}${isAppartmentRenovation ? " appartment-renovation-header" : ""}${isDrywall ? " drywall-header" : ""}${isPlastering ? " plastering-header" : ""}${isColorMaterial ? " color-material-header" : ""}${isMold ? " mold-header" : ""}${isWaterDamage ? " water-damage-header" : ""}${isPropertyValuePreservation ? " property-value-preservation-header" : ""}${hasImageHero ? " image-hero-header" : ""}`} id="siteHeader">
       <a className={`logo ${styles.logoLink}`} href="/" aria-label="Amigos Maler home">
         <span className={styles.logoSymbol} aria-hidden="true">
           <img src="/logo.webp" alt="" />
@@ -200,6 +201,10 @@ export default function Header() {
 
         <a href="/schadensservice" data-page="schadensservice" className={isActive("/schadensservice") ? "is-active" : undefined} aria-current={isActive("/schadensservice") ? "page" : undefined}>
           {t("Claims and Services")}
+        </a>
+
+        <a href="/projects" data-page="projects" className={isActive("/projects") ? "is-active" : undefined} aria-current={isActive("/projects") ? "page" : undefined}>
+          {t("Amigos Property")}
         </a>
 
         <a href="/partners" data-page="partners" className={isActive("/partners") ? "is-active" : undefined} aria-current={isActive("/partners") ? "page" : undefined}>

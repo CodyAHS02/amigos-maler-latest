@@ -196,7 +196,8 @@
 :global(#siteHeader.color-material-header #headerDisplaySettings),
 :global(#siteHeader.mold-header #headerDisplaySettings),
 :global(#siteHeader.water-damage-header #headerDisplaySettings),
-:global(#siteHeader.property-value-preservation-header #headerDisplaySettings) {
+:global(#siteHeader.property-value-preservation-header #headerDisplaySettings),
+:global(#siteHeader.contact-header #headerDisplaySettings) {
   display: grid !important;
   grid-template-columns: repeat(2, 6px) !important;
   grid-template-rows: repeat(2, 6px) !important;
@@ -223,7 +224,8 @@
 :global(#siteHeader.color-material-header #headerDisplaySettings span),
 :global(#siteHeader.mold-header #headerDisplaySettings span),
 :global(#siteHeader.water-damage-header #headerDisplaySettings span),
-:global(#siteHeader.property-value-preservation-header #headerDisplaySettings span) {
+:global(#siteHeader.property-value-preservation-header #headerDisplaySettings span),
+:global(#siteHeader.contact-header #headerDisplaySettings span) {
   display: block !important;
   width: 6px !important;
   height: 6px !important;
@@ -243,7 +245,8 @@
 :global(#siteHeader.color-material-header .header-settings-menu),
 :global(#siteHeader.mold-header .header-settings-menu),
 :global(#siteHeader.water-damage-header .header-settings-menu),
-:global(#siteHeader.property-value-preservation-header .header-settings-menu) {
+:global(#siteHeader.property-value-preservation-header .header-settings-menu),
+:global(#siteHeader.contact-header .header-settings-menu) {
   display: block !important;
   flex: 0 0 auto !important;
   opacity: 1 !important;
@@ -648,6 +651,15 @@
   background: #fff !important;
 }
 
+:global(html[data-theme="amigos-dark"] body #siteHeader.contact-header #headerDisplaySettings) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+:global(html[data-theme="amigos-dark"] body #siteHeader.contact-header #headerDisplaySettings span) {
+  background-color: #fff !important;
+}
+
 /* Schadensservice desktop: reserve a visible slot for the settings menu. */
 @media (min-width: 1361px) {
   :global(body #siteHeader.damage-service-header) {
@@ -670,6 +682,25 @@
   }
 
   :global(body #siteHeader.damage-service-header .header-actions) {
+    margin-right: 62px !important;
+  }
+
+  :global(body #siteHeader.contact-header .header-settings-menu) {
+    position: absolute !important;
+    top: 50% !important;
+    right: 28px !important;
+    transform: translateY(-50%) !important;
+    z-index: 1002 !important;
+  }
+
+  :global(body #siteHeader.contact-header #headerDisplaySettings) {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+
+  :global(body #siteHeader.contact-header .header-actions) {
     margin-right: 62px !important;
   }
 }
@@ -1219,5 +1250,52 @@
   :global(#headerSettingsDropdown) {
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
+  }
+}
+
+/* Keep the desktop header compact; flex space-between was spreading the right controls apart. */
+@media (min-width: 1361px) {
+  :global(html body #siteHeader.site-header) {
+    justify-content: flex-start !important;
+  }
+
+  :global(html body #siteHeader.site-header > .logo) {
+    margin-right: 38px !important;
+  }
+
+  :global(html body #siteHeader.site-header > .site-nav) {
+    gap: 18px !important;
+    flex-shrink: 1 !important;
+  }
+
+  :global(html body #siteHeader.site-header > .site-nav > a),
+  :global(html body #siteHeader.site-header > .site-nav .dropdown-trigger) {
+    font-size: 11.5px !important;
+  }
+
+  :global(html body #siteHeader.site-header > .header-actions) {
+    margin-left: auto !important;
+    gap: 5px !important;
+  }
+
+  :global(html body #siteHeader.site-header > .header-actions > .header-btn),
+  :global(html body #siteHeader.site-header > .header-actions > .customer-header-btn) {
+    min-height: 44px !important;
+    padding-inline: 15px !important;
+    font-size: 11.5px !important;
+  }
+
+  :global(html body #siteHeader.site-header > .header-settings-menu) {
+    margin-left: 8px !important;
+    transform: none !important;
+  }
+
+  :global(html body #siteHeader.site-header > .header-settings-menu > #headerDisplaySettings) {
+    position: relative !important;
+    top: -4px !important;
+  }
+
+  :global(html body #siteHeader.contact-header > .header-settings-menu > #headerDisplaySettings) {
+    top: -18px !important;
   }
 }

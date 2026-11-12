@@ -7,6 +7,13 @@
     font-family: "themeFont";
 }
 
+/* Keep the homepage service tab in its authored title case. */
+body[data-page="home"] .projects-dock .dock-tab[data-filter="drywall"] {
+    text-transform: none !important;
+    font-variant: normal !important;
+    font-variant-caps: normal !important;
+}
+
 /* Homepage property-value packages: keep the client-facing comparison compact. */
 body[data-page="home"] section.plans-home-care#plans {
     min-height: 0 !important;
@@ -11079,11 +11086,11 @@ body {
 }
 
 .site-nav {
-    gap: 28px !important;
+    gap: 24px !important;
 }
 
 .site-nav a {
-    font-size: 13.5px !important;
+    font-size: 12.5px !important;
     font-weight: 500 !important;
     letter-spacing: 0.01em !important;
     color: rgba(255, 255, 255, 0.8) !important;
@@ -11106,13 +11113,13 @@ body {
     align-items: center;
     justify-content: center;
     gap: 7px;
-    min-height: 38px !important;
-    padding: 8px 18px !important;
+    min-height: 36px !important;
+    padding: 7px 16px !important;
     border-radius: 8px !important;
     background: rgba(255, 255, 255, .08) !important;
     border: 1px solid rgba(255, 255, 255, .28) !important;
     color: #FFFFFF !important;
-    font-size: 12.5px !important;
+    font-size: 12px !important;
     font-weight: 500 !important;
     line-height: 1 !important;
     letter-spacing: 0.01em !important;
@@ -11125,7 +11132,13 @@ body {
 }
 
 .customer-header-btn {
-    padding-inline: 14px !important;
+    padding-inline: 12px !important;
+}
+
+@media (min-width: 1361px) {
+    .header-settings-menu {
+        transform: translateX(-8px);
+    }
 }
 
 .customer-header-btn svg {
@@ -15805,6 +15818,33 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
     html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
         z-index: 3 !important;
+    }
+}
+
+/* Final desktop header spacing: keep navigation compact without changing responsive breakpoints. */
+@media (min-width: 1361px) {
+    .site-nav {
+        gap: 18px !important;
+    }
+
+    .site-nav a,
+    .dropdown-trigger {
+        font-size: 11.5px !important;
+    }
+
+    .site-header .header-actions {
+        gap: 5px !important;
+    }
+
+    .site-header .header-actions .header-btn,
+    .site-header .header-actions .customer-header-btn {
+        min-height: 44px !important;
+        padding-inline: 15px !important;
+        font-size: 11.5px !important;
+    }
+
+    .site-header .header-settings-menu {
+        transform: translateX(-14px);
     }
 }
 
