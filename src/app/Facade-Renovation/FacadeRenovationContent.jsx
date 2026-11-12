@@ -6,7 +6,7 @@ export default function FacadeRenovationContent() {
 
         <section className="facade-hero" id="facadeHero" data-hero>
             <div className="facade-hero-media">
-                <img src="/assets/facade/ChatGPT Image Aug 24, 2026, 01_59_46 AM.png" alt="Modern building facade" />
+                <img src="/assets/facade/ChatGPT Image Aug 24, 2026, 01_59_46 AM.webp" alt="Modern building facade" />
             </div>
             <div className="facade-hero-shade"></div>
             <div className="facade-hero-grid"></div>
@@ -37,7 +37,7 @@ export default function FacadeRenovationContent() {
             <div className="facade-intro-number">01</div>
             <div className="facade-intro-visual reveal-left">
                 <div className="facade-intro-image-wrap">
-                    <img src="/assets/external/facade-renovation/photo-1564013799919-ab600027ffc6-w1600-q90.jpg"
+                    <img src="/assets/external/facade-renovation/photo-1564013799919-ab600027ffc6-w1600-q90.webp"
                         alt="Residential building facade" />
                     <div className="facade-image-caption"><span>EXISTING STRUCTURE</span><span>PROFESSIONAL CARE</span>
                     </div>
@@ -70,7 +70,7 @@ export default function FacadeRenovationContent() {
             <div className="facade-work-grid">
                 <article className="facade-work-card reveal-card">
                     <div className="facade-card-media">
-                        <img src="/assets/facade/facade-inspection.jpg" alt="Facade inspection" />
+                        <img src="/assets/facade/facade-inspection.webp" alt="Facade inspection" />
                     </div>
                     <div className="facade-card-info">
                         <span>01</span>
@@ -81,7 +81,7 @@ export default function FacadeRenovationContent() {
                 </article>
                 <article className="facade-work-card reveal-card">
                     <div className="facade-card-media">
-                        <img src="/assets/facade/Facade-Reapir.jpeg" alt="Facade preparation and repair" />
+                        <img src="/assets/facade/Facade-Reapir.webp" alt="Facade preparation and repair" />
                     </div>
                     <div className="facade-card-info">
                         <span>02</span>
@@ -92,7 +92,7 @@ export default function FacadeRenovationContent() {
                 </article>
                 <article className="facade-work-card reveal-card">
                     <div className="facade-card-media">
-                        <img src="/assets/facade/Facade-maintain.jpeg" alt="Facade coating work" />
+                        <img src="/assets/facade/Facade-maintain.webp" alt="Facade coating work" />
                     </div>
                     <div className="facade-card-info">
                         <span>03</span>
@@ -103,7 +103,7 @@ export default function FacadeRenovationContent() {
                 </article>
                 <article className="facade-work-card reveal-card">
                     <div className="facade-card-media">
-                        <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg?auto=format&fit=crop&w=1200&q=90"
+                        <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp??auto=format&fit=crop&w=1200&q=90"
                             alt="Contemporary renovated facade" />
                     </div>
                     <div className="facade-card-info">
@@ -143,12 +143,12 @@ export default function FacadeRenovationContent() {
                 <div className="before-after-slider" id="baSlider">
 
                     <div className="ba-before-pane" id="baBeforePane">
-                        <img src="/assets/facade/facade-before.png" alt="Weathered facade before renovation" />
+                        <img src="/assets/facade/facade-before.webp" alt="Weathered facade before renovation" />
                         <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                     </div>
 
                     <div className="ba-after-pane" id="baAfterPane">
-                        <img src="/assets/facade/facade-after.png" alt="Renovated facade after professional finishing" />
+                        <img src="/assets/facade/facade-after.webp" alt="Renovated facade after professional finishing" />
                         <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                     </div>
 
@@ -173,19 +173,19 @@ export default function FacadeRenovationContent() {
                 </div>
                 <div className="facade-product-grid" data-product-source="herbol-official">
                     <article className="facade-product-card">
-                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silatec.png" alt="Herbol Silatec Produktgebinde" /></div>
+                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silatec.webp" alt="Herbol Silatec Produktgebinde" /></div>
                         <div className="facade-product-content"><span>01 / HERBOL</span><h3>Silatec</h3><p>Füllende Siliconharz-Fassadenfarbe für glatte und strukturierte Untergründe mit mineralisch matter Oberfläche.</p><a href="https://www.herbol.de/de/produkte/silatec" target="_blank" rel="noopener noreferrer">Produkt ansehen <b>↗</b></a></div>
                     </article>
                     <article className="facade-product-card">
-                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silatec-extra.png" alt="Herbol Silatec Extra Produktgebinde" /></div>
+                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silatec-extra.webp" alt="Herbol Silatec Extra Produktgebinde" /></div>
                         <div className="facade-product-content"><span>02 / HERBOL</span><h3>Silatec Extra</h3><p>Mineralisch matte Fassadenfarbe mit quartzrauer Oberfläche, entwickelt zum Kaschieren von Unebenheiten.</p><a href="https://www.herbol.de/de/produkte/silatec-extra" target="_blank" rel="noopener noreferrer">Produkt ansehen <b>↗</b></a></div>
                     </article>
                     <article className="facade-product-card">
-                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silikat-fassadenfinish.png" alt="Herbol Silikat FassadenFinish Produktgebinde" /></div>
+                        <div className="facade-product-visual"><img src="/assets/facade-products/herbol-silikat-fassadenfinish.webp" alt="Herbol Silikat FassadenFinish Produktgebinde" /></div>
                         <div className="facade-product-content"><span>03 / HERBOL</span><h3>Silikat FassadenFinish</h3><p>Hoch diffusionsfähige Dispersionssilikatfarbe für Neubauten und den historischen Bestand.</p><a href="https://www.herbol.de/de/produkte/silikat-fassadenfinish" target="_blank" rel="noopener noreferrer">Produkt ansehen <b>↗</b></a></div>
                     </article>
                     <article className="facade-product-card">
-                        <div className="facade-product-visual"><img src="/assets/facade-products/herboxan-plus.png" alt="Herbol Herboxan Plus Produktgebinde" /></div>
+                        <div className="facade-product-visual"><img src="/assets/facade-products/herboxan-plus.webp" alt="Herbol Herboxan Plus Produktgebinde" /></div>
                         <div className="facade-product-content"><span>04 / HERBOL</span><h3>Herboxan Plus</h3><p>Spannungsarme, hoch diffusionsfähige Siliconharz-Fassadenfarbe mit hydrophober Oberfläche.</p><a href="https://www.herbol.de/de/produkte/herboxan-plus" target="_blank" rel="noopener noreferrer">Produkt ansehen <b>↗</b></a></div>
                     </article>
                 </div>
@@ -199,7 +199,7 @@ export default function FacadeRenovationContent() {
         <section className="facade-quality section-dark" id="facadeQuality">
             <div className="quality-image-wrap">
                 <img className="quality-parallax"
-                    src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg?auto=format&fit=crop&w=1800&q=90"
+                    src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp??auto=format&fit=crop&w=1800&q=90"
                     alt="Detailed architectural facade" />
                 <div className="quality-image-overlay"></div>
                 <div className="quality-image-word">DURABLE</div>
@@ -258,7 +258,7 @@ export default function FacadeRenovationContent() {
                         <p>Inspect the facade and understand its current condition.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=900&q=90"
+                            src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp??auto=format&fit=crop&w=900&q=90"
                             alt="Facade inspection work" /></div>
                 </div>
                 <div className="timeline-step reveal-process">
@@ -268,7 +268,7 @@ export default function FacadeRenovationContent() {
                         <p>Assess surfaces, damage and the work required.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/drywall/photo-1503387762-592deb58ef4e.jpg?auto=format&fit=crop&w=900&q=90"
+                            src="/assets/external/drywall/photo-1503387762-592deb58ef4e.webp??auto=format&fit=crop&w=900&q=90"
                             alt="Facade assessment" /></div>
                 </div>
                 <div className="timeline-step reveal-process">
@@ -278,7 +278,7 @@ export default function FacadeRenovationContent() {
                         <p>Clean, repair and prepare the facade for renovation.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/drywall/photo-1581094794329-c8112a89af12.jpg?auto=format&fit=crop&w=900&q=90"
+                            src="/assets/external/drywall/photo-1581094794329-c8112a89af12.webp??auto=format&fit=crop&w=900&q=90"
                             alt="Facade preparation" /></div>
                 </div>
                 <div className="timeline-step reveal-process">
@@ -288,7 +288,7 @@ export default function FacadeRenovationContent() {
                         <p>Carry out the required renovation and repair work.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/facade-renovation/photo-1541888946425-d81bb19240f5-w900-q90.jpg"
+                            src="/assets/external/facade-renovation/photo-1541888946425-d81bb19240f5-w900-q90.webp"
                             alt="Facade renovation work" /></div>
                 </div>
                 <div className="timeline-step reveal-process">
@@ -298,7 +298,7 @@ export default function FacadeRenovationContent() {
                         <p>Apply the appropriate coating system for the facade.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/facade-renovation/photo-1562259949-e8e7689d7828-w900-q90.jpg"
+                            src="/assets/external/facade-renovation/photo-1562259949-e8e7689d7828-w900-q90.webp"
                             alt="Facade coating application" /></div>
                 </div>
                 <div className="timeline-step reveal-process">
@@ -308,7 +308,7 @@ export default function FacadeRenovationContent() {
                         <p>Inspect the finished result and complete a clean handover.</p>
                     </div>
                     <div className="timeline-image"><img
-                            src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg?auto=format&fit=crop&w=900&q=90"
+                            src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp??auto=format&fit=crop&w=900&q=90"
                             alt="Completed facade finish" /></div>
                 </div>
             </div>
@@ -317,7 +317,7 @@ export default function FacadeRenovationContent() {
         <section className="facade-protection-design" id="protectionDesign">
             <div className="pd-panel pd-protection">
                 <div className="pd-image"><img
-                        src="/assets/external/facade-renovation/photo-1599619585752-c3edb42a414c-w1800-q90.jpg"
+                        src="/assets/external/facade-renovation/photo-1599619585752-c3edb42a414c-w1800-q90.webp"
                         alt="Protected building facade" /></div>
                 <div className="pd-overlay"></div>
                 <div className="pd-content">
@@ -329,7 +329,7 @@ export default function FacadeRenovationContent() {
             </div>
             <div className="pd-panel pd-design">
                 <div className="pd-image"><img
-                        src="/assets/external/drywall/photo-1600607688969-a5bfcd646154.jpg?auto=format&fit=crop&w=1800&q=90"
+                        src="/assets/external/drywall/photo-1600607688969-a5bfcd646154.webp??auto=format&fit=crop&w=1800&q=90"
                         alt="Contemporary facade design" /></div>
                 <div className="pd-overlay"></div>
                 <div className="pd-content">
@@ -372,7 +372,7 @@ export default function FacadeRenovationContent() {
 
         <section className="facade-value" id="propertyValue">
             <div className="value-background">
-                <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.jpg?auto=format&fit=crop&w=2400&q=90"
+                <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.webp??auto=format&fit=crop&w=2400&q=90"
                     alt="Professionally maintained property facade" />
             </div>
             <div className="value-overlay"></div>
@@ -396,8 +396,8 @@ export default function FacadeRenovationContent() {
                 <p>Professional facade inspection, renovation, protection and redesign — carried out with care from
                     preparation through completion.</p>
                 <div className="cta-actions">
-                    <a href="#" className="facade-btn facade-btn-primary">Request a Free Quote</a>
-                    <a href="#" className="facade-btn facade-btn-outline">Discuss Your Project</a>
+                    <a href="/contact" className="facade-btn facade-btn-primary">Request a Free Quote</a>
+                    <a href="/contact" className="facade-btn facade-btn-outline">Discuss Your Project</a>
                 </div>
             </div>
         </section>

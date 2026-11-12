@@ -51,8 +51,7 @@ export default function ServicesContent() {
 
             <div className="hero-image parallax">
 
-                <img src="/assets/external/drywall/photo-1581578731548-c64695cc6952.jpg?auto=format&fit=crop&w=1800&q=80"
-                    alt="Professional painter working on interior wall" />
+                <img src="/assets/optimized/services/hero.webp" alt="Professional painter working on interior wall" fetchPriority="high" decoding="async" />
 
             </div>
 
@@ -159,12 +158,12 @@ export default function ServicesContent() {
             <div className="before-after-slider" id="baSlider">
 
                 <div className="ba-before-pane" id="baBeforePane">
-                    <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+                    <img src="/assets/optimized/services/before.webp" alt="Before renovation" loading="lazy" decoding="async" />
                     <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                 </div>
 
                 <div className="ba-after-pane" id="baAfterPane">
-                    <img src="/assets/Services-After-Room.png" alt="After renovation" />
+                    <img src="/assets/optimized/services/after.webp" alt="After renovation" loading="lazy" decoding="async" />
                     <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                 </div>
 
@@ -218,7 +217,7 @@ export default function ServicesContent() {
                     <div className="service-image">
 
                         <img
-                            src="/assets/external/services/photo-1562259949-e8e7689d7828-w900-q80.jpg" />
+                            src="/assets/optimized/services/interior.webp" alt="Interior painting" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -269,7 +268,7 @@ export default function ServicesContent() {
                     <div className="service-image">
 
                         <img
-                            src="/assets/external/drywall/photo-1503387762-592deb58ef4e.jpg?auto=format&fit=crop&w=900&q=80" />
+                            src="/assets/optimized/services/exterior.webp" alt="Exterior painting" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -320,7 +319,7 @@ export default function ServicesContent() {
                     <div className="service-image">
 
                         <img
-                            src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=900&q=80" />
+                            src="/assets/optimized/services/plastering.webp" alt="Plastering" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -366,8 +365,7 @@ export default function ServicesContent() {
                 <article className="service-card reveal">
 
                     <div className="service-image">
-                        <img src="/assets/external/services/photo-1586023492125-27b2c045efd7-w900-q80.jpg"
-                            alt="Drywall renovation" />
+                        <img src="/assets/optimized/services/drywall.webp" alt="Drywall renovation" loading="lazy" decoding="async" />
                     </div>
 
                     <div className="service-content">
@@ -403,8 +401,7 @@ export default function ServicesContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=900&q=80"
-                            alt="Facade renovation" />
+                        <img src="/assets/optimized/services/exterior.webp" alt="Facade renovation" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -443,8 +440,7 @@ export default function ServicesContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg?auto=format&fit=crop&w=900&q=80"
-                            alt="Apartment renovation" />
+                        <img src="/assets/optimized/services/apartment.webp" alt="Apartment renovation" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -483,8 +479,7 @@ export default function ServicesContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/services/photo-1562259949-e8e7689d7828-w900-q80.jpg"
-                            alt="Spray painting" />
+                        <img src="/assets/optimized/services/interior.webp" alt="Spray painting" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -524,8 +519,7 @@ export default function ServicesContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/appartment-renovation/photo-1616486338812-3dadae4b4ace.jpg?auto=format&fit=crop&w=900&q=80"
-                            alt="Colour consultation" />
+                        <img src="/assets/optimized/services/consultation.webp" alt="Colour consultation" loading="lazy" decoding="async" />
 
                     </div>
 
@@ -548,6 +542,82 @@ export default function ServicesContent() {
                         </p>
 
                         <a href="/color-and-material">
+                            Learn More →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                {/* CARD 09 */}
+
+                <article className="service-card reveal">
+
+                    <div className="service-image">
+
+                        <img
+                            src="/assets/optimized/services/apartment.webp" alt="Property care and maintenance" loading="lazy" decoding="async" />
+
+                    </div>
+
+
+                    <div className="service-content">
+
+                        <span className="number">09</span>
+
+                        <h3>
+                            Property Care &amp; Maintenance
+                        </h3>
+
+                        <h4>
+                            Protect long-term value.
+                        </h4>
+
+                        <p>
+                            Regular inspections, repairs and maintenance planning
+                            to keep your property in reliable condition.
+                        </p>
+
+                        <a href="/property-value-preservation">
+                            Learn More →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                {/* CARD 10 */}
+
+                <article className="service-card reveal">
+
+                    <div className="service-image">
+
+                        <img
+                            src="/assets/optimized/services/interior.webp" alt="Damage assessment and restoration" loading="lazy" decoding="async" />
+
+                    </div>
+
+
+                    <div className="service-content">
+
+                        <span className="number">10</span>
+
+                        <h3>
+                            Damage Service
+                        </h3>
+
+                        <h4>
+                            One point of contact.
+                        </h4>
+
+                        <p>
+                            Damage assessment, clear documentation and professional
+                            restoration from first response to finished surface.
+                        </p>
+
+                        <a href="/schadensservice">
                             Learn More →
                         </a>
 
@@ -994,8 +1064,7 @@ export default function ServicesContent() {
 
         <div className="property-image parallax">
 
-            <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg?auto=format&fit=crop&w=1600&q=80"
-                alt="Premium interior property" />
+            <img src="/assets/optimized/services/property.webp" alt="Premium interior property" loading="lazy" decoding="async" />
 
         </div>
 

@@ -1,4 +1,5 @@
 import BodyAttributes from "@/components/BodyAttributes";
+import LanguageProvider from "@/components/LanguageProvider";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export const metadata = {
@@ -6,7 +7,7 @@ export const metadata = {
   description:
     "Painting, plastering, renovation and property value preservation services by Amigos Maler GmbH.",
   icons: {
-    icon: "/assets/logo.png"
+    icon: "/assets/logo.webp"
   }
 };
 
@@ -19,9 +20,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <BodyAttributes />
-        {children}
-        <WhatsAppFloat />
+        <LanguageProvider>
+          <BodyAttributes />
+          {children}
+          <WhatsAppFloat />
+        </LanguageProvider>
       </body>
     </html>
   );

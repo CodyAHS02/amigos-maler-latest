@@ -5,7 +5,7 @@ export default function ExteriorPaintingContent() {
 <section className="svc-hero" data-hero>
 
         <div className="svc-hero-bg">
-            <img src="/assets/external/exterior-painting/photo-1562259949-e8e7689d7828-w2200-q90.jpg"
+            <img src="/assets/external/exterior-painting/photo-1562259949-e8e7689d7828-w2200-q90.webp"
                 alt="Professional exterior facade painting" />
         </div>
 
@@ -115,7 +115,7 @@ export default function ExteriorPaintingContent() {
 
             <div className="svc-intro-media">
 
-                <img src="/assets/Exterior-painting-01.jpg" alt="Exterior wall preparation and facade renovation" />
+                <img src="/assets/Exterior-painting-01.webp" alt="Exterior wall preparation and facade renovation" />
 
             </div>
 
@@ -191,12 +191,12 @@ export default function ExteriorPaintingContent() {
             <div className="before-after-slider" id="baSlider">
 
                 <div className="ba-before-pane" id="baBeforePane">
-                    <img src="/assets/exterior-painting-before-facade.png" alt="Weathered exterior facade before painting" />
+                    <img src="/assets/exterior-painting-before-facade.webp" alt="Weathered exterior facade before painting" />
                     <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                 </div>
 
                 <div className="ba-after-pane" id="baAfterPane">
-                    <img src="/assets/exterior-painting-after-facade.png" alt="Freshly painted exterior facade after painting" />
+                    <img src="/assets/exterior-painting-after-facade.webp" alt="Freshly painted exterior facade after painting" />
                     <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                 </div>
 
@@ -237,7 +237,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/Exterior-painting-01.jpg" alt="Painter applying exterior wall coating" />
+                        <img src="/assets/Exterior-painting-01.webp" alt="Painter applying exterior wall coating" />
 
                     </div>
 
@@ -256,7 +256,7 @@ export default function ExteriorPaintingContent() {
                             coating systems.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -269,7 +269,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/Exterior-Wood-Protection.png" alt="Exterior wood painting and protection" />
+                        <img src="/assets/Exterior-Wood-Protection.webp" alt="Exterior wood painting and protection" />
 
                     </div>
 
@@ -288,7 +288,7 @@ export default function ExteriorPaintingContent() {
                             elements.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -301,7 +301,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/Surface-Preparation.png" alt="Exterior surface preparation work" />
+                        <img src="/assets/Surface-Preparation.webp" alt="Exterior surface preparation work" />
 
                     </div>
 
@@ -320,7 +320,7 @@ export default function ExteriorPaintingContent() {
                             finish.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -333,7 +333,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=900&q=85"
+                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp??auto=format&fit=crop&w=900&q=85"
                             alt="Facade repair and exterior renovation" />
 
                     </div>
@@ -353,7 +353,7 @@ export default function ExteriorPaintingContent() {
                             surface.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -366,7 +366,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/external/exterior-painting/photo-1562259949-e8e7689d7828-w900-q85.jpg"
+                        <img src="/assets/external/exterior-painting/photo-1562259949-e8e7689d7828-w900-q85.webp"
                             alt="Protective exterior paint coating" />
 
                     </div>
@@ -386,7 +386,7 @@ export default function ExteriorPaintingContent() {
                             environmental conditions.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -399,7 +399,7 @@ export default function ExteriorPaintingContent() {
 
                     <div className="service-image">
 
-                        <img src="/assets/Facade-Maintainace.png" alt="Finished renovated building exterior" />
+                        <img src="/assets/Facade-Maintainace.webp" alt="Finished renovated building exterior" />
 
                     </div>
 
@@ -418,7 +418,7 @@ export default function ExteriorPaintingContent() {
                             property.
                         </p>
 
-                        <a href="#">
+                        <a href="#process">
                             Learn More →
                         </a>
 
@@ -762,7 +762,7 @@ export default function ExteriorPaintingContent() {
 
         <div className="value-image">
 
-            <img src="/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.jpg"
+            <img src="/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.webp"
                 alt="Well maintained exterior building facade" />
 
         </div>
@@ -800,7 +800,7 @@ export default function ExteriorPaintingContent() {
 
         <img
             className="final-cta-bg"
-            src="/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.jpg"
+            src="/assets/external/exterior-painting/photo-1564013799919-ab600027ffc6-w1800-q85.webp"
             alt=""
             aria-hidden="true"
         />

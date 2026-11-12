@@ -187,7 +187,7 @@
 .businessCard ul { margin-top: 28px; }
 .businessCard li { color: rgba(255,255,255,.8); }
 
-.finalCta { min-height: 0; padding: clamp(48px, 5vw, 72px) clamp(24px, 7vw, 120px); background-image: linear-gradient(90deg, rgba(7,26,51,.82), rgba(7,26,51,.46)), url('/assets/property-value-final-cta.png'); background-position: center; background-size: cover; color: #fff; text-align: center; }
+.finalCta { min-height: 0; padding: clamp(48px, 5vw, 72px) clamp(24px, 7vw, 120px); background-image: linear-gradient(90deg, rgba(7,26,51,.82), rgba(7,26,51,.46)), url('/assets/property-value-final-cta.webp'); background-position: center; background-size: cover; color: #fff; text-align: center; }
 .finalCopy { max-width: 1180px; margin: 0 auto; }
 .finalKicker { color: #fff !important; font-size: 12px !important; font-weight: 900; letter-spacing: .28em; }
 .finalCopy h2 { margin-top: 28px !important; color: #fff !important; font-size: clamp(48px, 7vw, 96px); line-height: .98; letter-spacing: -.045em; }
@@ -288,7 +288,7 @@
   border-color: rgba(7,26,51,.4);
   background: transparent;
 }
-:global(html[data-theme="amigos-light"]) .page .finalCta { background-image: linear-gradient(90deg, rgba(7,26,51,.82), rgba(7,26,51,.46)), url('/assets/property-value-final-cta.png'); color: #fff; }
+:global(html[data-theme="amigos-light"]) .page .finalCta { background-image: linear-gradient(90deg, rgba(7,26,51,.82), rgba(7,26,51,.46)), url('/assets/property-value-final-cta.webp'); color: #fff; }
 :global(html[data-theme="amigos-dark"]) .page .audience { background: var(--navy); }
 :global(html[data-theme="amigos-dark"]) .page .audienceHeader h2 { color: #fff; }
 

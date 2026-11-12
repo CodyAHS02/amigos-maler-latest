@@ -4,7 +4,7 @@ export default function ColorAndMaterialContent() {
     <>
 <section className="color-hero" id="colorHero" data-hero>
         <div className="color-hero-image">
-            <img src="/assets/external/color-and-material/photo-1618220179428-22790b461013-w2200-q90.jpg"
+            <img src="/assets/external/color-and-material/photo-1618220179428-22790b461013-w2200-q90.webp"
                 alt="Interior with carefully selected colors and materials" />
         </div>
         <div className="color-hero-overlay"></div>
@@ -43,7 +43,7 @@ export default function ColorAndMaterialContent() {
         </div>
         <div className="color-intro-visual reveal-color-right">
             <div className="intro-color-frame">
-                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg?auto=format&fit=crop&w=1800&q=90"
+                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp??auto=format&fit=crop&w=1800&q=90"
                     alt="Interior showing coordinated colors and materials" />
                 <div className="intro-caption">ARCHITECTURE · LIGHT · MATERIAL · COLOR</div>
             </div>
@@ -62,7 +62,7 @@ export default function ColorAndMaterialContent() {
         <div className="choices-grid">
             <article className="choice-card reveal-choice">
                 <div className="choice-image">
-                    <img src="/assets/external/color-and-material/photo-1618221195710-dd6b41faaea6-w1200-q90.jpg"
+                    <img src="/assets/external/color-and-material/photo-1618221195710-dd6b41faaea6-w1200-q90.webp"
                         alt="Interior color selection" />
                 </div>
                 <div className="choice-content">
@@ -73,7 +73,7 @@ export default function ColorAndMaterialContent() {
             </article>
             <article className="choice-card reveal-choice">
                 <div className="choice-image">
-                    <img src="/assets/external/color-and-material/photo-1615873968403-89e068629265-w1200-q90.jpg"
+                    <img src="/assets/external/color-and-material/photo-1615873968403-89e068629265-w1200-q90.webp"
                         alt="Interior surface texture" />
                 </div>
                 <div className="choice-content">
@@ -84,7 +84,7 @@ export default function ColorAndMaterialContent() {
             </article>
             <article className="choice-card reveal-choice">
                 <div className="choice-image">
-                    <img src="/assets/external/color-and-material/photo-1617104678098-de229db51175-w1200-q90.jpg"
+                    <img src="/assets/external/color-and-material/photo-1617104678098-de229db51175-w1200-q90.webp"
                         alt="Interior materials" />
                 </div>
                 <div className="choice-content">
@@ -95,7 +95,7 @@ export default function ColorAndMaterialContent() {
             </article>
             <article className="choice-card reveal-choice">
                 <div className="choice-image">
-                    <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg?auto=format&fit=crop&w=1200&q=90"
+                    <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp??auto=format&fit=crop&w=1200&q=90"
                         alt="Professional interior coating finish" />
                 </div>
                 <div className="choice-content">
@@ -118,7 +118,7 @@ export default function ColorAndMaterialContent() {
         </div>
         <div className="color-room-stage">
             <div className="color-room-image">
-                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg?auto=format&fit=crop&w=2200&q=90"
+                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp??auto=format&fit=crop&w=2200&q=90"
                     alt="Interior room for interactive color selection" />
                 <div className="room-color-wall"></div>
                 <div className="room-color-glow"></div>
@@ -161,19 +161,19 @@ export default function ColorAndMaterialContent() {
         </div>
         <div className="light-preview">
             <div className="light-scene active" data-light="natural">
-                <img src="/assets/external/color-and-material/photo-1600210491892-03d54c0aaf87-w2200-q90.jpg"
+                <img src="/assets/external/color-and-material/photo-1600210491892-03d54c0aaf87-w2200-q90.webp"
                     alt="Interior in natural daylight" />
                 <div className="light-scene-overlay natural-overlay"></div>
                 <div className="light-scene-label">NATURAL LIGHT</div>
             </div>
             <div className="light-scene" data-light="warm">
-                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg?auto=format&fit=crop&w=2200&q=90"
+                <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp??auto=format&fit=crop&w=2200&q=90"
                     alt="Interior in warm lighting" />
                 <div className="light-scene-overlay warm-overlay"></div>
                 <div className="light-scene-label">WARM LIGHT</div>
             </div>
             <div className="light-scene" data-light="evening">
-                <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg?auto=format&fit=crop&w=2200&q=90"
+                <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp??auto=format&fit=crop&w=2200&q=90"
                     alt="Interior in evening atmosphere" />
                 <div className="light-scene-overlay evening-overlay"></div>
                 <div className="light-scene-label">EVENING ATMOSPHERE</div>
@@ -201,7 +201,7 @@ export default function ColorAndMaterialContent() {
             <div className="material-track">
                 <article className="material-item">
                     <div className="material-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg?auto=format&fit=crop&w=1400&q=90"
+                        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp??auto=format&fit=crop&w=1400&q=90"
                             alt="Smooth interior surface" />
                     </div>
                     <div className="material-info"><span>01</span>
@@ -211,7 +211,7 @@ export default function ColorAndMaterialContent() {
                 </article>
                 <article className="material-item">
                     <div className="material-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg?auto=format&fit=crop&w=1400&q=90"
+                        <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp??auto=format&fit=crop&w=1400&q=90"
                             alt="Fine textured surface" />
                     </div>
                     <div className="material-info"><span>02</span>
@@ -221,7 +221,7 @@ export default function ColorAndMaterialContent() {
                 </article>
                 <article className="material-item">
                     <div className="material-image">
-                        <img src="/assets/external/color-and-material/photo-1600573472550-8090b5e0745e-w1400-q90.jpg"
+                        <img src="/assets/external/color-and-material/photo-1600573472550-8090b5e0745e-w1400-q90.webp"
                             alt="Matte finish interior surface" />
                     </div>
                     <div className="material-info"><span>03</span>
@@ -231,7 +231,7 @@ export default function ColorAndMaterialContent() {
                 </article>
                 <article className="material-item">
                     <div className="material-image">
-                        <img src="/assets/external/color-and-material/photo-1615529182904-14819c35db37-w1400-q90.jpg"
+                        <img src="/assets/external/color-and-material/photo-1615529182904-14819c35db37-w1400-q90.webp"
                             alt="Decorative material surface" />
                     </div>
                     <div className="material-info"><span>04</span>
@@ -241,7 +241,7 @@ export default function ColorAndMaterialContent() {
                 </article>
                 <article className="material-item">
                     <div className="material-image">
-                        <img src="/assets/external/color-and-material/photo-1617104678098-de229db51175-w1400-q90.jpg"
+                        <img src="/assets/external/color-and-material/photo-1617104678098-de229db51175-w1400-q90.webp"
                             alt="Contemporary interior material" />
                     </div>
                     <div className="material-info"><span>05</span>
@@ -270,7 +270,7 @@ export default function ColorAndMaterialContent() {
                     <p>Understand your requirements, preferences and personal style.</p>
                 </div>
                 <div className="consultation-image"><img
-                        src="/assets/external/color-and-material/photo-1556761175-b413da4baf72-w900-q90.jpg"
+                        src="/assets/external/color-and-material/photo-1556761175-b413da4baf72-w900-q90.webp"
                         alt="Professional design consultation" /></div>
             </div>
             <div className="consultation-step reveal-consultation">
@@ -281,7 +281,7 @@ export default function ColorAndMaterialContent() {
                     <p>Consider the architecture, proportions, existing materials and available light.</p>
                 </div>
                 <div className="consultation-image"><img
-                        src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg?auto=format&fit=crop&w=900&q=90"
+                        src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp??auto=format&fit=crop&w=900&q=90"
                         alt="Interior architecture analysis" /></div>
             </div>
             <div className="consultation-step reveal-consultation">
@@ -292,7 +292,7 @@ export default function ColorAndMaterialContent() {
                     <p>Develop suitable color, surface and material combinations for the space.</p>
                 </div>
                 <div className="consultation-image"><img
-                        src="/assets/external/color-and-material/photo-1618221195710-dd6b41faaea6-w900-q90.jpg"
+                        src="/assets/external/color-and-material/photo-1618221195710-dd6b41faaea6-w900-q90.webp"
                         alt="Color and material selection" /></div>
             </div>
             <div className="consultation-step reveal-consultation">
@@ -303,7 +303,7 @@ export default function ColorAndMaterialContent() {
                     <p>Choose the appropriate final solution and coating system before implementation.</p>
                 </div>
                 <div className="consultation-image"><img
-                        src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg?auto=format&fit=crop&w=900&q=90"
+                        src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp??auto=format&fit=crop&w=900&q=90"
                         alt="Finished interior color solution" /></div>
             </div>
         </div>
@@ -320,19 +320,19 @@ export default function ColorAndMaterialContent() {
                 <div className="palette-preview-image">
 
                     {/* PALETTE IMAGE 01 */}
-                    <img className="palette-room-image active" data-image="0" src="/assets/color/palette-1.png"
+                    <img className="palette-room-image active" data-image="0" src="/assets/color/palette-1.webp"
                         alt="Warm natural interior" />
 
                     {/* PALETTE IMAGE 02 */}
-                    <img className="palette-room-image" data-image="1" src="/assets/color/palette-2.png"
+                    <img className="palette-room-image" data-image="1" src="/assets/color/palette-2.webp"
                         alt="Calm modern interior" />
 
                     {/* PALETTE IMAGE 03 */}
-                    <img className="palette-room-image" data-image="2" src="/assets/color/palette-3.png"
+                    <img className="palette-room-image" data-image="2" src="/assets/color/palette-3.webp"
                         alt="Elegant strong interior" />
 
                     {/* PALETTE IMAGE 04 */}
-                    <img className="palette-room-image" data-image="3" src="/assets/color/palette-4.png"
+                    <img className="palette-room-image" data-image="3" src="/assets/color/palette-4.webp"
                         alt="Soft earth interior" />
 
                     <div className="palette-light"></div>
@@ -432,7 +432,7 @@ export default function ColorAndMaterialContent() {
 
     {/* <section className="digital-planning" id="digitalPlanning">
         <div className="digital-planning-image">
-            <img src="/assets/external/color-and-material/photo-1558655146-d09347e92766-w2200-q90.jpg"
+            <img src="/assets/external/color-and-material/photo-1558655146-d09347e92766-w2200-q90.webp"
                 alt="Digital interior design planning" />
             <div className="digital-grid"></div>
             <div className="digital-glow"></div>
@@ -463,7 +463,7 @@ export default function ColorAndMaterialContent() {
             </p>
             <div className="color-final-actions">
                 <a href="#consultation" className="color-btn color-btn-primary">Request a Consultation</a>
-                <a href="#" className="color-btn color-btn-outline-dark">Discuss Your Project</a>
+                <a href="/contact" className="color-btn color-btn-outline-dark">Discuss Your Project</a>
             </div>
         </div>
     </section>

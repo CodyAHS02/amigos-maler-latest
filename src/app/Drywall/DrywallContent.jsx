@@ -6,7 +6,7 @@ export default function DrywallContent() {
 
         <section className="drywall-hero" data-hero>
             <div className="hero-bg">
-                <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.jpg"
+                <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.webp"
                     alt="Drywall construction interior" />
             </div>
             <div className="hero-grid-overlay"></div>
@@ -22,8 +22,8 @@ export default function DrywallContent() {
                     designed around your vision.
                 </p>
                 <div className="hero-actions">
-                    <a id="drywallHeroOfferButton" href="#" className="primary-btn">Request An Offer</a>
-                    <a id="drywallHeroWorkButton" href="#" className="secondary-btn">View Our Work</a>
+                    <a id="drywallHeroOfferButton" href="/contact" className="primary-btn">Request An Offer</a>
+                    <a id="drywallHeroWorkButton" href="#drywall-process" className="secondary-btn">View Our Work</a>
                 </div>
             </div>
             <div className="blueprint-lines"></div>
@@ -31,7 +31,7 @@ export default function DrywallContent() {
 
         <section className="space-intro">
             <div className="intro-image reveal-left">
-                <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg"
+                <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp"
                     alt="Modern redesigned interior" />
             </div>
             <div className="intro-content reveal-right">
@@ -96,7 +96,7 @@ export default function DrywallContent() {
 
                 <article className="creation-card">
                     <div className="card-image">
-                        <img src="/assets/drywall/Ceiling.jpeg" alt="Ceiling construction" />
+                        <img src="/assets/drywall/Ceiling.webp" alt="Ceiling construction" />
                     </div>
                     <div className="card-content">
                         <span>02</span>
@@ -109,7 +109,7 @@ export default function DrywallContent() {
 
                 <article className="creation-card">
                     <div className="card-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg"
+                        <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp"
                             alt="Room division design" />
                     </div>
                     <div className="card-content">
@@ -123,7 +123,7 @@ export default function DrywallContent() {
 
                 <article className="creation-card">
                     <div className="card-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.jpg"
+                        <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.webp"
                             alt="Custom interior solution" />
                     </div>
                     <div className="card-content">
@@ -150,12 +150,12 @@ export default function DrywallContent() {
             <div className="before-after-wrapper">
                 <div className="before-after-slider">
                     <div className="before-image">
-                        <img src="/assets/drywall/drywall-before-generated.png"
+                        <img src="/assets/drywall/drywall-before-generated.webp"
                             alt="Empty room before drywall transformation" />
                         <span>BEFORE</span>
                     </div>
                     <div className="after-image">
-                        <img src="/assets/drywall/drywall-after-generated.png"
+                        <img src="/assets/drywall/drywall-after-generated.webp"
                             alt="Finished room after drywall transformation" />
                         <span>AFTER</span>
                     </div>
@@ -181,7 +181,7 @@ export default function DrywallContent() {
 
                     <article className="transform-card">
                         <div className="transform-image">
-                            <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+                            <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
                                 alt="Open room transformation" />
                         </div>
                         <div className="transform-content">
@@ -195,7 +195,7 @@ export default function DrywallContent() {
 
                     <article className="transform-card">
                         <div className="transform-image">
-                            <img src="/assets/external/drywall/photo-1497366811353-6870744d04b2.jpg"
+                            <img src="/assets/external/drywall/photo-1497366811353-6870744d04b2.webp"
                                 alt="Office room transformation" />
                         </div>
                         <div className="transform-content">
@@ -209,7 +209,7 @@ export default function DrywallContent() {
 
                     <article className="transform-card">
                         <div className="transform-image">
-                            <img src="/assets/external/drywall/photo-1600607688969-a5bfcd646154.jpg"
+                            <img src="/assets/external/drywall/photo-1600607688969-a5bfcd646154.webp"
                                 alt="Multiple room zones" />
                         </div>
                         <div className="transform-content">
@@ -223,7 +223,7 @@ export default function DrywallContent() {
 
                     <article className="transform-card">
                         <div className="transform-image">
-                            <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
+                            <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp"
                                 alt="Ceiling redesign" />
                         </div>
                         <div className="transform-content">
@@ -276,7 +276,7 @@ export default function DrywallContent() {
             </div>
         </section>
 
-        <section className="drywall-process">
+        <section className="drywall-process" id="drywall-process">
 
             <div className="process-header">
                 <p className="section-label">OUR PROCESS</p>
@@ -290,7 +290,7 @@ export default function DrywallContent() {
 
                 <div className="timeline-line"></div>
 
-                <div className="process-step left" data-image="consultation.jpg">
+                <div className="process-step left">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -301,12 +301,12 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg" alt="Consultation" />
+                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp" alt="Consultation" />
                     </div>
                     </div>
                 </div>
 
-                <div className="process-step right" data-image="planning.jpg">
+                <div className="process-step right">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -317,12 +317,12 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.jpg" alt="Planning" />
+                        <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.webp" alt="Planning" />
                     </div>
                     </div>
                 </div>
 
-                <div className="process-step left" data-image="preparation.jpg">
+                <div className="process-step left">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -333,12 +333,12 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/drywall/photo-1581094794329-c8112a89af12.jpg" alt="Preparation" />
+                        <img src="/assets/external/drywall/photo-1581094794329-c8112a89af12.webp" alt="Preparation" />
                     </div>
                     </div>
                 </div>
 
-                <div className="process-step right" data-image="installation.jpg">
+                <div className="process-step right">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -349,13 +349,13 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg"
+                        <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp"
                             alt="Drywall installation" />
                     </div>
                     </div>
                 </div>
 
-                <div className="process-step left" data-image="finishing.jpg">
+                <div className="process-step left">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -366,12 +366,12 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/drywall/photo-1581578731548-c64695cc6952.jpg" alt="Surface finishing" />
+                        <img src="/assets/external/drywall/photo-1581578731548-c64695cc6952.webp" alt="Surface finishing" />
                     </div>
                     </div>
                 </div>
 
-                <div className="process-step right" data-image="handover.jpg">
+                <div className="process-step right">
                     
                     <div className="step-content">
                         <div className="step-text">
@@ -382,7 +382,7 @@ export default function DrywallContent() {
                         </p>
                     </div>
                         <div className="process-image">
-                        <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg" alt="Finished interior" />
+                        <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp" alt="Finished interior" />
                     </div>
                     </div>
                 </div>
@@ -407,7 +407,7 @@ export default function DrywallContent() {
 
                 <div className="flow-item">
                     <div className="flow-image">
-                        <img src="/assets/drywall/drywall.jpg" alt="Drywall structure" />
+                        <img src="/assets/drywall/drywall.webp" alt="Drywall structure" />
                     </div>
                     <div className="flow-content">
                         <span>01</span>
@@ -422,7 +422,7 @@ export default function DrywallContent() {
 
                 <div className="flow-item">
                     <div className="flow-image">
-                        <img src="/assets/drywall/plastering.jpg" alt="Smooth plaster surface" />
+                        <img src="/assets/drywall/plastering.webp" alt="Smooth plaster surface" />
                     </div>
                     <div className="flow-content">
                         <span>02</span>
@@ -437,7 +437,7 @@ export default function DrywallContent() {
 
                 <div className="flow-item">
                     <div className="flow-image">
-                        <img src="/assets/drywall/painting.jpg" alt="Interior painting finish" />
+                        <img src="/assets/drywall/painting.webp" alt="Interior painting finish" />
                     </div>
                     <div className="flow-content">
                         <span>03</span>
@@ -500,7 +500,7 @@ export default function DrywallContent() {
         <section className="property-preservation">
 
             <div className="property-image">
-                <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg"
+                <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp"
                     alt="Modern preserved property interior" />
             </div>
 
@@ -515,7 +515,7 @@ export default function DrywallContent() {
                     property. Well-planned drywall solutions help create spaces that remain valuable and adaptable.
                 </p>
 
-                <a id="drywallPropertyPreservationButton" href="#" className="primary-btn">
+                <a id="drywallPropertyPreservationButton" href="/property-value-preservation" className="primary-btn">
                     Discover Property Preservation
                 </a>
 
@@ -551,11 +551,11 @@ export default function DrywallContent() {
                 </p>
 
                 <div className="cta-buttons">
-                    <a id="drywallFinalOfferButton" href="#" className="primary-btn">
+                    <a id="drywallFinalOfferButton" href="/contact" className="primary-btn">
                         Request A Free Offer
                     </a>
 
-                    <a id="drywallFinalWorkButton" href="#" className="secondary-btn">
+                    <a id="drywallFinalWorkButton" href="/contact" className="secondary-btn">
                         Discuss Project
                     </a>
                 </div>

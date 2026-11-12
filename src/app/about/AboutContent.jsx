@@ -6,7 +6,7 @@ export default function AboutContent() {
         <section className="about-hero" id="top" data-hero>
             <div className="section-shell">
                 <div className="about-hero-media">
-                    <img src="/assets/services-imags/about-hero.jpg"
+                    <img src="/assets/services-imags/about-hero.webp"
                         alt="High-quality property with a well-maintained facade" fetchpriority="high" decoding="async" />
                 </div>
                 <div className="about-hero-overlay"></div>
@@ -54,22 +54,22 @@ export default function AboutContent() {
 
                 <div className="story-images" aria-label="Development from craftsmanship to finished property">
                     <figure className="story-image story-image-1 reveal-image">
-                        <img src="/assets/services/pexels-kseniachernaya-5691513.jpg"
+                        <img src="/assets/services/pexels-kseniachernaya-5691513.webp"
                             alt="The beginning — early hands-on painting work" loading="lazy" decoding="async" />
                         <figcaption>The Beginning</figcaption>
                     </figure>
                     <figure className="story-image story-image-2 reveal-image">
-                        <img src="/assets/services/pexels-mikhail-nilov-8296991.jpg"
+                        <img src="/assets/services/pexels-mikhail-nilov-8296991.webp"
                             alt="Craftsmanship — preparing a surface with care" loading="lazy" decoding="async" />
                         <figcaption>Craftsmanship</figcaption>
                     </figure>
                     <figure className="story-image story-image-3 reveal-image">
-                        <img src="/assets/services/Renovation.png"
+                        <img src="/assets/services/Renovation.webp"
                             alt="Development — renovation work in an interior space" loading="lazy" decoding="async" />
                         <figcaption>Development</figcaption>
                     </figure>
                     <figure className="story-image story-image-4 reveal-image">
-                        <img src="/assets/projects/project-14.jpg" alt="Today — a finished, well-maintained property"
+                        <img src="/assets/projects/project-14.webp" alt="Today — a finished, well-maintained property"
                             loading="lazy" decoding="async" />
                         <figcaption>Today</figcaption>
                     </figure>
@@ -113,7 +113,7 @@ export default function AboutContent() {
                     
                     <div className="founder-card-3d" id="founderCard3d">
                         <figure className="founder-image">
-                            <img src="/chatbot-main.jpeg" alt="Patricio Arias, Founder and Managing Director of Amigos Maler GmbH" loading="lazy" decoding="async" />
+                            <img src="/chatbot-main.webp" alt="Patricio Arias, Founder and Managing Director of Amigos Maler GmbH" loading="lazy" decoding="async" />
                             <div className="founder-image-glare" id="founderGlare" aria-hidden="true"></div>
                         </figure>
 
@@ -286,7 +286,7 @@ export default function AboutContent() {
 
         <section className="why-image-section">
             <div className="why-image-media">
-                <img src="/assets/about-bg.jpg" alt="Renovated property with warm lighting" loading="lazy"
+                <img src="/assets/about-bg.webp" alt="Renovated property with warm lighting" loading="lazy"
                     decoding="async" />
             </div>
             <div className="why-image-overlay"></div>

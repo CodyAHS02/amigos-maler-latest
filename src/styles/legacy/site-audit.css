@@ -1325,7 +1325,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
                 rgba(31, 27, 73, .96) 46%,
                 rgba(31, 27, 73, .86) 72%,
                 rgba(31, 27, 73, .72) 100%),
-            url("/assets/plans/Plan-01.jpg") right center / cover no-repeat !important;
+            url("/assets/plans/Plan-01.webp") right center / cover no-repeat !important;
         border: 1px solid rgba(255, 255, 255, .16) !important;
         box-shadow: 0 -24px 90px rgba(5, 4, 24, .42) !important;
         color: #ffffff !important;
@@ -1340,7 +1340,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
                 rgba(31, 27, 73, .96) 46%,
                 rgba(31, 27, 73, .86) 72%,
                 rgba(31, 27, 73, .72) 100%),
-            url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
+            url("/assets/plans/Plan-02.webp") right center / cover no-repeat !important;
     }
 
     html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
@@ -1352,7 +1352,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
                 rgba(31, 27, 73, .96) 46%,
                 rgba(31, 27, 73, .86) 72%,
                 rgba(31, 27, 73, .72) 100%),
-            url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
+            url("/assets/plans/Plan-03.webp") right center / cover no-repeat !important;
     }
 }
 

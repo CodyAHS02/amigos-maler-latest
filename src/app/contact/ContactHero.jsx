@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/LanguageProvider";
 import styles from "./ContactPage.module.css";
 
 function Icon({ name }) {
@@ -23,27 +24,29 @@ const contactItems = [
 const badges = ["Personal", "Reliable", "Regional", "No obligation"];
 
 export default function ContactHero() {
+  const { t } = useLanguage();
+
   return (
     <section className={styles.hero} data-hero>
       <div className={styles.heroInner}>
         <div className={styles.heroCopy}>
-          <p className={styles.kicker}>GET IN TOUCH</p>
-          <h1>Let&apos;s talk about your <span>property.</span></h1>
-          <p className={styles.heroText}>Tell us what you are planning. Whether it&apos;s painting work, renovations or long-term property maintenance &ndash; we will advise you personally and find the best solution together.</p>
+          <p className={styles.kicker}>{t("GET IN TOUCH")}</p>
+          <h1>{t("Let's talk about your")} <span>{t("property.")}</span></h1>
+          <p className={styles.heroText}>{t("Tell us what you are planning. Whether it's painting work, renovations or long-term property maintenance – we will advise you personally and find the best solution together.")}</p>
           <div className={styles.heroActions}>
-            <a id="contactHeroFormButton" className={`${styles.actionButton} ${styles.primaryAction}`} href="#contact-form"><span>Contact Form</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
-            <a id="contactHeroConsultationButton" className={`${styles.actionButton} ${styles.secondaryAction}`} href="mailto:info@amigos-maler.ch"><span>Free Consultation</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
+            <a id="contactHeroFormButton" className={`${styles.actionButton} ${styles.primaryAction}`} href="#contact-form"><span>{t("Contact Form")}</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
+            <a id="contactHeroConsultationButton" className={`${styles.actionButton} ${styles.secondaryAction}`} href="mailto:info@amigos-maler.ch"><span>{t("Free Consultation")}</span><span className={styles.actionArrow} aria-hidden="true">→</span></a>
           </div>
           <div className={styles.contactGrid}>
             {contactItems.map((item) => <div className={styles.contactItem} key={item.label}>
               <span className={styles.contactIcon}><Icon name={item.icon} /></span>
-              <strong>{item.label}</strong>
-              {item.href ? <a href={item.href}>{item.value}</a> : <span>{item.value}</span>}
+              <strong>{t(item.label)}</strong>
+              {item.href ? <a href={item.href}>{t(item.value)}</a> : <span>{t(item.value)}</span>}
             </div>)}
           </div>
-          <div className={styles.badges}>{badges.map((badge, index) => <span key={badge}><i className={`${styles.badgeDot} ${styles[`badge${index}`]}`}>✓</i>{badge}</span>)}</div>
+          <div className={styles.badges}>{badges.map((badge, index) => <span key={badge}><i className={`${styles.badgeDot} ${styles[`badge${index}`]}`}>✓</i>{t(badge)}</span>)}</div>
         </div>
-        <div className={styles.heroArtwork} role="img" aria-label="Colorful Amigos Maler contact artwork" />
+        <div className={styles.heroArtwork} role="img" aria-label={t("Colorful Amigos Maler contact artwork")} />
       </div>
     </section>
   );

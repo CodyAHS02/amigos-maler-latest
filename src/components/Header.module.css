@@ -6,6 +6,427 @@
   text-decoration: none;
 }
 
+.languageControl {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-width: 150px;
+  height: 32px;
+}
+
+.languageLabel {
+  color: #071a33;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+
+.languageControl select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.languageCurrent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #071a33;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  backdrop-filter: blur(12px);
+  transition: border-color .2s ease, background .2s ease;
+}
+
+:global(html[data-theme="amigos-dark"]) .languageLabel,
+:global(html[data-theme="amigos-dark"]) .languageCurrent,
+:global(html[data-theme="amigos-dark"]) .languageChevron {
+  color: #fff;
+  -webkit-text-fill-color: #fff;
+}
+
+:global(html:not([data-theme="amigos-dark"])) .header-settings-dropdown .languageLabel,
+:global(html:not([data-theme="amigos-dark"])) .header-settings-dropdown .languageCurrent,
+:global(html:not([data-theme="amigos-dark"])) .header-settings-dropdown .languageChevron {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+/* Keep light-theme CTA labels and icons visually consistent in every header state. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn *),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn *) {
+  color: #000 !important;
+  fill: none !important;
+  -webkit-text-fill-color: #000 !important;
+  stroke: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Absolute-last override for the light sticky login icon. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path) {
+  color: #000 !important;
+  fill: none !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Final light sticky-header override for the uniquely identified login icon. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path) {
+  color: #000 !important;
+  fill: none !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Final light sticky-header override for the uniquely identified login icon. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.is-scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.site-header.scrolled .header-actions a#headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path) {
+  color: #000 !important;
+  fill: none !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Unique sticky login-icon target: override page/theme rules that turn it white. */
+:global(#siteHeader.is-scrolled #headerCustomerLoginIcon),
+:global(#siteHeader.is-scrolled #headerCustomerLoginIcon path),
+:global(#siteHeader.scrolled #headerCustomerLoginIcon),
+:global(#siteHeader.scrolled #headerCustomerLoginIcon path) {
+  color: #000 !important;
+  fill: none !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings + .header-settings-dropdown .languageLabel),
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings + .header-settings-dropdown .languageCurrent),
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings + .header-settings-dropdown .languageCurrent span),
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings + .header-settings-dropdown .languageChevron) {
+  color: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings ~ .header-settings-dropdown .languageControl),
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings ~ .header-settings-dropdown .languageControl *) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body #headerLanguageLabel),
+:global(html:not([data-theme="amigos-dark"]) body #headerLanguageValue),
+:global(html:not([data-theme="amigos-dark"]) body #headerLanguageValue *) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Contact light header: keep the shared four-dot settings trigger visible. */
+:global(html:not([data-theme="amigos-dark"]) body[data-page="contact"] #siteHeader #headerDisplaySettings) {
+  display: grid !important;
+  width: 34px !important;
+  height: 34px !important;
+  grid-template-columns: repeat(2, 5px) !important;
+  grid-template-rows: repeat(2, 5px) !important;
+  place-content: center !important;
+  gap: 4px !important;
+  padding: 0 !important;
+  margin-left: 10px !important;
+  color: #071a33 !important;
+  border-color: rgba(7, 26, 51, .28) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, .18) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="contact"] #siteHeader #headerDisplaySettings span) {
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+  background: #071a33 !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body[data-page="contact"] #headerSettingsDropdown) {
+  top: calc(100% - 12px) !important;
+}
+
+/* Interior painting legacy page: keep the shared four-dot settings control visible. */
+:global(#siteHeader.interior-painting-header #headerDisplaySettings),
+:global(#siteHeader.services-overview-header #headerDisplaySettings),
+:global(#siteHeader.exterior-painting-header #headerDisplaySettings),
+:global(#siteHeader.facade-renovation-header #headerDisplaySettings),
+:global(#siteHeader.appartment-renovation-header #headerDisplaySettings),
+:global(#siteHeader.drywall-header #headerDisplaySettings),
+:global(#siteHeader.plastering-header #headerDisplaySettings),
+:global(#siteHeader.color-material-header #headerDisplaySettings),
+:global(#siteHeader.mold-header #headerDisplaySettings),
+:global(#siteHeader.water-damage-header #headerDisplaySettings),
+:global(#siteHeader.property-value-preservation-header #headerDisplaySettings) {
+  display: grid !important;
+  grid-template-columns: repeat(2, 6px) !important;
+  grid-template-rows: repeat(2, 6px) !important;
+  place-content: center !important;
+  gap: 4px !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  padding: 0 !important;
+  color: #071a33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1005 !important;
+}
+
+:global(#siteHeader.interior-painting-header #headerDisplaySettings span),
+:global(#siteHeader.services-overview-header #headerDisplaySettings span),
+:global(#siteHeader.exterior-painting-header #headerDisplaySettings span),
+:global(#siteHeader.facade-renovation-header #headerDisplaySettings span),
+:global(#siteHeader.appartment-renovation-header #headerDisplaySettings span),
+:global(#siteHeader.drywall-header #headerDisplaySettings span),
+:global(#siteHeader.plastering-header #headerDisplaySettings span),
+:global(#siteHeader.color-material-header #headerDisplaySettings span),
+:global(#siteHeader.mold-header #headerDisplaySettings span),
+:global(#siteHeader.water-damage-header #headerDisplaySettings span),
+:global(#siteHeader.property-value-preservation-header #headerDisplaySettings span) {
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #071a33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+:global(#siteHeader.interior-painting-header .header-settings-menu),
+:global(#siteHeader.services-overview-header .header-settings-menu),
+:global(#siteHeader.exterior-painting-header .header-settings-menu),
+:global(#siteHeader.facade-renovation-header .header-settings-menu),
+:global(#siteHeader.appartment-renovation-header .header-settings-menu),
+:global(#siteHeader.drywall-header .header-settings-menu),
+:global(#siteHeader.plastering-header .header-settings-menu),
+:global(#siteHeader.color-material-header .header-settings-menu),
+:global(#siteHeader.mold-header .header-settings-menu),
+:global(#siteHeader.water-damage-header .header-settings-menu),
+:global(#siteHeader.property-value-preservation-header .header-settings-menu) {
+  display: block !important;
+  flex: 0 0 auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1005 !important;
+}
+
+.languageControl:hover .languageCurrent,
+.languageControl:focus-within .languageCurrent {
+  border-color: #f6be10;
+  background: rgba(246, 190, 16, .16);
+}
+
+.languageControl:focus-within .languageCurrent {
+  outline: 2px solid #f6be10;
+  outline-offset: 2px;
+}
+
+/* Keep the opened settings panel visible above page-specific hero styles. */
+:global(#headerSettingsDropdown) {
+  display: block !important;
+  position: absolute !important;
+  top: calc(100% + 10px) !important;
+  right: 0 !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  padding: 14px 24px !important;
+  z-index: 1006 !important;
+  border: 1px solid rgba(255, 255, 255, .68) !important;
+  border-radius: 24px !important;
+  background: rgba(255, 255, 255, .78) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+  backdrop-filter: blur(18px) !important;
+  box-shadow: 0 18px 44px rgba(7, 26, 51, .2) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+:global(details:not([open]) > #headerSettingsDropdown) {
+  display: none !important;
+}
+
+:global(#headerSettingsDropdown .header-toggle-group) {
+  width: max-content !important;
+  flex-wrap: nowrap !important;
+}
+
+@media (max-width: 1360px) {
+  :global(#headerSettingsDropdown) {
+    position: fixed !important;
+    top: 76px !important;
+    left: 50% !important;
+    right: auto !important;
+    width: max-content !important;
+    max-width: calc(100vw - 32px) !important;
+    transform: translateX(-50%) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body[data-page="contact"] #headerSettingsDropdown) {
+    top: 54px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :global(#headerSettingsDropdown) {
+    top: 68px !important;
+    width: max-content !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  :global(html:not([data-theme="amigos-dark"]) body[data-page="contact"] #headerSettingsDropdown) {
+    top: 48px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  :global(#headerSettingsDropdown) {
+    width: calc(100vw - 24px) !important;
+  }
+
+  :global(#headerSettingsDropdown .header-toggle-group) {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* Keep the interior-painting panel close to the trigger instead of the viewport edge. */
+:global(html body #siteHeader.interior-painting-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.services-overview-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.exterior-painting-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.facade-renovation-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.appartment-renovation-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.drywall-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.plastering-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.color-material-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.mold-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.water-damage-header details[open] > #headerSettingsDropdown),
+:global(html body #siteHeader.property-value-preservation-header details[open] > #headerSettingsDropdown) {
+  position: fixed !important;
+  top: 88px !important;
+  right: 100px !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+@media (max-width: 1360px) {
+  :global(html body #siteHeader.interior-painting-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.services-overview-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.exterior-painting-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.facade-renovation-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.appartment-renovation-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.drywall-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.plastering-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.color-material-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.mold-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.water-damage-header details[open] > #headerSettingsDropdown),
+  :global(html body #siteHeader.property-value-preservation-header details[open] > #headerSettingsDropdown) {
+    top: 56px !important;
+    right: 56px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :global(#siteHeader.interior-painting-header #headerSettingsDropdown),
+  :global(#siteHeader.services-overview-header #headerSettingsDropdown),
+  :global(#siteHeader.exterior-painting-header #headerSettingsDropdown),
+  :global(#siteHeader.facade-renovation-header #headerSettingsDropdown),
+  :global(#siteHeader.appartment-renovation-header #headerSettingsDropdown),
+  :global(#siteHeader.drywall-header #headerSettingsDropdown),
+  :global(#siteHeader.plastering-header #headerSettingsDropdown),
+  :global(#siteHeader.color-material-header #headerSettingsDropdown),
+  :global(#siteHeader.mold-header #headerSettingsDropdown),
+  :global(#siteHeader.water-damage-header #headerSettingsDropdown),
+  :global(#siteHeader.property-value-preservation-header #headerSettingsDropdown) {
+    top: 52px !important;
+    right: 20px !important;
+  }
+}
+
+:global(html[data-theme="amigos-dark"] #headerSettingsDropdown) {
+  border-color: rgba(255, 255, 255, .28) !important;
+  background: rgba(7, 26, 51, .78) !important;
+}
+
+.languageFlag {
+  width: 17px;
+  height: 12px;
+  flex: 0 0 17px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .48);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .18);
+}
+
+.languageFlagEN {
+  background: linear-gradient(28deg, transparent 42%, #fff 43% 56%, transparent 57%), linear-gradient(-28deg, transparent 42%, #fff 43% 56%, transparent 57%), linear-gradient(90deg, transparent 38%, #c8102e 39% 61%, transparent 62%), linear-gradient(0deg, transparent 34%, #c8102e 35% 65%, transparent 66%), #012169;
+}
+
+.languageFlagDE {
+  background: linear-gradient(#000 0 33%, #dd0000 33% 66%, #ffce00 66%);
+}
+
+.languageFlagES {
+  background: linear-gradient(#aa151b 0 25%, #f1bf00 25% 75%, #aa151b 75%);
+}
+
+@media (max-width: 640px) {
+  .languageControl {
+    min-width: 142px;
+    height: 30px;
+  }
+
+  .languageCurrent {
+    gap: 5px;
+    padding: 0 6px;
+    font-size: 10px;
+  }
+
+  .languageControl select {
+    min-width: 0;
+  }
+}
+
 .logoSymbol {
   display: block;
   width: 56px;
@@ -199,6 +620,60 @@
   -webkit-text-fill-color: #050505 !important;
 }
 
+/* Schadensservice light header: restore the login icon and four-dot settings trigger. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.damage-service-header #headerCustomerLoginBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.damage-service-header #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader.damage-service-header #headerCustomerLoginBtn svg path) {
+  color: #071A33 !important;
+  -webkit-text-fill-color: #071A33 !important;
+  stroke: #071A33 !important;
+}
+
+:global(body #headerDisplaySettings) {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  display: grid !important;
+  color: #071A33 !important;
+}
+
+:global(body #headerDisplaySettings::-webkit-details-marker) {
+  display: none !important;
+}
+
+:global(html:not([data-theme="amigos-dark"]) body #headerDisplaySettings span) {
+  background: #071A33 !important;
+}
+
+:global(html[data-theme="amigos-dark"] body #headerDisplaySettings span) {
+  background: #fff !important;
+}
+
+/* Schadensservice desktop: reserve a visible slot for the settings menu. */
+@media (min-width: 1361px) {
+  :global(body #siteHeader.damage-service-header) {
+    position: fixed !important;
+  }
+
+  :global(body #siteHeader.damage-service-header .header-settings-menu) {
+    position: absolute !important;
+    top: 50% !important;
+    right: 28px !important;
+    transform: translateY(-50%) !important;
+    z-index: 1002 !important;
+  }
+
+  :global(body #siteHeader.damage-service-header #headerDisplaySettings) {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+
+  :global(body #siteHeader.damage-service-header .header-actions) {
+    margin-right: 62px !important;
+  }
+}
+
 
 /* Fix dropdown numbers inheriting dark color in light mode */
 :global(html:not([data-theme="amigos-dark"]) .site-header:not(.is-scrolled):not(.home-initial) .site-nav a .item-num) {
@@ -270,6 +745,15 @@
   color: currentColor !important;
   stroke: currentColor !important;
   -webkit-text-fill-color: currentColor !important;
+}
+
+:global(html body .site-header.is-scrolled .header-actions #headerCustomerLoginBtn svg),
+:global(html body .site-header.is-scrolled .header-actions #headerCustomerLoginBtn svg path),
+:global(html body .site-header.scrolled .header-actions #headerCustomerLoginBtn svg),
+:global(html body .site-header.scrolled .header-actions #headerCustomerLoginBtn svg path) {
+  color: #000 !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 :global(html body .site-header.is-scrolled .header-actions .customer-header-btn::before),
@@ -520,7 +1004,7 @@
   -webkit-text-fill-color: #fff !important;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1360px) {
   :global(html:not([data-theme="amigos-dark"]) .site-nav.open) {
     background: linear-gradient(135deg, #fffaf0 0%, #ffffff 52%, #fff0f5 100%) !important;
     color: #071a33 !important;
@@ -538,6 +1022,22 @@
     color: rgba(7, 26, 51, .56) !important;
     -webkit-text-fill-color: rgba(7, 26, 51, .56) !important;
   }
+}
+
+/* Light-theme open menu links must remain readable at every responsive width. */
+:global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open a),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open .nav-link),
+:global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open .dropdown-trigger) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Unique mobile navigation target: beats page-specific white-link overrides. */
+:global(html:not([data-theme="amigos-dark"]) body #mobileNavigation.site-nav.open a),
+:global(html:not([data-theme="amigos-dark"]) body #mobileNavigation.site-nav.open .nav-link),
+:global(html:not([data-theme="amigos-dark"]) body #mobileNavigation.site-nav.open .dropdown-trigger) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 /* Sticky header actions use the brand gradient instead of the legacy black fill. */
@@ -563,7 +1063,7 @@
   -webkit-text-fill-color: #fff !important;
   stroke: #fff !important;
 }
-@media (max-width: 1120px) {
+@media (max-width: 1360px) {
   :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open),
   :global(html:not([data-theme="amigos-dark"]) body .site-header .site-nav.open *) {
     color: #050505 !important;
@@ -592,22 +1092,22 @@
   }
 }
 
-/* Final light-theme CTA label override; later sticky/header rules must not turn it white. */
+/* Keep the header CTA labels white in the light-theme hero treatment. */
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn),
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn),
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .customer-header-btn:hover),
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-btn:hover) {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
-/* Explicit light-theme CTA color: keep both header button labels black. */
+/* Explicit light-theme CTA color: keep both header button labels white. */
 :global(html[data-theme="amigos-light"] body .site-header .header-actions a.customer-header-btn),
 :global(html[data-theme="amigos-light"] body .site-header .header-actions a.header-btn),
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions a.customer-header-btn),
 :global(html:not([data-theme="amigos-dark"]) body .site-header .header-actions a.header-btn) {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* Final CTA text override for the rendered header buttons. */
@@ -615,14 +1115,109 @@
 :global(html[data-theme] body .site-header .header-actions .header-btn),
 :global(html[data-theme] body .site-header .header-actions .customer-header-btn *),
 :global(html[data-theme] body .site-header .header-actions .header-btn *) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Keep the customer-login icon white with the light-theme label. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg path) {
+  color: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Sticky light-theme customer login icon must contrast with the button background. */
+:global(html:not([data-theme="amigos-dark"]) body .site-header.is-scrolled #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body .site-header.is-scrolled #headerCustomerLoginBtn svg path),
+:global(html:not([data-theme="amigos-dark"]) body .site-header.scrolled #headerCustomerLoginBtn svg),
+:global(html:not([data-theme="amigos-dark"]) body .site-header.scrolled #headerCustomerLoginBtn svg path) {
+  color: #071a33 !important;
+  stroke: #071a33 !important;
+  -webkit-text-fill-color: #071a33 !important;
+}
+
+/* Keep light-theme CTA labels and icons visually consistent in every header state. */
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn *),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn),
+:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerQuoteBtn *) {
   color: #000 !important;
   -webkit-text-fill-color: #000 !important;
   stroke: #000 !important;
 }
 
-/* Keep the customer-login icon black with the light-theme label. */
-:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg),
-:global(html:not([data-theme="amigos-dark"]) body #siteHeader #headerCustomerLoginBtn svg path) {
-  color: #000 !important;
-  stroke: #000 !important;
+/* Shared display-settings motion: dots become an X and the panel reveals smoothly. */
+:global(html body #siteHeader .header-settings-menu > #headerDisplaySettings) {
+  transition: grid-template-columns 180ms ease, grid-template-rows 180ms ease, gap 180ms ease;
+}
+
+:global(html body #siteHeader .header-settings-menu > #headerDisplaySettings span) {
+  transform-origin: center;
+  transition: width 180ms ease, height 180ms ease, transform 180ms ease, opacity 140ms ease;
+}
+
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings) {
+  position: relative !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: 1fr !important;
+  gap: 0 !important;
+}
+
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(1)),
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(2)) {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 20px !important;
+  height: 3px !important;
+  border-radius: 999px !important;
+  background: currentColor !important;
+  opacity: 1 !important;
+}
+
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(1)) {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(2)) {
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(3)),
+:global(html body #siteHeader .header-settings-menu[open] > #headerDisplaySettings span:nth-child(4)) {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  opacity: 0 !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+}
+
+:global(#headerSettingsDropdown) {
+  animation: headerSettingsReveal 220ms cubic-bezier(.2, .8, .2, 1) both;
+  transform-origin: top center;
+}
+
+:global(details:not([open]) > #headerSettingsDropdown) {
+  animation: none !important;
+}
+
+@keyframes headerSettingsReveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0 round 24px);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html body #siteHeader .header-settings-menu > #headerDisplaySettings),
+  :global(html body #siteHeader .header-settings-menu > #headerDisplaySettings span),
+  :global(#headerSettingsDropdown) {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
 }

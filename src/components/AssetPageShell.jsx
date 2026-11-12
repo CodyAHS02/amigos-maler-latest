@@ -35,9 +35,23 @@ export default function AssetPageShell({ children, html, styles = [], css, exter
         const source = readAsset(name, "scripts");
         const body = gsap ? `(function waitForPageRuntime() {
   if (!window.gsap || !window.ScrollTrigger) {
+    if (document.querySelector(".loader") && !window.__amigosLoaderFallbackScheduled) {
+      window.__amigosLoaderFallbackScheduled = true;
+      window.setTimeout(() => {
+        const loader = document.querySelector(".loader");
+        if (loader && !window.__amigosLoaderFinished && !window.__amigosPageRuntimeStarted) {
+          loader.style.display = "none";
+          document.documentElement.style.overflow = "";
+          document.body.style.overflow = "";
+          window.__amigosLoaderFinished = true;
+        }
+      }, 2000);
+    }
     window.setTimeout(waitForPageRuntime, 50);
     return;
   }
+  if (window.__amigosLoaderFinished) return;
+  window.__amigosPageRuntimeStarted = true;
 ${source}
 })();` : source;
         return <Script key={name} id={assetId("page-script", name)} strategy="afterInteractive">{body}</Script>;

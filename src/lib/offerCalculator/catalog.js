@@ -16,42 +16,42 @@ export const propertyTypes = [
     title: "Apartment",
     subtitle: "Flats & condominiums",
     description: "Flats and condominiums from 1 room to luxury penthouses.",
-    image: "/assets/projects/project-01.jpg"
+    image: "/assets/projects/project-01.webp"
   },
   {
     id: "single_family_home",
     title: "Single-Family Home",
     subtitle: "Detached & terraced homes",
     description: "Detached and semi-detached homes, multi-floor residential properties.",
-    image: "/assets/projects/project-05.jpg"
+    image: "/assets/projects/project-05.webp"
   },
   {
     id: "commercial",
     title: "Commercial Space",
     subtitle: "Offices, retail & clinics",
     description: "Offices, retail, clinics, practice rooms and administrative buildings.",
-    image: "/assets/projects/project-08.jpg"
+    image: "/assets/projects/project-08.webp"
   },
   {
     id: "facade",
     title: "Facade / Exterior",
     subtitle: "Exterior surfaces & masonry",
     iconKey: "facade",
-    image: "/assets/services-imags/facade.jpg"
+    image: "/assets/services-imags/facade.webp"
   },
   {
     id: "room",
     title: "Single Room",
     subtitle: "Individual room painting",
     iconKey: "room",
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
   },
   {
     id: "other",
     title: "Other Property",
     subtitle: "Special projects on request",
     iconKey: "other",
-    image: "/assets/drywall/painting.jpg"
+    image: "/assets/drywall/painting.webp"
   }
 ];
 
@@ -62,7 +62,7 @@ export const quickPropertyTypes = [
     subtitle: "Apartment",
     iconKey: "apartment",
     roomCount: 3,
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
   },
   {
     id: "3_5_apartment",
@@ -70,7 +70,7 @@ export const quickPropertyTypes = [
     subtitle: "Apartment",
     iconKey: "apartment",
     roomCount: 4,
-    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg"
+    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.webp"
   },
   {
     id: "4_5_apartment",
@@ -78,7 +78,7 @@ export const quickPropertyTypes = [
     subtitle: "Apartment",
     iconKey: "apartment",
     roomCount: 5,
-    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.jpg"
+    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.webp"
   },
   {
     id: "5_5_apartment",
@@ -86,7 +86,7 @@ export const quickPropertyTypes = [
     subtitle: "Apartment",
     iconKey: "apartment",
     roomCount: 6,
-    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp"
   },
   {
     id: "6_5_plus_apartment",
@@ -94,7 +94,7 @@ export const quickPropertyTypes = [
     subtitle: "Large apartment",
     iconKey: "apartment",
     roomCount: 7,
-    image: "/assets/projects/project-04.jpg"
+    image: "/assets/projects/project-04.webp"
   },
   {
     id: "house",
@@ -102,7 +102,7 @@ export const quickPropertyTypes = [
     subtitle: "(Single-family home)",
     iconKey: "house",
     roomCount: 6,
-    image: "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg"
+    image: "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.webp"
   },
   {
     id: "commercial",
@@ -110,7 +110,7 @@ export const quickPropertyTypes = [
     subtitle: "(Office / Practice)",
     iconKey: "commercial",
     roomCount: 4,
-    image: "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.jpg"
+    image: "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.webp"
   },
   {
     id: "other",
@@ -118,7 +118,7 @@ export const quickPropertyTypes = [
     subtitle: "(on request)",
     iconKey: "other",
     roomCount: 3,
-    image: "/assets/drywall/painting.jpg"
+    image: "/assets/drywall/painting.webp"
   }
 ];
 

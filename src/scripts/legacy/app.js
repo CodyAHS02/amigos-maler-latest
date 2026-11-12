@@ -17,14 +17,14 @@ const maskNames = [
 ];
 
 const WALLPAPERS = [
-    { id: "texture-1", name: "Mineral Plaster", url: "/wall-textures/texture-1.jpg" },
-    { id: "texture-2", name: "Architectural Panels", url: "/wall-textures/texture-2.jpg" },
-    { id: "texture-3", name: "Sage Combed", url: "/wall-textures/texture-3.jpg" },
-    { id: "texture-4", name: "Classic Damask", url: "/wall-textures/texture-4.jpg" },
-    { id: "texture-5", name: "Terracotta Geo", url: "/wall-textures/texture-5.jpg" },
-    { id: "texture-6", name: "Soft Botanical", url: "/wall-textures/texture-6.jpg" },
-    { id: "wallpaper-1", name: "Textured Linen", url: "/assets/wallpapers/wallpaper-1.jpg" },
-    { id: "wallpaper-2", name: "Botanical Leaf", url: "/assets/wallpapers/wallpaper-2.jpg" }
+    { id: "texture-1", name: "Mineral Plaster", url: "/wall-textures/texture-1.webp" },
+    { id: "texture-2", name: "Architectural Panels", url: "/wall-textures/texture-2.webp" },
+    { id: "texture-3", name: "Sage Combed", url: "/wall-textures/texture-3.webp" },
+    { id: "texture-4", name: "Classic Damask", url: "/wall-textures/texture-4.webp" },
+    { id: "texture-5", name: "Terracotta Geo", url: "/wall-textures/texture-5.webp" },
+    { id: "texture-6", name: "Soft Botanical", url: "/wall-textures/texture-6.webp" },
+    { id: "wallpaper-1", name: "Textured Linen", url: "/assets/wallpapers/wallpaper-1.webp" },
+    { id: "wallpaper-2", name: "Botanical Leaf", url: "/assets/wallpapers/wallpaper-2.webp" }
 ];
 
 const textureCache = {};
@@ -75,7 +75,7 @@ async function loadImage(src) {
 
 async function init() {
     // Load room image first
-    images.room = await loadImage("/assets/room.png");
+    images.room = await loadImage("/assets/room.webp");
 
     // Set canvas size
     canvas.width = images.room.width;

@@ -454,7 +454,7 @@
   border-radius: 24px;
   background:
     linear-gradient(135deg, rgba(7, 26, 51, .92), rgba(16, 40, 68, .82)),
-    url("/assets/services-imags/property-value-hero.jpg") center/cover;
+    url("/assets/services-imags/property-value-hero.webp") center/cover;
   color: var(--am-panel);
   box-shadow: 0 28px 90px rgba(16, 34, 56, .18);
 }
@@ -874,7 +874,7 @@
   padding: 24px;
   background:
     linear-gradient(135deg, rgba(7, 26, 51, .88), rgba(7, 26, 51, .62)),
-    url("/assets/BG.jpg") center/cover;
+    url("/assets/BG.webp") center/cover;
 }
 
 .loginCard {
@@ -1068,7 +1068,7 @@
   background:
     linear-gradient(135deg, rgba(7, 26, 51, .90), rgba(7, 26, 51, .64)),
     radial-gradient(circle at 78% 16%, rgba(230, 36, 83, .25), transparent 34%),
-    url("/assets/BG.jpg") center/cover;
+    url("/assets/BG.webp") center/cover;
 }
 
 .sidebar,

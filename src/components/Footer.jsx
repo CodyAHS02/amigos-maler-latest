@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="footer-main">
           <div className="footer-brand">
             <a href="/" className="footer-logo" aria-label="Amigos Maler home">
-              <img src="/New-Logo.png" alt="Amigos Maler" />
+              <img src="/New-Logo.webp" alt="Amigos Maler" />
             </a>
             <p>
               Premium painting, renovation and property value preservation for homes, buildings and real estate assets
@@ -90,7 +90,7 @@ export default function Footer() {
               <a href="/services">Services</a>
               <a href="/schadensservice">Schadensservice</a>
               <a href="/property-value-preservation">Werterhalt</a>
-              <a href="https://amigos-immo.vercel.app/" rel="noopener noreferrer" target="_blank">Projects</a>
+              <a href="/projects">Projects</a>
               <a href="/partners">Partners</a>
               <a href="/contact">Contact</a>
             </div>

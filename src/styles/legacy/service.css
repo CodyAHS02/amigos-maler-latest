@@ -1791,6 +1791,38 @@ ANIMATION CLASSES
     }
 }
 
+/* Keep the long service sections inside the viewport on narrow screens. */
+@media (max-width: 760px) {
+    .services-hero,
+    .before-after-section,
+    .services-overview,
+    .colour-section,
+    .process-section,
+    .why-section,
+    .reviews-section,
+    .property-care,
+    .final-cta {
+        overflow-x: hidden;
+    }
+
+    .service-card,
+    .process-card,
+    .why-card,
+    .review-card {
+        min-width: 0;
+    }
+
+    .section-heading h2,
+    .property-content h2,
+    .final-cta h2 {
+        overflow-wrap: anywhere;
+    }
+
+    .property-content {
+        padding: 32px 22px !important;
+    }
+}
+
 /* Mold light-theme hero overrides: keep the copy readable over the softened photo. */
 html:not([data-theme="amigos-dark"]) body:has(#moldHeroHeading) #moldHeroHeading,
 html:not([data-theme="amigos-dark"]) body:has(#moldHeroHeading) #moldHeroDescription {

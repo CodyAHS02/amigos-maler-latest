@@ -3,7 +3,7 @@ export default function PlasteringContent() {
     <>
     <section className="gipser-hero" data-hero>
       <div className="gipser-hero-bg">
-        <img src="/assets/Plastering/Hero.png" alt="Professional plasterer applying plaster on wall" />
+        <img src="/assets/Plastering/Hero.webp" alt="Professional plasterer applying plaster on wall" />
       </div>
       <div className="gipser-hero-overlay">
       </div>
@@ -25,7 +25,7 @@ export default function PlasteringContent() {
                         premium coatings.
           </p>
           <div className="hero-actions">
-            <a id="plasterHeroOfferButton" href="#" className="btn-primary">
+            <a id="plasterHeroOfferButton" href="/contact" className="btn-primary">
               Request An Offer
             </a>
             <a id="plasterHeroWorkButton" href="#services" className="btn-outline">
@@ -70,7 +70,7 @@ export default function PlasteringContent() {
     <section className="gipser-intro">
       <div className="intro-layout">
         <div className="intro-image reveal-image">
-          <img src="/assets/Plastering/2nd-section.png" alt="Worker preparing wall surface" />
+          <img src="/assets/Plastering/2nd-section.webp" alt="Worker preparing wall surface" />
         </div>
         <div className="intro-content reveal-content">
           <span className="section-tag">
@@ -133,7 +133,7 @@ export default function PlasteringContent() {
       <div className="service-grid">
         <article className="service-card reveal-card">
           <div className="service-image">
-            <img src="/assets/Plastering/Filling.png" alt="Wall filling and smoothing work" />
+            <img src="/assets/Plastering/Filling.webp" alt="Wall filling and smoothing work" />
           </div>
           <div className="service-body">
             <span>
@@ -146,14 +146,14 @@ export default function PlasteringContent() {
               Precise filling work to remove cracks, uneven areas and imperfections while creating smooth
                             surfaces.
             </p>
-            <a href="#">
+            <a href="#services">
               Learn More →
             </a>
           </div>
         </article>
         <article className="service-card reveal-card">
           <div className="service-image">
-            <img src="/assets/Plastering/Plastering.jpeg" alt="Professional plaster application" />
+            <img src="/assets/Plastering/Plastering.webp" alt="Professional plaster application" />
           </div>
           <div className="service-body">
             <span>
@@ -165,14 +165,14 @@ export default function PlasteringContent() {
             <p>
               Professional plaster application using suitable techniques for walls and ceilings.
             </p>
-            <a href="#">
+            <a href="#services">
               Learn More →
             </a>
           </div>
         </article>
         <article className="service-card reveal-card">
           <div className="service-image">
-            <img src="/assets/Plastering/Surface-Preparation.jpeg" alt="Surface preparation before finishing" />
+            <img src="/assets/Plastering/Surface-Preparation.webp" alt="Surface preparation before finishing" />
           </div>
           <div className="service-body">
             <span>
@@ -184,7 +184,7 @@ export default function PlasteringContent() {
             <p>
               Careful preparation creates the ideal foundation for painting and premium finishing.
             </p>
-            <a href="#">
+            <a href="#services">
               Learn More →
             </a>
           </div>
@@ -203,14 +203,14 @@ export default function PlasteringContent() {
             <p>
               Repairing cracks, holes and damaged plaster to restore surface quality.
             </p>
-            <a href="#">
+            <a href="#services">
               Learn More →
             </a>
           </div>
         </article>
         <article className="service-card reveal-card">
           <div className="service-image">
-            <img src="/assets/Plastering/Wall-Ceiling-Smoothing.jpeg" alt="Smooth finished wall" />
+            <img src="/assets/Plastering/Wall-Ceiling-Smoothing.webp" alt="Smooth finished wall" />
           </div>
           <div className="service-body">
             <span>
@@ -222,7 +222,7 @@ export default function PlasteringContent() {
             <p>
               Creating refined and even surfaces ready for painting or decorative finishes.
             </p>
-            <a href="#">
+            <a href="#services">
               Learn More →
             </a>
           </div>
@@ -253,13 +253,13 @@ export default function PlasteringContent() {
         </div>
         <div className="before-after-slider" id="baSlider">
           <div className="ba-before-pane" id="baBeforePane">
-            <img src="/assets/Plastering/plastering-before.png" alt="Uneven plaster before professional surface preparation" />
+            <img src="/assets/Plastering/plastering-before.webp" alt="Uneven plaster before professional surface preparation" />
             <span className="ba-tag ba-tag-before" id="baTagBefore">
               BEFORE
             </span>
           </div>
           <div className="ba-after-pane" id="baAfterPane">
-            <img src="/assets/Plastering/plastering-after.png" alt="Smooth plaster after professional surface preparation" />
+            <img src="/assets/Plastering/plastering-after.webp" alt="Smooth plaster after professional surface preparation" />
             <span className="ba-tag ba-tag-after" id="baTagAfter">
               AFTER
             </span>
@@ -379,7 +379,7 @@ export default function PlasteringContent() {
             01
           </div>
           <div className="step-content">
-            <img src="/assets/Plastering/Professional-Systems.png" alt="Analyse" className="step-image" />
+            <img src="/assets/Plastering/Professional-Systems.webp" alt="Analyse" className="step-image" />
             <h3>
               Analyse
             </h3>
@@ -393,7 +393,7 @@ export default function PlasteringContent() {
             02
           </div>
           <div className="step-content">
-            <img src="/assets/Plastering/Surface-Preparation.jpeg" alt="Preparation" className="step-image" />
+            <img src="/assets/Plastering/Surface-Preparation.webp" alt="Preparation" className="step-image" />
             <h3>
               Preparation
             </h3>
@@ -421,7 +421,7 @@ export default function PlasteringContent() {
             04
           </div>
           <div className="step-content">
-            <img src="/assets/Plastering/Filling.png" alt="Plaster & Fill" className="step-image" />
+            <img src="/assets/Plastering/Filling.webp" alt="Plaster & Fill" className="step-image" />
             <h3>
               Plaster & Fill
             </h3>
@@ -435,7 +435,7 @@ export default function PlasteringContent() {
             05
           </div>
           <div className="step-content">
-            <img src="/assets/Plastering/Wall-Ceiling-Smoothing.jpeg" alt="Smooth & Finish" className="step-image" />
+            <img src="/assets/Plastering/Wall-Ceiling-Smoothing.webp" alt="Smooth & Finish" className="step-image" />
             <h3>
               Smooth & Finish
             </h3>
@@ -449,7 +449,7 @@ export default function PlasteringContent() {
             06
           </div>
           <div className="step-content">
-            <img src="/assets/Plastering/End-Process.png" alt="Ready For The Next Finish" className="step-image" />
+            <img src="/assets/Plastering/End-Process.webp" alt="Ready For The Next Finish" className="step-image" />
             <h3>
               Ready For The Next Finish
             </h3>
@@ -476,7 +476,7 @@ export default function PlasteringContent() {
       <div className="materials-grid">
         <div className="material-item reveal-card">
           <div className="material-image">
-            <img src="/assets/Plastering/Fine-Plaster.jpg" alt="Fine plaster texture" />
+            <img src="/assets/Plastering/Fine-Plaster.webp" alt="Fine plaster texture" />
           </div>
           <div className="material-content">
             <h3>
@@ -489,7 +489,7 @@ export default function PlasteringContent() {
         </div>
         <div className="material-item reveal-card">
           <div className="material-image">
-            <img src="/assets/Plastering/plaster-repair.jpeg" alt="Wall repair materials" />
+            <img src="/assets/Plastering/plaster-repair.webp" alt="Wall repair materials" />
           </div>
           <div className="material-content">
             <h3>
@@ -502,7 +502,7 @@ export default function PlasteringContent() {
         </div>
         <div className="material-item reveal-card">
           <div className="material-image">
-            <img src="/assets/Plastering/Surface-Finishes.jpeg" alt="Surface finishing work" />
+            <img src="/assets/Plastering/Surface-Finishes.webp" alt="Surface finishing work" />
           </div>
           <div className="material-content">
             <h3>
@@ -515,7 +515,7 @@ export default function PlasteringContent() {
         </div>
         <div className="material-item reveal-card">
           <div className="material-image">
-            <img src="/assets/Plastering/Professional-Systems.png" alt="Professional plastering tools" />
+            <img src="/assets/Plastering/Professional-Systems.webp" alt="Professional plastering tools" />
           </div>
           <div className="material-content">
             <h3>
@@ -593,7 +593,7 @@ export default function PlasteringContent() {
     <section className="surface-transition-section">
       <div className="transition-visual">
         <div className="transition-image">
-          <img src="/assets/Plastering/End-Process.png" alt="Professional wall finishing work" />
+          <img src="/assets/Plastering/End-Process.webp" alt="Professional wall finishing work" />
         </div>
         <div className="transition-badge">
           <span>
@@ -652,7 +652,7 @@ export default function PlasteringContent() {
     </section>
     <section className="property-preservation-section">
       <div className="property-background">
-        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg?auto=format&fit=crop&w=2200&q=90" alt="Well maintained property interior" />
+        <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp??auto=format&fit=crop&w=2200&q=90" alt="Well maintained property interior" />
       </div>
       <div className="property-overlay">
       </div>

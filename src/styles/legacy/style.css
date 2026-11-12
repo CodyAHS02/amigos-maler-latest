@@ -7,6 +7,260 @@
     font-family: "themeFont";
 }
 
+/* Homepage property-value packages: keep the client-facing comparison compact. */
+body[data-page="home"] section.plans-home-care#plans {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: clamp(72px, 8vw, 128px) 0 clamp(80px, 9vw, 140px) !important;
+    overflow: visible !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plans-header {
+    display: block !important;
+    width: min(1180px, calc(100% - 48px)) !important;
+    margin: 0 auto clamp(36px, 5vw, 64px) !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plans-header-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr) !important;
+    gap: clamp(28px, 5vw, 72px) !important;
+    align-items: end !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(16px, 2vw, 28px) !important;
+    width: min(1180px, calc(100% - 48px)) !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    perspective: none !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
+body[data-page="home"] section.plans-home-care#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: clamp(24px, 3vw, 36px) !important;
+    border-radius: 28px !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+    overflow: hidden !important;
+    box-shadow: 0 18px 48px rgba(5, 4, 24, .18) !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plan-overview-main {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plan-overview-main ul {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    max-width: none !important;
+    margin-top: 24px !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plan-overview-main li {
+    font-size: clamp(15px, 1.2vw, 18px) !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plan-overview-action {
+    align-self: stretch !important;
+    width: 100% !important;
+    margin: 28px 0 0 !important;
+}
+
+body[data-page="home"] section.plans-home-care#plans .plan-overview-action button {
+    width: 100% !important;
+    min-height: 54px !important;
+}
+
+@media (max-width: 1100px) {
+    body[data-page="home"] section.plans-home-care#plans .plans-header-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plan-overview-card:last-child {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+@media (max-width: 760px) {
+    body[data-page="home"] section.plans-home-care#plans .plans-header,
+    body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list {
+        width: calc(100% - 32px) !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plan-overview-card:last-child {
+        grid-column: auto !important;
+    }
+}
+
+/* Compact language, sound and theme controls behind one four-dot menu. */
+.header-settings-menu {
+    position: relative;
+    z-index: 20;
+    flex: 0 0 auto;
+}
+
+.header-settings-trigger {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    grid-template-columns: repeat(2, 5px);
+    grid-template-rows: repeat(2, 5px);
+    place-content: center;
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .12);
+    color: currentColor;
+    cursor: pointer;
+    list-style: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.header-settings-trigger::-webkit-details-marker {
+    display: none;
+}
+
+.header-settings-trigger span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.header-settings-menu[open] .header-settings-trigger,
+.header-settings-trigger:hover {
+    border-color: #f6be10;
+    background: rgba(246, 190, 16, .18);
+}
+
+.header-settings-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, .32);
+    border-radius: 18px;
+    background: rgba(7, 26, 51, .92);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, .24);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.header-settings-dropdown .header-toggle-group {
+    margin-left: 0;
+    gap: 8px;
+}
+
+/* Keep the settings panel anchored to the viewport on compact headers. */
+@media (max-width: 1360px) {
+    .header-settings-menu {
+        position: relative !important;
+        z-index: 1005 !important;
+        margin-left: auto !important;
+    }
+
+    .header-settings-dropdown {
+        position: fixed !important;
+        top: 76px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: min(420px, calc(100vw - 32px)) !important;
+        min-width: 0 !important;
+        max-width: calc(100vw - 32px) !important;
+        overflow: visible !important;
+        z-index: 1006 !important;
+    }
+
+    .header-settings-dropdown .header-toggle-group {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        margin: 0 !important;
+        gap: 8px !important;
+    }
+
+    .header-settings-dropdown .languageControl {
+        min-width: 0 !important;
+        flex: 1 1 150px !important;
+    }
+}
+
+html:not([data-theme="amigos-dark"]) .header-settings-dropdown {
+    border-color: rgba(7, 26, 51, .18);
+    background: rgba(255, 255, 255, .96);
+    color: #071a33;
+}
+
+html:not([data-theme="amigos-dark"]) .header-settings-dropdown .languageLabel,
+html:not([data-theme="amigos-dark"]) .header-settings-dropdown .languageCurrent,
+html:not([data-theme="amigos-dark"]) .header-settings-dropdown .languageChevron {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html[data-theme="amigos-dark"] .header-settings-dropdown {
+    color: #fff;
+}
+
+html[data-theme="amigos-dark"] .header-settings-dropdown .languageLabel,
+html[data-theme="amigos-dark"] .header-settings-dropdown .languageCurrent,
+html[data-theme="amigos-dark"] .header-settings-dropdown .languageChevron {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+@media (max-width: 640px) {
+    .header-settings-trigger {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-settings-dropdown {
+        top: 68px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        padding: 10px;
+    }
+}
+
 /* Homepage only: Solutions for Every Property carousel. */
 body[data-page="home"] .home-solutions-carousel {
   position: relative;
@@ -6418,7 +6672,7 @@ span.section-tag {
     overflow: hidden;
     color: #fff;
     padding: 160px 0;
-    background: url("anand-kumar-iDieKtpUukg-unsplash.jpg");
+    background: url("anand-kumar-iDieKtpUukg-unsplash.webp");
     background-position: center;
     background-size: cover;
 }
@@ -11013,16 +11267,11 @@ body {
 
 .footer-contact p,
 .footer-contact a {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 12px;
-    align-items: start;
+    display: block;
 }
 
 .footer-contact svg {
-    width: 18px;
-    height: 18px;
-    color: rgba(255, 255, 255, .5);
+    display: none;
 }
 
 .footer-bottom {
@@ -11229,9 +11478,10 @@ body[data-page="home"] .introBtn:hover {
     }
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 1360px) {
     .site-header {
         padding: 18px 28px !important;
+        justify-content: flex-start !important;
     }
 
     .site-header.is-scrolled {
@@ -11299,8 +11549,13 @@ body[data-page="home"] .introBtn:hover {
         display: none;
     }
 
+    .header-settings-menu {
+        margin-left: auto;
+    }
+
     .hamburger {
         display: flex;
+        margin-left: 8px;
     }
 }
 
@@ -15177,7 +15432,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .72) 34%,
             rgba(255, 255, 255, .96) 52%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-01.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-01.webp") center top / cover no-repeat padding-box !important;
     border: 2px solid #f39125 !important;
     background-color: #ffffff !important;
     animation: none !important;
@@ -15192,7 +15447,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .72) 34%,
             rgba(255, 255, 255, .96) 52%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-02.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
@@ -15204,7 +15459,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .72) 34%,
             rgba(255, 255, 255, .96) 52%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-03.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
@@ -15335,7 +15590,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-01.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-01.webp") right center / cover no-repeat !important;
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
@@ -15347,7 +15602,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-02.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
@@ -15358,7 +15613,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-03.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
@@ -15749,7 +16004,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-01.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-01.webp") right center / cover no-repeat !important;
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
@@ -15761,7 +16016,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-02.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
@@ -15772,7 +16027,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
             rgba(31, 27, 73, .96) 46%,
             rgba(31, 27, 73, .86) 72%,
             rgba(31, 27, 73, .72) 100%),
-        url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-03.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
@@ -16852,7 +17107,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .86) 34%,
             rgba(255, 255, 255, .98) 48%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-01.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-01.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
@@ -16864,7 +17119,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .86) 34%,
             rgba(255, 255, 255, .98) 48%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-02.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
@@ -16876,7 +17131,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .86) 34%,
             rgba(255, 255, 255, .98) 48%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-03.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card p,
@@ -16912,7 +17167,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background: none !important;
     background-color: transparent !important;
-    background-image: url("/assets/plans/Plan-01.jpg") !important;
+    background-image: url("/assets/plans/Plan-01.webp") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -16926,7 +17181,7 @@ body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(2) {
     background: none !important;
     background-color: transparent !important;
-    background-image: url("/assets/plans/Plan-02.jpg") !important;
+    background-image: url("/assets/plans/Plan-02.webp") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -16937,7 +17192,7 @@ body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3) {
     background: none !important;
     background-color: transparent !important;
-    background-image: url("/assets/plans/Plan-03.jpg") !important;
+    background-image: url("/assets/plans/Plan-03.webp") !important;
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
@@ -17015,7 +17270,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card {
     background:
         linear-gradient(90deg, rgba(255, 255, 255, .50) 0%, rgba(255, 255, 255, .34) 46%, rgba(255, 255, 255, .14) 100%) padding-box,
         linear-gradient(180deg, rgba(255, 255, 255, .18) 0%, rgba(255, 255, 255, .46) 78%, rgba(255, 255, 255, .72) 100%) padding-box,
-        url("/assets/plans/Plan-01.jpg") center / cover no-repeat padding-box,
+        url("/assets/plans/Plan-01.webp") center / cover no-repeat padding-box,
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95) 100%) border-box !important;
     background-position: center, center, center, center !important;
     animation: none !important;
@@ -17026,7 +17281,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
     background:
         linear-gradient(90deg, rgba(255, 255, 255, .50) 0%, rgba(255, 255, 255, .32) 46%, rgba(255, 255, 255, .12) 100%) padding-box,
         linear-gradient(180deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .44) 78%, rgba(255, 255, 255, .72) 100%) padding-box,
-        url("/assets/services/Investment-Property-Support.png") center / cover no-repeat padding-box,
+        url("/assets/services/Investment-Property-Support.webp") center / cover no-repeat padding-box,
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95) 100%) border-box !important;
     background-position: center, center, center, center !important;
 }
@@ -17036,7 +17291,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
     background:
         linear-gradient(90deg, rgba(255, 255, 255, .48) 0%, rgba(255, 255, 255, .30) 46%, rgba(255, 255, 255, .10) 100%) padding-box,
         linear-gradient(180deg, rgba(255, 255, 255, .14) 0%, rgba(255, 255, 255, .42) 78%, rgba(255, 255, 255, .70) 100%) padding-box,
-        url("/assets/services/Property Value Preservation.png") center / cover no-repeat padding-box,
+        url("/assets/services/Property Value Preservation.webp") center / cover no-repeat padding-box,
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95) 100%) border-box !important;
     background-position: center, center, center, center !important;
 }
@@ -17065,7 +17320,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3) {
     background-color: transparent !important;
     background-image:
-        url("/assets/services/Property Maintenance.png"),
+        url("/assets/services/Property Maintenance.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
     background-size: cover, auto !important;
     background-position: center, center !important;
@@ -17079,14 +17334,14 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
 body[data-page="home"] .plans-grid .plan-card:nth-child(2),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2) {
     background-image:
-        url("/assets/services/Investment-Property-Support.png"),
+        url("/assets/services/Investment-Property-Support.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(3),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3) {
     background-image:
-        url("/assets/services/Property Value Preservation.png"),
+        url("/assets/services/Property Value Preservation.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
 }
 
@@ -17119,7 +17374,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
     background-color: transparent !important;
     background-image:
         linear-gradient(rgba(255, 255, 255, .30), rgba(255, 255, 255, .50)),
-        url("/assets/plans/Plan-01.jpg"),
+        url("/assets/plans/Plan-01.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
     background-size: auto, cover, auto !important;
     background-position: center, center, center !important;
@@ -17134,7 +17389,7 @@ body[data-page="home"] .plans-grid .plan-card:nth-child(2),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2) {
     background-image:
         linear-gradient(rgba(255, 255, 255, .30), rgba(255, 255, 255, .50)),
-        url("/assets/services/Investment-Property-Support.png"),
+        url("/assets/services/Investment-Property-Support.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
 }
 
@@ -17142,7 +17397,7 @@ body[data-page="home"] .plans-grid .plan-card:nth-child(3),
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3) {
     background-image:
         linear-gradient(rgba(255, 255, 255, .28), rgba(255, 255, 255, .48)),
-        url("/assets/services/Property Value Preservation.png"),
+        url("/assets/services/Property Value Preservation.webp"),
         linear-gradient(145deg, #f6be10 0%, #f39125 42%, #e62453 100%) !important;
 }
 
@@ -17296,7 +17551,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .ai-stage::before {
         linear-gradient(90deg, rgba(7, 26, 51, .78) 0%, rgba(7, 26, 51, .56) 42%, rgba(7, 26, 51, .18) 100%),
         linear-gradient(rgba(255, 255, 255, .10) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, .10) 1px, transparent 1px),
-        url("/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.jpg") !important;
+        url("/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.webp") !important;
     background-size: auto, 42px 42px, 42px 42px, cover !important;
     background-position: center !important;
     filter: saturate(108%) contrast(104%) !important;
@@ -17805,7 +18060,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::be
         linear-gradient(180deg,
             rgba(255, 255, 255, .28) 0%,
             rgba(255, 255, 255, .88) 82%),
-        url("/assets/services/Property Maintenance.png") right center / auto 112% no-repeat !important;
+        url("/assets/services/Property Maintenance.webp") right center / auto 112% no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before,
@@ -17818,7 +18073,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
         linear-gradient(180deg,
             rgba(255, 255, 255, .24) 0%,
             rgba(255, 255, 255, .88) 84%),
-        url("/assets/services/Investment-Property-Support.png") right center / auto 112% no-repeat !important;
+        url("/assets/services/Investment-Property-Support.webp") right center / auto 112% no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before,
@@ -17831,7 +18086,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
         linear-gradient(180deg,
             rgba(255, 255, 255, .22) 0%,
             rgba(255, 255, 255, .88) 84%),
-        url("/assets/services/Property Value Preservation.png") right center / auto 112% no-repeat !important;
+        url("/assets/services/Property Value Preservation.webp") right center / auto 112% no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card::after,
@@ -17862,7 +18117,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::be
             rgba(255, 255, 255, .20) 0%,
             rgba(255, 255, 255, .46) 46%,
             rgba(255, 255, 255, .90) 100%),
-        url("/assets/services/Property Maintenance.png") center / cover no-repeat !important;
+        url("/assets/services/Property Maintenance.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before,
@@ -17876,7 +18131,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
             rgba(255, 255, 255, .18) 0%,
             rgba(255, 255, 255, .46) 48%,
             rgba(255, 255, 255, .90) 100%),
-        url("/assets/services/Investment-Property-Support.png") center / cover no-repeat !important;
+        url("/assets/services/Investment-Property-Support.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before,
@@ -17890,7 +18145,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
             rgba(255, 255, 255, .16) 0%,
             rgba(255, 255, 255, .44) 48%,
             rgba(255, 255, 255, .88) 100%),
-        url("/assets/services/Property Value Preservation.png") center / cover no-repeat !important;
+        url("/assets/services/Property Value Preservation.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card::after,
@@ -17932,18 +18187,18 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::be
     transform: none !important;
     animation: none !important;
     transition: none !important;
-    background: url("/assets/services/Property Maintenance.png") center / cover no-repeat !important;
+    background: url("/assets/services/Property Maintenance.webp") center / cover no-repeat !important;
     mix-blend-mode: multiply !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before {
-    background: url("/assets/services/Investment-Property-Support.png") center / cover no-repeat !important;
+    background: url("/assets/services/Investment-Property-Support.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before {
-    background: url("/assets/services/Property Value Preservation.png") center / cover no-repeat !important;
+    background: url("/assets/services/Property Value Preservation.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card::after,
@@ -17993,7 +18248,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card::be
     opacity: .22 !important;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .97)),
-        url("/assets/plans/Plan-01.jpg") center / cover no-repeat !important;
+        url("/assets/plans/Plan-01.webp") center / cover no-repeat !important;
     filter: saturate(85%) contrast(105%) !important;
 }
 
@@ -18001,14 +18256,14 @@ body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(2)::before {
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .84), rgba(255, 255, 255, .96)),
-        url("/assets/plans/Plan-02.jpg") center / cover no-repeat !important;
+        url("/assets/plans/Plan-02.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before,
 html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth-child(3)::before {
     background:
         linear-gradient(180deg, rgba(255, 255, 255, .84), rgba(255, 255, 255, .96)),
-        url("/assets/plans/Plan-03.jpg") center / cover no-repeat !important;
+        url("/assets/plans/Plan-03.webp") center / cover no-repeat !important;
 }
 
 body[data-page="home"] .plans-grid .plan-card::after,
@@ -18024,7 +18279,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card {
     background-image:
         linear-gradient(90deg, rgba(255, 255, 255, .76) 0%, rgba(255, 255, 255, .56) 44%, rgba(255, 255, 255, .28) 100%),
         linear-gradient(180deg, rgba(255, 255, 255, .12) 0%, rgba(255, 255, 255, .58) 74%, rgba(255, 255, 255, .90) 100%),
-        url("/assets/services/Property Maintenance.png"),
+        url("/assets/services/Property Maintenance.webp"),
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95)) !important;
     background-origin: padding-box, padding-box, padding-box, border-box !important;
     background-clip: padding-box, padding-box, padding-box, border-box !important;
@@ -18039,7 +18294,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
     background-image:
         linear-gradient(90deg, rgba(255, 255, 255, .74) 0%, rgba(255, 255, 255, .52) 44%, rgba(255, 255, 255, .24) 100%),
         linear-gradient(180deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .56) 74%, rgba(255, 255, 255, .90) 100%),
-        url("/assets/services/Investment-Property-Support.png"),
+        url("/assets/services/Investment-Property-Support.webp"),
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95)) !important;
 }
 
@@ -18048,7 +18303,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-grid .plan-card:nth
     background-image:
         linear-gradient(90deg, rgba(255, 255, 255, .74) 0%, rgba(255, 255, 255, .50) 44%, rgba(255, 255, 255, .20) 100%),
         linear-gradient(180deg, rgba(255, 255, 255, .08) 0%, rgba(255, 255, 255, .54) 74%, rgba(255, 255, 255, .88) 100%),
-        url("/assets/services/Property Value Preservation.png"),
+        url("/assets/services/Property Value Preservation.webp"),
         linear-gradient(145deg, rgba(246, 190, 16, .95), rgba(243, 145, 37, .88) 42%, rgba(230, 36, 83, .95)) !important;
 }
 
@@ -18086,7 +18341,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .74) 32%,
             rgba(255, 255, 255, .97) 50%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-01.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-01.webp") center top / cover no-repeat padding-box !important;
     background-color: #ffffff !important;
     border: 2px solid #f39125 !important;
     animation: none !important;
@@ -18101,7 +18356,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .74) 32%,
             rgba(255, 255, 255, .97) 50%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-02.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-02.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card:nth-child(3),
@@ -18113,7 +18368,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] .plans-section .plans-grid
             rgba(255, 255, 255, .74) 32%,
             rgba(255, 255, 255, .97) 50%,
             #ffffff 100%) padding-box,
-        url("/assets/plans/Plan-03.jpg") center top / cover no-repeat padding-box !important;
+        url("/assets/plans/Plan-03.webp") center top / cover no-repeat padding-box !important;
 }
 
 body[data-page="home"] .plans-section .plans-grid>.plan-card::before,
@@ -18240,7 +18495,7 @@ html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plan
     row-gap: clamp(18px, 2.4vw, 34px) !important;
     background:
         linear-gradient(90deg, rgba(31, 27, 73, .98) 0%, rgba(31, 27, 73, .90) 44%, rgba(31, 27, 73, .70) 70%, rgba(31, 27, 73, .46) 100%),
-        url("/assets/plans/Plan-01.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-01.webp") right center / cover no-repeat !important;
     border-color: rgba(255, 255, 255, .16) !important;
 }
 
@@ -18248,14 +18503,14 @@ body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-li
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(2) {
     background:
         linear-gradient(90deg, rgba(31, 27, 73, .98) 0%, rgba(31, 27, 73, .90) 44%, rgba(31, 27, 73, .70) 70%, rgba(31, 27, 73, .46) 100%),
-        url("/assets/plans/Plan-02.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-02.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3),
 html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card:nth-child(3) {
     background:
         linear-gradient(90deg, rgba(31, 27, 73, .98) 0%, rgba(31, 27, 73, .90) 44%, rgba(31, 27, 73, .70) 70%, rgba(31, 27, 73, .46) 100%),
-        url("/assets/plans/Plan-03.jpg") right center / cover no-repeat !important;
+        url("/assets/plans/Plan-03.webp") right center / cover no-repeat !important;
 }
 
 body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list>article.plan-overview-card::before,
@@ -19971,6 +20226,15 @@ html:not([data-theme="amigos-dark"]) body .site-header .header-actions .header-b
     stroke: currentColor !important;
 }
 
+/* Slightly wider testimonial card on small screens only. */
+@media (max-width: 640px) {
+    body[data-page="home"] .testimonials .testimonial-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] .testimonials .testimonial-card {
+        width: 260px !important;
+        margin-left: -130px !important;
+    }
+}
+
 /* Header CTA labels and icons are black as requested, regardless of theme state. */
 html[data-theme] body:not([data-page="home"]) .site-header .header-actions .customer-header-btn,
 html[data-theme] body:not([data-page="home"]) .site-header .header-actions .header-btn,
@@ -19979,4 +20243,237 @@ html[data-theme] body:not([data-page="home"]) .site-header .header-actions .head
     color: #000 !important;
     -webkit-text-fill-color: #000 !important;
     stroke: #000 !important;
+}
+
+/* Normal light-theme header: keep the login icon identical to its label. */
+html:not([data-theme="amigos-dark"]) body #siteHeader:not(.is-scrolled):not(.scrolled) #headerCustomerLoginBtn,
+html:not([data-theme="amigos-dark"]) body #siteHeader:not(.is-scrolled):not(.scrolled) #headerQuoteBtn {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body #siteHeader:not(.is-scrolled):not(.scrolled) #headerCustomerLoginBtn svg,
+html:not([data-theme="amigos-dark"]) body #siteHeader:not(.is-scrolled):not(.scrolled) #headerCustomerLoginBtn svg path {
+    color: #000 !important;
+    stroke: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Sticky light-theme header: keep the login icon visible on the white CTA. */
+html:not([data-theme="amigos-dark"]) body #siteHeader.is-scrolled #headerCustomerLoginBtn svg,
+html:not([data-theme="amigos-dark"]) body #siteHeader.is-scrolled #headerCustomerLoginBtn svg path,
+html:not([data-theme="amigos-dark"]) body #siteHeader.scrolled #headerCustomerLoginBtn svg,
+html:not([data-theme="amigos-dark"]) body #siteHeader.scrolled #headerCustomerLoginBtn svg path {
+    color: #000 !important;
+    stroke: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Keep the sticky customer-login icon painted and visible above CTA overrides. */
+html:not([data-theme="amigos-dark"]) body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn svg,
+html:not([data-theme="amigos-dark"]) body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn svg path,
+html:not([data-theme="amigos-dark"]) body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn > svg#headerCustomerLoginIcon,
+html:not([data-theme="amigos-dark"]) body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn > svg#headerCustomerLoginIcon > path {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #000 !important;
+    fill: none !important;
+    stroke: #000 !important;
+    stroke-width: 2 !important;
+}
+
+/* Sticky CTA stays readable on the white header in either theme. */
+html body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn > svg,
+html body #siteHeader:is(.is-scrolled, .scrolled) #headerCustomerLoginBtn > svg > path {
+    color: #000 !important;
+    fill: none !important;
+    stroke: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Mobile plans: restore a readable vertical card flow below the desktop stack. */
+@media (max-width: 760px) {
+    body[data-page="home"] section.plans-section#plans,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
+        min-height: 0 !important;
+        padding: 72px 0 56px !important;
+        overflow: visible !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-header,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header {
+        width: calc(100% - 32px) !important;
+        margin: 0 auto 36px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-header-grid,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header-grid {
+        display: block !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-header h2,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header h2 {
+        max-width: none !important;
+        font-size: clamp(30px, 9vw, 44px) !important;
+        line-height: 1.08 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-header-side,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header-side {
+        gap: 20px !important;
+        padding-top: 20px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-header p,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header p {
+        max-width: none !important;
+        font-size: 16px !important;
+        line-height: 1.45 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-overview-cta,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-overview-cta {
+        width: 100% !important;
+        max-width: 360px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list {
+        display: block !important;
+        width: calc(100% - 32px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        margin: 0 0 18px !important;
+        padding: 28px 22px 30px !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        transform: none !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-index,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-index {
+        align-self: flex-start !important;
+        font-size: 18px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-main,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        align-self: stretch !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-main h3,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main h3 {
+        max-width: none !important;
+        margin: 14px 0 14px !important;
+        font-size: clamp(32px, 9vw, 44px) !important;
+        line-height: 1.06 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-main p,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main p {
+        max-width: none !important;
+        font-size: 16px !important;
+        line-height: 1.45 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .price,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price {
+        margin-top: 24px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .price strong,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price strong {
+        font-size: clamp(58px, 18vw, 82px) !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-main ul,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main ul {
+        width: 100% !important;
+        max-width: none !important;
+        margin-top: 28px !important;
+        gap: 12px !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-main li,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main li {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-action,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action {
+        align-self: stretch !important;
+        width: 100% !important;
+        margin: 28px 0 0 !important;
+    }
+
+    body[data-page="home"] section.plans-section#plans .plan-overview-action button,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action button {
+        width: 100% !important;
+        min-height: 58px !important;
+    }
+}
+
+/* Final homepage package override: three compact Property Value cards. */
+@media (min-width: 1101px) {
+    body[data-page="home"] section.plans-home-care#plans,
+    body[data-page="home"] section.plans-home-care#plans.plans-stack-ready {
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 96px 0 120px !important;
+        overflow: visible !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plans-header,
+    body[data-page="home"] section.plans-home-care#plans.plans-stack-ready .plans-header {
+        display: block !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list,
+    body[data-page="home"] section.plans-home-care#plans.plans-stack-ready .plans-grid.plans-overview-list {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        width: min(1180px, calc(100% - 48px)) !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 auto !important;
+        perspective: none !important;
+        transform-style: flat !important;
+    }
+
+    body[data-page="home"] section.plans-home-care#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    body[data-page="home"] section.plans-home-care#plans.plans-stack-ready .plans-grid.plans-overview-list > article.plan-overview-card {
+        position: relative !important;
+        inset: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 620px !important;
+        margin: 0 !important;
+        border-radius: 28px !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
 }

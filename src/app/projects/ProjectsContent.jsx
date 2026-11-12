@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProjectsContent.module.css";
 
 const properties = [
-  { type: "sale", tag: "For Sale", title: "Modern villa with garden", location: "Olten, Switzerland", price: "CHF 1'280'000", details: "5.5 rooms · 168 m²", image: "/assets/external/projects/photo-1600607688969-a5bfcd646154-w1800-q90.jpg" },
-  { type: "rent", tag: "For Rent", title: "Light-filled city apartment", location: "Aarau, Switzerland", price: "CHF 2'450 / month", details: "4.5 rooms · 112 m²", image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1800-q90.jpg" },
-  { type: "sale", tag: "For Sale", title: "Architect-designed family home", location: "Solothurn, Switzerland", price: "CHF 1'095'000", details: "6.5 rooms · 194 m²", image: "/assets/external/projects/photo-1600210491892-03d54c0aaf87-w1800-q90.jpg" },
-  { type: "rent", tag: "For Rent", title: "Penthouse with a view", location: "Zurich, Switzerland", price: "CHF 3'800 / month", details: "4.5 rooms · 126 m²", image: "/assets/external/projects/photo-1618220179428-22790b461013-w1800-q90.jpg" }
+  { type: "sale", tag: "For Sale", title: "Modern villa with garden", location: "Olten, Switzerland", price: "CHF 1'280'000", details: "5.5 rooms · 168 m²", image: "/assets/optimized/projects/modern-villa.webp" },
+  { type: "rent", tag: "For Rent", title: "Light-filled city apartment", location: "Aarau, Switzerland", price: "CHF 2'450 / month", details: "4.5 rooms · 112 m²", image: "/assets/optimized/projects/city-apartment.webp" },
+  { type: "sale", tag: "For Sale", title: "Architect-designed family home", location: "Solothurn, Switzerland", price: "CHF 1'095'000", details: "6.5 rooms · 194 m²", image: "/assets/optimized/projects/family-home.webp" },
+  { type: "rent", tag: "For Rent", title: "Penthouse with a view", location: "Zurich, Switzerland", price: "CHF 3'800 / month", details: "4.5 rooms · 126 m²", image: "/assets/optimized/projects/penthouse.webp" }
 ];
 
 const internationalProperties = [
-  ["Punta Cana", "Private villas surrounded by palm trees, beaches and Caribbean light.", "/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.jpg"],
-  ["Cap Cana", "Elegant residences in a gated community close to the marina and ocean.", "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg"],
-  ["Bavaro", "Relaxed apartments and holiday homes made for living and investing.", "/assets/external/property-value-preservation/photo-1620626011761-996317b8d101-w1200-q85.jpg"]
+  ["Punta Cana", "Private villas surrounded by palm trees, beaches and Caribbean light.", "/assets/external/property-value-preservation/photo-1564013799919-ab600027ffc6-w1400-q85.webp"],
+  ["Cap Cana", "Elegant residences in a gated community close to the marina and ocean.", "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.webp"],
+  ["Bavaro", "Relaxed apartments and holiday homes made for living and investing.", "/assets/external/property-value-preservation/photo-1620626011761-996317b8d101-w1200-q85.webp"]
 ];
 
 const customerReviews = [
@@ -43,7 +43,7 @@ function FounderSection() {
   return (
     <section className={styles.founder}>
       <div className={styles.founderImageWrap}>
-        <img src="/Projects-Page-Woman.jpeg" alt="Patricia, Founder von Amigos Immo" />
+        <img src="/Projects-Page-Woman.webp" alt="Patricia, founder of Amigos Immo" loading="lazy" decoding="async" />
         <div className={styles.founderBadge}><span>★</span><div><strong>Patricia</strong><small>Founder · Amigos Immo</small></div></div>
       </div>
       <div className={styles.founderCopy}>
@@ -77,11 +77,11 @@ function InternationalFeature() {
           <a id="punta-cana-learn-more" className={styles.puntaCanaButton} href="#international">LEARN MORE</a>
         </div>
         <div className={styles.puntaCanaVisual}>
-          <img className={styles.puntaCanaPeople} src="/assets/projects/punta-cana-original.jpeg" alt="Two representatives standing with Dominican Republic flags" />
+          <img className={styles.puntaCanaPeople} src="/assets/optimized/projects/punta-cana.webp" alt="Two representatives standing with Dominican Republic flags" loading="lazy" decoding="async" />
           <aside className={styles.puntaCanaPersonCard}>
             <span className={styles.puntaCanaCrest} aria-hidden="true">✦</span>
             <div><strong>José Luis Díaz</strong><span>Consul General de la República Dominicana en Zürich, Suiza</span></div>
-            <img className={styles.puntaCanaCardLogo} src="/assets/projects/dominican-republic-crest.png" alt="Dominican Republic crest" />
+            <img className={styles.puntaCanaCardLogo} src="/assets/projects/dominican-republic-crest.webp" alt="Dominican Republic crest" loading="lazy" decoding="async" />
           </aside>
           <div className={styles.puntaCanaBadge}>In close cooperation with the General Consulate of the Dominican Republic in Zurich</div>
         </div>
@@ -181,7 +181,7 @@ function ProjectEnquiry() {
   );
 }
 
-function PropertyListings() {
+export function PropertyListings() {
   const [filter, setFilter] = useState("all");
   const visibleProperties = filter === "all" ? properties : properties.filter((property) => property.type === filter);
 
@@ -189,7 +189,38 @@ function PropertyListings() {
     <section className={styles.listings} id="objekte">
       <div className={styles.sectionHeader}><div><p className={styles.kicker}>SWITZERLAND</p><h2>Current Real Estate in Switzerland</h2><p className={styles.listingIntro}>Discover selected properties with character, potential and a clear path to the right decision.</p></div></div>
       <div className={styles.filters} aria-label="Property filters">{[["all", "All"], ["sale", "Buy"], ["rent", "Rent"]].map(([value, label]) => <button key={value} type="button" className={filter === value ? styles.filterActive : ""} onClick={() => setFilter(value)}>{label}</button>)}</div>
-      <div className={styles.propertyGrid}>{visibleProperties.map((property) => <article className={styles.propertyCard} key={property.title}><div className={styles.propertyImage}><img src={property.image} alt={property.title} loading="lazy" /><span>{property.tag}</span></div><div className={styles.propertyBody}><p>{property.location}</p><h3>{property.title}</h3><span>{property.details}</span><strong>{property.price}</strong><a href="/contact">View property <Arrow /></a></div></article>)}</div>
+      <div className={styles.propertyGrid}>{visibleProperties.map((property) => <article className={styles.propertyCard} key={property.title}><div className={styles.propertyImage}><img src={property.image} alt={property.title} loading="lazy" decoding="async" /><span>{property.tag}</span></div><div className={styles.propertyBody}><p>{property.location}</p><h3>{property.title}</h3><span>{property.details}</span><strong>{property.price}</strong><a href="/projects#enquiry">View property <Arrow /></a></div></article>)}</div>
+    </section>
+  );
+}
+
+export function HomeMarketShowcase() {
+  const entries = [
+    ["LATEST PROPERTIES", "Buy or rent selected homes in Switzerland.", "/projects#objekte"],
+    ["NEW BUILDINGS", "Explore carefully selected residences and new-build opportunities.", "/projects#objekte"],
+    ["NEW PROJECTS", "Discover projects in Switzerland and international destinations.", "/projects#international"]
+  ];
+  const marketTabs = [["Buy", "/projects#objekte"], ["Sell", "/projects#enquiry"], ["Rent", "/projects#objekte"]];
+
+  return (
+    <section className={styles.marketShowcase} aria-labelledby="home-market-heading">
+      <div className={styles.marketShowcaseHeader}>
+        <p className={styles.kicker}>AMIGOS PROPERTY</p>
+        <h2 id="home-market-heading">Find your next property.</h2>
+        <p>Explore the right route for buying, renting or discovering a new project.</p>
+      </div>
+      <nav className={styles.marketTabs} aria-label="Property actions">
+        {marketTabs.map(([label, href]) => <a href={href} key={label}>{label}<Arrow /></a>)}
+      </nav>
+      <div className={styles.marketLinks}>
+        {entries.map(([label, text, href]) => (
+          <a className={styles.marketLink} href={href} key={label}>
+            <span>{label}</span>
+            <strong>{text}</strong>
+            <Arrow />
+          </a>
+        ))}
+      </div>
     </section>
   );
 }
@@ -203,11 +234,11 @@ function QualityStandard() {
   );
 }
 
-function SellRentCta() {
+export function SellRentCta() {
   return (
     <section className={styles.sellRentCta}>
       <div><p className={styles.kicker}>SELL OR RENT</p><h2>Would you like to sell or rent your property or apartment?</h2><p>List your properties directly on our platform and reach our interested buyers targeted.</p></div>
-      <a className={styles.sellRentButton} href="/contact"><span aria-hidden="true">→</span>List Property Now</a>
+      <a className={styles.sellRentButton} href="/projects#enquiry"><span aria-hidden="true">→</span>List Property Now</a>
     </section>
   );
 }
@@ -256,7 +287,7 @@ export default function ProjectsContent() {
       <FounderSection />
       <InternationalFeature />
 
-      <section className={styles.international} id="international"><div className={styles.sectionHeader}><div><p className={styles.kicker}>INTERNATIONAL</p><h2>Investieren. Leben.<br /><span>Geniessen.</span></h2></div><p>Die Dominikanische Republik verbindet Lebensqualität, Wachstum und besondere Immobilien. Wir öffnen Ihnen den Zugang zu ausgewählten Projekten vor Ort.</p></div><div className={styles.internationalGrid}>{internationalProperties.map(([title, text, image]) => <article className={styles.internationalCard} key={title}><img src={image} alt={`${title} Immobilien`} loading="lazy" /><div><p>DOMINIKANISCHE REPUBLIK</p><h3>{title}</h3><span>{text}</span><a href="/contact">Mehr entdecken <Arrow /></a></div></article>)}</div></section>
+    <section className={styles.international} id="international"><div className={styles.sectionHeader}><div><p className={styles.kicker}>INTERNATIONAL</p><h2>Invest. Live.<br /><span>Enjoy.</span></h2></div><p>The Dominican Republic combines quality of life, growth and distinctive real estate. We open access to selected local projects.</p></div><div className={styles.internationalGrid}>{internationalProperties.map(([title, text, image]) => <article className={styles.internationalCard} key={title}><img src={image} alt={`${title} real estate`} loading="lazy" decoding="async" /><div><p>DOMINICAN REPUBLIC</p><h3>{title}</h3><span>{text}</span><a href="/contact">Explore more <Arrow /></a></div></article>)}</div></section>
 
       <Testimonials />
 

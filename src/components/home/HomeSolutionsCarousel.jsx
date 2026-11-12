@@ -8,7 +8,7 @@ const slides = [
     label: "Homeowners & private clients",
     title: <>Your Home.<br /><span>Our Passion.</span></>,
     description: "Individual painting, renovation and maintenance solutions for your home, with quality, style and personal advice.",
-    image: "/assets/home/solutions-homeowners.png",
+    image: "/assets/home/solutions-homeowners.webp",
     imageAlt: "Warm modern living room with mountain views",
     href: "/services",
   },
@@ -17,7 +17,7 @@ const slides = [
     label: "Property management",
     title: <>Reliable<br /><span>Property Care.</span></>,
     description: "Efficient maintenance, apartment turnovers and renovation services for property managers, delivered with reliability and care.",
-    image: "/assets/home/solutions-property-management.png",
+    image: "/assets/home/solutions-property-management.webp",
     imageAlt: "Contemporary apartment building with landscaped grounds",
     href: "/property-value-preservation",
   },
@@ -26,7 +26,7 @@ const slides = [
     label: "Professionals & investors",
     title: <>Building Quality.<br /><span>Preserving Value.</span></>,
     description: "Tailored renovation solutions for architects, construction companies, developers and investors, with expertise and long-term value in mind.",
-    image: "/assets/home/solutions-investors.png",
+    image: "/assets/home/solutions-investors.webp",
     imageAlt: "Modern glass office building lit at blue hour",
     href: "/projects",
   },
@@ -102,7 +102,7 @@ export default function HomeSolutionsCarousel() {
                   </a>
                 </div>
                 <div className="home-solutions-media">
-                  <img src={slide.image} alt={slide.imageAlt} loading={index === 0 ? "eager" : "lazy"} />
+                  <img src={slide.image} alt={slide.imageAlt} loading={index === 0 ? "eager" : "lazy"} decoding="async" />
                 </div>
               </article>
             ))}

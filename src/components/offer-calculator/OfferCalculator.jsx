@@ -71,7 +71,7 @@ const homeQuickPropertyTypes = [
       "max 30m²",
       "Standard wall and ceiling painting for apartments up to 30m²."
     ],
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
   },
   {
     id: "2_5_apartment",
@@ -85,7 +85,7 @@ const homeQuickPropertyTypes = [
       "max 50m²",
       "Standard wall and ceiling painting for apartments up to 50m²."
     ],
-    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
   },
   {
     id: "3_5_apartment",
@@ -99,7 +99,7 @@ const homeQuickPropertyTypes = [
       "max 70m²",
       "Standard wall and ceiling painting for apartments up to 70m²."
     ],
-    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.jpg"
+    image: "/assets/external/projects/photo-1600607687920-4e2a09cf159d-w1500-q90.webp"
   },
   {
     id: "4_5_apartment",
@@ -113,7 +113,7 @@ const homeQuickPropertyTypes = [
       "max 90m²",
       "Standard wall and ceiling painting for apartments up to 90m²."
     ],
-    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.jpg"
+    image: "/assets/external/property-value-preservation/photo-1600566753086-00f18fb6b3ea-w1200-q85.webp"
   },
   {
     id: "5_5_apartment",
@@ -127,7 +127,7 @@ const homeQuickPropertyTypes = [
       "max 115m²",
       "Standard wall and ceiling painting for apartments up to 115m²."
     ],
-    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg"
+    image: "/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp"
   },
   {
     id: "6_5_apartment",
@@ -141,7 +141,7 @@ const homeQuickPropertyTypes = [
       "max 140m²",
       "Standard wall and ceiling painting for apartments up to 140m²."
     ],
-    image: "/assets/projects/project-04.jpg"
+    image: "/assets/projects/project-04.webp"
   }
 ];
 

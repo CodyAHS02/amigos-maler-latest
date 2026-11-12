@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 const POLL_INTERVAL_MS = 2500;
 const LIVE_CHAT_ENABLED = process.env.NEXT_PUBLIC_LIVE_CHAT_ENABLED === "true";
-const MAIN_AVATAR = "/chatbot-main-face.jpeg";
-const PROJECTS_AVATAR = "/Projects-Page-Woman.jpeg";
+const MAIN_AVATAR = "/chatbot-main-face.webp";
+const PROJECTS_AVATAR = "/Projects-Page-Woman.webp";
 
 function messageClassName(message) {
   if (message.senderType === "VISITOR") return "chatbot-message user";

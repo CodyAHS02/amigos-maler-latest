@@ -33,7 +33,7 @@ export default function HomeBeforeOffer() {
                 {/*909*/}
                 <div className="paint-point left" data-wall="left-wall">
                     <button className="paint-trigger">
-                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.webp" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -49,7 +49,7 @@ export default function HomeBeforeOffer() {
                 {/*1748*/}
                 <div className="paint-point front" data-wall="front-wall">
                     <button className="paint-trigger">
-                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.webp" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -65,7 +65,7 @@ export default function HomeBeforeOffer() {
                 {/*2590*/}
                 <div className="paint-point right" data-wall="right-wall">
                     <button className="paint-trigger">
-                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.webp" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">
@@ -81,7 +81,7 @@ export default function HomeBeforeOffer() {
                 {/*3432*/}
                 <div className="paint-point ceiling" data-wall="ceiling">
                     <button className="paint-trigger">
-                        <span className="paint-icon"><Image src="/assets/paint-brush.png" alt="" width={21} height={21} /></span>
+                        <span className="paint-icon"><Image src="/assets/paint-brush.webp" alt="" width={21} height={21} /></span>
                     </button>
 
                     <div className="palette">

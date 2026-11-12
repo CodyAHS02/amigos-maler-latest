@@ -6,9 +6,9 @@ export const metadata = {
 };
 
 const cards = [
-  ["/assets/services/molding-service.jpg", "Crown moldings and ceiling cornices", "Crown Moldings & Cornices", "Graceful ceiling transitions.", "Seamlessly bridge the intersection of walls and ceilings with classical or contemporary crown moldings that add depth and sophistication."],
-  ["/assets/Plastering/Professional-Systems.png", "Wall paneling and wainscoting", "Wall Paneling & Wainscoting", "Architectural rhythm on every wall.", "Picture-frame moldings, chair rails, and custom panel profiles installed with exact symmetry and flawless corner miters."],
-  ["/assets/Plastering/Surface-Finishes.jpeg", "Ceiling rosettes and stucco details", "Ceiling Rosettes & Stucco", "Artisanal centerpieces.", "Decorative ceiling medallions, ornamental friezes, and restored period plaster elements primed and painted to museum-grade perfection."]
+  ["/assets/services/molding-service.webp", "Crown moldings and ceiling cornices", "Crown Moldings & Cornices", "Graceful ceiling transitions.", "Seamlessly bridge the intersection of walls and ceilings with classical or contemporary crown moldings that add depth and sophistication."],
+  ["/assets/Plastering/Professional-Systems.webp", "Wall paneling and wainscoting", "Wall Paneling & Wainscoting", "Architectural rhythm on every wall.", "Picture-frame moldings, chair rails, and custom panel profiles installed with exact symmetry and flawless corner miters."],
+  ["/assets/Plastering/Surface-Finishes.webp", "Ceiling rosettes and stucco details", "Ceiling Rosettes & Stucco", "Artisanal centerpieces.", "Decorative ceiling medallions, ornamental friezes, and restored period plaster elements primed and painted to museum-grade perfection."]
 ];
 
 const steps = [
@@ -31,7 +31,7 @@ export default function Page() {
               <p>Enhance the character and distinction of your interiors with masterfully crafted crown moldings, wall panels, ceiling medallions and custom architectural trim tailored to every room.</p>
               <div className="hero-buttons"><a href="/contact" className="primary-btn">Request A Quote</a><a href="/services" className="secondary-btn">Explore All Services →</a></div>
             </div>
-            <div className="hero-image parallax"><img src="/assets/services/molding-service.jpg" alt="Architectural crown molding and decorative wall trim by Amigos Maler" /></div>
+            <div className="hero-image parallax"><img src="/assets/services/molding-service.webp" alt="Architectural crown molding and decorative wall trim by Amigos Maler" /></div>
           </div>
         </section>
 

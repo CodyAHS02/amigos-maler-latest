@@ -22,18 +22,18 @@ function BenefitIcon({ name }) {
 }
 
 const partnerLogos = [
-  ['Aare Energie AG', 'aare-energie.png', 'light'],
-  ['Anliker', 'anliker.png', 'light'],
-  ['PowerSports.ch', 'power-sports.png', 'dark'],
-  ['Fellmann Coiffeur', 'fellmann.png', 'light'],
-  ['Office & Business AG', 'office-business.png', 'light'],
-  ['E. Floccari AG', 'floccari.png', 'light'],
-  ['Bati Spezialbau', 'bati-spezialbau.png', 'light'],
-  ['Maler Gipser', 'maler-gipser.png', 'light'],
-  ['Trifari', 'trifari.png', 'light'],
-  ['Bernasconi.ch', 'bernasconi.png', 'light'],
-  ['Scaffs Geruestbau', 'scaffs.png', 'dark'],
-  ['Kay Spenglerei & Flachdach', 'kay-spenglerei.png', 'light'],
+  ['Aare Energie AG', 'aare-energie.webp', 'light'],
+  ['Anliker', 'anliker.webp', 'light'],
+  ['PowerSports.ch', 'power-sports.webp', 'dark'],
+  ['Fellmann Coiffeur', 'fellmann.webp', 'light'],
+  ['Office & Business AG', 'office-business.webp', 'light'],
+  ['E. Floccari AG', 'floccari.webp', 'light'],
+  ['Bati Spezialbau', 'bati-spezialbau.webp', 'light'],
+  ['Maler Gipser', 'maler-gipser.webp', 'light'],
+  ['Trifari', 'trifari.webp', 'light'],
+  ['Bernasconi.ch', 'bernasconi.webp', 'light'],
+  ['Scaffs Geruestbau', 'scaffs.webp', 'dark'],
+  ['Kay Spenglerei & Flachdach', 'kay-spenglerei.webp', 'light'],
 ];
 
 export default function PartnersContent() {
@@ -43,7 +43,7 @@ export default function PartnersContent() {
 <main className="partners-page">
   <section className="partners-hero partner-service-hero" data-hero>
     <div className="partner-service-hero-bg">
-      <img src="/partners/partner-network-hero.png" alt="Premium modern interior prepared for a coordinated property project" />
+      <img src="/partners/partner-network-hero.webp" alt="Premium modern interior prepared for a coordinated property project" />
     </div>
     <div className="partner-service-hero-overlay"></div>
     <div className="partner-service-hero-lines" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -83,7 +83,7 @@ export default function PartnersContent() {
         </figcaption>
       </figure>
       <figure className="imagery-card partners-reveal">
-        <img src="/assets/services/pexels-kindelmedia-7579138.jpg" alt="Renovation planning consultation with architectural plans" />
+        <img src="/assets/services/pexels-kindelmedia-7579138.webp" alt="Renovation planning consultation with architectural plans" />
         <figcaption>
           <span>Planning</span>
           <strong>Partners aligned before work begins.</strong>
@@ -173,25 +173,25 @@ export default function PartnersContent() {
       </div>
       <div className="partner-card-grid">
         <article className="partner-card partners-reveal">
-          <img className="partner-card-image" src="/assets/projects/project-08.jpg" alt="Trade partner working on a property" />
+          <img className="partner-card-image" src="/assets/projects/project-08.webp" alt="Trade partner working on a property" />
           <span className="partner-card-icon" aria-hidden="true">⚒</span>
           <h3>Trade Partners</h3>
           <p>Electrical, sanitary, heating, flooring, carpentry and more.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <img className="partner-card-image" src="/assets/projects/project-09.jpg" alt="Residential property for a real estate partner" />
+          <img className="partner-card-image" src="/assets/projects/project-09.webp" alt="Residential property for a real estate partner" />
           <span className="partner-card-icon" aria-hidden="true">▦</span>
           <h3>Real Estate</h3>
           <p>Property owners, managers, investors and estate agencies.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <img className="partner-card-image" src="/assets/projects/project-10.jpg" alt="Planning team reviewing architectural plans" />
+          <img className="partner-card-image" src="/assets/projects/project-10.webp" alt="Planning team reviewing architectural plans" />
           <span className="partner-card-icon" aria-hidden="true">✦</span>
           <h3>Planning &amp; Specialists</h3>
           <p>Architecture, construction, energy, insurance and specialist partners.</p>
         </article>
         <article className="partner-card partners-reveal">
-          <img className="partner-card-image" src="/assets/projects/project-11.jpg" alt="Business partners discussing a property project" />
+          <img className="partner-card-image" src="/assets/projects/project-11.webp" alt="Business partners discussing a property project" />
           <span className="partner-card-icon" aria-hidden="true">◎</span>
           <h3>Companies &amp; Institutions</h3>
           <p>Firms, organizations and service providers built for lasting collaboration.</p>

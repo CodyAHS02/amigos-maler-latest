@@ -3,9 +3,9 @@ import ServicePageShell from "@/components/ServicePageShell";
 export const metadata = { title: "Damage Remediation | Amigos Maler GmbH" };
 
 const cards = [
-  ["/assets/external/drywall/photo-1581578731548-c64695cc6952.jpg", "Damaged wall inspection", "Surface Inspection", "Clear scope before work starts.", "We check affected walls and ceilings for visible staining, loose plaster, cracks and coating damage.", "/contact", "Request Inspection ->"],
-  ["/assets/Plastering/plaster-repair.jpeg", "Plaster repair after damage", "Plaster Repair", "Stable surfaces underneath.", "Loose or damaged areas are repaired and smoothed so the final coating sits on a reliable base.", "/Plastering", "Related Plastering ->"],
-  ["/assets/external/services/photo-1562259949-e8e7689d7828-w900-q80.jpg", "Repainting restored interior wall", "Repainting", "Fresh finish after repair.", "We prime, block stains where needed and repaint affected areas for a consistent, lasting result.", "/interior-painting", "Related Painting ->"]
+  ["/assets/external/drywall/photo-1581578731548-c64695cc6952.webp", "Damaged wall inspection", "Surface Inspection", "Clear scope before work starts.", "We check affected walls and ceilings for visible staining, loose plaster, cracks and coating damage.", "/contact", "Request Inspection ->"],
+  ["/assets/Plastering/plaster-repair.webp", "Plaster repair after damage", "Plaster Repair", "Stable surfaces underneath.", "Loose or damaged areas are repaired and smoothed so the final coating sits on a reliable base.", "/Plastering", "Related Plastering ->"],
+  ["/assets/external/services/photo-1562259949-e8e7689d7828-w900-q80.webp", "Repainting restored interior wall", "Repainting", "Fresh finish after repair.", "We prime, block stains where needed and repaint affected areas for a consistent, lasting result.", "/interior-painting", "Related Painting ->"]
 ];
 
 const steps = [
@@ -81,7 +81,7 @@ export default function Page() {
               <p id="waterDamageHeroDescription">From moisture marks and damaged plaster to repainting after drying work, Amigos Maler restores affected interiors with careful preparation and durable finishing.</p>
               <div className="hero-buttons"><a id="waterDamageHeroHelpButton" href="/contact" className="primary-btn">Request Help</a><a id="waterDamageHeroServicesButton" href="/services" className="secondary-btn">View Services</a></div>
             </div>
-            <div className="hero-image parallax"><img src="/assets/services/pexels-mikhail-nilov-8296991.jpg" alt="Damage remediation surface repair and restoration" /></div>
+            <div className="hero-image parallax"><img src="/assets/services/pexels-mikhail-nilov-8296991.webp" alt="Damage remediation surface repair and restoration" /></div>
           </div>
         </section>
 

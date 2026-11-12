@@ -4,9 +4,9 @@ import styles from './AboutRedesign.module.css';
 import { useEffect, useRef, useState } from 'react';
 
 const storyCards = [
-  { year: '2016', title: 'The Founding of Amigos Maler', image: '/assets/about-redesign/story-reference-2016.jpg', text: 'In 2016, Patricio Arias and his best friend Marco Castillo Guzman founded Amigos Maler GmbH together. Built on friendship, mutual trust, and a shared passion for the painting trade, they established an independent company.' },
-  { year: '2021', title: 'A Special Connection', image: '/assets/about-redesign/story-reference-2021.jpg', text: 'In 2021, experienced master painter and entrepreneur Pius Caminada placed his trust in Patricio Arias, giving him the opportunity to take over his former workshop and continue serving some of his long-standing customers. With his personal support, valuable customer relationships were maintained and traditional craftsmanship preserved.' },
-  { year: 'Today', title: 'Preserving Tradition. Shaping the Future.', image: '/assets/about-redesign/story-reference-today.jpg', text: 'Today, Patricio Arias leads Amigos Maler GmbH as the sole shareholder, owner and managing director. As a qualified Swiss painter (EFZ), he combines traditional craftsmanship with modern techniques, personal consultation and a clear vision for the future.' },
+  { year: '2016', title: 'The Founding of Amigos Maler', image: '/assets/about-redesign/story-reference-2016.webp', text: 'In 2016, Patricio Arias and his best friend Marco Castillo Guzman founded Amigos Maler GmbH together. Built on friendship, mutual trust, and a shared passion for the painting trade, they established an independent company.' },
+  { year: '2021', title: 'A Special Connection', image: '/assets/about-redesign/story-reference-2021.webp', text: 'In 2021, experienced master painter and entrepreneur Pius Caminada placed his trust in Patricio Arias, giving him the opportunity to take over his former workshop and continue serving some of his long-standing customers. With his personal support, valuable customer relationships were maintained and traditional craftsmanship preserved.' },
+  { year: 'Today', title: 'Preserving Tradition. Shaping the Future.', image: '/assets/about-redesign/story-reference-today.webp', text: 'Today, Patricio Arias leads Amigos Maler GmbH as the sole shareholder, owner and managing director. As a qualified Swiss painter (EFZ), he combines traditional craftsmanship with modern techniques, personal consultation and a clear vision for the future.' },
 ];
 
 const values = [
@@ -17,10 +17,10 @@ const values = [
 ];
 
 const steps = [
-  ['1', 'Consultation', 'We discuss your wishes and analyse the situation on-site.', '/assets/services/pexels-kseniachernaya-5691513.jpg'],
-  ['2', 'Planning', 'You receive a transparent quotation and a clear plan for your project.', '/assets/services/pexels-mikhail-nilov-8296991.jpg'],
-  ['3', 'Execution', 'Our professionals work carefully, cleanly and reliably.', '/assets/services/Renovation.png'],
-  ['4', 'Final Result', 'We hand over your project on schedule and make sure you enjoy the results.', '/assets/projects/project-14.jpg'],
+  ['1', 'Consultation', 'We discuss your wishes and analyse the situation on-site.', '/assets/services/pexels-kseniachernaya-5691513.webp'],
+  ['2', 'Planning', 'You receive a transparent quotation and a clear plan for your project.', '/assets/services/pexels-mikhail-nilov-8296991.webp'],
+  ['3', 'Execution', 'Our professionals work carefully, cleanly and reliably.', '/assets/services/Renovation.webp'],
+  ['4', 'Final Result', 'We hand over your project on schedule and make sure you enjoy the results.', '/assets/projects/project-14.webp'],
 ];
 
 const partnerLogos = [
@@ -28,10 +28,10 @@ const partnerLogos = [
   ['Maler Gipser', '/assets/about-partners/maler-gipser.webp'],
   ['Fellmann Coiffeur', '/assets/about-partners/fellmann-coiffeur.webp'],
   ['Akineta', '/assets/about-partners/akineta.webp'],
-  ['SBB CFF FFS', '/assets/about-partners/sbb-cff-ffs.png'],
-  ['Regimo Aarau', '/assets/about-partners/regimo-aarau.jpg'],
+  ['SBB CFF FFS', '/assets/about-partners/sbb-cff-ffs.webp'],
+  ['Regimo Aarau', '/assets/about-partners/regimo-aarau.webp'],
   ['Baur Trinh & Partner', '/assets/about-partners/btp-immobilien.webp'],
-  ['MCI Group', '/assets/about-partners/mci-group.jpg'],
+  ['MCI Group', '/assets/about-partners/mci-group.webp'],
   ['Scaffs Geruestbau', '/assets/about-partners/scaffs.webp', true],
   ['GTT', '/assets/about-partners/gtt.webp', true],
 ];
@@ -53,7 +53,7 @@ function FounderSection() {
   return (
     <section className="founder-section" id="founder">
       <div className="section-shell founder-grid">
-        <div className="founder-visual-wrap reveal-image" id="founderCardWrap"><div className="founder-ambient-glow" id="founderAmbientGlow" aria-hidden="true"></div><div className="founder-card-3d" id="founderCard3d"><figure className="founder-image"><img src="/chatbot-main.jpeg" alt="Patricio Arias, Founder and Managing Director of Amigos Maler GmbH" loading="lazy" decoding="async" /><div className="founder-image-glare" id="founderGlare" aria-hidden="true"></div></figure><div className="founder-badge-floating"><div className="badge-icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB800" stroke="#FF7A1A" strokeWidth="1.2" /></svg></div><div className="badge-text"><strong>Swiss Craftsmanship</strong><span>Olten &amp; Greater Switzerland</span></div></div></div></div>
+        <div className="founder-visual-wrap reveal-image" id="founderCardWrap"><div className="founder-ambient-glow" id="founderAmbientGlow" aria-hidden="true"></div><div className="founder-card-3d" id="founderCard3d"><figure className="founder-image"><img src="/chatbot-main.webp" alt="Patricio Arias, Founder and Managing Director of Amigos Maler GmbH" loading="lazy" decoding="async" /><div className="founder-image-glare" id="founderGlare" aria-hidden="true"></div></figure><div className="founder-badge-floating"><div className="badge-icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB800" stroke="#FF7A1A" strokeWidth="1.2" /></svg></div><div className="badge-text"><strong>Swiss Craftsmanship</strong><span>Olten &amp; Greater Switzerland</span></div></div></div></div>
         <div className="founder-editorial-copy"><div className="reveal-block"><div className="founder-eyebrow"><span className="eyebrow-accent-line"></span><span className="eyebrow-text">FOUNDER &amp; MANAGING DIRECTOR</span></div><h2 className="founder-name">Patricio Arias</h2><p className="founder-mantra">Craftsmanship. Responsibility. Vision.</p></div><div className="founder-pullquote reveal-block"><span className="quote-mark" aria-hidden="true">“</span><p className="quote-text">We don&apos;t simply paint walls. We create spaces, protect substance, and preserve lasting value.</p></div><div className="founder-narrative reveal-block"><p>To me, authentic craftsmanship means far more than a technically clean finish. It is a personal responsibility toward the building, the architecture, and the trust placed in our hands.</p><p>With Amigos Maler, our ambition is not merely completing projects. We build long-term relationships, delivering meticulous execution and sustainable protection that property owners can count on for generations.</p></div><div className="founder-hallmarks reveal-block"><div className="hallmark-item"><span className="hallmark-num">01</span><div className="hallmark-body"><strong>Personal Accountability</strong><span>Direct client consultation and project oversight from start to finish.</span></div></div><div className="hallmark-item"><span className="hallmark-num">02</span><div className="hallmark-body"><strong>Substance Protection</strong><span>Premium materials and sustainable methods that preserve building value.</span></div></div></div><div className="founder-action-row reveal-block"><div className="founder-signoff"><span className="founder-sig-name">Patricio Arias</span><span className="founder-sig-title">Managing Director · Amigos Maler GmbH</span></div><a href="/contact" className={`${styles.gradientButton} founder-cta-btn`}><span className={`${styles.founderArrow} founder-arrow`} aria-hidden="true"><svg className={styles.founderArrowIcon} viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg></span><span>Discuss Your Project</span></a></div></div>
       </div>
     </section>
@@ -105,7 +105,7 @@ export default function AboutRedesign() {
   }
 
   return <main id="aboutPage" className={styles.aboutPage}>
-    <section className={styles.hero} data-hero><img className={styles.heroImageDay} src="/assets/about-redesign/hero-house-day.png" alt="Modern luxury house in daylight" /><img className={styles.heroImageNight} src="/assets/about-redesign/hero-house.png" alt="Modern luxury house at dusk" /><div className={styles.heroShade}></div><div className={styles.heroInner}><p className={styles.kicker}>ABOUT US</p><h1>Every Entrepreneur<br />Has <span className={styles.heroHighlight}>a Story.</span></h1><p className={styles.heroText}>Our story is shaped by people, passion,<br />and the trust of our customers.</p><a id="aboutHeroStoryCta" className={styles.gradientButton} href="#story">Discover Our Story</a></div><p className={styles.expertise}>Expertise<br /><em>connects.</em></p></section>
+    <section className={styles.hero} data-hero><img className={styles.heroImageDay} src="/assets/about-redesign/hero-house-day.webp" alt="Modern luxury house in daylight" /><img className={styles.heroImageNight} src="/assets/about-redesign/hero-house.webp" alt="Modern luxury house at dusk" /><div className={styles.heroShade}></div><div className={styles.heroInner}><p className={styles.kicker}>ABOUT US</p><h1>Every Entrepreneur<br />Has <span className={styles.heroHighlight}>a Story.</span></h1><p className={styles.heroText}>Our story is shaped by people, passion,<br />and the trust of our customers.</p><a id="aboutHeroStoryCta" className={styles.gradientButton} href="#story">Discover Our Story</a></div><p className={styles.expertise}>Expertise<br /><em>connects.</em></p></section>
     <section className={styles.story} id="story"><div className={styles.sectionIntro}><p className={styles.kicker}>OUR STORY</p><h2>Founded on Friendship. <span>Grown Through Trust.</span></h2><p>Amigos Maler GmbH is more than a painting company. It is the story of people who believe in craftsmanship, take responsibility, and passionately create beautiful spaces and better living environments.</p></div><div className={styles.storyGrid}>{storyCards.map((card, i) => { const isExpanded = expandedStory === card.year; const preview = `${card.text.split('. ')[0]}.`; return <article className={styles.storyCard} key={card.year}><img src={card.image} alt="" /><div className={styles.storyCardBody}><span className={styles.year}>{card.year}</span><div className={styles.storyCopy}><h3>{card.title}</h3><p>{isExpanded ? card.text : preview}</p><button className={styles.readMore} type="button" onClick={() => setExpandedStory(isExpanded ? null : card.year)}>{isExpanded ? 'Show less' : 'Read more'}</button></div></div>{i < storyCards.length - 1 && <Arrow />}</article>; })}</div></section>
     <FounderSection />
     <section className={styles.values}><div className={styles.sectionIntro}><p className={styles.kicker}>WHAT SETS US APART</p><h2>Our Values. <span>Your Advantage.</span></h2></div><div className={styles.valueGrid}>{values.map(([icon, title, text]) => <article className={styles.valueCard} key={title}><div className={styles.valueIcon}>{icon}</div><h3>{title}</h3><p>{text}</p></article>)}</div></section>

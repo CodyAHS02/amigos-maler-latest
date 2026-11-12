@@ -396,12 +396,10 @@ window.addEventListener("load", () => { pageLoaded = true; });
 
 function tickLoader() {
 
-    const target = pageLoaded ? 100 : 90;
-
-    loadProgress.value += (target - loadProgress.value) * 0.06;
-
-    if (pageLoaded && target - loadProgress.value < 0.3) {
+    if (pageLoaded) {
         loadProgress.value = 100;
+    } else {
+        loadProgress.value += (90 - loadProgress.value) * 0.12;
     }
 
     if (loaderCount) loaderCount.textContent = Math.floor(loadProgress.value);
@@ -537,15 +535,15 @@ function animateCounter(counter) {
 ==================================================*/
 
 const SERVICES_DATA = [
-    { num: "01", title: "Painting", desc: "Interior & exterior painting with premium, long-lasting finishes.", img: "assets/services/pexels-kseniachernaya-5691592.jpg", href: "/interior-painting" },
-    { num: "02", title: "Plastering", desc: "Professional drywall & plaster installation and repair.", img: "assets/services/pexels-ai25studioai-5493673.jpg", href: "/Plastering" },
-    { num: "03", title: "Facades", desc: "Restore beauty while preserving architectural value.", img: "assets/services/pexels-dmitry93-32114413.jpg", href: "/Facade-Renovation" },
-    { num: "04", title: "Apartment Renovation", desc: "Get properties ready for sale or new tenants.", img: "assets/services/pexels-tr-n-chinh-587690133-20666871.jpg", href: "/appartment-renovation" },
-    { num: "05", title: "Property Value Preservation", desc: "Protect and increase long-term property value.", img: "assets/services/pexels-amine-kubranur-cakiroglu-689611212-37919681.jpg", href: "/property-value-preservation" },
-    { num: "06", title: "Spray Painting", desc: "Smooth spray finishes for doors, frames, shutters and suitable components.", img: "assets/spray/Hero.png", href: "/spray-painting" },
-    { num: "07", title: "Water Damage", desc: "Fast repair, drying coordination and clean surface restoration after water damage.", img: "assets/services/pexels-mikhail-nilov-8296991.jpg", href: "/water-damage" },
-    { num: "08", title: "Mold Remediation", desc: "Professional mold analysis, certified removal and durable prevention for healthy indoor air.", img: "assets/services/molding-service.jpg", href: "/mold" },
-    { num: "09", title: "Digital Project Planning", desc: "Plan and visualize your project before work begins.", img: "assets/services/engineers-brainstorming-ways-use-ai.jpg", href: "/#offer-calculator", tags: ["Price Calculator", "Photo Upload", "Color Visualization"] }
+    { num: "01", title: "Painting", desc: "Interior & exterior painting with premium, long-lasting finishes.", img: "assets/services/pexels-kseniachernaya-5691592.webp", href: "/interior-painting" },
+    { num: "02", title: "Plastering", desc: "Professional drywall & plaster installation and repair.", img: "assets/services/pexels-ai25studioai-5493673.webp", href: "/Plastering" },
+    { num: "03", title: "Facades", desc: "Restore beauty while preserving architectural value.", img: "assets/services/pexels-dmitry93-32114413.webp", href: "/Facade-Renovation" },
+    { num: "04", title: "Apartment Renovation", desc: "Get properties ready for sale or new tenants.", img: "assets/services/pexels-tr-n-chinh-587690133-20666871.webp", href: "/appartment-renovation" },
+    { num: "05", title: "Property Value Preservation", desc: "Protect and increase long-term property value.", img: "assets/services/pexels-amine-kubranur-cakiroglu-689611212-37919681.webp", href: "/property-value-preservation" },
+    { num: "06", title: "Spray Painting", desc: "Smooth spray finishes for doors, frames, shutters and suitable components.", img: "assets/spray/Hero.webp", href: "/spray-painting" },
+    { num: "07", title: "Water Damage", desc: "Fast repair, drying coordination and clean surface restoration after water damage.", img: "assets/services/pexels-mikhail-nilov-8296991.webp", href: "/water-damage" },
+    { num: "08", title: "Mold Remediation", desc: "Professional mold analysis, certified removal and durable prevention for healthy indoor air.", img: "assets/services/molding-service.webp", href: "/mold" },
+    { num: "09", title: "Digital Project Planning", desc: "Plan and visualize your project before work begins.", img: "assets/services/engineers-brainstorming-ways-use-ai.webp", href: "/#offer-calculator", tags: ["Price Calculator", "Photo Upload", "Color Visualization"] }
 ];
 
 (() => {
@@ -2280,24 +2278,24 @@ const PROJECTS_DATA = [
         type: "Interior Repaint",
         location: "Bern, BE",
         service: "Painting & Renovation Work",
-        before: "/assets/external/script/photo-1525909002-1b05e0c869d8-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1565183997392-2f6f122e5912-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1525909002-1b05e0c869d8-w1000-q80.webp",
+        after: "/assets/external/script/photo-1565183997392-2f6f122e5912-w1000-q80.webp"
     },
     {
         category: "painting",
         type: "Ceiling & Wall Painting",
         location: "Thun, BE",
         service: "Painting & Renovation Work",
-        before: "/assets/external/script/photo-1674376360445-2996327553e7-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1560185007-cde436f6a4d0-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1674376360445-2996327553e7-w1000-q80.webp",
+        after: "/assets/external/script/photo-1560185007-cde436f6a4d0-w1000-q80.webp"
     },
     {
         category: "painting",
         type: "Living Room Refresh",
         location: "Lucerne, LU",
         service: "Painting & Renovation Work",
-        before: "/assets/external/script/photo-1647996179012-66b87eba3d17-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1532490389938-2856e3f1560a-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1647996179012-66b87eba3d17-w1000-q80.webp",
+        after: "/assets/external/script/photo-1532490389938-2856e3f1560a-w1000-q80.webp"
     },
 
     // ===== Facade Restoration =====
@@ -2306,24 +2304,24 @@ const PROJECTS_DATA = [
         type: "Facade Renovation",
         location: "Olten, SO",
         service: "Maler- & Sanierungsarbeiten",
-        before: "/assets/external/script/photo-1753893558281-9acda0662bbd-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1613061538705-01190bb0e3b8-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1753893558281-9acda0662bbd-w1000-q80.webp",
+        after: "/assets/external/script/photo-1613061538705-01190bb0e3b8-w1000-q80.webp"
     },
     {
         category: "facade",
         type: "Building Exterior Restoration",
         location: "Aarau, AG",
         service: "Facade Restoration",
-        before: "/assets/external/script/photo-1602757115429-b4190ae087be-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1600596525163-36b26caa9c89-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1602757115429-b4190ae087be-w1000-q80.webp",
+        after: "/assets/external/script/photo-1600596525163-36b26caa9c89-w1000-q80.webp"
     },
     {
         category: "facade",
         type: "Facade Repaint",
         location: "Winterthur, ZH",
         service: "Facade Restoration",
-        before: "/assets/external/script/photo-1478979464727-af7d24e18554-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1481253127861-534498168948-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1478979464727-af7d24e18554-w1000-q80.webp",
+        after: "/assets/external/script/photo-1481253127861-534498168948-w1000-q80.webp"
     },
 
     // ===== Drywall =====
@@ -2332,24 +2330,24 @@ const PROJECTS_DATA = [
         type: "Drywall Installation",
         location: "Basel, BS",
         service: "Drywall Services",
-        before: "/assets/external/script/photo-1704742950992-9815a104820c-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1733431772808-82d878e59000-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1704742950992-9815a104820c-w1000-q80.webp",
+        after: "/assets/external/script/photo-1733431772808-82d878e59000-w1000-q80.webp"
     },
     {
         category: "drywall",
         type: "Wall Board Finishing",
         location: "Zurich, ZH",
         service: "Drywall Services",
-        before: "/assets/external/script/photo-1768321903410-54961e343b71-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1523413363574-c30aa1c2a516-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1768321903410-54961e343b71-w1000-q80.webp",
+        after: "/assets/external/script/photo-1523413363574-c30aa1c2a516-w1000-q80.webp"
     },
     {
         category: "drywall",
         type: "Basement Drywall Finish",
         location: "Thun, BE",
         service: "Drywall Services",
-        before: "/assets/external/script/photo-1770838772836-6de311c35a91-w1000-q80.jpg",
-        after: "/assets/external/script/photo-1733431774078-692252a6605e-w1000-q80.jpg"
+        before: "/assets/external/script/photo-1770838772836-6de311c35a91-w1000-q80.webp",
+        after: "/assets/external/script/photo-1733431774078-692252a6605e-w1000-q80.webp"
     }
 
 ];

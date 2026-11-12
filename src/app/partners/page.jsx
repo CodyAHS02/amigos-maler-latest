@@ -524,7 +524,7 @@ html[data-theme="amigos-dark"] .partner-cta {
   background-color: #071A33 !important;
   background-image:
     linear-gradient(rgba(7, 26, 51, .62), rgba(7, 26, 51, .62)),
-    url("/partners/partner-network-cta.png") !important;
+    url("/partners/partner-network-cta.webp") !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -688,7 +688,7 @@ html[data-theme="amigos-dark"] body[data-page="partners"] .partners-page .partne
   background-color: #071A33 !important;
   background:
     linear-gradient(rgba(7, 26, 51, .62), rgba(7, 26, 51, .62)),
-    url("/partners/partner-network-cta.png") center / cover no-repeat !important;
+    url("/partners/partner-network-cta.webp") center / cover no-repeat !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -704,7 +704,7 @@ html[data-theme="amigos-dark"] body[data-page="partners"] .partners-page .partne
   opacity: 1 !important;
   background:
     linear-gradient(rgba(7, 26, 51, .62), rgba(7, 26, 51, .62)),
-    url("/partners/partner-network-cta.png") center / cover no-repeat !important;
+    url("/partners/partner-network-cta.webp") center / cover no-repeat !important;
   animation: none !important;
 }
 
@@ -2014,6 +2014,60 @@ html body[data-page="partners"] main.partners-page :is(#partnersBecomeButton, #p
   .partner-flow {
     margin-top: 32px !important;
   }
+}
+
+/* Keep the Partners header controls visible and readable over the hero image. */
+html:not([data-theme="amigos-dark"]) body[data-page="partners"] #siteHeader:not(.is-scrolled):not(.scrolled) #headerCustomerLoginBtn svg,
+html:not([data-theme="amigos-dark"]) body[data-page="partners"] #siteHeader:not(.is-scrolled):not(.scrolled) #headerCustomerLoginBtn svg path {
+  color: #000 !important;
+  stroke: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+body[data-page="partners"] #siteHeader #headerDisplaySettings {
+  display: grid !important;
+  grid-template-columns: repeat(2, 6px) !important;
+  grid-template-rows: repeat(2, 6px) !important;
+  place-content: center !important;
+  gap: 4px !important;
+  padding: 0 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  position: relative !important;
+  z-index: 1005 !important;
+  border: 1px solid rgba(255, 255, 255, .35) !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, .22) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #071a33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body[data-page="partners"] #siteHeader #headerDisplaySettings span {
+  display: block !important;
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  background: #071a33 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body[data-page="partners"] #siteHeader .header-settings-menu {
+  display: block !important;
+  position: relative !important;
+  z-index: 1005 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 `;

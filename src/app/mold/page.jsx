@@ -6,10 +6,10 @@ export const metadata = {
 };
 
 const cards = [
-  ["/assets/Plastering/plaster-repair.jpeg", "Moisture measurement and surface diagnostics", "Diagnostics & Moisture Check", "We check moisture and thermal bridges to find the cause.", "/contact", "Book Inspection →"],
-  ["/assets/Plastering/Surface-Finishes.jpeg", "Safe certified mold remediation", "Certified Remediation", "Certified removal keeps your rooms safe and spore-free.", "/contact", "Learn More →"],
-  ["/assets/services/pexels-kseniachernaya-5691592.jpg", "Anti-mold mineral paint finish", "Mineral Anti-Mold Paint", "Breathable mineral coatings help prevent mold from returning.", "/#quote", "Calculate Project →"],
-  ["/assets/services/pexels-kseniachernaya-5691513.jpg", "Final sealing and protective coating", "Sealing & Finishing", "A durable seal protects surfaces from future moisture.", "/contact", "Get a Quote →"]
+  ["/assets/Plastering/plaster-repair.webp", "Moisture measurement and surface diagnostics", "Diagnostics & Moisture Check", "We check moisture and thermal bridges to find the cause.", "/contact", "Book Inspection →"],
+  ["/assets/Plastering/Surface-Finishes.webp", "Safe certified mold remediation", "Certified Remediation", "Certified removal keeps your rooms safe and spore-free.", "/contact", "Learn More →"],
+  ["/assets/services/pexels-kseniachernaya-5691592.webp", "Anti-mold mineral paint finish", "Mineral Anti-Mold Paint", "Breathable mineral coatings help prevent mold from returning.", "/#quote", "Calculate Project →"],
+  ["/assets/services/pexels-kseniachernaya-5691513.webp", "Final sealing and protective coating", "Sealing & Finishing", "A durable seal protects surfaces from future moisture.", "/contact", "Get a Quote →"]
 ];
 
 const steps = [
@@ -119,7 +119,7 @@ export default function Page() {
               <p id="moldHeroDescription">Mold affects both your property&apos;s value and your health. Amigos Maler provides thorough diagnostics, certified removal of fungal growth, and breathable, mineral coatings that permanently prevent recurrence.</p>
               <div className="hero-buttons"><a id="moldCalculateButton" href="/#quote" className="primary-btn">Calculate Estimated Quote</a><a id="moldInspectionButton" href="/contact" className="secondary-btn">Book On-Site Inspection</a></div>
             </div>
-            <div className="hero-image parallax"><img src="/assets/services/molding-service.jpg" alt="Certified mold remediation and clean wall restoration" /></div>
+            <div className="hero-image parallax"><img src="/assets/services/molding-service.webp" alt="Certified mold remediation and clean wall restoration" /></div>
           </div>
         </section>
 

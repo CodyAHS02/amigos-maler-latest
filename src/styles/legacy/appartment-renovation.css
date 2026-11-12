@@ -110,7 +110,7 @@ a {
 .ren-hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url("/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg");
+    background-image: url("/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp");
     background-size: cover;
     background-position: center;
     animation: renHeroZoom 18s ease-in-out infinite alternate;
@@ -974,7 +974,7 @@ a {
 .cta-background {
     position: absolute;
     inset: 0;
-    background: url("/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg") center/cover;
+    background: url("/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp") center/cover;
 }
 
 .cta-background:after {

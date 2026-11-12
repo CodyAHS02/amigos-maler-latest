@@ -21,11 +21,13 @@
 .damage-hero { position: relative; min-height: 780px; padding: 150px 0 0; background: var(--damage-navy); color: #fff; }
 .damage-hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 4% 75%, rgba(246,190,16,.11), transparent 25%), radial-gradient(circle at 88% 18%, rgba(199,59,142,.12), transparent 29%); }
 .damage-hero-grid { position: relative; width: 100%; max-width: none; min-height: 630px; margin: 0; padding-left: max(32px, calc((100vw - 1320px) / 2)); display: grid; grid-template-columns: minmax(460px, 590px) minmax(0, 1fr); align-items: stretch; gap: clamp(42px, 5vw, 84px); }
-.damage-hero-copy { position: relative; z-index: 2; align-self: center; padding-bottom: 72px; }
+.damage-hero-copy { position: relative; z-index: 2; min-width: 0; align-self: center; padding-bottom: 72px; }
 .damage-pill { display: inline-flex; padding: 9px 15px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: linear-gradient(110deg, var(--damage-yellow), var(--damage-orange) 44%, var(--damage-pink)); color: #fff; font-size: 15px; font-weight: 500; letter-spacing: .09em; }
-.damage-hero h1 { margin: 26px 0 25px; max-width: 720px; color: #fff; font-size: clamp(34px, 4.5vw, 54px); line-height: 1.04; letter-spacing: 0; }
-.damage-hero h1 .damage-title-line { display: block; color: #fff; white-space: nowrap; -webkit-text-fill-color: #fff; }
+.damage-hero h1 { margin: 26px 0 25px; max-width: 100%; color: #fff; font-size: clamp(34px, 4.5vw, 54px); line-height: 1.04; letter-spacing: 0; }
+.damage-hero h1 .damage-title-line { display: block; color: #fff; white-space: normal; overflow-wrap: break-word; -webkit-text-fill-color: #fff; }
 .damage-hero h1 .damage-title-accent { color: var(--damage-yellow); background: linear-gradient(100deg, var(--damage-yellow), var(--damage-orange) 45%, var(--damage-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+#damageHeroTitle { width: min(100%, 590px) !important; max-width: 590px !important; }
+#damageHeroTitle .damage-title-line { white-space: normal !important; overflow-wrap: break-word !important; word-break: normal !important; }
 .damage-hero-copy > p { max-width: 590px; color: rgba(255,255,255,.75); font-size: clamp(15px, 1.8vw, 17px); line-height: 1.75; }
 .damage-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
 .damage-btn { min-height: 56px; padding: 0 23px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 999px; color: #fff; font-weight: 500; transition: transform .25s ease, border-color .25s ease; }

@@ -12,8 +12,8 @@ export default function AppartmentRenovationContent() {
                 plastering and coordinated renovation work, we create refreshed spaces prepared for their next purpose.
             </p>
             <div className="ren-buttons reveal">
-                <a id="renFreeQuoteButton" href="#" className="gold-btn">Request A Quote</a>
-                <a id="renDiscussProjectButton" href="#" className="outline-btn">Discuss Your Project</a>
+                <a id="renFreeQuoteButton" href="/contact" className="gold-btn">Request A Quote</a>
+                <a id="renDiscussProjectButton" href="/contact" className="outline-btn">Discuss Your Project</a>
             </div>
         </div>
         <div className="ren-floating-shape"></div>
@@ -45,7 +45,7 @@ export default function AppartmentRenovationContent() {
             <div className="ren-intro-visual reveal">
                 <div className="visual-layer layer-one"></div>
                 <div className="visual-layer layer-two"></div>
-                <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.jpg"
+                <img src="/assets/external/appartment-renovation/photo-1600585154340-be6161a56a0c.webp"
                     alt="Modern renovated apartment interior" />
                 <div className="visual-tag">
                     <span>Amigos</span>
@@ -63,7 +63,7 @@ export default function AppartmentRenovationContent() {
         <div className="situation-grid">
             <div className="ren-card reveal">
                 <div className="card-image">
-                    <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg"
+                    <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp"
                         alt="Renovated empty apartment" />
                 </div>
                 <div className="card-content">
@@ -74,7 +74,7 @@ export default function AppartmentRenovationContent() {
             </div>
             <div className="ren-card reveal">
                 <div className="card-image">
-                    <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg"
+                    <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp"
                         alt="Residential apartment interior" />
                 </div>
                 <div className="card-content">
@@ -85,7 +85,7 @@ export default function AppartmentRenovationContent() {
             </div>
             <div className="ren-card reveal">
                 <div className="card-image">
-                    <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.jpg"
+                    <img src="/assets/external/appartment-renovation/photo-1600210492486-724fe5c67fb0.webp"
                         alt="Prepared apartment for sale" />
                 </div>
                 <div className="card-content">
@@ -106,7 +106,7 @@ export default function AppartmentRenovationContent() {
         </div>
         <div className="scope-grid" id="renovationScopeGrid">
             <div className="scope-item reveal">
-                <img src="/assets/appartment-renovation/Wall-celing.jpeg" alt="Wall renovation" />
+                <img src="/assets/appartment-renovation/Wall-celing.webp" alt="Wall renovation" />
                 <div className="scope-overlay">
                     <span>01</span>
                     <h3>Walls & Ceilings</h3>
@@ -114,7 +114,7 @@ export default function AppartmentRenovationContent() {
                 </div>
             </div>
             <div className="scope-item reveal">
-                <img src="/assets/appartment-renovation/Surafaced.jpeg" alt="Interior surface renovation" />
+                <img src="/assets/appartment-renovation/Surafaced.webp" alt="Interior surface renovation" />
                 <div className="scope-overlay">
                     <span>02</span>
                     <h3>Surfaces</h3>
@@ -130,7 +130,7 @@ export default function AppartmentRenovationContent() {
                 </div>
             </div>
             <div className="scope-item reveal">
-                <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg" alt="Room renovation" />
+                <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp" alt="Room renovation" />
                 <div className="scope-overlay">
                     <span>04</span>
                     <h3>Rooms</h3>
@@ -138,7 +138,7 @@ export default function AppartmentRenovationContent() {
                 </div>
             </div>
             <div className="scope-item reveal">
-                <img src="/assets/external/appartment-renovation/photo-1616486338812-3dadae4b4ace.jpg" alt="Interior colour design" />
+                <img src="/assets/external/appartment-renovation/photo-1616486338812-3dadae4b4ace.webp" alt="Interior colour design" />
                 <div className="scope-overlay">
                     <span>05</span>
                     <h3>Colour Design</h3>
@@ -146,7 +146,7 @@ export default function AppartmentRenovationContent() {
                 </div>
             </div>
             <div className="scope-item reveal">
-                <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.jpg" alt="Renovation work" />
+                <img src="/assets/external/appartment-renovation/photo-1600566753190-17f0baa2a6c3.webp" alt="Renovation work" />
                 <div className="scope-overlay">
                     <span>06</span>
                     <h3>Additional Renovation</h3>
@@ -165,11 +165,11 @@ export default function AppartmentRenovationContent() {
         </div>
         <div className="ba-wrapper reveal">
             <div className="ba-image before-image">
-                <img src="/assets/appartment-renovation/before-room.png" alt="Before renovation apartment" />
+                <img src="/assets/appartment-renovation/before-room.webp" alt="Before renovation apartment" />
                 <div className="ba-label before-label">BEFORE</div>
             </div>
             <div className="ba-image after-image">
-                <img src="/assets/appartment-renovation/After-room.png" alt="After renovation apartment" />
+                <img src="/assets/appartment-renovation/After-room.webp" alt="After renovation apartment" />
                 <div className="ba-label after-label">AFTER</div>
             </div>
             <div className="ba-divider">
@@ -276,14 +276,14 @@ export default function AppartmentRenovationContent() {
 
     <section className="property-value-section" id="renovationPropertyValue">
         <div className="property-image reveal">
-            <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg" alt="Renovated apartment interior" />
+            <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp" alt="Renovated apartment interior" />
         </div>
         <div className="property-content reveal">
             <div className="section-label">PROPERTY PRESERVATION</div>
             <h2>Renovated Spaces.<br />Long-Term Value.</h2>
             <p>A professionally renovated apartment improves appearance, usability and overall condition. Regular
                 maintenance and thoughtful improvements help preserve the value of your property.</p>
-            <a id="renPropertyPreservationButton" href="#" className="gold-btn">Discover Property Preservation</a>
+            <a id="renPropertyPreservationButton" href="/property-value-preservation" className="gold-btn">Discover Property Preservation</a>
             <div className="value-points">
                 <div>
                     <span>01</span>
@@ -338,8 +338,8 @@ export default function AppartmentRenovationContent() {
             <p>Whether it is a tenant change, personal use or preparing a property for sale, Amigos creates a clear
                 renovation process from beginning to end.</p>
             <div className="cta-buttons">
-            <a id="renFinalQuoteButton" href="#" className="gold-btn">Request A Free Quote</a>
-            <a id="renFinalDiscussButton" href="#" className="outline-btn">Discuss Your Project</a>
+            <a id="renFinalQuoteButton" href="/contact" className="gold-btn">Request A Free Quote</a>
+            <a id="renFinalDiscussButton" href="/contact" className="outline-btn">Discuss Your Project</a>
             </div>
         </div>
     </section>

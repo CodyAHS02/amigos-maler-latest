@@ -18,8 +18,8 @@ function LineIcon({ type }) {
   return <svg className={styles.icon} viewBox="0 0 24 24" fill="none" aria-hidden="true">{paths[type]}</svg>;
 }
 
-function ActionLink({ children, variant = "gradient", id }) {
-  return <a id={id} className={`${styles.action} ${styles[variant]}`} href="#contact"><Arrow /><span>{children}</span></a>;
+function ActionLink({ children, variant = "gradient", id, href = "#contact" }) {
+  return <a id={id} className={`${styles.action} ${styles[variant]}`} href={href}><Arrow /><span>{children}</span></a>;
 }
 
 function HeroSection() {
@@ -31,7 +31,7 @@ function HeroSection() {
         <p className={styles.lead}>Schön. Gepflegt. Langfristig wertvoll. Regelmässige Kontrollen, professionelle Ausbesserungen und individuelle Betreuung für Hausbesitzer und Eigentümer.</p>
         <ActionLink>Jetzt Paket entdecken</ActionLink>
       </div>
-      <img className={styles.imagePlaceholder} src="/assets/property-value-home.png" alt="Gepflegtes, hochwertiges Wohnhaus" />
+      <img className={styles.imagePlaceholder} src="/assets/property-value-home.webp" alt="Gepflegtes, hochwertiges Wohnhaus" />
     </section>
   );
 }
@@ -83,7 +83,7 @@ function PropertyCheckSection() {
       </div>
       <div className={styles.checkStage}>
         <div className={styles.checkImage}>
-          <img src="/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg" alt="Contemporary property for inspection and maintenance" />
+          <img src="/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.webp" alt="Contemporary property for inspection and maintenance" />
           {propertyAreas.map(([area, , areaKey], index) => <button key={area} type="button" className={`${styles.hotspot} ${styles[`hotspot${areaKey}`]} ${index === activeArea ? styles.hotspotActive : ""}`} onClick={() => setActiveArea(index)}><span />{area}</button>)}
         </div>
         <div className={styles.mobileAreas} aria-label="Property areas">
@@ -99,9 +99,9 @@ function PropertyCheckSection() {
 }
 
 const audienceItems = [
-  ["PRIVATE OWNERS", "Owners", "Long-term maintenance, renovation and preservation of your property.", "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.jpg"],
-  ["PROPERTY MANAGEMENT", "Property Managers", "Reliable maintenance, tenant changes, renovations and coordinated projects.", "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.jpg"],
-  ["PROPERTY INVESTMENT", "Investors", "Maintain the condition and presentation of investment properties over time.", "/assets/external/property-value-preservation/photo-1560518883-ce09059eeffa-w1400-q85.jpg"]
+  ["PRIVATE OWNERS", "Owners", "Long-term maintenance, renovation and preservation of your property.", "/assets/external/property-value-preservation/photo-1600585154340-be6161a56a0c-w1400-q85.webp"],
+  ["PROPERTY MANAGEMENT", "Property Managers", "Reliable maintenance, tenant changes, renovations and coordinated projects.", "/assets/external/property-value-preservation/photo-1486406146926-c627a92ad1ab-w1400-q85.webp"],
+  ["PROPERTY INVESTMENT", "Investors", "Maintain the condition and presentation of investment properties over time.", "/assets/external/property-value-preservation/photo-1560518883-ce09059eeffa-w1400-q85.webp"]
 ];
 
 function AudienceSection() {
@@ -142,13 +142,13 @@ function PlanCard({ plan }) {
       <p className={styles.cardKicker}>{plan.title}</p>
       <ul>{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
       <strong className={styles.price}>{plan.price}</strong>
-      <ActionLink id={plan.actionId} variant={plan.featured ? "gradient" : "outline"}>{plan.featured ? "Paket auswählen" : "Mehr erfahren"}</ActionLink>
+      <ActionLink id={plan.actionId} href="/offer-calculator" variant={plan.featured ? "gradient" : "outline"}>{plan.featured ? "Paket auswählen" : "Mehr erfahren"}</ActionLink>
     </article>
   );
 }
 
-function HomeCarePricing() {
-  return (
+export function HomeCarePricing({ embedded = false }) {
+  const section = (
     <section className={`${styles.pricingSection} ${styles.section}`}>
       <div className={styles.pricingHeader}>
         <div><p className={styles.eyebrow}>HOME CARE</p><h2><span>Für Ihr Zuhause.</span></h2></div>
@@ -157,6 +157,7 @@ function HomeCarePricing() {
       <div className={styles.planGrid}>{homePlans.map((plan) => <PlanCard key={plan.title} plan={plan} />)}</div>
     </section>
   );
+  return embedded ? <div className={styles.page}>{section}</div> : section;
 }
 
 const businessPlans = [

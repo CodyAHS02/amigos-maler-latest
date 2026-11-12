@@ -4,7 +4,7 @@ export default function SprayPaintingContent() {
     <>
 <section className="spray-hero" data-hero>
         <div className="spray-hero-image">
-            <img src="/assets/spray/Hero.png" alt="Professional spray painting application" />
+            <img src="/assets/spray/Hero.webp" alt="Professional spray painting application" />
         </div>
         <div className="spray-hero-overlay"></div>
         <div className="spray-hero-content">
@@ -16,15 +16,15 @@ export default function SprayPaintingContent() {
                 create finishes designed to impress.
             </p>
             <div className="spray-hero-buttons">
-                <a href="#" className="primary-btn">Request A Quote</a>
-                <a href="#" className="secondary-btn">View Our Work</a>
+                <a href="/contact" className="primary-btn">Request A Quote</a>
+                <a href="#spray-services" className="secondary-btn">View Our Work</a>
             </div>
         </div>
     </section>
 
     <section className="spray-intro">
         <div className="spray-intro-image reveal-left">
-            <img src="/assets/spray/secTwo.png" alt="Spray painting close up work" />
+            <img src="/assets/spray/secTwo.webp" alt="Spray painting close up work" />
         </div>
         <div className="spray-intro-content reveal-right">
             <p className="section-label">WHY SPRAY FINISHING</p>
@@ -55,7 +55,7 @@ export default function SprayPaintingContent() {
         </div>
     </section>
 
-    <section className="spray-services">
+    <section className="spray-services" id="spray-services">
         <div className="section-heading">
             <p className="section-label">WHAT WE SPRAY</p>
             <h2>
@@ -72,7 +72,7 @@ export default function SprayPaintingContent() {
 
             <div className="spray-panel active">
                 <div className="spray-panel-image">
-                    <img src="/assets/spray/Doors.png" alt="Spray finished doors" />
+                    <img src="/assets/spray/Doors.webp" alt="Spray finished doors" />
                 </div>
                 <div className="spray-panel-content">
                     <span>01</span>
@@ -85,7 +85,7 @@ export default function SprayPaintingContent() {
 
             <div className="spray-panel">
                 <div className="spray-panel-image">
-                    <img src="/assets/spray/Door-Frames.png" alt="Door frame finishing" />
+                    <img src="/assets/spray/Door-Frames.webp" alt="Door frame finishing" />
                 </div>
                 <div className="spray-panel-content">
                     <span>02</span>
@@ -98,7 +98,7 @@ export default function SprayPaintingContent() {
 
             <div className="spray-panel">
                 <div className="spray-panel-image">
-                    <img src="/assets/spray/Shutters.png" alt="Exterior shutters spray painting" />
+                    <img src="/assets/spray/Shutters.webp" alt="Exterior shutters spray painting" />
                 </div>
                 <div className="spray-panel-content">
                     <span>03</span>
@@ -111,7 +111,7 @@ export default function SprayPaintingContent() {
 
             <div className="spray-panel">
                 <div className="spray-panel-image">
-                    <img src="/assets/spray/other.png" alt="Professional component spray finishing" />
+                    <img src="/assets/spray/other.webp" alt="Professional component spray finishing" />
                 </div>
                 <div className="spray-panel-content">
                     <span>04</span>
@@ -152,12 +152,12 @@ export default function SprayPaintingContent() {
             <div className="before-after-slider" id="baSlider">
 
                 <div className="ba-before-pane" id="baBeforePane">
-                    <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+                    <img src="/assets/Services-Before-Room.webp" alt="Before renovation" />
                     <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                 </div>
 
                 <div className="ba-after-pane" id="baAfterPane">
-                    <img src="/assets/Services-After-Room.png" alt="After renovation" />
+                    <img src="/assets/Services-After-Room.webp" alt="After renovation" />
                     <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                 </div>
 
@@ -175,22 +175,22 @@ export default function SprayPaintingContent() {
 
             <div className="finish-visual">
                 <div className="finish-image active" data-image="even">
-                    <img src="/assets/spray/other.png"
+                    <img src="/assets/spray/other.webp"
                         alt="Smooth spray finish surface" />
                 </div>
 
                 <div className="finish-image" data-image="clean">
-                    <img src="/assets/external/spray-painting/photo-1581092160607-ee22621dd758-w1400-q85.jpg"
+                    <img src="/assets/external/spray-painting/photo-1581092160607-ee22621dd758-w1400-q85.webp"
                         alt="Professional finishing work" />
                 </div>
 
                 <div className="finish-image" data-image="edge">
-                    <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=1400&q=85"
+                    <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp??auto=format&fit=crop&w=1400&q=85"
                         alt="Precise surface details" />
                 </div>
 
                 <div className="finish-image" data-image="premium">
-                    <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.jpg?auto=format&fit=crop&w=1400&q=85"
+                    <img src="/assets/external/appartment-renovation/photo-1600607687920-4e2a09cf159d.webp??auto=format&fit=crop&w=1400&q=85"
                         alt="Premium finished surface" />
                 </div>
 
@@ -315,7 +315,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.jpg?auto=format&fit=crop&w=700&q=85"
+                    <img src="/assets/external/drywall/photo-1504307651254-35680f356dfd.webp??auto=format&fit=crop&w=700&q=85"
                         alt="Preparation work" />
                 </div>
             </div>
@@ -329,7 +329,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/spray-painting/photo-1581092795360-fd1ca04f0952-w700-q85.jpg"
+                    <img src="/assets/external/spray-painting/photo-1581092795360-fd1ca04f0952-w700-q85.webp"
                         alt="Surface sanding preparation" />
                 </div>
             </div>
@@ -343,7 +343,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/spray-painting/photo-1581092918056-0c4c3acd3789-w700-q85.jpg"
+                    <img src="/assets/external/spray-painting/photo-1581092918056-0c4c3acd3789-w700-q85.webp"
                         alt="Primer preparation" />
                 </div>
             </div>
@@ -357,7 +357,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/spray-painting/photo-1586864387789-628af9feed72-w700-q85.jpg"
+                    <img src="/assets/external/spray-painting/photo-1586864387789-628af9feed72-w700-q85.webp"
                         alt="Spray painting application" />
                 </div>
             </div>
@@ -371,7 +371,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg?auto=format&fit=crop&w=700&q=85"
+                    <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp??auto=format&fit=crop&w=700&q=85"
                         alt="Finished component" />
                 </div>
             </div>
@@ -385,7 +385,7 @@ export default function SprayPaintingContent() {
                     </p>
                 </div>
                 <div className="step-preview">
-                    <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg?auto=format&fit=crop&w=700&q=85"
+                    <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp??auto=format&fit=crop&w=700&q=85"
                         alt="Quality inspection" />
                 </div>
             </div>
@@ -409,7 +409,7 @@ export default function SprayPaintingContent() {
         <div className="spray-gallery-grid">
 
             <div className="gallery-item">
-                <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.jpg?auto=format&fit=crop&w=1200&q=85"
+                <img src="/assets/external/appartment-renovation/photo-1600566753086-00f18fb6b3ea.webp??auto=format&fit=crop&w=1200&q=85"
                     alt="Spray finished door" />
                 <div className="gallery-overlay">
                     <h3>Doors</h3>
@@ -418,7 +418,7 @@ export default function SprayPaintingContent() {
             </div>
 
             <div className="gallery-item">
-                <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.jpg?auto=format&fit=crop&w=1200&q=85"
+                <img src="/assets/external/drywall/photo-1503387762-592deb58ef4e.webp??auto=format&fit=crop&w=1200&q=85"
                     alt="Door frame refinishing" />
                 <div className="gallery-overlay">
                     <h3>Door Frames</h3>
@@ -427,7 +427,7 @@ export default function SprayPaintingContent() {
             </div>
 
             <div className="gallery-item">
-                <img src="/assets/external/spray-painting/photo-1598300042247-d088f8ab3a91-w1200-q85.jpg"
+                <img src="/assets/external/spray-painting/photo-1598300042247-d088f8ab3a91-w1200-q85.webp"
                     alt="Painted shutters" />
                 <div className="gallery-overlay">
                     <h3>Shutters</h3>
@@ -436,7 +436,7 @@ export default function SprayPaintingContent() {
             </div>
 
             <div className="gallery-item">
-                <img src="/assets/external/drywall/photo-1581094794329-c8112a89af12.jpg?auto=format&fit=crop&w=1200&q=85"
+                <img src="/assets/external/drywall/photo-1581094794329-c8112a89af12.webp??auto=format&fit=crop&w=1200&q=85"
                     alt="Professional spray coated components" />
                 <div className="gallery-overlay">
                     <h3>Other Components</h3>
@@ -549,7 +549,7 @@ export default function SprayPaintingContent() {
     <section className="spray-value">
 
         <div className="spray-value-image">
-            <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.jpg?auto=format&fit=crop&w=1600&q=85"
+            <img src="/assets/external/appartment-renovation/photo-1600607687939-ce8a6c25118c.webp??auto=format&fit=crop&w=1600&q=85"
                 alt="Well maintained property interior" />
         </div>
 
@@ -565,7 +565,7 @@ export default function SprayPaintingContent() {
                 overall condition and appearance of a property.
             </p>
 
-            <a href="#" className="primary-btn">
+            <a href="/property-value-preservation" className="primary-btn">
                 Discover Property Preservation →
             </a>
 
@@ -591,11 +591,11 @@ export default function SprayPaintingContent() {
 
             <div className="final-buttons">
 
-                <a href="#" className="primary-btn">
+                <a href="/contact" className="primary-btn">
                     Request A Free Quote
                 </a>
 
-                <a href="#" className="secondary-btn">
+                <a href="/contact" className="secondary-btn">
                     Discuss Your Project
                 </a>
 

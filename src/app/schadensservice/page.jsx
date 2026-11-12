@@ -22,7 +22,7 @@ export default function Page() {
           <div className="damage-shell damage-hero-grid">
             <div className="damage-hero-copy">
               <span className="damage-pill">AMIGOS SCHADENSSERVICE</span>
-              <h1>
+              <h1 id="damageHeroTitle">
                 <span className="damage-title-line">Ein Schaden.</span>
                 <span className="damage-title-line">Ein Ansprechpartner.</span>
                 <span className="damage-title-line damage-title-accent">Eine saubere Lösung.</span>
@@ -48,7 +48,7 @@ export default function Page() {
 
             <div className="damage-hero-visual damage-hero-composite">
               <img
-                src="/assets/schadensservice-hero.png"
+                src="/assets/schadensservice-hero.webp"
                 alt="Schimmel, Wasserschaden, Feuchtigkeit an einer Fassade und ein saniertes Wohnhaus"
               />
             </div>
@@ -70,7 +70,7 @@ export default function Page() {
             <div className="damage-category-grid">
               <article className="damage-category-card category-mold">
                 <div className="damage-category-image">
-                  <img src="/amigos/img/before.jpg" alt="Raum mit Feuchtigkeits- und Oberflächenschäden" />
+                  <img src="/amigos/img/before.webp" alt="Raum mit Feuchtigkeits- und Oberflächenschäden" />
                   <Icon><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><circle cx="12" cy="12" r="2.7" stroke="currentColor" strokeWidth="1.8"/></Icon>
                 </div>
                 <div className="damage-category-body">
@@ -83,7 +83,7 @@ export default function Page() {
 
               <article className="damage-category-card category-water">
                 <div className="damage-category-image">
-                  <img src="/assets/Plastering/plaster-repair.jpeg" alt="Prüfung und Reparatur einer beschädigten Wand" />
+                  <img src="/assets/Plastering/plaster-repair.webp" alt="Prüfung und Reparatur einer beschädigten Wand" />
                   <Icon><path d="M12 2.8S6.5 9 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9 12 2.8 12 2.8Z" stroke="currentColor" strokeWidth="1.8"/><path d="M9.5 14.2a2.7 2.7 0 0 0 2.8 2.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></Icon>
                 </div>
                 <div className="damage-category-body">
@@ -96,7 +96,7 @@ export default function Page() {
 
               <article className="damage-category-card category-storm">
                 <div className="damage-category-image">
-                  <img src="/assets/facade/Facade-Reapir.jpeg" alt="Prüfung einer beschädigten Gebäudehülle" />
+                  <img src="/assets/facade/Facade-Reapir.webp" alt="Prüfung einer beschädigten Gebäudehülle" />
                   <Icon><path d="M7 15.5h9.5a3.5 3.5 0 1 0-.7-6.9A5 5 0 0 0 6.2 10 2.8 2.8 0 0 0 7 15.5Z" stroke="currentColor" strokeWidth="1.8"/><path d="m9 18-1 2M13 18l-1 2M17 18l-1 2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></Icon>
                 </div>
                 <div className="damage-category-body">
@@ -162,8 +162,8 @@ export default function Page() {
               <a href="/projects">Weitere Arbeiten ansehen <span>↗</span></a>
             </div>
             <div className="damage-comparison">
-              <figure><img src="/amigos/img/before.jpg" alt="Beschädigter Raum vor der Instandsetzung" /><figcaption>Vorher</figcaption></figure>
-              <figure><img src="/amigos/img/after.jpg" alt="Heller Raum nach der Oberflächeninstandsetzung" /><figcaption>Nachher</figcaption></figure>
+              <figure><img src="/amigos/img/before.webp" alt="Beschädigter Raum vor der Instandsetzung" /><figcaption>Vorher</figcaption></figure>
+              <figure><img src="/amigos/img/after.webp" alt="Heller Raum nach der Oberflächeninstandsetzung" /><figcaption>Nachher</figcaption></figure>
             </div>
           </div>
         </section>

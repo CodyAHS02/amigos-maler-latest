@@ -7,7 +7,7 @@ export default function DigitalToolsSection() {
           <h2>Built for people who<br /><span>want to see it first.</span></h2>
         </div>
         <div className="dtools-grid">
-          <a href="#" className="dtools-card dtools-card-ai" id="dtoolsCardAI">
+          <a href="/color-and-material" className="dtools-card dtools-card-ai" id="dtoolsCardAI">
             <div className="dtools-card-glow" />
             <div className="dtools-card-top">
               <span className="dtools-eyebrow">AI VISUALIZER</span>
@@ -24,7 +24,7 @@ export default function DigitalToolsSection() {
               <span className="dtools-btn">Upload Photo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             </div>
           </a>
-          <a href="#" className="dtools-card dtools-card-quote" id="dtoolsCardQuote">
+          <a href="/offer-calculator" className="dtools-card dtools-card-quote" id="dtoolsCardQuote">
             <div className="dtools-card-glow" />
             <div className="dtools-card-top">
               <span className="dtools-eyebrow">QUOTE CALCULATOR</span>

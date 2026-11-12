@@ -45,8 +45,8 @@ export default function HomeBeforeProjects() {
                     </div>
 
                     <div className="preview-images" id="previewImages">
-                        <img className="preview-before active" id="beforeImg" src={null} alt="Before" />
-                        <img className="preview-after" id="afterImg" src={null} alt="After" />
+                        <img className="preview-before active" id="beforeImg" src={undefined} alt="Before" />
+                        <img className="preview-after" id="afterImg" src={undefined} alt="After" />
                     </div>
 
                     <div className="scan-overlay" id="scanOverlay">
@@ -82,36 +82,36 @@ export default function HomeBeforeProjects() {
 
                         <div className="option-panel wallpaper-panel" data-panel="wallpaper">
                             <div className="wallpaper-grid">
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-1.jpg" type="button" title="Mineral Plaster">
-        <img src="/wall-textures/texture-1.jpg" alt="Mineral Plaster" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-1.webp" type="button" title="Mineral Plaster">
+        <img src="/wall-textures/texture-1.webp" alt="Mineral Plaster" loading="lazy" decoding="async" />
         <span>Mineral Plaster</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-2.jpg" type="button" title="Architectural Panels">
-        <img src="/wall-textures/texture-2.jpg" alt="Arch Panels" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-2.webp" type="button" title="Architectural Panels">
+        <img src="/wall-textures/texture-2.webp" alt="Arch Panels" loading="lazy" decoding="async" />
         <span>Arch Panels</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-3.jpg" type="button" title="Sage Combed">
-        <img src="/wall-textures/texture-3.jpg" alt="Sage Combed" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-3.webp" type="button" title="Sage Combed">
+        <img src="/wall-textures/texture-3.webp" alt="Sage Combed" loading="lazy" decoding="async" />
         <span>Sage Combed</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-4.jpg" type="button" title="Classic Damask">
-        <img src="/wall-textures/texture-4.jpg" alt="Classic Damask" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-4.webp" type="button" title="Classic Damask">
+        <img src="/wall-textures/texture-4.webp" alt="Classic Damask" loading="lazy" decoding="async" />
         <span>Classic Damask</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-5.jpg" type="button" title="Terracotta Geo">
-        <img src="/wall-textures/texture-5.jpg" alt="Terracotta Geo" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-5.webp" type="button" title="Terracotta Geo">
+        <img src="/wall-textures/texture-5.webp" alt="Terracotta Geo" loading="lazy" decoding="async" />
         <span>Terracotta Geo</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-6.jpg" type="button" title="Soft Botanical">
-        <img src="/wall-textures/texture-6.jpg" alt="Soft Botanical" />
+    <button className="wallpaperAI" data-wallpaper="/wall-textures/texture-6.webp" type="button" title="Soft Botanical">
+        <img src="/wall-textures/texture-6.webp" alt="Soft Botanical" loading="lazy" decoding="async" />
         <span>Soft Botanical</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/assets/wallpapers/wallpaper-1.jpg" type="button" title="Textured Linen">
-        <img src="/assets/wallpapers/wallpaper-1-thumb.jpg" alt="Textured Linen" />
+    <button className="wallpaperAI" data-wallpaper="/assets/wallpapers/wallpaper-1.webp" type="button" title="Textured Linen">
+        <img src="/assets/wallpapers/wallpaper-1-thumb.webp" alt="Textured Linen" loading="lazy" decoding="async" />
         <span>Textured Linen</span>
     </button>
-    <button className="wallpaperAI" data-wallpaper="/assets/wallpapers/wallpaper-2.jpg" type="button" title="Botanical Leaf">
-        <img src="/assets/wallpapers/wallpaper-2-thumb.jpg" alt="Botanical Leaf" />
+    <button className="wallpaperAI" data-wallpaper="/assets/wallpapers/wallpaper-2.webp" type="button" title="Botanical Leaf">
+        <img src="/assets/wallpapers/wallpaper-2-thumb.webp" alt="Botanical Leaf" loading="lazy" decoding="async" />
         <span>Botanical Leaf</span>
     </button>
 </div>
@@ -141,7 +141,7 @@ export default function HomeBeforeProjects() {
             </div>
             <div className="why-project-image reveal">
                 <img
-                    src="/assets/home/why-amigos-project.jpg"
+                    src="/assets/home/why-amigos-project.webp"
                     alt="Amigos Maler project vehicle outside a completed building"
                     loading="lazy"
                     decoding="async"

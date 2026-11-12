@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import styles from "./ContactPage.module.css";
 
 function Icon({ name }) {
@@ -17,15 +18,16 @@ function Icon({ name }) {
 
 const steps = [["Your Service", "What can we do for you?"], ["Location", "Where is your property?"], ["Contact Information", "How can we reach you?"]];
 const services = [
-  ["Interior Painting", "home", "/external/interior-painting/photo-1482731215275-a1f151646268-w1200-q80.jpg"],
-  ["Facade Painting", "facade", "/assets/facade/Facade-maintain.jpeg"],
-  ["Wallpapering", "wallpaper", "/assets/wallpapers/wallpaper-1.jpg"],
-  ["Plastering & Drywall", "plaster", "/assets/drywall/plastering.jpg"],
-  ["Property Maintenance", "property", "/services-imags/property-value-hero.jpg"],
-  ["General Enquiry", "enquiry", "/external/projects/photo-1600210492486-724fe5c67fb0-w1800-q90.jpg"],
+  ["Interior Painting", "home", "/external/interior-painting/photo-1482731215275-a1f151646268-w1200-q80.webp"],
+  ["Facade Painting", "facade", "/assets/facade/Facade-maintain.webp"],
+  ["Wallpapering", "wallpaper", "/assets/wallpapers/wallpaper-1.webp"],
+  ["Plastering & Drywall", "plaster", "/assets/drywall/plastering.webp"],
+  ["Property Maintenance", "property", "/services-imags/property-value-hero.webp"],
+  ["General Enquiry", "enquiry", "/external/projects/photo-1600210492486-724fe5c67fb0-w1800-q90.webp"],
 ];
 
 export default function ContactFormStepper() {
+  const { t } = useLanguage();
   const [selectedService, setSelectedService] = useState(services[0][0]);
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({ location: "", name: "", email: "", phone: "" });
@@ -50,7 +52,7 @@ export default function ContactFormStepper() {
 
   const handleNext = async () => {
     if (!isStepComplete(currentStep)) {
-      setStatus("Please complete this step before continuing.");
+      setStatus(t("Please complete this step before continuing."));
       return;
     }
 
@@ -60,7 +62,7 @@ export default function ContactFormStepper() {
       return;
     }
 
-    setStatus("Sending your enquiry…");
+    setStatus(t("Sending your enquiry…"));
     const payload = new FormData();
     payload.set("name", formData.name);
     payload.set("email", formData.email);
@@ -70,7 +72,7 @@ export default function ContactFormStepper() {
 
     try {
       const response = await fetch("/api/consultations", { method: "POST", body: payload });
-      if (!response.ok) throw new Error("Unable to send your enquiry right now.");
+      if (!response.ok) throw new Error(t("Unable to send your enquiry right now."));
       setSubmitted(true);
       setStatus("");
     } catch (error) {
@@ -90,55 +92,55 @@ export default function ContactFormStepper() {
     if (submitted) {
       return <div className={styles.successState} role="status">
         <span className={styles.successIcon}>✓</span>
-        <h2>Thank you. We received your enquiry.</h2>
-        <p className={styles.formIntro}>Our team will review your details and get back to you personally.</p>
+        <h2>{t("Thank you. We received your enquiry.")}</h2>
+        <p className={styles.formIntro}>{t("Our team will review your details and get back to you personally.")}</p>
       </div>;
     }
 
     if (currentStep === 1) {
       return <>
-        <h2>What can we do for you?</h2>
-        <p className={styles.formIntro}>Select the service area where we can support you.</p>
+        <h2>{t("What can we do for you?")}</h2>
+        <p className={styles.formIntro}>{t("Select the service area where we can support you.")}</p>
         <div className={styles.serviceGrid}>{services.map(([label, icon, image]) => { const isSelected = selectedService === label; return <button className={`${styles.serviceCard} ${isSelected ? styles.selectedCard : ""}`} type="button" key={label} onClick={() => setSelectedService(label)} style={{ "--service-image": `url("${image}")` }} aria-pressed={isSelected}>
-          <span className={styles.serviceIcon}><Icon name={icon} /></span><span className={styles.serviceLabel}>{label}</span><span className={styles.radio}>{isSelected ? "✓" : ""}</span>
+          <span className={styles.serviceIcon}><Icon name={icon} /></span><span className={styles.serviceLabel}>{t(label)}</span><span className={styles.radio}>{isSelected ? "✓" : ""}</span>
         </button>; })}</div>
       </>;
     }
 
     if (currentStep === 2) {
       return <>
-        <h2>Where is your property?</h2>
-        <p className={styles.formIntro}>Tell us where the work will take place.</p>
-        <label className={styles.field}><span>Property location</span><input value={formData.location} onChange={updateField("location")} placeholder="City, postcode or address" /></label>
+        <h2>{t("Where is your property?")}</h2>
+        <p className={styles.formIntro}>{t("Tell us where the work will take place.")}</p>
+        <label className={styles.field}><span>{t("Property location")}</span><input value={formData.location} onChange={updateField("location")} placeholder={t("City, postcode or address")} /></label>
       </>;
     }
 
     return <>
-      <h2>How can we reach you?</h2>
-      <p className={styles.formIntro}>Leave your details and we will get back to you personally.</p>
+      <h2>{t("How can we reach you?")}</h2>
+      <p className={styles.formIntro}>{t("Leave your details and we will get back to you personally.")}</p>
       <div className={styles.fieldGrid}>
-        <label className={styles.field}><span>Name</span><input value={formData.name} onChange={updateField("name")} placeholder="Your name" /></label>
-        <label className={styles.field}><span>E-Mail</span><input type="email" value={formData.email} onChange={updateField("email")} placeholder="you@example.com" /></label>
-        <label className={styles.field}><span>Phone</span><input type="tel" value={formData.phone} onChange={updateField("phone")} placeholder="Your phone number" /></label>
+        <label className={styles.field}><span>{t("Name")}</span><input value={formData.name} onChange={updateField("name")} placeholder={t("Your name")} /></label>
+        <label className={styles.field}><span>{t("E-Mail")}</span><input type="email" value={formData.email} onChange={updateField("email")} placeholder="you@example.com" /></label>
+        <label className={styles.field}><span>{t("Phone")}</span><input type="tel" value={formData.phone} onChange={updateField("phone")} placeholder={t("Your phone number")} /></label>
       </div>
     </>;
   };
 
   return <section className={styles.formSection} id="contact-form">
     <div className={styles.formPanel}>
-      <aside className={styles.stepper} aria-label="Contact form progress">
+      <aside className={styles.stepper} aria-label={t("Contact form progress")}>
         <div className={styles.stepLine} />
         {steps.map(([title, description], index) => { const step = index + 1; return <button id={`contactStep${step}`} className={`${styles.step} ${step === currentStep ? styles.activeStep : ""} ${step < currentStep || isStepComplete(step) ? styles.completedStep : ""}`} type="button" onClick={() => goToStep(step)} key={title} aria-current={step === currentStep ? "step" : undefined}>
-          <span className={styles.stepNumber}>{step}</span><div><strong>{title}</strong><small>{description}</small></div>
+          <span className={styles.stepNumber}>{step}</span><div><strong>{t(title)}</strong><small>{t(description)}</small></div>
         </button>; })}
       </aside>
       <div className={styles.formContent}>
-        <p className={styles.formKicker}>STEP {currentStep} OF 3</p>
+        <p className={styles.formKicker}>{t("STEP")} {currentStep} {t("OF")} 3</p>
         {renderStepContent()}
         {status && <p className={styles.formStatus} role="alert">{status}</p>}
         <div className={styles.stepActions}>
-          {!submitted && currentStep > 1 && <button id="contactFormBackButton" className={styles.backButton} type="button" onClick={() => goToStep(currentStep - 1)}>Back</button>}
-          {submitted ? <button id="contactFormStartAgainButton" className={styles.nextButton} type="button" onClick={resetForm}>Start Again</button> : <button id="contactFormNextButton" className={styles.nextButton} type="button" onClick={handleNext}>{currentStep === 3 ? "Send Enquiry" : "Next Step"}</button>}
+          {!submitted && currentStep > 1 && <button id="contactFormBackButton" className={styles.backButton} type="button" onClick={() => goToStep(currentStep - 1)}>{t("Back")}</button>}
+          {submitted ? <button id="contactFormStartAgainButton" className={styles.nextButton} type="button" onClick={resetForm}>{t("Start Again")}</button> : <button id="contactFormNextButton" className={styles.nextButton} type="button" onClick={handleNext}>{t(currentStep === 3 ? "Send Enquiry" : "Next Step")}</button>}
         </div>
       </div>
     </div>

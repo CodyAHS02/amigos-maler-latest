@@ -9,7 +9,7 @@ export default function InteriorPaintingContent() {
     <section className="svc-hero" data-hero>
 
         <div className="svc-hero-bg">
-            <img src="/assets/interior-painting-banner.png" alt="Painter applying a fresh coat to an interior wall" />
+            <img src="/assets/interior-painting-banner.webp" alt="Painter applying a fresh coat to an interior wall" />
         </div>
 
         <div className="svc-hero-overlay"></div>
@@ -94,7 +94,7 @@ export default function InteriorPaintingContent() {
         <div className="svc-wrapper svc-intro-grid">
 
             <div className="svc-intro-media">
-                <img src="/assets/external/interior-painting/photo-1482731215275-a1f151646268-w1200-q80.jpg"
+                <img src="/assets/external/interior-painting/photo-1482731215275-a1f151646268-w1200-q80.webp"
                     alt="Painter on a ladder working on an interior wall" />
             </div>
 
@@ -144,12 +144,12 @@ export default function InteriorPaintingContent() {
             <div className="before-after-slider" id="baSlider">
 
                 <div className="ba-before-pane" id="baBeforePane">
-                    <img src="/assets/Services-Before-Room.png" alt="Before renovation" />
+                    <img src="/assets/Services-Before-Room.webp" alt="Before renovation" />
                     <span className="ba-tag ba-tag-before" id="baTagBefore">BEFORE</span>
                 </div>
 
                 <div className="ba-after-pane" id="baAfterPane">
-                    <img src="/assets/Services-After-Room.png" alt="After renovation" />
+                    <img src="/assets/Services-After-Room.webp" alt="After renovation" />
                     <span className="ba-tag ba-tag-after" id="baTagAfter">AFTER</span>
                 </div>
 
@@ -178,7 +178,7 @@ export default function InteriorPaintingContent() {
 
                 <article className="svc-feature-row">
                     <div className="svc-feature-media">
-                        <img src="/assets/external/interior-painting/photo-1565183997392-2f6f122e5912-w1200-q80.jpg"
+                        <img src="/assets/external/interior-painting/photo-1565183997392-2f6f122e5912-w1200-q80.webp"
                             alt="Freshly painted living room walls and ceiling" />
                     </div>
                     <div className="svc-feature-text">
@@ -191,7 +191,7 @@ export default function InteriorPaintingContent() {
 
                 <article className="svc-feature-row svc-feature-row-reverse">
                     <div className="svc-feature-media">
-                        <img src="/assets/Doors.png" alt="Freshly painted white door and trim detail" />
+                        <img src="/assets/Doors.webp" alt="Freshly painted white door and trim detail" />
                     </div>
                     <div className="svc-feature-text">
                         <span className="svc-feature-num">02</span>
@@ -202,7 +202,7 @@ export default function InteriorPaintingContent() {
 
                 <article className="svc-feature-row">
                     <div className="svc-feature-media">
-                        <img src="/assets/external/interior-painting/photo-1560185007-cde436f6a4d0-w1200-q80.jpg"
+                        <img src="/assets/external/interior-painting/photo-1560185007-cde436f6a4d0-w1200-q80.webp"
                             alt="Refreshed dining room after repaint" />
                     </div>
                     <div className="svc-feature-text">
@@ -214,7 +214,7 @@ export default function InteriorPaintingContent() {
 
                 <article className="svc-feature-row svc-feature-row-reverse">
                     <div className="svc-feature-media">
-                        <img src="/assets/Renovation.png" alt="Framed wall art on a decorative accent wall" />
+                        <img src="/assets/Renovation.webp" alt="Framed wall art on a decorative accent wall" />
                     </div>
                     <div className="svc-feature-text">
                         <span className="svc-feature-num">04</span>
@@ -225,7 +225,7 @@ export default function InteriorPaintingContent() {
 
                 <article className="svc-feature-row">
                     <div className="svc-feature-media">
-                        <img src="/assets/Professonal-Coating.png"
+                        <img src="/assets/Professonal-Coating.webp"
                             alt="Rows of colourful paint rollers ready for interior work" />
                     </div>
                     <div className="svc-feature-text">
@@ -450,7 +450,7 @@ export default function InteriorPaintingContent() {
 
     <section className="svc-project-visual svc-reveal">
         <div className="svc-project-visual-media">
-            <img src="/assets/external/interior-painting/photo-1565183997392-2f6f122e5912-w2000-q80.jpg"
+            <img src="/assets/external/interior-painting/photo-1565183997392-2f6f122e5912-w2000-q80.webp"
                 alt="Finished, freshly painted interior living space" id="svcProjectImg" />
         </div>
         <div className="svc-project-visual-overlay"></div>

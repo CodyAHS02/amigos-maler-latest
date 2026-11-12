@@ -793,7 +793,7 @@ body {
     grid-column: 1;
     grid-row: 1;
     min-height: 620px;
-    background: url('/partners/partner-listing-new.png') center / cover no-repeat;
+    background: url('/partners/partner-listing-new.webp') center / cover no-repeat;
 }
 
 .partner-listing-copy {
