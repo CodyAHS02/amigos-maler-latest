@@ -30,6 +30,7 @@ function LocalStyle({ href }) {
 
 function LocalScript({ src, waitForGsap = false }) {
   const source = readSourceAsset(src, "script");
+  const scriptId = assetId("legacy-script", src);
   const scriptBody = waitForGsap
     ? `
 (function runLegacyScriptWhenReady() {
@@ -37,13 +38,21 @@ function LocalScript({ src, waitForGsap = false }) {
     window.setTimeout(runLegacyScriptWhenReady, 50);
     return;
   }
+  window.__amigosPageRuntimeScripts = window.__amigosPageRuntimeScripts || {};
+  if (window.__amigosPageRuntimeScripts["${scriptId}"]) return;
+  window.__amigosPageRuntimeScripts["${scriptId}"] = true;
 ${source}
 })();
 `
-    : source;
+    : `(function() {
+  window.__amigosPageRuntimeScripts = window.__amigosPageRuntimeScripts || {};
+  if (window.__amigosPageRuntimeScripts["${scriptId}"]) return;
+  window.__amigosPageRuntimeScripts["${scriptId}"] = true;
+${source}
+})();`;
 
   return (
-    <Script id={assetId("legacy-script", src)} strategy="afterInteractive">
+    <Script id={scriptId} strategy="afterInteractive">
       {scriptBody}
     </Script>
   );
@@ -64,9 +73,9 @@ export default function LegacyPage({ children, css = [], html, scripts = [], she
 
       {gsap && (
         <>
-          <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="beforeInteractive" />
+          <Script src="/vendor/gsap.min.js" strategy="beforeInteractive" />
           <Script
-            src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+            src="/vendor/ScrollTrigger.min.js"
             strategy="beforeInteractive"
           />
         </>

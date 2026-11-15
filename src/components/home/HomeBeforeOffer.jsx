@@ -17,7 +17,8 @@ export default function HomeBeforeOffer() {
     {/*305*/}
     <section className="hero" data-hero data-home-hero>
         <div className="hero-media">
-            <video id="heroVideo" muted playsInline preload="auto">
+            <video id="heroVideo" muted playsInline preload="metadata">
+                <source src="/hero_scrub2.webm" type="video/webm" />
                 <source src="/hero_scrub2.mp4" type="video/mp4" />
             </video>
 
@@ -93,7 +94,7 @@ export default function HomeBeforeOffer() {
                         <input type="color" className="palette-custom" defaultValue="#ffffff" title="Custom color" />
                     </div>
                 </div>
-<div className="mobile-color-dock" id="mobileColorDock"><span className="mobile-dock-title">Choose a color (back wall):</span><div className="mobile-swatches"><span className="mobile-swatch" data-color="#F5F3ED" style={{ "--c": "#F5F3ED" }} title="Off-White"></span><span className="mobile-swatch" data-color="#D8CCB4" style={{ "--c": "#D8CCB4" }} title="Warm Beige"></span><span className="mobile-swatch" data-color="#A6B09A" style={{ "--c": "#A6B09A" }} title="Sage Green"></span><span className="mobile-swatch" data-color="#8D98A4" style={{ "--c": "#8D98A4" }} title="Slate Grey"></span><span className="mobile-swatch" data-color="#5C6771" style={{ "--c": "#5C6771" }} title="Charcoal"></span><label className="mobile-swatch-custom" title="Choose a custom color"><input type="color" className="mobile-palette-custom" defaultValue="#D8CCB4" /><i className="fa-solid fa-plus"></i></label></div></div>
+<div className="mobile-color-dock" id="mobileColorDock"><span className="mobile-dock-title">Choose a color (back wall):</span><div className="mobile-swatches"><span className="mobile-swatch" data-color="#F5F3ED" style={{ "--c": "#F5F3ED" }} title="Off-White"></span><span className="mobile-swatch" data-color="#D8CCB4" style={{ "--c": "#D8CCB4" }} title="Warm Beige"></span><span className="mobile-swatch" data-color="#A6B09A" style={{ "--c": "#A6B09A" }} title="Sage Green"></span><span className="mobile-swatch" data-color="#8D98A4" style={{ "--c": "#8D98A4" }} title="Slate Grey"></span><span className="mobile-swatch" data-color="#5C6771" style={{ "--c": "#5C6771" }} title="Charcoal"></span><label className="mobile-swatch-custom" title="Choose a custom color"><input type="color" className="mobile-palette-custom" defaultValue="#D8CCB4" /><i aria-hidden="true">+</i></label></div></div>
             </div>
         </div>
 

@@ -145,8 +145,7 @@ export default function Page() {
   return (
     <AssetPageShell
       css={["/style.css"]}
-      externalStyles={["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"]}
-      scripts={["/script.js", "/app.js"]}
+      scripts={["/script.js"]}
       shell
     >
       <HomeBeforeOffer />

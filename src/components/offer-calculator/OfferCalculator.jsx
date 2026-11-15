@@ -1487,7 +1487,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
             <div className={cx(styles.quickPackageFace, styles.quickPackageFront)}>
               <div className={styles.propertyCardMedia}>
                 {option.image ? (
-                  <img src={option.image} alt={option.title} className={styles.propertyCardImage} />
+                  <img src={option.image} alt={option.title} className={styles.propertyCardImage} loading="lazy" decoding="async" />
                 ) : (
                   <div className={styles.propertyCardFallbackGraphic}>
                     <ComponentIcon iconKey={option.iconKey || "other"} />
@@ -1522,7 +1522,7 @@ export default function OfferCalculator({ embedded = false, defaultFlow = "SELEC
         {selected && <span className={styles.propertyCardBadge}>✓</span>}
         <div className={styles.propertyCardMedia}>
           {option.image ? (
-            <img src={option.image} alt={option.title} className={styles.propertyCardImage} />
+            <img src={option.image} alt={option.title} className={styles.propertyCardImage} loading="lazy" decoding="async" />
           ) : (
             <div className={styles.propertyCardFallbackGraphic}>
               <ComponentIcon iconKey={option.iconKey || "other"} />

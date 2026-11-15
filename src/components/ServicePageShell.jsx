@@ -17,8 +17,8 @@ export default function ServicePageShell({ children }) {
     <>
       <style dangerouslySetInnerHTML={{ __html: serviceStyles }} data-page-style="service" />
       <SharedPageShell>{children}</SharedPageShell>
-      <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="beforeInteractive" />
-      <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" strategy="beforeInteractive" />
+      <Script src="/vendor/gsap.min.js" strategy="beforeInteractive" />
+      <Script src="/vendor/ScrollTrigger.min.js" strategy="beforeInteractive" />
       <Script id="service-page-script" strategy="afterInteractive">
         {`(function runServiceScriptWhenReady() {
   if (!window.gsap || !window.ScrollTrigger) {

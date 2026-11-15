@@ -15,7 +15,7 @@ export default function QuoteWizardSection() {
         </div>
       </section>
       <div className="wizard" id="quoteWizard">
-        <div className="wizard-bg"><video src="/calculator-bg.mp4" autoPlay muted loop playsInline preload="auto" /></div>
+        <div className="wizard-bg"><video autoPlay muted loop playsInline preload="metadata"><source src="/calculator-bg.webm" type="video/webm" /><source src="/calculator-bg.mp4" type="video/mp4" /></video></div>
         <div className="wizard-shell">
           <div className="wizard-topbar">
             <span className="wizard-badge"><span className="wizard-badge-dot" />3 free quotes · no obligation</span>

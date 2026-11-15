@@ -25,14 +25,15 @@ export default function AssetPageShell({ children, html, styles = [], css, exter
         {children}
       </SharedPageShell>
       {gsap && <>
-        <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" strategy="afterInteractive" />
-        <Script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" strategy="afterInteractive" />
+        <Script src="/vendor/gsap.min.js" strategy="afterInteractive" />
+        <Script src="/vendor/ScrollTrigger.min.js" strategy="afterInteractive" />
       </>}
       <Script id="partials-ready-bridge" strategy="beforeInteractive">
         window.__partialsLoaded = true;
       </Script>
       {scripts.map((name) => {
         const source = readAsset(name, "scripts");
+        const scriptId = assetId("page-script", name);
         const body = gsap ? `(function waitForPageRuntime() {
   if (!window.gsap || !window.ScrollTrigger) {
     if (document.querySelector(".loader") && !window.__amigosLoaderFallbackScheduled) {
@@ -43,18 +44,24 @@ export default function AssetPageShell({ children, html, styles = [], css, exter
           loader.style.display = "none";
           document.documentElement.style.overflow = "";
           document.body.style.overflow = "";
-          window.__amigosLoaderFinished = true;
         }
-      }, 2000);
+      }, 800);
     }
     window.setTimeout(waitForPageRuntime, 50);
     return;
   }
-  if (window.__amigosLoaderFinished) return;
+  window.__amigosPageRuntimeScripts = window.__amigosPageRuntimeScripts || {};
+  if (window.__amigosPageRuntimeScripts["${scriptId}"]) return;
+  window.__amigosPageRuntimeScripts["${scriptId}"] = true;
   window.__amigosPageRuntimeStarted = true;
 ${source}
-})();` : source;
-        return <Script key={name} id={assetId("page-script", name)} strategy="afterInteractive">{body}</Script>;
+})();` : `(function() {
+  window.__amigosPageRuntimeScripts = window.__amigosPageRuntimeScripts || {};
+  if (window.__amigosPageRuntimeScripts["${scriptId}"]) return;
+  window.__amigosPageRuntimeScripts["${scriptId}"] = true;
+${source}
+})();`;
+        return <Script key={name} id={scriptId} strategy="afterInteractive">{body}</Script>;
       })}
     </>
   );

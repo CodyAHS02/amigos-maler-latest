@@ -76,21 +76,21 @@ export default function PartnersContent() {
   <section className="partner-imagery">
     <div className="partners-shell imagery-grid">
       <figure className="imagery-card imagery-card-large partners-reveal">
-        <img src="https://www.siltek.ch/m1.png" alt="Professional painters working together inside a prepared room" />
+        <img src="/assets/partners/siltek-m1.jpg" alt="Professional painters working together inside a prepared room" loading="lazy" decoding="async" />
         <figcaption>
           <span>Trade Execution</span>
           <strong>Clean teams for careful surface work.</strong>
         </figcaption>
       </figure>
       <figure className="imagery-card partners-reveal">
-        <img src="/assets/services/pexels-kindelmedia-7579138.webp" alt="Renovation planning consultation with architectural plans" />
+        <img src="/assets/services/pexels-kindelmedia-7579138.webp" alt="Renovation planning consultation with architectural plans" loading="lazy" decoding="async" />
         <figcaption>
           <span>Planning</span>
           <strong>Partners aligned before work begins.</strong>
         </figcaption>
       </figure>
       <figure className="imagery-card partners-reveal">
-        <img src="https://ldmdirect.co.uk/cdn/shop/files/ldmdirect-homepage-image.webp?v=1772034053&width=1600" alt="Professional painting materials and tools" />
+        <img src="/assets/partners/ldmdirect-homepage.jpg" alt="Professional painting materials and tools" loading="lazy" decoding="async" />
         <figcaption>
           <span>Materials</span>
           <strong>Suppliers who understand durable finishes.</strong>
