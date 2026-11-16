@@ -478,7 +478,7 @@ export default function InteriorPaintingContent() {
         <div className="carousel-wrap">
             <button className="carousel-arrow prev" id="carouselPrev" aria-label="Previous testimonial">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </button>
 
@@ -490,7 +490,7 @@ export default function InteriorPaintingContent() {
 
             <button className="carousel-arrow next" id="carouselNext" aria-label="Next testimonial">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M9 18l6-6-6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
             </button>
         </div>

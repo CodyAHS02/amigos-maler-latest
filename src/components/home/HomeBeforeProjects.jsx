@@ -68,8 +68,8 @@ export default function HomeBeforeProjects() {
                                 <div className="color-slider" id="colorSlider">
                                     <div className="color-slider-cursor" id="colorSliderCursor">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                            <path d="M17.5 3.5a2.6 2.6 0 0 1 3.68 3.68L9.5 18.86l-4.86 1.18 1.18-4.86L17.5 3.5Z" stroke="#111" stroke-width="1.6" stroke-linejoin="round" fill="#fff" />
-                                            <path d="M14.5 6.5l3 3" stroke="#111" stroke-width="1.6" />
+                                            <path d="M17.5 3.5a2.6 2.6 0 0 1 3.68 3.68L9.5 18.86l-4.86 1.18 1.18-4.86L17.5 3.5Z" stroke="#111" strokeWidth="1.6" strokeLinejoin="round" fill="#fff" />
+                                            <path d="M14.5 6.5l3 3" stroke="#111" strokeWidth="1.6" />
                                         </svg>
                                     </div>
                                 </div>
