@@ -1,7 +1,7 @@
 const canvas = document.getElementById("paintCanvas");
-const ctx = canvas.getContext("2d", {
+const ctx = canvas ? canvas.getContext("2d", {
     willReadFrequently: true
-});
+}) : null;
 
 const maskCache = {};
 const images = {
@@ -74,6 +74,7 @@ async function loadImage(src) {
 }
 
 async function init() {
+    if (!canvas || !ctx) return;
     // Load room image first
     images.room = await loadImage("/assets/room.webp");
 
@@ -392,6 +393,7 @@ function paintWall(maskName, color) {
     wallState[maskName] = color;
     renderScene();
 }
+window.paintWall = paintWall;
 
 const paintIcons = document.querySelector(".paint-icons");
 

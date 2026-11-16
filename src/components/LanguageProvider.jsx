@@ -51,9 +51,9 @@ export default function LanguageProvider({ children }) {
     return locales.includes(saved) ? saved : "en";
   });
   const localeRef = useRef(locale);
-  localeRef.current = locale;
 
   useEffect(() => {
+    localeRef.current = locale;
     document.documentElement.lang = locale;
     window.localStorage.setItem("amigos-locale", locale);
     translateLegacyText(locale);

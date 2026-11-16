@@ -1,0 +1,2081 @@
+/* =========================================================
+   AMIGOS SITE-WIDE READABILITY & CONTRAST AUDIT
+   Loaded last on every public legacy page.
+
+   Rules:
+   - light theme uses light/white section surfaces, never navy sections
+   - dark surfaces and image overlays always carry light copy
+   - branded gradient hover/active states always carry white copy
+   - small descriptive text has a practical reading-size floor
+   - all action controls keep the site's fully rounded language
+========================================================= */
+
+:root {
+    --audit-ink: #071a33;
+    --audit-muted: #4f5b69;
+    --audit-light: #ffffff;
+    --audit-light-muted: rgba(255, 255, 255, .82);
+    --audit-surface: #ffffff;
+    --audit-dark-surface: #102844;
+    --audit-yellow: #f6be10;
+    --audit-orange: #f39125;
+    --audit-pink: #e62453;
+    --audit-magenta: #c73b8e;
+    --audit-gradient: linear-gradient(120deg, #f6be10 0%, #f39125 30%, #e62453 64%, #c73b8e 100%);
+}
+
+/* Readable global scale. Decorative rules remain small; actual information does not. */
+body :where(article, [class*="-card"], [class*="-panel"], [class*="-box"], [class*="-item"]) p,
+body :where(.detail-item, .floating-card, .process-step, .timeline-card, .flow-step) p {
+    font-size: clamp(15px, 1.8vw, 17px) !important;
+    line-height: 1.62 !important;
+}
+
+body small,
+body :where(
+    .section-label,
+    .section-tag,
+    [class*="-kicker"],
+    [class*="-eyebrow"],
+    [class*="-meta"],
+    [class*="-label"]
+) {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+}
+
+body :where(
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) :where(h3, h4) {
+    line-height: 1.2 !important;
+}
+
+body :where(
+    a[class*="btn"],
+    a[class*="button"],
+    button[class*="btn"],
+    button[class*="button"],
+    button[class*="option"]
+) {
+    min-height: 48px;
+    border-radius: 999px !important;
+    font-size: max(14px, .9rem) !important;
+}
+
+/* Light theme: quiet neutral surfaces and dark readable copy. */
+html:not([data-theme="amigos-dark"]) body {
+    --audit-copy: var(--audit-ink);
+    --audit-secondary-copy: var(--audit-muted);
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero-content :where(.color-hero-kicker, h1, p),
+html:not([data-theme="amigos-dark"]) body .color-hero-actions {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero-content > p {
+    color: #2f3a46 !important;
+    -webkit-text-fill-color: #2f3a46 !important;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, .8);
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero .color-hero-note,
+html:not([data-theme="amigos-dark"]) body .color-room-info,
+html:not([data-theme="amigos-dark"]) body .palette-preview-label {
+    background: var(--audit-gradient) !important;
+    background-size: 180% 180% !important;
+    border-color: rgba(255, 255, 255, .56) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .color-hero .color-hero-note span,
+html:not([data-theme="amigos-dark"]) body .color-room-info :where(span, h3, p),
+html:not([data-theme="amigos-dark"]) body .palette-preview-label :where(span, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    opacity: 1 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .service-content,
+    .process-card,
+    .why-card,
+    .review-card,
+    .step-content,
+    .detail-item,
+    .property-points > div,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .flow-item,
+    .svc-intro-point,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .standard-row,
+    .damage-category-content,
+    .trust-item
+) :where(h2, h3, h4, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .service-content,
+    .process-card,
+    .why-card,
+    .review-card,
+    .step-content,
+    .detail-item,
+    .property-points > div,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .flow-item,
+    .svc-intro-point,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .standard-row,
+    .damage-category-content,
+    .trust-item
+) p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+/* Image cards need a dependable dark scrim and light copy in both themes. */
+body :where(
+    .audience-card,
+    .damage-visual-panel,
+    .property-visual-section,
+    .project-card,
+    .showcase-card
+) :where(h2, h3, h4, p, strong, small) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, .42);
+}
+
+/* Components whose CSS changes to a dark/branded surface on interaction. */
+body :where(
+    .service-card,
+    .process-card,
+    .why-card,
+    .review-card,
+    .intro-points > div,
+    .professional-card,
+    .step-content,
+    .hero-details .detail-item,
+    .property-points > div,
+    .facade-work-card,
+    .pd-panel,
+    .value-stat,
+    .situation-item,
+    .value-points > div,
+    .why-card,
+    .flow-item,
+    .svc-intro-point,
+    .material-item,
+    .material-card,
+    .svc-benefit-card,
+    .svc-timeline-card,
+    .partner-card,
+    .flow-step,
+    .finish-option,
+    .interface-card,
+    .meaning-node,
+    .palette-option,
+    .color-benefit-card
+):hover :where(h2, h3, h4, p, span, small, strong, a, b),
+body :where(
+    .finish-option,
+    .interface-card,
+    .meaning-node,
+    .palette-option
+).active :where(h2, h3, h4, p, span, small, strong, a, b) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Known light-hover exceptions: preserve dark text because their surface stays light. */
+html:not([data-theme="amigos-dark"]) body :where(
+    .consultation-content,
+    .trust-item
+):hover :where(h2, h3, h4, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body :where(
+    .consultation-content,
+    .trust-item
+):hover p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content :where(h3, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body .consultation-step:hover .consultation-content p {
+    color: var(--audit-muted) !important;
+    -webkit-text-fill-color: var(--audit-muted) !important;
+}
+
+/* The interior timeline previously used a pale hover with forced white copy. */
+body .svc-timeline-step:hover .svc-timeline-card {
+    background: var(--audit-gradient) !important;
+    background-size: 180% 180% !important;
+    border-color: transparent !important;
+}
+
+body .svc-timeline-step:hover .svc-timeline-card :where(h3, p, span, small, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Buttons/selected controls: explicit foreground paired with their surface. */
+body :where(
+    .primary-btn,
+    .btn-primary,
+    .svc-btn-primary,
+    .damage-btn-primary,
+    .property-button-primary,
+    .color-btn-primary
+),
+body :where(
+    .secondary-btn,
+    .btn-outline,
+    .outline-btn,
+    .svc-btn-secondary,
+    .facade-btn-outline,
+    .contact-btn-outline,
+    .color-btn-outline-dark
+):hover {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+body :where(
+    .primary-btn,
+    .btn-primary,
+    .svc-btn-primary,
+    .damage-btn-primary,
+    .property-button-primary,
+    .color-btn-primary,
+    .secondary-btn:hover,
+    .btn-outline:hover,
+    .outline-btn:hover,
+    .svc-btn-secondary:hover,
+    .facade-btn-outline:hover,
+    .contact-btn-outline:hover,
+    .color-btn-outline-dark:hover
+) * {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+/* Dark theme cards: headings and body copy cannot inherit near-black. */
+html[data-theme="amigos-dark"] body :where(
+    article,
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) :where(h2, h3, h4, strong) {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+html[data-theme="amigos-dark"] body :where(
+    article,
+    [class*="-card"],
+    [class*="-panel"],
+    [class*="-box"],
+    [class*="-item"]
+) p {
+    color: var(--audit-light-muted) !important;
+    -webkit-text-fill-color: var(--audit-light-muted) !important;
+}
+
+/* Some controls deliberately remain white in dark mode. */
+html[data-theme="amigos-dark"] body :where(
+    .paint-finish-btn.active,
+    .testimonial-card:hover,
+    .testimonial-card.active:hover
+) :where(h2, h3, h4, p, span, small, strong) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+/* Focus has the same clarity as hover and remains keyboard-visible. */
+body :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--audit-yellow) !important;
+    outline-offset: 4px !important;
+}
+
+@media (max-width: 760px) {
+    body :where(article, [class*="-card"], [class*="-panel"], [class*="-box"], [class*="-item"]) p {
+        font-size: 15px !important;
+    }
+
+    body small,
+    body :where(.section-label, .section-tag, [class*="-kicker"], [class*="-eyebrow"], [class*="-meta"], [class*="-label"]) {
+        font-size: 15px !important;
+    }
+}
+
+/* Facade benefits use a white hover surface. Keep every foreground element dark
+   instead of allowing the global gradient-hover rule to make the copy white. */
+body .facade-benefits .benefit-card:hover {
+    background: #fff !important;
+    border-color: rgba(7, 26, 51, .14) !important;
+    color: var(--audit-ink) !important;
+}
+
+body .facade-benefits .benefit-card:hover::before {
+    opacity: 0 !important;
+}
+
+body .facade-benefits .benefit-card:hover :where(h3, p, span, small, strong, .benefit-icon) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+body .facade-benefits .benefit-card:hover .benefit-icon {
+    background: rgba(7, 26, 51, .06) !important;
+    border-color: rgba(7, 26, 51, .24) !important;
+}
+
+/* About reuses the homepage testimonial carousel, but not its homepage-only
+   gradient variables. Give the section a complete, theme-safe color contract. */
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials {
+    background:
+        radial-gradient(circle at 50% 48%, rgba(7, 26, 51, .08), transparent 36%),
+        #fff !important;
+    color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .testimonial-center h2 {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .testimonial-kicker {
+    color: #b81949 !important;
+    -webkit-text-fill-color: #b81949 !important;
+}
+
+body[data-page="about"] .testimonials :where(.rating, .rating span, .testimonial-card .stars) {
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #9a6100 !important;
+    -webkit-text-fill-color: #9a6100 !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card,
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card {
+    background: rgba(255, 255, 255, .96) !important;
+    border-color: rgba(7, 26, 51, .14) !important;
+    color: var(--audit-ink) !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card :where(p, h4),
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card :where(p, h4) {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+    opacity: 1 !important;
+}
+
+body[data-page="about"] .testimonials .testimonial-card .city,
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-card .city {
+    color: #a91452 !important;
+    -webkit-text-fill-color: #a91452 !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .carousel-arrow {
+    color: var(--audit-ink) !important;
+    -webkit-text-fill-color: var(--audit-ink) !important;
+    border-color: rgba(7, 26, 51, .18) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .carousel-dot {
+    background: rgba(7, 26, 51, .32) !important;
+}
+
+html:not([data-theme="amigos-dark"]) body[data-page="about"] .testimonials .carousel-dot.active {
+    background: var(--audit-ink) !important;
+}
+
+html[data-theme="amigos-dark"] body[data-page="about"] .testimonials .testimonial-center h2 {
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+/* Last-loaded global CTA lock.
+   Apply the requested pill/arrow treatment to public-page buttons, while leaving
+   the header and small floating utility controls untouched. */
+:root {
+    --audit-cta-gradient: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%);
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary),
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-height: 58px !important;
+    padding: 16px 30px 16px 72px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    background: var(--audit-cta-gradient) !important;
+    background-color: transparent !important;
+    background-image: var(--audit-cta-gradient) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    box-shadow: 0 18px 38px rgba(230, 36, 83, .18) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary)::before,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::before,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: auto auto auto 10px !important;
+    top: 50% !important;
+    z-index: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    pointer-events: none !important;
+    box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+    transform: translateY(-50%) !important;
+    transition: transform .25s ease, background .25s ease !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary)::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::after,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn)::after {
+    content: "→" !important;
+    position: absolute !important;
+    inset: auto auto auto 22px !important;
+    top: 50% !important;
+    z-index: 1 !important;
+    width: auto !important;
+    height: auto !important;
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    pointer-events: none !important;
+    transform: translateY(-52%) !important;
+    transition: transform .25s ease, color .25s ease !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+/* Components that own their arrow/icon must not receive a second generated arrow. */
+body :is(a, button).founder-cta-btn::before,
+body :is(a, button).founder-cta-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Preserve component-owned SVG arrows/icons across every page. */
+body :is(a, button):has(> svg)::before,
+body :is(a, button):has(> svg)::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Navigation direction: Back points left; forward actions point right. */
+html body[data-page="contact"] .backButton::after {
+    content: "←" !important;
+}
+
+/* Keep service card numbers readable on the light-theme hover gradient. */
+html:not([data-theme="amigos-dark"]) body :is(
+    .service-card:hover .number,
+    .service-card:hover .service-number,
+    .process-card:hover span,
+    .process-card:hover .step-number,
+    .why-card:hover .icon,
+    .review-card:hover .stars,
+    .review-card:hover span,
+    .svc-intro-point:hover span
+) {
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* Override the light-theme gradient text on hovered service intro numbers. */
+html:not([data-theme="amigos-dark"]) body:has(.svc-intro-point) .svc-intro-point:hover > span {
+    background: none !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* One arrow treatment everywhere: use the original heavy site glyph, never the thin fallback. */
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+)::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button)::after,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button)::after {
+    font-family: "themeFont", Arial, sans-serif !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary) > *,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) > *,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) > * {
+    position: relative !important;
+    z-index: 2 !important;
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover {
+    transform: translateY(-3px) !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover::before,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::before,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::before {
+    transform: translate(6px, -50%) !important;
+}
+
+body :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary):hover::after,
+body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::after,
+body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn):hover::after {
+    transform: translate(6px, -52%) !important;
+}
+
+@media (max-width: 640px) {
+    body :is(a, button):where(
+        [class*="btn" i],
+        [class*="button" i],
+        [class*="cta" i]
+    ):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.services-mega-tab):not(.services-mega-cta):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):not(.about-process-button):not([href="#process"]):not(.amigos-btn-secondary),
+    body :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn),
+    body :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):not(.site-header *):not(.carousel-arrow):not(.carousel-dot):not(.scroll-top-btn) {
+        width: 100% !important;
+        max-width: 360px !important;
+        min-height: 54px !important;
+        padding: 15px 24px 15px 66px !important;
+    }
+}
+
+/* Dark-theme arrow CTAs: hover to white with black copy and icon. */
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    border-color: #fff !important;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .18) !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover::before,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover::before,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover::before {
+    background: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):not(.site-header *):not(.header-btn):not(.customer-header-btn):not(.dropdown-trigger):not(.nav-link):not(.theme-toggle):not(.sound-toggle):not(.mobile-menu-toggle):not(.hamburger):not(.scroll-top-btn):not(.carousel-arrow):not(.carousel-dot):not(.ba-btn):not(.dock-tab):not(.slider-arrow):not(.slider-nav):not(.whatsapp-float):not(.chat-widget *):hover::after,
+html[data-theme="amigos-dark"] body main :is(.hero-buttons, .hero-ctas, .cta-buttons, .spray-hero-buttons, .svc-hero-buttons, .final-cta-actions, .partners-hero-actions, .services-nav-cta, .quote-start, .testimonials) > :is(a, button):hover::after,
+html[data-theme="amigos-dark"] body main :is(.partner-cta, .new-final-cta, .property-final-cta) :is(a, button):hover::after {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme="amigos-dark"] body main :is(a, button):hover > *,
+html[data-theme="amigos-dark"] body main :is(a, button):hover svg,
+html[data-theme="amigos-dark"] body main :is(a, button):hover svg path {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Cover both dark-theme attribute names used by the site runtime. */
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    border-color: #fff !important;
+}
+
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover::before,
+html[data-theme*="dark"] body main :is(a, button):hover > *,
+html[data-theme*="dark"] body main :is(a, button):hover svg,
+html[data-theme*="dark"] body main :is(a, button):hover svg path {
+    background-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body main :is(a, button):where(
+    [class*="btn" i],
+    [class*="button" i],
+    [class*="cta" i]
+):hover::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Homepage hero buttons: kill the global gradient fill and keep only glass + animated stroke. */
+@keyframes auditHeroButtonBorderFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+html body .hero-buttons a.btn-primary,
+html body .hero-buttons a.btn-secondary,
+html body[data-page="home"] .hero-buttons a.btn-primary,
+html body[data-page="home"] .hero-buttons a.btn-secondary,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-primary,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-secondary {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 210px !important;
+    min-height: 54px !important;
+    padding: 16px 30px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .03) !important;
+    background-color: rgba(255, 255, 255, .03) !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(18px) saturate(1.16) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(1.16) !important;
+}
+
+html body .hero-buttons a.btn-primary::before,
+html body .hero-buttons a.btn-secondary::before,
+html body[data-page="home"] .hero-buttons a.btn-primary::before,
+html body[data-page="home"] .hero-buttons a.btn-secondary::before,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-primary::before,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-secondary::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    padding: 1.5px !important;
+    border-radius: inherit !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 28%, #e62453 56%, #f6be10 100%) !important;
+    background-size: 260% 260% !important;
+    animation: auditHeroButtonBorderFlow 4.5s ease-in-out infinite !important;
+    pointer-events: none !important;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+}
+
+html body .hero-buttons a.btn-primary::after,
+html body .hero-buttons a.btn-secondary::after,
+html body[data-page="home"] .hero-buttons a.btn-primary::after,
+html body[data-page="home"] .hero-buttons a.btn-secondary::after,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-primary::after,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-secondary::after {
+    content: none !important;
+    display: none !important;
+}
+
+html body .hero-buttons a.btn-primary:hover,
+html body .hero-buttons a.btn-secondary:hover,
+html body[data-page="home"] .hero-buttons a.btn-primary:hover,
+html body[data-page="home"] .hero-buttons a.btn-secondary:hover,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-primary:hover,
+html[data-theme="amigos-dark"] body .hero-buttons a.btn-secondary:hover {
+    background: rgba(255, 255, 255, .06) !important;
+    background-color: rgba(255, 255, 255, .06) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+/* Exact homepage hero CTA override. This intentionally beats the broad audit CTA rule. */
+html body #homeHeroButtons.hero-buttons > a.btn-primary,
+html body #homeHeroButtons.hero-buttons > a.btn-secondary,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-primary,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-secondary {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 210px !important;
+    min-height: 54px !important;
+    padding: 16px 30px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .03) !important;
+    background-color: rgba(255, 255, 255, .03) !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(18px) saturate(1.16) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(1.16) !important;
+}
+
+html body #homeHeroButtons.hero-buttons > a.btn-primary::before,
+html body #homeHeroButtons.hero-buttons > a.btn-secondary::before,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-primary::before,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-secondary::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 1.5px !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    opacity: 1 !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 28%, #e62453 56%, #f6be10 100%) !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(105deg, #f6be10 0%, #f39125 28%, #e62453 56%, #f6be10 100%) !important;
+    background-size: 260% 260% !important;
+    box-shadow: none !important;
+    animation: auditHeroButtonBorderFlow 4.5s ease-in-out infinite !important;
+    transform: none !important;
+    pointer-events: none !important;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0) !important;
+    mask-composite: exclude !important;
+}
+
+html body #homeHeroButtons.hero-buttons > a.btn-primary::after,
+html body #homeHeroButtons.hero-buttons > a.btn-secondary::after,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-primary::after,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-secondary::after {
+    content: none !important;
+    display: none !important;
+}
+
+html body #homeHeroButtons.hero-buttons > a.btn-primary:hover,
+html body #homeHeroButtons.hero-buttons > a.btn-secondary:hover,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-primary:hover,
+html[data-theme="amigos-dark"] body #homeHeroButtons.hero-buttons > a.btn-secondary:hover {
+    transform: translateY(-3px) !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    box-shadow: none !important;
+}
+
+/* Paint finish selector: restore the simple segmented control, not global CTA pills. */
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn {
+    position: relative !important;
+    isolation: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    min-width: 188px !important;
+    width: auto !important;
+    min-height: 84px !important;
+    padding: 0 34px !important;
+    border: 1px solid rgba(255, 255, 255, .30) !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, .08) !important;
+    background-color: rgba(255, 255, 255, .08) !important;
+    background-image: none !important;
+    color: rgba(255, 255, 255, .70) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .70) !important;
+    font-family: inherit !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    cursor: pointer !important;
+    transform: none !important;
+    transition:
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        transform .25s ease !important;
+}
+
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn::before,
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn::before,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover {
+    transform: translateY(-1px) !important;
+    border-color: rgba(255, 255, 255, .46) !important;
+    background: rgba(255, 255, 255, .14) !important;
+    background-color: rgba(255, 255, 255, .14) !important;
+    background-image: none !important;
+    color: rgba(255, 255, 255, .90) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .90) !important;
+    box-shadow: none !important;
+}
+
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn.active,
+html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn.active:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn.active,
+html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn.active:hover {
+    border-color: rgba(255, 255, 255, .92) !important;
+    background: rgba(255, 255, 255, .88) !important;
+    background-color: rgba(255, 255, 255, .88) !important;
+    background-image: none !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    html body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn,
+    html[data-theme="amigos-dark"] body[data-page="home"] .paint-finish-panel .paint-finish-options > button.paint-finish-btn {
+        min-width: 112px !important;
+        min-height: 56px !important;
+        padding: 0 18px !important;
+        font-size: 16px !important;
+    }
+}
+
+/* Keep final CTA content above its background veil. */
+html body .final-cta > div:not(.final-cta-bg) {
+    position: relative !important;
+    z-index: 1 !important;
+    opacity: 1 !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+/* Services CTA hover contract: white surface in the dark presentation. */
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html body[data-page="services"] :is(
+    .hero-buttons .secondary-btn,
+    .property-content a,
+    .cta-buttons a
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html body[data-page="services"] :is(
+    #servicesHeroQuoteButton,
+    #servicesHeroWorkButton,
+    #servicesFinalQuoteButton,
+    #servicesFinalDiscussButton,
+    #servicesPropertyCareButton
+):hover::after {
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+@media (max-width: 760px) {
+    html body[data-page="services"] .final-cta {
+        box-sizing: border-box !important;
+        padding: 64px 20px !important;
+    }
+
+    html body[data-page="services"] .final-cta > div {
+        width: 100% !important;
+        max-width: 620px !important;
+        margin-inline: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    html body[data-page="services"] .final-cta h2 {
+        font-size: clamp(34px, 9vw, 48px) !important;
+        line-height: 1.04 !important;
+    }
+
+    html body[data-page="services"] .final-cta p {
+        font-size: 18px !important;
+        line-height: 1.45 !important;
+    }
+
+    html body[data-page="services"] .final-cta .cta-buttons {
+        width: 100% !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+
+    html body[data-page="services"] .final-cta .cta-buttons a {
+        display: inline-flex !important;
+        width: min(100%, 420px) !important;
+        box-sizing: border-box !important;
+        justify-content: center !important;
+    }
+}
+
+/* Homepage services image overlays: keep photos clearer with a much lighter veil. */
+html body[data-page="home"] .services-expand-grid .service-panel .sp-media::after,
+html body[data-page="home"] .services-panels .service-panel .panel-overlay,
+html[data-theme="amigos-dark"] body[data-page="home"] .services-expand-grid .service-panel .sp-media::after,
+html[data-theme="amigos-dark"] body[data-page="home"] .services-panels .service-panel .panel-overlay {
+    opacity: .2 !important;
+}
+
+/* Final lock: finish selector buttons must not inherit global CTA gradients. */
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn.active,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn.active:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn.active,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn.active:hover {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 94px !important;
+    min-height: 42px !important;
+    width: auto !important;
+    padding: 0 18px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .3) !important;
+    background-color: rgba(255, 255, 255, .3) !important;
+    background-image: none !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    text-decoration: none !important;
+}
+
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn::before,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn::after,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover::before,
+html body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover::after,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn::before,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn::after,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover::before,
+html[data-theme="amigos-dark"] body[data-page="home"] #paintFinishPanel.paint-finish-panel .paint-finish-options > button.paint-finish-btn:hover::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Shared secondary button concept: transparent fill, navy copy, moving gradient outline. */
+@keyframes amigosSecondaryBorderFlow {
+    0% { background-position: 0% 50%, 0% 50%; }
+    50% { background-position: 100% 50%, 100% 50%; }
+    100% { background-position: 0% 50%, 0% 50%; }
+}
+
+html body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *),
+html[data-theme="amigos-dark"] body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *) {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 58px !important;
+    padding: 16px 30px 16px 72px !important;
+    border: 1.5px solid transparent !important;
+    border-radius: 999px !important;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) border-box !important;
+    background-color: transparent !important;
+    background-size: 100% 100%, 260% 260% !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    box-shadow: none !important;
+    animation: amigosSecondaryBorderFlow 5s ease-in-out infinite !important;
+}
+
+html body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *)::before,
+html[data-theme="amigos-dark"] body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *)::before {
+    background: #ffffff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+html body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *)::after,
+html[data-theme="amigos-dark"] body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *)::after {
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+}
+
+html body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *):hover,
+html[data-theme="amigos-dark"] body main :is(.svc-btn-secondary, .btn-secondary, .outline-btn, .property-button-outline):not(.site-header *):hover {
+    background:
+        linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) padding-box,
+        linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) border-box !important;
+    background-size: 260% 260%, 260% 260% !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Choose Image CTA: keep the button, swap the arrow for an upload icon only. */
+html body[data-page="home"] button.upload-btn::after,
+html body[data-page="home"] button.upload-btn:hover::after,
+html[data-theme="amigos-dark"] body[data-page="home"] button.upload-btn::after,
+html[data-theme="amigos-dark"] body[data-page="home"] button.upload-btn:hover::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    left: 20px !important;
+    top: 50% !important;
+    z-index: 2 !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: #071a33 !important;
+    background-color: #071a33 !important;
+    background-image: none !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    opacity: 1 !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V3'/%3E%3Cpath d='M7 8l5-5 5 5'/%3E%3Cpath d='M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4'/%3E%3C/svg%3E") center / contain no-repeat !important;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 15V3'/%3E%3Cpath d='M7 8l5-5 5 5'/%3E%3Cpath d='M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4'/%3E%3C/svg%3E") center / contain no-repeat !important;
+}
+
+/* Homepage plans section: dark theme appearance across both light and dark themes */
+html body[data-page="home"] section.plans-section#plans,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans {
+    background:
+        radial-gradient(circle at 86% 10%, rgba(255, 139, 53, .10), transparent 28%),
+        radial-gradient(circle at 12% 20%, rgba(246, 190, 16, .12), transparent 30%),
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .032) 1px, transparent 1px),
+        linear-gradient(180deg, #221d4f 0%, #1f1a49 100%) !important;
+    background-size: auto, auto, 84px 84px, 84px 84px, auto !important;
+    color: #ffffff !important;
+    overflow: visible !important;
+    padding-bottom: 0 !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plans-header h2,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-header h2,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header h2 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plans-header p,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-header p,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-header p {
+    color: rgba(255, 255, 255, .78) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plans-eyebrow,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-eyebrow,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-eyebrow {
+    color: #f6be10 !important;
+    -webkit-text-fill-color: #f6be10 !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plans-overview-cta span,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-overview-cta span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-overview-cta span {
+    background: #ffffff !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    border: 1px solid rgba(15, 43, 76, .12) !important;
+    box-shadow: 0 18px 42px rgba(15, 43, 76, .12) !important;
+}
+
+@media (min-width: 1101px) {
+    html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
+    html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
+    html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card.featured,
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(1) {
+        background:
+            linear-gradient(90deg,
+                rgba(31, 27, 73, .99) 0%,
+                rgba(31, 27, 73, .96) 46%,
+                rgba(31, 27, 73, .86) 72%,
+                rgba(31, 27, 73, .72) 100%),
+            url("/assets/plans/Plan-01.webp") right center / cover no-repeat !important;
+        border: 1px solid rgba(255, 255, 255, .16) !important;
+        box-shadow: 0 -24px 90px rgba(5, 4, 24, .42) !important;
+        color: #ffffff !important;
+    }
+
+    html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(2) {
+        background:
+            linear-gradient(90deg,
+                rgba(31, 27, 73, .99) 0%,
+                rgba(31, 27, 73, .96) 46%,
+                rgba(31, 27, 73, .86) 72%,
+                rgba(31, 27, 73, .72) 100%),
+            url("/assets/plans/Plan-02.webp") right center / cover no-repeat !important;
+    }
+
+    html body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3),
+    html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plans-grid.plans-overview-list > article.plan-overview-card:nth-child(3) {
+        background:
+            linear-gradient(90deg,
+                rgba(31, 27, 73, .99) 0%,
+                rgba(31, 27, 73, .96) 46%,
+                rgba(31, 27, 73, .86) 72%,
+                rgba(31, 27, 73, .72) 100%),
+            url("/assets/plans/Plan-03.webp") right center / cover no-repeat !important;
+    }
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-index,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-index,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-index {
+    color: rgba(255, 255, 255, .78) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .78) !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-name,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-name,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-name {
+    color: #ff9b35 !important;
+    -webkit-text-fill-color: #ff9b35 !important;
+    text-shadow: none !important;
+    background: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-name::before,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-name::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-name::before {
+    background: linear-gradient(135deg, #f6be10, #e62453) !important;
+    background-color: transparent !important;
+    box-shadow: 0 0 0 6px rgba(230, 36, 83, .08) !important;
+    border-radius: 50% !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .popular,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .popular,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .popular {
+    border: 1px solid rgba(255, 190, 27, .50) !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .10) !important;
+    color: #ffbe1b !important;
+    -webkit-text-fill-color: #ffbe1b !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-main h3,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-main h3,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main h3 {
+    background: linear-gradient(105deg, #ffbe1b 0%, #ff8d39 42%, #ff5677 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-main p,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-main p,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main p {
+    color: rgba(255, 255, 255, .82) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, .82) !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .price,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .price,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .price strong,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .price strong,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price strong {
+    background: none !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 18px 44px rgba(0, 0, 0, .24) !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .price small,
+html body[data-page="home"] section.plans-section#plans .price span,
+html body[data-page="home"] section.plans-section#plans .price-period,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .price small,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .price span,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .price-period,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price small,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price span,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .price-period {
+    background: none !important;
+    background-image: none !important;
+    color: #ffb13a !important;
+    -webkit-text-fill-color: #ffb13a !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-main li,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-main li,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main li {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-main li::before,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-main li::before,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-main li::before {
+    background: linear-gradient(135deg, #ffbe1b, #ff5677) !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(135deg, #ffbe1b, #ff5677) !important;
+    box-shadow: 0 0 0 6px rgba(255, 139, 53, .13) !important;
+    border-radius: 50% !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-action button,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-action button,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action button {
+    background: rgba(255, 255, 255, .12) !important;
+    background-color: rgba(255, 255, 255, .12) !important;
+    border: 2px solid rgba(255, 255, 255, .44) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    box-shadow: none !important;
+}
+
+html body[data-page="home"] section.plans-section#plans .plan-overview-action button:hover,
+html[data-theme="amigos-light"] body[data-page="home"] section.plans-section#plans .plan-overview-action button:hover,
+html[data-theme="amigos-dark"] body[data-page="home"] section.plans-section#plans .plan-overview-action button:hover {
+    transform: translateY(-4px) !important;
+    background: linear-gradient(105deg, #ffbe1b 0%, #ff8d39 52%, #ff5677 100%) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 22px 52px rgba(255, 118, 67, .30) !important;
+}
+
+/* ==========================================================================
+   Reviews CTA Button (.review-btn) Lock
+   Ensures the iconic white circular arrow badge displays across all pages & themes
+   ========================================================================== */
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn {
+    position: relative !important;
+    isolation: isolate !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-height: 58px !important;
+    padding: 16px 32px 16px 72px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+    background: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(105deg, #f6be10 0%, #f39125 44%, #e62453 100%) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    box-shadow: 0 18px 38px rgba(230, 36, 83, .22), 0 12px 28px rgba(246, 190, 16, .16) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    margin-top: 55px !important;
+    transition: transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease !important;
+}
+
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn::before,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: auto auto auto 10px !important;
+    left: 10px !important;
+    top: 50% !important;
+    z-index: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    opacity: 1 !important;
+    display: block !important;
+    pointer-events: none !important;
+    box-shadow: 0 8px 18px rgba(7, 26, 51, .16) !important;
+    transform: translateY(-50%) !important;
+    transition: transform .25s ease, background .25s ease !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn::after,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn::after {
+    content: "→" !important;
+    position: absolute !important;
+    inset: auto auto auto 22px !important;
+    left: 22px !important;
+    top: 50% !important;
+    z-index: 2 !important;
+    width: auto !important;
+    height: auto !important;
+    border: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #071a33 !important;
+    -webkit-text-fill-color: #071a33 !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    opacity: 1 !important;
+    display: block !important;
+    pointer-events: none !important;
+    transform: translateY(-52%) !important;
+    transition: transform .25s ease, color .25s ease !important;
+    -webkit-mask: none !important;
+    mask: none !important;
+}
+
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn:hover,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn:hover {
+    transform: translateY(-3px) !important;
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .24) !important;
+}
+
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn:hover::before,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn:hover::before {
+    transform: translate(6px, -50%) !important;
+}
+
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) .testimonials :is(a, button).review-btn:hover::after,
+:is(html body, html[data-theme="amigos-dark"] body, html[data-theme="amigos-light"] body) :is(body[data-page="home"], body[data-page="about"], body[data-page="interior-painting"]) .testimonials :is(a, button).review-btn:hover::after {
+    transform: translate(6px, -52%) !important;
+}
+
+/* Keep the exterior CTA image visible after theme background overrides. */
+body .final-cta {
+    position: relative !important;
+    overflow: hidden !important;
+    background: #071A33 !important;
+    background-image: none !important;
+}
+
+body .final-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, rgba(7, 26, 51, .9), rgba(7, 26, 51, .68));
+    pointer-events: none;
+}
+
+body .final-cta .final-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+    opacity: .72;
+    pointer-events: none;
+}
+
+/* Apartment renovation CTAs: ID-level dark-theme hover override. */
+html[data-theme*="dark"] body #renFreeQuoteButton:hover,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover::before,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover::before,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover::before,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover::before,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover::after,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover::after,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover::after,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover::after,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #renFreeQuoteButton:hover > *,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover > *,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover > *,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover > *,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover > *,
+html[data-theme*="dark"] body #renFreeQuoteButton:hover svg,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover svg,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover svg,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover svg,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover svg,
+html[data-theme*="dark"] body #renFreeQuoteButton:hover svg path,
+html[data-theme*="dark"] body #renDiscussProjectButton:hover svg path,
+html[data-theme*="dark"] body #renFinalQuoteButton:hover svg path,
+html[data-theme*="dark"] body #renFinalDiscussButton:hover svg path,
+html[data-theme*="dark"] body #renPropertyPreservationButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Plastering CTAs: every dark-theme hover uses a white surface and black content. */
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover::before,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover::after,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover::after,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover > *,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover > *,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover svg,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover svg,
+html[data-theme*="dark"] body #plasterHeroOfferButton:hover svg path,
+html[data-theme*="dark"] body #plasterHeroWorkButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover::before,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover::before,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover::before,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover::after,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover::after,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover::after,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover::after,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover > *,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover > *,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover > *,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover > *,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover svg,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover svg,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover svg,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover svg,
+html[data-theme*="dark"] body #plasterDiscoverPaintingButton:hover svg path,
+html[data-theme*="dark"] body #plasterPropertyPreservationButton:hover svg path,
+html[data-theme*="dark"] body #plasterFinalOfferButton:hover svg path,
+html[data-theme*="dark"] body #plasterFinalDiscussButton:hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Mold CTAs: explicit dark-theme hover override for every mold button. */
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #moldCalculateButton,
+    #moldInspectionButton,
+    #moldFinalCalculateButton,
+    #moldFinalInspectionButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Water-damage hero CTAs: explicit dark-theme hover override. */
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #waterDamageHeroHelpButton,
+    #waterDamageHeroServicesButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #waterDamageFinalSupportButton,
+    #waterDamageFinalServicesButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Schadenservice CTAs: explicit dark-theme hover override. */
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover::after,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #schadenReportButton,
+    #schadenInspectionButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Contact hero: override the late global span hover rule that creates the white text bar. */
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+/* Contact form navigation: all dark-theme hover surfaces are white with black copy. */
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover {
+    background: #fff !important;
+    background-color: #fff !important;
+    background-image: none !important;
+    border-color: #fff !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover > *,
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover svg,
+html[data-theme*="dark"] body :is(
+    #contactFormBackButton,
+    #contactFormNextButton,
+    #contactFormStartAgainButton
+):hover svg path {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    stroke: #000 !important;
+}
+
+/* Contact form steps: keep hover text containers transparent; never paint a white block behind them. */
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div,
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div * {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactStep1,
+    #contactStep2,
+    #contactStep3
+):hover > div strong {
+    color: #ffca16 !important;
+    -webkit-text-fill-color: #ffca16 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover > span {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover::before {
+    background: #fff !important;
+    background-color: #fff !important;
+}
+
+html[data-theme*="dark"] body :is(
+    #contactHeroFormButton,
+    #contactHeroConsultationButton
+):hover::after {
+    background: transparent !important;
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+@media (max-width: 768px) {
+    html body :is(
+        .services-hero .hero-content h1,
+        .svc-hero .svc-hero-content h1,
+        .spray-hero .spray-hero-content h1,
+        .color-hero .color-hero-content h1,
+        .ren-hero .ren-hero-content h1,
+        .drywall-hero .hero-content h1,
+        .gipser-hero .gipser-hero-content h1,
+        .facade-hero .facade-hero-title,
+        .damage-hero h1
+    ) {
+        font-size: clamp(40px, 9.5vw, 58px) !important;
+        line-height: .96 !important;
+    }
+}

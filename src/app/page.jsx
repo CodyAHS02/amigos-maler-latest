@@ -145,7 +145,7 @@ export default function Page() {
   return (
     <AssetPageShell
       css={["/style.css"]}
-      scripts={["/script.js"]}
+      scripts={["/script.js", "/app.js"]}
       shell
     >
       <HomeBeforeOffer />

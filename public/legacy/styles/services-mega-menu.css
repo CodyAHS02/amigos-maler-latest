@@ -1,0 +1,140 @@
+/* Shared services mega-menu. Kept separate from legacy page styles so every page uses one menu system. */
+@media (min-width: 1001px) {
+  .site-header .nav-dropdown .services-mega-menu {
+    position: fixed !important;
+    top: 92px !important;
+    left: 50vw !important;
+    width: min(1320px, calc(100vw - 64px)) !important;
+    max-width: calc(100vw - 64px) !important;
+    min-height: 430px !important;
+    display: grid !important;
+    grid-template-columns: 310px minmax(0, 1fr) !important;
+    gap: 32px !important;
+    padding: 32px !important;
+    border: 1px solid rgba(7, 26, 51, .08) !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, .98) !important;
+    box-shadow: 0 28px 80px rgba(7, 26, 51, .14), 0 2px 8px rgba(7, 26, 51, .06) !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateX(-50%) translateY(-12px) !important;
+    backdrop-filter: blur(18px) saturate(115%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(115%) !important;
+  }
+
+  .site-header .nav-dropdown:hover .services-mega-menu,
+  .site-header .nav-dropdown.open .services-mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0) !important;
+  }
+
+  .site-header .services-mega-menu::after {
+    content: "" !important;
+    position: absolute !important;
+    right: -70px !important;
+    bottom: -110px !important;
+    width: 260px !important;
+    height: 260px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(243, 145, 37, .20), rgba(230, 36, 83, .08) 42%, transparent 70%) !important;
+    pointer-events: none !important;
+  }
+
+  .site-header .services-mega-sidebar {
+    position: relative !important;
+    z-index: 2 !important;
+    display: grid !important;
+    grid-template-rows: auto auto auto 1fr auto !important;
+    gap: 22px !important;
+    min-width: 0 !important;
+  }
+
+  .site-header .services-mega-tab {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 0 14px !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    color: #4d5560 !important;
+    -webkit-text-fill-color: #4d5560 !important;
+    font: inherit !important;
+    font-size: 18px !important;
+    font-weight: 850 !important;
+    line-height: 1.15 !important;
+    text-align: left !important;
+    cursor: pointer !important;
+  }
+
+  .site-header .services-mega-tab:hover,
+  .site-header .services-mega-tab.is-active {
+    background: linear-gradient(105deg, rgba(255, 236, 240, .82), rgba(255, 247, 232, .82)) !important;
+    color: #0b0d12 !important;
+    -webkit-text-fill-color: #0b0d12 !important;
+  }
+
+  .site-header .services-mega-cta {
+    position: relative !important;
+    align-self: end !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 52px !important;
+    gap: 8px !important;
+    align-items: center !important;
+    width: min(270px, 100%) !important;
+    padding: 0 !important;
+    border: 0 !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .site-header .services-mega-cta::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 86px !important;
+    height: 1px !important;
+    background: rgba(7, 26, 51, .10) !important;
+  }
+
+  .site-header .services-mega-cta span,
+  .site-header .services-mega-cta i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 52px !important;
+    border-radius: 999px !important;
+    background: #241f55 !important;
+    color: #fff !important;
+    -webkit-text-fill-color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 850 !important;
+    font-style: normal !important;
+  }
+
+  .site-header .services-mega-cta i { width: 52px !important; font-size: 22px !important; }
+  .site-header .services-mega-content { position: relative !important; z-index: 2 !important; min-width: 0 !important; }
+  .site-header .services-mega-intro { display: grid !important; gap: 6px !important; margin-bottom: 30px !important; padding: 24px 26px !important; border-radius: 12px !important; background: linear-gradient(105deg, rgba(255, 246, 230, .92), rgba(242, 253, 251, .92)) !important; }
+  .site-header .services-mega-intro strong { color: #0b0d12 !important; -webkit-text-fill-color: #0b0d12 !important; font-size: 26px !important; font-weight: 900 !important; line-height: 1.1 !important; }
+  .site-header .services-mega-intro span { color: #4d5560 !important; -webkit-text-fill-color: #4d5560 !important; font-size: 18px !important; font-weight: 650 !important; line-height: 1.35 !important; }
+  .site-header .services-mega-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 22px 50px !important; }
+  .site-header .services-mega-grid .dropdown-item { display: grid !important; grid-template-columns: 54px minmax(0, 1fr) !important; gap: 14px !important; align-items: center !important; min-height: 64px !important; padding: 0 !important; border: 0 !important; border-radius: 12px !important; background: transparent !important; box-shadow: none !important; }
+  .site-header .services-mega-grid .dropdown-item:hover { background: rgba(246, 248, 251, .86) !important; box-shadow: none !important; transform: translateX(3px) !important; }
+  .site-header .services-mega-grid .dropdown-item .item-num { display: grid !important; place-items: center !important; width: 48px !important; height: 48px !important; min-width: 48px !important; padding: 0 !important; border: 1.5px solid #ff6262 !important; border-radius: 12px !important; background: transparent !important; color: #ff6262 !important; -webkit-text-fill-color: #ff6262 !important; font-size: 13px !important; font-weight: 900 !important; line-height: 1 !important; }
+  .site-header .services-mega-grid .dropdown-item:hover .item-num { background: rgba(255, 98, 98, .08) !important; }
+  .site-header .services-mega-grid .dropdown-item .item-title { color: #171a20 !important; -webkit-text-fill-color: #171a20 !important; font-size: 18px !important; font-weight: 900 !important; line-height: 1.1 !important; }
+  .site-header .services-mega-grid .dropdown-item .item-desc { display: block !important; margin-top: 5px !important; color: #626a75 !important; -webkit-text-fill-color: #626a75 !important; font-size: 14px !important; font-weight: 650 !important; line-height: 1.25 !important; }
+}
+
+@media (max-width: 1000px) {
+  .site-header .services-mega-menu { display: grid !important; grid-template-columns: 1fr !important; }
+  .site-header .services-mega-sidebar, .site-header .services-mega-intro { display: none !important; }
+  .site-header .services-mega-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 4px !important; }
+}

@@ -215,12 +215,21 @@ function primeHeroVideo() {
     });
 }
 
-// Guard: heroVideo only exists on the homepage.
+// Guard: heroVideo only exists on the homepage. Defer priming until after the loader finishes
+// so the initial paint, hero title, and LCP render instantly without network blocking.
 if (video) {
-    if (video.readyState >= 1) {
-        primeHeroVideo();
+    const triggerPrime = () => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(primeHeroVideo);
+        } else {
+            window.setTimeout(primeHeroVideo, 400);
+        }
+    };
+    if (window.__amigosLoaderFinished) {
+        triggerPrime();
     } else {
-        video.addEventListener("loadedmetadata", primeHeroVideo, { once: true });
+        window.addEventListener("amigos:loader-finished", triggerPrime, { once: true });
+        window.setTimeout(triggerPrime, 1000);
     }
 }
 
@@ -255,10 +264,13 @@ if (document.querySelector(".hero")) {
             // VIDEO — only scrub once it's actually ready
             //-----------------------------------
 
-            if (videoReady && video) {
+            if (videoReady && video && !video.seeking) {
 
                 const videoProgress = Math.min(p / 0.80, 1);
-                video.currentTime = video.duration * videoProgress;
+                const targetTime = video.duration * videoProgress;
+                if (Number.isFinite(targetTime) && Math.abs(video.currentTime - targetTime) > 0.03) {
+                    video.currentTime = targetTime;
+                }
 
             }
 
