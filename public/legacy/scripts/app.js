@@ -78,22 +78,27 @@ async function init() {
     // Load room image first
     images.room = await loadImage("/assets/room.webp");
 
-    // Set canvas size
+    // Set canvas size and render room immediately
     canvas.width = images.room.width;
     canvas.height = images.room.height;
+    drawRoom();
 
     // Load & cache masks
     for (const name of maskNames) {
-        const img = await loadImage(`/assets/masks/${name}.png`);
-        images.masks[name] = img;
+        try {
+            const img = await loadImage(`/assets/masks/${name}.png`);
+            images.masks[name] = img;
 
-        const c = document.createElement("canvas");
-        c.width = img.width;
-        c.height = img.height;
-        const cctx = c.getContext("2d");
-        cctx.drawImage(img, 0, 0);
+            const c = document.createElement("canvas");
+            c.width = img.width;
+            c.height = img.height;
+            const cctx = c.getContext("2d");
+            cctx.drawImage(img, 0, 0);
 
-        maskCache[name] = cctx.getImageData(0, 0, c.width, c.height).data;
+            maskCache[name] = cctx.getImageData(0, 0, c.width, c.height).data;
+        } catch (e) {
+            console.warn("Failed to load mask:", name, e);
+        }
     }
 
     drawRoom();

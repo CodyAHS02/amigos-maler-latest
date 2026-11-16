@@ -17,6 +17,19 @@ export default function HomeBeforeOffer() {
     {/*305*/}
     <section className="hero" data-hero data-home-hero>
         <div className="hero-media">
+            <img
+                src="/assets/room.webp"
+                alt="Room"
+                id="heroRoomBg"
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    zIndex: 0
+                }}
+            />
             <video id="heroVideo" muted playsInline preload="metadata">
                 <source src="/hero_scrub2.webm" type="video/webm" />
                 <source src="/hero_scrub2.mp4" type="video/mp4" />
