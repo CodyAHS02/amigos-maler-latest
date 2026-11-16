@@ -232,21 +232,13 @@ function primeHeroVideo() {
     });
 }
 
-// Guard: heroVideo only exists on the homepage. Prime only when the user scrolls or interacts
-// so initial page load, FCP, LCP, and TBT have zero network or CPU contention.
+// Guard: heroVideo only exists on the homepage.
 if (video) {
-    let videoPrimed = false;
-    const triggerPrimeOnUserAction = () => {
-        if (videoPrimed) return;
-        videoPrimed = true;
-        window.removeEventListener("scroll", triggerPrimeOnUserAction);
-        window.removeEventListener("wheel", triggerPrimeOnUserAction);
-        window.removeEventListener("touchmove", triggerPrimeOnUserAction);
+    if (video.readyState >= 1) {
         primeHeroVideo();
-    };
-    window.addEventListener("scroll", triggerPrimeOnUserAction, { passive: true, once: true });
-    window.addEventListener("wheel", triggerPrimeOnUserAction, { passive: true, once: true });
-    window.addEventListener("touchmove", triggerPrimeOnUserAction, { passive: true, once: true });
+    } else {
+        video.addEventListener("loadedmetadata", primeHeroVideo, { once: true });
+    }
 }
 
 // Hero ScrollTrigger now created IMMEDIATELY, synchronously,

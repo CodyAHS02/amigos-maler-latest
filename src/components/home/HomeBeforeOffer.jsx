@@ -17,7 +17,7 @@ export default function HomeBeforeOffer() {
     {/*305*/}
     <section className="hero" data-hero data-home-hero>
         <div className="hero-media">
-            <video id="heroVideo" muted playsInline preload="none">
+            <video id="heroVideo" muted playsInline preload="metadata">
                 <source src="/hero_scrub2.webm" type="video/webm" />
                 <source src="/hero_scrub2.mp4" type="video/mp4" />
             </video>
