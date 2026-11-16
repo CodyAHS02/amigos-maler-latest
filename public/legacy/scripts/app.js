@@ -98,25 +98,27 @@ async function init() {
 
     drawRoom();
     computeMaskBaseLightness();
+}
 
-    // Preload wallpapers & wall textures into memory canvas
-    await Promise.all(WALLPAPERS.map(async (wp) => {
-        try {
-            const tImg = await loadImage(wp.url);
-            const tc = document.createElement("canvas");
-            tc.width = tImg.width;
-            tc.height = tImg.height;
-            const tctx = tc.getContext("2d");
-            tctx.drawImage(tImg, 0, 0);
-            textureCache[wp.url] = {
-                width: tImg.width,
-                height: tImg.height,
-                data: tctx.getImageData(0, 0, tImg.width, tImg.height).data
-            };
-        } catch (e) {
-            console.warn("Failed to load wallpaper texture:", wp.url, e);
-        }
-    }));
+async function getTexture(url) {
+    if (textureCache[url]) return textureCache[url];
+    try {
+        const tImg = await loadImage(url);
+        const tc = document.createElement("canvas");
+        tc.width = tImg.width;
+        tc.height = tImg.height;
+        const tctx = tc.getContext("2d");
+        tctx.drawImage(tImg, 0, 0);
+        textureCache[url] = {
+            width: tImg.width,
+            height: tImg.height,
+            data: tctx.getImageData(0, 0, tImg.width, tImg.height).data
+        };
+        return textureCache[url];
+    } catch (e) {
+        console.warn("Failed to load wallpaper texture:", url, e);
+        return null;
+    }
 }
 
 let originalImageData;
@@ -262,15 +264,16 @@ const maskBaseLightness = {};
 function computeMaskBaseLightness() {
     for (const name of maskNames) {
         const maskPixels = maskCache[name];
+        if (!maskPixels) continue;
         let total = 0;
         let count = 0;
 
-        for (let i = 0; i < maskPixels.length; i += 4) {
+        for (let i = 0; i < maskPixels.length; i += 16) {
             if (maskPixels[i + 3] < 10) continue;
             const r = originalImageData.data[i];
             const g = originalImageData.data[i + 1];
             const b = originalImageData.data[i + 2];
-            total += rgbToHsl(r, g, b).l;
+            total += (Math.max(r, g, b) + Math.min(r, g, b)) / 510;
             count++;
         }
 
@@ -283,7 +286,7 @@ function computeMaskBaseLightness() {
             const r = originalImageData.data[i];
             const g = originalImageData.data[i + 1];
             const b = originalImageData.data[i + 2];
-            const l = rgbToHsl(r, g, b).l;
+            const l = (Math.max(r, g, b) + Math.min(r, g, b)) / 510;
             const pixelIdx = i / 4;
             // Photometric ratio preserves natural directional sunlight, blind shadows and ambient corner occlusion
             ratios[pixelIdx] = Math.pow(l / baseL, 0.72);
@@ -292,9 +295,14 @@ function computeMaskBaseLightness() {
     }
 }
 
-function paintTextureMaskOnly(maskName, textureUrl) {
-    const tex = textureCache[textureUrl];
-    if (!tex) return;
+async function paintTextureMaskOnly(maskName, textureUrl) {
+    let tex = textureCache[textureUrl];
+    if (!tex) {
+        tex = await getTexture(textureUrl);
+        if (!tex) return;
+        renderScene();
+        return;
+    }
 
     const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const pixels = imgData.data;

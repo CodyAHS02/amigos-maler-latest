@@ -28,6 +28,23 @@ let swapped = false;
 
 let iconsVisible = false;
 
+function triggerPaintWall(mask, col) {
+    if (typeof paintWall === "function") {
+        paintWall(mask, col);
+    } else if (window.paintWall) {
+        window.paintWall(mask, col);
+    } else if (!window.__appJsLoaded) {
+        window.__appJsLoaded = true;
+        const s = document.createElement("script");
+        s.src = "/legacy/scripts/app.js";
+        s.onload = () => {
+            if (typeof paintWall === "function") paintWall(mask, col);
+            else if (window.paintWall) window.paintWall(mask, col);
+        };
+        document.body.appendChild(s);
+    }
+}
+
 colors.forEach(btn => {
 
     btn.onclick = () => {
@@ -40,10 +57,10 @@ colors.forEach(btn => {
 
         const color = btn.dataset.color;
 
-        paintWall("front-wall", color);
-        paintWall("left-wall", color);
-        paintWall("right-wall", color);
-        paintWall("ceiling", color);
+        triggerPaintWall("front-wall", color);
+        triggerPaintWall("left-wall", color);
+        triggerPaintWall("right-wall", color);
+        triggerPaintWall("ceiling", color);
 
     };
 
@@ -215,22 +232,21 @@ function primeHeroVideo() {
     });
 }
 
-// Guard: heroVideo only exists on the homepage. Defer priming until after the loader finishes
-// so the initial paint, hero title, and LCP render instantly without network blocking.
+// Guard: heroVideo only exists on the homepage. Prime only when the user scrolls or interacts
+// so initial page load, FCP, LCP, and TBT have zero network or CPU contention.
 if (video) {
-    const triggerPrime = () => {
-        if ("requestIdleCallback" in window) {
-            window.requestIdleCallback(primeHeroVideo);
-        } else {
-            window.setTimeout(primeHeroVideo, 400);
-        }
+    let videoPrimed = false;
+    const triggerPrimeOnUserAction = () => {
+        if (videoPrimed) return;
+        videoPrimed = true;
+        window.removeEventListener("scroll", triggerPrimeOnUserAction);
+        window.removeEventListener("wheel", triggerPrimeOnUserAction);
+        window.removeEventListener("touchmove", triggerPrimeOnUserAction);
+        primeHeroVideo();
     };
-    if (window.__amigosLoaderFinished) {
-        triggerPrime();
-    } else {
-        window.addEventListener("amigos:loader-finished", triggerPrime, { once: true });
-        window.setTimeout(triggerPrime, 1000);
-    }
+    window.addEventListener("scroll", triggerPrimeOnUserAction, { passive: true, once: true });
+    window.addEventListener("wheel", triggerPrimeOnUserAction, { passive: true, once: true });
+    window.addEventListener("touchmove", triggerPrimeOnUserAction, { passive: true, once: true });
 }
 
 // Hero ScrollTrigger now created IMMEDIATELY, synchronously,
@@ -356,6 +372,14 @@ if (document.querySelector(".hero")) {
             //-----------------------------------
 
             if (paintIcons) {
+                if (p >= .85 && !window.__appJsLoaded) {
+                    window.__appJsLoaded = true;
+                    const s = document.createElement("script");
+                    s.src = "/legacy/scripts/app.js";
+                    s.defer = true;
+                    document.body.appendChild(s);
+                }
+
                 if (p >= .95 && !iconsVisible) {
                     paintIcons.classList.add("show");
                     iconsVisible = true;
